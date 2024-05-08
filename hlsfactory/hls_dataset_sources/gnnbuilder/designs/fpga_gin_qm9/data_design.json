@@ -1,0 +1,7 @@
+{
+    "name": "fpga_gin_qm9_top",
+    "part": "xcu280-fsvh2892-2L-e",
+    "target_clock_period": 3.33,
+    "version_vitis_hls": "2023.1.1",
+    "version_vivado": null
+}

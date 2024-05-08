@@ -1,0 +1,55 @@
+[project]
+name = "hlsfactory"
+version = "1.0"
+readme = "README.md"
+license = { file = "LICENSE" }
+description = "A Framework Empowering High-Level Synthesis Datasets for Machine Learning and Beyond"
+authors = []
+keywords = [
+    "High-Level Synthesis",
+    "FPGA",
+    "Electronic Design Automation",
+    "Dataset"
+]
+classifiers = []
+requires-python = ">=3.10"
+
+dependencies = [
+    "pandas",
+    "psutil",
+    "PyYAML",
+    "tqdm",
+    "python-dotenv"
+]
+
+[project.optional-dependencies]
+docs = ["sphinx", "furo", "sphinx-autodoc-typehints", "myst-parser", "sphinx_rtd_theme"]
+test = ["pytest", "pytest-cov", "pytest-mock"]
+
+[project.urls]
+"Homepage" = "https://github.com/sharc-lab/HLSFactory"
+"Repository" = "https://github.com/sharc-lab/HLSFactory"
+"Documentation" = "https://github.com/sharc-lab/HLSFactory"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["hlsfactory"]
+
+[tool.setuptools.package-data]
+hlsfactory = ["**", "**/*"]
+
+[tool.setuptools.exclude-package-data]
+hlsfactory = ["**/*.npy", "**/*.bin"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["-s", "-v", "--cov=hlsfactory", "--cov-report=html"]
+log_cli = true
+
+[tool.ruff.lint]
+unfixable = ["F401"]
+select = ["ALL"]
+ignore= ["EM102","TRY003", "T201", "S314", "EM101", "PGH003", "D", "ANN101", "ANN102", "FBT001", "FBT002", "PLR0913", "S101", "SIM108", "PLR0912", "PLR0915"]

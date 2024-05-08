@@ -1,0 +1,446 @@
+
+****** Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:36:41 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source /usr/local/packages/xilinx_2018/vivado_hl/Vivado/2018.3/scripts/vivado_hls/hls.tcl -notrace
+INFO: Applying HLS Y2K22 patch v1.2 for IP revision
+INFO: [HLS 200-10] Running '/usr/local/packages/xilinx_2018/vivado_hl/Vivado/2018.3/bin/unwrapped/lnx64.o/vivado_hls'
+INFO: [HLS 200-10] For user 'zwei1' on host 'wario.ece.utexas.edu' (Linux_x86_64 version 3.10.0-1160.81.1.el7.x86_64) on Sun Mar 05 20:52:44 CST 2023
+INFO: [HLS 200-10] On os "CentOS Linux release 7.9.2009 (Core)"
+INFO: [HLS 200-10] In directory '/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc'
+INFO: [HLS 200-10] Creating and opening project '/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/test'.
+INFO: [HLS 200-10] Adding design file '/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp' to the project
+INFO: [HLS 200-10] Adding design file '/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect.h' to the project
+INFO: [HLS 200-10] Creating and opening solution '/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/test/solution'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+INFO: [HLS 200-10] Setting target device to 'xczu9eg-ffvb1156-2-i'
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file '/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 535.582 ; gain = 6.250 ; free physical = 200526 ; free virtual = 261279
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 535.582 ; gain = 6.250 ; free physical = 200526 ; free virtual = 261279
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [XFORM 203-603] Inlining function 'get_bank' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1000).
+INFO: [XFORM 203-603] Inlining function 'get_offset' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1001).
+INFO: [XFORM 203-603] Inlining function 'get_data0' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1025).
+INFO: [XFORM 203-603] Inlining function 'get_data1' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1026).
+INFO: [XFORM 203-603] Inlining function 'get_data2' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1027).
+INFO: [XFORM 203-603] Inlining function 'get_data3' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1028).
+INFO: [XFORM 203-603] Inlining function 'get_data4' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1029).
+INFO: [XFORM 203-603] Inlining function 'get_data5' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1030).
+INFO: [XFORM 203-603] Inlining function 'get_data6' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1031).
+INFO: [XFORM 203-603] Inlining function 'get_data7' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1032).
+INFO: [XFORM 203-603] Inlining function 'get_data8' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1033).
+INFO: [XFORM 203-603] Inlining function 'get_data9' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1034).
+INFO: [XFORM 203-603] Inlining function 'get_data10' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1035).
+INFO: [XFORM 203-603] Inlining function 'get_data11' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1036).
+INFO: [XFORM 203-603] Inlining function 'get_data12' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1037).
+INFO: [XFORM 203-603] Inlining function 'get_data13' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1038).
+INFO: [XFORM 203-603] Inlining function 'get_data14' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1039).
+INFO: [XFORM 203-603] Inlining function 'get_data15' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1040).
+INFO: [XFORM 203-603] Inlining function 'get_data16' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1041).
+INFO: [XFORM 203-603] Inlining function 'get_data17' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1042).
+INFO: [XFORM 203-603] Inlining function 'get_data18' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1043).
+INFO: [XFORM 203-603] Inlining function 'get_data19' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1044).
+INFO: [XFORM 203-603] Inlining function 'get_data20' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1045).
+INFO: [XFORM 203-603] Inlining function 'get_data21' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1046).
+INFO: [XFORM 203-603] Inlining function 'get_data22' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1047).
+INFO: [XFORM 203-603] Inlining function 'get_data23' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1048).
+INFO: [XFORM 203-603] Inlining function 'get_data24' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1049).
+INFO: [XFORM 203-603] Inlining function 'get_data25' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1050).
+INFO: [XFORM 203-603] Inlining function 'get_data26' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1051).
+INFO: [XFORM 203-603] Inlining function 'get_data27' into 'get_all_data' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1052).
+INFO: [XFORM 203-603] Inlining function 'get_all_data' into 'cascadeClassifier' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3290).
+INFO: [XFORM 203-603] Inlining function 'weakClassifier' into 'cascadeClassifier' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3299).
+INFO: [XFORM 203-603] Inlining function 'cascadeClassifier' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026).
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 667.340 ; gain = 138.008 ; free physical = 200425 ; free virtual = 261208
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [XFORM 203-602] Inlining function 'fp_struct<double>::mantissa' into 'generic_cast_IEEE754<int, (ap_q_mode)6, double>' (/wrk/2018.3/continuous/2018_12_06_2405991/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:14) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<double>::expv' into 'generic_cast_IEEE754<int, (ap_q_mode)6, double>' (/wrk/2018.3/continuous/2018_12_06_2405991/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:17) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<double>::__signbit' into 'generic_cast_IEEE754<int, (ap_q_mode)6, double>' (/wrk/2018.3/continuous/2018_12_06_2405991/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:58) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, (ap_q_mode)6, double>' into 'generic_cast_IEEE754<int, double>' (/wrk/2018.3/continuous/2018_12_06_2405991/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:116) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, double>' into '__hls_fptosi_double_i32' (/wrk/2018.3/continuous/2018_12_06_2405991/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:54) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_double_i32' into 'myRound' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:2774) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::mantissa' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (/wrk/2018.3/continuous/2018_12_06_2405991/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:14) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::expv' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (/wrk/2018.3/continuous/2018_12_06_2405991/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:17) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::__signbit' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (/wrk/2018.3/continuous/2018_12_06_2405991/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:58) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' into 'generic_cast_IEEE754<int, float>' (/wrk/2018.3/continuous/2018_12_06_2405991/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:116) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, float>' into '__hls_fptosi_float_i32' (/wrk/2018.3/continuous/2018_12_06_2405991/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:50) automatically.
+INFO: [XFORM 203-602] Inlining function 'int_sqrt' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3127->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier0' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3139->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier1' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3140->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier2' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3141->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier3' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3142->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier4' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3143->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier5' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3144->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier6' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3145->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier7' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3146->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier8' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3147->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier9' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3157->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier10' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3158->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier11' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3159->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier12' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3160->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier13' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3161->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier14' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3162->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier15' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3163->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier16' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3164->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier17' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3165->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier18' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3166->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier19' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3167->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier20' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3168->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier21' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3169->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier22' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3170->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier23' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3171->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier24' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3172->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier25' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3184->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier26' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3185->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier27' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3186->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier28' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3187->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier29' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3188->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier30' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3189->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier31' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3190->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier32' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3191->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier33' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3192->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier34' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3193->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier35' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3194->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier36' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3195->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier37' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3196->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier38' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3197->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier39' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3198->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier40' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3199->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier41' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3200->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier42' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3201->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier43' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3202->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier44' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3203->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier45' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3204->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier46' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3205->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier47' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3206->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier48' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3207->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier49' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3208->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier50' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3209->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier51' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3210->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 732.477 ; gain = 203.145 ; free physical = 200389 ; free virtual = 261189
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Filters' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3227) in function 'processImage' for pipelining.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3399) in function 'int_sqrt' completely with a factor of 16.
+INFO: [HLS 200-489] Unrolling loop 'Initialize0u' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:2925) in function 'processImage' completely with a factor of 25.
+INFO: [HLS 200-489] Unrolling loop 'Initailize0v' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:2928) in function 'processImage' completely with a factor of 25.
+INFO: [HLS 200-489] Unrolling loop 'Initialize1i' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:2941) in function 'processImage' completely with a factor of 25.
+INFO: [HLS 200-489] Unrolling loop 'Initialize1j' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:2944) in function 'processImage' completely with a factor of 50.
+INFO: [HLS 200-489] Unrolling loop 'Initialize2y' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:2953) in function 'processImage' completely with a factor of 24.
+INFO: [HLS 200-489] Unrolling loop 'SetIIu' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:2972) in function 'processImage' completely with a factor of 25.
+INFO: [HLS 200-489] Unrolling loop 'SetIIj' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:2974) in function 'processImage' completely with a factor of 25.
+INFO: [HLS 200-489] Unrolling loop 'SetIj' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:2987) in function 'processImage' completely with a factor of 49.
+INFO: [HLS 200-489] Unrolling loop 'SetIi' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:2989) in function 'processImage' completely with a factor of 25.
+INFO: [HLS 200-489] Unrolling loop 'Ilast' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3002) in function 'processImage' completely with a factor of 24.
+INFO: [HLS 200-489] Unrolling loop 'LineBuf' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3011) in function 'processImage' completely with a factor of 23.
+INFO: [HLS 200-489] Unrolling loop 'COPY_LOOP1' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3105) in function 'processImage' completely with a factor of 25.
+INFO: [HLS 200-489] Unrolling loop 'COPY_LOOP2' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3107) in function 'processImage' completely with a factor of 25.
+INFO: [HLS 200-489] Unrolling loop 'COMPUTE_BANK_AND_OFFSET' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:998) in function 'processImage' completely with a factor of 12.
+INFO: [HLS 200-489] Unrolling loop 'ASSIGN_OFFSET_FOR_BANKS' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1006) in function 'processImage' completely with a factor of 28.
+INFO: [HLS 200-489] Unrolling loop 'CHOOSE_DATA' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1056) in function 'processImage' completely with a factor of 12.
+INFO: [HLS 200-489] Unrolling loop 'Loop-4.1.6.1.4' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3292) in function 'processImage' completely with a factor of 12.
+INFO: [XFORM 203-101] Partitioning array 'L' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:2904) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'I.V'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'II.V'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'SI.V'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'SII.V'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.V'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 's0'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 's1'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 's2'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'values.i'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'addr_list.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3095) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'enable_list.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3099) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array '_II.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3102) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'bank.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:987) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'offset.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:989) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'offset_for_banks.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:991) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'data_from_banks.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:993) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.69'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.58'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.54'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.53'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.9'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.101'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.100'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.99'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.98'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.97'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.96'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.95'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.93'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.92'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.90'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.89'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.88'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.87'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.86'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.85'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.84'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.83'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.81'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.79'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.78'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.77'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.76'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.75'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.74'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.73'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.72'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.71'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.68'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.67'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.66'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.65'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.64'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.63'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.62'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.61'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.60'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.59'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.102'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.91'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.80'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.55'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.94'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.82'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.70'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.57'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'coord.56'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'I.V'  in dimension 2 completely.
+INFO: [XFORM 203-101] Partitioning array 'II.V'  in dimension 2 completely.
+INFO: [XFORM 203-101] Partitioning array 'SI.V'  in dimension 2 completely.
+INFO: [XFORM 203-101] Partitioning array 'SII.V'  in dimension 2 completely.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<double>::mantissa' into 'generic_cast_IEEE754<int, (ap_q_mode)6, double>' (/wrk/2018.3/continuous/2018_12_06_2405991/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:14) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<double>::expv' into 'generic_cast_IEEE754<int, (ap_q_mode)6, double>' (/wrk/2018.3/continuous/2018_12_06_2405991/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:17) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<double>::__signbit' into 'generic_cast_IEEE754<int, (ap_q_mode)6, double>' (/wrk/2018.3/continuous/2018_12_06_2405991/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:58) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, (ap_q_mode)6, double>' into 'generic_cast_IEEE754<int, double>' (/wrk/2018.3/continuous/2018_12_06_2405991/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:116) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, double>' into '__hls_fptosi_double_i32' (/wrk/2018.3/continuous/2018_12_06_2405991/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:54) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_double_i32' into 'myRound' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:2774) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::mantissa' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (/wrk/2018.3/continuous/2018_12_06_2405991/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:14) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::expv' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (/wrk/2018.3/continuous/2018_12_06_2405991/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:17) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::__signbit' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (/wrk/2018.3/continuous/2018_12_06_2405991/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:58) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' into 'generic_cast_IEEE754<int, float>' (/wrk/2018.3/continuous/2018_12_06_2405991/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:116) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, float>' into '__hls_fptosi_float_i32' (/wrk/2018.3/continuous/2018_12_06_2405991/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:50) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier0' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3139->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier1' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3140->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier2' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3141->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier3' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3142->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier4' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3143->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier5' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3144->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier6' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3145->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier7' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3146->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier8' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3147->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier9' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3157->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier10' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3158->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier11' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3159->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier12' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3160->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier13' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3161->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier14' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3162->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier15' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3163->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier16' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3164->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier17' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3165->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier18' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3166->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier19' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3167->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier20' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3168->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier21' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3169->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier22' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3170->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier23' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3171->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier24' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3172->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier25' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3184->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier26' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3185->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier27' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3186->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier28' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3187->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier29' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3188->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier30' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3189->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier31' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3190->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier32' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3191->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier33' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3192->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier34' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3193->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier35' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3194->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier36' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3195->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier37' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3196->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier38' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3197->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier39' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3198->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier40' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3199->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier41' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3200->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier42' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3201->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier43' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3202->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier44' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3203->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier45' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3204->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier46' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3205->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier47' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3206->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier48' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3207->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier49' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3208->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier50' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3209->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'classifier51' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3210->/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3026) automatically.
+INFO: [XFORM 203-602] Inlining function 'myRound' into 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3033) automatically.
+INFO: [XFORM 203-602] Inlining function 'myRound' into 'face_detect' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:2842) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_float_i32' into 'face_detect' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:2844) automatically.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3227:55) to (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:1008:25) in function 'processImage'... converting 15 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3415:3) in function 'int_sqrt'... converting 29 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'processImage' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:2883)...77 expression(s) balanced.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:01:38 ; elapsed = 00:01:42 . Memory (MB): peak = 860.477 ; gain = 331.145 ; free physical = 199943 ; free virtual = 261024
+WARNING: [XFORM 203-542] Cannot flatten a loop nest 'Stages' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3226:38) in function 'processImage' : 
+
+the outer loop is not a perfect loop because there is nontrivial logic before entering the inner loop.
+WARNING: [XFORM 203-542] Cannot flatten a loop nest 'Pixelx' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:2969:46) in function 'processImage' : 
+
+the outer loop is not a perfect loop because there is nontrivial logic before entering the inner loop.
+INFO: [XFORM 203-541] Flattening a loop nest 'Pixely' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:2968:42) in function 'processImage'.
+INFO: [XFORM 203-541] Flattening a loop nest 'imageScalerL1' (/home/projects/ljohn/simplescalar/zhigang/rosetta/face-detection/src/sdsoc/face_detect_origin.cpp:3381:57) in function 'imageScaler'.
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:02:11 ; elapsed = 00:02:15 . Memory (MB): peak = 860.477 ; gain = 331.145 ; free physical = 200162 ; free virtual = 260995
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'face_detect' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'imageScaler' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'imageScalerL1_imageScalerL1_1'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 135.44 seconds; current allocated memory: 331.495 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.36 seconds; current allocated memory: 331.861 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'int_sqrt' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.46 seconds; current allocated memory: 332.458 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.55 seconds; current allocated memory: 333.336 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'processImage' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'Filters'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 5.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 60.15 seconds; current allocated memory: 374.490 MB.
+INFO: [HLS 200-434] Only 1 loops out of a total 27 loops have been pipelined in this design.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 36.88 seconds; current allocated memory: 419.944 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'face_detect' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 32.32 seconds; current allocated memory: 434.677 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 4.18 seconds; current allocated memory: 436.954 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'imageScaler' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'face_detect_sdiv_26ns_32ns_32_30_seq_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_sdiv_27ns_32ns_32_31_seq_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'imageScaler'.
+INFO: [HLS 200-111]  Elapsed time: 6.13 seconds; current allocated memory: 439.873 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'int_sqrt' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'int_sqrt'.
+INFO: [HLS 200-111]  Elapsed time: 0.5 seconds; current allocated memory: 442.557 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'processImage' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-104] Estimated max fanout for 'processImage' is 32504 from HDL expression: ((exitcond6_22_fu_33573_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state25))
+INFO: [RTGEN 206-100] Generating core module 'face_detect_am_addmul_4ns_5ns_6ns_10_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_am_addmul_5ns_5ns_6ns_10_1_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_ama_addmuladd_20ns_18ns_14ns_32s_32_1_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_dadd_64ns_64ns_64_5_full_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_dcmp_64ns_64ns_1_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_dmul_64ns_64ns_64_5_max_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_fcmp_32ns_32ns_1_1_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_fmul_32ns_32ns_32_2_max_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_fpext_32ns_64_1_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_mul_mul_10ns_16ns_26_1_1': 6 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_mul_mul_10s_16ns_26_1_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_mul_mul_11s_16ns_27_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_mul_mul_12ns_16ns_28_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_mul_mul_13s_16ns_29_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_mul_mul_13s_20s_32_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_mul_mul_6ns_16ns_22_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_mul_mul_6s_16ns_22_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_mul_mul_7ns_16ns_23_1_1': 5 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_mul_mul_7s_16ns_23_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_mul_mul_8ns_16ns_24_1_1': 8 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_mul_mul_8s_16ns_24_1_1': 4 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_mul_mul_9ns_16ns_25_1_1': 4 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_mul_mul_9s_16ns_25_1_1': 4 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_mux_285_18_1_1': 12 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_sitodp_32ns_64_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_sitofp_32ns_32_3_1': 2 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'processImage'.
+INFO: [HLS 200-111]  Elapsed time: 7.92 seconds; current allocated memory: 493.364 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'face_detect' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'face_detect/inData' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'face_detect/result_x' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'face_detect/result_y' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'face_detect/result_w' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'face_detect/result_h' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'face_detect/result_size' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'face_detect' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Generating core module 'face_detect_dadd_64ns_64ns_64_5_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_fcmp_32ns_32ns_1_1_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_fdiv_32ns_32ns_32_8_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_fmul_32ns_32ns_32_2_max_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'face_detect_fpext_32ns_64_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'face_detect'.
+INFO: [HLS 200-111]  Elapsed time: 48.88 seconds; current allocated memory: 648.669 MB.
+INFO: [RTMG 210-282] Generating pipelined core: 'face_detect_sdiv_27ns_32ns_32_31_seq_1_div'
+INFO: [RTMG 210-282] Generating pipelined core: 'face_detect_sdiv_26ns_32ns_32_30_seq_1_div'
+INFO: [RTMG 210-279] Implementing memory 'processImage_stages_array_rom' using distributed ROMs.
+INFO: [RTMG 210-279] Implementing memory 'processImage_rectangles_array0_rom' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'processImage_rectangles_array2_rom' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'processImage_rectangles_array1_rom' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'processImage_rectangles_array3_rom' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'processImage_rectangles_array4_rom' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'processImage_rectangles_array6_rom' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'processImage_rectangles_array5_rom' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'processImage_rectangles_array7_rom' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'processImage_rectangles_array8_rom' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'processImage_rectangles_array10_rom' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'processImage_rectangles_array9_rom' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'processImage_rectangles_array11_rom' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'processImage_bank_mapping_rom' using block ROMs.
+INFO: [RTMG 210-279] Implementing memory 'processImage_offset_mapping_rom' using block ROMs.
+INFO: [RTMG 210-279] Implementing memory 'processImage_tree_thresh_array_rom' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'processImage_weights_array0_rom' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'processImage_weights_array1_rom' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'processImage_weights_array2_rom' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'processImage_alpha2_array_rom' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'processImage_alpha1_array_rom' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'processImage_stages_thresh_array_rom' using distributed ROMs.
+INFO: [RTMG 210-278] Implementing memory 'processImage_L_0_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'face_detect_Data_ram (RAM)' using block RAMs with reset.
+INFO: [RTMG 210-278] Implementing memory 'face_detect_result_x_Scale_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'face_detect_IMG1_data_ram (RAM)' using block RAMs.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:05:27 ; elapsed = 00:05:55 . Memory (MB): peak = 1298.500 ; gain = 769.168 ; free physical = 199593 ; free virtual = 260640
+INFO: [SYSC 207-301] Generating SystemC RTL for face_detect.
+INFO: [VHDL 208-304] Generating VHDL RTL for face_detect.
+INFO: [VLOG 209-307] Generating Verilog RTL for face_detect.
+[2Kvivado_hls> [12C[2Kvivado_hls> e[13C[2Kvivado_hls> ex[14C[2Kvivado_hls> exi[15C[2Kvivado_hls> exit[16C
+INFO: [HLS 200-112] Total elapsed time: 428.09 seconds; peak allocated memory: 648.669 MB.
+INFO: [Common 17-206] Exiting vivado_hls at Sun Mar  5 20:59:52 2023...

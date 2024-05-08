@@ -1,0 +1,40 @@
+package: 
+  name: hlsfactory
+  version: "1.0"
+
+source:
+  path: ..
+
+build:
+  number: 0
+  noarch: python
+  script: |
+    python -m pip install . --no-deps --ignore-installed --no-cache-dir --no-build-isolation -vvv
+
+requirements:
+  host:
+    - python
+    - pip
+    - setuptools
+  run:
+    - python
+    - pandas
+    - psutil
+    - PyYAML
+    - tqdm
+    - python-dotenv
+
+# tests:
+#   imports:
+#     - hlsfactory
+#   commands:
+#     - pip check
+
+tests:
+  - python:
+      imports:
+        - hlsfactory
+
+
+about:
+  homepage: "https://github.com/sharc-lab/HLSFactory"

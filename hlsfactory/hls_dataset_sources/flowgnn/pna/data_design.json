@@ -1,0 +1,7 @@
+{
+    "name": "PNA_compute_graphs",
+    "part": "xcu50-fsvh2104-2-e",
+    "target_clock_period": 3.33,
+    "version_vitis_hls": "2023.2",
+    "version_vivado": null
+}

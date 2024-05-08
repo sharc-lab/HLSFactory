@@ -1,0 +1,2 @@
+source run_hls_fixed.tcl
+exit

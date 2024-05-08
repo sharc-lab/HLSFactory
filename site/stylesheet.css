@@ -1,0 +1,109 @@
+@import url("fonts.css");
+@import url("colors.css");
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    /* background-color: var(--color-white); */
+}
+
+* {
+    /* margin: 0;af
+    padding: 0; */
+    box-sizing: border-box;
+    /* color: var(--color-black); */
+}
+
+/* chnage spacing between list items to be 1.2 */
+li {
+    margin-bottom: 0.5rem;
+}
+
+a,
+a:visited {
+    color: var(--color-black);
+}
+
+a:hover,
+a:focus,
+a:active {
+    color: var(--color-blue-700);
+}
+
+main {
+    max-width: 70rem;
+    margin: auto;
+    padding: 2rem;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-gray-100);
+    border-left: 2px solid var(--color-gray-200);
+    border-right: 2px solid var(--color-gray-200);
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10rem 1fr;
+}
+
+.logo-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    width: 100%;
+    height: 100%;
+}
+
+.logo{
+    /* width: auto; */
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
+
+
+/* if width is smaller than 600px, change grid-template-columns to 1fr */
+@media (max-width: 800px) {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        text-align: center;
+    }
+}
+
+
+blockquote {
+    overflow: auto;
+    border: 2px solid var(--color-gray-200);
+    border-left: 10px solid var(--color-gray-200) !important;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: var(--color-white);
+}
+
+code {
+    color: var(--color-red-700);
+    background-color: white;
+    border: 1px solid var(--color-gray-200);
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+} */
+
+/* img {
+    max-width: 100%;
+    height: auto;
+} */
+
+/* pre,
+code {
+    overflow-x: auto;
+    width: 100%;
+}

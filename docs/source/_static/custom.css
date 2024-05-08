@@ -1,0 +1,12 @@
+.wrap pre {                                 
+    white-space: pre-wrap !important; 
+}
+
+footer > hr{
+    display: none;
+}
+
+
+footer > div[role="contentinfo"]{
+    display: none;
+}

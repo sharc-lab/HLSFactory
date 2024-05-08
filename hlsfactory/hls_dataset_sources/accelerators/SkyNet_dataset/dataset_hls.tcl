@@ -1,0 +1,2 @@
+source script.tcl
+exit

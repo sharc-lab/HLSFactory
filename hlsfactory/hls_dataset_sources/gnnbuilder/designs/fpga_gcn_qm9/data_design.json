@@ -1,0 +1,7 @@
+{
+    "name": "fpga_gcn_qm9_top",
+    "part": "xczu9eg-ffvb1156-2-e",
+    "target_clock_period": 3.33,
+    "version_vitis_hls": "2023.1.1",
+    "version_vivado": null
+}

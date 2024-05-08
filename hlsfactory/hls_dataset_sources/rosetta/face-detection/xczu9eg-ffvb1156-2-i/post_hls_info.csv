@@ -1,0 +1,8 @@
+prj,clk_target(ns),clk_estimated(ns),clk_uncertainty(ns),bram,dsp,ff,lut,c_num_arith,c_num_logic,rtl_num_arith,rtl_num_logic,data_input_port(numxbits),data_output_port(numxbits)
+1,10.0,8.512,1.25,146,84,44447,67748
+1,10.0,8.512,1.25,121,79,83804,62688
+1,10.0,8.512,1.25,160,83,52537,91280
+1,10.0,8.512,1.25,180,108,84123,129832
+1,10.0,8.512,1.25,180,128,94447,137748
+1,10.0,8.512,1.25,180,148,124437,127348
+1,10.0,8.512,1.25,140,128,124337,137748

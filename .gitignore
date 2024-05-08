@@ -1,0 +1,12 @@
+**/__pycache__/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+dist/
+.env
+.vscode/
+.coverage
+htmlcov/
+output/
+*.egg-info/
+output_site/

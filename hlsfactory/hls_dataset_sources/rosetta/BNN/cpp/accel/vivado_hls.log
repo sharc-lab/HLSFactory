@@ -1,0 +1,503 @@
+
+****** Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:36:41 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source /usr/local/packages/xilinx_2018/vivado_hl/Vivado/2018.3/scripts/vivado_hls/hls.tcl -notrace
+INFO: Applying HLS Y2K22 patch v1.2 for IP revision
+INFO: [HLS 200-10] Running '/usr/local/packages/xilinx_2018/vivado_hl/Vivado/2018.3/bin/unwrapped/lnx64.o/vivado_hls'
+INFO: [HLS 200-10] For user 'zwei1' on host 'yoshi.ece.utexas.edu' (Linux_x86_64 version 3.10.0-1160.81.1.el7.x86_64) on Sun Mar 05 15:38:40 CST 2023
+INFO: [HLS 200-10] On os "CentOS Linux release 7.9.2009 (Core)"
+INFO: [HLS 200-10] In directory '/home/projects/ljohn/simplescalar/zhigang/rosetta/BNN/cpp/accel'
+INFO: [HLS 200-10] Opening project '/home/projects/ljohn/simplescalar/zhigang/rosetta/BNN/cpp/accel/hls.prj'.
+INFO: [HLS 200-10] Adding design file 'Accel.cpp' to the project
+INFO: [HLS 200-10] Opening and resetting solution '/home/projects/ljohn/simplescalar/zhigang/rosetta/BNN/cpp/accel/hls.prj/solution1'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg484-1'
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'Accel.cpp' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:48 ; elapsed = 00:00:53 . Memory (MB): peak = 535.586 ; gain = 6.250 ; free physical = 315467 ; free virtual = 355780
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:49 ; elapsed = 00:00:53 . Memory (MB): peak = 535.586 ; gain = 6.250 ; free physical = 315467 ; free virtual = 355780
+INFO: [HLS 200-10] Starting code transformations ...
+WARNING: [XFORM 203-503] Ignored region unroll directive 'LOOP_RESET_LINEBUFFERS' (Accel.cpp:483) in function 'fp_conv(ap_int<64> (*) [2341], ap_int<64>*, ap_int<64> (*) [2][1024], ap_uint<1>, ap_uint<1>, ap_uint<16>, ap_uint<16>, unsigned int)': multiple loop unroll directives in one loop, use the first one and ignore the rest.
+WARNING: [XFORM 203-503] Ignored unroll directive 'LOOP_LOAD_WTS' (Accel.cpp:498) in function 'fp_conv(ap_int<64> (*) [2341], ap_int<64>*, ap_int<64> (*) [2][1024], ap_uint<1>, ap_uint<1>, ap_uint<16>, ap_uint<16>, unsigned int)': multiple loop unroll directives in one loop, use the first one and ignore the rest.
+INFO: [HLS 200-489] Unrolling loop 'PROLOG_ROWS' (Accel.cpp:485) in function 'fp_conv(ap_int<64> (*) [2341], ap_int<64>*, ap_int<64> (*) [2][1024], ap_uint<1>, ap_uint<1>, ap_uint<16>, ap_uint<16>, unsigned int)' completely with a factor of 1.
+INFO: [HLS 200-489] Unrolling loop 'Loop-5.1.1.1.1' (Accel.cpp:486) in function 'fp_conv(ap_int<64> (*) [2341], ap_int<64>*, ap_int<64> (*) [2][1024], ap_uint<1>, ap_uint<1>, ap_uint<16>, ap_uint<16>, unsigned int)' completely with a factor of 1.
+INFO: [HLS 200-489] Unrolling loop 'Loop-5.3.1.1.3' (Accel.cpp:544) in function 'fp_conv(ap_int<64> (*) [2341], ap_int<64>*, ap_int<64> (*) [2][1024], ap_uint<1>, ap_uint<1>, ap_uint<16>, ap_uint<16>, unsigned int)' completely with a factor of 1.
+INFO: [XFORM 203-603] Inlining function 'encode_bit' into 'bin_conv' (Accel.cpp:324).
+INFO: [XFORM 203-603] Inlining function 'encode_bit' into 'bin_conv' (Accel.cpp:322).
+INFO: [XFORM 203-603] Inlining function 'encode_bit' into 'bin_conv' (Accel.cpp:319).
+INFO: [XFORM 203-603] Inlining function 'conv3x3b' into 'conv_word' (Accel.cpp:84).
+INFO: [XFORM 203-603] Inlining function 'process_word' into 'bin_conv' (Accel.cpp:334).
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:51 ; elapsed = 00:00:56 . Memory (MB): peak = 727.480 ; gain = 198.145 ; free physical = 315839 ; free virtual = 355679
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [XFORM 203-602] Inlining function 'load_kh<ap_fixed<16, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'fp_conv' (Accel.cpp:506) automatically.
+INFO: [XFORM 203-602] Inlining function 'load_kh<ap_int<16> >' into 'top' (Accel.cpp:802) automatically.
+WARNING: [SYNCHK 200-23] Accel.cpp:499: variable-indexed range selection may cause suboptimal QoR.
+INFO: [SYNCHK 200-10] 0 error(s), 1 warning(s).
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:51 ; elapsed = 00:00:57 . Memory (MB): peak = 727.480 ; gain = 198.145 ; free physical = 315781 ; free virtual = 355630
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'LOOP_DENSE_I' (Accel.cpp:613) in function 'bin_dense' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'LOOP_WORDS_IN_PHASE' (Accel.cpp:265) in function 'bin_conv' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'LOOP_ACC_PHASES_I' (Accel.cpp:378) in function 'bin_conv' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'LOOP_BATCH_NORM' (Accel.cpp:402) in function 'bin_conv' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'LOOP_CONV_COLS' (Accel.cpp:511) in function 'fp_conv' for pipelining.
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'conv_word' (Accel.cpp:78).
+WARNING: [XFORM 203-561] Updating loop lower bound from 17 to 32 for loop 'LOOP_WORDS_IN_PHASE' (Accel.cpp:266:1) in function 'bin_conv'.
+WARNING: [XFORM 203-561] Ignored invalid trip count directive (MIN (= 32) > AVE (= 24)) for loop 'LOOP_WORDS_IN_PHASE' (Accel.cpp:266:1) in function 'bin_conv'.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.1' (Accel.cpp:616) in function 'bin_dense' completely with a factor of 2.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.2' (Accel.cpp:636) in function 'bin_dense' completely with a factor of 2.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1' (Accel.cpp:231) in function 'bin_conv' completely with a factor of 8.
+INFO: [HLS 200-489] Unrolling loop 'Loop-2.1' (Accel.cpp:241) in function 'bin_conv' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'LOOP_WT_WORDS' (Accel.cpp:276) in function 'bin_conv' completely with a factor of 2.
+INFO: [HLS 200-489] Unrolling loop 'LOOP_LOAD_WTS' (Accel.cpp:298) in function 'bin_conv' completely with a factor of 2.
+INFO: [HLS 200-489] Unrolling loop 'Loop-3.1.2.1' (Accel.cpp:299) in function 'bin_conv' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-3.1.2.1.1' (Accel.cpp:300) in function 'bin_conv' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'LOOP_CONVOLVER_LOAD' (Accel.cpp:315) in function 'bin_conv' completely with a factor of 2.
+INFO: [HLS 200-489] Unrolling loop 'Loop-3.1.3.1' (Accel.cpp:317) in function 'bin_conv' completely with a factor of 8.
+INFO: [HLS 200-489] Unrolling loop 'Loop-3.1.3.1.1' (Accel.cpp:318) in function 'bin_conv' completely with a factor of 8.
+INFO: [HLS 200-489] Unrolling loop 'LOOP_CONVOLVERS' (Accel.cpp:331) in function 'bin_conv' completely with a factor of 2.
+INFO: [HLS 200-489] Unrolling loop 'Loop-3.1.4.1' (Accel.cpp:113) in function 'bin_conv' completely with a factor of 8.
+INFO: [HLS 200-489] Unrolling loop 'Loop-3.1.4.1.1' (Accel.cpp:117) in function 'bin_conv' completely with a factor of 8.
+INFO: [HLS 200-489] Unrolling loop 'Loop-3.1.4.1.2' (Accel.cpp:124) in function 'bin_conv' completely with a factor of 8.
+INFO: [HLS 200-489] Unrolling loop 'Loop-3.1.4.2' (Accel.cpp:142) in function 'bin_conv' completely with a factor of 8.
+INFO: [HLS 200-489] Unrolling loop 'Loop-3.1.4.2.1' (Accel.cpp:148) in function 'bin_conv' completely with a factor of 8.
+INFO: [HLS 200-489] Unrolling loop 'Loop-3.1.4.2.2' (Accel.cpp:155) in function 'bin_conv' completely with a factor of 8.
+INFO: [HLS 200-489] Unrolling loop 'Loop-3.1.4.2.3' (Accel.cpp:164) in function 'bin_conv' completely with a factor of 8.
+INFO: [HLS 200-489] Unrolling loop 'Loop-3.1.5' (Accel.cpp:337) in function 'bin_conv' completely with a factor of 2.
+INFO: [HLS 200-489] Unrolling loop 'Loop-3.1.5.1' (Accel.cpp:338) in function 'bin_conv' completely with a factor of 8.
+INFO: [HLS 200-489] Unrolling loop 'Loop-3.1.5.1.1' (Accel.cpp:339) in function 'bin_conv' completely with a factor of 10.
+INFO: [HLS 200-489] Unrolling loop 'Loop-3.1.6' (Accel.cpp:347) in function 'bin_conv' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-3.1.6.1' (Accel.cpp:351) in function 'bin_conv' completely with a factor of 2.
+INFO: [HLS 200-489] Unrolling loop 'Loop-4.1' (Accel.cpp:372) in function 'bin_conv' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-4.2.1' (Accel.cpp:379) in function 'bin_conv' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-4.3' (Accel.cpp:383) in function 'bin_conv' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-5.1' (Accel.cpp:408) in function 'bin_conv' completely with a factor of 64.
+INFO: [HLS 200-489] Unrolling loop 'Loop-5.2' (Accel.cpp:418) in function 'bin_conv' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'Loop-5.3' (Accel.cpp:423) in function 'bin_conv' completely with a factor of 16.
+INFO: [HLS 200-489] Unrolling loop 'LOOP_RESET_LINEBUFFERS' (Accel.cpp:483) in function 'fp_conv' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'PROLOG_COLS' (Accel.cpp:484) in function 'fp_conv' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'LOOP_LOAD_WTS' (Accel.cpp:498) in function 'fp_conv' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.3.1.1' (Accel.cpp:519) in function 'fp_conv' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.3.1.1.1' (Accel.cpp:528) in function 'fp_conv' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.3.1.1.1.1' (Accel.cpp:529) in function 'fp_conv' completely with a factor of 2.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.3.1.1.2' (Accel.cpp:534) in function 'fp_conv' completely with a factor of 2.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.3.1.2' (Accel.cpp:554) in function 'fp_conv' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.3.1.2.1' (Accel.cpp:555) in function 'fp_conv' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.3.1.2.1.1' (Accel.cpp:556) in function 'fp_conv' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1' (Accel.cpp:82) in function 'conv_word' completely with a factor of 8.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1' (Accel.cpp:83) in function 'conv_word' completely with a factor of 8.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.1' (Accel.cpp:63) in function 'conv_word' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.1.1' (Accel.cpp:64) in function 'conv_word' completely with a factor of 3.
+INFO: [XFORM 203-102] Partitioning array 'sum_m.V' (Accel.cpp:597) automatically.
+INFO: [XFORM 203-101] Partitioning array 'dmem.V'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'wt_mem.V'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'line_buffer'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'conv_params.V' (Accel.cpp:209) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'fixed_buffer.V' (Accel.cpp:210) in dimension 2 completely.
+INFO: [XFORM 203-101] Partitioning array 'fixed_temp.V' (Accel.cpp:211) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'word_buffer.V' (Accel.cpp:213) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'old_word_buffer.V' (Accel.cpp:214) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'conv_out_buffer.V' (Accel.cpp:215) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'lb' (Accel.cpp:217) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'rb' (Accel.cpp:218) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'wt_word_buffer.V' (Accel.cpp:268) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'win.V' (Accel.cpp:469) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'lbuf.V' (Accel.cpp:470) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'outwords.V' (Accel.cpp:471) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'wtbuf.V' (Accel.cpp:472) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'dmem.V'  in dimension 2 completely.
+INFO: [XFORM 203-101] Partitioning array 'line_buffer'  in dimension 2 completely.
+INFO: [XFORM 203-101] Partitioning array 'conv_params.V' (Accel.cpp:209) in dimension 2 completely.
+INFO: [XFORM 203-101] Partitioning array 'word_buffer.V' (Accel.cpp:213) in dimension 2 completely.
+INFO: [XFORM 203-101] Partitioning array 'old_word_buffer.V' (Accel.cpp:214) in dimension 2 completely.
+INFO: [XFORM 203-101] Partitioning array 'conv_out_buffer.V' (Accel.cpp:215) in dimension 2 completely.
+INFO: [XFORM 203-101] Partitioning array 'win.V' (Accel.cpp:469) in dimension 2 completely.
+INFO: [XFORM 203-101] Partitioning array 'lbuf.V' (Accel.cpp:470) in dimension 2 completely.
+INFO: [XFORM 203-101] Partitioning array 'line_buffer'  in dimension 3 completely.
+INFO: [XFORM 203-101] Partitioning array 'conv_params.V' (Accel.cpp:209) in dimension 3 completely.
+INFO: [XFORM 203-101] Partitioning array 'word_buffer.V' (Accel.cpp:213) in dimension 3 completely.
+INFO: [XFORM 203-101] Partitioning array 'old_word_buffer.V' (Accel.cpp:214) in dimension 3 completely.
+INFO: [XFORM 203-101] Partitioning array 'win.V' (Accel.cpp:469) in dimension 3 completely.
+INFO: [XFORM 203-101] Partitioning array 'lbuf.V' (Accel.cpp:470) in dimension 3 completely.
+INFO: [XFORM 203-101] Partitioning array 'line_buffer'  in dimension 4 completely.
+WARNING: [XFORM 203-104] Completely partitioning array 'conv_out_buffer.V' (Accel.cpp:215) accessed through non-constant indices on dimension 1 (Accel.cpp:84:47), which may result in long runtime and suboptimal QoR due to large multiplexers. Please consider wrapping the array access into a function or using a register file core instead.
+INFO: [XFORM 203-602] Inlining function 'load_kh<ap_fixed<16, 4, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'fp_conv' (Accel.cpp:506) automatically.
+INFO: [XFORM 203-602] Inlining function 'load_kh<ap_int<16> >' into 'top' (Accel.cpp:802) automatically.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:799:46) to (Accel.cpp:799:40) in function 'top'... converting 8 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:847:14) in function 'top'... converting 8 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:843:26) to (Accel.cpp:845:5) in function 'top'... converting 8 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:511:58) to (Accel.cpp:543:15) in function 'fp_conv'... converting 11 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:525:40) to (Accel.cpp:543:15) in function 'fp_conv'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:525:40) to (Accel.cpp:543:15) in function 'fp_conv'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:479:36) to (Accel.cpp:510:39) in function 'fp_conv'... converting 11 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:613:65) to (Accel.cpp:613:39) in function 'bin_dense'... converting 7 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:605:44) to (Accel.cpp:613:23) in function 'bin_dense'... converting 8 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:642:9) to (Accel.cpp:681:10) in function 'bin_dense'... converting 16 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:313:11) to (Accel.cpp:115:9) in function 'bin_conv'... converting 9 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:118:66) to (Accel.cpp:121:58) in function 'bin_conv'... converting 65 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:118:66) to (Accel.cpp:121:58) in function 'bin_conv'... converting 64 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:128:21) in function 'bin_conv'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:118:66) to (Accel.cpp:121:58) in function 'bin_conv'... converting 55 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 5 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 5 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 5 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 5 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:128:21) in function 'bin_conv'... converting 6 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:118:66) to (Accel.cpp:121:58) in function 'bin_conv'... converting 46 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 6 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 6 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 6 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 6 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:128:21) in function 'bin_conv'... converting 7 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:118:66) to (Accel.cpp:121:58) in function 'bin_conv'... converting 37 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 7 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 7 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 7 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 7 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:128:21) in function 'bin_conv'... converting 8 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:118:66) to (Accel.cpp:121:58) in function 'bin_conv'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 8 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 8 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 9 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 8 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 9 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 8 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 9 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:128:21) in function 'bin_conv'... converting 9 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 9 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:128:21) in function 'bin_conv'... converting 10 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:156:23) in function 'bin_conv'... converting 5 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:146:9) in function 'bin_conv'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 9 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:149:52) to (Accel.cpp:152:48) in function 'bin_conv'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 8 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 9 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:149:52) to (Accel.cpp:152:48) in function 'bin_conv'... converting 29 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 8 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 9 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 7 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 8 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 9 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 7 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:159:21) in function 'bin_conv'... converting 9 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 8 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 7 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:159:21) in function 'bin_conv'... converting 8 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 7 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:159:21) in function 'bin_conv'... converting 7 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:149:52) to (Accel.cpp:152:48) in function 'bin_conv'... converting 38 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 6 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 6 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 6 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 6 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:159:21) in function 'bin_conv'... converting 6 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:149:52) to (Accel.cpp:152:48) in function 'bin_conv'... converting 47 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 5 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 5 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 5 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 5 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:159:21) in function 'bin_conv'... converting 5 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:149:52) to (Accel.cpp:152:48) in function 'bin_conv'... converting 56 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:159:21) in function 'bin_conv'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:149:52) to (Accel.cpp:152:48) in function 'bin_conv'... converting 65 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:118:66) to (Accel.cpp:121:58) in function 'bin_conv'... converting 65 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:118:66) to (Accel.cpp:121:58) in function 'bin_conv'... converting 64 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:128:21) in function 'bin_conv'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:118:66) to (Accel.cpp:121:58) in function 'bin_conv'... converting 55 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 5 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 5 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 5 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 5 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:128:21) in function 'bin_conv'... converting 6 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:118:66) to (Accel.cpp:121:58) in function 'bin_conv'... converting 46 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 6 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 6 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 6 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 6 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:128:21) in function 'bin_conv'... converting 7 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:118:66) to (Accel.cpp:121:58) in function 'bin_conv'... converting 37 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 7 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 7 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 7 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 7 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:128:21) in function 'bin_conv'... converting 8 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:118:66) to (Accel.cpp:121:58) in function 'bin_conv'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 8 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 8 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 9 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 8 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 9 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 8 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 9 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:128:21) in function 'bin_conv'... converting 9 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:125:87) in function 'bin_conv'... converting 9 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:128:21) in function 'bin_conv'... converting 10 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:125:87) to (Accel.cpp:156:23) in function 'bin_conv'... converting 5 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:146:9) in function 'bin_conv'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 9 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:149:52) to (Accel.cpp:152:48) in function 'bin_conv'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 8 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 9 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:149:52) to (Accel.cpp:152:48) in function 'bin_conv'... converting 29 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 8 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 9 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 7 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 8 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 9 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 7 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:159:21) in function 'bin_conv'... converting 9 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 8 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 7 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:159:21) in function 'bin_conv'... converting 8 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 7 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:159:21) in function 'bin_conv'... converting 7 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:149:52) to (Accel.cpp:152:48) in function 'bin_conv'... converting 38 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 6 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 6 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 6 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 6 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:159:21) in function 'bin_conv'... converting 6 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:149:52) to (Accel.cpp:152:48) in function 'bin_conv'... converting 47 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 5 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 5 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 5 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:156:82) in function 'bin_conv'... converting 5 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:159:21) in function 'bin_conv'... converting 5 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:149:52) to (Accel.cpp:152:48) in function 'bin_conv'... converting 56 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:156:82) to (Accel.cpp:159:21) in function 'bin_conv'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:149:52) to (Accel.cpp:152:48) in function 'bin_conv'... converting 65 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Accel.cpp:360:11) to (Accel.cpp:265:74) in function 'bin_conv'... converting 3 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'fp_conv' (Accel.cpp:456)...26 expression(s) balanced.
+INFO: [XFORM 203-11] Balancing expressions in function 'conv_word' (Accel.cpp:78)...512 expression(s) balanced.
+INFO: [XFORM 203-11] Balancing expressions in function 'bin_dense' (Accel.cpp:583)...6 expression(s) balanced.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:02:04 ; elapsed = 00:02:11 . Memory (MB): peak = 855.492 ; gain = 326.156 ; free physical = 315394 ; free virtual = 355471
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_CONV_ROWS' (Accel.cpp:510:56) in function 'fp_conv'.
+WARNING: [XFORM 203-542] Cannot flatten a loop nest 'LOOP_FP_CONV_O' (Accel.cpp:479:36) in function 'fp_conv' : 
+
+more than one sub loop.
+WARNING: [XFORM 203-542] Cannot flatten a loop nest 'LOOP_DENSE_O' (Accel.cpp:605:44) in function 'bin_dense' : 
+
+the outer loop is not a perfect loop because there is nontrivial logic before entering the inner loop.
+WARNING: [XFORM 203-542] Cannot flatten a loop nest 'LOOP_PHASES' (Accel.cpp:252:65) in function 'bin_conv' : 
+
+the outer loop is not a perfect loop because either the parent loop or the sub loop has no computeable trip count.
+WARNING: [XFORM 203-542] Cannot flatten a loop nest 'LOOP_ACC_PHASES' (Accel.cpp:371:53) in function 'bin_conv' : 
+
+the outer loop is not a perfect loop because there is nontrivial logic in the loop latch.
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[0].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[34].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[35].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[36].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[37].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[38].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[39].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[40].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[41].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[42].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[43].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[44].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[45].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[46].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[47].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[48].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[49].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[50].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[51].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[52].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[53].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[54].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[55].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[56].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[57].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[58].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[59].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[60].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[61].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[62].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[63].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[1].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[2].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[3].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[4].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[5].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[6].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[7].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[8].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[9].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[10].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[11].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[12].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[13].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[14].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[15].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[16].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[17].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[18].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[19].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[20].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[21].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[22].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[23].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[24].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[25].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[26].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[27].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[28].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[29].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[30].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[31].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[32].V' (Accel.cpp:210).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'fixed_buffer[33].V' (Accel.cpp:210).
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:02:50 ; elapsed = 00:02:57 . Memory (MB): peak = 999.484 ; gain = 470.148 ; free physical = 315072 ; free virtual = 355355
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'top' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'bin_dense' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_DENSE_I'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 13.
+WARNING: [SCHED 204-21] Estimated clock period (4.8507ns) exceeds the target (target clock period: 5ns, clock uncertainty: 0.625ns, effective delay budget: 4.375ns).
+WARNING: [SCHED 204-21] The critical path in module 'bin_dense' consists of the following:
+	'add' operation ('x_V_3_cast', Accel.cpp:628) [188]  (0 ns)
+	'add' operation ('x_V_4', Accel.cpp:629) [191]  (4.85 ns)
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 178.67 seconds; current allocated memory: 427.410 MB.
+INFO: [HLS 200-434] Only 1 loops out of a total 2 loops have been pipelined in this design.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.89 seconds; current allocated memory: 429.650 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'conv_word' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'conv_word'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 2.18 seconds; current allocated memory: 439.630 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 7.14 seconds; current allocated memory: 452.116 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'bin_conv' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_WORDS_IN_PHASE'.
+WARNING: [SCHED 204-68] The II Violation in module 'bin_conv': Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
+   between 'store' operation (Accel.cpp:286) of variable 'storemerge', Accel.cpp:288 on static variable 'wt_offset_V' and 'load' operation ('wt_offset_V_load', Accel.cpp:282) on static variable 'wt_offset_V'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 2, Depth = 11.
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_ACC_PHASES_I'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_BATCH_NORM'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 5.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 58.41 seconds; current allocated memory: 475.818 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 19.09 seconds; current allocated memory: 529.818 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'fp_conv' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_CONV_ROWS_LOOP_CONV_COLS'.
+WARNING: [SCHED 204-68] The II Violation in module 'fp_conv': Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
+   between 'phi' operation ('lbuf[2][1][31].V') with incoming values : ('lbuf[2][1][0].V', Accel.cpp:525) and 'mux' operation ('lbuf[2][0][0].V', Accel.cpp:545).
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 2, Depth = 12.
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_OUTPUT'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 48.97 seconds; current allocated memory: 538.970 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 2.84 seconds; current allocated memory: 562.762 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'top' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_DMEM_I'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_WT_I'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_KH_I'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_DMEM_O'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 7.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 4.3 seconds; current allocated memory: 563.988 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 6.97 seconds; current allocated memory: 569.594 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'bin_dense' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'top_mul_mul_20s_16s_36_3_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'bin_dense'.
+INFO: [HLS 200-111]  Elapsed time: 6.97 seconds; current allocated memory: 578.431 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'conv_word' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'conv_word'.
+INFO: [HLS 200-111]  Elapsed time: 2.2 seconds; current allocated memory: 614.575 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'bin_conv' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'top_ashr_64ns_6ns_64_2_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_mul_mul_10ns_5ns_15_3_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_mul_mul_15ns_5ns_16_3_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_mux_83_2_1_1': 38 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'bin_conv'.
+INFO: [HLS 200-111]  Elapsed time: 17.77 seconds; current allocated memory: 725.777 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'fp_conv' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'top_mux_164_64_1_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_mux_325_20_1_1': 9 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'fp_conv'.
+INFO: [HLS 200-111]  Elapsed time: 33.03 seconds; current allocated memory: 879.961 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'top' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'top/wt_i_V' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'top/kh_i_V' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'top/dmem_i_V' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'top/dmem_o_V' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'top/n_inputs_V' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'top/n_outputs_V' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'top/input_words_V' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'top/output_words_V' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'top/layer_mode_V' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'top/dmem_mode_V' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'top/width_mode_V' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'top/norm_mode_V' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'top' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Generating core module 'top_mac_muladd_15ns_5ns_10ns_20_3_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'top'.
+INFO: [HLS 200-111]  Elapsed time: 6.48 seconds; current allocated memory: 928.261 MB.
+INFO: [RTMG 210-286] Generating pipelined shifter : 'top_ashr_64ns_6ns_64_2_1'
+INFO: [RTMG 210-278] Implementing memory 'bin_conv_fixed_buffer_0_V_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'top_kh_mem_V_ram (RAM)' using block RAMs with reset.
+INFO: [RTMG 210-278] Implementing memory 'top_wt_mem_V_0_ram (RAM)' using block RAMs with reset.
+INFO: [RTMG 210-278] Implementing memory 'top_dmem_V_0_0_ram (RAM)' using block RAMs with reset.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:06:11 ; elapsed = 00:06:53 . Memory (MB): peak = 1591.492 ; gain = 1062.156 ; free physical = 314261 ; free virtual = 354821
+INFO: [SYSC 207-301] Generating SystemC RTL for top.
+INFO: [VHDL 208-304] Generating VHDL RTL for top.
+INFO: [VLOG 209-307] Generating Verilog RTL for top.
+INFO: [HLS 200-112] Total elapsed time: 413.79 seconds; peak allocated memory: 928.261 MB.
+INFO: [Common 17-206] Exiting vivado_hls at Sun Mar  5 15:45:34 2023...

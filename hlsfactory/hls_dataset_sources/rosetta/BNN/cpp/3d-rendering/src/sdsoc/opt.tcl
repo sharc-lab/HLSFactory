@@ -1,0 +1,8 @@
+set_directive_pipeline output_FB/OUTPUT_FB_COL
+set_directive_unroll -factor 64 output_FB/OUTPUT_FB_COL
+
+set_directive_pipeline coloringFB/COLORING_FB_INIT_COL
+set_directive_pipeline zculling/ZCULLING_INIT_COL
+set_directive_unroll -factor 256 coloringFB/COLORING_FB_INIT_COL
+set_directive_unroll -factor 256 zculling/ZCULLING_INIT_COL
+

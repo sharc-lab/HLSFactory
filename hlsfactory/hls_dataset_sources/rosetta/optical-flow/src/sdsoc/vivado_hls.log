@@ -1,0 +1,487 @@
+
+****** Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:36:41 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source /usr/local/packages/xilinx_2018/vivado_hl/Vivado/2018.3/scripts/vivado_hls/hls.tcl -notrace
+INFO: Applying HLS Y2K22 patch v1.2 for IP revision
+INFO: [HLS 200-10] Running '/usr/local/packages/xilinx_2018/vivado_hl/Vivado/2018.3/bin/unwrapped/lnx64.o/vivado_hls'
+INFO: [HLS 200-10] For user 'zwei1' on host 'koopa.ece.utexas.edu' (Linux_x86_64 version 3.10.0-1160.81.1.el7.x86_64) on Mon Mar 06 00:06:24 CST 2023
+INFO: [HLS 200-10] On os "CentOS Linux release 7.9.2009 (Core)"
+INFO: [HLS 200-10] In directory '/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc'
+INFO: [HLS 200-10] Creating and opening project '/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/original'.
+INFO: [HLS 200-10] Adding design file '/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp' to the project
+INFO: [HLS 200-10] Adding design file '/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow.h' to the project
+INFO: [HLS 200-10] Creating and opening solution '/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/original/solution'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+INFO: [HLS 200-10] Setting target device to 'xczu9eg-ffvb1156-2-i'
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file '/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp' ... 
+WARNING: [HLS 214-111] Static scalars and arrays declared inside a dataflow region will be treated like local variables: /home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:409:17
+WARNING: [HLS 200-471] Dataflow form checks found 1 issue(s) in file /home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:43 ; elapsed = 00:00:46 . Memory (MB): peak = 535.586 ; gain = 6.250 ; free physical = 320614 ; free virtual = 357427
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:43 ; elapsed = 00:00:46 . Memory (MB): peak = 535.586 ; gain = 6.250 ; free physical = 320614 ; free virtual = 357427
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-489] Unrolling loop 'Loop-1' (/usr/local/packages/xilinx_2018/vivado_hl/Vivado/2018.3/common/technology/autopilot/hls/hls_video_mem.h:123) in function 'hls::Window<1, 7, gradient_t>::shift_pixels_left()' completely with a factor of 1.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1' (/usr/local/packages/xilinx_2018/vivado_hl/Vivado/2018.3/common/technology/autopilot/hls/hls_video_mem.h:123) in function 'hls::Window<1, 3, tensor_t>::shift_pixels_left()' completely with a factor of 1.
+INFO: [XFORM 203-603] Inlining function 'hls::Window<5, 5, ap_fixed<17, 9, (ap_q_mode)5, (ap_o_mode)3, 0> >::shift_pixels_left' into 'gradient_xy_calc' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:74).
+INFO: [XFORM 203-603] Inlining function 'hls::Window<5, 5, ap_fixed<17, 9, (ap_q_mode)5, (ap_o_mode)3, 0> >::shift_pixels_left' into 'gradient_xy_calc' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:67).
+INFO: [XFORM 203-603] Inlining function 'hls::Window<5, 5, ap_fixed<17, 9, (ap_q_mode)5, (ap_o_mode)3, 0> >::insert_pixel' into 'gradient_xy_calc' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:70).
+INFO: [XFORM 203-603] Inlining function 'hls::Window<5, 5, ap_fixed<17, 9, (ap_q_mode)5, (ap_o_mode)3, 0> >::insert_pixel' into 'gradient_xy_calc' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:75).
+INFO: [XFORM 203-603] Inlining function 'hls::Window<5, 5, ap_fixed<17, 9, (ap_q_mode)5, (ap_o_mode)3, 0> >::insert_pixel' into 'gradient_xy_calc' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:76).
+INFO: [XFORM 203-603] Inlining function 'hls::Window<5, 5, ap_fixed<17, 9, (ap_q_mode)5, (ap_o_mode)3, 0> >::insert_pixel' into 'gradient_xy_calc' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:77).
+INFO: [XFORM 203-603] Inlining function 'hls::Window<5, 5, ap_fixed<17, 9, (ap_q_mode)5, (ap_o_mode)3, 0> >::insert_pixel' into 'gradient_xy_calc' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:78).
+INFO: [XFORM 203-603] Inlining function 'hls::Window<5, 5, ap_fixed<17, 9, (ap_q_mode)5, (ap_o_mode)3, 0> >::insert_pixel' into 'gradient_xy_calc' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:79).
+INFO: [XFORM 203-603] Inlining function 'hls::Window<5, 5, ap_fixed<17, 9, (ap_q_mode)5, (ap_o_mode)3, 0> >::getval' into 'gradient_xy_calc' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:90).
+INFO: [XFORM 203-603] Inlining function 'hls::Window<5, 5, ap_fixed<17, 9, (ap_q_mode)5, (ap_o_mode)3, 0> >::getval' into 'gradient_xy_calc' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:89).
+INFO: [XFORM 203-603] Inlining function 'hls::LineBuffer<7, 1024, gradient_t, 0>::shift_pixels_up' into 'gradient_weight_y' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:154).
+INFO: [XFORM 203-603] Inlining function 'hls::LineBuffer<7, 1024, gradient_t, 0>::shift_pixels_up' into 'gradient_weight_y' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:145).
+INFO: [XFORM 203-603] Inlining function 'hls::LineBuffer<7, 1024, gradient_t, 0>::insert_bottom_row' into 'gradient_weight_y' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:159).
+INFO: [XFORM 203-603] Inlining function 'hls::LineBuffer<7, 1024, gradient_t, 0>::insert_bottom_row' into 'gradient_weight_y' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:150).
+INFO: [XFORM 203-603] Inlining function 'hls::LineBuffer<7, 1024, gradient_t, 0>::getval' into 'gradient_weight_y' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:172).
+INFO: [XFORM 203-603] Inlining function 'hls::LineBuffer<7, 1024, gradient_t, 0>::getval' into 'gradient_weight_y' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:171).
+INFO: [XFORM 203-603] Inlining function 'hls::LineBuffer<7, 1024, gradient_t, 0>::getval' into 'gradient_weight_y' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:170).
+INFO: [XFORM 203-603] Inlining function 'hls::Window<1, 7, gradient_t>::shift_pixels_left' into 'gradient_weight_x' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:195).
+INFO: [XFORM 203-603] Inlining function 'hls::Window<1, 7, gradient_t>::insert_pixel' into 'gradient_weight_x' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:207).
+INFO: [XFORM 203-603] Inlining function 'hls::Window<1, 7, gradient_t>::getval' into 'gradient_weight_x' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:217).
+INFO: [XFORM 203-603] Inlining function 'hls::Window<1, 7, gradient_t>::getval' into 'gradient_weight_x' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:218).
+INFO: [XFORM 203-603] Inlining function 'hls::Window<1, 7, gradient_t>::getval' into 'gradient_weight_x' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:219).
+INFO: [XFORM 203-603] Inlining function 'hls::LineBuffer<3, 1024, outer_t, 0>::shift_pixels_up' into 'tensor_weight_y' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:271).
+INFO: [XFORM 203-603] Inlining function 'hls::LineBuffer<3, 1024, outer_t, 0>::insert_bottom_row' into 'tensor_weight_y' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:281).
+INFO: [XFORM 203-603] Inlining function 'hls::LineBuffer<3, 1024, outer_t, 0>::getval' into 'tensor_weight_y' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:291).
+INFO: [XFORM 203-603] Inlining function 'hls::Window<1, 3, tensor_t>::shift_pixels_left' into 'tensor_weight_x' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:318).
+INFO: [XFORM 203-603] Inlining function 'hls::Window<1, 3, tensor_t>::insert_pixel' into 'tensor_weight_x' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:329).
+INFO: [XFORM 203-603] Inlining function 'hls::Window<1, 3, tensor_t>::getval' into 'tensor_weight_x' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:338).
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:44 ; elapsed = 00:00:48 . Memory (MB): peak = 666.219 ; gain = 136.883 ; free physical = 320544 ; free virtual = 357367
+INFO: [HLS 200-10] Checking synthesizability ...
+WARNING: [SYNCHK 200-120] /home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:373: multiplication is assumed not to overflow by default, otherwise, please add option '-fwrapv'.
+INFO: [SYNCHK 200-10] 0 error(s), 1 warning(s).
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:01:51 ; elapsed = 00:01:55 . Memory (MB): peak = 729.973 ; gain = 200.637 ; free physical = 320275 ; free virtual = 357136
+INFO: [XFORM 203-1101] Packing variable 'outputs' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:402) into a 64-bit variable.
+INFO: [XFORM 203-1101] Packing variable 'tmp.val.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:268) into a 192-bit variable.
+INFO: [XFORM 203-1101] Packing variable 'buf.val.val.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:260) into a 192-bit variable.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'OUTER_INNER' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:238) in function 'outer_product' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'TENSOR_WEIGHT_Y_INNER' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:265) in function 'tensor_weight_y' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'TENSOR_WEIGHT_X_INNER' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:316) in function 'tensor_weight_x' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'GRAD_WEIGHT_X_INNER' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:193) in function 'gradient_weight_x' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'GRAD_WEIGHT_Y_INNER' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:139) in function 'gradient_weight_y' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'GRAD_XY_INNER' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:40) in function 'gradient_xy_calc' for pipelining.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.1' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/../host/typedefs.h:33) in function 'outer_product' completely with a factor of 6.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.1' (/usr/local/packages/xilinx_2018/vivado_hl/Vivado/2018.3/common/technology/autopilot/hls/hls_video_mem.h:727) in function 'tensor_weight_y' completely with a factor of 2.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.1.1' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/../host/typedefs.h:33) in function 'tensor_weight_y' completely with a factor of 6.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.2' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/../host/typedefs.h:33) in function 'tensor_weight_y' completely with a factor of 6.
+INFO: [HLS 200-489] Unrolling loop 'TENSOR_WEIGHT_Y_TMP_INIT' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:279) in function 'tensor_weight_y' completely with a factor of 6.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.4' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/../host/typedefs.h:33) in function 'tensor_weight_y' completely with a factor of 6.
+INFO: [HLS 200-489] Unrolling loop 'TENSOR_WEIGHT_Y_ACC_INIT' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:285) in function 'tensor_weight_y' completely with a factor of 6.
+INFO: [HLS 200-489] Unrolling loop 'TENSOR_WEIGHT_Y_TMP_OUTER' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:290) in function 'tensor_weight_y' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.6.1' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/../host/typedefs.h:33) in function 'tensor_weight_y' completely with a factor of 6.
+INFO: [HLS 200-489] Unrolling loop 'TENSOR_WEIGHT_Y_TMP_INNER' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:294) in function 'tensor_weight_y' completely with a factor of 6.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.7' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/../host/typedefs.h:37) in function 'tensor_weight_y' completely with a factor of 6.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.1' (/usr/local/packages/xilinx_2018/vivado_hl/Vivado/2018.3/common/technology/autopilot/hls/hls_video_mem.h:125) in function 'tensor_weight_x' completely with a factor of 2.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.1.1' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/../host/typedefs.h:37) in function 'tensor_weight_x' completely with a factor of 6.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.2' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/../host/typedefs.h:37) in function 'tensor_weight_x' completely with a factor of 6.
+INFO: [HLS 200-489] Unrolling loop 'TENSOR_WEIGHT_X_TMP_INIT' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:327) in function 'tensor_weight_x' completely with a factor of 6.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.4' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/../host/typedefs.h:37) in function 'tensor_weight_x' completely with a factor of 6.
+INFO: [HLS 200-489] Unrolling loop 'TENSOR_WEIGHT_X_ACC_INIT' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:333) in function 'tensor_weight_x' completely with a factor of 6.
+INFO: [HLS 200-489] Unrolling loop 'TENSOR_WEIGHT_X_TMP_OUTER' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:337) in function 'tensor_weight_x' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.6.1' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/../host/typedefs.h:37) in function 'tensor_weight_x' completely with a factor of 6.
+INFO: [HLS 200-489] Unrolling loop 'TENSOR_WEIGHT_X_TMP_INNER' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:340) in function 'tensor_weight_x' completely with a factor of 6.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.7' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/../host/typedefs.h:37) in function 'tensor_weight_x' completely with a factor of 6.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.1' (/usr/local/packages/xilinx_2018/vivado_hl/Vivado/2018.3/common/technology/autopilot/hls/hls_video_mem.h:125) in function 'gradient_weight_x' completely with a factor of 6.
+INFO: [HLS 200-489] Unrolling loop 'GRAD_WEIGHT_X_ACC' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:216) in function 'gradient_weight_x' completely with a factor of 7.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.1' (/usr/local/packages/xilinx_2018/vivado_hl/Vivado/2018.3/common/technology/autopilot/hls/hls_video_mem.h:727) in function 'gradient_weight_y' completely with a factor of 6.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.2' (/usr/local/packages/xilinx_2018/vivado_hl/Vivado/2018.3/common/technology/autopilot/hls/hls_video_mem.h:727) in function 'gradient_weight_y' completely with a factor of 6.
+INFO: [HLS 200-489] Unrolling loop 'GRAD_WEIGHT_Y_ACC' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:169) in function 'gradient_weight_y' completely with a factor of 7.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.1' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:43) in function 'gradient_xy_calc' completely with a factor of 4.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.2' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:53) in function 'gradient_xy_calc' completely with a factor of 4.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.3' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:59) in function 'gradient_xy_calc' completely with a factor of 4.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.4' (/usr/local/packages/xilinx_2018/vivado_hl/Vivado/2018.3/common/technology/autopilot/hls/hls_video_mem.h:123) in function 'gradient_xy_calc' completely with a factor of 5.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.4.1' (/usr/local/packages/xilinx_2018/vivado_hl/Vivado/2018.3/common/technology/autopilot/hls/hls_video_mem.h:125) in function 'gradient_xy_calc' completely with a factor of 4.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.5' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:69) in function 'gradient_xy_calc' completely with a factor of 5.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.6' (/usr/local/packages/xilinx_2018/vivado_hl/Vivado/2018.3/common/technology/autopilot/hls/hls_video_mem.h:123) in function 'gradient_xy_calc' completely with a factor of 5.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.6.1' (/usr/local/packages/xilinx_2018/vivado_hl/Vivado/2018.3/common/technology/autopilot/hls/hls_video_mem.h:125) in function 'gradient_xy_calc' completely with a factor of 4.
+INFO: [HLS 200-489] Unrolling loop 'GRAD_XY_XYGRAD' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:88) in function 'gradient_xy_calc' completely with a factor of 5.
+INFO: [XFORM 203-102] Partitioning array 'out.val.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:244) automatically.
+INFO: [XFORM 203-102] Partitioning array 'value.val.V.assign' (/usr/local/packages/xilinx_2018/vivado_hl/Vivado/2018.3/common/technology/autopilot/hls/hls_video_mem.h:631) automatically.
+INFO: [XFORM 203-102] Partitioning array 'acc.val.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:283) automatically.
+INFO: [XFORM 203-102] Partitioning array 'value.val.V.assign' (/usr/local/packages/xilinx_2018/vivado_hl/Vivado/2018.3/common/technology/autopilot/hls/hls_video_mem.h:61) automatically.
+INFO: [XFORM 203-102] Partitioning array 'tmp.val.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:319) automatically.
+INFO: [XFORM 203-102] Partitioning array 'acc.val.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:331) automatically.
+INFO: [XFORM 203-102] Partitioning array 'buf.V' automatically.
+INFO: [XFORM 203-101] Partitioning array 'buf.val.val.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:260) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'buf.val.val.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:310) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'buf.val.x.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:188) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'buf.val.y.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:188) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'buf.val.z.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:188) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'buf.val.x.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'buf.val.y.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'buf.val.z.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'buf.V.1'  in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'smallbuf.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:29) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'window.val.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:33) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'buf.val.val.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:310) in dimension 2 completely.
+INFO: [XFORM 203-101] Partitioning array 'buf.val.x.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:188) in dimension 2 completely.
+INFO: [XFORM 203-101] Partitioning array 'buf.val.y.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:188) in dimension 2 completely.
+INFO: [XFORM 203-101] Partitioning array 'buf.val.z.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:188) in dimension 2 completely.
+INFO: [XFORM 203-101] Partitioning array 'window.val.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:33) in dimension 2 completely.
+INFO: [XFORM 203-102] Partitioning array 'buf.val.val.V.0.1' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:310) automatically.
+INFO: [XFORM 203-102] Partitioning array 'buf.val.val.V.0.2' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:310) automatically.
+WARNING: [ANALYSIS 214-31] The program may have out of bound access of array variable 'buf.V.1.1' in function 'gradient_xy_calc' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:44:9).
+WARNING: [ANALYSIS 214-31] The program may have out of bound access of array variable 'buf.V.1.2' in function 'gradient_xy_calc' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:44:9).
+WARNING: [ANALYSIS 214-31] The program may have out of bound access of array variable 'buf.V.1.3' in function 'gradient_xy_calc' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:44:9).
+WARNING: [ANALYSIS 214-31] The program may have out of bound access of array variable 'buf.V.1.4' in function 'gradient_xy_calc' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:44:9).
+WARNING: [ANALYSIS 214-31] The program may have out of bound access of array variable 'frame.V' in function 'gradient_xy_calc' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:47:9).
+INFO: [XFORM 203-721] Changing loop 'Loop_FRAMES_CP_OUTER_proc' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:448) to a process function for dataflow in function 'optical_flow'.
+WARNING: [XFORM 203-713] Reading dataflow channel 'frames.V' in the middle of dataflow may stall the dataflow pipeline:
+WARNING: [XFORM 203-713] Argument 'frames.V' has read operations in process function 'Loop_FRAMES_CP_OUTER_proc'.
+WARNING: [XFORM 203-713] All the elements of global array 'gradient_x.V'  should be updated in process function 'gradient_xy_calc', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'gradient_y.V'  should be updated in process function 'gradient_xy_calc', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'y_filtered.x.V'  should be updated in process function 'gradient_weight_y', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'y_filtered.y.V'  should be updated in process function 'gradient_weight_y', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'y_filtered.z.V'  should be updated in process function 'gradient_weight_y', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'filtered_gradient.x.V'  should be updated in process function 'gradient_weight_x', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'filtered_gradient.y.V'  should be updated in process function 'gradient_weight_x', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'filtered_gradient.z.V'  should be updated in process function 'gradient_weight_x', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'tensor_y.val.V'  should be updated in process function 'tensor_weight_y', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'tensor.val.V'  should be updated in process function 'tensor_weight_x', otherwise it may not be synthesized correctly.
+INFO: [XFORM 203-712] Applying dataflow to function 'optical_flow', detected/extracted 10 process function(s): 
+	 'Block__proc'
+	 'Loop_FRAMES_CP_OUTER_proc'
+	 'gradient_xy_calc'
+	 'gradient_z_calc'
+	 'gradient_weight_y'
+	 'gradient_weight_x'
+	 'outer_product'
+	 'tensor_weight_y'
+	 'tensor_weight_x'
+	 'flow_calc'.
+WARNING: [XFORM 203-124] Array  'tensor.val.V' : may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'tensor_y.val.V' : may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'gradient_x.V' : may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'gradient_y.V' : may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'y_filtered.x.V' : may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'y_filtered.y.V' : may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'y_filtered.z.V' : may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'filtered_gradient.x.V' : may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'filtered_gradient.y.V' : may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'filtered_gradient.z.V' : may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'frame3_a.V' : may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (/usr/local/packages/xilinx_2018/vivado_hl/Vivado/2018.3/common/technology/autopilot/hls/hls_video_mem.h:631:41) to (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:299:7) in function 'tensor_weight_y'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/../host/typedefs.h:37:9) to (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:345:7) in function 'tensor_weight_x'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:65:7) to (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:85:7) in function 'gradient_xy_calc'... converting 3 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'gradient_xy_calc' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:37:7)...9 expression(s) balanced.
+INFO: [XFORM 203-11] Balancing expressions in function 'flow_calc' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:355)...3 expression(s) balanced.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:02:51 ; elapsed = 00:02:56 . Memory (MB): peak = 729.973 ; gain = 200.637 ; free physical = 320146 ; free virtual = 357044
+INFO: [XFORM 203-541] Flattening a loop nest 'TENSOR_WEIGHT_Y_OUTER' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:263:4) in function 'tensor_weight_y'.
+INFO: [XFORM 203-541] Flattening a loop nest 'TENSOR_WEIGHT_X_OUTER' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:314:4) in function 'tensor_weight_x'.
+INFO: [XFORM 203-541] Flattening a loop nest 'OUTER_OUTER' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:236:4) in function 'outer_product'.
+INFO: [XFORM 203-541] Flattening a loop nest 'GRAD_Z_OUTER' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:114:4) in function 'gradient_z_calc'.
+INFO: [XFORM 203-541] Flattening a loop nest 'GRAD_XY_OUTER' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:38:4) in function 'gradient_xy_calc'.
+INFO: [XFORM 203-541] Flattening a loop nest 'GRAD_WEIGHT_Y_OUTER' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:137:4) in function 'gradient_weight_y'.
+INFO: [XFORM 203-541] Flattening a loop nest 'GRAD_WEIGHT_X_OUTER' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:191:4) in function 'gradient_weight_x'.
+INFO: [XFORM 203-541] Flattening a loop nest 'FLOW_OUTER' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:359:4) in function 'flow_calc'.
+INFO: [XFORM 203-541] Flattening a loop nest 'FRAMES_CP_OUTER' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:448:4) in function 'Loop_FRAMES_CP_OUTER_proc'.
+WARNING: [XFORM 203-631] Renaming function 'Loop_FRAMES_CP_OUTER_proc' to 'Loop_FRAMES_CP_OUTER' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:447:49)
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[1].val.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:260).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[2].val.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:260).
+WARNING: [ANALYSIS 214-52] Found false intra dependency for variable 'buf.val[1].val.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:260).
+WARNING: [ANALYSIS 214-52] Found false intra dependency for variable 'buf.val[2].val.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:260).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[5].z.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[6].z.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[0].x.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[1].x.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[2].x.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[3].x.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[4].x.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[5].x.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[6].x.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[0].y.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[1].y.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[2].y.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[3].y.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[4].y.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[5].y.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[6].y.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[0].z.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[1].z.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[2].z.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[3].z.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[4].z.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false intra dependency for variable 'buf.val[5].z.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false intra dependency for variable 'buf.val[6].z.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false intra dependency for variable 'buf.val[0].x.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false intra dependency for variable 'buf.val[1].x.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false intra dependency for variable 'buf.val[2].x.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false intra dependency for variable 'buf.val[3].x.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false intra dependency for variable 'buf.val[4].x.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false intra dependency for variable 'buf.val[5].x.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false intra dependency for variable 'buf.val[6].x.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false intra dependency for variable 'buf.val[0].y.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false intra dependency for variable 'buf.val[1].y.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false intra dependency for variable 'buf.val[2].y.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false intra dependency for variable 'buf.val[3].y.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false intra dependency for variable 'buf.val[4].y.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false intra dependency for variable 'buf.val[5].y.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false intra dependency for variable 'buf.val[6].y.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false intra dependency for variable 'buf.val[0].z.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false intra dependency for variable 'buf.val[1].z.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false intra dependency for variable 'buf.val[2].z.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false intra dependency for variable 'buf.val[3].z.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false intra dependency for variable 'buf.val[4].z.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[5].z.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[6].z.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[0].x.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[1].x.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[2].x.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[3].x.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[4].x.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[5].x.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[6].x.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[0].y.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[1].y.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[2].y.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[3].y.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[4].y.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[5].y.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[6].y.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[0].z.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[1].z.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[2].z.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[3].z.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'buf.val[4].z.V' (/home/projects/ljohn/simplescalar/zhigang/rosetta/optical-flow/src/sdsoc/optical_flow_original.cpp:133).
+WARNING: [XFORM 203-631] Renaming function 'Block__proc' to 'Block__proc.1' 
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:02:53 ; elapsed = 00:02:58 . Memory (MB): peak = 857.922 ; gain = 328.586 ; free physical = 320048 ; free virtual = 356948
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'optical_flow' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'Loop_FRAMES_CP_OUTER' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'FRAMES_CP_OUTER_FRAMES_CP_INNER'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 4.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 178.42 seconds; current allocated memory: 336.332 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.17 seconds; current allocated memory: 336.571 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'gradient_xy_calc' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'GRAD_XY_OUTER_GRAD_XY_INNER'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 4.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.26 seconds; current allocated memory: 337.213 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.17 seconds; current allocated memory: 337.918 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'gradient_z_calc' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'GRAD_Z_OUTER_GRAD_Z_INNER'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.31 seconds; current allocated memory: 338.067 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.07 seconds; current allocated memory: 338.277 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'gradient_weight_y' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'GRAD_WEIGHT_Y_OUTER_GRAD_WEIGHT_Y_INNER'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.4 seconds; current allocated memory: 339.094 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.3 seconds; current allocated memory: 340.004 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'gradient_weight_x' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'GRAD_WEIGHT_X_OUTER_GRAD_WEIGHT_X_INNER'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.68 seconds; current allocated memory: 340.706 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.15 seconds; current allocated memory: 341.462 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'outer_product' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'OUTER_OUTER_OUTER_INNER'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.3 seconds; current allocated memory: 341.665 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.06 seconds; current allocated memory: 341.868 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'tensor_weight_y' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'TENSOR_WEIGHT_Y_OUTER_TENSOR_WEIGHT_Y_INNER'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.53 seconds; current allocated memory: 342.331 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.19 seconds; current allocated memory: 342.974 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'tensor_weight_x' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'TENSOR_WEIGHT_X_OUTER_TENSOR_WEIGHT_X_INNER'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.36 seconds; current allocated memory: 343.572 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.14 seconds; current allocated memory: 344.240 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'flow_calc' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'FLOW_OUTER_FLOW_INNER'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 77.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.35 seconds; current allocated memory: 344.891 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.34 seconds; current allocated memory: 345.727 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'optical_flow' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.26 seconds; current allocated memory: 345.956 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 1.24 seconds; current allocated memory: 347.042 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'Loop_FRAMES_CP_OUTER' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'Loop_FRAMES_CP_OUTER'.
+INFO: [HLS 200-111]  Elapsed time: 0.85 seconds; current allocated memory: 347.873 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'gradient_xy_calc' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'gradient_xy_calc'.
+INFO: [HLS 200-111]  Elapsed time: 0.36 seconds; current allocated memory: 349.767 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'gradient_z_calc' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'gradient_z_calc'.
+INFO: [HLS 200-111]  Elapsed time: 0.65 seconds; current allocated memory: 352.878 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'gradient_weight_y' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'gradient_weight_y'.
+INFO: [HLS 200-111]  Elapsed time: 0.29 seconds; current allocated memory: 355.457 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'gradient_weight_x' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'gradient_weight_x'.
+INFO: [HLS 200-111]  Elapsed time: 1.16 seconds; current allocated memory: 360.464 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'outer_product' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'optical_flow_mul_mul_18s_18s_36_1_1': 6 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'outer_product'.
+INFO: [HLS 200-111]  Elapsed time: 0.68 seconds; current allocated memory: 363.960 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'tensor_weight_y' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'tensor_weight_y'.
+INFO: [HLS 200-111]  Elapsed time: 0.4 seconds; current allocated memory: 365.665 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'tensor_weight_x' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'tensor_weight_x'.
+INFO: [HLS 200-111]  Elapsed time: 0.7 seconds; current allocated memory: 369.151 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'flow_calc' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'optical_flow_sdiv_70ns_62s_70_74_1': 2 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'flow_calc'.
+INFO: [HLS 200-111]  Elapsed time: 0.71 seconds; current allocated memory: 374.910 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'optical_flow' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'optical_flow/frames_V' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'optical_flow/outputs' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'optical_flow' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'optical_flow'.
+INFO: [HLS 200-111]  Elapsed time: 0.83 seconds; current allocated memory: 378.225 MB.
+INFO: [RTMG 210-278] Implementing memory 'gradient_xy_calc_buf_V_1_1_ram (RAM)' using block RAMs with reset.
+INFO: [RTMG 210-278] Implementing memory 'gradient_weight_y_buf_val_0_x_V_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'gradient_weight_y_buf_val_1_x_V_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'tensor_weight_y_buf_val_1_val_V_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-282] Generating pipelined core: 'optical_flow_sdiv_70ns_62s_70_74_1_div'
+INFO: [RTMG 210-285] Implementing FIFO 'frame1_a_V_U(fifo_w8_d1024_A)' using Block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'frame2_a_V_U(fifo_w8_d1024_A)' using Block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'frame3_a_V_U(fifo_w8_d1024_A)' using Block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'frame3_b_V_U(fifo_w8_d1024_A)' using Block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'frame4_a_V_U(fifo_w8_d1024_A)' using Block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'frame5_a_V_U(fifo_w8_d1024_A)' using Block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'gradient_x_V_U(fifo_w32_d1024_A)' using Block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'gradient_y_V_U(fifo_w32_d1024_A)' using Block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'gradient_z_V_U(fifo_w32_d4096_A)' using Block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'y_filtered_x_V_U(fifo_w32_d1024_A)' using Block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'y_filtered_y_V_U(fifo_w32_d1024_A)' using Block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'y_filtered_z_V_U(fifo_w32_d1024_A)' using Block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'filtered_gradient_x_s_U(fifo_w32_d1024_A)' using Block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'filtered_gradient_y_s_U(fifo_w32_d1024_A)' using Block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'filtered_gradient_z_s_U(fifo_w32_d1024_A)' using Block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'out_product_val_V_U(fifo_w191_d1024_A)' using Block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'tensor_y_val_V_U(fifo_w192_d1024_A)' using Block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'tensor_val_V_U(fifo_w192_d1024_A)' using Block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_gradient_xy_calc_U0_U(start_for_gradient_xy_calc_U0)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_gradient_z_calc_U0_U(start_for_gradient_z_calc_U0)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_gradient_weight_y_U0_U(start_for_gradient_weight_y_U0)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_gradient_weight_x_U0_U(start_for_gradient_weight_x_U0)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_outer_product_U0_U(start_for_outer_product_U0)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_tensor_weight_y_U0_U(start_for_tensor_weight_y_U0)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_tensor_weight_x_U0_U(start_for_tensor_weight_x_U0)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_flow_calc_U0_U(start_for_flow_calc_U0)' using Shift Registers.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:03:04 ; elapsed = 00:03:16 . Memory (MB): peak = 983.480 ; gain = 454.145 ; free physical = 319985 ; free virtual = 356908
+INFO: [SYSC 207-301] Generating SystemC RTL for optical_flow.
+INFO: [VHDL 208-304] Generating VHDL RTL for optical_flow.
+INFO: [VLOG 209-307] Generating Verilog RTL for optical_flow.
+INFO: [HLS 200-112] Total elapsed time: 195.75 seconds; peak allocated memory: 378.225 MB.
+INFO: [Common 17-206] Exiting vivado_hls at Mon Mar  6 00:09:39 2023...
