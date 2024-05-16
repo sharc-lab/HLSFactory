@@ -1,0 +1,27 @@
+## Data Aggregation and Packaging
+
+## What Needs to be Included in Design Directories
+
+Anyone can create an HLS design in infinitely different ways using different combinations of source files, headers, TCL scripts, build scripts, Python scripts, testing flows, and so on. Therefore, any design directory can contain an arbitrary organization of files run in an arbitrary way to actually run HLS synthesis and FPGA implementation for the design.
+
+Therefore, as a framework, HLSFactory must impose some very loose requirements on the design directory structure to be able to run HLSFactory flows.
+
+In practice, this means that each flow may impose different requirements on the design directory structure or contents in order to run that flow. These requirements should be checked by the code/logic of the flow implementation itself, and the user must conform to that if using that flow. Therefore, we leave it up to the user to understand the requirements of the flow they are using and to make sure their design directory conforms to those requirements.
+
+However, this is very vague and doesn't specify how this is implemented for different flows.
+
+In most of the flows built into HLSFactory, we do this via defined entry point scripts, i.e. script files that must be included in the directory with a script name and contain user-specific code to run the desired tool flows on a design. In the case of Xilinx, we define the required dataset_hls.tcl and dataset_hls_ip_export.tcl scripts for the VitisHLSSynthFlow and VitisHLSImplFlow flows respectively. These scripts must be present in the design directory and must perform certain tasks that the flows depend on for their output. If a user fails to provide these entry point scripts or the scripts don't perform the necessary tasks, the flow will fail. Certain basic checks are done by the flows as they are run to also provide more helpful error messages as early as possible.
+
+Below we show some examples of how this is done for the Xilinx flows.
+
+### Design Requirements for `VitisHLSSynthFlow`, `VitisHLSImplFlow`, `VitisHLSImplReportFlow`
+
+The core Xilinx-based HLS flows all require "entrypoint" Tcl scripts as a main requirement for the design directory. These entrypoint Tcl scripts must be present in the design directory and are used to allow the user to define the necessary logic for running each flow. Additionally, these entry point scripts must perform certain tasks that the flows depend on for their output. If a user fails to provide these entrypoint scripts or the scripts don't perform the necessary tasks, the flow will fail. Certain basic checks are done by the flows as they are run to also provide more helpful error messages as early as possible.
+
+The `VitisHLSSynthFlow` requires that a `dataset_hls.tcl` script file must be present at the top level of the design directory. This script also needs to create a single Vitis HLS solution and run `csynth_design` on that solution. We also adopt the convention that each design should only create one solution for simplicity. If different solutions are needed (e.g. different C-flags, defines, part numbers, clock speeds), the user should create different design directories with different parameters (either manually or programmatically) and run the flow on each design directory.
+
+It is the user's responsibility to make sure this script is present and performs the necessary tasks to run HLS synthesis on the design. If the script is not present or does not create a solution and run `csynth_design` successfully for that solution, the flow will fail. If these requirements are met, the flow will run successfully.
+
+The `VitisHLSImplFlow` requires that a `dataset_hls_ip_export.tcl` script file must be present at the top level of the design directory, as well as a solution created that has already been synthesized by Vitis HLS; most likely from the previous `VitisHLSSynthFlow`. This script needs to run the Vitis HLS "export_design" command with the `-flow impl` flag at some point to run FPGA synthesis and implementation on the design. If the script is not present or does not run `export_design` successfully, the flow will fail. If these requirements are met, the flow will run successfully. We also include a handy check if the user uses the `open_project` command with the `-reset` flag to avoid running a script that will delete the already synthesized solution.
+
+The `VitisHLSImplReportFlow` does not require an entry point but does require the presence of a single Vivado project somewhere in the design directory, most likely from the previous `VitisHLSImplFlow`, that contains the design already fully implemented. The flow will run Vivado reporting for power, timing, and resource utilization of the design. If the project is not present or does not contain a fully implemented design, the flow will fail. If these requirements are met, the flow will run successfully.

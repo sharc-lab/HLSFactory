@@ -19,12 +19,12 @@ dependencies = [
     "psutil",
     "PyYAML",
     "tqdm",
-    "python-dotenv"
+    "python-dotenv",
 ]
 
 [project.optional-dependencies]
-docs = ["sphinx", "furo", "sphinx-autodoc-typehints", "myst-parser", "sphinx_rtd_theme"]
 test = ["pytest", "pytest-cov", "pytest-mock"]
+docs = ["sphinx", "furo", "sphinx-autodoc-typehints", "myst-parser", "sphinx_rtd_theme", "sphinx-copybutton", "sphinxext-opengraph", "sphinx-autodoc2"]
 
 [project.urls]
 "Homepage" = "https://github.com/sharc-lab/HLSFactory"
