@@ -6,16 +6,16 @@ HLSFactory is a framework for High-Level Synthesis (HLS) design datasets. It pro
 
 ## Quick Guide
 
-- [](setup): Details on how to install and setup HLSDataset
-- [](framework/index): Details on the HLSDataset build framework: 1) frontend parameterization, 2) backend tool flows, 3) data aggregation and formatting
-- [](tutorials/index): Details on how to use the HLSDataset framework with guided tutorials and demos
+- [](setup): Details on how to install and setup HLSFactory
+- [](framework/index): Details on the HLSFactory build framework: 1) frontend parameterization, 2) backend tool flows, 3) data aggregation and formatting
+- [](tutorials/index): Details on how to use the HLSFactory framework with guided tutorials and demos
 - [](built_in_datasets): Details on the built-in HLS design datasets
 - [](extending): Details on how to contribute to HLSFactory to add your own designs and datasets to the built-in datasets, add custom flows, and general contributions to the framework
 - [](apidocs/index): Python API documentation for the HLSFactory framework
 
 ## Publications
 
-HLSDataset has been published in the following places:
+HLSFactory has been published in the following places:
 
 - ArXiv
   - [HLSFactory: A Framework Empowering High-Level Synthesis Datasets for Machine Learning and Beyond](https://arxiv.org/abs/2405.00820)
@@ -24,7 +24,7 @@ HLSDataset has been published in the following places:
 
 ## Citing and Referencing
 
-If you use HLSDataset in your research, please cite as follows:
+If you use HLSFactory in your research, please cite as follows:
 
 ```text
 S. Abi-Karam et al., “HLSFactory: A Framework Empowering High-Level Synthesis Datasets for Machine Learning and Beyond.” arXiv, May 01, 2024. doi: 10.48550/arXiv.2405.00820.

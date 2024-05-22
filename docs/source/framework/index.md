@@ -20,4 +20,5 @@ Below is a diagram of all the core components of HLSFactory laid out to show the
 designs_datasets
 flows
 data
+optdsl
 ```

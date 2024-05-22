@@ -17,14 +17,17 @@ Classes
    :align: left
 
    * - :py:obj:`CallToolResult <hlsfactory.utils.CallToolResult>`
-     -
+     - .. autodoc2-docstring:: hlsfactory.utils.CallToolResult
+          :summary:
    * - :py:obj:`FlowTimer <hlsfactory.utils.FlowTimer>`
      - .. autodoc2-docstring:: hlsfactory.utils.FlowTimer
           :summary:
    * - :py:obj:`DirSource <hlsfactory.utils.DirSource>`
-     -
+     - .. autodoc2-docstring:: hlsfactory.utils.DirSource
+          :summary:
    * - :py:obj:`ToolPathsSource <hlsfactory.utils.ToolPathsSource>`
-     -
+     - .. autodoc2-docstring:: hlsfactory.utils.ToolPathsSource
+          :summary:
 
 Functions
 ~~~~~~~~~
@@ -85,6 +88,8 @@ API
    :canonical: hlsfactory.utils.CallToolResult
 
    Bases: :py:obj:`enum.Enum`
+
+   .. autodoc2-docstring:: hlsfactory.utils.CallToolResult
 
    .. py:attribute:: SUCCESS
       :canonical: hlsfactory.utils.CallToolResult.SUCCESS
@@ -184,6 +189,8 @@ API
 
    Bases: :py:obj:`enum.Enum`
 
+   .. autodoc2-docstring:: hlsfactory.utils.DirSource
+
    .. py:attribute:: ENVFILE
       :canonical: hlsfactory.utils.DirSource.ENVFILE
       :value: 'auto(...)'
@@ -211,6 +218,8 @@ API
    :canonical: hlsfactory.utils.ToolPathsSource
 
    Bases: :py:obj:`enum.Enum`
+
+   .. autodoc2-docstring:: hlsfactory.utils.ToolPathsSource
 
    .. py:attribute:: ENVFILE
       :canonical: hlsfactory.utils.ToolPathsSource.ENVFILE

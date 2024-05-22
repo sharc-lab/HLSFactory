@@ -17,6 +17,10 @@ import yaml
 
 
 class CallToolResult(enum.Enum):
+    """
+    Represents the result of a tool call using `call_tool`.
+    """
+
     SUCCESS = enum.auto()
     TIMEOUT = enum.auto()
     ERROR = enum.auto()
@@ -67,6 +71,12 @@ def call_tool(
 
 
 def terminate_process_and_children(pid: int) -> None:
+    """
+    Terminate a process and all its child processes.
+
+    Args:
+        pid (int): The process ID of the parent process.
+    """
     process_id = psutil.Process(pid)
     children = process_id.children(recursive=True)
     for child in children:
@@ -101,10 +111,23 @@ def wait_for_files_creation(
 
 
 def find_bin_path(cmd: str) -> str:
+    """
+    Find the path of a binary executable.
+
+    Args:
+        cmd (str): The name of the binary executable.
+
+    Returns:
+        str: The path of the binary executable.
+
+    Raises:
+        RuntimeError: If the binary executable cannot be found.
+
+    """
     bin_path = shutil.which(cmd)
     if bin_path is None:
         msg = (
-            "Could not find `{cmd}` automatically (via which), please specify the `cmd`"
+            f"Could not find `{cmd}` automatically (via which), please specify the `cmd`"
             " path manually."
         )
         raise RuntimeError(msg)
@@ -117,6 +140,18 @@ def log_execution_time_to_file(
     t_0: float,
     t_1: float,
 ) -> None:
+    """
+    Logs the execution time of a specific flow to a file.
+
+    Args:
+        design_dir (Path): The directory where the design is located.
+        flow_name (str): The name of the flow.
+        t_0 (float): The start time of the execution.
+        t_1 (float): The end time of the execution.
+
+    Raises:
+        RuntimeError: If the design directory does not exist.
+    """
     dt = t_1 - t_0
 
     if not design_dir.exists():
@@ -138,6 +173,16 @@ def log_execution_time_to_file(
 
 
 class FlowTimer:
+    """
+    A class for measuring the execution time of a flow.
+
+    Attributes:
+        flow_name (str): The name of the flow.
+        dir_path (Path): The directory path where the execution time will be logged.
+        t_0 (float | None): The start time of the flow execution.
+        t_1 (float | None): The stop time of the flow execution.
+    """
+
     def __init__(self, flow_name: str, dir_path: Path) -> None:
         self.flow_name = flow_name
         self.dir_path = dir_path
@@ -145,14 +190,23 @@ class FlowTimer:
         self.t_1: float | None = None
 
     def start(self: "FlowTimer") -> None:
+        """
+        Start the timer for measuring the flow execution time.
+        """
         self.t_0 = time.time()
 
     def stop(self: "FlowTimer") -> None:
+        """
+        Stop the timer for measuring the flow execution time.
+        """
         self.t_1 = time.time()
 
     def log(self) -> None:
-        # assert self.t_0 is not None
-        # assert self.t_1 is not None
+        """
+        Log the execution time of the flow to a file.
+        Raises:
+            RuntimeError: If either t_0 or t_1 is None.
+        """
         if self.t_0 is None:
             msg = "t_0 is None"
             raise RuntimeError(msg)
@@ -162,10 +216,18 @@ class FlowTimer:
         log_execution_time_to_file(self.dir_path, self.flow_name, self.t_0, self.t_1)
 
     def __enter__(self) -> "FlowTimer":
+        """
+        Start the timer when entering a context.
+        Returns:
+            FlowTimer: The FlowTimer instance.
+        """
         self.start()
         return self
 
     def __exit__(self, _exc_type, _exc_value, _traceback) -> None:  # noqa: ANN001
+        """
+        Stop the timer and log the execution time when exiting a context.
+        """
         self.stop()
         self.log()
 
@@ -174,6 +236,31 @@ T = TypeVar("T")
 
 
 def serialize_methods_for_dataclass(cls: type[T]) -> type[T]:
+    """
+    Decorator function that adds serialization methods to a dataclass.
+
+    The serialization methods added are:
+    - from_json: A class method that
+    creates a dataclass instance from a JSON file.
+    - to_json: An instance method that
+    writes the dataclass instance to
+    a JSON file.
+    - from_yaml: A class method that
+    creates a dataclass instance from a YAML file.
+    - to_yaml: An instance method that
+    writes the dataclass instance to
+    a YAML file.
+
+
+    Args:
+        cls (type[T]): The dataclass to decorate.
+
+    Returns:
+        type[T]: The decorated dataclass.
+
+    Raises:
+        TypeError: If the decorated class is not a dataclass.
+    """
     if not is_dataclass(cls):
         msg = "Decorated class must be a dataclass."
         raise TypeError(msg)
@@ -204,11 +291,32 @@ def serialize_methods_for_dataclass(cls: type[T]) -> type[T]:
 
 
 def timeout_not_supported(flow_name: str) -> None:
+    """
+    Raises a RuntimeError indicating that timeout is not supported for the current flow.
+
+    Args:
+        flow_name (str): The name of the current flow.
+
+    Raises:
+        RuntimeError: Indicates that timeout is not supported for the current flow.
+    """
     msg = f"Timeout not supported for the current flow: {flow_name}"
     raise RuntimeError(msg)
 
 
 class DirSource(enum.Enum):
+    """
+    Enum class representing different sources for directories.
+
+    Used by `get_work_dir` to determine the source to look
+    for a specific work directory to use.
+
+    Options:
+    - ENVFILE: Look for the directory in the .env file.
+    - ENV: Look for the directory in the environment variables.
+    - TEMP: Create a temporary directory.
+    """
+
     ENVFILE = enum.auto()
     ENV = enum.auto()
     TEMP = enum.auto()
@@ -217,6 +325,21 @@ class DirSource(enum.Enum):
 def get_work_dir(
     dir_source: DirSource = DirSource.ENVFILE,
 ) -> pathlib.Path:
+    """
+    Get the working directory path based on the specified directory source.
+
+    Args:
+        dir_source (DirSource, optional): The directory source to use.
+        Defaults to DirSource.ENVFILE.
+
+    Returns:
+        pathlib.Path: The path to the working directory.
+
+    Raises:
+        ValueError: If the specified directory source is
+        invalid or the working directory path is not found.
+
+    """
     match dir_source:
         case DirSource.ENVFILE:
             envfile_vals = dotenv.dotenv_values()
@@ -232,7 +355,7 @@ def get_work_dir(
             return pathlib.Path(os.getenv("HLSFACTORY_WORK_DIR"))
 
         case DirSource.TEMP:
-            temp_dir = TemporaryDirectory(prefix="hlsdataset__")
+            temp_dir = TemporaryDirectory(prefix="hlsfactory__")
             return pathlib.Path(temp_dir.name)
 
         case _:
@@ -241,13 +364,40 @@ def get_work_dir(
 
 
 class ToolPathsSource(enum.Enum):
+    """
+    Enumeration representing the source of tool paths.
+
+    Used by `get_tool_paths` to determine the source to look
+    for the paths of the tools to use.
+
+    Options:
+    - ENVFILE: Look for the paths in the .env file.
+    - ENV: Look for the paths in the environment variables.
+    """
+
     ENVFILE = enum.auto()
     ENV = enum.auto()
+    # TODO: Implement the WHICH option to use the shutil.which function
 
 
 def get_tool_paths(
     tool_paths_source: ToolPathsSource,
 ) -> tuple[pathlib.Path, pathlib.Path]:
+    """
+    Get the paths for Vitis HLS and Vivado tools based on the specified source.
+
+    Args:
+        tool_paths_source (ToolPathsSource): The source from which to
+        retrieve the tool paths.
+
+    Returns:
+        tuple[pathlib.Path, pathlib.Path]: A tuple containing the paths for
+        Vitis HLS and Vivado tools.
+
+    Raises:
+        ValueError: If the tool paths are not found in the specified source.
+
+    """
     match tool_paths_source:
         case ToolPathsSource.ENVFILE:
             envfile_vals = dotenv.dotenv_values()
@@ -256,6 +406,13 @@ def get_tool_paths(
                 raise ValueError(msg)
             if "HLSFACTORY_VIVADO_PATH" not in envfile_vals:
                 msg = "HLSFACTORY_VIVADO_PATH not in .env file"
+                raise ValueError(msg)
+
+            if envfile_vals["HLSFACTORY_VITIS_HLS_PATH"] is None:
+                msg = "HLSFACTORY_VITIS_HLS_PATH not set to a valid path in .env file"
+                raise ValueError(msg)
+            if envfile_vals["HLSFACTORY_VIVADO_PATH"] is None:
+                msg = "HLSFACTORY_VIVADO_PATH not set to a valid path in .env file"
                 raise ValueError(msg)
             return (
                 pathlib.Path(envfile_vals["HLSFACTORY_VITIS_HLS_PATH"]),
@@ -269,9 +426,18 @@ def get_tool_paths(
             if "HLSFACTORY_VIVADO_PATH" not in os.environ:
                 msg = "HLSFACTORY_VIVADO_PATH not in environment"
                 raise ValueError(msg)
+            env_val_vitis = os.getenv("HLSFACTORY_VITIS_HLS_PATH")
+            env_val_vivado = os.getenv("HLSFACTORY_VIVADO_PATH")
+
+            if env_val_vitis is None:
+                msg = "HLSFACTORY_VITIS_HLS_PATH not set to a valid path in environment"
+                raise ValueError(msg)
+            if env_val_vivado is None:
+                msg = "HLSFACTORY_VIVADO_PATH not set to a valid path in environment"
+                raise ValueError(msg)
             return (
-                pathlib.Path(os.getenv("HLSFACTORY_VITIS_HLS_PATH")),
-                pathlib.Path(os.getenv("HLSFACTORY_VIVADO_PATH")),
+                pathlib.Path(env_val_vitis),
+                pathlib.Path(env_val_vivado),
             )
 
         case _:
@@ -280,10 +446,29 @@ def get_tool_paths(
 
 
 def remove_dir_if_exists(dir_path: pathlib.Path) -> None:
+    """
+    Remove a directory if it exists.
+
+    Args:
+        dir_path (pathlib.Path): The path to the directory.
+
+    Returns:
+        None
+    """
     if dir_path.exists():
         shutil.rmtree(dir_path)
 
 
 def remove_and_make_new_dir_if_exists(dir_path: pathlib.Path) -> None:
+    """
+    Removes the directory at the given path if it exists,
+    and then creates a new directory at the same path.
+
+    Args:
+        dir_path (pathlib.Path): The path to the directory.
+
+    Returns:
+        None
+    """
     remove_dir_if_exists(dir_path)
     dir_path.mkdir(parents=True, exist_ok=True)

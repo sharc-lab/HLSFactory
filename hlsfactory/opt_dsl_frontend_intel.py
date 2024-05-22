@@ -460,12 +460,21 @@ def generate_annotate_c(
 class OptDSLFrontendIntel(Frontend):
     name = "OptDSLFrontendIntel"
 
-    def __init__(self, work_dir: Path, random_sample=False, random_sample_num=10):
+    def __init__(
+        self,
+        work_dir: Path,
+        random_sample=False,
+        random_sample_num=10,
+    ) -> None:
         self.work_dir = work_dir
         self.random_sample = random_sample
         self.random_sample_num = random_sample_num
 
+        # TODO: add option for random seed to make deterministic
+
     def execute(self, design: Design, timeout: float | None) -> list[Design]:
+        # TODO: add more runtime checks for required entry point files
+
         opt_template_fp = design.dir / "opt_template.tcl"
 
         #####################################################################################################
