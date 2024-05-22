@@ -6,6 +6,10 @@ HLSFactory is a framework for High-Level Synthesis (HLS) design datasets. It pro
 
 ## Quick Guide
 
+*If you want to jump right in and run some code, we recommend the [](./tutorials/xilinx_flow.md) tutorial along with the [](setup) guide.*
+
+*If you want to contribute to the dataset as soon as possible, we recommend the [](extending) guide.*
+
 - [](setup): Details on how to install and setup HLSFactory
 - [](framework/index): Details on the HLSFactory build framework: 1) frontend parameterization, 2) backend tool flows, 3) data aggregation and formatting
 - [](tutorials/index): Details on how to use the HLSFactory framework with guided tutorials and demos
@@ -43,7 +47,7 @@ S. Abi-Karam et al., “HLSFactory: A Framework Empowering High-Level Synthesis 
 
 ## Source Code
 
-The source code repository is hosted on GitHub: [https://github.com/sharc-lab/gnn-builder](https://github.com/sharc-lab/gnn-builder)
+The source code repository is hosted on GitHub: [https://github.com/sharc-lab/hlsfactory](https://github.com/sharc-lab/hlsfactory)
 
 ## License
 
@@ -66,4 +70,3 @@ extending
 
 apidocs/index
 ```
-
