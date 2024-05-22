@@ -4,7 +4,7 @@ HLSFactory provides several built-in datasets of HLS design sources.
 
 ## PolyBench
 
-**Number of Designs:** ???
+**Number of Designs:** 9
 
 **Sources:**
 
@@ -16,7 +16,7 @@ HLSFactory provides several built-in datasets of HLS design sources.
 
 ## CHStone
 
-**Number of Designs:** ???
+**Number of Designs:** 2
 
 **Sources:**
 
@@ -29,7 +29,7 @@ HLSFactory provides several built-in datasets of HLS design sources.
 
 ## MachSuite
 
-**Number of Designs:** ???
+**Number of Designs:** 19
 
 **Sources:**
 
@@ -43,7 +43,7 @@ HLSFactory provides several built-in datasets of HLS design sources.
 
 ## Rosetta
 
-**Number of Designs:** ???
+**Number of Designs:** 7
 
 **Sources:**
 
@@ -56,7 +56,7 @@ HLSFactory provides several built-in datasets of HLS design sources.
 
 ## Vitis Introductory Examples
 
-**Number of Designs:** ???
+**Number of Designs:** 28
 
 **Sources:**
 
@@ -68,7 +68,7 @@ HLSFactory provides several built-in datasets of HLS design sources.
 
 ## Parallel Programming for FPGAs
 
-**Number of Designs:** ???
+**Number of Designs:** 5
 
 **Sources:**
 
@@ -82,7 +82,7 @@ HLSFactory provides several built-in datasets of HLS design sources.
 
 ## FlowGNN
 
-**Number of Designs:** ???
+**Number of Designs:** 5
 
 **Sources:**
 
@@ -95,7 +95,7 @@ HLSFactory provides several built-in datasets of HLS design sources.
 
 ## Sharc Lab Accelerators
 
-**Number of Designs:** ???
+**Number of Designs:** 7
 
 **Sources:**
 
