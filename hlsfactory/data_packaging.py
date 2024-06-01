@@ -3,10 +3,11 @@ import enum
 import io
 import json
 import multiprocessing
+import uuid
 from abc import ABC, abstractmethod
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
-from zipfile import ZipFile
+from zipfile import ZIP_DEFLATED, ZipFile
 
 import pandas as pd
 
@@ -23,9 +24,15 @@ class CompleteHLSData:
     implementation: dict | None
     execution: dict | None
     artifacts: InMemoryArchive | None
+    design_id: str = field(
+        default_factory=lambda: str(uuid.uuid4()),
+    )
 
     def to_flat_dict(self) -> dict:
         data = {}
+
+        data["design_id"] = self.design_id
+
         if self.design is not None:
             for key, value in self.design.items():
                 data[f"design__{key}"] = value
@@ -147,18 +154,18 @@ class DataAggregator(ABC):
     ) -> None:
         json_data_all = self.aggregated_data_to_json(data)
         csv_data_all = self.aggregated_data_to_csv(data)
-        with ZipFile(file_path, "w") as archive:
+        with ZipFile(file_path, "w", ZIP_DEFLATED) as archive:
             archive.writestr("data_all.json", json_data_all)
             archive.writestr("data_all.csv", csv_data_all)
             for i, d in enumerate(data):
-                design_name = f"design_{i}"
+                design_id = d.design_id
                 json_data = d.to_json()
                 csv_data = d.to_csv()
-                archive.writestr(f"{design_name}/data.json", json_data)
-                archive.writestr(f"{design_name}/data.csv", csv_data)
+                archive.writestr(f"{design_id}/data.json", json_data)
+                archive.writestr(f"{design_id}/data.csv", csv_data)
                 if d.artifacts is not None:
                     d.artifacts.seek(0)
-                    archive.writestr(f"{design_name}/artifacts.zip", d.artifacts.read())
+                    archive.writestr(f"{design_id}/artifacts.zip", d.artifacts.read())
 
 
 ArtifactCollection = dict[str, list[Path] | None]
@@ -265,7 +272,7 @@ class DataAggregatorXilinx(DataAggregator):
             data["adb"] = None
 
         if ArtifactsXilinx.REPORT in artifacts_to_extract:
-            report_files = list(report_fp.glob("*.xml"))
+            report_files = list(report_fp.glob("*.xml")) + list(report_fp.glob("*.rpt"))
             if len(report_files) == 0:
                 raise FileNotFoundError(f"No report files found in {report_fp}")
             data["report"] = report_files
@@ -312,7 +319,7 @@ class DataAggregatorXilinx(DataAggregator):
         )
 
         archive_buffer = io.BytesIO()
-        archive = ZipFile(archive_buffer, "w")
+        archive = ZipFile(archive_buffer, "w", ZIP_DEFLATED)
         top_level = "artifacts"
         for key, files in data.items():
             if files is not None:
