@@ -33,14 +33,14 @@ def check_dataset_dir_exists(dir_path: Path) -> None:
 
 def dataset_polybench_builder(name: str, work_dir: Path) -> DesignDataset:
     check_dataset_dir_exists(DIR_DATASET_POLYBENCH)
-    new_dir = work_dir / DIR_DATASET_POLYBENCH.name
+    new_dir = work_dir / name
     shutil.copytree(DIR_DATASET_POLYBENCH, new_dir)
     return DesignDataset.from_dir(name, new_dir)
 
 
 def dataset_machsuite_builder(name: str, work_dir: Path) -> DesignDataset:
     check_dataset_dir_exists(DIR_DATASET_MACHSUITE)
-    new_dir = work_dir / DIR_DATASET_MACHSUITE.name
+    new_dir = work_dir / name
     shutil.copytree(DIR_DATASET_MACHSUITE, new_dir)
     return DesignDataset.from_dir(
         name,
@@ -51,28 +51,28 @@ def dataset_machsuite_builder(name: str, work_dir: Path) -> DesignDataset:
 
 def dataset_chstone_builder(name: str, work_dir: Path) -> DesignDataset:
     check_dataset_dir_exists(DIR_DATASET_CHSTONE)
-    new_dir = work_dir / DIR_DATASET_CHSTONE.name
+    new_dir = work_dir / name
     shutil.copytree(DIR_DATASET_CHSTONE, new_dir)
     return DesignDataset.from_dir(name, new_dir)
 
 
 def dataset_pp4fpgas_builder(name: str, work_dir: Path) -> DesignDataset:
     check_dataset_dir_exists(DIR_DATASET_PP4FPGAS)
-    new_dir = work_dir / DIR_DATASET_PP4FPGAS.name
+    new_dir = work_dir / name
     shutil.copytree(DIR_DATASET_PP4FPGAS, new_dir)
     return DesignDataset.from_dir(name, new_dir)
 
 
 def dataset_vitis_examples_builder(name: str, work_dir: Path) -> DesignDataset:
     check_dataset_dir_exists(DIR_DATASET_VITIS_EXAMPLES)
-    new_dir = work_dir / DIR_DATASET_VITIS_EXAMPLES.name
+    new_dir = work_dir / name
     shutil.copytree(DIR_DATASET_VITIS_EXAMPLES, new_dir)
     return DesignDataset.from_dir(name, new_dir)
 
 
 def dataset_accelerators_builder(name: str, work_dir: Path) -> DesignDataset:
     check_dataset_dir_exists(DIR_DATASET_ACCELERATORS)
-    new_dir = work_dir / DIR_DATASET_ACCELERATORS.name
+    new_dir = work_dir / name
     shutil.copytree(DIR_DATASET_ACCELERATORS, new_dir)
     return DesignDataset.from_dir(name, new_dir)
 
