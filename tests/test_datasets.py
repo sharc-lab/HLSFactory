@@ -38,6 +38,24 @@ def test_load_datasets_from_str() -> None:
         datasets = datasets_builder(work_dir, ["non_existent_dataset"])
 
 
+def test_load_datasets_with_labels() -> None:
+    top_work_dir = get_work_dir()
+    work_dir = top_work_dir / "test_load_datasets_with_labels"
+    remove_and_make_new_dir_if_exists(work_dir)
+
+    dataset_names = DATASET_STR_MAP
+    dataset_labels = [f"{dset}_labeled" for dset in dataset_names]
+
+    datasets = datasets_builder(
+        work_dir,
+        dataset_names,
+        dataset_labels
+    )
+
+    assert str(datasets)
+    assert datasets
+
+
 def test_check_dataset_dir_exists() -> None:
     top_work_dir = get_work_dir()
     work_dir = top_work_dir / "test_load_datasets_from_str"
