@@ -33,14 +33,14 @@ def check_dataset_dir_exists(dir_path: Path) -> None:
 
 def dataset_polybench_builder(name: str, work_dir: Path) -> DesignDataset:
     check_dataset_dir_exists(DIR_DATASET_POLYBENCH)
-    new_dir = work_dir / DIR_DATASET_POLYBENCH.name
+    new_dir = work_dir / name
     shutil.copytree(DIR_DATASET_POLYBENCH, new_dir)
     return DesignDataset.from_dir(name, new_dir)
 
 
 def dataset_machsuite_builder(name: str, work_dir: Path) -> DesignDataset:
     check_dataset_dir_exists(DIR_DATASET_MACHSUITE)
-    new_dir = work_dir / DIR_DATASET_MACHSUITE.name
+    new_dir = work_dir / name
     shutil.copytree(DIR_DATASET_MACHSUITE, new_dir)
     return DesignDataset.from_dir(
         name,
@@ -51,28 +51,28 @@ def dataset_machsuite_builder(name: str, work_dir: Path) -> DesignDataset:
 
 def dataset_chstone_builder(name: str, work_dir: Path) -> DesignDataset:
     check_dataset_dir_exists(DIR_DATASET_CHSTONE)
-    new_dir = work_dir / DIR_DATASET_CHSTONE.name
+    new_dir = work_dir / name
     shutil.copytree(DIR_DATASET_CHSTONE, new_dir)
     return DesignDataset.from_dir(name, new_dir)
 
 
 def dataset_pp4fpgas_builder(name: str, work_dir: Path) -> DesignDataset:
     check_dataset_dir_exists(DIR_DATASET_PP4FPGAS)
-    new_dir = work_dir / DIR_DATASET_PP4FPGAS.name
+    new_dir = work_dir / name
     shutil.copytree(DIR_DATASET_PP4FPGAS, new_dir)
     return DesignDataset.from_dir(name, new_dir)
 
 
 def dataset_vitis_examples_builder(name: str, work_dir: Path) -> DesignDataset:
     check_dataset_dir_exists(DIR_DATASET_VITIS_EXAMPLES)
-    new_dir = work_dir / DIR_DATASET_VITIS_EXAMPLES.name
+    new_dir = work_dir / name
     shutil.copytree(DIR_DATASET_VITIS_EXAMPLES, new_dir)
     return DesignDataset.from_dir(name, new_dir)
 
 
 def dataset_accelerators_builder(name: str, work_dir: Path) -> DesignDataset:
     check_dataset_dir_exists(DIR_DATASET_ACCELERATORS)
-    new_dir = work_dir / DIR_DATASET_ACCELERATORS.name
+    new_dir = work_dir / name
     shutil.copytree(DIR_DATASET_ACCELERATORS, new_dir)
     return DesignDataset.from_dir(name, new_dir)
 
@@ -93,24 +93,15 @@ def datasets_builder(
     dataset_labels: list[str] | None = None,
 ) -> DesignDatasetCollection:
     datasets = {}
-    if dataset_labels is not None:
-        assert len(dataset_names) == len(dataset_labels)
-        for dataset_name, dataset_label in zip(
-            dataset_names,
-            dataset_labels,
-            strict=True,
-        ):
-            dataset_normalized = dataset_name.strip().lower()
-            if dataset_normalized not in DATASET_STR_MAP:
-                raise ValueError(
-                    f"Dataset name not recognized: {dataset_name} "
-                    f"(normalized: {dataset_normalized})",
-                )
-            dataset_builder = DATASET_STR_MAP[dataset_normalized]
-            dataset = dataset_builder(dataset_label, work_dir)
-            datasets[dataset_label] = dataset
+    if dataset_labels is None:
+        dataset_labels = dataset_names
 
-    for dataset_name in dataset_names:
+    assert len(dataset_names) == len(dataset_labels)
+    for dataset_name, dataset_label in zip(
+        dataset_names,
+        dataset_labels,
+        strict=True,
+    ):
         dataset_normalized = dataset_name.strip().lower()
         if dataset_normalized not in DATASET_STR_MAP:
             raise ValueError(
@@ -118,10 +109,9 @@ def datasets_builder(
                 f"(normalized: {dataset_normalized})",
             )
         dataset_builder = DATASET_STR_MAP[dataset_normalized]
-        dataset = dataset_builder(dataset_name, work_dir)
-        datasets[dataset_name] = dataset
+        dataset = dataset_builder(dataset_label, work_dir)
+        datasets[dataset_label] = dataset
     return datasets
-
 
 def datasets_all_builder(work_dir: Path) -> DesignDatasetCollection:
     for dir_path in DIR_ALL:
