@@ -45,7 +45,7 @@ def call_tool(
             cwd=cwd,
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
-            shell=shell,  # noqa: S603
+            shell=shell,
         )
         os.sched_setaffinity(p.pid, [psutil.Process().cpu_num()])
         p.wait(timeout=timeout)
@@ -324,6 +324,7 @@ class DirSource(enum.Enum):
 
 def get_work_dir(
     dir_source: DirSource = DirSource.ENVFILE,
+    env_file_path: Path | None = None,
 ) -> pathlib.Path:
     """
     Get the working directory path based on the specified directory source.
@@ -342,9 +343,22 @@ def get_work_dir(
     """
     match dir_source:
         case DirSource.ENVFILE:
-            envfile_vals = dotenv.dotenv_values()
+            if env_file_path is None:
+                env_file_path_search = dotenv.find_dotenv()
+                if env_file_path_search is None:
+                    msg = "The .env file could not be automatically found."
+                    raise ValueError(msg)
+                env_fp = Path(env_file_path_search)
+            else:
+                env_fp = env_file_path
+            envfile_vals = dotenv.dotenv_values(
+                env_fp,
+            )
             if "HLSFACTORY_WORK_DIR" not in envfile_vals:
                 msg = "HLSFACTORY_WORK_DIR not in .env file"
+                raise ValueError(msg)
+            if envfile_vals["HLSFACTORY_WORK_DIR"] is None:
+                msg = "HLSFACTORY_WORK_DIR not set to a valid path in .env file"
                 raise ValueError(msg)
             return pathlib.Path(envfile_vals["HLSFACTORY_WORK_DIR"])
 
@@ -352,7 +366,11 @@ def get_work_dir(
             if "HLSFACTORY_WORK_DIR" not in os.environ:
                 msg = "HLSFACTORY_WORK_DIR not in environment"
                 raise ValueError(msg)
-            return pathlib.Path(os.getenv("HLSFACTORY_WORK_DIR"))
+            val = os.getenv("HLSFACTORY_WORK_DIR")
+            if val is None:
+                msg = "HLSFACTORY_WORK_DIR not set to a valid path in environment"
+                raise ValueError(msg)
+            return pathlib.Path(val)
 
         case DirSource.TEMP:
             temp_dir = TemporaryDirectory(prefix="hlsfactory__")
