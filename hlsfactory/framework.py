@@ -181,6 +181,11 @@ def count_total_designs_in_dataset_collection(
     return sum(count_designs_in_dataset_collection(design_datasets).values())
 
 
+def worker_init(core_queue: multiprocessing.Queue) -> None:
+    worker_core = core_queue.get()
+    current_process = psutil.Process()
+    current_process.cpu_affinity([worker_core])
+
 class Flow(ABC):
     name: str
 
@@ -198,11 +203,6 @@ class Flow(ABC):
         timeout: float | None = None,
     ) -> list[Design]:
         check_n_jobs_cpu_affinity(n_jobs, cpu_affinity)
-
-        def worker_init(core_queue: multiprocessing.Queue) -> None:
-            worker_core = core_queue.get()
-            current_process = psutil.Process()
-            current_process.cpu_affinity([worker_core])
 
         if cpu_affinity is None:
             pool = multiprocessing.Pool(n_jobs)
@@ -291,6 +291,8 @@ class Flow(ABC):
 
             return new_design_datasets_copied
 
+
+
     def execute_multiple_design_datasets_fine_grained_parallel(
         self,
         design_datasets: DesignDatasetCollection,
@@ -310,10 +312,7 @@ class Flow(ABC):
                 designs.append(design)
                 dataset_names.append(design_dataset_name)
 
-        def worker_init(core_queue: multiprocessing.Queue) -> None:
-            worker_core = core_queue.get()
-            current_process = psutil.Process()
-            current_process.cpu_affinity([worker_core])
+
 
         if cpu_affinity is None:
             pool = multiprocessing.Pool(n_jobs)
