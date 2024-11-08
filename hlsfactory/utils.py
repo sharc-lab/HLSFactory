@@ -325,6 +325,7 @@ class DirSource(enum.Enum):
 def get_work_dir(
     dir_source: DirSource = DirSource.ENVFILE,
     env_file_path: Path | None = None,
+    use_cwd: bool = True,
 ) -> pathlib.Path:
     """
     Get the working directory path based on the specified directory source.
@@ -344,7 +345,7 @@ def get_work_dir(
     match dir_source:
         case DirSource.ENVFILE:
             if env_file_path is None:
-                env_file_path_search = dotenv.find_dotenv()
+                env_file_path_search = dotenv.find_dotenv(usecwd=use_cwd)
                 if env_file_path_search is None:
                     msg = "The .env file could not be automatically found."
                     raise ValueError(msg)
@@ -400,6 +401,8 @@ class ToolPathsSource(enum.Enum):
 
 def get_tool_paths(
     tool_paths_source: ToolPathsSource,
+    env_file_path: Path | None = None,
+    use_cwd: bool = True,
 ) -> tuple[pathlib.Path, pathlib.Path]:
     """
     Get the paths for Vitis HLS and Vivado tools based on the specified source.
@@ -418,7 +421,17 @@ def get_tool_paths(
     """
     match tool_paths_source:
         case ToolPathsSource.ENVFILE:
-            envfile_vals = dotenv.dotenv_values()
+            if env_file_path is None:
+                env_file_path_search = dotenv.find_dotenv(usecwd=use_cwd)
+                if env_file_path_search is None:
+                    msg = "The .env file could not be automatically found."
+                    raise ValueError(msg)
+                env_fp = Path(env_file_path_search)
+            else:
+                env_fp = env_file_path
+            envfile_vals = dotenv.dotenv_values(
+                env_fp,
+            )
             if "HLSFACTORY_VITIS_HLS_PATH" not in envfile_vals:
                 msg = "HLSFACTORY_VITIS_HLS_PATH not in .env file"
                 raise ValueError(msg)
