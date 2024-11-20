@@ -1,6 +1,6 @@
 [project]
 name = "hlsfactory"
-version = "1.0"
+version = "1.0.0"
 readme = "README.md"
 license = { file = "LICENSE" }
 description = "A Framework Empowering High-Level Synthesis Datasets for Machine Learning and Beyond"
@@ -9,22 +9,25 @@ keywords = [
     "High-Level Synthesis",
     "FPGA",
     "Electronic Design Automation",
-    "Dataset"
+    "Dataset",
 ]
 classifiers = []
 requires-python = ">=3.10"
 
-dependencies = [
-    "pandas",
-    "psutil",
-    "PyYAML",
-    "tqdm",
-    "python-dotenv",
-]
+dependencies = ["pandas", "psutil", "PyYAML", "tqdm", "python-dotenv"]
 
 [project.optional-dependencies]
 test = ["pytest", "pytest-cov", "pytest-mock"]
-docs = ["sphinx", "furo", "sphinx-autodoc-typehints", "myst-parser", "sphinx_rtd_theme", "sphinx-copybutton", "sphinxext-opengraph", "sphinx-autodoc2"]
+docs = [
+    "sphinx",
+    "furo",
+    "sphinx-autodoc-typehints",
+    "myst-parser",
+    "sphinx_rtd_theme",
+    "sphinx-copybutton",
+    "sphinxext-opengraph",
+    "sphinx-autodoc2",
+]
 
 [project.urls]
 "Homepage" = "https://github.com/sharc-lab/HLSFactory"
@@ -52,4 +55,21 @@ log_cli = true
 [tool.ruff.lint]
 unfixable = ["F401"]
 select = ["ALL"]
-ignore= ["EM102","TRY003", "T201", "S314", "EM101", "PGH003", "D", "ANN101", "ANN102", "FBT001", "FBT002", "PLR0913", "S101", "SIM108", "PLR0912", "PLR0915"]
+ignore = [
+    "EM102",
+    "TRY003",
+    "T201",
+    "S314",
+    "EM101",
+    "PGH003",
+    "D",
+    "ANN101",
+    "ANN102",
+    "FBT001",
+    "FBT002",
+    "PLR0913",
+    "S101",
+    "SIM108",
+    "PLR0912",
+    "PLR0915",
+]
