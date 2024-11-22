@@ -189,25 +189,36 @@ def generate_opt_sources(
     random_sample: bool = False,
     random_sample_num: int = 10,
     random_sample_seed: int = 42,
-) -> list[str]:
+) -> tuple[list[str], list[dict]]:
     line_combos_all = list(itertools.product(array_partition_lines, loop_opt_lines))
     if random_sample:
         random.seed(random_sample_seed)
-        if random_sample_num > len(line_combos_all):
-            random_sample_num = len(line_combos_all)
+        random_sample_num = min(random_sample_num, len(line_combos_all))
         line_combos_all = random.sample(line_combos_all, random_sample_num)
 
     opt_tcl_sources: list[str] = []
+    opt_configs = []
     for a_line, l_line in line_combos_all:
+        config_single = {}
         opt_tcl_source = ""
+
         opt_tcl_source += static_lines + "\n"
+        config_single["static_lines"] = static_lines
+
+        config_single["array_partition_lines"] = []
         for x in a_line:
             opt_tcl_source += x + "\n"
+            config_single["array_partition_lines"].append(x)
+
+        config_single["loop_opt_lines"] = []
         for x in l_line:
             opt_tcl_source += x + "\n"
-        opt_tcl_sources.append(opt_tcl_source)
+            config_single["loop_opt_lines"].append(x)
 
-    return opt_tcl_sources
+        opt_tcl_sources.append(opt_tcl_source)
+        opt_configs.append(config_single)
+
+    return opt_tcl_sources, opt_configs
 
 
 class OptDSLFrontend(Frontend):
@@ -242,7 +253,7 @@ class OptDSLFrontend(Frontend):
             loop_opt_object_lists,
         )
 
-        opt_sources = generate_opt_sources(
+        opt_sources, opt_configs = generate_opt_sources(
             array_partition_lines,
             loop_opt_lines,
             static_lines,
@@ -252,7 +263,7 @@ class OptDSLFrontend(Frontend):
         )
 
         new_designs = []
-        for opt_source in opt_sources:
+        for opt_source, opt_config in zip(opt_sources, opt_configs, strict=False):
             opt_source_hash = hashlib.md5(opt_source.encode()).hexdigest()
             new_design = design.copy_and_rename_to_new_parent_dir(
                 f"{design.name}_opt_{opt_source_hash}",
@@ -260,6 +271,10 @@ class OptDSLFrontend(Frontend):
             )
             opt_fp = new_design.dir / "opt.tcl"
             opt_fp.write_text(opt_source)
+
+            opt_config_fp = new_design.dir / "opt_config.json"
+            opt_config_fp.write_text(json.dumps(opt_config, indent=4))
+
             new_designs.append(new_design)
 
             t_1 = time.perf_counter()
