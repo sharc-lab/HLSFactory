@@ -32,7 +32,7 @@ def call_tool(
     shell: bool = False,
     timeout: float | None = None,
     log_output: bool = False,
-    raise_on_error: bool = True,
+    raise_on_error: bool = False,
 ) -> CallToolResult:
     if shell:
         cmd_list = cmd

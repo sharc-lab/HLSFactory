@@ -1,7 +1,12 @@
 import time
 from hlsfactory.flow_vitis import check_build_files_exist
 from hlsfactory.framework import Design, ToolFlow
-from hlsfactory.utils import CallToolResult, call_tool, find_bin_path, log_execution_time_to_file
+from hlsfactory.utils import (
+    CallToolResult,
+    call_tool,
+    find_bin_path,
+    log_execution_time_to_file,
+)
 
 
 class BambuSynthFlow(ToolFlow):
@@ -23,19 +28,20 @@ class BambuSynthFlow(ToolFlow):
         self.log_output = log_output
         self.log_execution_time = log_execution_time
 
-
     def execute(self, design: Design, timeout: float | None = None) -> list[Design]:
         t_0 = time.perf_counter()
 
         design_dir = design.dir
 
-        fp_source = design_dir / "top.cpp" # TODO: temp palceholder, need a way to define source files externally
+        fp_source = (
+            design_dir / "top.cpp"
+        )  # TODO: temp palceholder, need a way to define source files externally
 
         fp_bambu_options = design_dir / "bambu.xml"
         build_files = [fp_bambu_options, fp_source]
         check_build_files_exist(build_files)
 
-        cmd_str = f"{self.bambu_bin} -f {fp_bambu_options} -o {design_dir / 'top'} {fp_source}" #  TODO: not correct
+        cmd_str = f"{self.bambu_bin} -f {fp_bambu_options} -o {design_dir / 'top'} {fp_source}"  #  TODO: not correct
 
         if timeout is not None:
             return_result = call_tool(
@@ -63,11 +69,8 @@ class BambuSynthFlow(ToolFlow):
                 raise_on_error=True,
             )
 
-
         t_1 = time.perf_counter()
         if self.log_execution_time:
             log_execution_time_to_file(design_dir, self.name, t_0, t_1)
 
         return [design]
-    
-

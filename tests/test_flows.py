@@ -1,10 +1,10 @@
 import shutil
 from pathlib import Path
+from unittest.mock import patch
 
 from hlsfactory.datasets_builtin import (
     dataset_polybench_builder,
     dataset_vitis_examples_builder,
-    datasets_builder,
 )
 from hlsfactory.flow_vitis import (
     VitisHLSImplFlow,
@@ -105,6 +105,50 @@ def test_concrete_vitis_hls_flow() -> None:
         n_jobs=N_JOBS,
         cpu_affinity=CPU_AFFINITY,
     )
+
+
+def test_concrete_vitis_hls_flow_induced_tool_error(monkeypatch) -> None:
+    # want to induce a tool error by mocking calls to suborocess to return non-zero exit code
+    work_dir = (
+        top_work_dir / "test_flows" / "test_concrete_vitis_hls_flow_induced_tool_error"
+    )
+    remove_and_make_new_dir_if_exists(work_dir)
+    print(f"work_dir: {work_dir}")
+
+    dataset_vitis_examples = dataset_vitis_examples_builder("vitis_examples", work_dir)
+    n_keep = 4
+    designs_to_keep = dataset_vitis_examples.designs[:n_keep]
+    designs_to_remove = dataset_vitis_examples.designs[n_keep:]
+    dataset_vitis_examples.designs = designs_to_keep
+    for design in designs_to_remove:
+        shutil.rmtree(design.dir)
+
+    datasets = {
+        "vitis_examples": dataset_vitis_examples,
+    }
+
+    toolflow_vitis_hls_synth = VitisHLSSynthFlow(
+        vitis_hls_bin=str(BIN_VITIS_HLS),
+        env_var_xilinx_hls=str(PATH_VITIS_HLS),
+        env_var_xilinx_vivado=str(PATH_VIVADO),
+    )
+
+    with patch("subprocess.Popen.wait") as mock_wait:
+        mock_wait.return_value = 1
+
+        datasets_post_hls_synth = toolflow_vitis_hls_synth.execute_multiple_design_datasets_fine_grained_parallel(
+            datasets,
+            False,
+            n_jobs=N_JOBS,
+            cpu_affinity=CPU_AFFINITY,
+            timeout=TIMEOUT_HLS_SYNTH,
+        )
+
+    assert len(datasets_post_hls_synth["vitis_examples"].designs) == 0
+    for d in datasets["vitis_examples"].designs:
+        d_dir = d.dir
+        assert Path(d_dir).exists()
+        assert Path(d_dir / "error__VitisHLSSynthFlow.txt").exists()
 
 
 N_KEEP = 2

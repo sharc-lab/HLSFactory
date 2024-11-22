@@ -186,6 +186,7 @@ def worker_init(core_queue: multiprocessing.Queue) -> None:
     current_process = psutil.Process()
     current_process.cpu_affinity([worker_core])
 
+
 class Flow(ABC):
     name: str
 
@@ -291,8 +292,6 @@ class Flow(ABC):
 
             return new_design_datasets_copied
 
-
-
     def execute_multiple_design_datasets_fine_grained_parallel(
         self,
         design_datasets: DesignDatasetCollection,
@@ -311,8 +310,6 @@ class Flow(ABC):
             for design in design_dataset.designs:
                 designs.append(design)
                 dataset_names.append(design_dataset_name)
-
-
 
         if cpu_affinity is None:
             pool = multiprocessing.Pool(n_jobs)

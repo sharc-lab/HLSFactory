@@ -298,7 +298,7 @@ class VitisHLSSynthFlow(ToolFlow):
                 cwd=design_dir,
                 log_output=self.log_output,
                 timeout=timeout,
-                raise_on_error=True,
+                raise_on_error=False,
             )
             if return_result == CallToolResult.TIMEOUT:
                 (design_dir / f"timeout__{self.name}.txt").touch()
@@ -323,7 +323,7 @@ class VitisHLSSynthFlow(ToolFlow):
                 f"{self.vitis_hls_bin} dataset_hls.tcl",
                 cwd=design_dir,
                 log_output=self.log_output,
-                raise_on_error=True,
+                raise_on_error=False,
             )
             if return_result == CallToolResult.ERROR:
                 (design_dir / f"error__{self.name}.txt").touch()
@@ -433,7 +433,7 @@ class VitisHLSImplFlow(ToolFlow):
                 cwd=design_dir,
                 log_output=self.log_output,
                 timeout=timeout,
-                raise_on_error=True,
+                raise_on_error=False,
                 shell=False,
             )
             if return_result == CallToolResult.TIMEOUT:
@@ -453,7 +453,7 @@ class VitisHLSImplFlow(ToolFlow):
                 f"{self.vitis_hls_bin} dataset_hls_ip_export.tcl",
                 cwd=design_dir,
                 log_output=self.log_output,
-                raise_on_error=True,
+                raise_on_error=False,
                 shell=False,
             )
             if return_result == CallToolResult.ERROR:

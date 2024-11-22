@@ -46,11 +46,7 @@ def test_load_datasets_with_labels() -> None:
     dataset_names = DATASET_STR_MAP
     dataset_labels = [f"{dset}_labeled" for dset in dataset_names]
 
-    datasets = datasets_builder(
-        work_dir,
-        dataset_names,
-        dataset_labels
-    )
+    datasets = datasets_builder(work_dir, dataset_names, dataset_labels)
 
     assert str(datasets)
     assert datasets
