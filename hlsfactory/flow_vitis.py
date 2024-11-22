@@ -2,7 +2,7 @@ import json
 import os
 import re
 import time
-import xml.etree.ElementTree as ET  # noqa: N817
+import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -309,13 +309,31 @@ class VitisHLSSynthFlow(ToolFlow):
                     log_execution_time_to_file(design_dir, self.name, t_0, t_1)
 
                 return []
+            if return_result == CallToolResult.ERROR:
+                (design_dir / f"error__{self.name}.txt").touch()
+                print(f"[{design_dir}] Error occurred during execution")
+
+                t_1 = time.perf_counter()
+                if self.log_execution_time:
+                    log_execution_time_to_file(design_dir, self.name, t_0, t_1)
+
+                return []
         else:
-            call_tool(
+            return_result = call_tool(
                 f"{self.vitis_hls_bin} dataset_hls.tcl",
                 cwd=design_dir,
                 log_output=self.log_output,
                 raise_on_error=True,
             )
+            if return_result == CallToolResult.ERROR:
+                (design_dir / f"error__{self.name}.txt").touch()
+                print(f"[{design_dir}] Error occurred during execution")
+
+                t_1 = time.perf_counter()
+                if self.log_execution_time:
+                    log_execution_time_to_file(design_dir, self.name, t_0, t_1)
+
+                return []
 
         csynth_report_fp = auto_find_synth_report(design_dir)
 
@@ -349,28 +367,30 @@ class VitisHLSCosimSetupFlow(ToolFlow):
 
         self.patch_sim_fp = Path(__file__).parent / "patch_sim.sh"
 
-    def execute(self, design: Design) -> list[Design]:
-        design_dir = design.dir
+    def execute(self, design: Design, timeout: float | None = None) -> list[Design]:
+        # design_dir = design.dir
 
-        fp_hls_cosim_setup_tcl = design_dir / "dataset_hls_cosim_setup.tcl"
-        build_files = [fp_hls_cosim_setup_tcl]
-        check_build_files_exist(build_files)
-        warn_for_reset_flags(build_files)
+        # fp_hls_cosim_setup_tcl = design_dir / "dataset_hls_cosim_setup.tcl"
+        # build_files = [fp_hls_cosim_setup_tcl]
+        # check_build_files_exist(build_files)
+        # warn_for_reset_flags(build_files)
 
-        call_tool(
-            f"{self.vitis_hls_bin} dataset_hls_cosim_setup.tcl",
-            cwd=design_dir,
-            log_output=self.log_output,
-        )
-        cosim_dir = next(iter(design_dir.rglob("**/sim")))
-        solution_dir = cosim_dir.parent
-        call_tool(
-            f"bash {self.patch_sim_fp}",
-            cwd=solution_dir,
-            log_output=self.log_output,
-        )
+        # call_tool(
+        #     f"{self.vitis_hls_bin} dataset_hls_cosim_setup.tcl",
+        #     cwd=design_dir,
+        #     log_output=self.log_output,
+        # )
+        # cosim_dir = next(iter(design_dir.rglob("**/sim")))
+        # solution_dir = cosim_dir.parent
+        # call_tool(
+        #     f"bash {self.patch_sim_fp}",
+        #     cwd=solution_dir,
+        #     log_output=self.log_output,
+        # )
 
-        return [design]
+        # return [design]
+
+        raise NotImplementedError("This flow is not yet implemented")
 
 
 class VitisHLSImplFlow(ToolFlow):
@@ -422,14 +442,26 @@ class VitisHLSImplFlow(ToolFlow):
                 t_1 = time.perf_counter()
                 log_execution_time_to_file(design_dir, self.name, t_0, t_1)
                 return []
+            if return_result == CallToolResult.ERROR:
+                (design_dir / f"error__{self.name}.txt").touch()
+                print(f"[{design_dir}] Error occurred during execution")
+                t_1 = time.perf_counter()
+                log_execution_time_to_file(design_dir, self.name, t_0, t_1)
+                return []
         else:
-            call_tool(
+            return_result = call_tool(
                 f"{self.vitis_hls_bin} dataset_hls_ip_export.tcl",
                 cwd=design_dir,
                 log_output=self.log_output,
                 raise_on_error=True,
                 shell=False,
             )
+            if return_result == CallToolResult.ERROR:
+                (design_dir / f"error__{self.name}.txt").touch()
+                print(f"[{design_dir}] Error occurred during execution")
+                t_1 = time.perf_counter()
+                log_execution_time_to_file(design_dir, self.name, t_0, t_1)
+                return []
 
         t_1 = time.perf_counter()
         log_execution_time_to_file(design_dir, self.name, t_0, t_1)
@@ -462,7 +494,7 @@ class VitisHLSImplReportFlow(ToolFlow):
         self.env_var_xilinx_hls = env_var_xilinx_hls
         self.env_var_xilinx_vivado = env_var_xilinx_vivado
 
-    def execute(self, design: Design, timeout: float | None) -> list[Design]:
+    def execute(self, design: Design, timeout: float | None = None) -> list[Design]:
         t_0 = time.perf_counter()
 
         if timeout is not None:
@@ -495,10 +527,18 @@ class VitisHLSImplReportFlow(ToolFlow):
 
         tcl_run_vivado_reporting_fp.write_text(s)
 
-        call_tool(
+        return_result = call_tool(
             f"{self.vivado_bin} -mode batch -source run_vivado_reporting.tcl",
             cwd=design_dir,
         )
+        if return_result == CallToolResult.ERROR:
+            (design_dir / f"error__{self.name}.txt").touch()
+            print(f"[{design_dir}] Error occurred during execution")
+
+            t_1 = time.perf_counter()
+            log_execution_time_to_file(design_dir, self.name, t_0, t_1)
+
+            return []
 
         # check that the report files exist
         power_report_fp = design_dir / "power.rpt"
