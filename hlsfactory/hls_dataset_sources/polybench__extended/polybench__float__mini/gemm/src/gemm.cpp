@@ -15,11 +15,11 @@ void kernel_gemm(
     const int nk = 30;
 
   int i, j, k;
-  for (i = 0; i < ni; i++) {
-    for (j = 0; j < nj; j++)
+  lp1: for (i = 0; i < ni; i++) {
+    lp2: for (j = 0; j < nj; j++)
 	C[i][j] *= beta;
-    for (k = 0; k < nk; k++) {
-       for (j = 0; j < nj; j++)
+    lp3: for (k = 0; k < nk; k++) {
+       lp4: for (j = 0; j < nj; j++)
 	  C[i][j] += alpha * A[i][k] * B[k][j];
     }
   }

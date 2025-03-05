@@ -11,16 +11,16 @@ void kernel_cholesky(
   int i, j, k;
 
 
-  for (i = 0; i < n; i++) {
+  lp1: for (i = 0; i < n; i++) {
 
-     for (j = 0; j < i; j++) {
-        for (k = 0; k < j; k++) {
+     lp2: for (j = 0; j < i; j++) {
+        lp3: for (k = 0; k < j; k++) {
            A[i][j] -= A[i][k] * A[j][k];
         }
         A[i][j] /= A[j][j];
      }
 
-     for (k = 0; k < i; k++) {
+     lp4: for (k = 0; k < i; k++) {
         A[i][i] -= A[i][k] * A[i][k];
      }
      A[i][i] = sqrt(A[i][i]);

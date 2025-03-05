@@ -18,14 +18,14 @@ void kernel_doitgen(
 
   int r, q, p, s;
 
-  for (r = 0; r < nr; r++)
-    for (q = 0; q < nq; q++)  {
-      for (p = 0; p < np; p++)  {
+  lp1: for (r = 0; r < nr; r++)
+    lp2: for (q = 0; q < nq; q++)  {
+      lp3: for (p = 0; p < np; p++)  {
 	sum[p] = (t_ap_fixed(0.0));
-	for (s = 0; s < np; s++)
+	lp4: for (s = 0; s < np; s++)
 	  sum[p] += A[r][q][s] * C4[s][p];
       }
-      for (p = 0; p < np; p++)
+      lp5: for (p = 0; p < np; p++)
 	A[r][q][p] = sum[p];
     }
 

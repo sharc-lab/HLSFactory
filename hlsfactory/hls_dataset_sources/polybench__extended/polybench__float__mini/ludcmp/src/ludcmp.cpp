@@ -15,33 +15,33 @@ void kernel_ludcmp(
 
   double w;
 
-  for (i = 0; i < n; i++) {
-    for (j = 0; j <i; j++) {
+  lp1: for (i = 0; i < n; i++) {
+    lp2: for (j = 0; j <i; j++) {
        w = A[i][j];
-       for (k = 0; k < j; k++) {
+       lp3: for (k = 0; k < j; k++) {
           w -= A[i][k] * A[k][j];
        }
         A[i][j] = w / A[j][j];
     }
-   for (j = i; j < n; j++) {
+   lp4: for (j = i; j < n; j++) {
        w = A[i][j];
-       for (k = 0; k < i; k++) {
+       lp5: for (k = 0; k < i; k++) {
           w -= A[i][k] * A[k][j];
        }
        A[i][j] = w;
     }
   }
 
-  for (i = 0; i < n; i++) {
+  lp6: for (i = 0; i < n; i++) {
      w = b[i];
-     for (j = 0; j < i; j++)
+     lp7: for (j = 0; j < i; j++)
         w -= A[i][j] * y[j];
      y[i] = w;
   }
 
-   for (i = n-1; i >=0; i--) {
+   lp8: for (i = n-1; i >=0; i--) {
      w = y[i];
-     for (j = i+1; j < n; j++)
+     lp9: for (j = i+1; j < n; j++)
         w -= A[i][j] * x[j];
      x[i] = w / A[i][i];
   }

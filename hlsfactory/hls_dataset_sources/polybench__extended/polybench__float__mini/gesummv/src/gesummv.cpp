@@ -16,11 +16,11 @@ void kernel_gesummv(
 
   int i, j;
 
-  for (i = 0; i < n; i++)
+  lp1: for (i = 0; i < n; i++)
     {
       tmp[i] = 0.0;
       y[i] = 0.0;
-      for (j = 0; j < n; j++)
+      lp2: for (j = 0; j < n; j++)
 	{
 	  tmp[i] = A[i][j] * x[j] + tmp[i];
 	  y[i] = B[i][j] * x[j] + y[i];

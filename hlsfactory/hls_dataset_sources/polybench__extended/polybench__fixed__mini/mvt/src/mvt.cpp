@@ -18,11 +18,11 @@ void kernel_mvt(
 
   int i, j;
 
-  for (i = 0; i < n; i++)
-    for (j = 0; j < n; j++)
+  lp1: for (i = 0; i < n; i++)
+    lp2: for (j = 0; j < n; j++)
       x1[i] = x1[i] + A[i][j] * y_1[j];
-  for (i = 0; i < n; i++)
-    for (j = 0; j < n; j++)
+  lp3: for (i = 0; i < n; i++)
+    lp4: for (j = 0; j < n; j++)
       x2[i] = x2[i] + A[j][i] * y_2[j];
 
 }

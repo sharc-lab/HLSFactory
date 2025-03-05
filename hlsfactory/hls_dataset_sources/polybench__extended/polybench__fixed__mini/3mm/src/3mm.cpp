@@ -25,27 +25,27 @@ void kernel_3mm(
   int i, j, k;
 
 
-  for (i = 0; i < ni; i++)
-    for (j = 0; j < nj; j++)
+  lp1: for (i = 0; i < ni; i++)
+    lp2: for (j = 0; j < nj; j++)
       {
 	E[i][j] = (t_ap_fixed(0.0));
-	for (k = 0; k < nk; ++k)
+	lp3: for (k = 0; k < nk; ++k)
 	  E[i][j] += A[i][k] * B[k][j];
       }
 
-  for (i = 0; i < nj; i++)
-    for (j = 0; j < nl; j++)
+  lp4: for (i = 0; i < nj; i++)
+    lp5: for (j = 0; j < nl; j++)
       {
 	F[i][j] = (t_ap_fixed(0.0));
-	for (k = 0; k < nm; ++k)
+	lp6: for (k = 0; k < nm; ++k)
 	  F[i][j] += C[i][k] * D[k][j];
       }
 
-  for (i = 0; i < ni; i++)
-    for (j = 0; j < nl; j++)
+  lp7: for (i = 0; i < ni; i++)
+    lp8: for (j = 0; j < nl; j++)
       {
 	G[i][j] = (t_ap_fixed(0.0));
-	for (k = 0; k < nj; ++k)
+	lp9: for (k = 0; k < nj; ++k)
 	  G[i][j] += E[i][k] * F[k][j];
       }
 

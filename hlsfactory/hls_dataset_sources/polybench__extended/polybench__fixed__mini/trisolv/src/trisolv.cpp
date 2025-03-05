@@ -16,10 +16,10 @@ void kernel_trisolv(
 
   int i, j;
 
-  for (i = 0; i < n; i++)
+  lp1: for (i = 0; i < n; i++)
     {
       x[i] = b[i];
-      for (j = 0; j <i; j++)
+      lp2: for (j = 0; j <i; j++)
         x[i] -= L[i][j] * x[j];
       x[i] = x[i] / L[i][i];
     }

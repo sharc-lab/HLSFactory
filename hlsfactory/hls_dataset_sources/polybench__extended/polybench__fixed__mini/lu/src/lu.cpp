@@ -14,15 +14,15 @@ void kernel_lu(
 
   int i, j, k;
 
-  for (i = 0; i < n; i++) {
-    for (j = 0; j <i; j++) {
-       for (k = 0; k < j; k++) {
+  lp1: for (i = 0; i < n; i++) {
+    lp2: for (j = 0; j <i; j++) {
+       lp3: for (k = 0; k < j; k++) {
           A[i][j] -= A[i][k] * A[k][j];
        }
         A[i][j] /= A[j][j];
     }
-   for (j = i; j < n; j++) {
-       for (k = 0; k < i; k++) {
+   lp4: for (j = i; j < n; j++) {
+       lp5: for (k = 0; k < i; k++) {
           A[i][j] -= A[i][k] * A[k][j];
        }
     }

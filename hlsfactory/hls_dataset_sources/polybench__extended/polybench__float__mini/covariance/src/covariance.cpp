@@ -14,23 +14,23 @@ void kernel_covariance(
 
   int i, j, k;
 
-  for (j = 0; j < m; j++)
+  lp1: for (j = 0; j < m; j++)
     {
       mean[j] = 0.0;
-      for (i = 0; i < n; i++)
+      lp2: for (i = 0; i < n; i++)
         mean[j] += data[i][j];
       mean[j] /= float_n;
     }
 
-  for (i = 0; i < n; i++)
-    for (j = 0; j < m; j++)
+  lp3: for (i = 0; i < n; i++)
+    lp4: for (j = 0; j < m; j++)
       data[i][j] -= mean[j];
 
-  for (i = 0; i < m; i++)
-    for (j = i; j < m; j++)
+  lp5: for (i = 0; i < m; i++)
+    lp6: for (j = i; j < m; j++)
       {
         cov[i][j] = 0.0;
-        for (k = 0; k < n; k++)
+        lp7: for (k = 0; k < n; k++)
 	  cov[i][j] += data[k][i] * data[k][j];
         cov[i][j] /= (float_n - 1.0);
         cov[j][i] = cov[i][j];

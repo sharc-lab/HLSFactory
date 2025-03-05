@@ -14,8 +14,8 @@ void kernel_nussinov( char seq[ 60 + 0],
 
   int i, j, k;
 
- for (i = n-1; i >= 0; i--) {
-  for (j=i+1; j<n; j++) {
+ lp1: for (i = n-1; i >= 0; i--) {
+  lp2: for (j=i+1; j<n; j++) {
 
    if (j-1>=0)
       table[i][j] = ((table[i][j] >= table[i][j-1]) ? table[i][j] : table[i][j-1]);
@@ -30,7 +30,7 @@ void kernel_nussinov( char seq[ 60 + 0],
         table[i][j] = ((table[i][j] >= table[i+1][j-1]) ? table[i][j] : table[i+1][j-1]);
    }
 
-   for (k=i+1; k<j; k++) {
+   lp3: for (k=i+1; k<j; k++) {
       table[i][j] = ((table[i][j] >= table[i][k] + table[k+1][j]) ? table[i][j] : table[i][k] + table[k+1][j]);
    }
   }

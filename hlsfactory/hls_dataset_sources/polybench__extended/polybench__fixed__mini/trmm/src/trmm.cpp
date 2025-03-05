@@ -16,9 +16,9 @@ void kernel_trmm(
     const int n = 30;
 
   int i, j, k;
-  for (i = 0; i < m; i++)
-     for (j = 0; j < n; j++) {
-        for (k = i+1; k < m; k++)
+  lp1: for (i = 0; i < m; i++)
+     lp2: for (j = 0; j < n; j++) {
+        lp3: for (k = i+1; k < m; k++)
            B[i][j] += A[k][i] * B[k][j];
         B[i][j] = alpha * B[i][j];
      }
