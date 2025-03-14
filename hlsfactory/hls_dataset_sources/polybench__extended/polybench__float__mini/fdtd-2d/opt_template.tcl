@@ -19,5 +19,5 @@ loop_opt,9,2
 6,lp7,pipeline,unroll,[1 2 4 8]
 7,lp8,pipeline,unroll,[1 2 4 8]
 8,lp8,,unroll,[1 2 4 8]
-set_directive_unroll -factor [factor] kernel_durbin/[name]
-set_directive_pipeline kernel_durbin/[name]
+set_directive_unroll -factor [factor] kernel_fdtd_2d/[name]
+set_directive_pipeline kernel_fdtd_2d/[name]

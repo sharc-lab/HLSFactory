@@ -2,8 +2,8 @@ set_directive_resource -core RAM_1P "kernel_syrk" A
 set_directive_resource -core RAM_1P "kernel_syrk" C
 
 array_partition,2,[1 2 4 8],[cyclic]
-set_directive_array_partition -type [type] -factor [factor] -dim 2 "syrk" A
-set_directive_array_partition -type [type] -factor [factor] -dim 2 "syrk" C
+set_directive_array_partition -type [type] -factor [factor] -dim 2 "kernel_syrk" A
+set_directive_array_partition -type [type] -factor [factor] -dim 2 "kernel_syrk" C
 
 loop_opt,6,2
 0,lp1,pipeline,unroll,[1 2 4 8]
