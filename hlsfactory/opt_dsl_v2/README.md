@@ -50,7 +50,7 @@ set_directive_pipeline atax/[name]
 ```
 
 ### OptDSLv2
-```
+```python
 for factor in [1, 2, 4, 8]:
 	for partition_type in ["cycle"]:
 		partition("A", "atax", partition_type, factor, 2)
@@ -59,7 +59,7 @@ for factor in [1, 2, 4, 8]:
 		partition("buff_x", "atax", partition_type, factor, 1)
 		partition("buff_y_out", "atax", partition_type, factor, 1)
 	unroll("lprd_2", "atax", factor)
-unroll("lpwr_1", "atax", factor)
+	unroll("lpwr_1", "atax", factor)
 
 pipeline("lprd_2", "atax")
 pipeline("lpwr_1", "atax")
