@@ -14,6 +14,7 @@ DIR_DATASET_CHSTONE = HLS_DATASET_DIR / "chstone"
 DIR_DATASET_PP4FPGAS = HLS_DATASET_DIR / "pp4fpgas"
 DIR_DATASET_VITIS_EXAMPLES = HLS_DATASET_DIR / "vitis_examples"
 DIR_DATASET_ACCELERATORS = HLS_DATASET_DIR / "accelerators"
+DIR_DATASET_ECE8893_LAB_1 = HLS_DATASET_DIR / "ece8893_dataset_lab_1"
 
 DIR_ALL = [
     DIR_DATASET_POLYBENCH,
@@ -22,6 +23,7 @@ DIR_ALL = [
     DIR_DATASET_PP4FPGAS,
     DIR_DATASET_VITIS_EXAMPLES,
     DIR_DATASET_ACCELERATORS,
+    DIR_DATASET_ECE8893_LAB_1
 ]
 
 
@@ -30,6 +32,12 @@ def check_dataset_dir_exists(dir_path: Path) -> None:
         msg = f"Dataset directory not found: {dir_path}"
         raise FileNotFoundError(msg)
 
+
+def dataset_ece8893_lab_1_builder(name: str, work_dir: Path) -> DesignDataset:
+    check_dataset_dir_exists(DIR_DATASET_ECE8893_LAB_1)
+    new_dir = work_dir / DIR_DATASET_ECE8893_LAB_1.name
+    shutil.copytree(DIR_DATASET_ECE8893_LAB_1, new_dir)
+    return DesignDataset.from_dir(name, new_dir)
 
 def dataset_polybench_builder(name: str, work_dir: Path) -> DesignDataset:
     check_dataset_dir_exists(DIR_DATASET_POLYBENCH)
@@ -84,6 +92,7 @@ DATASET_STR_MAP = {
     "pp4fpgas": dataset_pp4fpgas_builder,
     "vitis_examples": dataset_vitis_examples_builder,
     "accelerators": dataset_accelerators_builder,
+    "ece8893_lab_1": dataset_ece8893_lab_1_builder,
 }
 
 

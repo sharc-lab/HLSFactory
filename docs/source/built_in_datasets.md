@@ -104,3 +104,15 @@ HLSFactory provides several built-in datasets of HLS design sources.
 **Design Type:** Concrete
 
 **Supported Vendors:** Xilinx
+
+## ECE8893 Lab 0001 by Akshat Ramachandran 
+
+**Number of Designs:** 2
+
+**Sources:** Internal
+
+**Design Type:** Concrete
+
+**Supported Vendors:** Xilinx
+
+This dataset contains the Lab 2 (Attention) and Lab 3 (Sparse Matrix Multiplication) HLS designs from the ECE8893 Spring 2025 course.
