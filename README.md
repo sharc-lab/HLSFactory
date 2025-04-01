@@ -5,12 +5,18 @@
 
 ## Quick Start
 
-Documentation & Tutorials: [https://sharc-lab.github.io/HLSFactory/docs/](https://sharc-lab.github.io/HLSFactory/docs/) (🚧 under construction)
+Documentation & Tutorials: [https://sharc-lab.github.io/HLSFactory/docs/](https://sharc-lab.github.io/HLSFactory/docs/)
 
-`pip` Install (via GitHub):
+`pip` Install:
 
 ```bash
 pip install git+https://github.com/sharc-lab/HLSFactory
+```
+
+`uv` Install:
+
+```bash
+uv add git+https://github.com/sharc-lab/HLSFactory
 ```
 
 `conda` Install:
