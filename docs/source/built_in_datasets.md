@@ -105,10 +105,3 @@ HLSFactory provides several built-in datasets of HLS design sources.
 
 **Supported Vendors:** Xilinx
 
-## Ayush Saxena Spring 26 ECE_88993
-
-**Number of Designs:** 2
-
-**Design Type:** Concrete
-
-**Supported Vendors:** Xilinx
