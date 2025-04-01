@@ -1,0 +1,1128 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2024.1.2 (64-bit)
+  **** SW Build 5096458 on Sep  5 2024
+  **** IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+  **** SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+  **** Start of session at: Thu Feb 27 18:46:57 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source /tools/software/xilinx/Vitis_HLS/latest/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] For user 'zwang3547' on host 'ece-linlabsrv01.ece.gatech.edu' (Linux_x86_64 version 4.18.0-553.36.1.el8_10.x86_64) on Thu Feb 27 18:47:00 EST 2025
+INFO: [HLS 200-10] On os "Red Hat Enterprise Linux release 8.10 (Ootpa)"
+INFO: [HLS 200-10] In directory '/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin'
+WARNING: [HLS 200-2053] The vitis_hls executable is deprecated. Consider using vitis-run --mode hls --tcl
+Sourcing Tcl script 'script.tcl'
+INFO: [HLS 200-1510] Running: source script.tcl
+INFO: [HLS 200-1510] Running: open_project project_fin2 
+INFO: [HLS 200-10] Opening project '/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2'.
+INFO: [HLS 200-1510] Running: set_top compute_attention_HLS 
+INFO: [HLS 200-1510] Running: add_files top.cpp 
+INFO: [HLS 200-10] Adding design file 'top.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb host.cpp 
+INFO: [HLS 200-10] Adding test bench file 'host.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb Q_tensor.bin 
+INFO: [HLS 200-10] Adding test bench file 'Q_tensor.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb V_tensor.bin 
+INFO: [HLS 200-10] Adding test bench file 'V_tensor.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb K_tensor.bin 
+INFO: [HLS 200-10] Adding test bench file 'K_tensor.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb Output_tensor.bin 
+INFO: [HLS 200-10] Adding test bench file 'Output_tensor.bin' to the project
+INFO: [HLS 200-1510] Running: open_solution solution1 
+INFO: [HLS 200-10] Opening solution '/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu3eg-sbva484-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xczu3eg-sbva484-1-e 
+INFO: [HLS 200-1510] Running: cosim_design 
+INFO: [COSIM 212-47] Using XSIM for RTL simulation.
+INFO: [COSIM 212-14] Instrumenting C test bench ...
+   Build using "/tools/software/xilinx/Vitis_HLS/latest/vcxx/libexec/clang++"
+   Compiling host.cpp_pre.cpp.tb.cpp
+   Compiling apatb_compute_attention_HLS.cpp
+   Compiling top.cpp_pre.cpp.tb.cpp
+   Compiling apatb_compute_attention_HLS_ir.ll
+   Generating cosim.tv.exe
+INFO: [COSIM 212-302] Starting C TB testing ... 
+MSE: 0.00000288
+INFO: [COSIM 212-333] Generating C post check test bench ...
+INFO: [COSIM 212-12] Generating RTL test bench ...
+
+****** Vivado v2024.1.2 (64-bit)
+  **** SW Build 5164865 on Thu Sep  5 14:36:28 MDT 2024
+  **** IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+  **** SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+  **** Start of session at: Thu Feb 27 18:49:21 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source run_vivado_gen_ip.tcl -notrace
+create_project: Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1707.625 ; gain = 65.867 ; free physical = 68065 ; free virtual = 86185
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/software/xilinx/Vivado/2024.1/data/ip'.
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'compute_attention_HLS_fpext_32ns_64_2_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'compute_attention_HLS_fpext_32ns_64_2_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'compute_attention_HLS_ddiv_64ns_64ns_64_22_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'compute_attention_HLS_ddiv_64ns_64ns_64_22_no_dsp_1_ip'...
+INFO: [Common 17-206] Exiting Vivado at Thu Feb 27 18:49:52 2025...
+INFO: [COSIM 212-1] *** C/RTL co-simulation file generation completed. ***
+INFO: [COSIM 212-323] Starting verilog simulation. 
+INFO: [COSIM 212-15] Starting XSIM ...
+Vivado Simulator v2024.1.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: /tools/software/xilinx/Vivado/2024.1/bin/unwrapped/lnx64.o/xelab xil_defaultlib.apatb_compute_attention_HLS_top glbl -Oenable_linking_all_libraries -prj compute_attention_HLS.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm -L floating_point_v7_1_18 -L floating_point_v7_0_23 --lib ieee_proposed=./ieee_proposed -s compute_attention_HLS 
+Multi-threading is on. Using 110 slave threads.
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/ip/xil_defaultlib/compute_attention_HLS_fpext_32ns_64_2_no_dsp_1_ip.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_fpext_32ns_64_2_no_dsp_1_ip
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/ip/xil_defaultlib/compute_attention_HLS_ddiv_64ns_64ns_64_22_no_dsp_1_ip.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_ddiv_64ns_64ns_64_22_no_dsp_1_ip
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS.autotb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apatb_compute_attention_HLS_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/AESL_axi_master_mem0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_master_mem0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/AESL_axi_master_mem1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_master_mem1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/AESL_axi_master_mem2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_master_mem2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/AESL_axi_master_mem3.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_master_mem3
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/AESL_axi_slave_control.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_slave_control
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_compute_attention_Pipeline_VITIS_LOOP_41_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_compute_attention_Pipeline_VITIS_LOOP_41_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_compute_attention_Pipeline_VITIS_LOOP_61_4.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_compute_attention_Pipeline_VITIS_LOOP_61_4
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_compute_attention_Pipeline_LoadQ.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_compute_attention_Pipeline_LoadQ
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_compute_attention_Pipeline_VITIS_LOOP_90_8.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_compute_attention_Pipeline_VITIS_LOOP_90_8
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_compute_attention_Pipeline_VITIS_LOOP_112_10.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_compute_attention_Pipeline_VITIS_LOOP_112_10
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_compute_attention_Pipeline_VITIS_LOOP_125_12.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_compute_attention_Pipeline_VITIS_LOOP_125_12
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_compute_attention_Pipeline_ComputeOutput.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_compute_attention_Pipeline_ComputeOutput
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_compute_attention.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_compute_attention
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_flow_control_loop_pipe_sequential_init.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_flow_control_loop_pipe_sequential_init
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_mul_16s_16s_30_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mul_16s_16s_30_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_mac_muladd_16s_16s_30s_30_4_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mac_muladd_16s_16s_30s_30_4_1_DSP48_0
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mac_muladd_16s_16s_30s_30_4_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_mul_50ns_50ns_100_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mul_50ns_50ns_100_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_mul_67ns_63ns_130_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mul_67ns_63ns_130_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_mul_72ns_68ns_140_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mul_72ns_68ns_140_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_compute_attention_Pipeline_VITIS_LOOP_112_10_f_x_msb_4_table_ROM_AUTO_1R.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_compute_attention_Pipeline_VITIS_LOOP_112_10_f_x_msb_4_table_ROM_AUTO_1R
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_compute_attention_Pipeline_VITIS_LOOP_112_10_f_x_msb_3_table_ROM_AUTO_1R.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_compute_attention_Pipeline_VITIS_LOOP_112_10_f_x_msb_3_table_ROM_AUTO_1R
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_compute_attention_Pipeline_VITIS_LOOP_112_10_f_x_msb_2_table_ROM_AUTO_1R.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_compute_attention_Pipeline_VITIS_LOOP_112_10_f_x_msb_2_table_ROM_AUTO_1R
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_compute_attention_Pipeline_VITIS_LOOP_112_10_exp_x_msb_1_table_ROM_AUTO_1R.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_compute_attention_Pipeline_VITIS_LOOP_112_10_exp_x_msb_1_table_ROM_AUTO_1R
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_mul_32s_16s_40_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mul_32s_16s_40_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_mul_16s_16s_27_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mul_16s_16s_27_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_mac_muladd_16s_16s_27s_27_4_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mac_muladd_16s_16s_27s_27_4_1_DSP48_0
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mac_muladd_16s_16s_27s_27_4_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_mac_muladd_16s_16s_27ns_27_4_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mac_muladd_16s_16s_27ns_27_4_1_DSP48_0
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mac_muladd_16s_16s_27ns_27_4_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_fpext_32ns_64_2_no_dsp_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_fpext_32ns_64_2_no_dsp_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_ddiv_64ns_64ns_64_22_no_dsp_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_ddiv_64ns_64ns_64_22_no_dsp_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_sparsemux_9_3_32_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_sparsemux_9_3_32_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_compute_attention_Q_l_row_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_compute_attention_Q_l_row_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_compute_attention_K_l_0_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_compute_attention_K_l_0_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_compute_attention_V_l_0_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_compute_attention_V_l_0_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_mem0_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem0_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem0_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem0_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem0_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem0_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem0_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem0_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem0_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem0_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem0_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem0_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_mem1_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_mem2_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_mem3_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem3_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem3_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem3_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem3_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem3_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem3_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem3_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem3_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem3_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem3_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem3_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS_control_s_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_control_s_axi
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/dataflow_monitor.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dataflow_monitor
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package floating_point_v7_1_18.floating_point_v7_1_18_viv_comp
+Compiling package ieee.numeric_std
+Compiling package xbip_utils_v3_0_13.xbip_utils_v3_0_13_pkg
+Compiling package axi_utils_v2_0_9.axi_utils_v2_0_9_pkg
+Compiling package floating_point_v7_1_18.floating_point_v7_1_18_consts
+Compiling package ieee.math_real
+Compiling package floating_point_v7_1_18.floating_point_v7_1_18_exp_table...
+Compiling package mult_gen_v12_0_21.mult_gen_v12_0_21_pkg
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_signed
+Compiling package floating_point_v7_1_18.floating_point_v7_1_18_pkg
+Compiling package floating_point_v7_1_18.flt_utils
+Compiling package unisim.vcomponents
+Compiling package xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv_comp
+Compiling package xil_defaultlib.$unit_dataflow_monitor_sv
+Compiling module xil_defaultlib.compute_attention_HLS_compute_at...
+Compiling module xil_defaultlib.compute_attention_HLS_compute_at...
+Compiling module xil_defaultlib.compute_attention_HLS_compute_at...
+Compiling module xil_defaultlib.compute_attention_HLS_flow_contr...
+Compiling module xil_defaultlib.compute_attention_HLS_compute_at...
+Compiling module xil_defaultlib.compute_attention_HLS_compute_at...
+Compiling module xil_defaultlib.compute_attention_HLS_compute_at...
+Compiling module xil_defaultlib.compute_attention_HLS_mul_16s_16...
+Compiling module xil_defaultlib.compute_attention_HLS_mac_muladd...
+Compiling module xil_defaultlib.compute_attention_HLS_mac_muladd...
+Compiling module xil_defaultlib.compute_attention_HLS_compute_at...
+Compiling module xil_defaultlib.compute_attention_HLS_compute_at...
+Compiling module xil_defaultlib.compute_attention_HLS_compute_at...
+Compiling module xil_defaultlib.compute_attention_HLS_compute_at...
+Compiling module xil_defaultlib.compute_attention_HLS_compute_at...
+Compiling module xil_defaultlib.compute_attention_HLS_mul_50ns_5...
+Compiling module xil_defaultlib.compute_attention_HLS_mul_67ns_6...
+Compiling module xil_defaultlib.compute_attention_HLS_mul_72ns_6...
+Compiling module xil_defaultlib.compute_attention_HLS_compute_at...
+Compiling module xil_defaultlib.compute_attention_HLS_mul_32s_16...
+Compiling module xil_defaultlib.compute_attention_HLS_compute_at...
+Compiling module xil_defaultlib.compute_attention_HLS_mul_16s_16...
+Compiling module xil_defaultlib.compute_attention_HLS_mac_muladd...
+Compiling module xil_defaultlib.compute_attention_HLS_mac_muladd...
+Compiling module xil_defaultlib.compute_attention_HLS_mac_muladd...
+Compiling module xil_defaultlib.compute_attention_HLS_mac_muladd...
+Compiling module xil_defaultlib.compute_attention_HLS_compute_at...
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=23,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=8,length=0)\]
+Compiling architecture muxcy_v of entity unisim.MUXCY [muxcy_default]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=4,length=0)\]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="ki...]
+Compiling architecture synth of entity floating_point_v7_1_18.compare_eq_im [\compare_eq_im(c_xdevicefamily="...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(length=0,fast_input=true)...]
+Compiling architecture rtl of entity floating_point_v7_1_18.special_detect [\special_detect(a_fw=24,op_delay...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=2,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=4,length=0,fast_inp...]
+Compiling architecture rtl of entity floating_point_v7_1_18.flt_to_flt_conv_exp [\flt_to_flt_conv_exp(r_w=64,r_ew...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_dec_op [\flt_dec_op(c_xdevicefamily="zyn...]
+Compiling architecture rtl of entity floating_point_v7_1_18.flt_to_flt_conv [\flt_to_flt_conv(c_xdevicefamily...]
+Compiling module unisims_ver.x_lut1_mux2
+Compiling module unisims_ver.LUT1
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=64,length=0)\]
+Compiling architecture xilinx of entity floating_point_v7_1_18.floating_point_v7_1_18_viv [\floating_point_v7_1_18_viv(c_xd...]
+Compiling architecture xilinx of entity floating_point_v7_1_18.floating_point_v7_1_18 [\floating_point_v7_1_18(c_xdevic...]
+Compiling module xil_defaultlib.compute_attention_HLS_fpext_32ns...
+Compiling module xil_defaultlib.compute_attention_HLS_fpext_32ns...
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=52,length=0)\]
+Compiling architecture xorcy_v of entity unisim.XORCY [xorcy_default]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=54,length=0,fast_in...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_div_mant_addsub [\flt_div_mant_addsub(c_xdevicefa...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=55,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=52)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=53,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=54,fast_input=true)...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_div_mant_addsub [\flt_div_mant_addsub(c_xdevicefa...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=55)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [delay_default]
+Compiling architecture virtex of entity floating_point_v7_1_18.flt_div_mant [\flt_div_mant(c_xdevicefamily="z...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=13,length=0,fast_in...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=2,length=0,fast_inp...]
+Compiling architecture rtl of entity floating_point_v7_1_18.special_detect [\special_detect(c_xdevicefamily=...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(length=19,fast_input=true...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=2,fast_input=true)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(fast_input=true)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=4,fast_input=true)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=11,length=19)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(length=18,fast_input=true...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=3,length=18,fast_in...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=4,length=18,fast_in...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=14,length=0)\]
+Compiling architecture rtl of entity floating_point_v7_1_18.flt_div_exp [\flt_div_exp(c_xdevicefamily="no...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=11,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=26,length=0,fast_in...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=27,length=0,fast_in...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=28,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=29,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=3,length=0)\]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="zy...]
+Compiling architecture rtl of entity floating_point_v7_1_18.flt_round_bit [\flt_round_bit(c_xdevicefamily="...]
+Compiling architecture rtl of entity floating_point_v7_1_18.renorm_and_round_logic [\renorm_and_round_logic(c_xdevic...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_dec_op_lat [\flt_dec_op_lat(c_xdevicefamily=...]
+Compiling architecture virtex of entity floating_point_v7_1_18.flt_div [\flt_div(c_xdevicefamily="zynqup...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture xilinx of entity floating_point_v7_1_18.floating_point_v7_1_18_viv [\floating_point_v7_1_18_viv(c_xd...]
+Compiling architecture xilinx of entity floating_point_v7_1_18.floating_point_v7_1_18 [\floating_point_v7_1_18(c_xdevic...]
+Compiling module xil_defaultlib.compute_attention_HLS_ddiv_64ns_...
+Compiling module xil_defaultlib.compute_attention_HLS_ddiv_64ns_...
+Compiling module xil_defaultlib.compute_attention_HLS_sparsemux_...
+Compiling module xil_defaultlib.compute_attention_HLS_compute_at...
+Compiling module xil_defaultlib.compute_attention_HLS_control_s_...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem0_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem3_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS
+Compiling module xil_defaultlib.AESL_axi_master_mem0
+Compiling module xil_defaultlib.AESL_axi_master_mem1
+Compiling module xil_defaultlib.AESL_axi_master_mem2
+Compiling module xil_defaultlib.AESL_axi_master_mem3
+Compiling module xil_defaultlib.AESL_axi_slave_control
+Compiling module xil_defaultlib.nodf_module_intf_default
+Compiling module xil_defaultlib.seq_loop_intf(FSM_WIDTH=4)
+Compiling module xil_defaultlib.seq_loop_intf(FSM_WIDTH=54)
+Compiling module xil_defaultlib.upc_loop_intf(FSM_WIDTH=4)
+Compiling module xil_defaultlib.upc_loop_intf(FSM_WIDTH=100)
+Compiling module xil_defaultlib.upc_loop_intf(FSM_WIDTH=1)
+Compiling module xil_defaultlib.dataflow_monitor_1
+Compiling module xil_defaultlib.apatb_compute_attention_HLS_top
+Compiling module work.glbl
+Built simulation snapshot compute_attention_HLS
+
+****** xsim v2024.1.2 (64-bit)
+  **** SW Build 5164865 on Thu Sep  5 14:36:28 MDT 2024
+  **** IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+  **** SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+  **** Start of session at: Thu Feb 27 18:50:59 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/compute_attention_HLS/xsim_script.tcl
+# xsim {compute_attention_HLS} -autoloadwcfg -tclbatch {compute_attention_HLS.tcl}
+Time resolution is 1 ps
+source compute_attention_HLS.tcl
+## run all
+////////////////////////////////////////////////////////////////////////////////////
+// Inter-Transaction Progress: Completed Transaction / Total Transaction
+// Intra-Transaction Progress: Measured Latency / Latency Estimation * 100%
+//
+// RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
+////////////////////////////////////////////////////////////////////////////////////
+// RTL Simulation : 0 / 1 [0.00%] @ "125000"
+// RTL Simulation : 1 / 1 [100.00%] @ "2078685000"
+////////////////////////////////////////////////////////////////////////////////////
+$finish called at time : 2078745 ns : File "/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/sim/verilog/compute_attention_HLS.autotb.v" Line 888
+run: Time (s): cpu = 00:00:00.31 ; elapsed = 00:01:05 . Memory (MB): peak = 1733.617 ; gain = 0.000 ; free physical = 68020 ; free virtual = 91007
+## quit
+INFO: xsimkernel Simulation Memory Usage: 145436 KB (Peak: 192908 KB), Simulation CPU Usage: 64430 ms
+INFO: [Common 17-206] Exiting xsim at Thu Feb 27 18:52:08 2025...
+INFO: [COSIM 212-316] Starting C post checking ...
+MSE: 0.00000288
+INFO: [COSIM 212-1000] *** C/RTL co-simulation finished: PASS ***
+INFO: [COSIM 212-211] II is measurable only when transaction number is greater than 1 in RTL simulation. Otherwise, they will be marked as all NA. If user wants to calculate them, please make sure there are at least 2 transactions in RTL simulation.
+INFO: [HLS 200-2161] Finished Command cosim_design Elapsed time: 00:05:04; Allocated memory: 15.566 MB.
+INFO: [HLS 200-1510] Running: export_design -format ip_catalog -flow syn 
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+
+****** Vivado v2024.1.2 (64-bit)
+  **** SW Build 5164865 on Thu Sep  5 14:36:28 MDT 2024
+  **** IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+  **** SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+  **** Start of session at: Thu Feb 27 18:52:43 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source run_ippack.tcl -notrace
+INFO: calling package_hls_ip ip_types=vitis sysgen json_file=/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/solution1_data.json outdir=/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/ip srcdir=/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1 sort_interfaces_ports=false
+INFO: Copied 1 ipmisc file(s) to /nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/ip/misc
+INFO: Copied 38 verilog file(s) to /nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/ip/hdl/verilog
+INFO: Copied 34 vhdl file(s) to /nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/ip/hdl/vhdl
+INFO: Copied 10 swdriver file(s) to /nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/ip/drivers
+Generating 2 subcores in /nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/ip/hdl/ip.tmp:
+impl/misc/compute_attention_HLS_ddiv_64ns_64ns_64_22_no_dsp_1_ip.tcl
+impl/misc/compute_attention_HLS_fpext_32ns_64_2_no_dsp_1_ip.tcl
+create_project: Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1708.500 ; gain = 53.867 ; free physical = 66509 ; free virtual = 89959
+INFO: Using COE_DIR=/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/ip/hdl/verilog
+INFO: Generating compute_attention_HLS_ddiv_64ns_64ns_64_22_no_dsp_1_ip via file impl/misc/compute_attention_HLS_ddiv_64ns_64ns_64_22_no_dsp_1_ip.tcl
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/software/xilinx/Vivado/2024.1/data/ip'.
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'compute_attention_HLS_ddiv_64ns_64ns_64_22_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'compute_attention_HLS_ddiv_64ns_64ns_64_22_no_dsp_1_ip'...
+INFO: Done generating compute_attention_HLS_ddiv_64ns_64ns_64_22_no_dsp_1_ip via file impl/misc/compute_attention_HLS_ddiv_64ns_64ns_64_22_no_dsp_1_ip.tcl
+INFO: Generating compute_attention_HLS_fpext_32ns_64_2_no_dsp_1_ip via file impl/misc/compute_attention_HLS_fpext_32ns_64_2_no_dsp_1_ip.tcl
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'compute_attention_HLS_fpext_32ns_64_2_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'compute_attention_HLS_fpext_32ns_64_2_no_dsp_1_ip'...
+INFO: Done generating compute_attention_HLS_fpext_32ns_64_2_no_dsp_1_ip via file impl/misc/compute_attention_HLS_fpext_32ns_64_2_no_dsp_1_ip.tcl
+INFO: Import ports from HDL: /nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/ip/hdl/vhdl/compute_attention_HLS.vhd (compute_attention_HLS)
+INFO: Add axi4lite interface s_axi_control
+INFO: Add clock interface ap_clk
+INFO: Add reset interface ap_rst_n
+INFO: Add interrupt interface interrupt
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/software/xilinx/Vivado/2024.1/data/ip'.
+INFO: Add axi4full interface m_axi_mem0
+INFO: Add axi4full interface m_axi_mem1
+INFO: Add axi4full interface m_axi_mem2
+INFO: Add axi4full interface m_axi_mem3
+INFO: Calling post_process_vitis to specialize IP
+INFO: Calling post_process_sysgen to specialize IP
+Generating sysgen info xml from json file
+INFO: Created IP /nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/ip/component.xml
+INFO: Created IP archive /nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/ip/xilinx_com_hls_compute_attention_HLS_1_0.zip
+INFO: [Common 17-206] Exiting Vivado at Thu Feb 27 18:53:22 2025...
+INFO: [IMPL 213-8] Starting RTL evaluation using Vivado ...
+
+****** Vivado v2024.1.2 (64-bit)
+  **** SW Build 5164865 on Thu Sep  5 14:36:28 MDT 2024
+  **** IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+  **** SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+  **** Start of session at: Thu Feb 27 18:53:35 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source run_vivadosyn.tcl
+# source ./settings.tcl
+## set top_module compute_attention_HLS
+## set language verilog
+## set family zynquplus
+## set device xczu3eg
+## set package -sbva484
+## set speed -1-e
+## set clock ap_clk
+## set fsm_ext "off"
+## set add_io_buffers false 
+# source -notrace ./extraction.tcl
+# set vivado_proj_name project
+# set vivado_proj_dir .
+# set target_device "${device}${package}${speed}"
+# set target_clk_period_ns "10.000"
+# set target_clk_freq_hz [expr {floor(1000 / $target_clk_period_ns) * 1000000}]
+# set ip_vlnv xilinx.com:hls:compute_attention_HLS:1.0
+# set ip_repo_path ../ip
+# set bd_design_name bd_0
+# set bd_inst_name hls_inst
+# set bd_props {}
+# set has_synth true
+# set synth_design_args {-directive sdx_optimization_effort_high}
+# set synth_dcp ""
+# set synth_props {}
+# set has_impl false
+# set impl_props {}
+# set report_options [dict create]
+# dict set report_options report_level 2
+# dict set report_options report_max_paths 10
+# dict set report_options stdout_hls_reports 1
+# dict set report_options stdout_vivado_reports 0
+# dict set report_options hls_project project_fin2
+# dict set report_options hls_solution solution1
+# dict set report_options has_synth $has_synth
+# dict set report_options has_impl $has_impl
+# dict set report_options vivado_reportbasename $top_module
+# dict set report_options vivado_reportdir ./report
+# dict set report_options hls_impl_dir ..
+# dict set report_options hls_reportdir ../report/$language
+# dict set report_options target_clk_period $target_clk_period_ns
+# dict set report_options target_device $target_device
+# dict set report_options language $language
+# dict set report_options clock_name $clock
+# dict set report_options error_if_impl_timing_fails false
+# dict set report_options topmodule "compute_attention_HLS"
+# dict set report_options funcmodules {compute_attention_HLS_compute_attention_Pipeline_VITIS_LOOP_41_1 compute_attention_HLS_compute_attention_Pipeline_VITIS_LOOP_61_4 compute_attention_HLS_compute_attention_Pipeline_LoadQ compute_attention_HLS_compute_attention_Pipeline_VITIS_LOOP_90_8 compute_attention_HLS_compute_attention_Pipeline_VITIS_LOOP_112_10 compute_attention_HLS_compute_attention_Pipeline_VITIS_LOOP_125_12 compute_attention_HLS_compute_attention_Pipeline_ComputeOutput compute_attention_HLS_compute_attention}
+# dict set report_options bindmodules {compute_attention_HLS_flow_control_loop_pipe_sequential_init compute_attention_HLS_mul_16s_16s_30_1_1 compute_attention_HLS_mac_muladd_16s_16s_30s_30_4_1 compute_attention_HLS_mul_50ns_50ns_100_1_1 compute_attention_HLS_mul_67ns_63ns_130_1_1 compute_attention_HLS_mul_72ns_68ns_140_1_1 compute_attention_HLS_compute_attention_Pipeline_VITIS_LOOP_112_10_f_x_msb_4_table_ROM_AUTO_1R compute_attention_HLS_compute_attention_Pipeline_VITIS_LOOP_112_10_f_x_msb_3_table_ROM_AUTO_1R compute_attention_HLS_compute_attention_Pipeline_VITIS_LOOP_112_10_f_x_msb_2_table_ROM_AUTO_1R compute_attention_HLS_compute_attention_Pipeline_VITIS_LOOP_112_10_exp_x_msb_1_table_ROM_AUTO_1R compute_attention_HLS_mul_32s_16s_40_1_1 compute_attention_HLS_mul_16s_16s_27_1_1 compute_attention_HLS_mac_muladd_16s_16s_27s_27_4_1 compute_attention_HLS_mac_muladd_16s_16s_27ns_27_4_1 compute_attention_HLS_fpext_32ns_64_2_no_dsp_1 compute_attention_HLS_ddiv_64ns_64ns_64_22_no_dsp_1 compute_attention_HLS_sparsemux_9_3_32_1_1 compute_attention_HLS_compute_attention_Q_l_row_RAM_AUTO_1R1W compute_attention_HLS_compute_attention_K_l_0_RAM_AUTO_1R1W compute_attention_HLS_compute_attention_V_l_0_RAM_AUTO_1R1W compute_attention_HLS_mem0_m_axi compute_attention_HLS_mem1_m_axi compute_attention_HLS_mem2_m_axi compute_attention_HLS_mem3_m_axi compute_attention_HLS_control_s_axi}
+# dict set report_options max_module_depth 7
+# create_project $vivado_proj_name $vivado_proj_dir -part $target_device -force
+create_project: Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1707.625 ; gain = 65.867 ; free physical = 65168 ; free virtual = 88699
+# set_property target_language $language [current_project]
+# if { ![file exists $ip_repo_path] } {
+#   error "Cannot find packaged HLS IP"
+# }
+# set_property ip_repo_paths [file normalize $ip_repo_path] [current_project]
+# update_ip_catalog
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/ip'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/software/xilinx/Vivado/2024.1/data/ip'.
+# create_bd_design bd_0
+Wrote  : </nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/project.srcs/sources_1/bd/bd_0/bd_0.bd> 
+# set cell_inst [create_bd_cell -type ip -vlnv $ip_vlnv $bd_inst_name]
+# if { [llength $bd_props] } { 
+#   set_property -dict $bd_props $cell_inst 
+# }
+# make_bd_pins_external $cell_inst
+# make_bd_intf_pins_external $cell_inst
+# set bd_clk_ports [get_bd_ports -filter {TYPE==clk}]
+# if { [llength $bd_clk_ports] && $target_clk_freq_hz ne "" } { 
+#   set_property CONFIG.FREQ_HZ $target_clk_freq_hz $bd_clk_ports 
+# }
+# foreach bd_port [get_bd_intf_ports] {
+#   set_property name [regsub {_0$} [get_property name $bd_port] {}] $bd_port
+# }
+# foreach bd_port [get_bd_ports -filter {INTF!=TRUE}] {
+#   set_property name [regsub {_0$} [get_property name $bd_port] {}] $bd_port
+# }
+# set s_axi_addr_width_min 32
+# foreach bd_port [get_bd_intf_ports -filter {MODE == "Slave" && VLNV =~ "xilinx.com:interface:aximm_rtl:*"}] {
+#   set bd_port_addr_width [get_property CONFIG.ADDR_WIDTH $bd_port]
+#   if { $bd_port_addr_width < $s_axi_addr_width_min } {
+#     puts "INFO: Updating $bd_port CONFIG.ADDR_WIDTH to $s_axi_addr_width_min"
+#     set_property CONFIG.ADDR_WIDTH $s_axi_addr_width_min $bd_port
+#   }
+# }
+INFO: Updating /s_axi_control CONFIG.ADDR_WIDTH to 32
+# set_msg_config -id {[BD 41-1265]} -severity {CRITICAL WARNING} -new_severity {INFO}
+# assign_bd_address
+INFO: [BD 41-3093] Triggering Legacy Auto Assign Algorithm
+Slave segment '/hls_inst/s_axi_control/Reg' is being assigned into address space '/s_axi_control' at <0x0000_0000 [ 64K ]>.
+Slave segment '/m_axi_mem0/Reg' is being assigned into address space '/hls_inst/Data_m_axi_mem0' at <0x44A0_0000 [ 64K ]>.
+Slave segment '/m_axi_mem1/Reg' is being assigned into address space '/hls_inst/Data_m_axi_mem1' at <0x44A0_0000 [ 64K ]>.
+Slave segment '/m_axi_mem2/Reg' is being assigned into address space '/hls_inst/Data_m_axi_mem2' at <0x44A0_0000 [ 64K ]>.
+Slave segment '/m_axi_mem3/Reg' is being assigned into address space '/hls_inst/Data_m_axi_mem3' at <0x44A0_0000 [ 64K ]>.
+Wrote  : </nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/project.srcs/sources_1/bd/bd_0/bd_0.bd> 
+Verilog Output written to : /nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/synth/bd_0.v
+Verilog Output written to : /nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/sim/bd_0.v
+Verilog Output written to : /nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/hdl/bd_0_wrapper.v
+make_wrapper: Time (s): cpu = 00:00:02 ; elapsed = 00:00:05 . Memory (MB): peak = 2042.168 ; gain = 196.625 ; free physical = 65735 ; free virtual = 89421
+# set toprtl [make_wrapper -files [get_files ${bd_design_name}.bd] -top]
+# add_files -norecurse $toprtl
+# set top_inst_name [file root [file tail $toprtl]]
+# puts "Using BD top: $top_inst_name"
+Using BD top: bd_0_wrapper
+# set xdc_files [glob -nocomplain ./*.xdc]
+# if { [llength $xdc_files] } {
+#     add_files -fileset constrs_1 -norecurse $xdc_files
+# }
+# launch_runs synth_1 -scripts_only
+INFO: [BD 41-1662] The design 'bd_0.bd' is already validated. Therefore parameter propagation will not be re-run.
+Verilog Output written to : /nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/synth/bd_0.v
+Verilog Output written to : /nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/sim/bd_0.v
+Verilog Output written to : /nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/hdl/bd_0_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block hls_inst .
+Exporting to file /nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/hw_handoff/bd_0.hwh
+Generated Hardware Definition File /nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/synth/bd_0.hwdef
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: bd_0_hls_inst_0
+WARNING: [Vivado 12-7122] Auto Incremental Compile:: No reference checkpoint was found in run synth_1. Auto-incremental flow will not be run, the standard flow will be run instead.
+launch_runs: Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 2114.203 ; gain = 72.035 ; free physical = 66020 ; free virtual = 89697
+# foreach run [get_runs -filter {IS_SYNTHESIS == 1}] {
+#   reset_run [get_runs $run]
+# }
+# set_property XPM_LIBRARIES {XPM_MEMORY XPM_FIFO} [current_project]
+# hls_vivado_reports_setup $report_options
+TIMESTAMP: HLS-REPORT: initialize report directories: 2025-02-27 18:54:17 EST
+# if { $has_synth || $has_impl } {
+#   # synth properties setting
+#   set_property -name {STEPS.SYNTH_DESIGN.ARGS.MORE OPTIONS} -value {-mode out_of_context} -objects [get_runs synth_1]
+#   set ip_inst [get_ips -quiet ${bd_design_name}*${bd_inst_name}*]
+#   if { ![llength $ip_inst] } {
+#       error "Cannot find HLS IP instance: ${bd_design_name}*${bd_inst_name}*"
+#   }
+#   set synth_run [get_runs -filter {IS_SYNTHESIS == 1} ${ip_inst}*]
+#   if { ![llength $synth_run] } {
+#       error "Cannot find synth run for HLS IP: ${ip_inst}*"
+#   }
+# 
+#   if { [llength $synth_design_args] } {
+#       set_property -name {STEPS.SYNTH_DESIGN.ARGS.MORE OPTIONS} -value $synth_design_args -objects $synth_run
+#   }
+# 
+#   if { [llength $synth_props] } {
+#     set_property -dict $synth_props $synth_run
+#   }
+# 
+#   # launch run synth
+#   launch_runs synth_1
+#   wait_on_run synth_1
+#   # synth reports
+#   hls_vivado_reports_synth synth_1 $report_options
+#   if { $synth_dcp ne "" } {
+#     file mkdir [file dirname $synth_dcp]
+#     set run_dcp [glob -nocomplain [get_property DIRECTORY $synth_run]/*.dcp]
+#     if { [llength $run_dcp] != 1 } { error "Cannot find single dcp file for run $synth_run" }
+#     file copy -force $run_dcp $synth_dcp
+#   }
+# }
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: bd_0_hls_inst_0
+WARNING: [Vivado 12-7122] Auto Incremental Compile:: No reference checkpoint was found in run synth_1. Auto-incremental flow will not be run, the standard flow will be run instead.
+[Thu Feb 27 18:54:18 2025] Launched bd_0_hls_inst_0_synth_1...
+Run output will be captured here: /nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/project.runs/bd_0_hls_inst_0_synth_1/runme.log
+[Thu Feb 27 18:54:18 2025] Launched synth_1...
+Run output will be captured here: /nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/project.runs/synth_1/runme.log
+[Thu Feb 27 18:54:18 2025] Waiting for synth_1 to finish...
+
+*** Running vivado
+    with args -log bd_0_wrapper.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source bd_0_wrapper.tcl
+
+
+****** Vivado v2024.1.2 (64-bit)
+  **** SW Build 5164865 on Thu Sep  5 14:36:28 MDT 2024
+  **** IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+  **** SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+  **** Start of session at: Thu Feb 27 19:36:16 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source bd_0_wrapper.tcl -notrace
+create_project: Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1707.625 ; gain = 65.867 ; free physical = 16712 ; free virtual = 46308
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/ip'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/software/xilinx/Vivado/2024.1/data/ip'.
+Command: synth_design -top bd_0_wrapper -part xczu3eg-sbva484-1-e -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xczu3eg'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xczu3eg'
+INFO: [Device 21-403] Loading part xczu3eg-sbva484-1-e
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 1070465
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2912.941 ; gain = 304.777 ; free physical = 12566 ; free virtual = 42503
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'bd_0_wrapper' [/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/hdl/bd_0_wrapper.v:13]
+INFO: [Synth 8-6157] synthesizing module 'bd_0' [/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/synth/bd_0.v:13]
+INFO: [Synth 8-6157] synthesizing module 'bd_0_hls_inst_0' [/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/project.runs/synth_1/.Xil/Vivado-949949-ece-linlabsrv01.ece.gatech.edu/realtime/bd_0_hls_inst_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'bd_0_hls_inst_0' (0#1) [/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/project.runs/synth_1/.Xil/Vivado-949949-ece-linlabsrv01.ece.gatech.edu/realtime/bd_0_hls_inst_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'bd_0' (0#1) [/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/synth/bd_0.v:13]
+INFO: [Synth 8-6155] done synthesizing module 'bd_0_wrapper' (0#1) [/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/hdl/bd_0_wrapper.v:13]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2997.879 ; gain = 389.715 ; free physical = 13335 ; free virtual = 43303
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2997.879 ; gain = 389.715 ; free physical = 13232 ; free virtual = 43207
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2997.879 ; gain = 389.715 ; free physical = 13231 ; free virtual = 43207
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2997.879 ; gain = 0.000 ; free physical = 13248 ; free virtual = 43244
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ip/bd_0_hls_inst_0/bd_0_hls_inst_0/bd_0_hls_inst_0_in_context.xdc] for cell 'bd_0_i/hls_inst'
+Finished Parsing XDC File [/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ip/bd_0_hls_inst_0/bd_0_hls_inst_0/bd_0_hls_inst_0_in_context.xdc] for cell 'bd_0_i/hls_inst'
+Parsing XDC File [/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/compute_attention_HLS.xdc]
+create_clock: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 3061.910 ; gain = 0.000 ; free physical = 11292 ; free virtual = 41248
+Finished Parsing XDC File [/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/compute_attention_HLS.xdc]
+Parsing XDC File [/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/project.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/project.runs/synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3061.910 ; gain = 0.000 ; free physical = 11284 ; free virtual = 41240
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.12 ; elapsed = 00:00:00.08 . Memory (MB): peak = 3061.910 ; gain = 0.000 ; free physical = 11276 ; free virtual = 41233
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 3061.910 ; gain = 453.746 ; free physical = 9138 ; free virtual = 39311
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xczu3eg-sbva484-1-e
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 3069.914 ; gain = 461.750 ; free physical = 9120 ; free virtual = 39292
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property KEEP_HIERARCHY = SOFT for bd_0_i. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_0_i/hls_inst. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 3069.914 ; gain = 461.750 ; free physical = 9121 ; free virtual = 39295
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:26 ; elapsed = 00:00:29 . Memory (MB): peak = 3069.914 ; gain = 461.750 ; free physical = 9177 ; free virtual = 39354
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 360 (col length:72)
+BRAMs: 432 (col length: RAMB18 72 RAMB36 36)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:28 ; elapsed = 00:00:31 . Memory (MB): peak = 3069.914 ; gain = 461.750 ; free physical = 8563 ; free virtual = 38780
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:42 ; elapsed = 00:00:46 . Memory (MB): peak = 3534.125 ; gain = 925.961 ; free physical = 9587 ; free virtual = 39992
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:42 ; elapsed = 00:00:46 . Memory (MB): peak = 3535.125 ; gain = 926.961 ; free physical = 9575 ; free virtual = 39984
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:43 ; elapsed = 00:00:46 . Memory (MB): peak = 3546.141 ; gain = 937.977 ; free physical = 9541 ; free virtual = 39950
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:49 ; elapsed = 00:00:52 . Memory (MB): peak = 3560.016 ; gain = 951.852 ; free physical = 9559 ; free virtual = 39879
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:49 ; elapsed = 00:00:52 . Memory (MB): peak = 3560.016 ; gain = 951.852 ; free physical = 9557 ; free virtual = 39877
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:49 ; elapsed = 00:00:52 . Memory (MB): peak = 3560.016 ; gain = 951.852 ; free physical = 9586 ; free virtual = 39906
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:49 ; elapsed = 00:00:52 . Memory (MB): peak = 3560.016 ; gain = 951.852 ; free physical = 9586 ; free virtual = 39906
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:49 ; elapsed = 00:00:52 . Memory (MB): peak = 3560.016 ; gain = 951.852 ; free physical = 9569 ; free virtual = 39889
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:49 ; elapsed = 00:00:52 . Memory (MB): peak = 3560.016 ; gain = 951.852 ; free physical = 9594 ; free virtual = 39915
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+----------------+----------+
+|      |BlackBox name   |Instances |
++------+----------------+----------+
+|1     |bd_0_hls_inst_0 |         1|
++------+----------------+----------+
+
+Report Cell Usage: 
++------+--------------+------+
+|      |Cell          |Count |
++------+--------------+------+
+|1     |bd_0_hls_inst |     1|
++------+--------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:49 ; elapsed = 00:00:52 . Memory (MB): peak = 3560.016 ; gain = 951.852 ; free physical = 9591 ; free virtual = 39911
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:40 ; elapsed = 00:00:43 . Memory (MB): peak = 3560.016 ; gain = 887.820 ; free physical = 9503 ; free virtual = 39828
+Synthesis Optimization Complete : Time (s): cpu = 00:00:50 ; elapsed = 00:00:53 . Memory (MB): peak = 3560.016 ; gain = 951.852 ; free physical = 9483 ; free virtual = 39808
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 3560.016 ; gain = 0.000 ; free physical = 9640 ; free virtual = 39966
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3560.016 ; gain = 0.000 ; free physical = 9042 ; free virtual = 39311
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: ef878697
+INFO: [Common 17-83] Releasing license: Synthesis
+22 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:05 ; elapsed = 00:01:05 . Memory (MB): peak = 3560.016 ; gain = 1804.969 ; free physical = 8995 ; free virtual = 39265
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 2577.303; main = 2222.913; forked = 354.418
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 5279.617; main = 3546.145; forked = 1733.473
+INFO: [Common 17-1381] The checkpoint '/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/project.runs/synth_1/bd_0_wrapper.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file bd_0_wrapper_utilization_synth.rpt -pb bd_0_wrapper_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Thu Feb 27 19:37:50 2025...
+[Thu Feb 27 19:38:01 2025] synth_1 finished
+wait_on_runs: Time (s): cpu = 00:40:53 ; elapsed = 00:43:44 . Memory (MB): peak = 2120.344 ; gain = 0.000 ; free physical = 8847 ; free virtual = 39196
+TIMESTAMP: HLS-REPORT: synthesis open_run: 2025-02-27 19:38:01 EST
+INFO: HLS-REPORT: Opening synthesis design database: open_run synth_1
+Design is defaulting to impl run constrset: constrs_1
+Design is defaulting to synth run part: xczu3eg-sbva484-1-e
+INFO: [Device 21-403] Loading part xczu3eg-sbva484-1-e
+INFO: [Project 1-454] Reading design checkpoint '/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ip/bd_0_hls_inst_0/bd_0_hls_inst_0.dcp' for cell 'bd_0_i/hls_inst'
+Netlist sorting complete. Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 3515.176 ; gain = 0.000 ; free physical = 7187 ; free virtual = 37915
+INFO: [Netlist 29-17] Analyzing 55441 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 7 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2024.1.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/compute_attention_HLS.xdc]
+create_clock: Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 3901.914 ; gain = 26.781 ; free physical = 15078 ; free virtual = 45997
+Finished Parsing XDC File [/nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/compute_attention_HLS.xdc]
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00.11 ; elapsed = 00:00:00.15 . Memory (MB): peak = 4303.422 ; gain = 0.000 ; free physical = 11296 ; free virtual = 42278
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 9016 instances were transformed.
+  DSP48E2 => DSP48E2 (DSP_ALU, DSP_A_B_DATA, DSP_C_DATA, DSP_MULTIPLIER, DSP_M_DATA, DSP_OUTPUT, DSP_PREADD, DSP_PREADD_DATA): 360 instances
+  RAM128X1S => RAM128X1S (MUXF7, RAMS64E(x2)): 1600 instances
+  RAM16X1D => RAM32X1D (RAMD32(x2)): 912 instances
+  RAM16X1S => RAM32X1S (RAMS32): 2048 instances
+  RAM32X1S => RAM32X1S (RAMS32): 2048 instances
+  RAM64X1S => RAM64X1S (RAMS64E): 2048 instances
+
+open_run: Time (s): cpu = 00:03:48 ; elapsed = 00:03:38 . Memory (MB): peak = 4303.422 ; gain = 2183.078 ; free physical = 11132 ; free virtual = 42116
+TIMESTAMP: HLS-REPORT: synthesis generate_reports_vivado: 2025-02-27 19:41:39 EST
+INFO: HLS-REPORT: Running report: report_utilization -file ./report/compute_attention_HLS_utilization_synth.rpt
+INFO: HLS-REPORT: Running report: report_utilization -hierarchical -hierarchical_depth 7 -file ./report/compute_attention_HLS_utilization_hierarchical_synth.rpt
+report_utilization: Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 4323.508 ; gain = 10.281 ; free physical = 10306 ; free virtual = 41381
+INFO: HLS-REPORT: Running report: report_timing_summary -file ./report/compute_attention_HLS_timing_synth.rpt
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Temperature grade: E, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+WARNING: [Timing 38-242] The property HD.CLK_SRC of clock port "ap_clk" is not set. In out-of-context mode, this prevents timing estimation for clock delay/skew
+Resolution: Set the HD.CLK_SRC property of the out-of-context port to the location of the clock buffer instance in the top-level design
+report_timing_summary: Time (s): cpu = 00:05:26 ; elapsed = 00:01:50 . Memory (MB): peak = 6627.789 ; gain = 2304.281 ; free physical = 11732 ; free virtual = 43420
+INFO: HLS-REPORT: Running report: report_timing -max_paths 10 -file ./report/compute_attention_HLS_timing_paths_synth.rpt
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Temperature grade: E, Delay Type: max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+INFO: [Timing 38-78] ReportTimingParams: -max_paths 10 -nworst 1 -delay_type max -sort_by slack.
+INFO: HLS-REPORT: Running report: report_design_analysis -file ./report/compute_attention_HLS_design_analysis_synth.rpt
+INFO: [Implflow 30-839]  
+report_design_analysis: Time (s): cpu = 00:00:25 ; elapsed = 00:00:05 . Memory (MB): peak = 6627.789 ; gain = 0.000 ; free physical = 12434 ; free virtual = 44123
+INFO: HLS-REPORT: Running report: ::tclapp::xilinx::designutils::report_failfast -detailed_report synth -file ./report/compute_attention_HLS_failfast_synth.rpt
+ -I- design metrics completed in 52 seconds
+ -I- DONT_TOUCH metric completed in 13 seconds
+ -I- MARK_DEBUG metric completed in 8 seconds
+ -I- utilization metrics completed in 14 seconds
+ -I- control set metrics completed in 1 seconds
+ -I- methodology check metrics completed in 39 seconds
+ -I- average fanout metrics completed in 367 seconds (6 modules)
+ -I- Generated file /nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/report/synth.AVGFO.rpt
+ -I- non-FD high fanout nets completed in 53 seconds
+ -I- path budgeting metrics completed in 47 seconds
+#  +------------------------------------------------------------------------------------------+
+#  | Design Summary                                                                           |
+#  | design_1                                                                                 |
+#  | xczu3eg-sbva484-1-e                                                                      |
+#  +-----------------------------------------------------------+-----------+---------+--------+
+#  | Criteria                                                  | Guideline | Actual  | Status |
+#  +-----------------------------------------------------------+-----------+---------+--------+
+#  | LUT                                                       | 70%       | 517.79% | REVIEW |
+#  | FD                                                        | 50%       | 43.70%  | OK     |
+#  | LUTRAM+SRL                                                | 25%       | 41.01%  | REVIEW |
+#  | CARRY8                                                    | 25%       | 495.85% | REVIEW |
+#  | MUXF7                                                     | 15%       | 9.66%   | OK     |
+#  | LUT Combining                                             | 20%       | 31.01%  | REVIEW |
+#  | DSP                                                       | 80%       | 100.00% | REVIEW |
+#  | RAMB/FIFO                                                 | 80%       | 33.56%  | OK     |
+#  | DSP+RAMB+URAM (Avg)                                       | 70%       | 66.78%  | OK     |
+#  | BUFGCE* + BUFGCTRL                                        | 24        | 0       | OK     |
+#  | DONT_TOUCH (cells/nets)                                   | 0         | 0       | OK     |
+#  | MARK_DEBUG (nets)                                         | 0         | 0       | OK     |
+#  | Control Sets                                              | 1323      | 552     | OK     |
+#  | Average Fanout for modules > 100k cells                   | 4         | 2.24    | OK     |
+#  | Max Average Fanout for modules > 100k cells               | 4         | 2.25    | OK     |
+#  | Non-FD high fanout nets > 10k loads                       | 0         | 0       | OK     |
+#  +-----------------------------------------------------------+-----------+---------+--------+
+#  | TIMING-6 (No common primary clock between related clocks) | 0         | 0       | OK     |
+#  | TIMING-7 (No common node between related clocks)          | 0         | 0       | OK     |
+#  | TIMING-8 (No common period between related clocks)        | 0         | 0       | OK     |
+#  | TIMING-14 (LUT on the clock tree)                         | 0         | 0       | OK     |
+#  | TIMING-35 (No common node in paths with the same clock)   | 0         | 0       | OK     |
+#  +-----------------------------------------------------------+-----------+---------+--------+
+#  | Number of paths above max LUT budgeting (0.350ns)         | 0         | 0       | OK     |
+#  | Number of paths above max Net budgeting (0.239ns)         | 0         | 0       | OK     |
+#  +-----------------------------------------------------------+-----------+---------+--------+
+ -I- Generated file /nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/report/compute_attention_HLS_failfast_synth.rpt
+ -I- Number of criteria to review: 5
+ -I- This report should be run before placing the design and uses conservative guidelines beyond which runtime and timing closure will likely be more challenging
+ -I- report_failfast completed in 594 seconds
+TIMESTAMP: HLS-REPORT: synthesis gen_data_dict_vivado: 2025-02-27 19:53:46 EST
+TIMESTAMP: HLS-REPORT: synth extract_util_hier: 2025-02-27 19:53:46 EST
+TIMESTAMP: HLS-REPORT: synth get_cell_hier_data: 2025-02-27 19:53:47 EST
+TIMESTAMP: HLS-REPORT: synth get_timing_paths: 2025-02-27 19:53:50 EST
+TIMESTAMP: HLS-REPORT: synth process timing paths: 2025-02-27 19:53:51 EST
+TIMESTAMP: HLS-REPORT: synth get_all_vv_rpt_files: 2025-02-27 19:53:51 EST
+TIMESTAMP: HLS-REPORT: synthesis write_reports_vivado: 2025-02-27 19:53:51 EST
+HLS EXTRACTION: synth area_totals:  0 70560 141120 360 432 0 0
+HLS EXTRACTION: synth area_current: 0 365352 61670 360 145 0 642 0 0 0
+HLS EXTRACTION: synth resources_dict: AVAIL_LUT 70560 LUT 365352 AVAIL_FF 141120 FF 61670 AVAIL_DSP 360 DSP 360 AVAIL_BRAM 432 BRAM 145 AVAIL_URAM 0 URAM 0 LATCH 0 SRL 642 AVAIL_CLB 0 CLB 0
+INFO: HLS-REPORT: generated /nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/verilog/report/vivado_syn.xml
+INFO: HLS-REPORT: generated /nethome/zwang3547/ECE8893/FPGA_ECE8893/2025_Spring/lab2_fin/project_fin2/solution1/impl/report/verilog/compute_attention_HLS_export.rpt
+
+
+Implementation tool: Xilinx Vivado v.2024.1.2
+Project:             project_fin2
+Solution:            solution1
+Device target:       xczu3eg-sbva484-1-e
+Report date:         Thu Feb 27 19:53:51 EST 2025
+
+#=== Post-Synthesis Resource usage ===
+SLICE:            0
+LUT:         365352
+FF:           61670
+DSP:            360
+BRAM:           145
+URAM:             0
+LATCH:            0
+SRL:            642
+CLB:              0
+
+#=== Final timing ===
+CP required:                     10.000
+CP achieved post-synthesis:      8.319
+Timing met
+
+TIMESTAMP: HLS-REPORT: synthesis end: 2025-02-27 19:53:51 EST
+# if { $has_impl } {
+#   # launch run impl
+#   if { [llength $impl_props] } {
+#     set_property -dict $impl_props [get_runs impl_1]
+#   }
+#   launch_runs impl_1
+#   wait_on_run impl_1
+#   # impl reports
+#   hls_vivado_reports_impl impl_1 $report_options
+# }
+# hls_vivado_reports_finalize $report_options
+TIMESTAMP: HLS-REPORT: all reports complete: 2025-02-27 19:53:51 EST
+INFO: [Common 17-206] Exiting Vivado at Thu Feb 27 19:53:51 2025...
+INFO: [HLS 200-802] Generated output file project_fin2/solution1/impl/export.zip
+INFO: [HLS 200-2161] Finished Command export_design Elapsed time: 01:02:01; Allocated memory: 40.020 MB.
+INFO: [HLS 200-112] Total CPU user time: 4301.28 seconds. Total CPU system time: 319.99 seconds. Total elapsed time: 4034.79 seconds; peak allocated memory: 446.879 MB.
