@@ -14,7 +14,7 @@ DIR_DATASET_CHSTONE = HLS_DATASET_DIR / "chstone"
 DIR_DATASET_PP4FPGAS = HLS_DATASET_DIR / "pp4fpgas"
 DIR_DATASET_VITIS_EXAMPLES = HLS_DATASET_DIR / "vitis_examples"
 DIR_DATASET_ACCELERATORS = HLS_DATASET_DIR / "accelerators"
-
+DIR_DATASET_MATRIX_METHODS = HLS_DATASET_DIR / "matrix_methods"
 DIR_ALL = [
     DIR_DATASET_POLYBENCH,
     DIR_DATASET_MACHSUITE,
@@ -76,6 +76,11 @@ def dataset_accelerators_builder(name: str, work_dir: Path) -> DesignDataset:
     shutil.copytree(DIR_DATASET_ACCELERATORS, new_dir)
     return DesignDataset.from_dir(name, new_dir)
 
+def dataset_matrix_methods_builder(name: str, work_dir: Path) -> DesignDataset:
+    check_dataset_dir_exists(DIR_DATASET_MATRIX_METHODS)
+    new_dir = work_dir / name
+    shutil.copytree(DIR_DATASET_MATRIX_METHODS, new_dir)
+    return DesignDataset.from_dir(name, new_dir)
 
 DATASET_STR_MAP = {
     "polybench": dataset_polybench_builder,
@@ -84,6 +89,7 @@ DATASET_STR_MAP = {
     "pp4fpgas": dataset_pp4fpgas_builder,
     "vitis_examples": dataset_vitis_examples_builder,
     "accelerators": dataset_accelerators_builder,
+    "matrix_methods": dataset_matrix_methods_builder
 }
 
 
