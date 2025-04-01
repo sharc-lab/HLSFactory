@@ -14,6 +14,7 @@ DIR_DATASET_CHSTONE = HLS_DATASET_DIR / "chstone"
 DIR_DATASET_PP4FPGAS = HLS_DATASET_DIR / "pp4fpgas"
 DIR_DATASET_VITIS_EXAMPLES = HLS_DATASET_DIR / "vitis_examples"
 DIR_DATASET_ACCELERATORS = HLS_DATASET_DIR / "accelerators"
+DIR_DATASET_Ayush_Saxena_ECE_8893_SPRING_26 = HLS_DATASET_DIR / "ayush_saxena_ece_8893_spring_26"
 
 DIR_DATASET_Anuvab_Sen_ECE_8893_SPRING_29 = HLS_DATASET_DIR / "anuvab_sen_ece_8893_spring_29"
 DIR_DATASET_MATRIX_METHODS = HLS_DATASET_DIR / "matrix_methods"
@@ -79,6 +80,12 @@ def dataset_accelerators_builder(name: str, work_dir: Path) -> DesignDataset:
     shutil.copytree(DIR_DATASET_ACCELERATORS, new_dir)
     return DesignDataset.from_dir(name, new_dir)
 
+def dataset_dataset_ayush_saxena_ece_8893_spring_26_builder_builder(name: str, work_dir: Path) -> DesignDataset:
+    check_dataset_dir_exists(DIR_DATASET_Ayush_Saxena_ECE_8893_SPRING_26)
+    new_dir = work_dir / name
+    shutil.copytree(DIR_DATASET_ACCELERATORS, new_dir)
+    return DesignDataset.from_dir(name, new_dir)
+
 
 def dataset_dataset_ayush_saxena_ece_8893_spring_26_builder_builder(name: str, work_dir: Path) -> DesignDataset:
     check_dataset_dir_exists(DIR_DATASET_Anuvab_Sen_ECE_8893_SPRING_29)
@@ -101,7 +108,11 @@ DATASET_STR_MAP = {
     "pp4fpgas": dataset_pp4fpgas_builder,
     "vitis_examples": dataset_vitis_examples_builder,
     "accelerators": dataset_accelerators_builder,
+
+    "ayush_saxena_ece_8893_spring_26": dataset_dataset_ayush_saxena_ece_8893_spring_26_builder_builder
+
     "matrix_methods": dataset_matrix_methods_builder
+
 }
 
 
