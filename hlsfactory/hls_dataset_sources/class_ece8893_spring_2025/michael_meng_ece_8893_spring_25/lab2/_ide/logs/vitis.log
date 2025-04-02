@@ -1,0 +1,14 @@
+15:07:54 INFO  : updated workspace path: /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab2
+15:07:54 INFO  : bash, -c, source /tools/software/xilinx/Vitis/2024.2/tps/lnx64/lopper-1.1.0/env/bin/activate && python /tools/software/xilinx/Vitis/2024.2/data/embeddedsw/scripts/pyesw//repo.py -st   /tools/software/xilinx/Vitis/2024.2/data/embeddedsw && deactivate
+15:07:57 INFO  : Successfully created repository data at /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab2/_ide/.wsdata
+15:07:57 INFO  : bash, -c, source /tools/software/xilinx/Vitis/2024.2/tps/lnx64/lopper-1.1.0/env/bin/activate && python /tools/software/xilinx/Vitis/2024.2/data/embeddedsw/scripts/pyesw//get_template_data.py -d /tmp/rigel_lopper_mmeng359977015454369533856 -r /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab2/_ide/.wsdata/.repo.yaml && deactivate
+15:07:58 INFO  : Embedded Template List generated successfully
+15:08:18 INFO  : bash, -c, source /tools/software/xilinx/Vitis/2024.2/tps/lnx64/lopper-1.1.0/env/bin/activate && python /tools/software/xilinx/Vitis/2024.2/data/embeddedsw/scripts/pyesw//get_template_data.py -d /tmp/rigel_lopper_mmeng3514526269611571353283 -r /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab2/_ide/.wsdata/.repo.yaml && deactivate
+15:08:19 INFO  : created .gitignore file for the project /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab3
+15:08:19 INFO  : Embedded Template List generated successfully
+15:08:37 INFO  : updated workspace path: /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab2
+15:08:37 INFO  : Embedded Template List generated successfully
+15:08:37 INFO  : bash, -c, source /tools/software/xilinx/Vitis/2024.2/tps/lnx64/lopper-1.1.0/env/bin/activate && python /tools/software/xilinx/Vitis/2024.2/data/embeddedsw/scripts/pyesw//get_template_data.py -d /tmp/rigel_lopper_mmeng356362718150523509348 -r /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab2/_ide/.wsdata/.repo.yaml && deactivate
+15:08:38 INFO  : Embedded Template List generated successfully
+15:09:20 INFO  : bash, -c, source /tools/software/xilinx/Vitis/2024.2/tps/lnx64/lopper-1.1.0/env/bin/activate && python /tools/software/xilinx/Vitis/2024.2/data/embeddedsw/scripts/pyesw//get_template_data.py -d /tmp/rigel_lopper_mmeng351931023033790999355 -r /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab2/_ide/.wsdata/.repo.yaml && deactivate
+15:09:20 INFO  : created .gitignore file for the project /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab3

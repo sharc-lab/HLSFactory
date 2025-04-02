@@ -1,0 +1,75 @@
+22:56:18 INFO  : updated workspace path: /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab3
+22:56:18 INFO  : bash, -c, source /tools/software/xilinx/Vitis/2024.2/tps/lnx64/lopper-1.1.0/env/bin/activate && python /tools/software/xilinx/Vitis/2024.2/data/embeddedsw/scripts/pyesw//repo.py -st   /tools/software/xilinx/Vitis/2024.2/data/embeddedsw && deactivate
+22:56:24 INFO  : Successfully created repository data at /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab3/_ide/.wsdata
+22:56:24 INFO  : bash, -c, source /tools/software/xilinx/Vitis/2024.2/tps/lnx64/lopper-1.1.0/env/bin/activate && python /tools/software/xilinx/Vitis/2024.2/data/embeddedsw/scripts/pyesw//get_template_data.py -d /tmp/rigel_lopper_mmeng355508230415505372826 -r /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab3/_ide/.wsdata/.repo.yaml && deactivate
+22:56:24 INFO  : Embedded Template List generated successfully
+07:01:01 INFO  : connection terminated
+07:01:01 INFO  : connection terminated
+07:01:01 INFO  : scheduling shutdown timer for 2 seconds ...
+07:01:03 INFO  : Terminating Vitis C++ Server
+07:01:03 INFO  : Vitis C++ Server terminated
+15:08:20 INFO  : updated workspace path: /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab3
+15:08:20 INFO  : bash, -c, source /tools/software/xilinx/Vitis/2024.2/tps/lnx64/lopper-1.1.0/env/bin/activate && python /tools/software/xilinx/Vitis/2024.2/data/embeddedsw/scripts/pyesw//get_template_data.py -d /tmp/rigel_lopper_mmeng3513422158571446625539 -r /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab3/_ide/.wsdata/.repo.yaml && deactivate
+15:08:20 INFO  : Embedded Template List generated successfully
+15:08:37 INFO  : bash, -c, source /tools/software/xilinx/Vitis/2024.2/tps/lnx64/lopper-1.1.0/env/bin/activate && python /tools/software/xilinx/Vitis/2024.2/data/embeddedsw/scripts/pyesw//get_template_data.py -d /tmp/rigel_lopper_mmeng3516193780017912526666 -r /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab3/_ide/.wsdata/.repo.yaml && deactivate
+15:08:37 INFO  : created .gitignore file for the project /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab2
+15:09:20 INFO  : updated workspace path: /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab3
+15:09:21 INFO  : Embedded Template List generated successfully
+15:09:21 INFO  : bash, -c, source /tools/software/xilinx/Vitis/2024.2/tps/lnx64/lopper-1.1.0/env/bin/activate && python /tools/software/xilinx/Vitis/2024.2/data/embeddedsw/scripts/pyesw//get_template_data.py -d /tmp/rigel_lopper_mmeng3515673723883570734865 -r /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab3/_ide/.wsdata/.repo.yaml && deactivate
+15:09:21 INFO  : Embedded Template List generated successfully
+00:01:01 INFO  : connection terminated
+00:01:01 INFO  : connection terminated
+00:01:01 INFO  : scheduling shutdown timer for 2 seconds ...
+00:01:03 INFO  : Terminating Vitis C++ Server
+00:01:03 INFO  : Vitis C++ Server terminated
+00:02:54 INFO  : updated workspace path: /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab3
+00:02:54 INFO  : created .gitignore file for the project /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab3
+00:02:58 INFO  : Successfully created repository data at /tmp/rigel_lopper_mmeng356521145818761461954
+00:02:58 INFO  : bash, -c, source /tools/software/xilinx/Vitis/2024.2/tps/lnx64/lopper-1.1.0/env/bin/activate && python /tools/software/xilinx/Vitis/2024.2/data/embeddedsw/scripts/pyesw//get_template_data.py -d /tmp/rigel_lopper_mmeng35999418093612210440 -r /tmp/rigel_lopper_mmeng356521145818761461954/.repo.yaml && deactivate
+00:02:58 INFO  : Embedded Template List generated successfully
+00:02:58 INFO  : bash, -c, source /tools/software/xilinx/Vitis/2024.2/tps/lnx64/lopper-1.1.0/env/bin/activate && python /tools/software/xilinx/Vitis/2024.2/data/embeddedsw/scripts/pyesw//get_template_data.py -d /tmp/rigel_lopper_mmeng3515634728160156219711 -r /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab3/_ide/.wsdata/.repo.yaml && deactivate
+00:02:59 INFO  : Embedded Template List generated successfully
+01:01:02 INFO  : connection terminated
+01:01:02 INFO  : connection terminated
+01:01:02 INFO  : scheduling shutdown timer for 2 seconds ...
+01:01:02 INFO  : scheduling shutdown timer for 2 seconds ...
+01:33:10 INFO  : updated workspace path: /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab3
+01:33:13 INFO  : Successfully created repository data at /tmp/rigel_lopper_mmeng358657747150141935415
+01:33:13 INFO  : bash, -c, source /tools/software/xilinx/Vitis/2024.2/tps/lnx64/lopper-1.1.0/env/bin/activate && python /tools/software/xilinx/Vitis/2024.2/data/embeddedsw/scripts/pyesw//get_template_data.py -d /tmp/rigel_lopper_mmeng356634641275307562905 -r /tmp/rigel_lopper_mmeng358657747150141935415/.repo.yaml && deactivate
+01:33:14 INFO  : Embedded Template List generated successfully
+01:33:14 INFO  : bash, -c, source /tools/software/xilinx/Vitis/2024.2/tps/lnx64/lopper-1.1.0/env/bin/activate && python /tools/software/xilinx/Vitis/2024.2/data/embeddedsw/scripts/pyesw//get_template_data.py -d /tmp/rigel_lopper_mmeng359299828686510672744 -r /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab3/_ide/.wsdata/.repo.yaml && deactivate
+01:33:14 INFO  : Embedded Template List generated successfully
+10:01:01 INFO  : connection terminated
+10:01:01 INFO  : connection terminated
+10:01:01 INFO  : scheduling shutdown timer for 2 seconds ...
+10:01:03 INFO  : Terminating Vitis C++ Server
+10:01:03 INFO  : Vitis C++ Server terminated
+11:05:15 INFO  : updated workspace path: /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab3
+11:05:18 INFO  : Successfully created repository data at /tmp/rigel_lopper_mmeng357572658164519335082
+11:05:18 INFO  : bash, -c, source /tools/software/xilinx/Vitis/2024.2/tps/lnx64/lopper-1.1.0/env/bin/activate && python /tools/software/xilinx/Vitis/2024.2/data/embeddedsw/scripts/pyesw//get_template_data.py -d /tmp/rigel_lopper_mmeng3510367302311749630828 -r /tmp/rigel_lopper_mmeng357572658164519335082/.repo.yaml && deactivate
+11:05:18 INFO  : Embedded Template List generated successfully
+11:05:18 INFO  : bash, -c, source /tools/software/xilinx/Vitis/2024.2/tps/lnx64/lopper-1.1.0/env/bin/activate && python /tools/software/xilinx/Vitis/2024.2/data/embeddedsw/scripts/pyesw//get_template_data.py -d /tmp/rigel_lopper_mmeng3516937678201933156001 -r /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab3/_ide/.wsdata/.repo.yaml && deactivate
+11:05:19 INFO  : Embedded Template List generated successfully
+14:00:14 INFO  : bash, -c, source /tools/software/xilinx/Vitis/2024.2/tps/lnx64/lopper-1.1.0/env/bin/activate && python /tools/software/xilinx/Vitis/2024.2/data/embeddedsw/scripts/pyesw//get_template_data.py -d /tmp/rigel_lopper_mmeng353269507101084909016 -r /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab3/_ide/.wsdata/.repo.yaml && deactivate
+14:00:16 INFO  : Embedded Template List generated successfully
+14:00:18 INFO  : created .gitignore file for the project /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab3
+14:00:19 INFO  : updated workspace path: /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab3
+14:00:19 INFO  : bash, -c, source /tools/software/xilinx/Vitis/2024.2/tps/lnx64/lopper-1.1.0/env/bin/activate && python /tools/software/xilinx/Vitis/2024.2/data/embeddedsw/scripts/pyesw//get_template_data.py -d /tmp/rigel_lopper_mmeng359461025783128842725 -r /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab3/_ide/.wsdata/.repo.yaml && deactivate
+14:00:19 INFO  : Embedded Template List generated successfully
+20:01:01 INFO  : connection terminated
+20:01:01 INFO  : connection terminated
+20:01:01 INFO  : scheduling shutdown timer for 2 seconds ...
+20:01:03 INFO  : Terminating Vitis C++ Server
+20:01:03 INFO  : Vitis C++ Server terminated
+23:32:02 INFO  : updated workspace path: /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab3
+23:32:02 INFO  : created .gitignore file for the project /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab3
+23:32:07 INFO  : Successfully created repository data at /tmp/rigel_lopper_mmeng3513557554047614227653
+23:32:07 INFO  : bash, -c, source /tools/software/xilinx/Vitis/2024.2/tps/lnx64/lopper-1.1.0/env/bin/activate && python /tools/software/xilinx/Vitis/2024.2/data/embeddedsw/scripts/pyesw//get_template_data.py -d /tmp/rigel_lopper_mmeng356934935160183590459 -r /tmp/rigel_lopper_mmeng3513557554047614227653/.repo.yaml && deactivate
+23:32:07 INFO  : Embedded Template List generated successfully
+23:32:07 INFO  : bash, -c, source /tools/software/xilinx/Vitis/2024.2/tps/lnx64/lopper-1.1.0/env/bin/activate && python /tools/software/xilinx/Vitis/2024.2/data/embeddedsw/scripts/pyesw//get_template_data.py -d /tmp/rigel_lopper_mmeng3515092997031378667896 -r /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab3/_ide/.wsdata/.repo.yaml && deactivate
+23:32:08 INFO  : Embedded Template List generated successfully
+08:01:01 INFO  : connection terminated
+08:01:01 INFO  : connection terminated
+08:01:01 INFO  : scheduling shutdown timer for 2 seconds ...
+08:01:03 INFO  : Terminating Vitis C++ Server
+08:01:03 INFO  : Vitis C++ Server terminated

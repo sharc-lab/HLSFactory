@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2024.2.2 (64-bit)
+# SW Build 6060944 on Thu Mar 06 19:10:09 MST 2025
+# IP Build 6050500 on Thu Mar  6 23:33:39 MST 2025
+# SharedData Build 6060542 on Thu Mar 06 10:31:07 MST 2025
+# Start of session at: Fri Mar 28 19:16:28 2025
+# Process ID         : 2994912
+# Current directory  : /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab3
+# Command line       : vivado
+# Log file           : /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab3/vivado.log
+# Journal file       : /nethome/mmeng35/FPGA_ECE8893/2025_Spring/lab3/vivado.jou
+# Running On         : ece-linlabsrv01.ece.gatech.edu
+# Platform           : RedHatEnterprise
+# Operating System   : Red Hat Enterprise Linux release 8.10 (Ootpa)
+# Processor Detail   : Intel(R) Xeon(R) Gold 5117 CPU @ 2.00GHz
+# CPU Frequency      : 2800.000 MHz
+# CPU Physical cores : 56
+# CPU Logical cores  : 112
+# Host memory        : 200629 MB
+# Swap memory        : 68719 MB
+# Total Virtual      : 269349 MB
+# Available Virtual  : 106513 MB
+#-----------------------------------------------------------
+start_gui
