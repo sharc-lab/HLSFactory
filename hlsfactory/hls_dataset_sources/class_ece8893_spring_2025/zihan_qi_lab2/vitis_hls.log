@@ -1,0 +1,247 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2024.2.2 (64-bit)
+  **** SW Build 6049644 on Mar  5 2025
+  **** IP Build 6050500 on Thu Mar  6 23:33:39 MST 2025
+  **** SharedData Build 6060542 on Thu Mar 06 10:31:07 MST 2025
+  **** Start of session at: Wed Apr  2 18:41:06 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source /tools/software/xilinx/Vitis/2024.2/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] For user 'zqi61' on host 'ece-linlabsrv01.ece.gatech.edu' (Linux_x86_64 version 4.18.0-553.44.1.el8_10.x86_64) on Wed Apr 02 18:41:09 EDT 2025
+INFO: [HLS 200-10] On os "Red Hat Enterprise Linux release 8.10 (Ootpa)"
+INFO: [HLS 200-10] In directory '/nethome/zqi61/FPGA_ECE8893/2025_Spring/lab2'
+WARNING: [HLS 200-2053] The vitis_hls executable is deprecated. Consider using vitis-run --mode hls --tcl
+Sourcing Tcl script 'dataset_hls_ip_export.tcl'
+INFO: [HLS 200-1510] Running: open_project zihan_qi_lab2 
+INFO: [HLS 200-10] Opening project '/nethome/zqi61/FPGA_ECE8893/2025_Spring/lab2/zihan_qi_lab2'.
+INFO: [HLS 200-1510] Running: open_solution solution1 
+INFO: [HLS 200-10] Opening solution '/nethome/zqi61/FPGA_ECE8893/2025_Spring/lab2/zihan_qi_lab2/solution1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu3eg-sbva484-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1510] Running: config_export -vivado_impl_strategy Flow_Quick -vivado_synth_strategy Flow_RuntimeOptimized 
+INFO: [HLS 200-1510] Running: export_design -flow impl -format ip_catalog -rtl verilog 
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+WARNING: /tools/software/xilinx/Vivado/2024.2/tps/lnx64/jre11.0.16_1 does not exist.
+
+****** Vivado v2024.2.2 (64-bit)
+  **** SW Build 6060944 on Thu Mar 06 19:10:09 MST 2025
+  **** IP Build 6050500 on Thu Mar  6 23:33:39 MST 2025
+  **** SharedData Build 6060542 on Thu Mar 06 10:31:07 MST 2025
+  **** Start of session at: Wed Apr  2 18:41:50 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source run_ippack.tcl -notrace
+INFO: calling package_hls_ip ip_types=vitis sysgen json_file=/nethome/zqi61/FPGA_ECE8893/2025_Spring/lab2/zihan_qi_lab2/solution1/solution1_data.json outdir=/nethome/zqi61/FPGA_ECE8893/2025_Spring/lab2/zihan_qi_lab2/solution1/impl/ip srcdir=/nethome/zqi61/FPGA_ECE8893/2025_Spring/lab2/zihan_qi_lab2/solution1 sort_interfaces_ports=false
+INFO: Copied 1 ipmisc file(s) to /nethome/zqi61/FPGA_ECE8893/2025_Spring/lab2/zihan_qi_lab2/solution1/impl/ip/misc
+INFO: Copied 33 verilog file(s) to /nethome/zqi61/FPGA_ECE8893/2025_Spring/lab2/zihan_qi_lab2/solution1/impl/ip/hdl/verilog
+INFO: Copied 30 vhdl file(s) to /nethome/zqi61/FPGA_ECE8893/2025_Spring/lab2/zihan_qi_lab2/solution1/impl/ip/hdl/vhdl
+INFO: Copied 10 swdriver file(s) to /nethome/zqi61/FPGA_ECE8893/2025_Spring/lab2/zihan_qi_lab2/solution1/impl/ip/drivers
+ipx::create_core: Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1787.047 ; gain = 97.883 ; free physical = 51191 ; free virtual = 174275
+INFO: Import ports from HDL: /nethome/zqi61/FPGA_ECE8893/2025_Spring/lab2/zihan_qi_lab2/solution1/impl/ip/hdl/vhdl/compute_attention_HLS.vhd (compute_attention_HLS)
+INFO: Add axi4lite interface s_axi_control
+INFO: Add clock interface ap_clk
+INFO: Add reset interface ap_rst_n
+INFO: Add interrupt interface interrupt
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/software/xilinx/Vivado/2024.2/data/ip'.
+INFO: Add axi4full interface m_axi_Q
+INFO: Add axi4full interface m_axi_K
+INFO: Add axi4full interface m_axi_V
+INFO: Add axi4full interface m_axi_Output_r
+INFO: Calling post_process_vitis to specialize IP
+INFO: Calling post_process_sysgen to specialize IP
+Generating sysgen info xml from json file
+INFO: Created IP /nethome/zqi61/FPGA_ECE8893/2025_Spring/lab2/zihan_qi_lab2/solution1/impl/ip/component.xml
+INFO: Created IP archive /nethome/zqi61/FPGA_ECE8893/2025_Spring/lab2/zihan_qi_lab2/solution1/impl/ip/xilinx_com_hls_compute_attention_HLS_1_0.zip
+INFO: [Common 17-206] Exiting Vivado at Wed Apr  2 18:42:15 2025...
+INFO: [IMPL 213-8] Starting RTL evaluation using Vivado ...
+WARNING: /tools/software/xilinx/Vivado/2024.2/tps/lnx64/jre11.0.16_1 does not exist.
+
+****** Vivado v2024.2.2 (64-bit)
+  **** SW Build 6060944 on Thu Mar 06 19:10:09 MST 2025
+  **** IP Build 6050500 on Thu Mar  6 23:33:39 MST 2025
+  **** SharedData Build 6060542 on Thu Mar 06 10:31:07 MST 2025
+  **** Start of session at: Wed Apr  2 18:42:28 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source run_vivado.tcl
+# source ./settings.tcl
+## set top_module compute_attention_HLS
+## set language verilog
+## set family zynquplus
+## set device xczu3eg
+## set package -sbva484
+## set speed -1-e
+## set clock ap_clk
+## set fsm_ext "off"
+## set add_io_buffers false 
+# source -notrace ./extraction.tcl
+# set vivado_proj_name project
+# set vivado_proj_dir .
+# set target_device "${device}${package}${speed}"
+# set target_clk_period_ns "10.000"
+# set target_clk_freq_hz [expr {floor(1000 / $target_clk_period_ns) * 1000000}]
+# set other_clks_freq_hz {}
+# set ip_vlnv xilinx.com:hls:compute_attention_HLS:1.0
+# set ip_repo_path ../ip
+# set bd_design_name bd_0
+# set bd_inst_name hls_inst
+# set bd_props {}
+# set has_synth true
+# set synth_design_args {-directive sdx_optimization_effort_high}
+# set synth_dcp ""
+# set synth_props {STRATEGY Flow_RuntimeOptimized}
+# set has_impl 1
+# set impl_props {STRATEGY Flow_Quick}
+# set report_options [dict create]
+# dict set report_options report_level 2
+# dict set report_options report_max_paths 10
+# dict set report_options stdout_hls_reports 1
+# dict set report_options stdout_vivado_reports 0
+# dict set report_options hls_project zihan_qi_lab2
+# dict set report_options hls_solution solution1
+# dict set report_options has_synth $has_synth
+# dict set report_options has_impl $has_impl
+# dict set report_options vivado_reportbasename $top_module
+# dict set report_options vivado_reportdir ./report
+# dict set report_options hls_impl_dir ..
+# dict set report_options hls_reportdir ../report/$language
+# dict set report_options target_clk_period $target_clk_period_ns
+# dict set report_options target_device $target_device
+# dict set report_options language $language
+# dict set report_options clock_name $clock
+# dict set report_options error_if_impl_timing_fails false
+# dict set report_options topmodule "compute_attention_HLS"
+# dict set report_options funcmodules {compute_attention_HLS_compute_attention_HLS_Pipeline_VITIS_LOOP_67_3 compute_attention_HLS_compute_attention_HLS_Pipeline_VITIS_LOOP_71_4 compute_attention_HLS_compute_attention_HLS_Pipeline_VITIS_LOOP_91_6 compute_attention_HLS_compute_attention_HLS_Pipeline_VITIS_LOOP_98_7 compute_attention_HLS_exp_16_5_s compute_attention_HLS_softmax_HLS_Pipeline_VITIS_LOOP_15_1 compute_attention_HLS_softmax_HLS_Pipeline_VITIS_LOOP_29_2 compute_attention_HLS_softmax_HLS compute_attention_HLS_compute_attention_HLS_Pipeline_VITIS_LOOP_126_10 compute_attention_HLS_compute_attention_HLS_Pipeline_VITIS_LOOP_148_15}
+# dict set report_options bindmodules {compute_attention_HLS_flow_control_loop_pipe_sequential_init compute_attention_HLS_mul_16s_16s_30_1_1 compute_attention_HLS_mac_muladd_16s_16s_30s_30_4_1 compute_attention_HLS_mul_25ns_25ns_50_1_1 compute_attention_HLS_mul_25ns_18ns_43_1_1 compute_attention_HLS_exp_16_5_s_f_x_lsb_table_ROM_AUTO_1R compute_attention_HLS_exp_16_5_s_exp_x_msb_2_m_1_table_ROM_AUTO_1R compute_attention_HLS_exp_16_5_s_exp_x_msb_1_table_ROM_AUTO_1R compute_attention_HLS_sparsemux_15_7_16_1_1 compute_attention_HLS_sparsemux_13_7_16_1_1 compute_attention_HLS_sdiv_40ns_32s_40_44_1 compute_attention_HLS_sparsemux_201_7_16_1_1 compute_attention_HLS_sparsemux_9_2_16_1_1 compute_attention_HLS_K_local_0_RAM_AUTO_1R1W compute_attention_HLS_Q_m_axi compute_attention_HLS_K_m_axi compute_attention_HLS_V_m_axi compute_attention_HLS_Output_r_m_axi compute_attention_HLS_control_s_axi}
+# dict set report_options max_module_depth 8
+# create_project $vivado_proj_name $vivado_proj_dir -part $target_device -force
+create_project: Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1744.609 ; gain = 77.875 ; free physical = 49657 ; free virtual = 172737
+# set_property target_language $language [current_project]
+# if { ![file exists $ip_repo_path] } {
+#   error "Cannot find packaged HLS IP"
+# }
+# set_property ip_repo_paths [file normalize $ip_repo_path] [current_project]
+# update_ip_catalog
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/nethome/zqi61/FPGA_ECE8893/2025_Spring/lab2/zihan_qi_lab2/solution1/impl/ip'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/software/xilinx/Vivado/2024.2/data/ip'.
+# create_bd_design bd_0
+Wrote  : </nethome/zqi61/FPGA_ECE8893/2025_Spring/lab2/zihan_qi_lab2/solution1/impl/verilog/project.srcs/sources_1/bd/bd_0/bd_0.bd> 
+# set cell_inst [create_bd_cell -type ip -vlnv $ip_vlnv $bd_inst_name]
+# if { [llength $bd_props] } { 
+#   set_property -dict $bd_props $cell_inst 
+# }
+# make_bd_pins_external $cell_inst
+# make_bd_intf_pins_external $cell_inst
+# set bd_clk_ports [get_bd_ports -filter {TYPE==clk}]
+# if { $target_clk_freq_hz ne "" } { 
+#   foreach bd_clk_port $bd_clk_ports {
+#     # Remove "_0" suffix from BD ports & interfaces so they match IP ports 
+#     set clk_name [regsub {_0$} [get_property name $bd_clk_port] {}]
+#     set port_freq_hz $target_clk_freq_hz
+#     if { [dict exists $other_clks_freq_hz $clk_name] } {
+#         set port_freq_hz [dict get $other_clks_freq_hz $clk_name]
+#     }
+#     set_property CONFIG.FREQ_HZ $port_freq_hz $bd_clk_port
+#   }
+# }
+# foreach bd_port [get_bd_intf_ports] {
+#   set_property name [regsub {_0$} [get_property name $bd_port] {}] $bd_port
+# }
+# foreach bd_port [get_bd_ports -filter {INTF!=TRUE}] {
+#   set_property name [regsub {_0$} [get_property name $bd_port] {}] $bd_port
+# }
+# set s_axi_addr_width_min 32
+# foreach bd_port [get_bd_intf_ports -filter {MODE == "Slave" && VLNV =~ "xilinx.com:interface:aximm_rtl:*"}] {
+#   set bd_port_addr_width [get_property CONFIG.ADDR_WIDTH $bd_port]
+#   if { $bd_port_addr_width < $s_axi_addr_width_min } {
+#     puts "INFO: Updating $bd_port CONFIG.ADDR_WIDTH to $s_axi_addr_width_min"
+#     set_property CONFIG.ADDR_WIDTH $s_axi_addr_width_min $bd_port
+#   }
+# }
+INFO: Updating /s_axi_control CONFIG.ADDR_WIDTH to 32
+# set_msg_config -id {[BD 41-1265]} -severity {CRITICAL WARNING} -new_severity {INFO}
+# assign_bd_address
+INFO: [BD 41-3093] Triggering Legacy Auto Assign Algorithm
+Slave segment '/hls_inst/s_axi_control/Reg' is being assigned into address space '/s_axi_control' at <0x0000_0000 [ 64K ]>.
+Slave segment '/m_axi_K/Reg' is being assigned into address space '/hls_inst/Data_m_axi_K' at <0x44A0_0000 [ 64K ]>.
+Slave segment '/m_axi_Output_r/Reg' is being assigned into address space '/hls_inst/Data_m_axi_Output_r' at <0x44A0_0000 [ 64K ]>.
+Slave segment '/m_axi_Q/Reg' is being assigned into address space '/hls_inst/Data_m_axi_Q' at <0x44A0_0000 [ 64K ]>.
+Slave segment '/m_axi_V/Reg' is being assigned into address space '/hls_inst/Data_m_axi_V' at <0x44A0_0000 [ 64K ]>.
+Wrote  : </nethome/zqi61/FPGA_ECE8893/2025_Spring/lab2/zihan_qi_lab2/solution1/impl/verilog/project.srcs/sources_1/bd/bd_0/bd_0.bd> 
+Verilog Output written to : /nethome/zqi61/FPGA_ECE8893/2025_Spring/lab2/zihan_qi_lab2/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/synth/bd_0.v
+Verilog Output written to : /nethome/zqi61/FPGA_ECE8893/2025_Spring/lab2/zihan_qi_lab2/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/sim/bd_0.v
+Verilog Output written to : /nethome/zqi61/FPGA_ECE8893/2025_Spring/lab2/zihan_qi_lab2/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/hdl/bd_0_wrapper.v
+# set toprtl [make_wrapper -files [get_files ${bd_design_name}.bd] -top]
+# add_files -norecurse $toprtl
+# set top_inst_name [file root [file tail $toprtl]]
+# puts "Using BD top: $top_inst_name"
+Using BD top: bd_0_wrapper
+# set xdc_files [glob -nocomplain ./*.xdc]
+# if { [llength $xdc_files] } {
+#     add_files -fileset constrs_1 -norecurse $xdc_files
+# }
+# launch_runs synth_1 -scripts_only
+INFO: [BD 41-1662] The design 'bd_0.bd' is already validated. Therefore parameter propagation will not be re-run.
+Verilog Output written to : /nethome/zqi61/FPGA_ECE8893/2025_Spring/lab2/zihan_qi_lab2/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/synth/bd_0.v
+Verilog Output written to : /nethome/zqi61/FPGA_ECE8893/2025_Spring/lab2/zihan_qi_lab2/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/sim/bd_0.v
+Verilog Output written to : /nethome/zqi61/FPGA_ECE8893/2025_Spring/lab2/zihan_qi_lab2/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/hdl/bd_0_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block hls_inst .
+Exporting to file /nethome/zqi61/FPGA_ECE8893/2025_Spring/lab2/zihan_qi_lab2/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/hw_handoff/bd_0.hwh
+Generated Hardware Definition File /nethome/zqi61/FPGA_ECE8893/2025_Spring/lab2/zihan_qi_lab2/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/synth/bd_0.hwdef
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: bd_0_hls_inst_0
+WARNING: [Vivado 12-7122] Auto Incremental Compile:: No reference checkpoint was found in run synth_1. Auto-incremental flow will not be run, the standard flow will be run instead.
+launch_runs: Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1978.977 ; gain = 88.043 ; free physical = 49432 ; free virtual = 172517
+# foreach run [get_runs -filter {IS_SYNTHESIS == 1}] {
+#   reset_run [get_runs $run]
+# }
+# set_property XPM_LIBRARIES {XPM_MEMORY XPM_FIFO} [current_project]
+# hls_vivado_reports_setup $report_options
+TIMESTAMP: HLS-REPORT: initialize report directories: 2025-04-02 18:43:01 EDT
+# if { $has_synth || $has_impl } {
+#   # synth properties setting
+#   set_property -name {STEPS.SYNTH_DESIGN.ARGS.MORE OPTIONS} -value {-mode out_of_context} -objects [get_runs synth_1]
+#   set ip_inst [get_ips -quiet ${bd_design_name}*${bd_inst_name}*]
+#   if { ![llength $ip_inst] } {
+#       error "Cannot find HLS IP instance: ${bd_design_name}*${bd_inst_name}*"
+#   }
+#   set synth_run [get_runs -filter {IS_SYNTHESIS == 1} ${ip_inst}*]
+#   if { ![llength $synth_run] } {
+#       error "Cannot find synth run for HLS IP: ${ip_inst}*"
+#   }
+# 
+#   if { [llength $synth_design_args] } {
+#       set_property -name {STEPS.SYNTH_DESIGN.ARGS.MORE OPTIONS} -value $synth_design_args -objects $synth_run
+#   }
+# 
+#   if { [llength $synth_props] } {
+#     set_property -dict $synth_props $synth_run
+#   }
+# 
+#   # launch run synth
+#   launch_runs synth_1
+#   wait_on_run synth_1
+#   # synth reports
+#   hls_vivado_reports_synth synth_1 $report_options
+#   if { $synth_dcp ne "" } {
+#     file mkdir [file dirname $synth_dcp]
+#     set run_dcp [glob -nocomplain [get_property DIRECTORY $synth_run]/*.dcp]
+#     if { [llength $run_dcp] != 1 } { error "Cannot find single dcp file for run $synth_run" }
+#     file copy -force $run_dcp $synth_dcp
+#   }
+# }
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: bd_0_hls_inst_0
+WARNING: [Vivado 12-7122] Auto Incremental Compile:: No reference checkpoint was found in run synth_1. Auto-incremental flow will not be run, the standard flow will be run instead.
+[Wed Apr  2 18:43:01 2025] Launched bd_0_hls_inst_0_synth_1...
+Run output will be captured here: /nethome/zqi61/FPGA_ECE8893/2025_Spring/lab2/zihan_qi_lab2/solution1/impl/verilog/project.runs/bd_0_hls_inst_0_synth_1/runme.log
+[Wed Apr  2 18:43:01 2025] Launched synth_1...
+Run output will be captured here: /nethome/zqi61/FPGA_ECE8893/2025_Spring/lab2/zihan_qi_lab2/solution1/impl/verilog/project.runs/synth_1/runme.log
+[Wed Apr  2 18:43:01 2025] Waiting for synth_1 to finish...
+WARNING: /tools/software/xilinx/Vivado/2024.2/tps/lnx64/jre11.0.16_1 does not exist.
