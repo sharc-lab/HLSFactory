@@ -38,7 +38,7 @@ VITIS_HLS_BIN = VITIS_HLS_PATH / "bin" / "vitis_hls"
 
 DIR_CURRENT = Path(__file__).parent
 
-design_name = "stefan_test_design"
+design_name = "hyungseok_bae_lab2_2025"
 
 design_to_test_dir = (
     DIR_CURRENT.parent.parent
