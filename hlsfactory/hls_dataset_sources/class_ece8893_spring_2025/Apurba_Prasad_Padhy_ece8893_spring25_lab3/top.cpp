@@ -1,159 +1,218 @@
 #include "dcl.h"
-#include "hls_stream.h"
+#include <ap_int.h>
+#include <hls_stream.h>
 
-// Stream-based softmax: reads N values from in_stream, computes softmax, and writes N softmax values into out_stream.
-void softmax_stream(hls::stream<fixed_t> &in_stream, hls::stream<fixed_t> &out_stream) {
-    fixed_t localA[N];
-    #pragma HLS ARRAY_PARTITION variable=localA complete
+#define PAR_FACTOR 24
 
-    fixed_t localB[N];
-    #pragma HLS ARRAY_PARTITION variable=localB complete
+typedef ap_fixed<16, 5> data_tx;
 
-    fixed_t localC[N];
-    #pragma HLS ARRAY_PARTITION variable=localC complete
-
-
-    // Find maximum for numerical stability
-    // Read the entire attention vector from the stream
-    fixed_t max_val = localA[0];
-    for (int i = 0; i < N; i++) {
+//--------------------------------------------------------------------------
+// Load data from external memory into local buffers with aggressive partitioning.
+//--------------------------------------------------------------------------
+void load_data(
+    data_t values_A[N * M],
+    int column_indices_A[N * M],
+    int row_ptr_A[N + 1],
+    data_t values_B[M * K],
+    int row_indices_B[M * K],
+    int col_ptr_B[M + 1],
+    data_tx local_values_A[N * M],
+    int local_column_indices_A[N * M],
+    int local_row_ptr_A[N + 1],
+    data_tx local_values_B[M * K],
+    int local_row_indices_B[M * K],
+    int local_col_ptr_B[M + 1]
+) {
+    // Load matrix A nonzero values and column indices.
+    LOAD_A_VALUES:
+    for (int i = 0; i < N * M; i++) {
         #pragma HLS PIPELINE II=1
-        localA[i] = in_stream.read();
-        if (localA[i] > max_val) max_val = localA[i];
+        local_values_A[i] = values_A[i];
+        local_column_indices_A[i] = column_indices_A[i];
+        local_values_B[i] = values_B[i];
+        local_row_indices_B[i] = row_indices_B[i];
     }
-    
-    // Compute exponentials and accumulate the sum
-    ap_fixed<16, 8> exp_sum = 0;
-    for (int i = 0; i < N; i++) {
-        #pragma HLS UNROLL factor=25
-        localB[i] = hls::exp(localA[i] - max_val);
-        exp_sum += localB[i];
-    }
-
-    // Normalization
-    for (int i = 0; i < N; i++) {
-        #pragma HLS UNROLL 
-        localC[i] = localB[i] / exp_sum;
-    }
-
-    // Write back to stream
-    for (int i = 0; i < N; i++) {
+    // Load matrix A row pointer.
+    LOAD_A_ROW_PTR:
+    for (int i = 0; i < N + 1; i++) {
         #pragma HLS PIPELINE II=1
-        out_stream.write(localC[i]);
+        local_row_ptr_A[i] = row_ptr_A[i];
+        local_col_ptr_B[i] = col_ptr_B[i];
+    }
+    // Load matrix B nonzero values and row indices.
+    // LOAD_B_VALUES:
+    // for (int i = 0; i < M * K; i++) {
+    //     #pragma HLS PIPELINE II=1
+        
+    // }
+    // // Load matrix B column pointer.
+    // LOAD_B_COL_PTR:
+    // for (int i = 0; i < M + 1; i++) {
+    //     #pragma HLS PIPELINE II=1
+        
+    // }
+}
+
+//--------------------------------------------------------------------------
+// Process a single row 'i' of matrix A.
+//   - Initialize a fully partitioned local register array (row[]) to zero,
+//   - For each nonzero in row i, accumulate products from B,
+//   - Write the entire row to an output stream.
+//--------------------------------------------------------------------------
+void process_row(
+    int i,
+    data_tx local_values_A[N * M],
+    int local_column_indices_A[N * M],
+    int local_row_ptr_A[N + 1],
+    data_tx local_values_B[M * K],
+    int local_row_indices_B[M * K],
+    int local_col_ptr_B[M + 1],
+    hls::stream<data_tx> &row_stream
+) {
+    #pragma HLS INLINE   // Inline to help fuse loops into the outer parallel group
+
+    // Local register array for current row; completely partitioned.
+    data_tx row[K];
+    #pragma HLS ARRAY_PARTITION variable=row complete
+
+    // Initialize row to zero. Unroll fully.
+    INIT_ROW:
+    for (int j = 0; j < K; j++) {
+        #pragma HLS UNROLL
+        row[j] = 0;
+    }
+
+    // Accumulate nonzeros for this row.
+    ROW_LOOP:
+    for (int idx_A = local_row_ptr_A[i]; idx_A < local_row_ptr_A[i + 1]; idx_A++) {
+        #pragma HLS PIPELINE II=1
+        int k = local_column_indices_A[idx_A];
+        data_tx value_A = local_values_A[idx_A];
+
+        // Multiply with every nonzero in column k of B.
+        COL_LOOP:
+        for (int idx_B = local_col_ptr_B[k]; idx_B < local_col_ptr_B[k + 1]; idx_B++) {
+            #pragma HLS PIPELINE II=1
+            int j = local_row_indices_B[idx_B];
+            row[j] += value_A * local_values_B[idx_B];
+        }
+    }
+
+    // Write the computed row to the output stream.
+    WRITE_ROW:
+    for (int j = 0; j < K; j++) {
+        #pragma HLS PIPELINE II=1
+        row_stream.write(row[j]);
     }
 }
 
-
-void compute_attention_HLS(fixed_t Q[B][N][dk],
-                           fixed_t K[B][N][dk],
-                           fixed_t V[B][N][dv],
-                           fixed_t Output[B][N][dv]) {
-#pragma HLS interface m_axi port=Q offset=slave bundle=mem1 depth=51200
-#pragma HLS interface m_axi port=K offset=slave bundle=mem2 depth=51200
-#pragma HLS interface m_axi port=V offset=slave bundle=mem1 depth=51200
-#pragma HLS interface m_axi port=Output offset=slave bundle=mem2 depth=51200
-#pragma HLS interface s_axilite port=return
-#pragma HLS Dataflow
-
-
-    // Local BRAM buffers for one batch; partition inner arrays for parallel access.
-    ap_fixed<16, 2> Q_local[N][dk];
-    ap_fixed<16, 2> K_local[N][dk];
-    ap_fixed<16, 2> V_local[N][dv];
-
-    #pragma HLS ARRAY_PARTITION variable=Q_local cyclic dim=2 factor=128
-    #pragma HLS ARRAY_PARTITION variable=K_local cyclic dim=2 factor=128
-    #pragma HLS ARRAY_PARTITION variable=V_local cyclic dim=1 factor=100
-
-    // Process one batch at a time
-    for (int b = 0; b < B; b++) {
-        // Load Q from external memory into local buffers
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < dk; j++) {
-                #pragma HLS PIPELINE II=1
-                Q_local[i][j] = Q[b][i][j];
-            }
+//--------------------------------------------------------------------------
+// Compute stage: Process rows in groups of PAR_FACTOR concurrently.
+// An array of streams is used to output each row from parallel PEs.
+//--------------------------------------------------------------------------
+void compute(
+    data_tx local_values_A[N * M],
+    int local_column_indices_A[N * M],
+    int local_row_ptr_A[N + 1],
+    data_tx local_values_B[M * K],
+    int local_row_indices_B[M * K],
+    int local_col_ptr_B[M + 1],
+    hls::stream<data_tx> row_stream[PAR_FACTOR]
+) {
+    // Process rows in groups.
+    GROUP_LOOP:
+    for (int i = 0; i < N; i += PAR_FACTOR) {
+        // Launch PAR_FACTOR parallel row computations.
+        PAR_LOOP:
+        for (int p = 0; p < PAR_FACTOR; p++) {
+            #pragma HLS UNROLL
+            if(i + p < N)
+                process_row(i + p,
+                            local_values_A, local_column_indices_A, local_row_ptr_A,
+                            local_values_B, local_row_indices_B, local_col_ptr_B,
+                            row_stream[p]);
         }
+    }
+}
 
-        // Load K from external memory into local buffers
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < dk; j++) {
-                #pragma HLS PIPELINE II=1
-                K_local[i][j] = K[b][i][j];
-            }
-        }
-
-        // Load V from external memory into local buffers
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < dk; j++) {
-                #pragma HLS PIPELINE II=1
-                V_local[i][j] = V[b][i][j];
-            }
-        }
-
-        // Scaling factor for dot product normalization
-        ap_fixed<16, 2> scale = 1.0 / sqrt((float)dk);
-
-        // Process each query vector (each row of Q_local)
-        for (int i = 0; i < N; i++) {
-            // Declare streams to hold the dot-product results and softmax output
-            hls::stream<fixed_t> dot_stream("dot_stream");
-            #pragma HLS STREAM variable=dot_stream depth=N
-            hls::stream<fixed_t> softmax_stream_out("softmax_stream_out");
-            #pragma HLS STREAM variable=softmax_stream_out depth=N
-
-            // Stage 1: Compute dot products (Q_local[i] * K_local[j]^T) for all j,
-            // writing each scaled dot product to the stream.
-            for (int j = 0; j < N; j++) {
-                #pragma HLS PIPELINE II=1
-                ap_fixed<24, 8> dot[dk] = {0};
-                ap_fixed<24, 8> attention = 0;
-                #pragma HLS ARRAY_PARTITION variable=dot complete
-
-                for (int k = 0; k < dk; k++) {
-                    #pragma HLS UNROLL
-                    dot[k] = Q_local[i][k] * K_local[j][k];
+//--------------------------------------------------------------------------
+// Store stage: Read the streamed rows (from an array of streams)
+// and write them into matrix C in the correct order.
+//--------------------------------------------------------------------------
+void store_data(
+    hls::stream<data_tx> row_stream[PAR_FACTOR],
+    data_t C[N][K]
+) {
+    GROUP_OUT:
+    for (int i = 0; i < N; i += PAR_FACTOR) {
+        PAR_OUT:
+        for (int p = 0; p < PAR_FACTOR; p++) {
+            #pragma HLS UNROLL
+            if(i + p < N) {
+                for (int j = 0; j < K; j++) {
+                    #pragma HLS PIPELINE II=1
+                    C[i + p][j] = row_stream[p].read();
                 }
-
-                for (int k = 0; k < dk; k++) {
-                    #pragma HLS UNROLL
-                    attention += dot[k];
-                }
-
-                dot_stream.write(attention * scale);
-            }
-
-
-            // Stage 2: Perform softmax on the streamed attention values.
-            softmax_stream(dot_stream, softmax_stream_out);
-
-            // Since the softmax output will be used in an inner loop (for each output channel), store it in a temporary local buffer.
-            fixed_t softmax_vals[N];
-            #pragma HLS ARRAY_PARTITION variable=softmax_vals complete
-
-            for (int j = 0; j < N; j++) {
-                #pragma HLS PIPELINE II=1
-                softmax_vals[j] = softmax_stream_out.read();
-            }
-
-            // Stage 3: Compute the weighted sum with V_local using the softmax values.
-            for (int j = 0; j < dv; j++) {
-                #pragma HLS PIPELINE II=1
-                ap_fixed<24, 8> sum[N] = {0};
-                ap_fixed<24, 8> output = 0;
-                #pragma HLS ARRAY_PARTITION variable=sum complete
-
-                for (int k = 0; k < N; k++) {
-                    #pragma HLS UNROLL
-                    sum[k] = softmax_vals[k] * V_local[k][j];
-                }
-
-                for (int k = 0; k < N; k++) {
-                    #pragma HLS UNROLL
-                    output += sum[k];
-                }
-                Output[b][i][j]= output;
             }
         }
     }
+}
+
+//--------------------------------------------------------------------------
+// Top-level kernel: Sparse Matrix Multiply (A in CSR, B in CSC)
+// with aggressive memory partitioning, parallelized compute, and streaming.
+//--------------------------------------------------------------------------
+void sparse_matrix_multiply_HLS(
+    data_t values_A[N * M],
+    int column_indices_A[N * M],
+    int row_ptr_A[N + 1],
+    data_t values_B[M * K],
+    int row_indices_B[M * K],
+    int col_ptr_B[M + 1],
+    data_t C[N][K]
+)
+{
+    // AXI interface directives for off-chip memory.
+    #pragma HLS INTERFACE m_axi port=values_A         offset=slave bundle=mem1
+    #pragma HLS INTERFACE m_axi port=column_indices_A   offset=slave bundle=mem2
+    #pragma HLS INTERFACE m_axi port=row_ptr_A          offset=slave bundle=mem3
+    #pragma HLS INTERFACE m_axi port=values_B           offset=slave bundle=mem4
+    #pragma HLS INTERFACE m_axi port=row_indices_B      offset=slave bundle=mem5
+    #pragma HLS INTERFACE m_axi port=col_ptr_B          offset=slave bundle=mem6
+    #pragma HLS INTERFACE m_axi port=C                  offset=slave bundle=mem7
+    #pragma HLS INTERFACE s_axilite port=return
+
+    // Local BRAM buffers for matrix A.
+    data_tx local_values_A[N * M];
+    int local_column_indices_A[N * M];
+    int local_row_ptr_A[N + 1];
+    #pragma HLS ARRAY_PARTITION variable=local_values_A cyclic factor=4 dim=1
+    #pragma HLS ARRAY_PARTITION variable=local_column_indices_A cyclic factor=4 dim=1
+    #pragma HLS ARRAY_PARTITION variable=local_row_ptr_A cyclic factor=4 dim=1
+
+    // Local BRAM buffers for matrix B.
+    data_tx local_values_B[M * K];
+    int local_row_indices_B[M * K];
+    int local_col_ptr_B[M + 1];
+    #pragma HLS ARRAY_PARTITION variable=local_values_B cyclic factor=4 dim=1
+    #pragma HLS ARRAY_PARTITION variable=local_row_indices_B cyclic factor=4 dim=1
+    #pragma HLS ARRAY_PARTITION variable=local_col_ptr_B cyclic factor=4 dim=1
+
+    // Use DATAFLOW to overlap load, compute, and store stages.
+    #pragma HLS DATAFLOW
+
+    load_data(values_A, column_indices_A, row_ptr_A,
+              values_B, row_indices_B, col_ptr_B,
+              local_values_A, local_column_indices_A, local_row_ptr_A,
+              local_values_B, local_row_indices_B, local_col_ptr_B);
+
+    // Create an array of HLS streams to pass computed rows.
+    hls::stream<data_tx> row_stream[PAR_FACTOR];
+    #pragma HLS STREAM variable=row_stream depth=64
+
+    compute(local_values_A, local_column_indices_A, local_row_ptr_A,
+            local_values_B, local_row_indices_B, local_col_ptr_B,
+            row_stream);
+
+    store_data(row_stream, C);
 }
