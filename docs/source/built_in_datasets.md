@@ -105,4 +105,18 @@ HLSFactory provides several built-in datasets of HLS design sources.
 
 **Supported Vendors:** Xilinx
 
+## Sushkrutha Kuttuva Spring25 ECE_88993
+
+## Georgia Tech's ECE 8893 labs 2 and 3
+
+- [lab 2 attention description](https://github.com/sharc-lab/FPGA_ECE8893/tree/main/2025_Spring/lab2)
+- [lab 3 sparse matrix multiplication description](https://github.com/sharc-lab/FPGA_ECE8893/tree/main/2025_Spring/lab3)
+
+
+**Number of Designs:** 2
+
+**Design Type:** Concrete
+
+**Supported Vendors:** Xilinx
+
 
