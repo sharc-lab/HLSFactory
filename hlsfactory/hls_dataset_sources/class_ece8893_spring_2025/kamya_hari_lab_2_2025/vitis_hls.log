@@ -1,0 +1,59 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2024.2.2 (64-bit)
+  **** SW Build 6049644 on Mar  5 2025
+  **** IP Build 6050500 on Thu Mar  6 23:33:39 MST 2025
+  **** SharedData Build 6060542 on Thu Mar 06 10:31:07 MST 2025
+  **** Start of session at: Thu Apr  3 18:55:52 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source /tools/software/xilinx/Vitis/2024.2/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] For user 'khari8' on host 'ece-linlab16.ece.gatech.edu' (Linux_x86_64 version 4.18.0-553.44.1.el8_10.x86_64) on Thu Apr 03 18:55:54 EDT 2025
+INFO: [HLS 200-10] On os "Red Hat Enterprise Linux release 8.10 (Ootpa)"
+INFO: [HLS 200-10] In directory '/nethome/khari8/FPGA_ECE8893/2025_Spring/lab2/kamya_hari_lab_2'
+WARNING: [HLS 200-2053] The vitis_hls executable is deprecated. Consider using vitis-run --mode hls --tcl
+Sourcing Tcl script 'dataset_hls.tcl'
+INFO: [HLS 200-1510] Running: source dataset_hls.tcl
+INFO: [HLS 200-1510] Running: open_project project_1 
+INFO: [HLS 200-10] Creating and opening project '/nethome/khari8/FPGA_ECE8893/2025_Spring/lab2/kamya_hari_lab_2/project_1'.
+INFO: [HLS 200-1510] Running: set_top compute_attention_HLS 
+INFO: [HLS 200-1510] Running: add_files top.cpp 
+INFO: [HLS 200-10] Adding design file 'top.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb host.cpp 
+INFO: [HLS 200-10] Adding test bench file 'host.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb Q_tensor.bin 
+INFO: [HLS 200-10] Adding test bench file 'Q_tensor.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb V_tensor.bin 
+INFO: [HLS 200-10] Adding test bench file 'V_tensor.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb K_tensor.bin 
+INFO: [HLS 200-10] Adding test bench file 'K_tensor.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb Output_tensor.bin 
+INFO: [HLS 200-10] Adding test bench file 'Output_tensor.bin' to the project
+INFO: [HLS 200-1510] Running: open_solution solution1 
+INFO: [HLS 200-10] Creating and opening solution '/nethome/khari8/FPGA_ECE8893/2025_Spring/lab2/kamya_hari_lab_2/project_1/solution1'.
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xczu3eg-sbva484-1-e 
+INFO: [HLS 200-1611] Setting target device to 'xczu3eg-sbva484-1-e'
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.07 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.09 seconds; current allocated memory: 642.660 MB.
+INFO: [HLS 200-10] Analyzing design file 'top.cpp' ... 
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region (top.cpp:6:9)
+Resolution: For help on HLS 214-114 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=214-114.html
+WARNING: [HLS 200-471] Dataflow form checks found 1 issue(s) in file top.cpp
+Resolution: For help on HLS 200-471 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-471.html
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 23.91 seconds. CPU system time: 0.93 seconds. Elapsed time: 26.93 seconds; current allocated memory: 647.980 MB.
+LLVM ERROR: IO failure on output stream: Disk quota exceeded
+INFO: [HLS 200-2161] Finished Command csynth_design Elapsed time: 00:00:29; Allocated memory: 6.383 MB.
+Error in llvm-link
+    while executing
+"source dataset_hls.tcl"
+    invoked from within
+"hls::main dataset_hls.tcl"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel 1 hls::main {*}$newargs"
+    (procedure "hls_proc" line 16)
+    invoked from within
+"hls_proc [info nameofexecutable] $::argv"
+INFO: [HLS 200-112] Total CPU user time: 29.31 seconds. Total CPU system time: 1.62 seconds. Total elapsed time: 39.73 seconds; peak allocated memory: 648.043 MB.
