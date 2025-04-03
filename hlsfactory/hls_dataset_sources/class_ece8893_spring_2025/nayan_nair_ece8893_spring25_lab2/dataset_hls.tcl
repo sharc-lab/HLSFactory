@@ -1,8 +1,9 @@
 open_project project_1
+
 open_solution "solution1"
 
 # set top function of the HLS design
-set_top sparse_matrix_multiply_HLS
+set_top compute_attention_HLS
 
 # add source file
 add_files top.cpp
@@ -11,11 +12,10 @@ add_files top.cpp
 add_files -tb host.cpp
 
 # add data file
-add_files -tb A_matrix_csr_sparsity_0.10.bin
-add_files -tb B_matrix_csc_sparsity_0.10.bin
-add_files -tb C_matrix_result_sparsity_0.10.bin
-
-#open_solution "solution1"
+add_files -tb Q_tensor.bin
+add_files -tb V_tensor.bin
+add_files -tb K_tensor.bin
+add_files -tb Output_tensor.bin
 
 # FPGA part and clock configuration
 set_part {xczu3eg-sbva484-1-e}
