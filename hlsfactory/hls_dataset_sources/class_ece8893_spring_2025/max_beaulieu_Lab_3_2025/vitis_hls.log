@@ -1,0 +1,925 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2024.2.2 (64-bit)
+  **** SW Build 6049644 on Mar  5 2025
+  **** IP Build 6050500 on Thu Mar  6 23:33:39 MST 2025
+  **** SharedData Build 6060542 on Thu Mar 06 10:31:07 MST 2025
+  **** Start of session at: Sat Mar 29 17:16:37 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source /tools/software/xilinx/Vitis/2024.2/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] For user 'mbeaulieu7' on host 'ece-linlabsrv01.ece.gatech.edu' (Linux_x86_64 version 4.18.0-553.44.1.el8_10.x86_64) on Sat Mar 29 17:16:39 EDT 2025
+INFO: [HLS 200-10] On os "Red Hat Enterprise Linux release 8.10 (Ootpa)"
+INFO: [HLS 200-10] In directory '/nethome/mbeaulieu7/ECE8893/lab3'
+WARNING: [HLS 200-2053] The vitis_hls executable is deprecated. Consider using vitis-run --mode hls --tcl
+Sourcing Tcl script 'script.tcl'
+INFO: [HLS 200-1510] Running: open_project lsim2 
+INFO: [HLS 200-10] Creating and opening project '/nethome/mbeaulieu7/ECE8893/lab3/lsim2'.
+INFO: [HLS 200-1510] Running: set_top sparse_matrix_multiply_HLS 
+INFO: [HLS 200-1510] Running: add_files top.cpp 
+INFO: [HLS 200-10] Adding design file 'top.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb host.cpp 
+INFO: [HLS 200-10] Adding test bench file 'host.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb A_matrix_csr_sparsity_0.10.bin 
+INFO: [HLS 200-10] Adding test bench file 'A_matrix_csr_sparsity_0.10.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb B_matrix_csc_sparsity_0.10.bin 
+INFO: [HLS 200-10] Adding test bench file 'B_matrix_csc_sparsity_0.10.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb C_matrix_result_sparsity_0.10.bin 
+INFO: [HLS 200-10] Adding test bench file 'C_matrix_result_sparsity_0.10.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb A_matrix_csr_sparsity_0.50.bin 
+INFO: [HLS 200-10] Adding test bench file 'A_matrix_csr_sparsity_0.50.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb B_matrix_csc_sparsity_0.50.bin 
+INFO: [HLS 200-10] Adding test bench file 'B_matrix_csc_sparsity_0.50.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb C_matrix_result_sparsity_0.50.bin 
+INFO: [HLS 200-10] Adding test bench file 'C_matrix_result_sparsity_0.50.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb A_matrix_csr_sparsity_0.80.bin 
+INFO: [HLS 200-10] Adding test bench file 'A_matrix_csr_sparsity_0.80.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb B_matrix_csc_sparsity_0.80.bin 
+INFO: [HLS 200-10] Adding test bench file 'B_matrix_csc_sparsity_0.80.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb C_matrix_result_sparsity_0.80.bin 
+INFO: [HLS 200-10] Adding test bench file 'C_matrix_result_sparsity_0.80.bin' to the project
+INFO: [HLS 200-1510] Running: open_solution solution1 
+INFO: [HLS 200-10] Creating and opening solution '/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1'.
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xczu3eg-sbva484-1-e 
+INFO: [HLS 200-1611] Setting target device to 'xczu3eg-sbva484-1-e'
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.11 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.13 seconds; current allocated memory: 642.902 MB.
+INFO: [HLS 200-10] Analyzing design file 'top.cpp' ... 
+WARNING: [HLS 207-5569] unexpected pragma parameter 'II' (top.cpp:56:20)
+WARNING: [HLS 207-5569] unexpected pragma parameter 'bus_bitwidth' (top.cpp:98:129)
+WARNING: [HLS 207-5569] unexpected pragma parameter 'bus_bitwidth' (top.cpp:99:137)
+WARNING: [HLS 207-5569] unexpected pragma parameter 'bus_bitwidth' (top.cpp:100:128)
+WARNING: [HLS 207-5569] unexpected pragma parameter 'bus_bitwidth' (top.cpp:101:129)
+WARNING: [HLS 207-5569] unexpected pragma parameter 'bus_bitwidth' (top.cpp:102:134)
+WARNING: [HLS 207-5569] unexpected pragma parameter 'bus_bitwidth' (top.cpp:103:128)
+WARNING: [HLS 207-5569] unexpected pragma parameter 'bus_bitwidth' (top.cpp:104:124)
+WARNING: [HLS 214-111] Static scalars and arrays declared inside a dataflow region will be treated like local variables (top.cpp:123:13)
+Resolution: For help on HLS 214-111 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=214-111.html
+WARNING: [HLS 214-111] Static scalars and arrays declared inside a dataflow region will be treated like local variables (top.cpp:125:13)
+Resolution: For help on HLS 214-111 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=214-111.html
+WARNING: [HLS 214-111] Static scalars and arrays declared inside a dataflow region will be treated like local variables (top.cpp:127:16)
+Resolution: For help on HLS 214-111 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=214-111.html
+WARNING: [HLS 214-111] Static scalars and arrays declared inside a dataflow region will be treated like local variables (top.cpp:128:16)
+Resolution: For help on HLS 214-111 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=214-111.html
+WARNING: [HLS 200-471] Dataflow form checks found 4 issue(s) in file top.cpp
+Resolution: For help on HLS 200-471 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-471.html
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 26.8 seconds. CPU system time: 2.17 seconds. Elapsed time: 29.26 seconds; current allocated memory: 648.707 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 200-1995] There were 900 instructions in the design after the 'Compile/Link' phase of compilation. See the Design Size Report for more details: /nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 725 instructions in the design after the 'Unroll/Inline (step 1)' phase of compilation. See the Design Size Report for more details: /nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 460 instructions in the design after the 'Unroll/Inline (step 2)' phase of compilation. See the Design Size Report for more details: /nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 458 instructions in the design after the 'Unroll/Inline (step 3)' phase of compilation. See the Design Size Report for more details: /nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 458 instructions in the design after the 'Unroll/Inline (step 4)' phase of compilation. See the Design Size Report for more details: /nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,290 instructions in the design after the 'Array/Struct (step 1)' phase of compilation. See the Design Size Report for more details: /nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,409 instructions in the design after the 'Array/Struct (step 2)' phase of compilation. See the Design Size Report for more details: /nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,410 instructions in the design after the 'Array/Struct (step 3)' phase of compilation. See the Design Size Report for more details: /nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,411 instructions in the design after the 'Array/Struct (step 4)' phase of compilation. See the Design Size Report for more details: /nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,608 instructions in the design after the 'Array/Struct (step 5)' phase of compilation. See the Design Size Report for more details: /nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,606 instructions in the design after the 'Performance (step 1)' phase of compilation. See the Design Size Report for more details: /nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,414 instructions in the design after the 'Performance (step 2)' phase of compilation. See the Design Size Report for more details: /nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,409 instructions in the design after the 'Performance (step 3)' phase of compilation. See the Design Size Report for more details: /nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,409 instructions in the design after the 'Performance (step 4)' phase of compilation. See the Design Size Report for more details: /nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,432 instructions in the design after the 'HW Transforms (step 1)' phase of compilation. See the Design Size Report for more details: /nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,500 instructions in the design after the 'HW Transforms (step 2)' phase of compilation. See the Design Size Report for more details: /nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_72_4' is marked as complete unroll implied by the pipeline pragma (top.cpp:72:22)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_59_2' is marked as complete unroll implied by the pipeline pragma (top.cpp:59:22)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_65_3' is marked as complete unroll implied by the pipeline pragma (top.cpp:65:26)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_55_1' is marked as complete unroll implied by the pipeline pragma (top.cpp:55:19)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_72_4' (top.cpp:72:22) in function 'compute_row' completely with a factor of 64 (top.cpp:52:0)
+WARNING: [HLS 214-189] Pipeline directive for loop 'VITIS_LOOP_72_4' (top.cpp:72:22) in function 'compute_row' has been removed because the loop is unrolled completely (top.cpp:52:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_55_1' (top.cpp:55:19) in function 'compute_row' completely with a factor of 64 (top.cpp:52:0)
+INFO: [HLS 214-248] Applying array_partition to '_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiS4_S3_S4_S4_PA64_S2_E15col_ptr_B_local': Complete partitioning on dimension 1. (top.cpp:125:0)
+INFO: [HLS 214-248] Applying array_partition to '_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiS4_S3_S4_S4_PA64_S2_E15row_ptr_A_local': Complete partitioning on dimension 1. (top.cpp:123:0)
+INFO: [HLS 214-248] Applying array_partition to 'c_row': Complete partitioning on dimension 1. (top.cpp:53:12)
+INFO: [HLS 214-241] Aggregating bram variable 'C' with compact=bit mode in 16-bits
+WARNING: [HLS 214-187] Cannot unroll loop 'VITIS_LOOP_59_2' (top.cpp:59:22) in function 'compute_row' as it has a variable trip count (top.cpp:59:22)
+WARNING: [HLS 214-187] Cannot unroll loop 'VITIS_LOOP_65_3' (top.cpp:65:26) in function 'compute_row' as it has a variable trip count (top.cpp:65:26)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 4.8 seconds. CPU system time: 0.8 seconds. Elapsed time: 8.58 seconds; current allocated memory: 657.738 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 657.738 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.13 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.14 seconds; current allocated memory: 659.828 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.15 seconds. CPU system time: 0 seconds. Elapsed time: 0.15 seconds; current allocated memory: 663.254 MB.
+INFO: [XFORM 203-712] Applying dataflow to function 'sparse_matrix_multiply_HLS' (top.cpp:96:1), detected/extracted 8 process function(s): 
+	 'loadA'
+	 'loadB'
+	 'Block_entry_proc'
+	 'Block_entry_proc.1'
+	 'readRowPtrA'
+	 'prepareBData'
+	 'computeRows'
+	 'storeC'.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.92 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.95 seconds; current allocated memory: 691.211 MB.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_88_1'(top.cpp:88:22) and 'VITIS_LOOP_89_2'(top.cpp:89:26) in function 'storeC' into perfectly nested loops.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_88_1' (top.cpp:88:22) in function 'storeC'.
+WARNING: [HLS 200-960] Cannot flatten loop 'VITIS_LOOP_59_2' (top.cpp:59:22) in function 'compute_row' the outer loop is not a perfect loop.
+Resolution: For help on HLS 200-960 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-960.html
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.96 seconds. CPU system time: 0.06 seconds. Elapsed time: 1.04 seconds; current allocated memory: 850.922 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'sparse_matrix_multiply_HLS' ...
+WARNING: [SYN 201-103] Legalizing function name 'Block_entry_proc.1' to 'Block_entry_proc_1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'loadA_Pipeline_VITIS_LOOP_8_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_8_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_8_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.22 seconds. CPU system time: 0.06 seconds. Elapsed time: 0.32 seconds; current allocated memory: 852.105 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 852.211 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'loadA_Pipeline_VITIS_LOOP_12_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_12_2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_12_2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.03 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.05 seconds; current allocated memory: 852.426 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.06 seconds; current allocated memory: 852.547 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'loadA' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.02 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.04 seconds; current allocated memory: 852.637 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 852.770 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'loadB_Pipeline_VITIS_LOOP_22_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_22_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_22_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.06 seconds; current allocated memory: 853.023 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 853.121 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'loadB_Pipeline_VITIS_LOOP_26_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_26_2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_26_2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.03 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.06 seconds; current allocated memory: 853.203 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 853.402 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'loadB' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.02 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.04 seconds; current allocated memory: 853.500 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 853.637 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'Block_entry_proc' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.02 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.04 seconds; current allocated memory: 853.668 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 853.820 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'Block_entry_proc_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 853.895 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.03 seconds; current allocated memory: 854.082 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'readRowPtrA' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_46_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'VITIS_LOOP_46_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.2 seconds. CPU system time: 0 seconds. Elapsed time: 0.23 seconds; current allocated memory: 857.484 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.05 seconds. CPU system time: 0 seconds. Elapsed time: 0.08 seconds; current allocated memory: 857.484 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'prepareBData_Pipeline_VITIS_LOOP_34_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_34_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_34_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.21 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.24 seconds; current allocated memory: 858.973 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.06 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.09 seconds; current allocated memory: 858.973 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'prepareBData_Pipeline_VITIS_LOOP_38_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_38_2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_38_2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.07 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.09 seconds; current allocated memory: 858.973 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 859.082 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'prepareBData' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.14 seconds. CPU system time: 0 seconds. Elapsed time: 0.17 seconds; current allocated memory: 859.188 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.05 seconds. CPU system time: 0 seconds. Elapsed time: 0.07 seconds; current allocated memory: 860.188 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'compute_row_Pipeline_VITIS_LOOP_65_3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=add_ln69) to 3 in order to utilize available DSP registers.
+WARNING: [SCHED 204-65] Unable to satisfy pipeline directive for function 'compute_row_Pipeline_VITIS_LOOP_65_3': contains subloop(s) that are not unrolled.
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_65_3'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 6, loop 'VITIS_LOOP_65_3'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.48 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.53 seconds; current allocated memory: 866.555 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.09 seconds. CPU system time: 0 seconds. Elapsed time: 0.11 seconds; current allocated memory: 866.555 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'compute_row' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+WARNING: [SCHED 204-65] Unable to satisfy pipeline directive for function 'compute_row': contains subloop(s) that are not unrolled.
+WARNING: [SCHED 204-67] Unable to satisfy pipeline directive for loop 'VITIS_LOOP_59_2': contains subfunction 'compute_row_Pipeline_VITIS_LOOP_65_3' which is not pipelined.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.3 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.33 seconds; current allocated memory: 866.984 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.08 seconds. CPU system time: 0 seconds. Elapsed time: 0.1 seconds; current allocated memory: 866.984 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'computeRows' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+WARNING: [SCHED 204-67] Unable to satisfy pipeline directive for loop 'VITIS_LOOP_79_1': contains subfunction 'compute_row' which is not pipelined.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.18 seconds. CPU system time: 0 seconds. Elapsed time: 0.21 seconds; current allocated memory: 868.574 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.06 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.08 seconds; current allocated memory: 868.574 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'storeC' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_88_1_VITIS_LOOP_89_2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'VITIS_LOOP_88_1_VITIS_LOOP_89_2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.08 seconds. CPU system time: 0 seconds. Elapsed time: 0.1 seconds; current allocated memory: 869.309 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.03 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.05 seconds; current allocated memory: 869.508 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'sparse_matrix_multiply_HLS' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_1 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_2 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_3 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_4 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_5 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_6 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_7 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_8 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_9 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_109 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_10 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_11 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_12 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_13 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_14 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_15 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_16 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_17 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_18 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_19 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_20 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_21 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_22 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_23 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_24 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_25 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_26 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_27 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_28 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_29 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_30 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_31 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_32 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_33 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_34 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_35 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_36 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_37 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_38 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_39 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_40 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_41 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_42 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_43 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_44 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_45 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_46 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_47 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_48 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_49 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_50 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_51 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_52 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_53 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO sparse_mulmulmulmulmulmulmulmatrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO sparse_matrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_1 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO sparse_matrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_2 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO sparse_matrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_3 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO sparse_matrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_4 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO sparse_matrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_5 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO sparse_matrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_6 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO sparse_matrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_7 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO sparse_matrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_8 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO sparse_matrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_9 (from readRowPtrA_U0 to computeRows_U0) to 3 to improve performance and/or avoid deadlocks.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.36 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.51 seconds; current allocated memory: 869.996 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.06 seconds. CPU system time: 0 seconds. Elapsed time: 0.08 seconds; current allocated memory: 870.746 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'loadA_Pipeline_VITIS_LOOP_8_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'loadA_Pipeline_VITIS_LOOP_8_1' pipeline 'VITIS_LOOP_8_1' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'loadA_Pipeline_VITIS_LOOP_8_1'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.09 seconds. CPU system time: 0 seconds. Elapsed time: 0.12 seconds; current allocated memory: 871.461 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'loadA_Pipeline_VITIS_LOOP_12_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'loadA_Pipeline_VITIS_LOOP_12_2' pipeline 'VITIS_LOOP_12_2' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'loadA_Pipeline_VITIS_LOOP_12_2'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.08 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.11 seconds; current allocated memory: 871.691 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'loadA' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'loadA'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.06 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.1 seconds; current allocated memory: 872.406 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'loadB_Pipeline_VITIS_LOOP_22_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'loadB_Pipeline_VITIS_LOOP_22_1' pipeline 'VITIS_LOOP_22_1' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'loadB_Pipeline_VITIS_LOOP_22_1'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.08 seconds. CPU system time: 0 seconds. Elapsed time: 0.12 seconds; current allocated memory: 873.406 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'loadB_Pipeline_VITIS_LOOP_26_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'loadB_Pipeline_VITIS_LOOP_26_2' pipeline 'VITIS_LOOP_26_2' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'loadB_Pipeline_VITIS_LOOP_26_2'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.08 seconds. CPU system time: 0 seconds. Elapsed time: 0.12 seconds; current allocated memory: 874.055 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'loadB' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'loadB'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.07 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.1 seconds; current allocated memory: 874.699 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'Block_entry_proc' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'Block_entry_proc'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.06 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.12 seconds; current allocated memory: 875.625 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'Block_entry_proc_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'Block_entry_proc_1'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.04 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.09 seconds; current allocated memory: 876.160 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'readRowPtrA' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'readRowPtrA'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.32 seconds. CPU system time: 0.03 seconds. Elapsed time: 0.37 seconds; current allocated memory: 890.137 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'prepareBData_Pipeline_VITIS_LOOP_34_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'prepareBData_Pipeline_VITIS_LOOP_34_1' pipeline 'VITIS_LOOP_34_1' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'prepareBData_Pipeline_VITIS_LOOP_34_1'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.26 seconds. CPU system time: 0.03 seconds. Elapsed time: 0.32 seconds; current allocated memory: 894.637 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'prepareBData_Pipeline_VITIS_LOOP_38_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'prepareBData_Pipeline_VITIS_LOOP_38_2' pipeline 'VITIS_LOOP_38_2' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'prepareBData_Pipeline_VITIS_LOOP_38_2'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.18 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.24 seconds; current allocated memory: 900.613 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'prepareBData' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'prepareBData'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.32 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.38 seconds; current allocated memory: 915.207 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'compute_row_Pipeline_VITIS_LOOP_65_3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'compute_row_Pipeline_VITIS_LOOP_65_3' pipeline 'VITIS_LOOP_65_3' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_16s_27s_32_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'sparsemux_129_6_16_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'compute_row_Pipeline_VITIS_LOOP_65_3'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.24 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.32 seconds; current allocated memory: 919.129 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'compute_row' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'sparsemux_131_7_32_1_1': 2 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'compute_row'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.37 seconds. CPU system time: 0.05 seconds. Elapsed time: 0.47 seconds; current allocated memory: 932.801 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'computeRows' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'sparsemux_129_6_32_1_1': 2 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'computeRows'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.31 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.38 seconds; current allocated memory: 942.617 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'storeC' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'storeC'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.18 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.24 seconds; current allocated memory: 946.719 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'sparse_matrix_multiply_HLS' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [RTGEN 206-101] Design contains AXI ports. Reset is fixed to synchronous and active low.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sparse_matrix_multiply_HLS/values_A' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sparse_matrix_multiply_HLS/column_indices_A' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sparse_matrix_multiply_HLS/row_ptr_A' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sparse_matrix_multiply_HLS/values_B' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sparse_matrix_multiply_HLS/row_indices_B' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sparse_matrix_multiply_HLS/col_ptr_B' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sparse_matrix_multiply_HLS/C' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'sparse_matrix_multiply_HLS' to 's_axilite & ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Bundling port 'return' to AXI-Lite port control.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'sparse_matrix_multiply_HLS'.
+INFO: [HLS 200-741] Implementing PIPO sparse_matrix_multiply_HLS_valB_local_RAM_AUTO_1R1W using a single memory for all blocks
+INFO: [RTMG 210-278] Implementing memory 'sparse_matrix_multiply_HLS_valB_local_RAM_AUTO_1R1W_memcore' using auto RAMs.
+INFO: [HLS 200-741] Implementing PIPO sparse_matrix_multiply_HLS_rowIdxB_local_RAM_AUTO_1R1W using a single memory for all blocks
+INFO: [RTMG 210-278] Implementing memory 'sparse_matrix_multiply_HLS_rowIdxB_local_RAM_AUTO_1R1W_memcore' using auto RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'valA_stream_U(sparse_matrix_multiply_HLS_fifo_w16_d128_A)' using Vivado Default RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'colIdxA_stream_U(sparse_matrix_multiply_HLS_fifo_w32_d128_A)' using Vivado Default RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'rowPtrA_stream_s_U(sparse_matrix_multiply_HLS_fifo_w32_d128_A)' using Vivado Default RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'totalA_stream_U(sparse_matrix_multiply_HLS_fifo_w32_d4_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'valB_stream_U(sparse_matrix_multiply_HLS_fifo_w16_d128_A)' using Vivado Default RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'rowIdxB_stream_U(sparse_matrix_multiply_HLS_fifo_w32_d128_A)' using Vivado Default RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'colPtrB_stream_U(sparse_matrix_multiply_HLS_fifo_w32_d128_A)' using Vivado Default RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'totalB_stream_U(sparse_matrix_multiply_HLS_fifo_w32_d4_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_loc_channel_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_1_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_2_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_3_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_4_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_5_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_6_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_7_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_8_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_9_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_109_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_10_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_11_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_12_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_13_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_14_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_15_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_16_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_17_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_18_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_19_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_20_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_21_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_22_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_23_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_24_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_25_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_26_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_27_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_28_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_29_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_30_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_31_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_32_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_33_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_34_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_35_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_36_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_37_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_38_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_39_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_40_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_41_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_42_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_43_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_44_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_45_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_46_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_47_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_48_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_49_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_50_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_51_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_52_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_53_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'sparse_mulmulmulmulmulmulmulmatrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'sparse_matrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_1_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'sparse_matrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_2_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'sparse_matrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_3_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'sparse_matrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_4_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'sparse_matrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_5_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'sparse_matrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_6_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'sparse_matrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_7_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'sparse_matrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_8_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'sparse_matrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_9_U(sparse_matrix_multiply_HLS_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_54_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_55_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_56_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_57_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_58_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_59_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_60_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_61_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_62_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_63_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_64_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_65_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_66_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_67_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_68_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_69_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_70_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_71_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_72_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_73_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_74_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_75_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_76_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_77_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_78_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_79_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_80_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_81_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_82_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_83_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_84_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_85_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_86_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_87_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_88_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_89_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_90_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_91_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_92_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_93_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_94_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_95_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_96_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_97_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_98_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_99_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_100_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_101_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_102_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_103_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_104_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_105_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_106_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_107_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'p_ZZ26sparse_matrix_multiply_HLSP8ap_fixedILi16ELi5EL9ap_q_mode5EL9ap_o_mode3ELi0_108_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'sparse_matrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_19_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'sparse_matrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_10_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'sparse_matrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_11_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'sparse_matrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_12_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'sparse_matrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_13_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'sparse_matrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_14_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'sparse_matrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_15_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'sparse_matrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_16_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'sparse_matrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_17_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'sparse_matrix_multiply_HLS_ap_fixed_int_int_ap_fixed_int_int_ap_fixed_18_U(sparse_matrix_multiply_HLS_fifo_w32_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'cRowStream_U(sparse_matrix_multiply_HLS_fifo_w16_d128_A)' using Vivado Default RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_Block_entry_proc_U0_U(sparse_matrix_multiply_HLS_start_for_Block_entry_proc_U0)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_readRowPtrA_U0_U(sparse_matrix_multiply_HLS_start_for_readRowPtrA_U0)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_Block_entry_proc_1_U0_U(sparse_matrix_multiply_HLS_start_for_Block_entry_proc_1_U0)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_storeC_U0_U(sparse_matrix_multiply_HLS_start_for_storeC_U0)' using Shift Registers.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.98 seconds. CPU system time: 0.14 seconds. Elapsed time: 1.67 seconds; current allocated memory: 954.199 MB.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 0.6 seconds. CPU system time: 0.18 seconds. Elapsed time: 1.3 seconds; current allocated memory: 960.387 MB.
+INFO: [HLS 200-111] Finished Updating report files: CPU user time: 1.5 seconds. CPU system time: 0.1 seconds. Elapsed time: 1.71 seconds; current allocated memory: 972.367 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for sparse_matrix_multiply_HLS.
+INFO: [VLOG 209-307] Generating Verilog RTL for sparse_matrix_multiply_HLS.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 242.73 MHz
+INFO: [HLS 200-2161] Finished Command csynth_design Elapsed time: 00:00:52; Allocated memory: 331.770 MB.
+INFO: [HLS 200-1510] Running: cosim_design 
+INFO: [COSIM 212-47] Using XSIM for RTL simulation.
+INFO: [COSIM 212-14] Instrumenting C test bench ...
+   Build using "/tools/software/xilinx/Vitis/2024.2/vcxx/libexec/clang++"
+   Compiling apatb_sparse_matrix_multiply_HLS.cpp
+   Compiling host.cpp_pre.cpp.tb.cpp
+   Compiling top.cpp_pre.cpp.tb.cpp
+   Compiling apatb_sparse_matrix_multiply_HLS_ir.ll
+   Generating cosim.tv.exe
+INFO: [COSIM 212-302] Starting C TB testing ... 
+MSE: 0.00000002
+INFO [HLS SIM]: The maximum depth reached by any hls::stream() instance in the design is 4096
+INFO: [COSIM 212-333] Generating C post check test bench ...
+INFO: [COSIM 212-12] Generating RTL test bench ...
+INFO: [COSIM 212-1] *** C/RTL co-simulation file generation completed. ***
+INFO: [COSIM 212-323] Starting verilog simulation. 
+INFO: [COSIM 212-15] Starting XSIM ...
+Vivado Simulator v2024.2.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: /tools/software/xilinx/Vivado/2024.2/bin/unwrapped/lnx64.o/xelab xil_defaultlib.apatb_sparse_matrix_multiply_HLS_top glbl -Oenable_linking_all_libraries -prj sparse_matrix_multiply_HLS.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm -L floating_point_v7_0_24 -L floating_point_v7_1_19 --lib ieee_proposed=./ieee_proposed -s sparse_matrix_multiply_HLS 
+Multi-threading is on. Using 110 slave threads.
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS.autotb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apatb_sparse_matrix_multiply_HLS_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/AESL_automem_values_A.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_values_A
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/AESL_automem_column_indices_A.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_column_indices_A
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/AESL_automem_row_ptr_A.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_row_ptr_A
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/AESL_automem_values_B.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_values_B
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/AESL_automem_row_indices_B.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_row_indices_B
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/AESL_automem_col_ptr_B.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_col_ptr_B
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/AESL_automem_C.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_C
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/AESL_axi_slave_control.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_slave_control
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/AESL_deadlock_detection_unit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_detect_unit
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/AESL_deadlock_report_unit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_report_unit
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/AESL_deadlock_detector.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_detector
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_loadA_Pipeline_VITIS_LOOP_8_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_loadA_Pipeline_VITIS_LOOP_8_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_loadA_Pipeline_VITIS_LOOP_12_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_loadA_Pipeline_VITIS_LOOP_12_2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_loadA.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_loadA
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_loadB_Pipeline_VITIS_LOOP_22_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_loadB_Pipeline_VITIS_LOOP_22_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_loadB_Pipeline_VITIS_LOOP_26_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_loadB_Pipeline_VITIS_LOOP_26_2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_loadB.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_loadB
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_Block_entry_proc.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_Block_entry_proc
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_Block_entry_proc_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_Block_entry_proc_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_readRowPtrA.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_readRowPtrA
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_prepareBData_Pipeline_VITIS_LOOP_34_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_prepareBData_Pipeline_VITIS_LOOP_34_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_prepareBData_Pipeline_VITIS_LOOP_38_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_prepareBData_Pipeline_VITIS_LOOP_38_2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_prepareBData.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_prepareBData
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_compute_row_Pipeline_VITIS_LOOP_65_3.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_compute_row_Pipeline_VITIS_LOOP_65_3
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_compute_row.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_compute_row
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_computeRows.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_computeRows
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_storeC.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_storeC
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_flow_control_loop_pipe_sequential_init.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_flow_control_loop_pipe_sequential_init
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_flow_control_loop_pipe.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_flow_control_loop_pipe
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_sparsemux_129_6_16_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_sparsemux_129_6_16_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_mac_muladd_16s_16s_27s_32_4_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mac_muladd_16s_16s_27s_32_4_1_DSP48_0
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mac_muladd_16s_16s_27s_32_4_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_sparsemux_131_7_32_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_sparsemux_131_7_32_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_sparsemux_129_6_32_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_sparsemux_129_6_32_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_valB_local_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_valB_local_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_valB_local_RAM_AUTO_1R1W_memcore.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_valB_local_RAM_AUTO_1R1W_memcore
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_rowIdxB_local_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_rowIdxB_local_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_rowIdxB_local_RAM_AUTO_1R1W_memcore.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_rowIdxB_local_RAM_AUTO_1R1W_memcore
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_fifo_w16_d128_A.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_fifo_w16_d128_A
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_fifo_w16_d128_A_ram
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_fifo_w32_d128_A.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_fifo_w32_d128_A
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_fifo_w32_d128_A_ram
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_fifo_w32_d4_S.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_fifo_w32_d4_S
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_fifo_w32_d4_S_ShiftReg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_fifo_w32_d2_S.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_fifo_w32_d2_S
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_fifo_w32_d2_S_ShiftReg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_fifo_w32_d3_S.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_fifo_w32_d3_S
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_fifo_w32_d3_S_ShiftReg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_start_for_Block_entry_proc_U0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_start_for_Block_entry_proc_U0
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_start_for_Block_entry_proc_U0_ShiftReg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_start_for_readRowPtrA_U0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_start_for_readRowPtrA_U0
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_start_for_readRowPtrA_U0_ShiftReg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_start_for_Block_entry_proc_1_U0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_start_for_Block_entry_proc_1_U0
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_start_for_Block_entry_proc_1_U0_ShiftReg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_start_for_storeC_U0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_start_for_storeC_U0
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_start_for_storeC_U0_ShiftReg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS_control_s_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_control_s_axi
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/dataflow_monitor.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dataflow_monitor
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package xil_defaultlib.$unit_dataflow_monitor_sv
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_contr...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_flow_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_loadA...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_loadA...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_loadA
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_loadB...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_loadB...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_loadB
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_Block...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_Block...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_flow_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_readR...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_prepa...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_prepa...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_prepa...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_spars...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mac_m...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mac_m...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_compu...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_spars...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_compu...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_spars...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_compu...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_store...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_valB_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_valB_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_rowId...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_rowId...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_fifo_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_fifo_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_fifo_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_fifo_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_fifo_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_fifo_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_fifo_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_fifo_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_fifo_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_fifo_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_start...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_start...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_start...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_start...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_start...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_start...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_start...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_start...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS
+Compiling module xil_defaultlib.AESL_automem_values_A
+Compiling module xil_defaultlib.AESL_automem_column_indices_A
+Compiling module xil_defaultlib.AESL_automem_row_ptr_A
+Compiling module xil_defaultlib.AESL_automem_values_B
+Compiling module xil_defaultlib.AESL_automem_row_indices_B
+Compiling module xil_defaultlib.AESL_automem_col_ptr_B
+Compiling module xil_defaultlib.AESL_automem_C
+Compiling module xil_defaultlib.AESL_axi_slave_control
+Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
+Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
+Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
+Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
+Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
+Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
+Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
+Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
+Compiling module xil_defaultlib.AESL_deadlock_report_unit(PROC_N...
+Compiling module xil_defaultlib.AESL_deadlock_detector_2
+Compiling module xil_defaultlib.df_fifo_intf_default
+Compiling module xil_defaultlib.df_process_intf_default
+Compiling module xil_defaultlib.nodf_module_intf_default
+Compiling module xil_defaultlib.seq_loop_intf(FSM_WIDTH=3)
+Compiling module xil_defaultlib.seq_loop_intf(FSM_WIDTH=66)
+Compiling module xil_defaultlib.upc_loop_intf(FSM_WIDTH=1)
+Compiling module xil_defaultlib.dataflow_monitor_1
+Compiling module xil_defaultlib.apatb_sparse_matrix_multiply_HLS...
+Compiling module work.glbl
+Built simulation snapshot sparse_matrix_multiply_HLS
+
+****** xsim v2024.2.2 (64-bit)
+  **** SW Build 6060944 on Thu Mar 06 19:10:09 MST 2025
+  **** IP Build 6050500 on Thu Mar  6 23:33:39 MST 2025
+  **** SharedData Build 6060542 on Thu Mar 06 10:31:07 MST 2025
+  **** Start of session at: Sat Mar 29 17:18:47 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/sparse_matrix_multiply_HLS/xsim_script.tcl
+# xsim {sparse_matrix_multiply_HLS} -autoloadwcfg -tclbatch {sparse_matrix_multiply_HLS.tcl}
+Time resolution is 1 ps
+source sparse_matrix_multiply_HLS.tcl
+## run all
+////////////////////////////////////////////////////////////////////////////////////
+// Inter-Transaction Progress: Completed Transaction / Total Transaction
+// Intra-Transaction Progress: Measured Latency / Latency Estimation * 100%
+//
+// RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
+////////////////////////////////////////////////////////////////////////////////////
+// RTL Simulation : 0 / 1 [n/a] @ "125000"
+// RTL Simulation : 1 / 1 [n/a] @ "101405000"
+////////////////////////////////////////////////////////////////////////////////////
+$finish called at time : 101465 ns : File "/nethome/mbeaulieu7/ECE8893/lab3/lsim2/solution1/sim/verilog/sparse_matrix_multiply_HLS.autotb.v" Line 722
+## quit
+INFO: xsimkernel Simulation Memory Usage: 497320 KB (Peak: 549924 KB), Simulation CPU Usage: 3130 ms
+INFO: [Common 17-206] Exiting xsim at Sat Mar 29 17:18:53 2025...
+INFO: [COSIM 212-316] Starting C post checking ...
+MSE: 0.00000002
+INFO: [COSIM 212-1000] *** C/RTL co-simulation finished: PASS ***
+INFO: [COSIM 212-211] II is measurable only when transaction number is greater than 1 in RTL simulation. Otherwise, they will be marked as all NA. If user wants to calculate them, please make sure there are at least 2 transactions in RTL simulation.
+INFO: [HLS 200-2161] Finished Command cosim_design Elapsed time: 00:01:18; Allocated memory: 10.836 MB.
+INFO: [HLS 200-112] Total CPU user time: 151.76 seconds. Total CPU system time: 13.9 seconds. Total elapsed time: 139.42 seconds; peak allocated memory: 984.508 MB.
