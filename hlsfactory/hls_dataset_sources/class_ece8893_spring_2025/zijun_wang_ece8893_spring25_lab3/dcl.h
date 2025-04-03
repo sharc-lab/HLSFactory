@@ -14,7 +14,7 @@ typedef ap_int<32> data_int;
 #define N 64  // Rows of A and C
 #define M 64  // Columns of A and Rows of B
 #define K 64  // Columns of B and C
-#define SPARSITY 0.8  // Percentage of non-zero elements
+#define SPARSITY 0.1  // Percentage of non-zero elements
 #define num_A_words (N*M)/32
 #define num_A_int_words (N*M)/16
 #define num_A_ptr_words N/16
