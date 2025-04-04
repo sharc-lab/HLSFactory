@@ -1,0 +1,969 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2024.1.2 (64-bit)
+  **** SW Build 5096458 on Sep  5 2024
+  **** IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+  **** SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+  **** Start of session at: Wed Feb 26 21:02:21 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source /tools/software/xilinx/Vitis_HLS/2024.1/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] For user 'hyang428' on host 'krishna-srv1.ece.gatech.edu' (Linux_x86_64 version 4.18.0-553.33.1.el8_10.x86_64) on Wed Feb 26 21:02:23 EST 2025
+INFO: [HLS 200-10] On os "Red Hat Enterprise Linux release 8.10 (Ootpa)"
+INFO: [HLS 200-10] In directory '/nethome/hyang428/ece8893/lab2'
+WARNING: [HLS 200-2053] The vitis_hls executable is deprecated. Consider using vitis-run --mode hls --tcl
+Sourcing Tcl script 'script.tcl'
+INFO: [HLS 200-1510] Running: open_project project_1 
+INFO: [HLS 200-10] Opening project '/nethome/hyang428/ece8893/lab2/project_1'.
+INFO: [HLS 200-1510] Running: set_top compute_attention_HLS 
+INFO: [HLS 200-1510] Running: add_files top.cpp 
+INFO: [HLS 200-10] Adding design file 'top.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb host.cpp 
+INFO: [HLS 200-10] Adding test bench file 'host.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb Q_tensor.bin 
+INFO: [HLS 200-10] Adding test bench file 'Q_tensor.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb V_tensor.bin 
+INFO: [HLS 200-10] Adding test bench file 'V_tensor.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb K_tensor.bin 
+INFO: [HLS 200-10] Adding test bench file 'K_tensor.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb Output_tensor.bin 
+INFO: [HLS 200-10] Adding test bench file 'Output_tensor.bin' to the project
+INFO: [HLS 200-1510] Running: open_solution solution2 
+INFO: [HLS 200-10] Opening solution '/nethome/hyang428/ece8893/lab2/project_1/solution2'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu3eg-sbva484-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1464] Running solution command: config_export -flow=syn
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1510] Running: set_part xczu3eg-sbva484-1-e 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.11 seconds. CPU system time: 0.03 seconds. Elapsed time: 0.31 seconds; current allocated memory: 391.410 MB.
+INFO: [HLS 200-10] Analyzing design file 'top.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 31 seconds. CPU system time: 1.72 seconds. Elapsed time: 35.13 seconds; current allocated memory: 396.996 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 200-1995] There were 50,388 instructions in the design after the 'Compile/Link' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,240 instructions in the design after the 'Unroll/Inline (step 1)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 595 instructions in the design after the 'Unroll/Inline (step 2)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 506 instructions in the design after the 'Unroll/Inline (step 3)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 505 instructions in the design after the 'Unroll/Inline (step 4)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 509 instructions in the design after the 'Array/Struct (step 1)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 509 instructions in the design after the 'Array/Struct (step 2)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 513 instructions in the design after the 'Array/Struct (step 3)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 517 instructions in the design after the 'Array/Struct (step 4)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 533 instructions in the design after the 'Array/Struct (step 5)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 525 instructions in the design after the 'Performance (step 1)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 521 instructions in the design after the 'Performance (step 2)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 521 instructions in the design after the 'Performance (step 3)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 521 instructions in the design after the 'Performance (step 4)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 536 instructions in the design after the 'HW Transforms (step 1)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 573 instructions in the design after the 'HW Transforms (step 2)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_918_23' is marked as complete unroll implied by the pipeline pragma (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:918:36)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_914_22' is marked as complete unroll implied by the pipeline pragma (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:914:36)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_908_21' is marked as complete unroll implied by the pipeline pragma (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:908:32)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_547_20' is marked as complete unroll implied by the pipeline pragma (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:547:36)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_539_19' is marked as complete unroll implied by the pipeline pragma (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:539:28)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_529_18' is marked as complete unroll implied by the pipeline pragma (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:529:28)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_525_17' is marked as complete unroll implied by the pipeline pragma (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:525:28)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_918_23' (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:918:36) in function 'exp_reduce::exp<33, 9>' completely with a factor of 40 (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:14:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_914_22' (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:914:36) in function 'exp_reduce::exp<33, 9>' completely with a factor of 24 (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:14:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_908_21' (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:908:32) in function 'exp_reduce::exp<33, 9>' completely with a factor of 24 (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:14:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_547_20' (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:547:36) in function 'exp_reduce::exp<33, 9>' completely with a factor of 64 (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:14:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_539_19' (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:539:28) in function 'exp_reduce::exp<33, 9>' completely with a factor of 27 (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:14:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_529_18' (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:529:28) in function 'exp_reduce::exp<33, 9>' completely with a factor of 24 (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:14:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_525_17' (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:525:28) in function 'exp_reduce::exp<33, 9>' completely with a factor of 33 (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:14:0)
+INFO: [HLS 214-178] Inlining function 'softmax_HLS(ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0> (*) [100][100])' into 'compute_attention_HLS(ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0> (*) [100][128], ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0> (*) [100][128], ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0> (*) [100][128], ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0> (*) [100][128])' (top.cpp:29:0)
+INFO: [HLS 214-241] Aggregating maxi variable 'Output' with compact=none mode in 16-bits
+INFO: [HLS 214-241] Aggregating maxi variable 'V' with compact=none mode in 16-bits
+INFO: [HLS 214-241] Aggregating maxi variable 'K' with compact=none mode in 16-bits
+INFO: [HLS 214-241] Aggregating maxi variable 'Q' with compact=none mode in 16-bits
+INFO: [HLS 214-376] automatically set the pipeline for Loop< VITIS_LOOP_52_4> at top.cpp:52:34 
+INFO: [HLS 214-376] automatically set the pipeline for Loop< VITIS_LOOP_21_5> at top.cpp:21:30 
+INFO: [HLS 214-376] automatically set the pipeline for Loop< VITIS_LOOP_16_4> at top.cpp:16:30 
+INFO: [HLS 214-376] automatically set the pipeline for Loop< VITIS_LOOP_9_3> at top.cpp:9:29 
+INFO: [HLS 214-376] automatically set the pipeline for Loop< VITIS_LOOP_91_8> at top.cpp:91:34 
+INFO: [HLS 214-115] Multiple burst writes of length 51200 and bit width 16 in loop 'VITIS_LOOP_87_5'(top.cpp:87:22) has been inferred on bundle 'mem2'. These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings. (top.cpp:87:22)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 6.26 seconds. CPU system time: 0.57 seconds. Elapsed time: 8.8 seconds; current allocated memory: 406.055 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 406.055 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.05 seconds; current allocated memory: 407.738 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.06 seconds. CPU system time: 0 seconds. Elapsed time: 0.07 seconds; current allocated memory: 410.188 MB.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:15:9) to (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:927:1) in function 'exp_reduce::exp<33, 9>'... converting 5 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'exp_reduce::exp<33, 9>' (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:15:1)...27 expression(s) balanced.
+INFO: [XFORM 203-11] Balancing expressions in function 'compute_attention_HLS' (top.cpp:6:30)...3 expression(s) balanced.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.18 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.23 seconds; current allocated memory: 435.832 MB.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_50_3'(top.cpp:50:30) and 'VITIS_LOOP_52_4'(top.cpp:52:34) in function 'compute_attention_HLS' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_49_2'(top.cpp:49:26) and 'VITIS_LOOP_50_3'(top.cpp:50:30) in function 'compute_attention_HLS' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_48_1'(top.cpp:48:22) and 'VITIS_LOOP_49_2'(top.cpp:49:26) in function 'compute_attention_HLS' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_89_7'(top.cpp:89:30) and 'VITIS_LOOP_91_8'(top.cpp:91:34) in function 'compute_attention_HLS' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_88_6'(top.cpp:88:26) and 'VITIS_LOOP_89_7'(top.cpp:89:30) in function 'compute_attention_HLS' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_87_5'(top.cpp:87:22) and 'VITIS_LOOP_88_6'(top.cpp:88:26) in function 'compute_attention_HLS' into perfectly nested loops.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_50_3' (top.cpp:50:30) in function 'compute_attention_HLS'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_49_2' (top.cpp:49:26) in function 'compute_attention_HLS'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_48_1' (top.cpp:48:22) in function 'compute_attention_HLS'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_89_7' (top.cpp:89:30) in function 'compute_attention_HLS'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_88_6' (top.cpp:88:26) in function 'compute_attention_HLS'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_87_5' (top.cpp:87:22) in function 'compute_attention_HLS'.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.15 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.22 seconds; current allocated memory: 487.168 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'compute_attention_HLS' ...
+WARNING: [SYN 201-103] Legalizing function name 'exp<33, 9>' to 'exp_33_9_s'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'compute_attention_HLS_Pipeline_VITIS_LOOP_48_1_VITIS_LOOP_49_2_VITIS_LOOP_50_3_V' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=add_ln55_1) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_48_1_VITIS_LOOP_49_2_VITIS_LOOP_50_3_VITIS_LOOP_52_4'.
+WARNING: [HLS 200-885] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_48_1_VITIS_LOOP_49_2_VITIS_LOOP_50_3_V' (loop 'VITIS_LOOP_48_1_VITIS_LOOP_49_2_VITIS_LOOP_50_3_VITIS_LOOP_52_4'): Unable to schedule bus request operation ('mem1_load_1_req', top.cpp:53) on port 'mem1' (top.cpp:53) due to limited memory ports (II = 1). Please consider using a memory core with more ports or partitioning the array.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 2, Depth = 14, loop 'VITIS_LOOP_48_1_VITIS_LOOP_49_2_VITIS_LOOP_50_3_VITIS_LOOP_52_4'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.19 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.26 seconds; current allocated memory: 487.348 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.06 seconds; current allocated memory: 487.348 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'compute_attention_HLS_Pipeline_VITIS_LOOP_9_3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_9_3'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 2, loop 'VITIS_LOOP_9_3'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.05 seconds. CPU system time: 0 seconds. Elapsed time: 0.09 seconds; current allocated memory: 487.348 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.04 seconds; current allocated memory: 487.348 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'exp_33_9_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'exp<33, 9>'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 6, function 'exp<33, 9>'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.09 seconds. CPU system time: 0 seconds. Elapsed time: 0.12 seconds; current allocated memory: 487.348 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.07 seconds; current allocated memory: 488.168 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'compute_attention_HLS_Pipeline_VITIS_LOOP_16_4' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_16_4'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 8, loop 'VITIS_LOOP_16_4'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.04 seconds. CPU system time: 0 seconds. Elapsed time: 0.07 seconds; current allocated memory: 488.168 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.05 seconds; current allocated memory: 488.211 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'compute_attention_HLS_Pipeline_VITIS_LOOP_21_5' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_21_5'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 45, loop 'VITIS_LOOP_21_5'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.07 seconds; current allocated memory: 488.359 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.05 seconds; current allocated memory: 488.664 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'compute_attention_HLS_Pipeline_VITIS_LOOP_87_5_VITIS_LOOP_88_6_VITIS_LOOP_89_7_V' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=add_ln92_3) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_87_5_VITIS_LOOP_88_6_VITIS_LOOP_89_7_VITIS_LOOP_91_8'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 13, loop 'VITIS_LOOP_87_5_VITIS_LOOP_88_6_VITIS_LOOP_89_7_VITIS_LOOP_91_8'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.07 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.13 seconds; current allocated memory: 489.594 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.06 seconds; current allocated memory: 489.812 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'compute_attention_HLS' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.05 seconds. CPU system time: 0 seconds. Elapsed time: 0.09 seconds; current allocated memory: 490.062 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.06 seconds; current allocated memory: 490.410 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'compute_attention_HLS_Pipeline_VITIS_LOOP_48_1_VITIS_LOOP_49_2_VITIS_LOOP_50_3_V' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'compute_attention_HLS_Pipeline_VITIS_LOOP_48_1_VITIS_LOOP_49_2_VITIS_LOOP_50_3_V' pipeline 'VITIS_LOOP_48_1_VITIS_LOOP_49_2_VITIS_LOOP_50_3_VITIS_LOOP_52_4' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'ama_addmuladd_10ns_7ns_7ns_7ns_16_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_16s_30_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_3ns_16ns_18_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_3ns_8ns_10_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'compute_attention_HLS_Pipeline_VITIS_LOOP_48_1_VITIS_LOOP_49_2_VITIS_LOOP_50_3_V'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.07 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.14 seconds; current allocated memory: 491.754 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'compute_attention_HLS_Pipeline_VITIS_LOOP_9_3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'compute_attention_HLS_Pipeline_VITIS_LOOP_9_3' pipeline 'VITIS_LOOP_9_3' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'compute_attention_HLS_Pipeline_VITIS_LOOP_9_3'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.09 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.37 seconds; current allocated memory: 493.434 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'exp_33_9_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'mul_50ns_50ns_100_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_67ns_63ns_130_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_72ns_68ns_140_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'exp_33_9_s'.
+INFO: [RTMG 210-279] Implementing memory 'compute_attention_HLS_exp_33_9_s_f_x_msb_4_table_ROM_AUTO_1R' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'compute_attention_HLS_exp_33_9_s_f_x_msb_3_table_ROM_AUTO_1R' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'compute_attention_HLS_exp_33_9_s_f_x_msb_2_table_ROM_AUTO_1R' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'compute_attention_HLS_exp_33_9_s_exp_x_msb_1_table_ROM_AUTO_1R' using auto ROMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.07 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.5 seconds; current allocated memory: 496.062 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'compute_attention_HLS_Pipeline_VITIS_LOOP_16_4' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'compute_attention_HLS_Pipeline_VITIS_LOOP_16_4' pipeline 'VITIS_LOOP_16_4' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'compute_attention_HLS_Pipeline_VITIS_LOOP_16_4'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.09 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.17 seconds; current allocated memory: 497.891 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'compute_attention_HLS_Pipeline_VITIS_LOOP_21_5' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'compute_attention_HLS_Pipeline_VITIS_LOOP_21_5' pipeline 'VITIS_LOOP_21_5' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'sdiv_40ns_32s_16_44_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'compute_attention_HLS_Pipeline_VITIS_LOOP_21_5'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.07 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.16 seconds; current allocated memory: 500.461 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'compute_attention_HLS_Pipeline_VITIS_LOOP_87_5_VITIS_LOOP_88_6_VITIS_LOOP_89_7_V' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'compute_attention_HLS_Pipeline_VITIS_LOOP_87_5_VITIS_LOOP_88_6_VITIS_LOOP_89_7_V' pipeline 'VITIS_LOOP_87_5_VITIS_LOOP_88_6_VITIS_LOOP_89_7_VITIS_LOOP_91_8' pipeline type 'loop pipeline'
+WARNING: [RTGEN 206-101] Setting dangling out port 'compute_attention_HLS_Pipeline_VITIS_LOOP_87_5_VITIS_LOOP_88_6_VITIS_LOOP_89_7_V/m_axi_mem2_AWVALID' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'compute_attention_HLS_Pipeline_VITIS_LOOP_87_5_VITIS_LOOP_88_6_VITIS_LOOP_89_7_V/m_axi_mem2_AWADDR' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'compute_attention_HLS_Pipeline_VITIS_LOOP_87_5_VITIS_LOOP_88_6_VITIS_LOOP_89_7_V/m_axi_mem2_AWID' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'compute_attention_HLS_Pipeline_VITIS_LOOP_87_5_VITIS_LOOP_88_6_VITIS_LOOP_89_7_V/m_axi_mem2_AWLEN' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'compute_attention_HLS_Pipeline_VITIS_LOOP_87_5_VITIS_LOOP_88_6_VITIS_LOOP_89_7_V/m_axi_mem2_AWSIZE' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'compute_attention_HLS_Pipeline_VITIS_LOOP_87_5_VITIS_LOOP_88_6_VITIS_LOOP_89_7_V/m_axi_mem2_AWBURST' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'compute_attention_HLS_Pipeline_VITIS_LOOP_87_5_VITIS_LOOP_88_6_VITIS_LOOP_89_7_V/m_axi_mem2_AWLOCK' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'compute_attention_HLS_Pipeline_VITIS_LOOP_87_5_VITIS_LOOP_88_6_VITIS_LOOP_89_7_V/m_axi_mem2_AWCACHE' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'compute_attention_HLS_Pipeline_VITIS_LOOP_87_5_VITIS_LOOP_88_6_VITIS_LOOP_89_7_V/m_axi_mem2_AWPROT' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'compute_attention_HLS_Pipeline_VITIS_LOOP_87_5_VITIS_LOOP_88_6_VITIS_LOOP_89_7_V/m_axi_mem2_AWQOS' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'compute_attention_HLS_Pipeline_VITIS_LOOP_87_5_VITIS_LOOP_88_6_VITIS_LOOP_89_7_V/m_axi_mem2_AWREGION' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'compute_attention_HLS_Pipeline_VITIS_LOOP_87_5_VITIS_LOOP_88_6_VITIS_LOOP_89_7_V/m_axi_mem2_AWUSER' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'compute_attention_HLS_Pipeline_VITIS_LOOP_87_5_VITIS_LOOP_88_6_VITIS_LOOP_89_7_V/m_axi_mem2_BREADY' to 0.
+INFO: [RTGEN 206-100] Generating core module 'ama_addmuladd_10ns_7ns_7ns_7ns_16_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_16s_30_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_3ns_16ns_18_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_3ns_8ns_10_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'compute_attention_HLS_Pipeline_VITIS_LOOP_87_5_VITIS_LOOP_88_6_VITIS_LOOP_89_7_V'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.1 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.23 seconds; current allocated memory: 501.625 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'compute_attention_HLS' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [RTGEN 206-101] Design contains AXI ports. Reset is fixed to synchronous and active low.
+INFO: [RTGEN 206-500] Setting interface mode on port 'compute_attention_HLS/mem1' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'compute_attention_HLS/mem2' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'compute_attention_HLS/Q' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'compute_attention_HLS/K' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'compute_attention_HLS/V' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'compute_attention_HLS/Output_r' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'compute_attention_HLS' to 's_axilite & ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Bundling port 'Q', 'K', 'V', 'Output_r' and 'return' to AXI-Lite port control.
+INFO: [RTGEN 206-100] Generating core module 'mul_9ns_8ns_16_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'compute_attention_HLS'.
+INFO: [RTMG 210-278] Implementing memory 'compute_attention_HLS_attention_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.13 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.24 seconds; current allocated memory: 506.574 MB.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 0.28 seconds. CPU system time: 0.12 seconds. Elapsed time: 1.21 seconds; current allocated memory: 509.578 MB.
+INFO: [HLS 200-1603] Design has inferred MAXI bursts and missed bursts, see Vitis HLS GUI synthesis summary report for detailed information.
+INFO: [HLS 200-111] Finished Updating report files: CPU user time: 1.44 seconds. CPU system time: 0.05 seconds. Elapsed time: 1.69 seconds; current allocated memory: 519.891 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for compute_attention_HLS.
+INFO: [VLOG 209-307] Generating Verilog RTL for compute_attention_HLS.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were NOT satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 136.99 MHz
+INFO: [HLS 200-2161] Finished Command csynth_design Elapsed time: 00:00:51; Allocated memory: 128.480 MB.
+INFO: [HLS 200-1510] Running: cosim_design 
+INFO: [COSIM 212-47] Using XSIM for RTL simulation.
+INFO: [COSIM 212-14] Instrumenting C test bench ...
+   Build using "/tools/software/xilinx/Vitis_HLS/2024.1/vcxx/libexec/clang++"
+   Compiling host.cpp_pre.cpp.tb.cpp
+   Compiling apatb_compute_attention_HLS.cpp
+   Compiling top.cpp_pre.cpp.tb.cpp
+   Compiling apatb_compute_attention_HLS_ir.ll
+   Generating cosim.tv.exe
+INFO: [COSIM 212-302] Starting C TB testing ... 
+MSE: 0.00000288
+INFO: [COSIM 212-333] Generating C post check test bench ...
+INFO: [COSIM 212-12] Generating RTL test bench ...
+INFO: [COSIM 212-1] *** C/RTL co-simulation file generation completed. ***
+INFO: [COSIM 212-323] Starting verilog simulation. 
+INFO: [COSIM 212-15] Starting XSIM ...
+Vivado Simulator v2024.1.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: /tools/software/xilinx/Vivado/2024.1/bin/unwrapped/lnx64.o/xelab xil_defaultlib.apatb_compute_attention_HLS_top glbl -Oenable_linking_all_libraries -prj compute_attention_HLS.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm -L floating_point_v7_1_18 -L floating_point_v7_0_23 --lib ieee_proposed=./ieee_proposed -s compute_attention_HLS 
+Multi-threading is on. Using 70 slave threads.
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS.autotb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apatb_compute_attention_HLS_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/AESL_axi_master_mem1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_master_mem1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/AESL_axi_master_mem2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_master_mem2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/AESL_axi_slave_control.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_slave_control
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_compute_attention_HLS_Pipeline_VITIS_LOOP_48_1_VITIS_LOOP_49_2_VITIS_LOOP_50_3_V.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_compute_attention_HLS_Pipeline_VITIS_LOOP_48_1_VITIS_LOOP_49_2_VITIS_LOOP_50_3_V
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_compute_attention_HLS_Pipeline_VITIS_LOOP_9_3.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_compute_attention_HLS_Pipeline_VITIS_LOOP_9_3
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_exp_33_9_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_exp_33_9_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_compute_attention_HLS_Pipeline_VITIS_LOOP_16_4.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_compute_attention_HLS_Pipeline_VITIS_LOOP_16_4
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_compute_attention_HLS_Pipeline_VITIS_LOOP_21_5.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_compute_attention_HLS_Pipeline_VITIS_LOOP_21_5
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_compute_attention_HLS_Pipeline_VITIS_LOOP_87_5_VITIS_LOOP_88_6_VITIS_LOOP_89_7_V.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_compute_attention_HLS_Pipeline_VITIS_LOOP_87_5_VITIS_LOOP_88_6_VITIS_LOOP_89_7_V
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_flow_control_loop_pipe_sequential_init.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_flow_control_loop_pipe_sequential_init
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mul_16s_16s_29_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mul_16s_16s_29_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mac_muladd_16s_16s_29s_29_4_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mac_muladd_16s_16s_29s_29_4_1_DSP48_0
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mac_muladd_16s_16s_29s_29_4_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mul_50ns_50ns_100_1_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mul_50ns_50ns_100_1_0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mul_67ns_63ns_130_1_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mul_67ns_63ns_130_1_0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mul_72ns_68ns_140_1_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mul_72ns_68ns_140_1_0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_exp_33_9_s_f_x_msb_4_table_ROM_AUTO_1R.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_exp_33_9_s_f_x_msb_4_table_ROM_AUTO_1R
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_exp_33_9_s_f_x_msb_3_table_ROM_AUTO_1R.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_exp_33_9_s_f_x_msb_3_table_ROM_AUTO_1R
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_exp_33_9_s_f_x_msb_2_table_ROM_AUTO_1R.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_exp_33_9_s_f_x_msb_2_table_ROM_AUTO_1R
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_exp_33_9_s_exp_x_msb_1_table_ROM_AUTO_1R.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_exp_33_9_s_exp_x_msb_1_table_ROM_AUTO_1R
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_sdiv_40ns_32s_16_44_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_sdiv_40ns_32s_16_44_1_divider
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_sdiv_40ns_32s_16_44_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mul_16s_16s_27_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mul_16s_16s_27_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mac_muladd_16s_16s_27s_27_4_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mac_muladd_16s_16s_27s_27_4_1_DSP48_0
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mac_muladd_16s_16s_27s_27_4_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mac_muladd_16s_16s_27ns_27_4_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mac_muladd_16s_16s_27ns_27_4_1_DSP48_0
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mac_muladd_16s_16s_27ns_27_4_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_attention_0_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_attention_0_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem1_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem2_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mul_16s_16s_30_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mul_16s_16s_30_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mul_50ns_50ns_100_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mul_50ns_50ns_100_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mul_67ns_63ns_130_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mul_67ns_63ns_130_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mul_72ns_68ns_140_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mul_72ns_68ns_140_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_sparsemux_33_4_16_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_sparsemux_33_4_16_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem1_0_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_0_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_0_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_0_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_0_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_0_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_0_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_0_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_0_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_0_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_0_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_0_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem1_1_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_1_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_1_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_1_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_1_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_1_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_1_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_1_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_1_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_1_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_1_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_1_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem1_2_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_2_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_2_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_2_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_2_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_2_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_2_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_2_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_2_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_2_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_2_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_2_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem1_3_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_3_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_3_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_3_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_3_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_3_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_3_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_3_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_3_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_3_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_3_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_3_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem1_4_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_4_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_4_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_4_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_4_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_4_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_4_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_4_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_4_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_4_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_4_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_4_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem1_5_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_5_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_5_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_5_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_5_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_5_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_5_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_5_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_5_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_5_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_5_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_5_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem1_6_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_6_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_6_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_6_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_6_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_6_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_6_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_6_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_6_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_6_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_6_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_6_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem1_7_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_7_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_7_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_7_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_7_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_7_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_7_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_7_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_7_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_7_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_7_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_7_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem1_8_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_8_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_8_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_8_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_8_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_8_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_8_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_8_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_8_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_8_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_8_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_8_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem1_9_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_9_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_9_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_9_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_9_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_9_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_9_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_9_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_9_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_9_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_9_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_9_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem1_10_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_10_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_10_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_10_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_10_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_10_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_10_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_10_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_10_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_10_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_10_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_10_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem1_11_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_11_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_11_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_11_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_11_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_11_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_11_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_11_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_11_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_11_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_11_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_11_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem1_12_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_12_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_12_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_12_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_12_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_12_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_12_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_12_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_12_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_12_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_12_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_12_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem1_13_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_13_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_13_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_13_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_13_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_13_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_13_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_13_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_13_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_13_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_13_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_13_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem1_14_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_14_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_14_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_14_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_14_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_14_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_14_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_14_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_14_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_14_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_14_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_14_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem1_15_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_15_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_15_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_15_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_15_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_15_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_15_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_15_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_15_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_15_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_15_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_15_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem2_0_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_0_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_0_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_0_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_0_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_0_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_0_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_0_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_0_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_0_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_0_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_0_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem2_1_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_1_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_1_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_1_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_1_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_1_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_1_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_1_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_1_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_1_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_1_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_1_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem2_2_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_2_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_2_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_2_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_2_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_2_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_2_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_2_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_2_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_2_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_2_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_2_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem2_3_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_3_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_3_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_3_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_3_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_3_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_3_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_3_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_3_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_3_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_3_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_3_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem2_4_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_4_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_4_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_4_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_4_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_4_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_4_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_4_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_4_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_4_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_4_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_4_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem2_5_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_5_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_5_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_5_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_5_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_5_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_5_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_5_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_5_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_5_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_5_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_5_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem2_6_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_6_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_6_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_6_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_6_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_6_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_6_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_6_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_6_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_6_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_6_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_6_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem2_7_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_7_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_7_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_7_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_7_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_7_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_7_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_7_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_7_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_7_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_7_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_7_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem2_8_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_8_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_8_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_8_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_8_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_8_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_8_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_8_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_8_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_8_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_8_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_8_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem2_9_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_9_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_9_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_9_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_9_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_9_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_9_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_9_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_9_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_9_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_9_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_9_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem2_10_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_10_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_10_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_10_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_10_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_10_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_10_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_10_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_10_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_10_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_10_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_10_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem2_11_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_11_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_11_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_11_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_11_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_11_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_11_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_11_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_11_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_11_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_11_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_11_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem2_12_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_12_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_12_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_12_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_12_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_12_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_12_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_12_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_12_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_12_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_12_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_12_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem2_13_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_13_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_13_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_13_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_13_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_13_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_13_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_13_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_13_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_13_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_13_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_13_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem2_14_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_14_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_14_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_14_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_14_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_14_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_14_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_14_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_14_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_14_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_14_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_14_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mem2_15_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_15_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_15_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_15_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_15_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_15_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_15_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_15_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_15_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_15_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_15_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_15_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mul_9ns_8ns_16_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mul_9ns_8ns_16_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mul_16s_16s_28_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mul_16s_16s_28_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mac_muladd_16s_16s_28s_28_4_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mac_muladd_16s_16s_28s_28_4_1_DSP48_0
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mac_muladd_16s_16s_28s_28_4_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_sparsemux_9_2_16_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_sparsemux_9_2_16_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_sdiv_40ns_31s_16_44_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_sdiv_40ns_31s_16_44_1_divider
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_sdiv_40ns_31s_16_44_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_control_s_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_control_s_axi
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_sdiv_40ns_31s_40_44_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_sdiv_40ns_31s_40_44_1_divider
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_sdiv_40ns_31s_40_44_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_attention_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_attention_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mul_3ns_16ns_18_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mul_3ns_16ns_18_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_mul_3ns_8ns_10_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mul_3ns_8ns_10_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS_ama_addmuladd_10ns_7ns_7ns_7ns_16_4_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_ama_addmuladd_10ns_7ns_7ns_7ns_16_4_1_DSP48_0
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_ama_addmuladd_10ns_7ns_7ns_7ns_16_4_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/dataflow_monitor.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dataflow_monitor
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package xil_defaultlib.$unit_dataflow_monitor_sv
+Compiling module xil_defaultlib.compute_attention_HLS_attention_...
+Compiling module xil_defaultlib.compute_attention_HLS_mul_3ns_16...
+Compiling module xil_defaultlib.compute_attention_HLS_mul_3ns_8n...
+Compiling module xil_defaultlib.compute_attention_HLS_mul_16s_16...
+Compiling module xil_defaultlib.compute_attention_HLS_ama_addmul...
+Compiling module xil_defaultlib.compute_attention_HLS_ama_addmul...
+Compiling module xil_defaultlib.compute_attention_HLS_flow_contr...
+Compiling module xil_defaultlib.compute_attention_HLS_compute_at...
+Compiling module xil_defaultlib.compute_attention_HLS_compute_at...
+Compiling module xil_defaultlib.compute_attention_HLS_exp_33_9_s...
+Compiling module xil_defaultlib.compute_attention_HLS_exp_33_9_s...
+Compiling module xil_defaultlib.compute_attention_HLS_exp_33_9_s...
+Compiling module xil_defaultlib.compute_attention_HLS_exp_33_9_s...
+Compiling module xil_defaultlib.compute_attention_HLS_mul_50ns_5...
+Compiling module xil_defaultlib.compute_attention_HLS_mul_67ns_6...
+Compiling module xil_defaultlib.compute_attention_HLS_mul_72ns_6...
+Compiling module xil_defaultlib.compute_attention_HLS_exp_33_9_s
+Compiling module xil_defaultlib.compute_attention_HLS_compute_at...
+Compiling module xil_defaultlib.compute_attention_HLS_sdiv_40ns_...
+Compiling module xil_defaultlib.compute_attention_HLS_sdiv_40ns_...
+Compiling module xil_defaultlib.compute_attention_HLS_compute_at...
+Compiling module xil_defaultlib.compute_attention_HLS_compute_at...
+Compiling module xil_defaultlib.compute_attention_HLS_control_s_...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mul_9ns_8n...
+Compiling module xil_defaultlib.compute_attention_HLS
+Compiling module xil_defaultlib.AESL_axi_master_mem1
+Compiling module xil_defaultlib.AESL_axi_master_mem2
+Compiling module xil_defaultlib.AESL_axi_slave_control
+Compiling module xil_defaultlib.nodf_module_intf_default
+Compiling module xil_defaultlib.seq_loop_intf(FSM_WIDTH=19)
+Compiling module xil_defaultlib.upc_loop_intf_default
+Compiling module xil_defaultlib.upc_loop_intf(FSM_WIDTH=1)
+Compiling module xil_defaultlib.dataflow_monitor_1
+Compiling module xil_defaultlib.apatb_compute_attention_HLS_top
+Compiling module work.glbl
+Built simulation snapshot compute_attention_HLS
+
+****** xsim v2024.1.2 (64-bit)
+  **** SW Build 5164865 on Thu Sep  5 14:36:28 MDT 2024
+  **** IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+  **** SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+  **** Start of session at: Wed Feb 26 21:04:49 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/compute_attention_HLS/xsim_script.tcl
+# xsim {compute_attention_HLS} -autoloadwcfg -tclbatch {compute_attention_HLS.tcl}
+Time resolution is 1 ps
+source compute_attention_HLS.tcl
+## run all
+////////////////////////////////////////////////////////////////////////////////////
+// Inter-Transaction Progress: Completed Transaction / Total Transaction
+// Intra-Transaction Progress: Measured Latency / Latency Estimation * 100%
+//
+// RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
+////////////////////////////////////////////////////////////////////////////////////
+// RTL Simulation : 0 / 1 [0.00%] @ "125000"
+// RTL Simulation : 0 / 1 [64.50%] @ "100000145000"
+// RTL Simulation : 0 / 1 [128.99%] @ "200000155000"
+// RTL Simulation : 1 / 1 [100.00%] @ "270225345000"
+////////////////////////////////////////////////////////////////////////////////////
+$finish called at time : 270225405 ns : File "/nethome/hyang428/ece8893/lab2/project_1/solution2/sim/verilog/compute_attention_HLS.autotb.v" Line 588
+run: Time (s): cpu = 00:00:00.24 ; elapsed = 00:38:04 . Memory (MB): peak = 1542.855 ; gain = 0.000 ; free physical = 520084 ; free virtual = 594603
+## quit
+INFO: xsimkernel Simulation Memory Usage: 476840 KB (Peak: 476840 KB), Simulation CPU Usage: 2272940 ms
+INFO: [Common 17-206] Exiting xsim at Wed Feb 26 21:42:56 2025...
+INFO: [COSIM 212-316] Starting C post checking ...
+MSE: 0.00000288
+INFO: [COSIM 212-1000] *** C/RTL co-simulation finished: PASS ***
+INFO: [COSIM 212-211] II is measurable only when transaction number is greater than 1 in RTL simulation. Otherwise, they will be marked as all NA. If user wants to calculate them, please make sure there are at least 2 transactions in RTL simulation.
+INFO: [HLS 200-2161] Finished Command cosim_design Elapsed time: 00:39:48; Allocated memory: 10.602 MB.
+INFO: [HLS 200-112] Total CPU user time: 2418.39 seconds. Total CPU system time: 9.13 seconds. Total elapsed time: 2444.72 seconds; peak allocated memory: 530.492 MB.
