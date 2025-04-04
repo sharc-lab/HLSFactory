@@ -1,0 +1,49 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2024.2.2 (64-bit)
+  **** SW Build 6049644 on Mar  5 2025
+  **** IP Build 6050500 on Thu Mar  6 23:33:39 MST 2025
+  **** SharedData Build 6060542 on Thu Mar 06 10:31:07 MST 2025
+  **** Start of session at: Fri Mar 28 15:56:53 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source /tools/software/xilinx/Vitis/2024.2/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] For user 'mzhang745' on host 'ece-linlabsrv01.ece.gatech.edu' (Linux_x86_64 version 4.18.0-553.44.1.el8_10.x86_64) on Fri Mar 28 15:56:56 EDT 2025
+INFO: [HLS 200-10] On os "Red Hat Enterprise Linux release 8.10 (Ootpa)"
+INFO: [HLS 200-10] In directory '/nethome/mzhang745/FPGA_ECE8893/2025_Spring/lab301'
+WARNING: [HLS 200-2053] The vitis_hls executable is deprecated. Consider using vitis-run --mode hls --tcl
+Sourcing Tcl script 'script.tcl'
+INFO: [HLS 200-1510] Running: open_project project_1 
+INFO: [HLS 200-10] Opening project '/nethome/mzhang745/FPGA_ECE8893/2025_Spring/lab301/project_1'.
+INFO: [HLS 200-1510] Running: set_top sparse_matrix_multiply_HLS 
+INFO: [HLS 200-1510] Running: add_files top.cpp 
+INFO: [HLS 200-10] Adding design file 'top.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb host.cpp 
+INFO: [HLS 200-10] Adding test bench file 'host.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb A_matrix_csr_sparsity_0.10.bin 
+INFO: [HLS 200-10] Adding test bench file 'A_matrix_csr_sparsity_0.10.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb B_matrix_csc_sparsity_0.10.bin 
+INFO: [HLS 200-10] Adding test bench file 'B_matrix_csc_sparsity_0.10.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb C_matrix_result_sparsity_0.10.bin 
+INFO: [HLS 200-10] Adding test bench file 'C_matrix_result_sparsity_0.10.bin' to the project
+INFO: [HLS 200-1510] Running: open_solution solution1 
+INFO: [HLS 200-10] Opening solution '/nethome/mzhang745/FPGA_ECE8893/2025_Spring/lab301/project_1/solution1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu3eg-sbva484-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1464] Running solution command: config_export -flow=impl
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1510] Running: set_part xczu3eg-sbva484-1-e 
+INFO: [HLS 200-1510] Running: csim_design 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch CLANG as the compiler.
+INFO: [HLS 200-2036] Building debug C Simulation binaries
+   Compiling ../../../../host.cpp in debug mode
+   Compiling ../../../../top.cpp in debug mode
+   Generating csim.exe
+MSE: 0.00000002
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-2161] Finished Command csim_design Elapsed time: 00:00:22; Allocated memory: 0.145 MB.
+INFO: [HLS 200-112] Total CPU user time: 27.8 seconds. Total CPU system time: 3.37 seconds. Total elapsed time: 32.23 seconds; peak allocated memory: 698.180 MB.
