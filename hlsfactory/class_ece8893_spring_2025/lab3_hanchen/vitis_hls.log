@@ -1,0 +1,986 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2024.2.2 (64-bit)
+  **** SW Build 6049644 on Mar  5 2025
+  **** IP Build 6050500 on Thu Mar  6 23:33:39 MST 2025
+  **** SharedData Build 6060542 on Thu Mar 06 10:31:07 MST 2025
+  **** Start of session at: Fri Mar 28 23:34:19 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source /tools/software/xilinx/Vitis/2024.2/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] For user 'hyang428' on host 'krishna-srv1.ece.gatech.edu' (Linux_x86_64 version 4.18.0-553.44.1.el8_10.x86_64) on Fri Mar 28 23:34:21 EDT 2025
+INFO: [HLS 200-10] On os "Red Hat Enterprise Linux release 8.10 (Ootpa)"
+INFO: [HLS 200-10] In directory '/nethome/hyang428/ece8893/lab3'
+WARNING: [HLS 200-2053] The vitis_hls executable is deprecated. Consider using vitis-run --mode hls --tcl
+Sourcing Tcl script 'script.tcl'
+INFO: [HLS 200-1510] Running: open_project project_2 
+INFO: [HLS 200-10] Opening project '/nethome/hyang428/ece8893/lab3/project_2'.
+INFO: [HLS 200-1510] Running: set_top sparse_matrix_multiply_HLS 
+INFO: [HLS 200-1510] Running: add_files top.cpp 
+INFO: [HLS 200-10] Adding design file 'top.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb host.cpp 
+INFO: [HLS 200-10] Adding test bench file 'host.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb A_matrix_csr_sparsity_0.80.bin 
+INFO: [HLS 200-10] Adding test bench file 'A_matrix_csr_sparsity_0.80.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb B_matrix_csc_sparsity_0.80.bin 
+INFO: [HLS 200-10] Adding test bench file 'B_matrix_csc_sparsity_0.80.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb C_matrix_result_sparsity_0.80.bin 
+INFO: [HLS 200-10] Adding test bench file 'C_matrix_result_sparsity_0.80.bin' to the project
+INFO: [HLS 200-1510] Running: open_solution solution_0.8 
+INFO: [HLS 200-10] Creating and opening solution '/nethome/hyang428/ece8893/lab3/project_2/solution_0.8'.
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xczu3eg-sbva484-1-e 
+INFO: [HLS 200-1611] Setting target device to 'xczu3eg-sbva484-1-e'
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.11 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.13 seconds; current allocated memory: 642.953 MB.
+INFO: [HLS 200-10] Analyzing design file 'top.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 24.33 seconds. CPU system time: 1.59 seconds. Elapsed time: 27.62 seconds; current allocated memory: 648.418 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 200-1995] There were 637 instructions in the design after the 'Compile/Link' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 576 instructions in the design after the 'Unroll/Inline (step 1)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 380 instructions in the design after the 'Unroll/Inline (step 2)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 385 instructions in the design after the 'Unroll/Inline (step 3)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 385 instructions in the design after the 'Unroll/Inline (step 4)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 389 instructions in the design after the 'Array/Struct (step 1)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 389 instructions in the design after the 'Array/Struct (step 2)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 453 instructions in the design after the 'Array/Struct (step 3)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 517 instructions in the design after the 'Array/Struct (step 4)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 537 instructions in the design after the 'Array/Struct (step 5)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 407 instructions in the design after the 'Performance (step 1)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 407 instructions in the design after the 'Performance (step 2)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 406 instructions in the design after the 'Performance (step 3)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 406 instructions in the design after the 'Performance (step 4)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 432 instructions in the design after the 'HW Transforms (step 1)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 376 instructions in the design after the 'HW Transforms (step 2)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/syn/report/csynth_design_size.rpt
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_74_6' is marked as complete unroll implied by the pipeline pragma (top.cpp:74:19)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_78_7' is marked as complete unroll implied by the pipeline pragma (top.cpp:78:26)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_81_8' is marked as complete unroll implied by the pipeline pragma (top.cpp:81:30)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_88_9' is marked as complete unroll implied by the pipeline pragma (top.cpp:88:26)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_57_3' is marked as complete unroll implied by the pipeline pragma (top.cpp:57:26)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_74_6' (top.cpp:74:19) in function 'sparse_matrix_multiply_HLS' completely with a factor of 64 (top.cpp:29:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_88_9' (top.cpp:88:26) in function 'sparse_matrix_multiply_HLS' completely with a factor of 64 (top.cpp:29:0)
+WARNING: [HLS 214-189] Pipeline directive for loop 'VITIS_LOOP_88_9' (top.cpp:88:26) in function 'sparse_matrix_multiply_HLS' has been removed because the loop is unrolled completely (top.cpp:29:0)
+INFO: [HLS 214-241] Aggregating maxi variable 'C' with compact=none mode in 16-bits
+INFO: [HLS 214-437] Automatically disabling loop flattening for loop 'VITIS_LOOP_72_5'. (top.cpp:72:19)
+INFO: [HLS 214-115] Multiple burst reads of length 65 and bit width 32 in loop 'VITIS_LOOP_49_1'(top.cpp:49:22) has been inferred on bundle 'mem2'. These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings. (top.cpp:49:22)
+INFO: [HLS 214-115] Multiple burst reads of length 65 and bit width 32 in loop 'VITIS_LOOP_64_4'(top.cpp:64:22) has been inferred on bundle 'mem1'. These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings. (top.cpp:64:22)
+INFO: [HLS 214-115] Multiple burst writes of length 4096 and bit width 16 in loop 'VITIS_LOOP_72_5'(top.cpp:72:19) has been inferred on bundle 'mem3'. These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings. (top.cpp:72:19)
+WARNING: [HLS 214-187] Cannot unroll loop 'VITIS_LOOP_78_7' (top.cpp:78:26) in function 'sparse_matrix_multiply_HLS' as it has a variable trip count (top.cpp:78:26)
+WARNING: [HLS 214-187] Cannot unroll loop 'VITIS_LOOP_81_8' (top.cpp:81:30) in function 'sparse_matrix_multiply_HLS' as it has a variable trip count (top.cpp:81:30)
+WARNING: [HLS 214-187] Cannot unroll loop 'VITIS_LOOP_57_3' (top.cpp:57:26) in function 'sparse_matrix_multiply_HLS' as it has a variable trip count (top.cpp:57:26)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.45 seconds. CPU system time: 0.57 seconds. Elapsed time: 8.43 seconds; current allocated memory: 657.930 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 657.930 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.03 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.05 seconds; current allocated memory: 658.668 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.04 seconds. CPU system time: 0 seconds. Elapsed time: 0.06 seconds; current allocated memory: 660.148 MB.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.14 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.16 seconds; current allocated memory: 683.609 MB.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.17 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.22 seconds; current allocated memory: 696.980 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'sparse_matrix_multiply_HLS' ...
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_49_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_49_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_49_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.05 seconds. CPU system time: 0.03 seconds. Elapsed time: 0.12 seconds; current allocated memory: 696.980 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.05 seconds; current allocated memory: 696.980 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_64_4' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_64_4'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_64_4'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.02 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.04 seconds; current allocated memory: 696.980 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 696.980 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'sparse_matrix_multiply_HLS' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=add_ln84) to 3 in order to utilize available DSP registers.
+WARNING: [SCHED 204-65] Unable to satisfy pipeline directive for loop 'VITIS_LOOP_54_2': contains subloop(s) that are not unrolled or flattened.
+WARNING: [SCHED 204-65] Unable to satisfy pipeline directive for loop 'VITIS_LOOP_72_5': contains subloop(s) that are not unrolled or flattened.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.26 seconds. CPU system time: 0 seconds. Elapsed time: 0.3 seconds; current allocated memory: 699.074 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.1 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.17 seconds; current allocated memory: 699.074 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_49_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_49_1' pipeline 'VITIS_LOOP_49_1' pipeline type 'loop pipeline'
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_49_1/m_axi_mem2_0_ARVALID' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_49_1/m_axi_mem2_0_ARADDR' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_49_1/m_axi_mem2_0_ARID' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_49_1/m_axi_mem2_0_ARLEN' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_49_1/m_axi_mem2_0_ARSIZE' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_49_1/m_axi_mem2_0_ARBURST' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_49_1/m_axi_mem2_0_ARLOCK' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_49_1/m_axi_mem2_0_ARCACHE' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_49_1/m_axi_mem2_0_ARPROT' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_49_1/m_axi_mem2_0_ARQOS' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_49_1/m_axi_mem2_0_ARREGION' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_49_1/m_axi_mem2_0_ARUSER' to 0.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_49_1'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.1 seconds. CPU system time: 0 seconds. Elapsed time: 0.18 seconds; current allocated memory: 699.074 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_64_4' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_64_4' pipeline 'VITIS_LOOP_64_4' pipeline type 'loop pipeline'
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_64_4/m_axi_mem1_0_ARVALID' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_64_4/m_axi_mem1_0_ARADDR' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_64_4/m_axi_mem1_0_ARID' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_64_4/m_axi_mem1_0_ARLEN' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_64_4/m_axi_mem1_0_ARSIZE' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_64_4/m_axi_mem1_0_ARBURST' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_64_4/m_axi_mem1_0_ARLOCK' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_64_4/m_axi_mem1_0_ARCACHE' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_64_4/m_axi_mem1_0_ARPROT' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_64_4/m_axi_mem1_0_ARQOS' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_64_4/m_axi_mem1_0_ARREGION' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_64_4/m_axi_mem1_0_ARUSER' to 0.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_64_4'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.07 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.13 seconds; current allocated memory: 699.074 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'sparse_matrix_multiply_HLS' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [RTGEN 206-101] Design contains AXI ports. Reset is fixed to synchronous and active low.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sparse_matrix_multiply_HLS/mem1' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sparse_matrix_multiply_HLS/mem2' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sparse_matrix_multiply_HLS/mem3' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sparse_matrix_multiply_HLS/A_values' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sparse_matrix_multiply_HLS/A_col_indices' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sparse_matrix_multiply_HLS/A_row_ptr' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sparse_matrix_multiply_HLS/B_values' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sparse_matrix_multiply_HLS/B_row_indices' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sparse_matrix_multiply_HLS/B_col_ptr' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sparse_matrix_multiply_HLS/C' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'sparse_matrix_multiply_HLS' to 's_axilite & ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Bundling port 'A_values', 'A_col_indices', 'A_row_ptr', 'B_values', 'B_row_indices', 'B_col_ptr', 'C' to AXI-Lite port control.
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_16s_27ns_27_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'sparse_matrix_multiply_HLS'.
+INFO: [RTMG 210-278] Implementing memory 'sparse_matrix_multiply_HLS_localLen_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'sparse_matrix_multiply_HLS_localB_RAM_1P_BRAM_1R1W' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'sparse_matrix_multiply_HLS_localRowIdx_RAM_1P_BRAM_1R1W' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'sparse_matrix_multiply_HLS_accum_RAM_2P_BRAM_1R1W' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'sparse_matrix_multiply_HLS_colPointers_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.24 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.37 seconds; current allocated memory: 703.758 MB.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 0.42 seconds. CPU system time: 0.07 seconds. Elapsed time: 0.87 seconds; current allocated memory: 715.789 MB.
+INFO: [HLS 200-1603] Design has inferred MAXI bursts and missed bursts, see Vitis HLS GUI synthesis summary report for detailed information.
+INFO: [HLS 200-111] Finished Updating report files: CPU user time: 1.29 seconds. CPU system time: 0.05 seconds. Elapsed time: 1.43 seconds; current allocated memory: 723.699 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for sparse_matrix_multiply_HLS.
+INFO: [VLOG 209-307] Generating Verilog RTL for sparse_matrix_multiply_HLS.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 136.99 MHz
+INFO: [HLS 200-2161] Finished Command csynth_design Elapsed time: 00:00:40; Allocated memory: 81.746 MB.
+INFO: [HLS 200-1510] Running: cosim_design 
+INFO: [COSIM 212-47] Using XSIM for RTL simulation.
+INFO: [COSIM 212-14] Instrumenting C test bench ...
+   Build using "/tools/software/xilinx/Vitis/2024.2/vcxx/libexec/clang++"
+   Compiling apatb_sparse_matrix_multiply_HLS.cpp
+   Compiling host.cpp_pre.cpp.tb.cpp
+   Compiling top.cpp_pre.cpp.tb.cpp
+   Compiling apatb_sparse_matrix_multiply_HLS_ir.ll
+   Generating cosim.tv.exe
+INFO: [COSIM 212-302] Starting C TB testing ... 
+MSE: 0.00009543
+INFO: [COSIM 212-333] Generating C post check test bench ...
+INFO: [COSIM 212-12] Generating RTL test bench ...
+INFO: [COSIM 212-1] *** C/RTL co-simulation file generation completed. ***
+INFO: [COSIM 212-323] Starting verilog simulation. 
+INFO: [COSIM 212-15] Starting XSIM ...
+Vivado Simulator v2024.2.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: /tools/software/xilinx/Vivado/2024.2/bin/unwrapped/lnx64.o/xelab xil_defaultlib.apatb_sparse_matrix_multiply_HLS_top glbl -Oenable_linking_all_libraries -prj sparse_matrix_multiply_HLS.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm -L floating_point_v7_0_24 -L floating_point_v7_1_19 --lib ieee_proposed=./ieee_proposed -s sparse_matrix_multiply_HLS 
+Multi-threading is on. Using 70 slave threads.
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/sim/verilog/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/sim/verilog/sparse_matrix_multiply_HLS.autotb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apatb_sparse_matrix_multiply_HLS_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/sim/verilog/AESL_axi_master_mem1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_master_mem1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/sim/verilog/AESL_axi_master_mem2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_master_mem2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/sim/verilog/AESL_axi_master_mem3.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_master_mem3
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/sim/verilog/AESL_axi_slave_control.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_slave_control
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/sim/verilog/sparse_matrix_multiply_HLS_sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_49_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_49_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/sim/verilog/sparse_matrix_multiply_HLS_sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_64_4.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_64_4
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/sim/verilog/sparse_matrix_multiply_HLS.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/sim/verilog/sparse_matrix_multiply_HLS_flow_control_loop_pipe_sequential_init.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_flow_control_loop_pipe_sequential_init
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/sim/verilog/sparse_matrix_multiply_HLS_mac_muladd_16s_16s_27ns_27_4_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mac_muladd_16s_16s_27ns_27_4_1_DSP48_0
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mac_muladd_16s_16s_27ns_27_4_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/sim/verilog/sparse_matrix_multiply_HLS_localLen_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_localLen_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/sim/verilog/sparse_matrix_multiply_HLS_localB_RAM_1P_BRAM_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_localB_RAM_1P_BRAM_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/sim/verilog/sparse_matrix_multiply_HLS_localRowIdx_RAM_1P_BRAM_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_localRowIdx_RAM_1P_BRAM_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/sim/verilog/sparse_matrix_multiply_HLS_accum_RAM_2P_BRAM_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_accum_RAM_2P_BRAM_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/sim/verilog/sparse_matrix_multiply_HLS_colPointers_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_colPointers_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/sim/verilog/sparse_matrix_multiply_HLS_mem1_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem1_m_axi
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem1_m_axi_load
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem1_m_axi_store
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem1_m_axi_read
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem1_m_axi_write
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem1_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem1_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem1_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem1_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem1_m_axi_srl
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem1_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/sim/verilog/sparse_matrix_multiply_HLS_mem2_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem2_m_axi
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem2_m_axi_load
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem2_m_axi_store
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem2_m_axi_read
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem2_m_axi_write
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem2_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem2_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem2_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem2_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem2_m_axi_srl
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem2_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/sim/verilog/sparse_matrix_multiply_HLS_mem3_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem3_m_axi
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem3_m_axi_load
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem3_m_axi_store
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem3_m_axi_read
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem3_m_axi_write
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem3_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem3_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem3_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem3_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem3_m_axi_srl
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_mem3_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/sim/verilog/sparse_matrix_multiply_HLS_control_s_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sparse_matrix_multiply_HLS_control_s_axi
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/sim/verilog/dataflow_monitor.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dataflow_monitor
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package xil_defaultlib.$unit_dataflow_monitor_sv
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_local...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_local...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_local...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_accum...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_colPo...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_flow_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_spars...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_spars...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_contr...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem1_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem1_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem1_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem1_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem1_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem1_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem1_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem1_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem1_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem1_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem1_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem1_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem2_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem2_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem2_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem2_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem2_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem2_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem2_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem2_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem2_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem2_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem2_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem2_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem3_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem3_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem3_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem3_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem3_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem3_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem3_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem3_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem3_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem3_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem3_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem3_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem3_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem3_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem3_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem3_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem3_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem3_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem3_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem3_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem3_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem3_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem3_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mem3_...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mac_m...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS_mac_m...
+Compiling module xil_defaultlib.sparse_matrix_multiply_HLS
+Compiling module xil_defaultlib.AESL_axi_master_mem1
+Compiling module xil_defaultlib.AESL_axi_master_mem2
+Compiling module xil_defaultlib.AESL_axi_master_mem3
+Compiling module xil_defaultlib.AESL_axi_slave_control
+Compiling module xil_defaultlib.nodf_module_intf_default
+Compiling module xil_defaultlib.seq_loop_intf(FSM_WIDTH=186)
+Compiling module xil_defaultlib.upc_loop_intf(FSM_WIDTH=1)
+Compiling module xil_defaultlib.dataflow_monitor_1
+Compiling module xil_defaultlib.apatb_sparse_matrix_multiply_HLS...
+Compiling module work.glbl
+Built simulation snapshot sparse_matrix_multiply_HLS
+
+****** xsim v2024.2.2 (64-bit)
+  **** SW Build 6060944 on Thu Mar 06 19:10:09 MST 2025
+  **** IP Build 6050500 on Thu Mar  6 23:33:39 MST 2025
+  **** SharedData Build 6060542 on Thu Mar 06 10:31:07 MST 2025
+  **** Start of session at: Fri Mar 28 23:36:03 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/sparse_matrix_multiply_HLS/xsim_script.tcl
+# xsim {sparse_matrix_multiply_HLS} -autoloadwcfg -tclbatch {sparse_matrix_multiply_HLS.tcl}
+Time resolution is 1 ps
+source sparse_matrix_multiply_HLS.tcl
+## run all
+////////////////////////////////////////////////////////////////////////////////////
+// Inter-Transaction Progress: Completed Transaction / Total Transaction
+// Intra-Transaction Progress: Measured Latency / Latency Estimation * 100%
+//
+// RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
+////////////////////////////////////////////////////////////////////////////////////
+// RTL Simulation : 0 / 1 [n/a] @ "125000"
+// RTL Simulation : 1 / 1 [n/a] @ "9516645000"
+////////////////////////////////////////////////////////////////////////////////////
+$finish called at time : 9516705 ns : File "/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/sim/verilog/sparse_matrix_multiply_HLS.autotb.v" Line 753
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:37 . Memory (MB): peak = 1556.867 ; gain = 0.000 ; free physical = 91556 ; free virtual = 162868
+## quit
+INFO: xsimkernel Simulation Memory Usage: 494064 KB (Peak: 546264 KB), Simulation CPU Usage: 38010 ms
+INFO: [Common 17-206] Exiting xsim at Fri Mar 28 23:36:43 2025...
+INFO: [COSIM 212-316] Starting C post checking ...
+MSE: 0.00009543
+INFO: [COSIM 212-1000] *** C/RTL co-simulation finished: PASS ***
+INFO: [COSIM 212-211] II is measurable only when transaction number is greater than 1 in RTL simulation. Otherwise, they will be marked as all NA. If user wants to calculate them, please make sure there are at least 2 transactions in RTL simulation.
+INFO: [HLS 200-2161] Finished Command cosim_design Elapsed time: 00:01:37; Allocated memory: 11.867 MB.
+INFO: [HLS 200-1510] Running: export_design -format ip_catalog -flow syn 
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+WARNING: /tools/software/xilinx/Vivado/2024.2/tps/lnx64/jre11.0.16_1 does not exist.
+
+****** Vivado v2024.2.2 (64-bit)
+  **** SW Build 6060944 on Thu Mar 06 19:10:09 MST 2025
+  **** IP Build 6050500 on Thu Mar  6 23:33:39 MST 2025
+  **** SharedData Build 6060542 on Thu Mar 06 10:31:07 MST 2025
+  **** Start of session at: Fri Mar 28 23:36:48 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source run_ippack.tcl -notrace
+INFO: calling package_hls_ip ip_types=vitis sysgen json_file=/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/solution_0.8_data.json outdir=/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/ip srcdir=/nethome/hyang428/ece8893/lab3/project_2/solution_0.8 sort_interfaces_ports=false
+INFO: Copied 1 ipmisc file(s) to /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/ip/misc
+INFO: Copied 18 verilog file(s) to /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/ip/hdl/verilog
+INFO: Copied 14 vhdl file(s) to /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/ip/hdl/vhdl
+INFO: Copied 10 swdriver file(s) to /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/ip/drivers
+ipx::create_core: Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1786.547 ; gain = 83.875 ; free physical = 91248 ; free virtual = 162561
+INFO: Import ports from HDL: /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/ip/hdl/vhdl/sparse_matrix_multiply_HLS.vhd (sparse_matrix_multiply_HLS)
+INFO: Add axi4lite interface s_axi_control
+INFO: Add clock interface ap_clk
+INFO: Add reset interface ap_rst_n
+INFO: Add interrupt interface interrupt
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/software/xilinx/Vivado/2024.2/data/ip'.
+INFO: Add axi4full interface m_axi_mem1
+INFO: Add axi4full interface m_axi_mem2
+INFO: Add axi4full interface m_axi_mem3
+INFO: Calling post_process_vitis to specialize IP
+INFO: Calling post_process_sysgen to specialize IP
+Generating sysgen info xml from json file
+INFO: Created IP /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/ip/component.xml
+INFO: Created IP archive /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/ip/xilinx_com_hls_sparse_matrix_multiply_HLS_1_0.zip
+INFO: [Common 17-206] Exiting Vivado at Fri Mar 28 23:37:09 2025...
+INFO: [IMPL 213-8] Starting RTL evaluation using Vivado ...
+WARNING: /tools/software/xilinx/Vivado/2024.2/tps/lnx64/jre11.0.16_1 does not exist.
+
+****** Vivado v2024.2.2 (64-bit)
+  **** SW Build 6060944 on Thu Mar 06 19:10:09 MST 2025
+  **** IP Build 6050500 on Thu Mar  6 23:33:39 MST 2025
+  **** SharedData Build 6060542 on Thu Mar 06 10:31:07 MST 2025
+  **** Start of session at: Fri Mar 28 23:37:21 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source run_vivadosyn.tcl
+# source ./settings.tcl
+## set top_module sparse_matrix_multiply_HLS
+## set language verilog
+## set family zynquplus
+## set device xczu3eg
+## set package -sbva484
+## set speed -1-e
+## set clock ap_clk
+## set fsm_ext "off"
+## set add_io_buffers false 
+# source -notrace ./extraction.tcl
+# set vivado_proj_name project
+# set vivado_proj_dir .
+# set target_device "${device}${package}${speed}"
+# set target_clk_period_ns "10.000"
+# set target_clk_freq_hz [expr {floor(1000 / $target_clk_period_ns) * 1000000}]
+# set other_clks_freq_hz {}
+# set ip_vlnv xilinx.com:hls:sparse_matrix_multiply_HLS:1.0
+# set ip_repo_path ../ip
+# set bd_design_name bd_0
+# set bd_inst_name hls_inst
+# set bd_props {}
+# set has_synth true
+# set synth_design_args {-directive sdx_optimization_effort_high}
+# set synth_dcp ""
+# set synth_props {}
+# set has_impl false
+# set impl_props {}
+# set report_options [dict create]
+# dict set report_options report_level 2
+# dict set report_options report_max_paths 10
+# dict set report_options stdout_hls_reports 1
+# dict set report_options stdout_vivado_reports 0
+# dict set report_options hls_project project_2
+# dict set report_options hls_solution solution_0.8
+# dict set report_options has_synth $has_synth
+# dict set report_options has_impl $has_impl
+# dict set report_options vivado_reportbasename $top_module
+# dict set report_options vivado_reportdir ./report
+# dict set report_options hls_impl_dir ..
+# dict set report_options hls_reportdir ../report/$language
+# dict set report_options target_clk_period $target_clk_period_ns
+# dict set report_options target_device $target_device
+# dict set report_options language $language
+# dict set report_options clock_name $clock
+# dict set report_options error_if_impl_timing_fails false
+# dict set report_options topmodule "sparse_matrix_multiply_HLS"
+# dict set report_options funcmodules {sparse_matrix_multiply_HLS_sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_49_1 sparse_matrix_multiply_HLS_sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_64_4}
+# dict set report_options bindmodules {sparse_matrix_multiply_HLS_flow_control_loop_pipe_sequential_init sparse_matrix_multiply_HLS_mac_muladd_16s_16s_27ns_27_4_1 sparse_matrix_multiply_HLS_localLen_RAM_AUTO_1R1W sparse_matrix_multiply_HLS_localB_RAM_1P_BRAM_1R1W sparse_matrix_multiply_HLS_localRowIdx_RAM_1P_BRAM_1R1W sparse_matrix_multiply_HLS_accum_RAM_2P_BRAM_1R1W sparse_matrix_multiply_HLS_colPointers_RAM_AUTO_1R1W sparse_matrix_multiply_HLS_mem1_m_axi sparse_matrix_multiply_HLS_mem2_m_axi sparse_matrix_multiply_HLS_mem3_m_axi sparse_matrix_multiply_HLS_control_s_axi}
+# dict set report_options max_module_depth 6
+# create_project $vivado_proj_name $vivado_proj_dir -part $target_device -force
+create_project: Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1745.129 ; gain = 100.883 ; free physical = 91375 ; free virtual = 162576
+# set_property target_language $language [current_project]
+# if { ![file exists $ip_repo_path] } {
+#   error "Cannot find packaged HLS IP"
+# }
+# set_property ip_repo_paths [file normalize $ip_repo_path] [current_project]
+# update_ip_catalog
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/ip'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/software/xilinx/Vivado/2024.2/data/ip'.
+# create_bd_design bd_0
+Wrote  : </nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/project.srcs/sources_1/bd/bd_0/bd_0.bd> 
+# set cell_inst [create_bd_cell -type ip -vlnv $ip_vlnv $bd_inst_name]
+# if { [llength $bd_props] } { 
+#   set_property -dict $bd_props $cell_inst 
+# }
+# make_bd_pins_external $cell_inst
+# make_bd_intf_pins_external $cell_inst
+# set bd_clk_ports [get_bd_ports -filter {TYPE==clk}]
+# if { $target_clk_freq_hz ne "" } { 
+#   foreach bd_clk_port $bd_clk_ports {
+#     # Remove "_0" suffix from BD ports & interfaces so they match IP ports 
+#     set clk_name [regsub {_0$} [get_property name $bd_clk_port] {}]
+#     set port_freq_hz $target_clk_freq_hz
+#     if { [dict exists $other_clks_freq_hz $clk_name] } {
+#         set port_freq_hz [dict get $other_clks_freq_hz $clk_name]
+#     }
+#     set_property CONFIG.FREQ_HZ $port_freq_hz $bd_clk_port
+#   }
+# }
+# foreach bd_port [get_bd_intf_ports] {
+#   set_property name [regsub {_0$} [get_property name $bd_port] {}] $bd_port
+# }
+# foreach bd_port [get_bd_ports -filter {INTF!=TRUE}] {
+#   set_property name [regsub {_0$} [get_property name $bd_port] {}] $bd_port
+# }
+# set s_axi_addr_width_min 32
+# foreach bd_port [get_bd_intf_ports -filter {MODE == "Slave" && VLNV =~ "xilinx.com:interface:aximm_rtl:*"}] {
+#   set bd_port_addr_width [get_property CONFIG.ADDR_WIDTH $bd_port]
+#   if { $bd_port_addr_width < $s_axi_addr_width_min } {
+#     puts "INFO: Updating $bd_port CONFIG.ADDR_WIDTH to $s_axi_addr_width_min"
+#     set_property CONFIG.ADDR_WIDTH $s_axi_addr_width_min $bd_port
+#   }
+# }
+INFO: Updating /s_axi_control CONFIG.ADDR_WIDTH to 32
+# set_msg_config -id {[BD 41-1265]} -severity {CRITICAL WARNING} -new_severity {INFO}
+# assign_bd_address
+INFO: [BD 41-3093] Triggering Legacy Auto Assign Algorithm
+Slave segment '/hls_inst/s_axi_control/Reg' is being assigned into address space '/s_axi_control' at <0x0000_0000 [ 64K ]>.
+Slave segment '/m_axi_mem1/Reg' is being assigned into address space '/hls_inst/Data_m_axi_mem1' at <0x44A0_0000 [ 64K ]>.
+Slave segment '/m_axi_mem2/Reg' is being assigned into address space '/hls_inst/Data_m_axi_mem2' at <0x44A0_0000 [ 64K ]>.
+Slave segment '/m_axi_mem3/Reg' is being assigned into address space '/hls_inst/Data_m_axi_mem3' at <0x44A0_0000 [ 64K ]>.
+Wrote  : </nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/project.srcs/sources_1/bd/bd_0/bd_0.bd> 
+Verilog Output written to : /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/project.gen/sources_1/bd/bd_0/synth/bd_0.v
+Verilog Output written to : /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/project.gen/sources_1/bd/bd_0/sim/bd_0.v
+Verilog Output written to : /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/project.gen/sources_1/bd/bd_0/hdl/bd_0_wrapper.v
+# set toprtl [make_wrapper -files [get_files ${bd_design_name}.bd] -top]
+# add_files -norecurse $toprtl
+# set top_inst_name [file root [file tail $toprtl]]
+# puts "Using BD top: $top_inst_name"
+Using BD top: bd_0_wrapper
+# set xdc_files [glob -nocomplain ./*.xdc]
+# if { [llength $xdc_files] } {
+#     add_files -fileset constrs_1 -norecurse $xdc_files
+# }
+# launch_runs synth_1 -scripts_only
+INFO: [BD 41-1662] The design 'bd_0.bd' is already validated. Therefore parameter propagation will not be re-run.
+Verilog Output written to : /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/project.gen/sources_1/bd/bd_0/synth/bd_0.v
+Verilog Output written to : /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/project.gen/sources_1/bd/bd_0/sim/bd_0.v
+Verilog Output written to : /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/project.gen/sources_1/bd/bd_0/hdl/bd_0_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block hls_inst .
+Exporting to file /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/project.gen/sources_1/bd/bd_0/hw_handoff/bd_0.hwh
+Generated Hardware Definition File /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/project.gen/sources_1/bd/bd_0/synth/bd_0.hwdef
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: bd_0_hls_inst_0
+WARNING: [Vivado 12-7122] Auto Incremental Compile:: No reference checkpoint was found in run synth_1. Auto-incremental flow will not be run, the standard flow will be run instead.
+launch_runs: Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1979.254 ; gain = 88.043 ; free physical = 91283 ; free virtual = 162486
+# foreach run [get_runs -filter {IS_SYNTHESIS == 1}] {
+#   reset_run [get_runs $run]
+# }
+# set_property XPM_LIBRARIES {XPM_MEMORY XPM_FIFO} [current_project]
+# hls_vivado_reports_setup $report_options
+TIMESTAMP: HLS-REPORT: initialize report directories: 2025-03-28 23:37:47 EDT
+# if { $has_synth || $has_impl } {
+#   # synth properties setting
+#   set_property -name {STEPS.SYNTH_DESIGN.ARGS.MORE OPTIONS} -value {-mode out_of_context} -objects [get_runs synth_1]
+#   set ip_inst [get_ips -quiet ${bd_design_name}*${bd_inst_name}*]
+#   if { ![llength $ip_inst] } {
+#       error "Cannot find HLS IP instance: ${bd_design_name}*${bd_inst_name}*"
+#   }
+#   set synth_run [get_runs -filter {IS_SYNTHESIS == 1} ${ip_inst}*]
+#   if { ![llength $synth_run] } {
+#       error "Cannot find synth run for HLS IP: ${ip_inst}*"
+#   }
+# 
+#   if { [llength $synth_design_args] } {
+#       set_property -name {STEPS.SYNTH_DESIGN.ARGS.MORE OPTIONS} -value $synth_design_args -objects $synth_run
+#   }
+# 
+#   if { [llength $synth_props] } {
+#     set_property -dict $synth_props $synth_run
+#   }
+# 
+#   # launch run synth
+#   launch_runs synth_1
+#   wait_on_run synth_1
+#   # synth reports
+#   hls_vivado_reports_synth synth_1 $report_options
+#   if { $synth_dcp ne "" } {
+#     file mkdir [file dirname $synth_dcp]
+#     set run_dcp [glob -nocomplain [get_property DIRECTORY $synth_run]/*.dcp]
+#     if { [llength $run_dcp] != 1 } { error "Cannot find single dcp file for run $synth_run" }
+#     file copy -force $run_dcp $synth_dcp
+#   }
+# }
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: bd_0_hls_inst_0
+WARNING: [Vivado 12-7122] Auto Incremental Compile:: No reference checkpoint was found in run synth_1. Auto-incremental flow will not be run, the standard flow will be run instead.
+[Fri Mar 28 23:37:47 2025] Launched bd_0_hls_inst_0_synth_1...
+Run output will be captured here: /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/project.runs/bd_0_hls_inst_0_synth_1/runme.log
+[Fri Mar 28 23:37:47 2025] Launched synth_1...
+Run output will be captured here: /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/project.runs/synth_1/runme.log
+[Fri Mar 28 23:37:47 2025] Waiting for synth_1 to finish...
+WARNING: /tools/software/xilinx/Vivado/2024.2/tps/lnx64/jre11.0.16_1 does not exist.
+
+*** Running vivado
+    with args -log bd_0_wrapper.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source bd_0_wrapper.tcl
+
+WARNING: /tools/software/xilinx/Vivado/2024.2/tps/lnx64/jre11.0.16_1 does not exist.
+
+****** Vivado v2024.2.2 (64-bit)
+  **** SW Build 6060944 on Thu Mar 06 19:10:09 MST 2025
+  **** IP Build 6050500 on Thu Mar  6 23:33:39 MST 2025
+  **** SharedData Build 6060542 on Thu Mar 06 10:31:07 MST 2025
+  **** Start of session at: Fri Mar 28 23:39:47 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source bd_0_wrapper.tcl -notrace
+create_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1744.535 ; gain = 77.875 ; free physical = 90733 ; free virtual = 161957
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/ip'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/software/xilinx/Vivado/2024.2/data/ip'.
+Command: synth_design -top bd_0_wrapper -part xczu3eg-sbva484-1-e -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xczu3eg'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xczu3eg'
+INFO: [Device 21-403] Loading part xczu3eg-sbva484-1-e
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 7 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 957082
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2823.691 ; gain = 122.578 ; free physical = 89504 ; free virtual = 160732
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'bd_0_wrapper' [/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/project.gen/sources_1/bd/bd_0/hdl/bd_0_wrapper.v:13]
+INFO: [Synth 8-6157] synthesizing module 'bd_0' [/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/project.gen/sources_1/bd/bd_0/synth/bd_0.v:13]
+INFO: [Synth 8-6157] synthesizing module 'bd_0_hls_inst_0' [/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/project.runs/synth_1/.Xil/Vivado-956723-krishna-srv1.ece.gatech.edu/realtime/bd_0_hls_inst_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'bd_0_hls_inst_0' (0#1) [/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/project.runs/synth_1/.Xil/Vivado-956723-krishna-srv1.ece.gatech.edu/realtime/bd_0_hls_inst_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'bd_0' (0#1) [/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/project.gen/sources_1/bd/bd_0/synth/bd_0.v:13]
+INFO: [Synth 8-6155] done synthesizing module 'bd_0_wrapper' (0#1) [/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/project.gen/sources_1/bd/bd_0/hdl/bd_0_wrapper.v:13]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2901.660 ; gain = 200.547 ; free physical = 89416 ; free virtual = 160645
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2901.660 ; gain = 200.547 ; free physical = 89416 ; free virtual = 160645
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2901.660 ; gain = 200.547 ; free physical = 89416 ; free virtual = 160645
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2901.660 ; gain = 0.000 ; free physical = 89414 ; free virtual = 160643
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/project.gen/sources_1/bd/bd_0/ip/bd_0_hls_inst_0/bd_0_hls_inst_0/bd_0_hls_inst_0_in_context.xdc] for cell 'bd_0_i/hls_inst'
+Finished Parsing XDC File [/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/project.gen/sources_1/bd/bd_0/ip/bd_0_hls_inst_0/bd_0_hls_inst_0/bd_0_hls_inst_0_in_context.xdc] for cell 'bd_0_i/hls_inst'
+Parsing XDC File [/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/sparse_matrix_multiply_HLS.xdc]
+create_clock: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2944.648 ; gain = 0.000 ; free physical = 89414 ; free virtual = 160648
+Finished Parsing XDC File [/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/sparse_matrix_multiply_HLS.xdc]
+Parsing XDC File [/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/project.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/project.runs/synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2944.648 ; gain = 0.000 ; free physical = 89414 ; free virtual = 160648
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2944.648 ; gain = 0.000 ; free physical = 89414 ; free virtual = 160647
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 2944.648 ; gain = 243.535 ; free physical = 89438 ; free virtual = 160675
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xczu3eg-sbva484-1-e
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 2952.652 ; gain = 251.539 ; free physical = 89438 ; free virtual = 160675
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property KEEP_HIERARCHY = SOFT for bd_0_i. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_0_i/hls_inst. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 2952.652 ; gain = 251.539 ; free physical = 89438 ; free virtual = 160675
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 2952.652 ; gain = 251.539 ; free physical = 89437 ; free virtual = 160675
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 360 (col length:72)
+BRAMs: 432 (col length: RAMB18 72 RAMB36 36)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 2952.652 ; gain = 251.539 ; free physical = 89439 ; free virtual = 160677
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 3583.469 ; gain = 882.355 ; free physical = 88965 ; free virtual = 160204
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 3584.469 ; gain = 883.355 ; free physical = 88965 ; free virtual = 160203
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 3593.484 ; gain = 892.371 ; free physical = 88958 ; free virtual = 160196
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 3755.297 ; gain = 1054.184 ; free physical = 88810 ; free virtual = 160050
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 3755.297 ; gain = 1054.184 ; free physical = 88810 ; free virtual = 160050
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 3755.297 ; gain = 1054.184 ; free physical = 88810 ; free virtual = 160050
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 3755.297 ; gain = 1054.184 ; free physical = 88810 ; free virtual = 160050
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 3755.297 ; gain = 1054.184 ; free physical = 88810 ; free virtual = 160050
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 3755.297 ; gain = 1054.184 ; free physical = 88810 ; free virtual = 160050
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+----------------+----------+
+|      |BlackBox name   |Instances |
++------+----------------+----------+
+|1     |bd_0_hls_inst_0 |         1|
++------+----------------+----------+
+
+Report Cell Usage: 
++------+--------------+------+
+|      |Cell          |Count |
++------+--------------+------+
+|1     |bd_0_hls_inst |     1|
++------+--------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 3755.297 ; gain = 1054.184 ; free physical = 88810 ; free virtual = 160050
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 3755.297 ; gain = 1011.195 ; free physical = 88806 ; free virtual = 160046
+Synthesis Optimization Complete : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 3755.297 ; gain = 1054.184 ; free physical = 88806 ; free virtual = 160046
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 3755.297 ; gain = 0.000 ; free physical = 88807 ; free virtual = 160047
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3755.297 ; gain = 0.000 ; free physical = 88970 ; free virtual = 160210
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 3c2dc078
+INFO: [Common 17-83] Releasing license: Synthesis
+22 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:46 ; elapsed = 00:00:46 . Memory (MB): peak = 3755.297 ; gain = 1965.340 ; free physical = 88970 ; free virtual = 160210
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 2448.318; main = 2448.318; forked = 201.751
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 5055.918; main = 3681.469; forked = 1553.289
+INFO: [Common 17-1381] The checkpoint '/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/project.runs/synth_1/bd_0_wrapper.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file bd_0_wrapper_utilization_synth.rpt -pb bd_0_wrapper_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Fri Mar 28 23:40:51 2025...
+[Fri Mar 28 23:41:02 2025] synth_1 finished
+wait_on_runs: Time (s): cpu = 00:02:44 ; elapsed = 00:03:15 . Memory (MB): peak = 1985.395 ; gain = 0.000 ; free physical = 91396 ; free virtual = 162638
+TIMESTAMP: HLS-REPORT: synthesis open_run: 2025-03-28 23:41:02 EDT
+INFO: HLS-REPORT: Opening synthesis design database: open_run synth_1
+Design is defaulting to impl run constrset: constrs_1
+Design is defaulting to synth run part: xczu3eg-sbva484-1-e
+INFO: [Device 21-403] Loading part xczu3eg-sbva484-1-e
+INFO: [Project 1-454] Reading design checkpoint '/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/project.gen/sources_1/bd/bd_0/ip/bd_0_hls_inst_0/bd_0_hls_inst_0.dcp' for cell 'bd_0_i/hls_inst'
+Netlist sorting complete. Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.05 . Memory (MB): peak = 2813.367 ; gain = 0.000 ; free physical = 90531 ; free virtual = 161775
+INFO: [Netlist 29-17] Analyzing 361 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2024.2.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/sparse_matrix_multiply_HLS.xdc]
+create_clock: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2837.379 ; gain = 0.000 ; free physical = 90528 ; free virtual = 161775
+Finished Parsing XDC File [/nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/sparse_matrix_multiply_HLS.xdc]
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3083.293 ; gain = 0.000 ; free physical = 90142 ; free virtual = 161458
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 161 instances were transformed.
+  DSP48E2 => DSP48E2 (DSP_ALU, DSP_A_B_DATA, DSP_C_DATA, DSP_MULTIPLIER, DSP_M_DATA, DSP_OUTPUT, DSP_PREADD, DSP_PREADD_DATA): 1 instance 
+  RAM16X1D => RAM32X1D (RAMD32(x2)): 64 instances
+  RAM64X1D => RAM64X1D (RAMD64E(x2)): 64 instances
+  RAM64X1S => RAM64X1S (RAMS64E): 32 instances
+
+open_run: Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 3083.293 ; gain = 1097.898 ; free physical = 90142 ; free virtual = 161458
+TIMESTAMP: HLS-REPORT: synthesis generate_reports_vivado: 2025-03-28 23:41:23 EDT
+INFO: HLS-REPORT: Running report: report_utilization -file ./report/sparse_matrix_multiply_HLS_utilization_synth.rpt
+INFO: HLS-REPORT: Running report: report_utilization -hierarchical -hierarchical_depth 6 -file ./report/sparse_matrix_multiply_HLS_utilization_hierarchical_synth.rpt
+INFO: HLS-REPORT: Running report: report_timing_summary -file ./report/sparse_matrix_multiply_HLS_timing_synth.rpt
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Temperature grade: E, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+WARNING: [Timing 38-242] The property HD.CLK_SRC of clock port "ap_clk" is not set. In out-of-context mode, this prevents timing estimation for clock delay/skew
+Resolution: Set the HD.CLK_SRC property of the out-of-context port to the location of the clock buffer instance in the top-level design
+report_timing_summary: Time (s): cpu = 00:00:21 ; elapsed = 00:00:20 . Memory (MB): peak = 4355.289 ; gain = 1271.996 ; free physical = 89178 ; free virtual = 160468
+INFO: HLS-REPORT: Running report: report_power -file ./report/sparse_matrix_multiply_HLS_power_synth.rpt -xpe ./sparse_matrix_multiply_HLS_power.xpe
+Command: report_power -file ./report/sparse_matrix_multiply_HLS_power_synth.rpt -xpe ./sparse_matrix_multiply_HLS_power.xpe
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+12 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
+report_power completed successfully
+INFO: HLS-REPORT: Running report: report_timing -max_paths 10 -file ./report/sparse_matrix_multiply_HLS_timing_paths_synth.rpt
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Temperature grade: E, Delay Type: max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+INFO: [Timing 38-78] ReportTimingParams: -max_paths 10 -nworst 1 -delay_type max -sort_by slack.
+INFO: HLS-REPORT: Running report: report_design_analysis -file ./report/sparse_matrix_multiply_HLS_design_analysis_synth.rpt
+INFO: [Implflow 30-839]  
+INFO: HLS-REPORT: Running report: ::tclapp::xilinx::designutils::report_failfast -detailed_report synth -file ./report/sparse_matrix_multiply_HLS_failfast_synth.rpt
+ -I- design metrics completed in 0 seconds
+ -I- DONT_TOUCH metric completed in 0 seconds
+ -I- MARK_DEBUG metric completed in 0 seconds
+ -I- utilization metrics completed in 2 seconds
+ -I- control set metrics completed in 0 seconds
+ -I- methodology check metrics completed in 0 seconds
+ -I- average fanout metrics completed in 1 seconds (0 modules)
+ -I- non-FD high fanout nets completed in 0 seconds
+ -I- path budgeting metrics completed in 1 seconds
+#  +-----------------------------------------------------------------------------------------+
+#  | Design Summary                                                                          |
+#  | design_1                                                                                |
+#  | xczu3eg-sbva484-1-e                                                                     |
+#  +-----------------------------------------------------------+-----------+--------+--------+
+#  | Criteria                                                  | Guideline | Actual | Status |
+#  +-----------------------------------------------------------+-----------+--------+--------+
+#  | LUT                                                       | 70%       | 5.18%  | OK     |
+#  | FD                                                        | 50%       | 3.63%  | OK     |
+#  | LUTRAM+SRL                                                | 25%       | 2.18%  | OK     |
+#  | CARRY8                                                    | 25%       | 1.88%  | OK     |
+#  | MUXF7                                                     | 15%       | 0.10%  | OK     |
+#  | DSP                                                       | 80%       | 0.28%  | OK     |
+#  | RAMB/FIFO                                                 | 80%       | 2.31%  | OK     |
+#  | DSP+RAMB+URAM (Avg)                                       | 70%       | 1.29%  | OK     |
+#  | BUFGCE* + BUFGCTRL                                        | 24        | 0      | OK     |
+#  | DONT_TOUCH (cells/nets)                                   | 0         | 0      | OK     |
+#  | MARK_DEBUG (nets)                                         | 0         | 0      | OK     |
+#  | Control Sets                                              | 1323      | 147    | OK     |
+#  | Average Fanout for modules > 100k cells                   | 4         | 2.71   | OK     |
+#  | Max Average Fanout for modules > 100k cells               | 4         | 0      | OK     |
+#  | Non-FD high fanout nets > 10k loads                       | 0         | 0      | OK     |
+#  +-----------------------------------------------------------+-----------+--------+--------+
+#  | TIMING-6 (No common primary clock between related clocks) | 0         | 0      | OK     |
+#  | TIMING-7 (No common node between related clocks)          | 0         | 0      | OK     |
+#  | TIMING-8 (No common period between related clocks)        | 0         | 0      | OK     |
+#  | TIMING-14 (LUT on the clock tree)                         | 0         | 0      | OK     |
+#  | TIMING-35 (No common node in paths with the same clock)   | 0         | 0      | OK     |
+#  +-----------------------------------------------------------+-----------+--------+--------+
+#  | Number of paths above max LUT budgeting (0.350ns)         | 0         | 0      | OK     |
+#  | Number of paths above max Net budgeting (0.239ns)         | 0         | 0      | OK     |
+#  +-----------------------------------------------------------+-----------+--------+--------+
+ -I- Generated file /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/report/sparse_matrix_multiply_HLS_failfast_synth.rpt
+ -I- Number of criteria to review: 0
+ -I- This report should be run before placing the design and uses conservative guidelines beyond which runtime and timing closure will likely be more challenging
+ -I- report_failfast completed in 4 seconds
+TIMESTAMP: HLS-REPORT: synthesis gen_data_dict_vivado: 2025-03-28 23:41:50 EDT
+TIMESTAMP: HLS-REPORT: synth extract_util_hier: 2025-03-28 23:41:50 EDT
+TIMESTAMP: HLS-REPORT: synth get_cell_hier_data: 2025-03-28 23:41:50 EDT
+TIMESTAMP: HLS-REPORT: synth get_timing_paths: 2025-03-28 23:41:50 EDT
+TIMESTAMP: HLS-REPORT: synth process timing paths: 2025-03-28 23:41:50 EDT
+TIMESTAMP: HLS-REPORT: synth get_all_vv_rpt_files: 2025-03-28 23:41:50 EDT
+TIMESTAMP: HLS-REPORT: synthesis write_reports_vivado: 2025-03-28 23:41:50 EDT
+HLS EXTRACTION: synth area_totals:  0 70560 141120 360 432 0 0
+HLS EXTRACTION: synth area_current: 0 3652 5118 1 10 0 340 0 0 0
+HLS EXTRACTION: synth resources_dict: AVAIL_LUT 70560 LUT 3652 AVAIL_FF 141120 FF 5118 AVAIL_DSP 360 DSP 1 AVAIL_BRAM 432 BRAM 10 AVAIL_URAM 0 URAM 0 LATCH 0 SRL 340 AVAIL_CLB 0 CLB 0
+INFO: HLS-REPORT: generated /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/verilog/report/vivado_syn.xml
+INFO: HLS-REPORT: generated /nethome/hyang428/ece8893/lab3/project_2/solution_0.8/impl/report/verilog/sparse_matrix_multiply_HLS_export.rpt
+
+
+Implementation tool: Xilinx Vivado v.2024.2.2
+Project:             project_2
+Solution:            solution_0.8
+Device target:       xczu3eg-sbva484-1-e
+Report date:         Fri Mar 28 23:41:50 EDT 2025
+
+#=== Post-Synthesis Resource usage ===
+SLICE:            0
+LUT:           3652
+FF:            5118
+DSP:              1
+BRAM:            10
+URAM:             0
+LATCH:            0
+SRL:            340
+CLB:              0
+
+#=== Final timing ===
+CP required:                     10.000
+CP achieved post-synthesis:      2.274
+Timing met
+
+TIMESTAMP: HLS-REPORT: synthesis end: 2025-03-28 23:41:50 EDT
+# if { $has_impl } {
+#   # launch run impl
+#   if { [llength $impl_props] } {
+#     set_property -dict $impl_props [get_runs impl_1]
+#   }
+#   launch_runs impl_1
+#   wait_on_run impl_1
+#   # impl reports
+#   hls_vivado_reports_impl impl_1 $report_options
+# }
+# hls_vivado_reports_finalize $report_options
+TIMESTAMP: HLS-REPORT: all reports complete: 2025-03-28 23:41:50 EDT
+INFO: [Common 17-206] Exiting Vivado at Fri Mar 28 23:41:50 2025...
+INFO: [HLS 200-802] Generated output file project_2/solution_0.8/impl/export.zip
+INFO: [HLS 200-2161] Finished Command export_design Elapsed time: 00:05:16; Allocated memory: 1.438 MB.
+INFO: [HLS 200-112] Total CPU user time: 400.63 seconds. Total CPU system time: 28.97 seconds. Total elapsed time: 462.76 seconds; peak allocated memory: 737.004 MB.

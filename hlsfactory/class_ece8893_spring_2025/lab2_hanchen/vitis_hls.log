@@ -1,0 +1,161 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2024.1.2 (64-bit)
+  **** SW Build 5096458 on Sep  5 2024
+  **** IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+  **** SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+  **** Start of session at: Wed Mar  5 04:30:23 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source /tools/software/xilinx/Vitis_HLS/2024.1/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] For user 'hyang428' on host 'krishna-srv1.ece.gatech.edu' (Linux_x86_64 version 4.18.0-553.33.1.el8_10.x86_64) on Wed Mar 05 04:30:25 EST 2025
+INFO: [HLS 200-10] On os "Red Hat Enterprise Linux release 8.10 (Ootpa)"
+INFO: [HLS 200-10] In directory '/nethome/hyang428/ece8893/lab2'
+WARNING: [HLS 200-2053] The vitis_hls executable is deprecated. Consider using vitis-run --mode hls --tcl
+Sourcing Tcl script 'script.tcl'
+INFO: [HLS 200-1510] Running: open_project project_1 
+INFO: [HLS 200-10] Opening project '/nethome/hyang428/ece8893/lab2/project_1'.
+INFO: [HLS 200-1510] Running: set_top compute_attention_HLS 
+INFO: [HLS 200-1510] Running: add_files top.cpp 
+INFO: [HLS 200-10] Adding design file 'top.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb host.cpp 
+INFO: [HLS 200-10] Adding test bench file 'host.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb Q_tensor.bin 
+INFO: [HLS 200-10] Adding test bench file 'Q_tensor.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb V_tensor.bin 
+INFO: [HLS 200-10] Adding test bench file 'V_tensor.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb K_tensor.bin 
+INFO: [HLS 200-10] Adding test bench file 'K_tensor.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb Output_tensor.bin 
+INFO: [HLS 200-10] Adding test bench file 'Output_tensor.bin' to the project
+INFO: [HLS 200-1510] Running: open_solution solution2 
+INFO: [HLS 200-10] Opening solution '/nethome/hyang428/ece8893/lab2/project_1/solution2'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu3eg-sbva484-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xczu3eg-sbva484-1-e 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.1 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.16 seconds; current allocated memory: 391.395 MB.
+INFO: [HLS 200-10] Analyzing design file 'top.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 32.34 seconds. CPU system time: 1.92 seconds. Elapsed time: 36.7 seconds; current allocated memory: 396.973 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 200-1995] There were 50,177 instructions in the design after the 'Compile/Link' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+WARNING: [HLS 200-1995] There were 409,627 instructions in the design after the 'Unroll/Inline' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+WARNING: [HLS 200-1995] There were 121,207 instructions in the design after the 'Unroll/Inline (step 2)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+WARNING: [HLS 200-1995] There were 117,498 instructions in the design after the 'Unroll/Inline (step 3)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+WARNING: [HLS 200-1995] There were 117,498 instructions in the design after the 'Unroll/Inline (step 4)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+WARNING: [HLS 200-1995] There were 117,126 instructions in the design after the 'Array/Struct' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+WARNING: [HLS 200-1995] There were 117,126 instructions in the design after the 'Array/Struct (step 2)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+WARNING: [HLS 200-1995] There were 125,702 instructions in the design after the 'Array/Struct (step 3)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+WARNING: [HLS 200-1995] There were 134,278 instructions in the design after the 'Array/Struct (step 4)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+WARNING: [HLS 200-1995] There were 125,900 instructions in the design after the 'Array/Struct (step 5)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+WARNING: [HLS 200-1995] There were 108,748 instructions in the design after the 'Performance (step 1)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+WARNING: [HLS 200-1995] There were 108,748 instructions in the design after the 'Performance (step 2)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+WARNING: [HLS 200-1995] There were 108,748 instructions in the design after the 'Performance (step 3)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+WARNING: [HLS 200-1995] There were 108,748 instructions in the design after the 'Performance (step 4)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+WARNING: [HLS 200-1995] There were 109,017 instructions in the design after the 'HW Transforms' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+WARNING: [HLS 200-1995] There were 108,883 instructions in the design after the 'HW Transforms (step 2)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution2/syn/report/csynth_design_size.rpt
+INFO: [HLS 214-131] Inlining function 'softmax_HLS_inline(ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0>*)' into 'compute_attention_HLS(ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0> (*) [32][32], ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0> (*) [32][32], ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0> (*) [32][32], ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0> (*) [32][32])' (top.cpp:212:13)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_204_2' is marked as complete unroll implied by the pipeline pragma (top.cpp:204:20)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_206_3' is marked as complete unroll implied by the pipeline pragma (top.cpp:206:20)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_207_4' is marked as complete unroll implied by the pipeline pragma (top.cpp:207:35)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_8_1' is marked as complete unroll implied by the pipeline pragma (top.cpp:8:21)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_15_2' is marked as complete unroll implied by the pipeline pragma (top.cpp:15:22)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_24_3' is marked as complete unroll implied by the pipeline pragma (top.cpp:24:22)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_214_5' is marked as complete unroll implied by the pipeline pragma (top.cpp:214:31)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_215_6' is marked as complete unroll implied by the pipeline pragma (top.cpp:215:35)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_253_11' is marked as complete unroll implied by the pipeline pragma (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:253:36)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_249_10' is marked as complete unroll implied by the pipeline pragma (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:249:36)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_243_9' is marked as complete unroll implied by the pipeline pragma (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:243:31)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_178_8' is marked as complete unroll implied by the pipeline pragma (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:178:35)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_170_7' is marked as complete unroll implied by the pipeline pragma (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:170:27)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_204_2' (top.cpp:204:20) in function 'compute_attention_HLS' completely with a factor of 4 (top.cpp:103:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_214_5' (top.cpp:214:31) in function 'compute_attention_HLS' completely with a factor of 32 (top.cpp:103:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_215_6' (top.cpp:215:35) in function 'compute_attention_HLS' completely with a factor of 32 (top.cpp:103:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_24_3' (top.cpp:24:22) in function 'compute_attention_HLS' completely with a factor of 32 (top.cpp:103:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_15_2' (top.cpp:15:22) in function 'compute_attention_HLS' completely with a factor of 32 (top.cpp:103:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_8_1' (top.cpp:8:21) in function 'compute_attention_HLS' completely with a factor of 31 (top.cpp:103:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_206_3' (top.cpp:206:20) in function 'compute_attention_HLS' completely with a factor of 32 (top.cpp:103:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_207_4' (top.cpp:207:35) in function 'compute_attention_HLS' completely with a factor of 32 (top.cpp:103:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_253_11' (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:253:36) in function 'exp_reduce::exp<17, 6>' completely with a factor of 16 (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:14:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_249_10' (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:249:36) in function 'exp_reduce::exp<17, 6>' completely with a factor of 6 (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:14:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_243_9' (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:243:31) in function 'exp_reduce::exp<17, 6>' completely with a factor of 6 (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:14:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_178_8' (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:178:35) in function 'exp_reduce::exp<17, 6>' completely with a factor of 22 (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:14:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_170_7' (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:170:27) in function 'exp_reduce::exp<17, 6>' completely with a factor of 8 (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:14:0)
+INFO: [HLS 214-241] Aggregating maxi variable 'Output' with compact=none mode in 16-bits
+INFO: [HLS 214-241] Aggregating maxi variable 'V' with compact=none mode in 16-bits
+INFO: [HLS 214-241] Aggregating maxi variable 'K' with compact=none mode in 16-bits
+INFO: [HLS 214-241] Aggregating maxi variable 'Q' with compact=none mode in 16-bits
+INFO: [HLS 214-115] Multiple burst reads of length 4096 and bit width 16 has been inferred on bundle 'mem1'. These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.
+INFO: [HLS 214-115] Multiple burst reads of length 32 and bit width 16 has been inferred on bundle 'mem2'. These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings. (top.cpp:216:37)
+INFO: [HLS 214-115] Multiple burst writes of length 32 and bit width 16 has been inferred on bundle 'mem2'. These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.
+INFO: [HLS 214-115] Multiple burst writes of length 32 and bit width 16 has been inferred on bundle 'mem2'. These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings. (top.cpp:202:47)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 282.88 seconds. CPU system time: 1.01 seconds. Elapsed time: 287.3 seconds; current allocated memory: 436.840 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 436.840 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 1.65 seconds. CPU system time: 0.04 seconds. Elapsed time: 1.73 seconds; current allocated memory: 560.027 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [XFORM 203-602] Inlining function 'hls::exp<17, 6>' into 'compute_attention_HLS' (top.cpp:16->top.cpp:212) automatically.
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 2.01 seconds. CPU system time: 0.01 seconds. Elapsed time: 2.05 seconds; current allocated memory: 565.828 MB.
+INFO: [XFORM 203-102] Partitioning array 'attention' (top.cpp:199) in dimension 1 automatically.
+INFO: [XFORM 203-102] Partitioning array 'attention.0' (top.cpp:199) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'attention.1' (top.cpp:199) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'attention.2' (top.cpp:199) in dimension 2 automatically.
+INFO: [XFORM 203-102] Partitioning array 'attention.3' (top.cpp:199) in dimension 2 automatically.
+INFO: [XFORM 203-602] Inlining function 'hls::exp<17, 6>' into 'compute_attention_HLS' (top.cpp:16->top.cpp:212) automatically.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:15:9) to (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:927:1) in function 'exp_reduce::exp<17, 6>'... converting 5 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'exp_reduce::exp<17, 6>' (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:15:1)...5 expression(s) balanced.
+INFO: [XFORM 203-11] Balancing expressions in function 'compute_attention_HLS' (top.cpp:26:23)...244 expression(s) balanced.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 22.66 seconds. CPU system time: 0.1 seconds. Elapsed time: 22.86 seconds; current allocated memory: 905.895 MB.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 333.34 seconds. CPU system time: 0.2 seconds. Elapsed time: 334.2 seconds; current allocated memory: 1.204 GB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'compute_attention_HLS' ...
+WARNING: [SYN 201-103] Legalizing function name 'exp<17, 6>' to 'exp_17_6_s'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'exp_17_6_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'exp<17, 6>'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 0, Final II = 1, Depth = 3, function 'exp<17, 6>'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 7.62 seconds. CPU system time: 0.1 seconds. Elapsed time: 7.8 seconds; current allocated memory: 1.228 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.03 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.06 seconds; current allocated memory: 1.228 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'compute_attention_HLS_Pipeline_VITIS_LOOP_202_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_202_1'.
+WARNING: [HLS 200-880] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_202_1' (loop 'VITIS_LOOP_202_1'): Unable to enforce a carried dependence constraint (II = 4, distance = 1, offset = 1) between bus read operation ('mem2_addr_1_read_31', top.cpp:216) on port 'mem2' (top.cpp:216) and bus request operation ('empty_42', top.cpp:216) on port 'mem2' (top.cpp:216).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_202_1' (loop 'VITIS_LOOP_202_1'): Unable to enforce a carried dependence constraint (II = 5, distance = 1, offset = 1) between bus read operation ('mem2_addr_1_read_31', top.cpp:216) on port 'mem2' (top.cpp:216) and bus request operation ('empty_42', top.cpp:216) on port 'mem2' (top.cpp:216).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_202_1' (loop 'VITIS_LOOP_202_1'): Unable to enforce a carried dependence constraint (II = 6, distance = 1, offset = 1) between bus read operation ('mem2_addr_1_read_31', top.cpp:216) on port 'mem2' (top.cpp:216) and bus request operation ('empty_42', top.cpp:216) on port 'mem2' (top.cpp:216).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_202_1' (loop 'VITIS_LOOP_202_1'): Unable to enforce a carried dependence constraint (II = 7, distance = 1, offset = 1) between bus read operation ('mem2_addr_1_read_31', top.cpp:216) on port 'mem2' (top.cpp:216) and bus request operation ('empty_42', top.cpp:216) on port 'mem2' (top.cpp:216).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_202_1' (loop 'VITIS_LOOP_202_1'): Unable to enforce a carried dependence constraint (II = 132, distance = 1, offset = 1) between bus read operation ('mem2_addr_2_read_31', top.cpp:216) on port 'mem2' (top.cpp:216) and bus request operation ('empty_42', top.cpp:216) on port 'mem2' (top.cpp:216).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_202_1' (loop 'VITIS_LOOP_202_1'): Unable to enforce a carried dependence constraint (II = 194, distance = 1, offset = 1) between bus read operation ('mem2_addr_3_read_31', top.cpp:216) on port 'mem2' (top.cpp:216) and bus request operation ('empty_42', top.cpp:216) on port 'mem2' (top.cpp:216).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_202_1' (loop 'VITIS_LOOP_202_1'): Unable to enforce a carried dependence constraint (II = 225, distance = 1, offset = 1) between bus read operation ('mem2_addr_3_read_31', top.cpp:216) on port 'mem2' (top.cpp:216) and bus request operation ('empty_42', top.cpp:216) on port 'mem2' (top.cpp:216).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_202_1' (loop 'VITIS_LOOP_202_1'): Unable to enforce a carried dependence constraint (II = 241, distance = 1, offset = 1) between bus response operation ('empty_34', top.cpp:202) on port 'mem2' (top.cpp:202) and bus request operation ('empty_41', top.cpp:216) on port 'mem2' (top.cpp:216).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_202_1' (loop 'VITIS_LOOP_202_1'): Unable to enforce a carried dependence constraint (II = 249, distance = 1, offset = 1) between bus response operation ('empty_34', top.cpp:202) on port 'mem2' (top.cpp:202) and bus request operation ('empty_41', top.cpp:216) on port 'mem2' (top.cpp:216).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_202_1' (loop 'VITIS_LOOP_202_1'): Unable to enforce a carried dependence constraint (II = 253, distance = 1, offset = 1) between bus response operation ('empty_34', top.cpp:202) on port 'mem2' (top.cpp:202) and bus request operation ('empty_41', top.cpp:216) on port 'mem2' (top.cpp:216).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_202_1' (loop 'VITIS_LOOP_202_1'): Unable to enforce a carried dependence constraint (II = 255, distance = 1, offset = 1) between bus response operation ('empty_34', top.cpp:202) on port 'mem2' (top.cpp:202) and bus request operation ('empty_41', top.cpp:216) on port 'mem2' (top.cpp:216).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_202_1' (loop 'VITIS_LOOP_202_1'): Unable to enforce a carried dependence constraint (II = 256, distance = 1, offset = 1) between bus response operation ('empty_34', top.cpp:202) on port 'mem2' (top.cpp:202) and bus request operation ('empty_41', top.cpp:216) on port 'mem2' (top.cpp:216).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+INFO: [SCHED 204-61] Unable to satisfy pipeline directive for loop 'VITIS_LOOP_202_1': unable to pipeline.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 509.32 seconds. CPU system time: 2.64 seconds. Elapsed time: 513.05 seconds; current allocated memory: 3.673 GB.
+LLVM ERROR: IO failure on output stream.
