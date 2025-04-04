@@ -26,10 +26,4 @@ set_part {xczu3eg-sbva484-1-e}
 # C synthesis for HLS design, generating RTL
 csynth_design
 
-# # C/RTL co-simulation; can be commented if not needed
-cosim_design
-
-# # export generated RTL as an IP; can be commented if not needed
-# export_design -format ip_catalog -flow syn
-
 exit
