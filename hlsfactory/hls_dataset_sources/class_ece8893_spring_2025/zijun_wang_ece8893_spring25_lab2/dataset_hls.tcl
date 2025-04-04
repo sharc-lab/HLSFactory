@@ -1,4 +1,4 @@
-open_project project_fin2
+open_project zijunwang_lab2
 
 # set top function of the HLS design
 set_top compute_attention_HLS
@@ -21,17 +21,9 @@ open_solution "solution1"
 set_part {xczu3eg-sbva484-1-e}
 
 # default frequency is 100 MHz
-# create_clock -period 10 -name default
+create_clock -period 10 -name clk
 
 # C synthesis for HLS design, generating RTL
-# csynth_design
-
-# csim_design 
-
-# C/RTL co-simulation; can be commented if not needed
-cosim_design
-
-# export generated RTL as an IP; can be commented if not needed
-export_design -format ip_catalog -flow syn
+csynth_design
 
 exit
