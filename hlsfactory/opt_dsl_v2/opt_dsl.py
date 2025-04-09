@@ -16,11 +16,9 @@ class OptDSL:
         # exec is potentially unsafe, but seems like the easiest way to go about this
         #############################################################################
         exec(opt_dsl_source)
-
-    # TODO
-    def sample_random(self, seed: int = 7) -> None:
-        raise NotImplementedError
     
+    # TODO Add support for dictionary so no overlapping directives
+
     def pipeline(self, label: str, function: str) -> None:
         directive = f"set_directive_pipeline {function}/{label}"
         self.pipeline_directives.append(directive)

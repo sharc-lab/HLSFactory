@@ -52,7 +52,7 @@ set_directive_pipeline atax/[name]
 ### OptDSLv2
 ```python
 for factor in [1, 2, 4, 8]:
-	for partition_type in ["cycle"]:
+	for partition_type in ["cyclic"]:
 		partition("A", "atax", partition_type, factor, 2)
 		partition("buff_A", "atax", partition_type, factor, 2)
 		partition("tmp1", "atax", partition_type, factor, 1)
