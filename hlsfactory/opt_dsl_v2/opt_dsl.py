@@ -17,7 +17,7 @@ class OptDSL:
         # exec is potentially unsafe, but seems like the easiest way to go about this
         #############################################################################
         exec(opt_dsl_source)
-    
+
     def pipeline(self, label: str, function: str) -> None:
         directive = f"set_directive_pipeline {function}/{label}"
         self.pipeline_directives[f"{function}/{label}"].append(directive)
