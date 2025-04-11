@@ -1,0 +1,498 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2024.2.2 (64-bit)
+  **** SW Build 6049644 on Mar  5 2025
+  **** IP Build 6050500 on Thu Mar  6 23:33:39 MST 2025
+  **** SharedData Build 6060542 on Thu Mar 06 10:31:07 MST 2025
+  **** Start of session at: Thu Apr  3 18:57:50 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source /tools/software/xilinx/Vitis/2024.2/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] For user 'km304' on host 'ece-linlabsrv01.ece.gatech.edu' (Linux_x86_64 version 4.18.0-553.44.1.el8_10.x86_64) on Thu Apr 03 18:57:53 EDT 2025
+INFO: [HLS 200-10] On os "Red Hat Enterprise Linux release 8.10 (Ootpa)"
+INFO: [HLS 200-10] In directory '/usr/scratch/km304/HLSFactory/hlsfactory/hls_dataset_sources/class_ece8893_spring_2025/karthikeya_sharma_ece8893_spring_25_lab_3'
+WARNING: [HLS 200-2053] The vitis_hls executable is deprecated. Consider using vitis-run --mode hls --tcl
+Sourcing Tcl script 'dataset_hls.tcl'
+INFO: [HLS 200-1510] Running: source dataset_hls.tcl
+INFO: [HLS 200-1510] Running: open_project karthikeya_sharma_lab-3_design_proj 
+INFO: [HLS 200-10] Creating and opening project '/usr/scratch/km304/HLSFactory/hlsfactory/hls_dataset_sources/class_ece8893_spring_2025/karthikeya_sharma_ece8893_spring_25_lab_3/karthikeya_sharma_lab-3_design_proj'.
+INFO: [HLS 200-1510] Running: add_files top.cpp 
+INFO: [HLS 200-10] Adding design file 'top.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb host.cpp 
+INFO: [HLS 200-10] Adding test bench file 'host.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb A_matrix_csr_sparsity_0.10.bin 
+INFO: [HLS 200-10] Adding test bench file 'A_matrix_csr_sparsity_0.10.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb A_matrix_csr_sparsity_0.50.bin 
+INFO: [HLS 200-10] Adding test bench file 'A_matrix_csr_sparsity_0.50.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb A_matrix_csr_sparsity_0.80.bin 
+INFO: [HLS 200-10] Adding test bench file 'A_matrix_csr_sparsity_0.80.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb B_matrix_csc_sparsity_0.10.bin 
+INFO: [HLS 200-10] Adding test bench file 'B_matrix_csc_sparsity_0.10.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb B_matrix_csc_sparsity_0.50.bin 
+INFO: [HLS 200-10] Adding test bench file 'B_matrix_csc_sparsity_0.50.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb B_matrix_csc_sparsity_0.80.bin 
+INFO: [HLS 200-10] Adding test bench file 'B_matrix_csc_sparsity_0.80.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb C_matrix_result_sparsity_0.10.bin 
+INFO: [HLS 200-10] Adding test bench file 'C_matrix_result_sparsity_0.10.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb C_matrix_result_sparsity_0.50.bin 
+INFO: [HLS 200-10] Adding test bench file 'C_matrix_result_sparsity_0.50.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb C_matrix_result_sparsity_0.80.bin 
+INFO: [HLS 200-10] Adding test bench file 'C_matrix_result_sparsity_0.80.bin' to the project
+INFO: [HLS 200-1510] Running: open_solution lab3_karthikeya_Sharma_spring_2025 
+INFO: [HLS 200-10] Creating and opening solution '/usr/scratch/km304/HLSFactory/hlsfactory/hls_dataset_sources/class_ece8893_spring_2025/karthikeya_sharma_ece8893_spring_25_lab_3/karthikeya_sharma_lab-3_design_proj/lab3_karthikeya_Sharma_spring_2025'.
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1510] Running: set_top sparse_matrix_multiply_HLS 
+INFO: [HLS 200-1510] Running: set_part xczu3eg-sbva484-1-e 
+INFO: [HLS 200-1611] Setting target device to 'xczu3eg-sbva484-1-e'
+INFO: [HLS 200-1510] Running: create_clock -period 2 -name clk 
+INFO: [SYN 201-201] Setting up clock 'clk' with a period of 2ns.
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.11 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.12 seconds; current allocated memory: 641.883 MB.
+INFO: [HLS 200-10] Analyzing design file 'top.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 28.32 seconds. CPU system time: 2.31 seconds. Elapsed time: 30.85 seconds; current allocated memory: 648.004 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 200-1995] There were 907 instructions in the design after the 'Compile/Link' phase of compilation. See the Design Size Report for more details: /usr/scratch/km304/HLSFactory/hlsfactory/hls_dataset_sources/class_ece8893_spring_2025/karthikeya_sharma_ece8893_spring_25_lab_3/karthikeya_sharma_lab-3_design_proj/lab3_karthikeya_Sharma_spring_2025/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,701 instructions in the design after the 'Unroll/Inline (step 1)' phase of compilation. See the Design Size Report for more details: /usr/scratch/km304/HLSFactory/hlsfactory/hls_dataset_sources/class_ece8893_spring_2025/karthikeya_sharma_ece8893_spring_25_lab_3/karthikeya_sharma_lab-3_design_proj/lab3_karthikeya_Sharma_spring_2025/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,623 instructions in the design after the 'Unroll/Inline (step 2)' phase of compilation. See the Design Size Report for more details: /usr/scratch/km304/HLSFactory/hlsfactory/hls_dataset_sources/class_ece8893_spring_2025/karthikeya_sharma_ece8893_spring_25_lab_3/karthikeya_sharma_lab-3_design_proj/lab3_karthikeya_Sharma_spring_2025/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,101 instructions in the design after the 'Unroll/Inline (step 3)' phase of compilation. See the Design Size Report for more details: /usr/scratch/km304/HLSFactory/hlsfactory/hls_dataset_sources/class_ece8893_spring_2025/karthikeya_sharma_ece8893_spring_25_lab_3/karthikeya_sharma_lab-3_design_proj/lab3_karthikeya_Sharma_spring_2025/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 649 instructions in the design after the 'Unroll/Inline (step 4)' phase of compilation. See the Design Size Report for more details: /usr/scratch/km304/HLSFactory/hlsfactory/hls_dataset_sources/class_ece8893_spring_2025/karthikeya_sharma_ece8893_spring_25_lab_3/karthikeya_sharma_lab-3_design_proj/lab3_karthikeya_Sharma_spring_2025/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 647 instructions in the design after the 'Array/Struct (step 1)' phase of compilation. See the Design Size Report for more details: /usr/scratch/km304/HLSFactory/hlsfactory/hls_dataset_sources/class_ece8893_spring_2025/karthikeya_sharma_ece8893_spring_25_lab_3/karthikeya_sharma_lab-3_design_proj/lab3_karthikeya_Sharma_spring_2025/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 647 instructions in the design after the 'Array/Struct (step 2)' phase of compilation. See the Design Size Report for more details: /usr/scratch/km304/HLSFactory/hlsfactory/hls_dataset_sources/class_ece8893_spring_2025/karthikeya_sharma_ece8893_spring_25_lab_3/karthikeya_sharma_lab-3_design_proj/lab3_karthikeya_Sharma_spring_2025/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,648 instructions in the design after the 'Array/Struct (step 3)' phase of compilation. See the Design Size Report for more details: /usr/scratch/km304/HLSFactory/hlsfactory/hls_dataset_sources/class_ece8893_spring_2025/karthikeya_sharma_ece8893_spring_25_lab_3/karthikeya_sharma_lab-3_design_proj/lab3_karthikeya_Sharma_spring_2025/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,948 instructions in the design after the 'Array/Struct (step 4)' phase of compilation. See the Design Size Report for more details: /usr/scratch/km304/HLSFactory/hlsfactory/hls_dataset_sources/class_ece8893_spring_2025/karthikeya_sharma_ece8893_spring_25_lab_3/karthikeya_sharma_lab-3_design_proj/lab3_karthikeya_Sharma_spring_2025/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,898 instructions in the design after the 'Array/Struct (step 5)' phase of compilation. See the Design Size Report for more details: /usr/scratch/km304/HLSFactory/hlsfactory/hls_dataset_sources/class_ece8893_spring_2025/karthikeya_sharma_ece8893_spring_25_lab_3/karthikeya_sharma_lab-3_design_proj/lab3_karthikeya_Sharma_spring_2025/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,497 instructions in the design after the 'Performance (step 1)' phase of compilation. See the Design Size Report for more details: /usr/scratch/km304/HLSFactory/hlsfactory/hls_dataset_sources/class_ece8893_spring_2025/karthikeya_sharma_ece8893_spring_25_lab_3/karthikeya_sharma_lab-3_design_proj/lab3_karthikeya_Sharma_spring_2025/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,413 instructions in the design after the 'Performance (step 2)' phase of compilation. See the Design Size Report for more details: /usr/scratch/km304/HLSFactory/hlsfactory/hls_dataset_sources/class_ece8893_spring_2025/karthikeya_sharma_ece8893_spring_25_lab_3/karthikeya_sharma_lab-3_design_proj/lab3_karthikeya_Sharma_spring_2025/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,410 instructions in the design after the 'Performance (step 3)' phase of compilation. See the Design Size Report for more details: /usr/scratch/km304/HLSFactory/hlsfactory/hls_dataset_sources/class_ece8893_spring_2025/karthikeya_sharma_ece8893_spring_25_lab_3/karthikeya_sharma_lab-3_design_proj/lab3_karthikeya_Sharma_spring_2025/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,410 instructions in the design after the 'Performance (step 4)' phase of compilation. See the Design Size Report for more details: /usr/scratch/km304/HLSFactory/hlsfactory/hls_dataset_sources/class_ece8893_spring_2025/karthikeya_sharma_ece8893_spring_25_lab_3/karthikeya_sharma_lab-3_design_proj/lab3_karthikeya_Sharma_spring_2025/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,243 instructions in the design after the 'HW Transforms (step 1)' phase of compilation. See the Design Size Report for more details: /usr/scratch/km304/HLSFactory/hlsfactory/hls_dataset_sources/class_ece8893_spring_2025/karthikeya_sharma_ece8893_spring_25_lab_3/karthikeya_sharma_lab-3_design_proj/lab3_karthikeya_Sharma_spring_2025/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,264 instructions in the design after the 'HW Transforms (step 2)' phase of compilation. See the Design Size Report for more details: /usr/scratch/km304/HLSFactory/hlsfactory/hls_dataset_sources/class_ece8893_spring_2025/karthikeya_sharma_ece8893_spring_25_lab_3/karthikeya_sharma_lab-3_design_proj/lab3_karthikeya_Sharma_spring_2025/syn/report/csynth_design_size.rpt
+INFO: [HLS 214-131] Inlining function 'hls::vector<ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, 64ul>::vector(ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0> const&)' into 'calculate_per_C_row(int*, ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0>*, int*, int*, hls::stream<ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, 64>&, hls::stream<int, 64>&, hls::stream<hls::vector<ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, 64ul>, 10>&)' (top.cpp:32:48)
+INFO: [HLS 214-131] Inlining function 'hls::vector<ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, 64ul>::vector(ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0> const&)' into 'accumulate_C_matrix(hls::stream<hls::vector<ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, 64ul>, 10>&, ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0> (*) [64])' (top.cpp:57:41)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_127_1' (/tools/software/xilinx/Vitis/2024.2/common/technology/autopilot/hls_vector.h:127:23) in function 'accumulate_C_matrix' completely with a factor of 64 (top.cpp:54:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_127_1' (/tools/software/xilinx/Vitis/2024.2/common/technology/autopilot/hls_vector.h:127:23) in function 'calculate_per_C_row' completely with a factor of 64 (top.cpp:26:0)
+INFO: [HLS 214-178] Inlining function 'std::__array_traits<ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, 64ul>::_S_ref(ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0> const (&) [64], unsigned long)' into 'std::array<ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, 64ul>::operator[](unsigned long)' (/tools/software/xilinx/Vitis/2024.2/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/../../../../include/c++/8.3.0/array:186:0)
+INFO: [HLS 214-178] Inlining function 'std::array<ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, 64ul>::operator[](unsigned long)' into 'calculate_per_C_row(int*, ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0>*, int*, int*, hls::stream<ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, 64>&, hls::stream<int, 64>&, hls::stream<hls::vector<ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, 64ul>, 10>&)' (top.cpp:26:0)
+INFO: [HLS 214-178] Inlining function 'std::array<ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, 64ul>::operator[](unsigned long)' into 'accumulate_C_matrix(hls::stream<hls::vector<ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0>, 64ul>, 10>&, ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0> (*) [64])' (top.cpp:54:0)
+INFO: [HLS 214-178] Inlining function 'load_Sparse_A(ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0>*, ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0>*, int*, int*, int*, int*)' into 'sparse_matrix_multiply_HLS(ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0>*, int*, int*, ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0>*, int*, int*, ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0> (*) [64])' (top.cpp:126:0)
+INFO: [HLS 214-178] Inlining function 'load_Sparse_B(ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0>*, ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0>*, int*, int*, int*, int*)' into 'sparse_matrix_multiply_HLS(ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0>*, int*, int*, ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0>*, int*, int*, ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0> (*) [64])' (top.cpp:126:0)
+INFO: [HLS 214-241] Aggregating fifo (hls::stream) variable 'dense_row' with compact=bit mode in 1024-bits (top.cpp:73:46)
+INFO: [HLS 214-241] Aggregating maxi variable 'C' with compact=none mode in 16-bits
+INFO: [HLS 214-241] Aggregating scalar variable 'output_C_row' with compact=bit mode in 1024-bits (top.cpp:32:33)
+INFO: [HLS 214-241] Aggregating scalar variable 'C_row' with compact=bit mode in 1024-bits (top.cpp:57:33)
+INFO: [HLS 214-376] automatically set the pipeline for Loop< VITIS_LOOP_55_1> at top.cpp:55:22 
+INFO: [HLS 214-376] automatically set the pipeline for Loop< VITIS_LOOP_39_3> at top.cpp:39:30 
+INFO: [HLS 214-376] automatically set the pipeline for Loop< VITIS_LOOP_13_2> at top.cpp:13:26 
+INFO: [HLS 214-376] automatically set the pipeline for Loop< VITIS_LOOP_90_1> at top.cpp:90:22 
+INFO: [HLS 214-376] automatically set the pipeline for Loop< VITIS_LOOP_95_2> at top.cpp:95:22 
+INFO: [HLS 214-376] automatically set the pipeline for Loop< VITIS_LOOP_106_1> at top.cpp:106:23 
+INFO: [HLS 214-376] automatically set the pipeline for Loop< VITIS_LOOP_112_2> at top.cpp:112:23 
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_60_2' is marked as complete unroll implied by the pipeline pragma (top.cpp:60:26)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_60_2' (top.cpp:60:26) in function 'accumulate_C_matrix' completely with a factor of 64 (top.cpp:54:0)
+INFO: [HLS 214-115] Multiple burst writes of length 4096 and bit width 16 in loop 'VITIS_LOOP_55_1'(top.cpp:55:22) has been inferred on bundle 'mem3'. These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings. (top.cpp:55:22)
+INFO: [HLS 214-115] Multiple burst reads of length 65 and bit width 32 in loop 'VITIS_LOOP_95_2'(top.cpp:95:22) has been inferred on bundle 'mem1'. These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings. (top.cpp:95:22)
+INFO: [HLS 214-115] Multiple burst reads of length 65 and bit width 32 in loop 'VITIS_LOOP_112_2'(top.cpp:112:23) has been inferred on bundle 'mem2'. These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings. (top.cpp:112:23)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 6.06 seconds. CPU system time: 0.9 seconds. Elapsed time: 9.48 seconds; current allocated memory: 656.984 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 656.984 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.16 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.16 seconds; current allocated memory: 659.004 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.33 seconds. CPU system time: 0 seconds. Elapsed time: 0.33 seconds; current allocated memory: 660.793 MB.
+INFO: [HLS 200-778] Automatically marking array 'row_ptr_A_copy' as shared between two reader processes.
+INFO: [HLS 200-755] Binding port 0 of memory 'row_ptr_A_copy' to function 'stream_matrix_A_rows' (top.cpp:8:22) 
+INFO: [HLS 200-755] Binding port 1 of memory 'row_ptr_A_copy' to function 'calculate_per_C_row' (top.cpp:22:26) 
+INFO: [XFORM 203-712] Applying dataflow to function 'sparse_matmul' (top.cpp:70:1), detected/extracted 4 process function(s): 
+	 'entry_proc'
+	 'stream_matrix_A_rows'
+	 'calculate_per_C_row'
+	 'accumulate_C_matrix'.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.53 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.55 seconds; current allocated memory: 685.062 MB.
+WARNING: [HLS 200-960] Cannot flatten loop 'VITIS_LOOP_11_1' (top.cpp:11:22) in function 'stream_matrix_A_rows' the outer loop is not a perfect loop.
+Resolution: For help on HLS 200-960 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-960.html
+WARNING: [HLS 200-960] Cannot flatten loop 'VITIS_LOOP_34_2' (top.cpp:34:26) in function 'calculate_per_C_row' the outer loop is not a perfect loop.
+Resolution: For help on HLS 200-960 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-960.html
+INFO: [HLS 200-634] Sharing array row_ptr_A_copy among processes stream_matrix_A_rows and calculate_per_C_row
+WARNING: [HLS 200-1449] Process calculate_per_C_row has both a predecessor and reads an input from its caller (see the GUI dataflow viewer). This may lead to lower throughput. Consider copying this input via a predecessor process.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.26 seconds. CPU system time: 0.07 seconds. Elapsed time: 0.34 seconds; current allocated memory: 791.699 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'sparse_matrix_multiply_HLS' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_90_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_90_1'.
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('icmp' operation 1 bit ('icmp_ln90', top.cpp:90->top.cpp:148)) in the first pipeline iteration (II = 1 cycles).
+Resolution: For help on HLS 200-878 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-878.html
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 2, Depth = 14, loop 'VITIS_LOOP_90_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.09 seconds. CPU system time: 0.04 seconds. Elapsed time: 0.13 seconds; current allocated memory: 792.656 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.05 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.05 seconds; current allocated memory: 792.656 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_95_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_95_2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 3, loop 'VITIS_LOOP_95_2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.04 seconds. CPU system time: 0 seconds. Elapsed time: 0.05 seconds; current allocated memory: 792.656 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 792.656 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_106_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_106_1'.
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('icmp' operation 1 bit ('icmp_ln106', top.cpp:106->top.cpp:152)) in the first pipeline iteration (II = 1 cycles).
+Resolution: For help on HLS 200-878 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-878.html
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 2, Depth = 14, loop 'VITIS_LOOP_106_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.05 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.05 seconds; current allocated memory: 792.656 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 792.656 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_112_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_112_2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 3, loop 'VITIS_LOOP_112_2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.04 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 792.879 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 792.879 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'entry_proc' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 792.879 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.01 seconds; current allocated memory: 792.879 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'stream_matrix_A_rows_Pipeline_VITIS_LOOP_13_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_13_2'.
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('icmp' operation 1 bit ('icmp_ln13', top.cpp:13)) in the first pipeline iteration (II = 1 cycles).
+Resolution: For help on HLS 200-878 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-878.html
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('icmp' operation 1 bit ('icmp_ln13', top.cpp:13)) in the first pipeline iteration (II = 2 cycles).
+Resolution: For help on HLS 200-878 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-878.html
+WARNING: [HLS 200-880] The II Violation in module 'stream_matrix_A_rows_Pipeline_VITIS_LOOP_13_2' (loop 'VITIS_LOOP_13_2'): Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 1) between 'store' operation 0 bit ('j_write_ln13', top.cpp:13) of variable 'add_ln13', top.cpp:13 on local variable 'j', top.cpp:13 and 'icmp' operation 1 bit ('icmp_ln13', top.cpp:13).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 4, Depth = 5, loop 'VITIS_LOOP_13_2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 793.387 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 793.387 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'stream_matrix_A_rows' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+WARNING: [HLS 200-871] Estimated clock period (1.669 ns) exceeds the target (target clock period: 2.000 ns, clock uncertainty: 0.540 ns, effective delay budget: 1.460 ns).
+Resolution: For help on HLS 200-871 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-871.html
+WARNING: [HLS 200-1016] The critical path in module 'stream_matrix_A_rows' consists of the following:
+	'call' operation 0 bit ('_ln13', top.cpp:13) to 'stream_matrix_A_rows_Pipeline_VITIS_LOOP_13_2' [27]  (1.669 ns)
+
+Resolution: For help on HLS 200-1016 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-1016.html
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.04 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 793.613 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 793.613 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'calculate_per_C_row_Pipeline_VITIS_LOOP_39_3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=add_ln44) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_39_3'.
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('icmp' operation 1 bit ('icmp_ln39', top.cpp:39)) in the first pipeline iteration (II = 1 cycles).
+Resolution: For help on HLS 200-878 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-878.html
+WARNING: [HLS 200-878] Unable to schedule the loop exit test ('icmp' operation 1 bit ('icmp_ln39', top.cpp:39)) in the first pipeline iteration (II = 2 cycles).
+Resolution: For help on HLS 200-878 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-878.html
+WARNING: [HLS 200-880] The II Violation in module 'calculate_per_C_row_Pipeline_VITIS_LOOP_39_3' (loop 'VITIS_LOOP_39_3'): Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 1) between 'store' operation 0 bit ('k_write_ln39', top.cpp:39) of variable 'add_ln39', top.cpp:39 on local variable 'k', top.cpp:39 and 'icmp' operation 1 bit ('icmp_ln39', top.cpp:39).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'calculate_per_C_row_Pipeline_VITIS_LOOP_39_3' (loop 'VITIS_LOOP_39_3'): Unable to enforce a carried dependence constraint (II = 4, distance = 1, offset = 1) between 'or' operation 1024 bit ('or_ln44', top.cpp:44) and 'lshr' operation 1024 bit ('lshr_ln44', top.cpp:44).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'calculate_per_C_row_Pipeline_VITIS_LOOP_39_3' (loop 'VITIS_LOOP_39_3'): Unable to enforce a carried dependence constraint (II = 7, distance = 1, offset = 1) between 'or' operation 1024 bit ('or_ln44', top.cpp:44) and 'lshr' operation 1024 bit ('lshr_ln44', top.cpp:44).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'calculate_per_C_row_Pipeline_VITIS_LOOP_39_3' (loop 'VITIS_LOOP_39_3'): Unable to enforce a carried dependence constraint (II = 9, distance = 1, offset = 1) between 'or' operation 1024 bit ('or_ln44', top.cpp:44) and 'lshr' operation 1024 bit ('lshr_ln44', top.cpp:44).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'calculate_per_C_row_Pipeline_VITIS_LOOP_39_3' (loop 'VITIS_LOOP_39_3'): Unable to enforce a carried dependence constraint (II = 10, distance = 1, offset = 1) between 'or' operation 1024 bit ('or_ln44', top.cpp:44) and 'lshr' operation 1024 bit ('lshr_ln44', top.cpp:44).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 11, Depth = 15, loop 'VITIS_LOOP_39_3'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.07 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.08 seconds; current allocated memory: 794.219 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 794.219 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'calculate_per_C_row' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.05 seconds. CPU system time: 0 seconds. Elapsed time: 0.05 seconds; current allocated memory: 794.527 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.03 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.04 seconds; current allocated memory: 794.527 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'accumulate_C_matrix_Pipeline_VITIS_LOOP_55_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_55_1'.
+WARNING: [HLS 200-880] The II Violation in module 'accumulate_C_matrix_Pipeline_VITIS_LOOP_55_1' (loop 'VITIS_LOOP_55_1'): Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1) between bus write operation ('mem3_addr_write_ln62', top.cpp:62) on port 'mem3' (top.cpp:62) and bus write operation ('mem3_addr_write_ln62', top.cpp:62) on port 'mem3' (top.cpp:62).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'accumulate_C_matrix_Pipeline_VITIS_LOOP_55_1' (loop 'VITIS_LOOP_55_1'): Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 1) between bus write operation ('mem3_addr_write_ln62', top.cpp:62) on port 'mem3' (top.cpp:62) and bus write operation ('mem3_addr_write_ln62', top.cpp:62) on port 'mem3' (top.cpp:62).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'accumulate_C_matrix_Pipeline_VITIS_LOOP_55_1' (loop 'VITIS_LOOP_55_1'): Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 1) between bus write operation ('mem3_addr_write_ln62', top.cpp:62) on port 'mem3' (top.cpp:62) and bus write operation ('mem3_addr_write_ln62', top.cpp:62) on port 'mem3' (top.cpp:62).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'accumulate_C_matrix_Pipeline_VITIS_LOOP_55_1' (loop 'VITIS_LOOP_55_1'): Unable to enforce a carried dependence constraint (II = 4, distance = 1, offset = 1) between bus write operation ('mem3_addr_write_ln62', top.cpp:62) on port 'mem3' (top.cpp:62) and bus write operation ('mem3_addr_write_ln62', top.cpp:62) on port 'mem3' (top.cpp:62).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'accumulate_C_matrix_Pipeline_VITIS_LOOP_55_1' (loop 'VITIS_LOOP_55_1'): Unable to enforce a carried dependence constraint (II = 35, distance = 1, offset = 1) between bus write operation ('mem3_addr_write_ln62', top.cpp:62) on port 'mem3' (top.cpp:62) and bus write operation ('mem3_addr_write_ln62', top.cpp:62) on port 'mem3' (top.cpp:62).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'accumulate_C_matrix_Pipeline_VITIS_LOOP_55_1' (loop 'VITIS_LOOP_55_1'): Unable to enforce a carried dependence constraint (II = 51, distance = 1, offset = 1) between bus write operation ('mem3_addr_write_ln62', top.cpp:62) on port 'mem3' (top.cpp:62) and bus write operation ('mem3_addr_write_ln62', top.cpp:62) on port 'mem3' (top.cpp:62).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'accumulate_C_matrix_Pipeline_VITIS_LOOP_55_1' (loop 'VITIS_LOOP_55_1'): Unable to enforce a carried dependence constraint (II = 59, distance = 1, offset = 1) between bus write operation ('mem3_addr_write_ln62', top.cpp:62) on port 'mem3' (top.cpp:62) and bus write operation ('mem3_addr_write_ln62', top.cpp:62) on port 'mem3' (top.cpp:62).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'accumulate_C_matrix_Pipeline_VITIS_LOOP_55_1' (loop 'VITIS_LOOP_55_1'): Unable to enforce a carried dependence constraint (II = 63, distance = 1, offset = 1) between bus write operation ('mem3_addr_write_ln62', top.cpp:62) on port 'mem3' (top.cpp:62) and bus write operation ('mem3_addr_write_ln62', top.cpp:62) on port 'mem3' (top.cpp:62).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 64, Depth = 66, loop 'VITIS_LOOP_55_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.26 seconds. CPU system time: 0 seconds. Elapsed time: 0.27 seconds; current allocated memory: 796.141 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.05 seconds. CPU system time: 0 seconds. Elapsed time: 0.06 seconds; current allocated memory: 796.141 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'accumulate_C_matrix' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.06 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.06 seconds; current allocated memory: 796.812 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 796.812 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'sparse_matmul' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+WARNING: [HLS 200-1020] Increasing the depth of FIFO start_for_accumulate_C_matrix_U0 (from entry_proc_U0 to accumulate_C_matrix_U0) to 3 to improve performance and/or avoid deadlocks.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 796.812 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.03 seconds; current allocated memory: 796.812 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'sparse_matrix_multiply_HLS' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.04 seconds. CPU system time: 0 seconds. Elapsed time: 0.06 seconds; current allocated memory: 797.445 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 797.445 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_90_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_90_1' pipeline 'VITIS_LOOP_90_1' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'add_64ns_64ns_64_2_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_90_1'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.07 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.1 seconds; current allocated memory: 797.902 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_95_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_95_2' pipeline 'VITIS_LOOP_95_2' pipeline type 'loop pipeline'
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_95_2/m_axi_mem1_0_ARVALID' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_95_2/m_axi_mem1_0_ARADDR' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_95_2/m_axi_mem1_0_ARID' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_95_2/m_axi_mem1_0_ARLEN' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_95_2/m_axi_mem1_0_ARSIZE' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_95_2/m_axi_mem1_0_ARBURST' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_95_2/m_axi_mem1_0_ARLOCK' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_95_2/m_axi_mem1_0_ARCACHE' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_95_2/m_axi_mem1_0_ARPROT' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_95_2/m_axi_mem1_0_ARQOS' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_95_2/m_axi_mem1_0_ARREGION' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_95_2/m_axi_mem1_0_ARUSER' to 0.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_95_2'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.14 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.15 seconds; current allocated memory: 799.305 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_106_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_106_1' pipeline 'VITIS_LOOP_106_1' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'add_64ns_64ns_64_2_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_106_1'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.09 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.09 seconds; current allocated memory: 800.504 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_112_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_112_2' pipeline 'VITIS_LOOP_112_2' pipeline type 'loop pipeline'
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_112_2/m_axi_mem2_0_ARVALID' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_112_2/m_axi_mem2_0_ARADDR' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_112_2/m_axi_mem2_0_ARID' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_112_2/m_axi_mem2_0_ARLEN' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_112_2/m_axi_mem2_0_ARSIZE' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_112_2/m_axi_mem2_0_ARBURST' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_112_2/m_axi_mem2_0_ARLOCK' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_112_2/m_axi_mem2_0_ARCACHE' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_112_2/m_axi_mem2_0_ARPROT' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_112_2/m_axi_mem2_0_ARQOS' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_112_2/m_axi_mem2_0_ARREGION' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_112_2/m_axi_mem2_0_ARUSER' to 0.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'sparse_matrix_multiply_HLS_Pipeline_VITIS_LOOP_112_2'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.12 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.13 seconds; current allocated memory: 801.875 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'entry_proc' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'entry_proc'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.06 seconds. CPU system time: 0 seconds. Elapsed time: 0.06 seconds; current allocated memory: 802.434 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'stream_matrix_A_rows_Pipeline_VITIS_LOOP_13_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'stream_matrix_A_rows_Pipeline_VITIS_LOOP_13_2' pipeline 'VITIS_LOOP_13_2' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'add_64ns_64ns_64_2_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'icmp_64s_64s_1_2_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'stream_matrix_A_rows_Pipeline_VITIS_LOOP_13_2'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.08 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.1 seconds; current allocated memory: 803.070 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'stream_matrix_A_rows' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'stream_matrix_A_rows'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.07 seconds. CPU system time: 0 seconds. Elapsed time: 0.07 seconds; current allocated memory: 804.020 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'calculate_per_C_row_Pipeline_VITIS_LOOP_39_3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'calculate_per_C_row_Pipeline_VITIS_LOOP_39_3' pipeline 'VITIS_LOOP_39_3' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'add_64ns_64ns_64_2_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'icmp_64s_64s_1_2_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'lshr_1024ns_64ns_1024_6_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_16s_27ns_27_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'shl_1024ns_64ns_1024_2_1': 2 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'calculate_per_C_row_Pipeline_VITIS_LOOP_39_3'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.1 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.14 seconds; current allocated memory: 805.238 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'calculate_per_C_row' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'calculate_per_C_row'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.09 seconds. CPU system time: 0 seconds. Elapsed time: 0.09 seconds; current allocated memory: 806.688 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'accumulate_C_matrix_Pipeline_VITIS_LOOP_55_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'accumulate_C_matrix_Pipeline_VITIS_LOOP_55_1' pipeline 'VITIS_LOOP_55_1' pipeline type 'loop pipeline'
+WARNING: [RTGEN 206-101] Setting dangling out port 'accumulate_C_matrix_Pipeline_VITIS_LOOP_55_1/m_axi_mem3_0_AWVALID' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'accumulate_C_matrix_Pipeline_VITIS_LOOP_55_1/m_axi_mem3_0_AWADDR' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'accumulate_C_matrix_Pipeline_VITIS_LOOP_55_1/m_axi_mem3_0_AWID' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'accumulate_C_matrix_Pipeline_VITIS_LOOP_55_1/m_axi_mem3_0_AWLEN' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'accumulate_C_matrix_Pipeline_VITIS_LOOP_55_1/m_axi_mem3_0_AWSIZE' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'accumulate_C_matrix_Pipeline_VITIS_LOOP_55_1/m_axi_mem3_0_AWBURST' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'accumulate_C_matrix_Pipeline_VITIS_LOOP_55_1/m_axi_mem3_0_AWLOCK' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'accumulate_C_matrix_Pipeline_VITIS_LOOP_55_1/m_axi_mem3_0_AWCACHE' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'accumulate_C_matrix_Pipeline_VITIS_LOOP_55_1/m_axi_mem3_0_AWPROT' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'accumulate_C_matrix_Pipeline_VITIS_LOOP_55_1/m_axi_mem3_0_AWQOS' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'accumulate_C_matrix_Pipeline_VITIS_LOOP_55_1/m_axi_mem3_0_AWREGION' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'accumulate_C_matrix_Pipeline_VITIS_LOOP_55_1/m_axi_mem3_0_AWUSER' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'accumulate_C_matrix_Pipeline_VITIS_LOOP_55_1/m_axi_mem3_0_BREADY' to 0.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'accumulate_C_matrix_Pipeline_VITIS_LOOP_55_1'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.23 seconds. CPU system time: 0.03 seconds. Elapsed time: 0.26 seconds; current allocated memory: 811.320 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'accumulate_C_matrix' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'accumulate_C_matrix'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.17 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.2 seconds; current allocated memory: 814.926 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'sparse_matmul' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matmul/m_axi_mem3_0_ARVALID' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matmul/m_axi_mem3_0_ARADDR' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matmul/m_axi_mem3_0_ARID' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matmul/m_axi_mem3_0_ARLEN' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matmul/m_axi_mem3_0_ARSIZE' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matmul/m_axi_mem3_0_ARBURST' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matmul/m_axi_mem3_0_ARLOCK' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matmul/m_axi_mem3_0_ARCACHE' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matmul/m_axi_mem3_0_ARPROT' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matmul/m_axi_mem3_0_ARQOS' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matmul/m_axi_mem3_0_ARREGION' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matmul/m_axi_mem3_0_ARUSER' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'sparse_matmul/m_axi_mem3_0_RREADY' to 0.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'sparse_matmul'.
+INFO: [RTMG 210-285] Implementing FIFO 'C_c_U(sparse_matrix_multiply_HLS_fifo_w64_d4_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'values_A_row_stream_U(sparse_matrix_multiply_HLS_fifo_w16_d64_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'column_indices_A_row_stream_U(sparse_matrix_multiply_HLS_fifo_w32_d64_A)' using Vivado Default RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'dense_row_U(sparse_matrix_multiply_HLS_fifo_w1024_d10_A)' using Vivado Default RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_accumulate_C_matrix_U0_U(sparse_matrix_multiply_HLS_start_for_accumulate_C_matrix_U0)' using Shift Registers.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.13 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.14 seconds; current allocated memory: 816.387 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'sparse_matrix_multiply_HLS' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [RTGEN 206-101] Design contains AXI ports. Reset is fixed to synchronous and active low.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sparse_matrix_multiply_HLS/mem1' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sparse_matrix_multiply_HLS/mem2' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sparse_matrix_multiply_HLS/mem3' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sparse_matrix_multiply_HLS/values_A' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sparse_matrix_multiply_HLS/column_indices_A' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sparse_matrix_multiply_HLS/row_ptr_A' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sparse_matrix_multiply_HLS/values_B' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sparse_matrix_multiply_HLS/row_indices_B' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sparse_matrix_multiply_HLS/col_ptr_B' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sparse_matrix_multiply_HLS/C' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'sparse_matrix_multiply_HLS' to 's_axilite & ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Bundling port 'values_A', 'column_indices_A', 'row_ptr_A', 'values_B', 'row_indices_B', 'col_ptr_B', 'C' and 'return' to AXI-Lite port control.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'sparse_matrix_multiply_HLS'.
+INFO: [RTMG 210-278] Implementing memory 'sparse_matrix_multiply_HLS_values_A_BRAM_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'sparse_matrix_multiply_HLS_column_indices_A_BRAM_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'sparse_matrix_multiply_HLS_row_ptr_A_BRAM_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.17 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.19 seconds; current allocated memory: 819.750 MB.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 0.38 seconds. CPU system time: 0.07 seconds. Elapsed time: 0.45 seconds; current allocated memory: 822.523 MB.
+INFO: [HLS 200-1603] Design has inferred MAXI bursts and missed bursts, see Vitis HLS GUI synthesis summary report for detailed information.
+INFO: [HLS 200-111] Finished Updating report files: CPU user time: 1.79 seconds. CPU system time: 0.05 seconds. Elapsed time: 1.85 seconds; current allocated memory: 832.438 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for sparse_matrix_multiply_HLS.
+INFO: [VLOG 209-307] Generating Verilog RTL for sparse_matrix_multiply_HLS.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were NOT satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 599.16 MHz
+INFO: [HLS 200-2161] Finished Command csynth_design Elapsed time: 00:00:47; Allocated memory: 190.758 MB.
+INFO: [HLS 200-112] Total CPU user time: 46.95 seconds. Total CPU system time: 4.77 seconds. Total elapsed time: 54.95 seconds; peak allocated memory: 832.641 MB.
