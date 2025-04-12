@@ -27,7 +27,7 @@ set_part {xczu3eg-sbva484-1-e}
 csynth_design
 
 # C/RTL co-simulation; can be commented if not needed
-cosim_design
+#cosim_design
 
 # Exit
 exit
