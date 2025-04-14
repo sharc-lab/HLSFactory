@@ -14,7 +14,7 @@ DIR_DATASET_CHSTONE = HLS_DATASET_DIR / "chstone"
 DIR_DATASET_PP4FPGAS = HLS_DATASET_DIR / "pp4fpgas"
 DIR_DATASET_VITIS_EXAMPLES = HLS_DATASET_DIR / "vitis_examples"
 DIR_DATASET_ACCELERATORS = HLS_DATASET_DIR / "accelerators"
-DIR_DATASET_Sush_Kuttuva_ECE_8893_SPRING25 = HLS_DATASET_DIR / "sush_kuttuva_ece_8893_spring25"
+
 
 DIR_ALL = [
     DIR_DATASET_POLYBENCH,
@@ -77,12 +77,6 @@ def dataset_accelerators_builder(name: str, work_dir: Path) -> DesignDataset:
     shutil.copytree(DIR_DATASET_ACCELERATORS, new_dir)
     return DesignDataset.from_dir(name, new_dir)
 
-def dataset_dataset_sush_kuttuva_ece_8893_spring25_builder_builder(name: str, work_dir: Path) -> DesignDataset:
-    check_dataset_dir_exists(DIR_DATASET_Sush_Kuttuva_ECE_8893_SPRING25)
-    new_dir = work_dir / name
-    shutil.copytree(DIR_DATASET_ACCELERATORS, new_dir)
-    return DesignDataset.from_dir(name, new_dir)
-
 
 DATASET_STR_MAP = {
     "polybench": dataset_polybench_builder,
@@ -91,7 +85,6 @@ DATASET_STR_MAP = {
     "pp4fpgas": dataset_pp4fpgas_builder,
     "vitis_examples": dataset_vitis_examples_builder,
     "accelerators": dataset_accelerators_builder,
-    "sush_kuttuva_ece_8893_spring25": dataset_dataset_sush_kuttuva_ece_8893_spring25_builder_builder
 }
 
 
