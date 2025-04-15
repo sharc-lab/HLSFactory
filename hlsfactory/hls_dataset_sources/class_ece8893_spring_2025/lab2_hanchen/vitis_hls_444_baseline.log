@@ -1,0 +1,1105 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2024.1.2 (64-bit)
+  **** SW Build 5096458 on Sep  5 2024
+  **** IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+  **** SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+  **** Start of session at: Tue Feb 25 23:31:54 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source /tools/software/xilinx/Vitis_HLS/2024.1/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] For user 'hyang428' on host 'krishna-srv1.ece.gatech.edu' (Linux_x86_64 version 4.18.0-553.33.1.el8_10.x86_64) on Tue Feb 25 23:31:57 EST 2025
+INFO: [HLS 200-10] On os "Red Hat Enterprise Linux release 8.10 (Ootpa)"
+INFO: [HLS 200-10] In directory '/nethome/hyang428/ece8893/lab2'
+WARNING: [HLS 200-2053] The vitis_hls executable is deprecated. Consider using vitis-run --mode hls --tcl
+Sourcing Tcl script 'script.tcl'
+INFO: [HLS 200-1510] Running: open_project project_1 
+INFO: [HLS 200-10] Opening project '/nethome/hyang428/ece8893/lab2/project_1'.
+INFO: [HLS 200-1510] Running: set_top compute_attention_HLS 
+INFO: [HLS 200-1510] Running: add_files top.cpp 
+INFO: [HLS 200-10] Adding design file 'top.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb host.cpp 
+INFO: [HLS 200-10] Adding test bench file 'host.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb Q_tensor.bin 
+INFO: [HLS 200-10] Adding test bench file 'Q_tensor.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb V_tensor.bin 
+INFO: [HLS 200-10] Adding test bench file 'V_tensor.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb K_tensor.bin 
+INFO: [HLS 200-10] Adding test bench file 'K_tensor.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb Output_tensor.bin 
+INFO: [HLS 200-10] Adding test bench file 'Output_tensor.bin' to the project
+INFO: [HLS 200-1510] Running: open_solution solution1 
+INFO: [HLS 200-10] Opening solution '/nethome/hyang428/ece8893/lab2/project_1/solution1'.
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xczu3eg-sbva484-1-e 
+INFO: [HLS 200-1611] Setting target device to 'xczu3eg-sbva484-1-e'
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.09 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.12 seconds; current allocated memory: 338.723 MB.
+INFO: [HLS 200-10] Analyzing design file 'top.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 31.34 seconds. CPU system time: 1.73 seconds. Elapsed time: 35.23 seconds; current allocated memory: 345.035 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 200-1995] There were 50,388 instructions in the design after the 'Compile/Link' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,240 instructions in the design after the 'Unroll/Inline (step 1)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 577 instructions in the design after the 'Unroll/Inline (step 2)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 491 instructions in the design after the 'Unroll/Inline (step 3)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 490 instructions in the design after the 'Unroll/Inline (step 4)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 494 instructions in the design after the 'Array/Struct (step 1)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 494 instructions in the design after the 'Array/Struct (step 2)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 498 instructions in the design after the 'Array/Struct (step 3)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 502 instructions in the design after the 'Array/Struct (step 4)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 516 instructions in the design after the 'Array/Struct (step 5)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 508 instructions in the design after the 'Performance (step 1)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 4,122 instructions in the design after the 'Performance (step 2)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 4,112 instructions in the design after the 'Performance (step 3)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 4,112 instructions in the design after the 'Performance (step 4)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 4,207 instructions in the design after the 'HW Transforms (step 1)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 4,210 instructions in the design after the 'HW Transforms (step 2)' phase of compilation. See the Design Size Report for more details: /nethome/hyang428/ece8893/lab2/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_918_23' is marked as complete unroll implied by the pipeline pragma (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:918:36)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_914_22' is marked as complete unroll implied by the pipeline pragma (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:914:36)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_908_21' is marked as complete unroll implied by the pipeline pragma (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:908:32)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_547_20' is marked as complete unroll implied by the pipeline pragma (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:547:36)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_539_19' is marked as complete unroll implied by the pipeline pragma (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:539:28)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_529_18' is marked as complete unroll implied by the pipeline pragma (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:529:28)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_525_17' is marked as complete unroll implied by the pipeline pragma (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:525:28)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_918_23' (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:918:36) in function 'exp_reduce::exp<33, 9>' completely with a factor of 40 (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:14:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_914_22' (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:914:36) in function 'exp_reduce::exp<33, 9>' completely with a factor of 24 (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:14:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_908_21' (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:908:32) in function 'exp_reduce::exp<33, 9>' completely with a factor of 24 (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:14:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_547_20' (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:547:36) in function 'exp_reduce::exp<33, 9>' completely with a factor of 64 (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:14:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_539_19' (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:539:28) in function 'exp_reduce::exp<33, 9>' completely with a factor of 27 (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:14:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_529_18' (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:529:28) in function 'exp_reduce::exp<33, 9>' completely with a factor of 24 (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:14:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_525_17' (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:525:28) in function 'exp_reduce::exp<33, 9>' completely with a factor of 33 (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:14:0)
+INFO: [HLS 214-178] Inlining function 'softmax_HLS(ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0> (*) [10][10])' into 'compute_attention_HLS(ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0> (*) [10][16], ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0> (*) [10][16], ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0> (*) [10][16], ap_fixed<16, 5, (ap_q_mode)5, (ap_o_mode)3, 0> (*) [10][16])' (top.cpp:29:0)
+INFO: [HLS 214-241] Aggregating maxi variable 'Output' with compact=none mode in 16-bits (top.cpp:29:0)
+INFO: [HLS 214-241] Aggregating maxi variable 'V' with compact=none mode in 16-bits (top.cpp:29:0)
+INFO: [HLS 214-241] Aggregating maxi variable 'K' with compact=none mode in 16-bits (top.cpp:29:0)
+INFO: [HLS 214-241] Aggregating maxi variable 'Q' with compact=none mode in 16-bits (top.cpp:29:0)
+INFO: [HLS 214-376] automatically set the pipeline for Loop< VITIS_LOOP_44_3> at top.cpp:44:30 
+INFO: [HLS 214-376] automatically set the pipeline for Loop< VITIS_LOOP_7_2> at top.cpp:7:25 
+INFO: [HLS 214-376] automatically set the pipeline for Loop< VITIS_LOOP_60_7> at top.cpp:60:30 
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_62_8' is marked as complete unroll implied by the pipeline pragma (top.cpp:62:34)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_9_3' is marked as complete unroll implied by the pipeline pragma (top.cpp:9:29)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_16_4' is marked as complete unroll implied by the pipeline pragma (top.cpp:16:30)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_21_5' is marked as complete unroll implied by the pipeline pragma (top.cpp:21:30)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_46_4' is marked as complete unroll implied by the pipeline pragma (top.cpp:46:34)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_62_8' (top.cpp:62:34) in function 'compute_attention_HLS' completely with a factor of 10 (top.cpp:29:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_9_3' (top.cpp:9:29) in function 'compute_attention_HLS' completely with a factor of 9 (top.cpp:29:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_16_4' (top.cpp:16:30) in function 'compute_attention_HLS' completely with a factor of 10 (top.cpp:29:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_21_5' (top.cpp:21:30) in function 'compute_attention_HLS' completely with a factor of 10 (top.cpp:29:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_46_4' (top.cpp:46:34) in function 'compute_attention_HLS' completely with a factor of 16 (top.cpp:29:0)
+INFO: [HLS 214-115] Multiple burst writes of length 160 and bit width 16 in loop 'VITIS_LOOP_59_6'(top.cpp:59:26) has been inferred on bundle 'mem2'. These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings. (top.cpp:59:26)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 6.39 seconds. CPU system time: 0.54 seconds. Elapsed time: 8.46 seconds; current allocated memory: 353.965 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 353.965 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.04 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.07 seconds; current allocated memory: 356.289 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.07 seconds. CPU system time: 0 seconds. Elapsed time: 0.08 seconds; current allocated memory: 358.703 MB.
+INFO: [XFORM 203-102] Partitioning array 'attention' (top.cpp:38) in dimension 1 automatically.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:15:9) to (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:927:1) in function 'exp_reduce::exp<33, 9>'... converting 5 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'exp_reduce::exp<33, 9>' (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/etc/hls_exp_apfixed.h:15:1)...27 expression(s) balanced.
+INFO: [XFORM 203-11] Balancing expressions in function 'compute_attention_HLS' (top.cpp:7:30)...33 expression(s) balanced.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.21 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.24 seconds; current allocated memory: 385.812 MB.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_43_2'(top.cpp:43:26) and 'VITIS_LOOP_44_3'(top.cpp:44:30) in function 'compute_attention_HLS' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_59_6'(top.cpp:59:26) and 'VITIS_LOOP_60_7'(top.cpp:60:30) in function 'compute_attention_HLS' into perfectly nested loops.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_43_2' (top.cpp:43:26) in function 'compute_attention_HLS'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_59_6' (top.cpp:59:26) in function 'compute_attention_HLS'.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.18 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.21 seconds; current allocated memory: 418.105 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'compute_attention_HLS' ...
+WARNING: [SYN 201-103] Legalizing function name 'exp<33, 9>' to 'exp_33_9_s'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'compute_attention_HLS_Pipeline_VITIS_LOOP_43_2_VITIS_LOOP_44_3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=tmp37) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=tmp36) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=tmp25) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=tmp24) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=tmp21) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=tmp20) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=tmp18) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=tmp17) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_43_2_VITIS_LOOP_44_3'.
+WARNING: [HLS 200-885] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_43_2_VITIS_LOOP_44_3' (loop 'VITIS_LOOP_43_2_VITIS_LOOP_44_3'): Unable to schedule bus request operation ('mem1_load_1_req', top.cpp:47) on port 'mem1' (top.cpp:47) due to limited memory ports (II = 1). Please consider using a memory core with more ports or partitioning the array.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_43_2_VITIS_LOOP_44_3' (loop 'VITIS_LOOP_43_2_VITIS_LOOP_44_3'): Unable to schedule bus request operation ('mem1_load_2_req', top.cpp:47) on port 'mem1' (top.cpp:47) due to limited memory ports (II = 2). Please consider using a memory core with more ports or partitioning the array.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_43_2_VITIS_LOOP_44_3' (loop 'VITIS_LOOP_43_2_VITIS_LOOP_44_3'): Unable to schedule bus request operation ('mem1_load_3_req', top.cpp:47) on port 'mem1' (top.cpp:47) due to limited memory ports (II = 3). Please consider using a memory core with more ports or partitioning the array.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_43_2_VITIS_LOOP_44_3' (loop 'VITIS_LOOP_43_2_VITIS_LOOP_44_3'): Unable to schedule bus request operation ('mem1_load_4_req', top.cpp:47) on port 'mem1' (top.cpp:47) due to limited memory ports (II = 4). Please consider using a memory core with more ports or partitioning the array.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_43_2_VITIS_LOOP_44_3' (loop 'VITIS_LOOP_43_2_VITIS_LOOP_44_3'): Unable to schedule bus request operation ('mem1_load_19_req', top.cpp:47) on port 'mem1' (top.cpp:47) due to limited memory ports (II = 19). Please consider using a memory core with more ports or partitioning the array.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_43_2_VITIS_LOOP_44_3' (loop 'VITIS_LOOP_43_2_VITIS_LOOP_44_3'): Unable to schedule bus request operation ('mem1_load_27_req', top.cpp:47) on port 'mem1' (top.cpp:47) due to limited memory ports (II = 27). Please consider using a memory core with more ports or partitioning the array.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_43_2_VITIS_LOOP_44_3' (loop 'VITIS_LOOP_43_2_VITIS_LOOP_44_3'): Unable to schedule bus request operation ('mem1_load_31_req', top.cpp:47) on port 'mem1' (top.cpp:47) due to limited memory ports (II = 31). Please consider using a memory core with more ports or partitioning the array.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 32, Depth = 45, loop 'VITIS_LOOP_43_2_VITIS_LOOP_44_3'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.53 seconds. CPU system time: 0.03 seconds. Elapsed time: 0.64 seconds; current allocated memory: 418.680 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.1 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.16 seconds; current allocated memory: 419.105 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'exp_33_9_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'exp<33, 9>'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 6, function 'exp<33, 9>'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.17 seconds. CPU system time: 0 seconds. Elapsed time: 0.24 seconds; current allocated memory: 419.105 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.03 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.07 seconds; current allocated memory: 419.184 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'compute_attention_HLS_Pipeline_VITIS_LOOP_7_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_7_2'.
+WARNING: [HLS 200-885] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_7_2' (loop 'VITIS_LOOP_7_2'): Unable to schedule 'load' operation 16 bit ('attention_0_load', top.cpp:10->top.cpp:55) on array 'attention_0' due to limited memory ports (II = 1). Please consider using a memory core with more ports or partitioning the array 'attention_0'.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_7_2' (loop 'VITIS_LOOP_7_2'): Unable to schedule 'load' operation 16 bit ('attention_0_load_2', top.cpp:10->top.cpp:55) on array 'attention_0' due to limited memory ports (II = 2). Please consider using a memory core with more ports or partitioning the array 'attention_0'.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_7_2' (loop 'VITIS_LOOP_7_2'): Unable to schedule 'load' operation 16 bit ('attention_0_load_4', top.cpp:10->top.cpp:55) on array 'attention_0' due to limited memory ports (II = 3). Please consider using a memory core with more ports or partitioning the array 'attention_0'.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_7_2' (loop 'VITIS_LOOP_7_2'): Unable to schedule 'load' operation 16 bit ('attention_0_load_6', top.cpp:10->top.cpp:55) on array 'attention_0' due to limited memory ports (II = 4). Please consider using a memory core with more ports or partitioning the array 'attention_0'.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_7_2' (loop 'VITIS_LOOP_7_2'): Unable to schedule 'store' operation 0 bit ('attention_0_addr_3_write_ln22', top.cpp:22->top.cpp:55) of variable 'trunc_ln22_3', top.cpp:22->top.cpp:55 on array 'attention_0' due to limited memory ports (II = 7). Please consider using a memory core with more ports or partitioning the array 'attention_0'.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_7_2' (loop 'VITIS_LOOP_7_2'): Unable to schedule 'store' operation 0 bit ('attention_0_addr_7_write_ln22', top.cpp:22->top.cpp:55) of variable 'trunc_ln22_7', top.cpp:22->top.cpp:55 on array 'attention_0' due to limited memory ports (II = 9). Please consider using a memory core with more ports or partitioning the array 'attention_0'.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 10, Depth = 80, loop 'VITIS_LOOP_7_2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.51 seconds. CPU system time: 0 seconds. Elapsed time: 0.59 seconds; current allocated memory: 421.480 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.05 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.1 seconds; current allocated memory: 421.695 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'compute_attention_HLS_Pipeline_VITIS_LOOP_59_6_VITIS_LOOP_60_7' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=tmp61) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=tmp62) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=tmp60) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=tmp57) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=tmp58) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=tmp56) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_59_6_VITIS_LOOP_60_7'.
+WARNING: [HLS 200-885] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_59_6_VITIS_LOOP_60_7' (loop 'VITIS_LOOP_59_6_VITIS_LOOP_60_7'): Unable to schedule bus request operation ('mem1_load_33_req', top.cpp:63) on port 'mem1' (top.cpp:63) due to limited memory ports (II = 1). Please consider using a memory core with more ports or partitioning the array.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_59_6_VITIS_LOOP_60_7' (loop 'VITIS_LOOP_59_6_VITIS_LOOP_60_7'): Unable to schedule bus request operation ('mem1_load_34_req', top.cpp:63) on port 'mem1' (top.cpp:63) due to limited memory ports (II = 2). Please consider using a memory core with more ports or partitioning the array.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_59_6_VITIS_LOOP_60_7' (loop 'VITIS_LOOP_59_6_VITIS_LOOP_60_7'): Unable to schedule bus request operation ('mem1_load_35_req', top.cpp:63) on port 'mem1' (top.cpp:63) due to limited memory ports (II = 3). Please consider using a memory core with more ports or partitioning the array.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_59_6_VITIS_LOOP_60_7' (loop 'VITIS_LOOP_59_6_VITIS_LOOP_60_7'): Unable to schedule bus request operation ('mem1_load_36_req', top.cpp:63) on port 'mem1' (top.cpp:63) due to limited memory ports (II = 4). Please consider using a memory core with more ports or partitioning the array.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_59_6_VITIS_LOOP_60_7' (loop 'VITIS_LOOP_59_6_VITIS_LOOP_60_7'): Unable to schedule bus request operation ('mem1_load_39_req', top.cpp:63) on port 'mem1' (top.cpp:63) due to limited memory ports (II = 7). Please consider using a memory core with more ports or partitioning the array.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'compute_attention_HLS_Pipeline_VITIS_LOOP_59_6_VITIS_LOOP_60_7' (loop 'VITIS_LOOP_59_6_VITIS_LOOP_60_7'): Unable to schedule bus request operation ('mem1_load_41_req', top.cpp:63) on port 'mem1' (top.cpp:63) due to limited memory ports (II = 9). Please consider using a memory core with more ports or partitioning the array.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 10, Depth = 26, loop 'VITIS_LOOP_59_6_VITIS_LOOP_60_7'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.26 seconds. CPU system time: 0 seconds. Elapsed time: 0.36 seconds; current allocated memory: 423.840 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.06 seconds. CPU system time: 0 seconds. Elapsed time: 0.1 seconds; current allocated memory: 424.102 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'compute_attention_HLS' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.06 seconds. CPU system time: 0 seconds. Elapsed time: 0.14 seconds; current allocated memory: 424.250 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.05 seconds; current allocated memory: 424.512 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'compute_attention_HLS_Pipeline_VITIS_LOOP_43_2_VITIS_LOOP_44_3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'compute_attention_HLS_Pipeline_VITIS_LOOP_43_2_VITIS_LOOP_44_3' pipeline 'VITIS_LOOP_43_2_VITIS_LOOP_44_3' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_16s_29s_29_4_1': 8 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_16s_29_1_1': 8 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'compute_attention_HLS_Pipeline_VITIS_LOOP_43_2_VITIS_LOOP_44_3'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.11 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.18 seconds; current allocated memory: 427.648 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'exp_33_9_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'mul_50ns_50ns_100_1_0': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_67ns_63ns_130_1_0': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_72ns_68ns_140_1_0': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'exp_33_9_s'.
+INFO: [RTMG 210-279] Implementing memory 'compute_attention_HLS_exp_33_9_s_f_x_msb_4_table_ROM_AUTO_1R' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'compute_attention_HLS_exp_33_9_s_f_x_msb_3_table_ROM_AUTO_1R' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'compute_attention_HLS_exp_33_9_s_f_x_msb_2_table_ROM_AUTO_1R' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'compute_attention_HLS_exp_33_9_s_exp_x_msb_1_table_ROM_AUTO_1R' using auto ROMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.24 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.4 seconds; current allocated memory: 433.355 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'compute_attention_HLS_Pipeline_VITIS_LOOP_7_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'compute_attention_HLS_Pipeline_VITIS_LOOP_7_2' pipeline 'VITIS_LOOP_7_2' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'sdiv_40ns_32s_16_44_1': 10 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'compute_attention_HLS_Pipeline_VITIS_LOOP_7_2'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.15 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.24 seconds; current allocated memory: 437.559 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'compute_attention_HLS_Pipeline_VITIS_LOOP_59_6_VITIS_LOOP_60_7' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'compute_attention_HLS_Pipeline_VITIS_LOOP_59_6_VITIS_LOOP_60_7' pipeline 'VITIS_LOOP_59_6_VITIS_LOOP_60_7' pipeline type 'loop pipeline'
+WARNING: [RTGEN 206-101] Setting dangling out port 'compute_attention_HLS_Pipeline_VITIS_LOOP_59_6_VITIS_LOOP_60_7/m_axi_mem2_AWVALID' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'compute_attention_HLS_Pipeline_VITIS_LOOP_59_6_VITIS_LOOP_60_7/m_axi_mem2_AWADDR' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'compute_attention_HLS_Pipeline_VITIS_LOOP_59_6_VITIS_LOOP_60_7/m_axi_mem2_AWID' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'compute_attention_HLS_Pipeline_VITIS_LOOP_59_6_VITIS_LOOP_60_7/m_axi_mem2_AWLEN' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'compute_attention_HLS_Pipeline_VITIS_LOOP_59_6_VITIS_LOOP_60_7/m_axi_mem2_AWSIZE' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'compute_attention_HLS_Pipeline_VITIS_LOOP_59_6_VITIS_LOOP_60_7/m_axi_mem2_AWBURST' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'compute_attention_HLS_Pipeline_VITIS_LOOP_59_6_VITIS_LOOP_60_7/m_axi_mem2_AWLOCK' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'compute_attention_HLS_Pipeline_VITIS_LOOP_59_6_VITIS_LOOP_60_7/m_axi_mem2_AWCACHE' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'compute_attention_HLS_Pipeline_VITIS_LOOP_59_6_VITIS_LOOP_60_7/m_axi_mem2_AWPROT' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'compute_attention_HLS_Pipeline_VITIS_LOOP_59_6_VITIS_LOOP_60_7/m_axi_mem2_AWQOS' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'compute_attention_HLS_Pipeline_VITIS_LOOP_59_6_VITIS_LOOP_60_7/m_axi_mem2_AWREGION' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'compute_attention_HLS_Pipeline_VITIS_LOOP_59_6_VITIS_LOOP_60_7/m_axi_mem2_AWUSER' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'compute_attention_HLS_Pipeline_VITIS_LOOP_59_6_VITIS_LOOP_60_7/m_axi_mem2_BREADY' to 0.
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_16s_27ns_27_4_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_16s_27s_27_4_1': 4 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_16s_27_1_1': 4 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'compute_attention_HLS_Pipeline_VITIS_LOOP_59_6_VITIS_LOOP_60_7'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.21 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.37 seconds; current allocated memory: 443.621 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'compute_attention_HLS' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [RTGEN 206-101] Design contains AXI ports. Reset is fixed to synchronous and active low.
+INFO: [RTGEN 206-500] Setting interface mode on port 'compute_attention_HLS/mem1' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'compute_attention_HLS/mem2' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'compute_attention_HLS/Q' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'compute_attention_HLS/K' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'compute_attention_HLS/V' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'compute_attention_HLS/Output_r' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'compute_attention_HLS' to 's_axilite & ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Bundling port 'Q', 'K', 'V', 'Output_r' to AXI-Lite port control.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'compute_attention_HLS'.
+INFO: [RTMG 210-278] Implementing memory 'compute_attention_HLS_attention_0_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.17 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.41 seconds; current allocated memory: 447.660 MB.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 0.28 seconds. CPU system time: 0.07 seconds. Elapsed time: 0.84 seconds; current allocated memory: 451.543 MB.
+INFO: [HLS 200-1603] Design has inferred MAXI bursts and missed bursts, see Vitis HLS GUI synthesis summary report for detailed information.
+INFO: [HLS 200-111] Finished Updating report files: CPU user time: 1.31 seconds. CPU system time: 0.05 seconds. Elapsed time: 1.49 seconds; current allocated memory: 460.590 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for compute_attention_HLS.
+INFO: [VLOG 209-307] Generating Verilog RTL for compute_attention_HLS.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were NOT satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 135.66 MHz
+INFO: [HLS 200-2161] Finished Command csynth_design Elapsed time: 00:00:50; Allocated memory: 121.867 MB.
+INFO: [HLS 200-1510] Running: cosim_design 
+INFO: [COSIM 212-47] Using XSIM for RTL simulation.
+INFO: [COSIM 212-14] Instrumenting C test bench ...
+   Build using "/tools/software/xilinx/Vitis_HLS/2024.1/vcxx/libexec/clang++"
+   Compiling host.cpp_pre.cpp.tb.cpp
+   Compiling apatb_compute_attention_HLS.cpp
+   Compiling top.cpp_pre.cpp.tb.cpp
+   Compiling apatb_compute_attention_HLS_ir.ll
+   Generating cosim.tv.exe
+INFO: [COSIM 212-302] Starting C TB testing ... 
+MSE: 0.03586421
+INFO: [COSIM 212-333] Generating C post check test bench ...
+INFO: [COSIM 212-12] Generating RTL test bench ...
+INFO: [COSIM 212-1] *** C/RTL co-simulation file generation completed. ***
+INFO: [COSIM 212-323] Starting verilog simulation. 
+INFO: [COSIM 212-15] Starting XSIM ...
+Vivado Simulator v2024.1.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: /tools/software/xilinx/Vivado/2024.1/bin/unwrapped/lnx64.o/xelab xil_defaultlib.apatb_compute_attention_HLS_top glbl -Oenable_linking_all_libraries -prj compute_attention_HLS.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm -L floating_point_v7_1_18 -L floating_point_v7_0_23 --lib ieee_proposed=./ieee_proposed -s compute_attention_HLS 
+Multi-threading is on. Using 70 slave threads.
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/compute_attention_HLS.autotb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apatb_compute_attention_HLS_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/AESL_axi_master_mem1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_master_mem1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/AESL_axi_master_mem2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_master_mem2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/AESL_axi_slave_control.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_slave_control
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/compute_attention_HLS_compute_attention_HLS_Pipeline_VITIS_LOOP_43_2_VITIS_LOOP_44_3.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_compute_attention_HLS_Pipeline_VITIS_LOOP_43_2_VITIS_LOOP_44_3
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/compute_attention_HLS_exp_33_9_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_exp_33_9_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/compute_attention_HLS_compute_attention_HLS_Pipeline_VITIS_LOOP_7_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_compute_attention_HLS_Pipeline_VITIS_LOOP_7_2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/compute_attention_HLS_compute_attention_HLS_Pipeline_VITIS_LOOP_59_6_VITIS_LOOP_60_7.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_compute_attention_HLS_Pipeline_VITIS_LOOP_59_6_VITIS_LOOP_60_7
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/compute_attention_HLS.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/compute_attention_HLS_flow_control_loop_pipe_sequential_init.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_flow_control_loop_pipe_sequential_init
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/compute_attention_HLS_mul_16s_16s_29_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mul_16s_16s_29_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/compute_attention_HLS_mac_muladd_16s_16s_29s_29_4_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mac_muladd_16s_16s_29s_29_4_1_DSP48_0
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mac_muladd_16s_16s_29s_29_4_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/compute_attention_HLS_mul_50ns_50ns_100_1_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mul_50ns_50ns_100_1_0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/compute_attention_HLS_mul_67ns_63ns_130_1_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mul_67ns_63ns_130_1_0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/compute_attention_HLS_mul_72ns_68ns_140_1_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mul_72ns_68ns_140_1_0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/compute_attention_HLS_exp_33_9_s_f_x_msb_4_table_ROM_AUTO_1R.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_exp_33_9_s_f_x_msb_4_table_ROM_AUTO_1R
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/compute_attention_HLS_exp_33_9_s_f_x_msb_3_table_ROM_AUTO_1R.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_exp_33_9_s_f_x_msb_3_table_ROM_AUTO_1R
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/compute_attention_HLS_exp_33_9_s_f_x_msb_2_table_ROM_AUTO_1R.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_exp_33_9_s_f_x_msb_2_table_ROM_AUTO_1R
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/compute_attention_HLS_exp_33_9_s_exp_x_msb_1_table_ROM_AUTO_1R.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_exp_33_9_s_exp_x_msb_1_table_ROM_AUTO_1R
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/compute_attention_HLS_sdiv_40ns_32s_16_44_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_sdiv_40ns_32s_16_44_1_divider
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_sdiv_40ns_32s_16_44_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/compute_attention_HLS_mul_16s_16s_27_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mul_16s_16s_27_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/compute_attention_HLS_mac_muladd_16s_16s_27s_27_4_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mac_muladd_16s_16s_27s_27_4_1_DSP48_0
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mac_muladd_16s_16s_27s_27_4_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/compute_attention_HLS_mac_muladd_16s_16s_27ns_27_4_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mac_muladd_16s_16s_27ns_27_4_1_DSP48_0
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mac_muladd_16s_16s_27ns_27_4_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/compute_attention_HLS_attention_0_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_attention_0_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/compute_attention_HLS_mem1_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem1_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/compute_attention_HLS_mem2_m_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_load
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_store
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_read
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_write
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_burst_converter
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_throttle
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_reg_slice
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_fifo
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_srl
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_mem2_m_axi_mem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/compute_attention_HLS_control_s_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compute_attention_HLS_control_s_axi
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/dataflow_monitor.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dataflow_monitor
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package xil_defaultlib.$unit_dataflow_monitor_sv
+Compiling module xil_defaultlib.compute_attention_HLS_attention_...
+Compiling module xil_defaultlib.compute_attention_HLS_mul_16s_16...
+Compiling module xil_defaultlib.compute_attention_HLS_mac_muladd...
+Compiling module xil_defaultlib.compute_attention_HLS_mac_muladd...
+Compiling module xil_defaultlib.compute_attention_HLS_flow_contr...
+Compiling module xil_defaultlib.compute_attention_HLS_compute_at...
+Compiling module xil_defaultlib.compute_attention_HLS_exp_33_9_s...
+Compiling module xil_defaultlib.compute_attention_HLS_exp_33_9_s...
+Compiling module xil_defaultlib.compute_attention_HLS_exp_33_9_s...
+Compiling module xil_defaultlib.compute_attention_HLS_exp_33_9_s...
+Compiling module xil_defaultlib.compute_attention_HLS_mul_50ns_5...
+Compiling module xil_defaultlib.compute_attention_HLS_mul_67ns_6...
+Compiling module xil_defaultlib.compute_attention_HLS_mul_72ns_6...
+Compiling module xil_defaultlib.compute_attention_HLS_exp_33_9_s
+Compiling module xil_defaultlib.compute_attention_HLS_sdiv_40ns_...
+Compiling module xil_defaultlib.compute_attention_HLS_sdiv_40ns_...
+Compiling module xil_defaultlib.compute_attention_HLS_compute_at...
+Compiling module xil_defaultlib.compute_attention_HLS_mul_16s_16...
+Compiling module xil_defaultlib.compute_attention_HLS_mac_muladd...
+Compiling module xil_defaultlib.compute_attention_HLS_mac_muladd...
+Compiling module xil_defaultlib.compute_attention_HLS_mac_muladd...
+Compiling module xil_defaultlib.compute_attention_HLS_mac_muladd...
+Compiling module xil_defaultlib.compute_attention_HLS_compute_at...
+Compiling module xil_defaultlib.compute_attention_HLS_control_s_...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem1_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS_mem2_m_axi...
+Compiling module xil_defaultlib.compute_attention_HLS
+Compiling module xil_defaultlib.AESL_axi_master_mem1
+Compiling module xil_defaultlib.AESL_axi_master_mem2
+Compiling module xil_defaultlib.AESL_axi_slave_control
+Compiling module xil_defaultlib.nodf_module_intf_default
+Compiling module xil_defaultlib.upc_loop_intf(FSM_WIDTH=32)
+Compiling module xil_defaultlib.upc_loop_intf(FSM_WIDTH=10)
+Compiling module xil_defaultlib.dataflow_monitor_1
+Compiling module xil_defaultlib.apatb_compute_attention_HLS_top
+Compiling module work.glbl
+Built simulation snapshot compute_attention_HLS
+
+****** xsim v2024.1.2 (64-bit)
+  **** SW Build 5164865 on Thu Sep  5 14:36:28 MDT 2024
+  **** IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+  **** SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+  **** Start of session at: Tue Feb 25 23:34:13 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/compute_attention_HLS/xsim_script.tcl
+# xsim {compute_attention_HLS} -autoloadwcfg -tclbatch {compute_attention_HLS.tcl}
+Time resolution is 1 ps
+source compute_attention_HLS.tcl
+## run all
+////////////////////////////////////////////////////////////////////////////////////
+// Inter-Transaction Progress: Completed Transaction / Total Transaction
+// Intra-Transaction Progress: Measured Latency / Latency Estimation * 100%
+//
+// RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
+////////////////////////////////////////////////////////////////////////////////////
+// RTL Simulation : 0 / 1 [0.00%] @ "125000"
+// RTL Simulation : 1 / 1 [100.00%] @ "87045000"
+////////////////////////////////////////////////////////////////////////////////////
+$finish called at time : 87105 ns : File "/nethome/hyang428/ece8893/lab2/project_1/solution1/sim/verilog/compute_attention_HLS.autotb.v" Line 588
+## quit
+INFO: [Common 17-206] Exiting xsim at Tue Feb 25 23:34:18 2025...
+INFO: [COSIM 212-316] Starting C post checking ...
+MSE: 0.03586421
+INFO: [COSIM 212-1000] *** C/RTL co-simulation finished: PASS ***
+INFO: [COSIM 212-211] II is measurable only when transaction number is greater than 1 in RTL simulation. Otherwise, they will be marked as all NA. If user wants to calculate them, please make sure there are at least 2 transactions in RTL simulation.
+INFO: [HLS 200-2161] Finished Command cosim_design Elapsed time: 00:01:28; Allocated memory: 10.352 MB.
+INFO: [HLS 200-1510] Running: export_design -format ip_catalog -flow syn 
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+
+****** Vivado v2024.1.2 (64-bit)
+  **** SW Build 5164865 on Thu Sep  5 14:36:28 MDT 2024
+  **** IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+  **** SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+  **** Start of session at: Tue Feb 25 23:34:23 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source run_ippack.tcl -notrace
+INFO: calling package_hls_ip ip_types=vitis sysgen json_file=/nethome/hyang428/ece8893/lab2/project_1/solution1/solution1_data.json outdir=/nethome/hyang428/ece8893/lab2/project_1/solution1/impl/ip srcdir=/nethome/hyang428/ece8893/lab2/project_1/solution1 sort_interfaces_ports=false
+INFO: Copied 1 ipmisc file(s) to /nethome/hyang428/ece8893/lab2/project_1/solution1/impl/ip/misc
+INFO: Copied 27 verilog file(s) to /nethome/hyang428/ece8893/lab2/project_1/solution1/impl/ip/hdl/verilog
+INFO: Copied 23 vhdl file(s) to /nethome/hyang428/ece8893/lab2/project_1/solution1/impl/ip/hdl/vhdl
+INFO: Copied 10 swdriver file(s) to /nethome/hyang428/ece8893/lab2/project_1/solution1/impl/ip/drivers
+ipx::create_core: Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1749.770 ; gain = 127.875 ; free physical = 524127 ; free virtual = 596525
+INFO: Import ports from HDL: /nethome/hyang428/ece8893/lab2/project_1/solution1/impl/ip/hdl/vhdl/compute_attention_HLS.vhd (compute_attention_HLS)
+INFO: Add axi4lite interface s_axi_control
+INFO: Add clock interface ap_clk
+INFO: Add reset interface ap_rst_n
+INFO: Add interrupt interface interrupt
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/software/xilinx/Vivado/2024.1/data/ip'.
+INFO: Add axi4full interface m_axi_mem1
+INFO: Add axi4full interface m_axi_mem2
+INFO: Calling post_process_vitis to specialize IP
+INFO: Calling post_process_sysgen to specialize IP
+Generating sysgen info xml from json file
+INFO: Created IP /nethome/hyang428/ece8893/lab2/project_1/solution1/impl/ip/component.xml
+INFO: Created IP archive /nethome/hyang428/ece8893/lab2/project_1/solution1/impl/ip/xilinx_com_hls_compute_attention_HLS_1_0.zip
+INFO: [Common 17-206] Exiting Vivado at Tue Feb 25 23:34:42 2025...
+INFO: [IMPL 213-8] Starting RTL evaluation using Vivado ...
+
+****** Vivado v2024.1.2 (64-bit)
+  **** SW Build 5164865 on Thu Sep  5 14:36:28 MDT 2024
+  **** IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+  **** SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+  **** Start of session at: Tue Feb 25 23:34:54 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source run_vivadosyn.tcl
+# source ./settings.tcl
+## set top_module compute_attention_HLS
+## set language verilog
+## set family zynquplus
+## set device xczu3eg
+## set package -sbva484
+## set speed -1-e
+## set clock ap_clk
+## set fsm_ext "off"
+## set add_io_buffers false 
+# source -notrace ./extraction.tcl
+# set vivado_proj_name project
+# set vivado_proj_dir .
+# set target_device "${device}${package}${speed}"
+# set target_clk_period_ns "10.000"
+# set target_clk_freq_hz [expr {floor(1000 / $target_clk_period_ns) * 1000000}]
+# set ip_vlnv xilinx.com:hls:compute_attention_HLS:1.0
+# set ip_repo_path ../ip
+# set bd_design_name bd_0
+# set bd_inst_name hls_inst
+# set bd_props {}
+# set has_synth true
+# set synth_design_args {-directive sdx_optimization_effort_high}
+# set synth_dcp ""
+# set synth_props {}
+# set has_impl false
+# set impl_props {}
+# set report_options [dict create]
+# dict set report_options report_level 2
+# dict set report_options report_max_paths 10
+# dict set report_options stdout_hls_reports 1
+# dict set report_options stdout_vivado_reports 0
+# dict set report_options hls_project project_1
+# dict set report_options hls_solution solution1
+# dict set report_options has_synth $has_synth
+# dict set report_options has_impl $has_impl
+# dict set report_options vivado_reportbasename $top_module
+# dict set report_options vivado_reportdir ./report
+# dict set report_options hls_impl_dir ..
+# dict set report_options hls_reportdir ../report/$language
+# dict set report_options target_clk_period $target_clk_period_ns
+# dict set report_options target_device $target_device
+# dict set report_options language $language
+# dict set report_options clock_name $clock
+# dict set report_options error_if_impl_timing_fails false
+# dict set report_options topmodule "compute_attention_HLS"
+# dict set report_options funcmodules {compute_attention_HLS_compute_attention_HLS_Pipeline_VITIS_LOOP_43_2_VITIS_LOOP_44_3 compute_attention_HLS_exp_33_9_s compute_attention_HLS_compute_attention_HLS_Pipeline_VITIS_LOOP_7_2 compute_attention_HLS_compute_attention_HLS_Pipeline_VITIS_LOOP_59_6_VITIS_LOOP_60_7}
+# dict set report_options bindmodules {compute_attention_HLS_mul_16s_16s_29_1_1 compute_attention_HLS_mac_muladd_16s_16s_29s_29_4_1 compute_attention_HLS_flow_control_loop_pipe_sequential_init compute_attention_HLS_mul_50ns_50ns_100_1_0 compute_attention_HLS_mul_67ns_63ns_130_1_0 compute_attention_HLS_mul_72ns_68ns_140_1_0 compute_attention_HLS_exp_33_9_s_f_x_msb_4_table_ROM_AUTO_1R compute_attention_HLS_exp_33_9_s_f_x_msb_3_table_ROM_AUTO_1R compute_attention_HLS_exp_33_9_s_f_x_msb_2_table_ROM_AUTO_1R compute_attention_HLS_exp_33_9_s_exp_x_msb_1_table_ROM_AUTO_1R compute_attention_HLS_sdiv_40ns_32s_16_44_1 compute_attention_HLS_mul_16s_16s_27_1_1 compute_attention_HLS_mac_muladd_16s_16s_27s_27_4_1 compute_attention_HLS_mac_muladd_16s_16s_27ns_27_4_1 compute_attention_HLS_attention_0_RAM_AUTO_1R1W compute_attention_HLS_mem1_m_axi compute_attention_HLS_mem2_m_axi compute_attention_HLS_control_s_axi}
+# dict set report_options max_module_depth 7
+# create_project $vivado_proj_name $vivado_proj_dir -part $target_device -force
+create_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1708.586 ; gain = 66.836 ; free physical = 524126 ; free virtual = 596532
+# set_property target_language $language [current_project]
+# if { ![file exists $ip_repo_path] } {
+#   error "Cannot find packaged HLS IP"
+# }
+# set_property ip_repo_paths [file normalize $ip_repo_path] [current_project]
+# update_ip_catalog
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/nethome/hyang428/ece8893/lab2/project_1/solution1/impl/ip'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/software/xilinx/Vivado/2024.1/data/ip'.
+# create_bd_design bd_0
+Wrote  : </nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/project.srcs/sources_1/bd/bd_0/bd_0.bd> 
+# set cell_inst [create_bd_cell -type ip -vlnv $ip_vlnv $bd_inst_name]
+# if { [llength $bd_props] } { 
+#   set_property -dict $bd_props $cell_inst 
+# }
+# make_bd_pins_external $cell_inst
+# make_bd_intf_pins_external $cell_inst
+# set bd_clk_ports [get_bd_ports -filter {TYPE==clk}]
+# if { [llength $bd_clk_ports] && $target_clk_freq_hz ne "" } { 
+#   set_property CONFIG.FREQ_HZ $target_clk_freq_hz $bd_clk_ports 
+# }
+# foreach bd_port [get_bd_intf_ports] {
+#   set_property name [regsub {_0$} [get_property name $bd_port] {}] $bd_port
+# }
+# foreach bd_port [get_bd_ports -filter {INTF!=TRUE}] {
+#   set_property name [regsub {_0$} [get_property name $bd_port] {}] $bd_port
+# }
+# set s_axi_addr_width_min 32
+# foreach bd_port [get_bd_intf_ports -filter {MODE == "Slave" && VLNV =~ "xilinx.com:interface:aximm_rtl:*"}] {
+#   set bd_port_addr_width [get_property CONFIG.ADDR_WIDTH $bd_port]
+#   if { $bd_port_addr_width < $s_axi_addr_width_min } {
+#     puts "INFO: Updating $bd_port CONFIG.ADDR_WIDTH to $s_axi_addr_width_min"
+#     set_property CONFIG.ADDR_WIDTH $s_axi_addr_width_min $bd_port
+#   }
+# }
+INFO: Updating /s_axi_control CONFIG.ADDR_WIDTH to 32
+# set_msg_config -id {[BD 41-1265]} -severity {CRITICAL WARNING} -new_severity {INFO}
+# assign_bd_address
+INFO: [BD 41-3093] Triggering Legacy Auto Assign Algorithm
+Slave segment '/hls_inst/s_axi_control/Reg' is being assigned into address space '/s_axi_control' at <0x0000_0000 [ 64K ]>.
+Slave segment '/m_axi_mem1/Reg' is being assigned into address space '/hls_inst/Data_m_axi_mem1' at <0x44A0_0000 [ 64K ]>.
+Slave segment '/m_axi_mem2/Reg' is being assigned into address space '/hls_inst/Data_m_axi_mem2' at <0x44A0_0000 [ 64K ]>.
+Wrote  : </nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/project.srcs/sources_1/bd/bd_0/bd_0.bd> 
+Verilog Output written to : /nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/synth/bd_0.v
+Verilog Output written to : /nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/sim/bd_0.v
+Verilog Output written to : /nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/hdl/bd_0_wrapper.v
+# set toprtl [make_wrapper -files [get_files ${bd_design_name}.bd] -top]
+# add_files -norecurse $toprtl
+# set top_inst_name [file root [file tail $toprtl]]
+# puts "Using BD top: $top_inst_name"
+Using BD top: bd_0_wrapper
+# set xdc_files [glob -nocomplain ./*.xdc]
+# if { [llength $xdc_files] } {
+#     add_files -fileset constrs_1 -norecurse $xdc_files
+# }
+# launch_runs synth_1 -scripts_only
+INFO: [BD 41-1662] The design 'bd_0.bd' is already validated. Therefore parameter propagation will not be re-run.
+Verilog Output written to : /nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/synth/bd_0.v
+Verilog Output written to : /nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/sim/bd_0.v
+Verilog Output written to : /nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/hdl/bd_0_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block hls_inst .
+Exporting to file /nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/hw_handoff/bd_0.hwh
+Generated Hardware Definition File /nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/synth/bd_0.hwdef
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: bd_0_hls_inst_0
+WARNING: [Vivado 12-7122] Auto Incremental Compile:: No reference checkpoint was found in run synth_1. Auto-incremental flow will not be run, the standard flow will be run instead.
+launch_runs: Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2109.438 ; gain = 72.035 ; free physical = 523755 ; free virtual = 596222
+# foreach run [get_runs -filter {IS_SYNTHESIS == 1}] {
+#   reset_run [get_runs $run]
+# }
+# set_property XPM_LIBRARIES {XPM_MEMORY XPM_FIFO} [current_project]
+# hls_vivado_reports_setup $report_options
+TIMESTAMP: HLS-REPORT: initialize report directories: 2025-02-25 23:35:23 EST
+# if { $has_synth || $has_impl } {
+#   # synth properties setting
+#   set_property -name {STEPS.SYNTH_DESIGN.ARGS.MORE OPTIONS} -value {-mode out_of_context} -objects [get_runs synth_1]
+#   set ip_inst [get_ips -quiet ${bd_design_name}*${bd_inst_name}*]
+#   if { ![llength $ip_inst] } {
+#       error "Cannot find HLS IP instance: ${bd_design_name}*${bd_inst_name}*"
+#   }
+#   set synth_run [get_runs -filter {IS_SYNTHESIS == 1} ${ip_inst}*]
+#   if { ![llength $synth_run] } {
+#       error "Cannot find synth run for HLS IP: ${ip_inst}*"
+#   }
+# 
+#   if { [llength $synth_design_args] } {
+#       set_property -name {STEPS.SYNTH_DESIGN.ARGS.MORE OPTIONS} -value $synth_design_args -objects $synth_run
+#   }
+# 
+#   if { [llength $synth_props] } {
+#     set_property -dict $synth_props $synth_run
+#   }
+# 
+#   # launch run synth
+#   launch_runs synth_1
+#   wait_on_run synth_1
+#   # synth reports
+#   hls_vivado_reports_synth synth_1 $report_options
+#   if { $synth_dcp ne "" } {
+#     file mkdir [file dirname $synth_dcp]
+#     set run_dcp [glob -nocomplain [get_property DIRECTORY $synth_run]/*.dcp]
+#     if { [llength $run_dcp] != 1 } { error "Cannot find single dcp file for run $synth_run" }
+#     file copy -force $run_dcp $synth_dcp
+#   }
+# }
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: bd_0_hls_inst_0
+WARNING: [Vivado 12-7122] Auto Incremental Compile:: No reference checkpoint was found in run synth_1. Auto-incremental flow will not be run, the standard flow will be run instead.
+[Tue Feb 25 23:35:24 2025] Launched bd_0_hls_inst_0_synth_1...
+Run output will be captured here: /nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/project.runs/bd_0_hls_inst_0_synth_1/runme.log
+[Tue Feb 25 23:35:24 2025] Launched synth_1...
+Run output will be captured here: /nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/project.runs/synth_1/runme.log
+[Tue Feb 25 23:35:24 2025] Waiting for synth_1 to finish...
+
+*** Running vivado
+    with args -log bd_0_wrapper.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source bd_0_wrapper.tcl
+
+
+****** Vivado v2024.1.2 (64-bit)
+  **** SW Build 5164865 on Thu Sep  5 14:36:28 MDT 2024
+  **** IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+  **** SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+  **** Start of session at: Tue Feb 25 23:38:39 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source bd_0_wrapper.tcl -notrace
+create_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1707.617 ; gain = 65.867 ; free physical = 522913 ; free virtual = 595661
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/nethome/hyang428/ece8893/lab2/project_1/solution1/impl/ip'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/software/xilinx/Vivado/2024.1/data/ip'.
+Command: synth_design -top bd_0_wrapper -part xczu3eg-sbva484-1-e -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xczu3eg'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xczu3eg'
+INFO: [Device 21-403] Loading part xczu3eg-sbva484-1-e
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 1897005
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2912.176 ; gain = 305.668 ; free physical = 521408 ; free virtual = 594157
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'bd_0_wrapper' [/nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/hdl/bd_0_wrapper.v:13]
+INFO: [Synth 8-6157] synthesizing module 'bd_0' [/nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/synth/bd_0.v:13]
+INFO: [Synth 8-6157] synthesizing module 'bd_0_hls_inst_0' [/nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/project.runs/synth_1/.Xil/Vivado-1896957-krishna-srv1.ece.gatech.edu/realtime/bd_0_hls_inst_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'bd_0_hls_inst_0' (0#1) [/nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/project.runs/synth_1/.Xil/Vivado-1896957-krishna-srv1.ece.gatech.edu/realtime/bd_0_hls_inst_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'bd_0' (0#1) [/nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/synth/bd_0.v:13]
+INFO: [Synth 8-6155] done synthesizing module 'bd_0_wrapper' (0#1) [/nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/hdl/bd_0_wrapper.v:13]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2994.145 ; gain = 387.637 ; free physical = 521318 ; free virtual = 594069
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2994.145 ; gain = 387.637 ; free physical = 521319 ; free virtual = 594069
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2994.145 ; gain = 387.637 ; free physical = 521319 ; free virtual = 594069
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2994.145 ; gain = 0.000 ; free physical = 521319 ; free virtual = 594069
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ip/bd_0_hls_inst_0/bd_0_hls_inst_0/bd_0_hls_inst_0_in_context.xdc] for cell 'bd_0_i/hls_inst'
+Finished Parsing XDC File [/nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ip/bd_0_hls_inst_0/bd_0_hls_inst_0/bd_0_hls_inst_0_in_context.xdc] for cell 'bd_0_i/hls_inst'
+Parsing XDC File [/nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/compute_attention_HLS.xdc]
+Finished Parsing XDC File [/nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/compute_attention_HLS.xdc]
+Parsing XDC File [/nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/project.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/project.runs/synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3058.176 ; gain = 0.000 ; free physical = 521319 ; free virtual = 594069
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 3058.176 ; gain = 0.000 ; free physical = 521319 ; free virtual = 594069
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 3058.176 ; gain = 451.668 ; free physical = 521317 ; free virtual = 594067
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xczu3eg-sbva484-1-e
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 3066.180 ; gain = 459.672 ; free physical = 521317 ; free virtual = 594067
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property KEEP_HIERARCHY = SOFT for bd_0_i. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_0_i/hls_inst. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 3066.180 ; gain = 459.672 ; free physical = 521317 ; free virtual = 594067
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 3066.180 ; gain = 459.672 ; free physical = 521316 ; free virtual = 594067
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 360 (col length:72)
+BRAMs: 432 (col length: RAMB18 72 RAMB36 36)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 3066.180 ; gain = 459.672 ; free physical = 521316 ; free virtual = 594067
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 3530.391 ; gain = 923.883 ; free physical = 520923 ; free virtual = 593674
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 3530.391 ; gain = 923.883 ; free physical = 520923 ; free virtual = 593674
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 3540.406 ; gain = 933.898 ; free physical = 520914 ; free virtual = 593665
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 3555.281 ; gain = 948.773 ; free physical = 520903 ; free virtual = 593654
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 3555.281 ; gain = 948.773 ; free physical = 520903 ; free virtual = 593654
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 3555.281 ; gain = 948.773 ; free physical = 520903 ; free virtual = 593654
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 3555.281 ; gain = 948.773 ; free physical = 520903 ; free virtual = 593654
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 3555.281 ; gain = 948.773 ; free physical = 520903 ; free virtual = 593654
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 3555.281 ; gain = 948.773 ; free physical = 520903 ; free virtual = 593654
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+----------------+----------+
+|      |BlackBox name   |Instances |
++------+----------------+----------+
+|1     |bd_0_hls_inst_0 |         1|
++------+----------------+----------+
+
+Report Cell Usage: 
++------+--------------+------+
+|      |Cell          |Count |
++------+--------------+------+
+|1     |bd_0_hls_inst |     1|
++------+--------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 3555.281 ; gain = 948.773 ; free physical = 520903 ; free virtual = 593654
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 3555.281 ; gain = 884.742 ; free physical = 520903 ; free virtual = 593654
+Synthesis Optimization Complete : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 3555.281 ; gain = 948.773 ; free physical = 520903 ; free virtual = 593654
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3555.281 ; gain = 0.000 ; free physical = 520902 ; free virtual = 593653
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3555.281 ; gain = 0.000 ; free physical = 521202 ; free virtual = 593953
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: c30aa4c4
+INFO: [Common 17-83] Releasing license: Synthesis
+22 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:41 ; elapsed = 00:00:40 . Memory (MB): peak = 3555.281 ; gain = 1801.000 ; free physical = 521202 ; free virtual = 593953
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 2841.393; main = 2484.191; forked = 400.098
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 5210.496; main = 3540.410; forked = 1670.086
+INFO: [Common 17-1381] The checkpoint '/nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/project.runs/synth_1/bd_0_wrapper.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file bd_0_wrapper_utilization_synth.rpt -pb bd_0_wrapper_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Tue Feb 25 23:39:37 2025...
+[Tue Feb 25 23:39:48 2025] synth_1 finished
+wait_on_runs: Time (s): cpu = 00:03:55 ; elapsed = 00:04:24 . Memory (MB): peak = 2115.578 ; gain = 0.000 ; free physical = 523471 ; free virtual = 596221
+TIMESTAMP: HLS-REPORT: synthesis open_run: 2025-02-25 23:39:48 EST
+INFO: HLS-REPORT: Opening synthesis design database: open_run synth_1
+Design is defaulting to impl run constrset: constrs_1
+Design is defaulting to synth run part: xczu3eg-sbva484-1-e
+INFO: [Device 21-403] Loading part xczu3eg-sbva484-1-e
+INFO: [Project 1-454] Reading design checkpoint '/nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ip/bd_0_hls_inst_0/bd_0_hls_inst_0.dcp' for cell 'bd_0_i/hls_inst'
+Netlist sorting complete. Time (s): cpu = 00:00:00.26 ; elapsed = 00:00:00.26 . Memory (MB): peak = 2958.621 ; gain = 0.000 ; free physical = 522622 ; free virtual = 595372
+INFO: [Netlist 29-17] Analyzing 2504 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2024.1.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [/nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/compute_attention_HLS.xdc]
+Finished Parsing XDC File [/nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/compute_attention_HLS.xdc]
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3284.195 ; gain = 0.000 ; free physical = 522282 ; free virtual = 595041
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 67 instances were transformed.
+  DSP48E2 => DSP48E2 (DSP_ALU, DSP_A_B_DATA, DSP_C_DATA, DSP_MULTIPLIER, DSP_M_DATA, DSP_OUTPUT, DSP_PREADD, DSP_PREADD_DATA): 67 instances
+
+open_run: Time (s): cpu = 00:00:27 ; elapsed = 00:00:26 . Memory (MB): peak = 3284.195 ; gain = 1168.617 ; free physical = 522282 ; free virtual = 595041
+TIMESTAMP: HLS-REPORT: synthesis generate_reports_vivado: 2025-02-25 23:40:14 EST
+INFO: HLS-REPORT: Running report: report_utilization -file ./report/compute_attention_HLS_utilization_synth.rpt
+INFO: HLS-REPORT: Running report: report_utilization -hierarchical -hierarchical_depth 7 -file ./report/compute_attention_HLS_utilization_hierarchical_synth.rpt
+INFO: HLS-REPORT: Running report: report_timing_summary -file ./report/compute_attention_HLS_timing_synth.rpt
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Temperature grade: E, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+WARNING: [Timing 38-242] The property HD.CLK_SRC of clock port "ap_clk" is not set. In out-of-context mode, this prevents timing estimation for clock delay/skew
+Resolution: Set the HD.CLK_SRC property of the out-of-context port to the location of the clock buffer instance in the top-level design
+report_timing_summary: Time (s): cpu = 00:00:40 ; elapsed = 00:00:24 . Memory (MB): peak = 4792.172 ; gain = 1507.977 ; free physical = 520852 ; free virtual = 593742
+INFO: HLS-REPORT: Running report: report_timing -max_paths 10 -file ./report/compute_attention_HLS_timing_paths_synth.rpt
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Temperature grade: E, Delay Type: max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+INFO: [Timing 38-78] ReportTimingParams: -max_paths 10 -nworst 1 -delay_type max -sort_by slack.
+INFO: HLS-REPORT: Running report: report_design_analysis -file ./report/compute_attention_HLS_design_analysis_synth.rpt
+INFO: [Implflow 30-839]  
+INFO: HLS-REPORT: Running report: ::tclapp::xilinx::designutils::report_failfast -detailed_report synth -file ./report/compute_attention_HLS_failfast_synth.rpt
+ -I- design metrics completed in 3 seconds
+ -I- DONT_TOUCH metric completed in 1 seconds
+ -I- MARK_DEBUG metric completed in 1 seconds
+ -I- utilization metrics completed in 1 seconds
+ -I- control set metrics completed in 1 seconds
+ -I- methodology check metrics completed in 3 seconds
+ -I- average fanout metrics completed in 8 seconds (0 modules)
+ -I- non-FD high fanout nets completed in 3 seconds
+ -I- path budgeting metrics completed in 2 seconds
+#  +-----------------------------------------------------------------------------------------+
+#  | Design Summary                                                                          |
+#  | design_1                                                                                |
+#  | xczu3eg-sbva484-1-e                                                                     |
+#  +-----------------------------------------------------------+-----------+--------+--------+
+#  | Criteria                                                  | Guideline | Actual | Status |
+#  +-----------------------------------------------------------+-----------+--------+--------+
+#  | LUT                                                       | 70%       | 35.02% | OK     |
+#  | FD                                                        | 50%       | 19.11% | OK     |
+#  | LUTRAM+SRL                                                | 25%       | 2.90%  | OK     |
+#  | CARRY8                                                    | 25%       | 27.62% | REVIEW |
+#  | MUXF7                                                     | 15%       | 0.01%  | OK     |
+#  | DSP                                                       | 80%       | 18.61% | OK     |
+#  | RAMB/FIFO                                                 | 80%       | 2.31%  | OK     |
+#  | DSP+RAMB+URAM (Avg)                                       | 70%       | 10.46% | OK     |
+#  | BUFGCE* + BUFGCTRL                                        | 24        | 0      | OK     |
+#  | DONT_TOUCH (cells/nets)                                   | 0         | 0      | OK     |
+#  | MARK_DEBUG (nets)                                         | 0         | 0      | OK     |
+#  | Control Sets                                              | 1323      | 178    | OK     |
+#  | Average Fanout for modules > 100k cells                   | 4         | 1.44   | OK     |
+#  | Max Average Fanout for modules > 100k cells               | 4         | 0      | OK     |
+#  | Non-FD high fanout nets > 10k loads                       | 0         | 0      | OK     |
+#  +-----------------------------------------------------------+-----------+--------+--------+
+#  | TIMING-6 (No common primary clock between related clocks) | 0         | 0      | OK     |
+#  | TIMING-7 (No common node between related clocks)          | 0         | 0      | OK     |
+#  | TIMING-8 (No common period between related clocks)        | 0         | 0      | OK     |
+#  | TIMING-14 (LUT on the clock tree)                         | 0         | 0      | OK     |
+#  | TIMING-35 (No common node in paths with the same clock)   | 0         | 0      | OK     |
+#  +-----------------------------------------------------------+-----------+--------+--------+
+#  | Number of paths above max LUT budgeting (0.350ns)         | 0         | 0      | OK     |
+#  | Number of paths above max Net budgeting (0.239ns)         | 0         | 0      | OK     |
+#  +-----------------------------------------------------------+-----------+--------+--------+
+ -I- Generated file /nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/report/compute_attention_HLS_failfast_synth.rpt
+ -I- Number of criteria to review: 1
+ -I- This report should be run before placing the design and uses conservative guidelines beyond which runtime and timing closure will likely be more challenging
+ -I- report_failfast completed in 23 seconds
+TIMESTAMP: HLS-REPORT: synthesis gen_data_dict_vivado: 2025-02-25 23:41:04 EST
+TIMESTAMP: HLS-REPORT: synth extract_util_hier: 2025-02-25 23:41:04 EST
+TIMESTAMP: HLS-REPORT: synth get_cell_hier_data: 2025-02-25 23:41:04 EST
+TIMESTAMP: HLS-REPORT: synth get_timing_paths: 2025-02-25 23:41:04 EST
+TIMESTAMP: HLS-REPORT: synth process timing paths: 2025-02-25 23:41:04 EST
+TIMESTAMP: HLS-REPORT: synth get_all_vv_rpt_files: 2025-02-25 23:41:04 EST
+TIMESTAMP: HLS-REPORT: synthesis write_reports_vivado: 2025-02-25 23:41:04 EST
+HLS EXTRACTION: synth area_totals:  0 70560 141120 360 432 0 0
+HLS EXTRACTION: synth area_current: 0 24712 26963 67 10 0 836 0 0 0
+HLS EXTRACTION: synth resources_dict: AVAIL_LUT 70560 LUT 24712 AVAIL_FF 141120 FF 26963 AVAIL_DSP 360 DSP 67 AVAIL_BRAM 432 BRAM 10 AVAIL_URAM 0 URAM 0 LATCH 0 SRL 836 AVAIL_CLB 0 CLB 0
+INFO: HLS-REPORT: generated /nethome/hyang428/ece8893/lab2/project_1/solution1/impl/verilog/report/vivado_syn.xml
+INFO: HLS-REPORT: generated /nethome/hyang428/ece8893/lab2/project_1/solution1/impl/report/verilog/compute_attention_HLS_export.rpt
+
+
+Implementation tool: Xilinx Vivado v.2024.1.2
+Project:             project_1
+Solution:            solution1
+Device target:       xczu3eg-sbva484-1-e
+Report date:         Tue Feb 25 23:41:04 EST 2025
+
+#=== Post-Synthesis Resource usage ===
+SLICE:            0
+LUT:          24712
+FF:           26963
+DSP:             67
+BRAM:            10
+URAM:             0
+LATCH:            0
+SRL:            836
+CLB:              0
+
+#=== Final timing ===
+CP required:                     10.000
+CP achieved post-synthesis:      6.989
+Timing met
+
+TIMESTAMP: HLS-REPORT: synthesis end: 2025-02-25 23:41:04 EST
+# if { $has_impl } {
+#   # launch run impl
+#   if { [llength $impl_props] } {
+#     set_property -dict $impl_props [get_runs impl_1]
+#   }
+#   launch_runs impl_1
+#   wait_on_run impl_1
+#   # impl reports
+#   hls_vivado_reports_impl impl_1 $report_options
+# }
+# hls_vivado_reports_finalize $report_options
+TIMESTAMP: HLS-REPORT: all reports complete: 2025-02-25 23:41:04 EST
+INFO: [Common 17-206] Exiting Vivado at Tue Feb 25 23:41:04 2025...
+INFO: [HLS 200-802] Generated output file project_1/solution1/impl/export.zip
+INFO: [HLS 200-2161] Finished Command export_design Elapsed time: 00:06:56; Allocated memory: 3.062 MB.
+INFO: [HLS 200-112] Total CPU user time: 528.93 seconds. Total CPU system time: 26.6 seconds. Total elapsed time: 561.11 seconds; peak allocated memory: 474.004 MB.
