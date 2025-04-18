@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ap_fixed.h>
+#include "top.h"  // Include the top function declaration
+
+typedef ap_fixed<16, 5> data_t;
+
+data_t DRAM_1[256][64];
+data_t DRAM_2[64][128];
+data_t DRAM_3[256][128];
+data_t DRAM_4[128][16];
+data_t DRAM_5[256][16];
+data_t DRAM_6[256][16];
+
+void load_txt_to_array(const char *filename, data_t *array, int total_size) {
+    FILE *fp = fopen(filename, "r");
+    if (fp == NULL) {
+        printf("Failed to open %s\n", filename);
+        exit(1);
+    }
+    for (int i = 0; i < total_size; i++) {
+        float temp;
+        fscanf(fp, "%f", &temp);
+        array[i] = (data_t)temp;
+    }
+    fclose(fp);
+}
+
+int main() {
+    load_txt_to_array("DRAM_1.txt", (data_t*)DRAM_1, 16384);
+    load_txt_to_array("DRAM_2.txt", (data_t*)DRAM_2, 8192);
+    load_txt_to_array("DRAM_3.txt", (data_t*)DRAM_3, 32768);
+    load_txt_to_array("DRAM_4.txt", (data_t*)DRAM_4, 2048);
+    load_txt_to_array("DRAM_5.txt", (data_t*)DRAM_5, 4096);
+    load_txt_to_array("DRAM_6.txt", (data_t*)DRAM_6, 4096);
+
+    top(DRAM_1, DRAM_2, DRAM_3, DRAM_4, DRAM_5, DRAM_6);
+
+    // Write contents of DRAM_6 to DRAM_6_output.txt
+    {
+        FILE *fp = fopen("DRAM_6_output.txt", "w");
+        if (fp != NULL) {
+            for (int i = 0; i < 4096; i++) {
+                fprintf(fp, "%f ", (float)((data_t*)DRAM_6)[i]);
+            }
+            fclose(fp);
+        }
+    }
+
+    return 0;
+}
