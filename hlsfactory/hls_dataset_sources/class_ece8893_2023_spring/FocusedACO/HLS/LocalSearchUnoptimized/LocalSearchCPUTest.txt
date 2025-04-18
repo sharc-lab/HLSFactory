@@ -1,0 +1,80 @@
+Pre Two Opt route distance: 396797
+elapsed time: 0.260084 ms
+Post Two Opt route distance: 393875
+Correct Two Opt route distance: 393875
+Pre Two Opt route distance: 400481
+elapsed time: 0.043719 ms
+Post Two Opt route distance: 394165
+Correct Two Opt route distance: 394165
+Pre Two Opt route distance: 396366
+elapsed time: 0.037905 ms
+Post Two Opt route distance: 393699
+Correct Two Opt route distance: 393699
+Pre Two Opt route distance: 395970
+elapsed time: 0.013833 ms
+Post Two Opt route distance: 393866
+Correct Two Opt route distance: 393866
+Pre Two Opt route distance: 397136
+elapsed time: 0.03164 ms
+Post Two Opt route distance: 393714
+Correct Two Opt route distance: 393714
+Pre Two Opt route distance: 397439
+elapsed time: 0.040219 ms
+Post Two Opt route distance: 394323
+Correct Two Opt route distance: 394323
+Pre Two Opt route distance: 397683
+elapsed time: 0.025688 ms
+Post Two Opt route distance: 393713
+Correct Two Opt route distance: 393713
+Pre Two Opt route distance: 397600
+elapsed time: 0.020045 ms
+Post Two Opt route distance: 393864
+Correct Two Opt route distance: 393864
+Pre Two Opt route distance: 397048
+elapsed time: 0.028147 ms
+Post Two Opt route distance: 393711
+Correct Two Opt route distance: 393711
+Pre Two Opt route distance: 397249
+elapsed time: 0.032514 ms
+Post Two Opt route distance: 394053
+Correct Two Opt route distance: 394053
+Pre Two Opt route distance: 396074
+elapsed time: 0.020173 ms
+Post Two Opt route distance: 393813
+Correct Two Opt route distance: 393813
+Pre Two Opt route distance: 397172
+elapsed time: 0.031633 ms
+Post Two Opt route distance: 393824
+Correct Two Opt route distance: 393824
+Pre Two Opt route distance: 396564
+elapsed time: 0.043968 ms
+Post Two Opt route distance: 393741
+Correct Two Opt route distance: 393741
+Pre Two Opt route distance: 398267
+elapsed time: 0.034593 ms
+Post Two Opt route distance: 393940
+Correct Two Opt route distance: 393940
+Pre Two Opt route distance: 398695
+elapsed time: 0.032945 ms
+Post Two Opt route distance: 394120
+Correct Two Opt route distance: 394120
+Pre Two Opt route distance: 398492
+elapsed time: 0.045671 ms
+Post Two Opt route distance: 394405
+Correct Two Opt route distance: 394405
+Pre Two Opt route distance: 397179
+elapsed time: 0.02816 ms
+Post Two Opt route distance: 393925
+Correct Two Opt route distance: 393925
+Pre Two Opt route distance: 396901
+elapsed time: 0.032003 ms
+Post Two Opt route distance: 393784
+Correct Two Opt route distance: 393784
+Pre Two Opt route distance: 396633
+elapsed time: 0.026915 ms
+Post Two Opt route distance: 393998
+Correct Two Opt route distance: 393998
+Pre Two Opt route distance: 396044
+elapsed time: 0.029745 ms
+Post Two Opt route distance: 393872
+Correct Two Opt route distance: 393872

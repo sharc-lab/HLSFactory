@@ -1,0 +1,455 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1.2 (64-bit)
+  **** SW Build 3605665 on Fri Aug  5 22:52:02 MDT 2022
+  **** IP Build 3603185 on Sat Aug  6 04:07:44 MDT 2022
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+source /tools/software/xilinx/Vitis_HLS/2022.1/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] Running '/tools/software/xilinx/Vitis_HLS/2022.1/bin/unwrapped/lnx64.o/vitis_hls'
+INFO: [HLS 200-10] For user 'sravindran35' on host 'ece-linlabsrv01.ece.gatech.edu' (Linux_x86_64 version 4.18.0-425.19.2.el8_7.x86_64) on Thu May 04 22:16:38 EDT 2023
+INFO: [HLS 200-10] On os "Red Hat Enterprise Linux release 8.7 (Ootpa)"
+INFO: [HLS 200-10] In directory '/usr/scratch/sandhya/PROJECT1/15_Source_Code'
+Sourcing Tcl script 'script.tcl'
+INFO: [HLS 200-1510] Running: source script.tcl
+INFO: [HLS 200-1510] Running: open_project proj 
+INFO: [HLS 200-10] Opening project '/usr/scratch/sandhya/PROJECT1/15_Source_Code/proj'.
+INFO: [HLS 200-1510] Running: set_top convolution 
+INFO: [HLS 200-1510] Running: add_files convolution.h 
+INFO: [HLS 200-10] Adding design file 'convolution.h' to the project
+INFO: [HLS 200-1510] Running: add_files convolution.cpp 
+INFO: [HLS 200-10] Adding design file 'convolution.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution solution1 -flow_target vivado 
+INFO: [HLS 200-10] Opening solution '/usr/scratch/sandhya/PROJECT1/15_Source_Code/proj/solution1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-1505.html
+INFO: [HLS 200-1464] Running solution command: config_interface -m_axi_latency=0
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.01 seconds; current allocated memory: 760.371 MB.
+INFO: [HLS 200-10] Analyzing design file 'convolution.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 5.32 seconds. CPU system time: 0.9 seconds. Elapsed time: 6.35 seconds; current allocated memory: 760.371 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-131] Inlining function 'processingelement(hls::stream<int, 0>&, hls::stream<int, 0>&, hls::stream<int, 0>&, int&, int&, int&, int&, int&, int&, int, int, int)' into 'convolution(int (*) [5], int (*) [3], int (*) [3])' (convolution.cpp:366:17)
+INFO: [HLS 214-291] Loop 'PE_LOOP' is marked as complete unroll implied by the pipeline pragma (convolution.cpp:352:9)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_356_1' is marked as complete unroll implied by the pipeline pragma (convolution.cpp:356:20)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_175_1' is marked as complete unroll implied by the pipeline pragma (convolution.cpp:175:31)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_133_3' is marked as complete unroll implied by the pipeline pragma (convolution.cpp:133:27)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_124_2' is marked as complete unroll implied by the pipeline pragma (convolution.cpp:124:27)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_115_1' is marked as complete unroll implied by the pipeline pragma (convolution.cpp:115:27)
+INFO: [HLS 214-186] Unrolling loop 'PE_LOOP' (convolution.cpp:352:9) in function 'convolution' completely with a factor of 3 (convolution.cpp:298:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_356_1' (convolution.cpp:356:20) in function 'convolution' completely with a factor of 3 (convolution.cpp:298:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_175_1' (convolution.cpp:175:31) in function 'convolution' completely with a factor of 3 (convolution.cpp:298:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_133_3' (convolution.cpp:133:27) in function 'sum_of_psums' completely with a factor of 3 (convolution.cpp:109:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_124_2' (convolution.cpp:124:27) in function 'sum_of_psums' completely with a factor of 3 (convolution.cpp:109:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_115_1' (convolution.cpp:115:27) in function 'sum_of_psums' completely with a factor of 3 (convolution.cpp:109:0)
+INFO: [HLS 214-178] Inlining function 'sum_of_psums(hls::stream<int, 0>&, hls::stream<int, 0>&, hls::stream<int, 0>&, hls::stream<int, 0>&, hls::stream<int, 0>&, hls::stream<int, 0>&)' into 'convolution(int (*) [5], int (*) [3], int (*) [3])' (convolution.cpp:298:0)
+INFO: [HLS 214-248] Applying array_partition to 'PE_Wt_Buffer': Complete partitioning on dimension 1. Complete partitioning on dimension 2. (convolution.cpp:15:0)
+INFO: [HLS 214-248] Applying array_partition to 'PE_IFM_Buffer': Complete partitioning on dimension 1. Complete partitioning on dimension 2. (convolution.cpp:14:0)
+INFO: [HLS 214-248] Applying array_partition to 'psum_accumulation': Complete partitioning on dimension 1. (convolution.cpp:309:22)
+INFO: [HLS 214-248] Applying array_partition to 'psum_DRAM': Complete partitioning on dimension 1. (convolution.cpp:310:25)
+INFO: [HLS 214-248] Applying array_partition to 'horizontal_pipes': Complete partitioning on dimension 1. Complete partitioning on dimension 2. (convolution.cpp:317:6)
+INFO: [HLS 214-248] Applying array_partition to 'diagonal_pipes': Complete partitioning on dimension 1. Complete partitioning on dimension 2. (convolution.cpp:319:9)
+INFO: [HLS 214-241] Aggregating fifo (hls::stream) variable 'psum_accumulation_0' with compact=bit mode in 32-bits (convolution.cpp:309:22)
+INFO: [HLS 214-241] Aggregating fifo (hls::stream) variable 'psum_accumulation_1' with compact=bit mode in 32-bits (convolution.cpp:309:22)
+INFO: [HLS 214-241] Aggregating fifo (hls::stream) variable 'psum_accumulation_2' with compact=bit mode in 32-bits (convolution.cpp:309:22)
+INFO: [HLS 214-241] Aggregating fifo (hls::stream) variable 'psum_DRAM_0' with compact=bit mode in 32-bits (convolution.cpp:310:25)
+INFO: [HLS 214-241] Aggregating fifo (hls::stream) variable 'psum_DRAM_1' with compact=bit mode in 32-bits (convolution.cpp:310:25)
+INFO: [HLS 214-241] Aggregating fifo (hls::stream) variable 'psum_DRAM_2' with compact=bit mode in 32-bits (convolution.cpp:310:25)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 4.65 seconds. CPU system time: 0.8 seconds. Elapsed time: 5.48 seconds; current allocated memory: 761.406 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 761.406 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.12 seconds. CPU system time: 0 seconds. Elapsed time: 0.12 seconds; current allocated memory: 764.211 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.11 seconds. CPU system time: 0 seconds. Elapsed time: 0.11 seconds; current allocated memory: 767.480 MB.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.57 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.58 seconds; current allocated memory: 795.961 MB.
+INFO: [HLS 200-472] Inferring partial write operation for 'pes.local_cycle_count' (convolution.cpp:170:36)
+INFO: [HLS 200-472] Inferring partial write operation for 'pes.psum_count' (convolution.cpp:183:34)
+INFO: [HLS 200-472] Inferring partial write operation for 'pes.psum_buffer_internal' (convolution.cpp:206:44)
+INFO: [HLS 200-472] Inferring partial write operation for 'pes.psum_buffer_internal' (convolution.cpp:235:44)
+INFO: [HLS 200-472] Inferring partial write operation for 'pes.psum_count' (convolution.cpp:236:33)
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.42 seconds. CPU system time: 0 seconds. Elapsed time: 0.43 seconds; current allocated memory: 809.840 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'convolution' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'read_data_DRAM' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'read_data_DRAM'.
+WARNING: [HLS 200-885] The II Violation in module 'read_data_DRAM' (function 'read_data_DRAM'): Unable to schedule bus request operation ('ifm_load_1_req', convolution.cpp:60) on port 'ifm' (convolution.cpp:60) due to limited memory ports (II = 1). Please consider using a memory core with more ports or partitioning the array.
+Resolution: For help on HLS 200-885 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'read_data_DRAM' (function 'read_data_DRAM'): Unable to schedule bus request operation ('ifm_load_2_req', convolution.cpp:64) on port 'ifm' (convolution.cpp:64) due to limited memory ports (II = 2). Please consider using a memory core with more ports or partitioning the array.
+Resolution: For help on HLS 200-885 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'read_data_DRAM' (function 'read_data_DRAM'): Unable to schedule bus request operation ('ifm_load_3_req', convolution.cpp:65) on port 'ifm' (convolution.cpp:65) due to limited memory ports (II = 3). Please consider using a memory core with more ports or partitioning the array.
+Resolution: For help on HLS 200-885 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'read_data_DRAM' (function 'read_data_DRAM'): Unable to schedule bus request operation ('ifm_load_4_req', convolution.cpp:69) on port 'ifm' (convolution.cpp:69) due to limited memory ports (II = 4). Please consider using a memory core with more ports or partitioning the array.
+Resolution: For help on HLS 200-885 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'read_data_DRAM' (function 'read_data_DRAM'): Unable to schedule bus request operation ('ifm_load_7_req', convolution.cpp:82) on port 'ifm' (convolution.cpp:82) due to limited memory ports (II = 7). Please consider using a memory core with more ports or partitioning the array.
+Resolution: For help on HLS 200-885 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'read_data_DRAM' (function 'read_data_DRAM'): Unable to schedule bus request operation ('ifm_load_9_req', convolution.cpp:92) on port 'ifm' (convolution.cpp:92) due to limited memory ports (II = 9). Please consider using a memory core with more ports or partitioning the array.
+Resolution: For help on HLS 200-885 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'read_data_DRAM' (function 'read_data_DRAM'): Unable to schedule bus request operation ('ifm_load_10_req', convolution.cpp:93) on port 'ifm' (convolution.cpp:93) due to limited memory ports (II = 10). Please consider using a memory core with more ports or partitioning the array.
+Resolution: For help on HLS 200-885 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-885.html
+INFO: [SCHED 204-61] Discarding stage scheduling solution.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 11, Depth = 129, function 'read_data_DRAM'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.6 seconds. CPU system time: 0.06 seconds. Elapsed time: 0.67 seconds; current allocated memory: 814.949 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.71 seconds. CPU system time: 0 seconds. Elapsed time: 0.71 seconds; current allocated memory: 814.949 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'write_data_DRAM' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'write_data_DRAM'.
+WARNING: [HLS 200-880] The II Violation in module 'write_data_DRAM' (function 'write_data_DRAM'): Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1) between fifo read operation ('tmp', /tools/software/xilinx/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:145) on port 'psum_DRAM_0' (/tools/software/xilinx/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:145) and fifo request operation ('tmp', /tools/software/xilinx/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:190) on port 'psum_DRAM_0' (/tools/software/xilinx/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:190).
+Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-880.html
+WARNING: [HLS 200-885] The II Violation in module 'write_data_DRAM' (function 'write_data_DRAM'): Unable to schedule bus request operation ('ifm_addr_2_req', convolution.cpp:157) on port 'ifm' (convolution.cpp:157) due to limited memory ports (II = 2). Please consider using a memory core with more ports or partitioning the array.
+Resolution: For help on HLS 200-885 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-885.html
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 3, Depth = 10, function 'write_data_DRAM'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.41 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.41 seconds; current allocated memory: 814.949 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.06 seconds. CPU system time: 0 seconds. Elapsed time: 0.06 seconds; current allocated memory: 814.949 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'convolution' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'ITERATION_LOOP'.
+WARNING: [HLS 200-880] The II Violation in module 'convolution' (loop 'ITERATION_LOOP'): Unable to enforce a carried dependence constraint (II = 11, distance = 1, offset = 0) between 'store' operation ('horizontal_pipes_10_write_ln340', convolution.cpp:340) of variable 'horizontal_pipes', convolution.cpp:345 on local variable 'horizontal_pipes' and 'load' operation ('horizontal_pipes_10_load', convolution.cpp:345) on local variable 'horizontal_pipes'.
+Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-880.html
+WARNING: [HLS 200-875] II = 12 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 13 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 14 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 15 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 16 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 17 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 18 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 19 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 20 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 21 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-880] The II Violation in module 'convolution' (loop 'ITERATION_LOOP'): Unable to enforce a carried dependence constraint (II = 22, distance = 1, offset = 0) between 'store' operation ('horizontal_pipes_10_write_ln340', convolution.cpp:340) of variable 'horizontal_pipes', convolution.cpp:345 on local variable 'horizontal_pipes' and 'load' operation ('horizontal_pipes_10_load', convolution.cpp:345) on local variable 'horizontal_pipes'.
+Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-880.html
+WARNING: [HLS 200-875] II = 23 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 24 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 25 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 26 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 27 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 28 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 29 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 30 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 31 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 32 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-880] The II Violation in module 'convolution' (loop 'ITERATION_LOOP'): Unable to enforce a carried dependence constraint (II = 33, distance = 1, offset = 0) between 'store' operation ('horizontal_pipes_10_write_ln340', convolution.cpp:340) of variable 'horizontal_pipes', convolution.cpp:345 on local variable 'horizontal_pipes' and 'load' operation ('horizontal_pipes_10_load', convolution.cpp:345) on local variable 'horizontal_pipes'.
+Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-880.html
+WARNING: [HLS 200-875] II = 34 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 35 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 36 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 37 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 38 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 39 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 40 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 41 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 42 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 43 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-880] The II Violation in module 'convolution' (loop 'ITERATION_LOOP'): Unable to enforce a carried dependence constraint (II = 44, distance = 1, offset = 0) between 'store' operation ('horizontal_pipes_10_write_ln340', convolution.cpp:340) of variable 'horizontal_pipes', convolution.cpp:345 on local variable 'horizontal_pipes' and 'load' operation ('horizontal_pipes_10_load', convolution.cpp:345) on local variable 'horizontal_pipes'.
+Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-880.html
+WARNING: [HLS 200-875] II = 45 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 46 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 47 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 48 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 49 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 50 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 51 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 52 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 53 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 54 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 104 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 105 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 106 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 107 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 108 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 109 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 104 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 105 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 106 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 107 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 108 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 109 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-880] The II Violation in module 'convolution' (loop 'ITERATION_LOOP'): Unable to enforce a carried dependence constraint (II = 110, distance = 1, offset = 0) between 'store' operation ('horizontal_pipes_10_write_ln340', convolution.cpp:340) of variable 'horizontal_pipes', convolution.cpp:345 on local variable 'horizontal_pipes' and 'load' operation ('horizontal_pipes_10_load', convolution.cpp:345) on local variable 'horizontal_pipes'.
+Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-880.html
+WARNING: [HLS 200-875] II = 111 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 112 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 113 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 114 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 115 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 116 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 117 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 118 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 119 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 120 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 128 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-875] II = 128 is infeasible due to multiple pipeline iteration latency = 129 and incompatible II = 11 of 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-875 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-875.html
+WARNING: [HLS 200-880] The II Violation in module 'convolution' (loop 'ITERATION_LOOP'): Unable to enforce a carried dependence constraint (II = 129, distance = 1, offset = 1) between 'load' operation ('global_cycles_load') on static variable 'global_cycles' and 'call' operation ('call_ret', convolution.cpp:345) to 'read_data_DRAM'.
+Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-880.html
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 130, Depth = 180, loop 'ITERATION_LOOP'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1.99 seconds. CPU system time: 0.03 seconds. Elapsed time: 2.03 seconds; current allocated memory: 827.980 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1.46 seconds. CPU system time: 0.01 seconds. Elapsed time: 1.49 seconds; current allocated memory: 827.980 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'read_data_DRAM' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'read_data_DRAM' pipeline 'read_data_DRAM' pipeline type 'function pipeline'
+INFO: [RTGEN 206-100] Generating core module 'mul_32ns_34ns_64_2_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_32s_34ns_65_2_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'srem_32s_3ns_3_36_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_32ns_3ns_2_36_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'read_data_DRAM'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1.3 seconds. CPU system time: 0.02 seconds. Elapsed time: 1.38 seconds; current allocated memory: 830.688 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'write_data_DRAM' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [RTGEN 206-101] Register 'count_test' is power-on initialization.
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'write_data_DRAM' pipeline 'write_data_DRAM' pipeline type 'function pipeline'
+WARNING: [RTGEN 206-101] Setting dangling out port 'write_data_DRAM/psum_DRAM_0_din' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'write_data_DRAM/psum_DRAM_0_write' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'write_data_DRAM/psum_DRAM_1_din' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'write_data_DRAM/psum_DRAM_1_write' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'write_data_DRAM/psum_DRAM_2_din' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'write_data_DRAM/psum_DRAM_2_write' to 0.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'write_data_DRAM'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1.31 seconds. CPU system time: 0.03 seconds. Elapsed time: 1.33 seconds; current allocated memory: 836.629 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'convolution' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [RTGEN 206-101] Design contains AXI ports. Reset is fixed to synchronous and active low.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution/ifm' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution/DRAM_ip_data' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution/DRAM_Wt_data' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution/DRAM_op_data' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'convolution' to 's_axilite & ap_ctrl_hs'.
+WARNING: [RTGEN 206-101] Register 'global_cycles' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'PE_IFM_Buffer_0_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_IFM_Buffer_0_1' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_IFM_Buffer_0_0' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_IFM_Buffer_0_0' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_IFM_Buffer_0_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_IFM_Buffer_0_2' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_Wt_Buffer_0_0' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_Wt_Buffer_0_0' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_Wt_Buffer_0_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_Wt_Buffer_0_1' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_Wt_Buffer_0_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_Wt_Buffer_0_2' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_IFM_Buffer_1_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_IFM_Buffer_1_1' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_IFM_Buffer_1_0' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_IFM_Buffer_1_0' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_IFM_Buffer_1_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_IFM_Buffer_1_2' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_Wt_Buffer_1_0' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_Wt_Buffer_1_0' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_Wt_Buffer_1_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_Wt_Buffer_1_1' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_Wt_Buffer_1_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_Wt_Buffer_1_2' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_IFM_Buffer_2_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_IFM_Buffer_2_1' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_IFM_Buffer_2_0' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_IFM_Buffer_2_0' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_IFM_Buffer_2_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_IFM_Buffer_2_2' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_Wt_Buffer_2_0' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_Wt_Buffer_2_0' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_Wt_Buffer_2_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_Wt_Buffer_2_1' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_Wt_Buffer_2_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_Wt_Buffer_2_2' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_IFM_Buffer_5_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_IFM_Buffer_5_1' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_IFM_Buffer_5_0' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_IFM_Buffer_5_0' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_IFM_Buffer_5_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_IFM_Buffer_5_2' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_Wt_Buffer_5_0' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_Wt_Buffer_5_0' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_Wt_Buffer_5_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_Wt_Buffer_5_1' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_Wt_Buffer_5_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_Wt_Buffer_5_2' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_IFM_Buffer_8_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_IFM_Buffer_8_1' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_IFM_Buffer_8_0' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_IFM_Buffer_8_0' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_IFM_Buffer_8_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_IFM_Buffer_8_2' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_Wt_Buffer_8_0' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_Wt_Buffer_8_0' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_Wt_Buffer_8_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_Wt_Buffer_8_1' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_Wt_Buffer_8_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_Wt_Buffer_8_2' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_IFM_Buffer_4_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_IFM_Buffer_4_1' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_IFM_Buffer_4_0' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_IFM_Buffer_4_0' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_IFM_Buffer_4_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_IFM_Buffer_4_2' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_Wt_Buffer_4_0' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_Wt_Buffer_4_0' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_Wt_Buffer_4_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_Wt_Buffer_4_1' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_Wt_Buffer_4_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_Wt_Buffer_4_2' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_IFM_Buffer_7_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_IFM_Buffer_7_1' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_IFM_Buffer_7_0' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_IFM_Buffer_7_0' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_IFM_Buffer_7_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_IFM_Buffer_7_2' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_Wt_Buffer_7_0' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_Wt_Buffer_7_0' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_Wt_Buffer_7_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_Wt_Buffer_7_1' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_Wt_Buffer_7_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_Wt_Buffer_7_2' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_IFM_Buffer_3_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_IFM_Buffer_3_1' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_IFM_Buffer_3_0' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_IFM_Buffer_3_0' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_IFM_Buffer_3_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_IFM_Buffer_3_2' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_Wt_Buffer_3_0' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_Wt_Buffer_3_0' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_Wt_Buffer_3_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_Wt_Buffer_3_1' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_Wt_Buffer_3_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_Wt_Buffer_3_2' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_IFM_Buffer_6_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_IFM_Buffer_6_1' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_IFM_Buffer_6_0' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_IFM_Buffer_6_0' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_IFM_Buffer_6_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_IFM_Buffer_6_2' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_Wt_Buffer_6_0' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_Wt_Buffer_6_0' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_Wt_Buffer_6_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_Wt_Buffer_6_1' will not be exposed as RTL port.
+WARNING: [RTGEN 206-101] Register 'PE_Wt_Buffer_6_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Global scalar 'PE_Wt_Buffer_6_2' will not be exposed as RTL port.
+INFO: [RTGEN 206-100] Bundling port 'DRAM_ip_data', 'DRAM_Wt_data', 'DRAM_op_data' to AXI-Lite port control.
+INFO: [RTGEN 206-104] Estimated max fanout for 'convolution' is 11571 from HDL expression: (((1'b0 == ap_block_pp0_stage129_11001_ignoreCallOp406) & (1'b1 == ap_CS_fsm_pp0_stage129)) | ((1'b0 == ap_block_pp0_stage128_11001_ignoreCallOp405) & (1'b1 == ap_CS_fsm_pp0_stage128)) | ((1'b0 == ap_block_pp0_stage127_11001_ignoreCallOp404) & (1'b1 == ap_CS_fsm_pp0_stage127)) | ((1'b0 == ap_block_pp0_stage126_11001_ignoreCallOp403) & (1'b1 == ap_CS_fsm_pp0_stage126)) | ((1'b0 == ap_block_pp0_stage125_11001_ignoreCallOp402) & (1'b1 == ap_CS_fsm_pp0_stage125)) | ((1'b0 == ap_block_pp0_stage124_11001_ignoreCallOp401) & (1'b1 == ap_CS_fsm_pp0_stage124)) | ((1'b0 == ap_block_pp0_stage123_11001_ignoreCallOp400) & (1'b1 == ap_CS_fsm_pp0_stage123)) | ((1'b0 == ap_block_pp0_stage122_11001_ignoreCallOp399) & (1'b1 == ap_CS_fsm_pp0_stage122)) | ((1'b0 == ap_block_pp0_stage121_11001_ignoreCallOp398) & (1'b1 == ap_CS_fsm_pp0_stage121)) | ((1'b0 == ap_block_pp0_stage120_11001_ignoreCallOp397) & (1'b1 == ap_CS_fsm_pp0_stage120)) | ((1'b0 == ap_block_pp0_stage119_11001_ignoreCallOp396) & (1'b1 == ap_CS_fsm_pp0_stage119)) | ((1'b0 == ap_block_pp0_stage118_11001_ignoreCallOp395) & (1'b1 == ap_CS_fsm_pp0_stage118)) | ((1'b0 == ap_block_pp0_stage117_11001_ignoreCallOp394) & (1'b1 == ap_CS_fsm_pp0_stage117)) | ((1'b0 == ap_block_pp0_stage116_11001_ignoreCallOp393) & (1'b1 == ap_CS_fsm_pp0_stage116)) | ((1'b0 == ap_block_pp0_stage115_11001_ignoreCallOp392) & (1'b1 == ap_CS_fsm_pp0_stage115)) | ((1'b0 == ap_block_pp0_stage114_11001_ignoreCallOp391) & (1'b1 == ap_CS_fsm_pp0_stage114)) | ((1'b0 == ap_block_pp0_stage113_11001_ignoreCallOp390) & (1'b1 == ap_CS_fsm_pp0_stage113)) | ((1'b0 == ap_block_pp0_stage112_11001_ignoreCallOp389) & (1'b1 == ap_CS_fsm_pp0_stage112)) | ((1'b0 == ap_block_pp0_stage111_11001_ignoreCallOp388) & (1'b1 == ap_CS_fsm_pp0_stage111)) | ((1'b0 == ap_block_pp0_stage110_11001_ignoreCallOp387) & (1'b1 == ap_CS_fsm_pp0_stage110)) | ((1'b0 == ap_block_pp0_stage109_11001_ignoreCallOp386) & (1'b1 == ap_CS_fsm_pp0_stage109)) | ((1'b0 == ap_block_pp0_stage108_11001_ignoreCallOp385) & (1'b1 == ap_CS_fsm_pp0_stage108)) | ((1'b0 == ap_block_pp0_stage107_11001_ignoreCallOp384) & (1'b1 == ap_CS_fsm_pp0_stage107)) | ((1'b0 == ap_block_pp0_stage106_11001_ignoreCallOp383) & (1'b1 == ap_CS_fsm_pp0_stage106)) | ((1'b0 == ap_block_pp0_stage105_11001_ignoreCallOp382) & (1'b1 == ap_CS_fsm_pp0_stage105)) | ((1'b0 == ap_block_pp0_stage104_11001_ignoreCallOp381) & (1'b1 == ap_CS_fsm_pp0_stage104)) | ((1'b0 == ap_block_pp0_stage103_11001_ignoreCallOp380) & (1'b1 == ap_CS_fsm_pp0_stage103)) | ((1'b0 == ap_block_pp0_stage102_11001_ignoreCallOp379) & (1'b1 == ap_CS_fsm_pp0_stage102)) | ((1'b0 == ap_block_pp0_stage101_11001_ignoreCallOp378) & (1'b1 == ap_CS_fsm_pp0_stage101)) | ((1'b0 == ap_block_pp0_stage100_11001_ignoreCallOp377) & (1'b1 == ap_CS_fsm_pp0_stage100)) | ((1'b0 == ap_block_pp0_stage99_11001_ignoreCallOp376) & (1'b1 == ap_CS_fsm_pp0_stage99)) | ((1'b0 == ap_block_pp0_stage98_11001_ignoreCallOp375) & (1'b1 == ap_CS_fsm_pp0_stage98)) | ((1'b0 == ap_block_pp0_stage97_11001_ignoreCallOp374) & (1'b1 == ap_CS_fsm_pp0_stage97)) | ((1'b0 == ap_block_pp0_stage96_11001_ignoreCallOp373) & (1'b1 == ap_CS_fsm_pp0_stage96)) | ((1'b0 == ap_block_pp0_stage95_11001_ignoreCallOp372) & (1'b1 == ap_CS_fsm_pp0_stage95)) | ((1'b0 == ap_block_pp0_stage94_11001_ignoreCallOp371) & (1'b1 == ap_CS_fsm_pp0_stage94)) | ((1'b0 == ap_block_pp0_stage93_11001_ignoreCallOp370) & (1'b1 == ap_CS_fsm_pp0_stage93)) | ((1'b0 == ap_block_pp0_stage92_11001_ignoreCallOp369) & (1'b1 == ap_CS_fsm_pp0_stage92)) | ((1'b0 == ap_block_pp0_stage91_11001_ignoreCallOp368) & (1'b1 == ap_CS_fsm_pp0_stage91)) | ((1'b0 == ap_block_pp0_stage90_11001_ignoreCallOp367) & (1'b1 == ap_CS_fsm_pp0_stage90)) | ((1'b0 == ap_block_pp0_stage89_11001_ignoreCallOp366) & (1'b1 == ap_CS_fsm_pp0_stage89)) | ((1'b0 == ap_block_pp0_stage88_11001_ignoreCallOp365) & (1'b1 == ap_CS_fsm_pp0_stage88)) | ((1'b0 == ap_block_pp0_stage87_11001_ignoreCallOp364) & (1'b1 == ap_CS_fsm_pp0_stage87)) | ((1'b0 == ap_block_pp0_stage86_11001_ignoreCallOp363) & (1'b1 == ap_CS_fsm_pp0_stage86)) | ((1'b0 == ap_block_pp0_stage85_11001_ignoreCallOp362) & (1'b1 == ap_CS_fsm_pp0_stage85)) | ((1'b0 == ap_block_pp0_stage84_11001_ignoreCallOp361) & (1'b1 == ap_CS_fsm_pp0_stage84)) | ((1'b0 == ap_block_pp0_stage83_11001_ignoreCallOp360) & (1'b1 == ap_CS_fsm_pp0_stage83)) | ((1'b0 == ap_block_pp0_stage82_11001_ignoreCallOp359) & (1'b1 == ap_CS_fsm_pp0_stage82)) | ((1'b0 == ap_block_pp0_stage81_11001_ignoreCallOp358) & (1'b1 == ap_CS_fsm_pp0_stage81)) | ((1'b0 == ap_block_pp0_stage80_11001_ignoreCallOp357) & (1'b1 == ap_CS_fsm_pp0_stage80)) | ((1'b0 == ap_block_pp0_stage79_11001_ignoreCallOp356) & (1'b1 == ap_CS_fsm_pp0_stage79)) | ((1'b0 == ap_block_pp0_stage78_11001_ignoreCallOp355) & (1'b1 == ap_CS_fsm_pp0_stage78)) | ((1'b0 == ap_block_pp0_stage77_11001_ignoreCallOp354) & (1'b1 == ap_CS_fsm_pp0_stage77)) | ((1'b0 == ap_block_pp0_stage76_11001_ignoreCallOp353) & (1'b1 == ap_CS_fsm_pp0_stage76)) | ((1'b0 == ap_block_pp0_stage75_11001_ignoreCallOp352) & (1'b1 == ap_CS_fsm_pp0_stage75)) | ((1'b0 == ap_block_pp0_stage74_11001_ignoreCallOp351) & (1'b1 == ap_CS_fsm_pp0_stage74)) | ((1'b0 == ap_block_pp0_stage73_11001_ignoreCallOp350) & (1'b1 == ap_CS_fsm_pp0_stage73)) | ((1'b0 == ap_block_pp0_stage72_11001_ignoreCallOp349) & (1'b1 == ap_CS_fsm_pp0_stage72)) | ((1'b0 == ap_block_pp0_stage71_11001_ignoreCallOp348) & (1'b1 == ap_CS_fsm_pp0_stage71)) | ((1'b0 == ap_block_pp0_stage70_11001_ignoreCallOp347) & (1'b1 == ap_CS_fsm_pp0_stage70)) | ((1'b0 == ap_block_pp0_stage69_11001_ignoreCallOp346) & (1'b1 == ap_CS_fsm_pp0_stage69)) | ((1'b0 == ap_block_pp0_stage68_11001_ignoreCallOp345) & (1'b1 == ap_CS_fsm_pp0_stage68)) | ((1'b0 == ap_block_pp0_stage67_11001_ignoreCallOp344) & (1'b1 == ap_CS_fsm_pp0_stage67)) | ((1'b0 == ap_block_pp0_stage66_11001_ignoreCallOp343) & (1'b1 == ap_CS_fsm_pp0_stage66)) | ((1'b0 == ap_block_pp0_stage65_11001_ignoreCallOp342) & (1'b1 == ap_CS_fsm_pp0_stage65)) | ((1'b0 == ap_block_pp0_stage64_11001_ignoreCallOp341) & (1'b1 == ap_CS_fsm_pp0_stage64)) | ((1'b0 == ap_block_pp0_stage63_11001_ignoreCallOp340) & (1'b1 == ap_CS_fsm_pp0_stage63)) | ((1'b0 == ap_block_pp0_stage62_11001_ignoreCallOp339) & (1'b1 == ap_CS_fsm_pp0_stage62)) | ((1'b0 == ap_block_pp0_stage61_11001_ignoreCallOp338) & (1'b1 == ap_CS_fsm_pp0_stage61)) | ((1'b0 == ap_block_pp0_stage60_11001_ignoreCallOp337) & (1'b1 == ap_CS_fsm_pp0_stage60)) | ((1'b0 == ap_block_pp0_stage59_11001_ignoreCallOp336) & (1'b1 == ap_CS_fsm_pp0_stage59)) | ((1'b0 == ap_block_pp0_stage58_11001_ignoreCallOp335) & (1'b1 == ap_CS_fsm_pp0_stage58)) | ((1'b0 == ap_block_pp0_stage57_11001_ignoreCallOp334) & (1'b1 == ap_CS_fsm_pp0_stage57)) | ((1'b0 == ap_block_pp0_stage56_11001_ignoreCallOp333) & (1'b1 == ap_CS_fsm_pp0_stage56)) | ((1'b0 == ap_block_pp0_stage55_11001_ignoreCallOp332) & (1'b1 == ap_CS_fsm_pp0_stage55)) | ((1'b0 == ap_block_pp0_stage54_11001_ignoreCallOp331) & (1'b1 == ap_CS_fsm_pp0_stage54)) | ((1'b0 == ap_block_pp0_stage53_11001_ignoreCallOp330) & (1'b1 == ap_CS_fsm_pp0_stage53)) | ((1'b0 == ap_block_pp0_stage52_11001_ignoreCallOp329) & (1'b1 == ap_CS_fsm_pp0_stage52)) | ((1'b0 == ap_block_pp0_stage51_11001_ignoreCallOp328) & (1'b1 == ap_CS_fsm_pp0_stage51)) | ((1'b0 == ap_block_pp0_stage50_11001_ignoreCallOp327) & (1'b1 == ap_CS_fsm_pp0_stage50)) | ((1'b0 == ap_block_pp0_stage49_11001_ignoreCallOp326) & (1'b1 == ap_CS_fsm_pp0_stage49)) | ((1'b0 == ap_block_pp0_stage48_11001_ignoreCallOp325) & (1'b1 == ap_CS_fsm_pp0_stage48)) | ((1'b0 == ap_block_pp0_stage47_11001_ignoreCallOp324) & (1'b1 == ap_CS_fsm_pp0_stage47)) | ((1'b0 == ap_block_pp0_stage46_11001_ignoreCallOp323) & (1'b1 == ap_CS_fsm_pp0_stage46)) | ((1'b0 == ap_block_pp0_stage45_11001_ignoreCallOp322) & (1'b1 == ap_CS_fsm_pp0_stage45)) | ((1'b0 == ap_block_pp0_stage44_11001_ignoreCallOp321) & (1'b1 == ap_CS_fsm_pp0_stage44)) | ((1'b0 == ap_block_pp0_stage43_11001_ignoreCallOp320) & (1'b1 == ap_CS_fsm_pp0_stage43)) | ((1'b0 == ap_block_pp0_stage42_11001_ignoreCallOp319) & (1'b1 == ap_CS_fsm_pp0_stage42)) | ((1'b0 == ap_block_pp0_stage41_11001_ignoreCallOp318) & (1'b1 == ap_CS_fsm_pp0_stage41)) | ((1'b0 == ap_block_pp0_stage40_11001_ignoreCallOp317) & (1'b1 == ap_CS_fsm_pp0_stage40)) | ((1'b0 == ap_block_pp0_stage39_11001_ignoreCallOp316) & (1'b1 == ap_CS_fsm_pp0_stage39)) | ((1'b0 == ap_block_pp0_stage38_11001_ignoreCallOp315) & (1'b1 == ap_CS_fsm_pp0_stage38)) | ((1'b0 == ap_block_pp0_stage37_11001_ignoreCallOp314) & (1'b1 == ap_CS_fsm_pp0_stage37)) | ((1'b0 == ap_block_pp0_stage36_11001_ignoreCallOp313) & (1'b1 == ap_CS_fsm_pp0_stage36)) | ((1'b0 == ap_block_pp0_stage35_11001_ignoreCallOp312) & (1'b1 == ap_CS_fsm_pp0_stage35)) | ((1'b0 == ap_block_pp0_stage34_11001_ignoreCallOp311) & (1'b1 == ap_CS_fsm_pp0_stage34)) | ((1'b0 == ap_block_pp0_stage33_11001_ignoreCallOp310) & (1'b1 == ap_CS_fsm_pp0_stage33)) | ((1'b0 == ap_block_pp0_stage32_11001_ignoreCallOp309) & (1'b1 == ap_CS_fsm_pp0_stage32)) | ((1'b0 == ap_block_pp0_stage31_11001_ignoreCallOp308) & (1'b1 == ap_CS_fsm_pp0_stage31)) | ((1'b0 == ap_block_pp0_stage30_11001_ignoreCallOp307) & (1'b1 == ap_CS_fsm_pp0_stage30)) | ((1'b0 == ap_block_pp0_stage29_11001_ignoreCallOp306) & (1'b1 == ap_CS_fsm_pp0_stage29)) | ((1'b0 == ap_block_pp0_stage28_11001_ignoreCallOp305) & (1'b1 == ap_CS_fsm_pp0_stage28)) | ((1'b0 == ap_block_pp0_stage27_11001_ignoreCallOp304) & (1'b1 == ap_CS_fsm_pp0_stage27)) | ((1'b0 == ap_block_pp0_stage26_11001_ignoreCallOp303) & (1'b1 == ap_CS_fsm_pp0_stage26)) | ((1'b0 == ap_block_pp0_stage25_11001_ignoreCallOp302) & (1'b1 == ap_CS_fsm_pp0_stage25)) | ((1'b0 == ap_block_pp0_stage24_11001_ignoreCallOp301) & (1'b1 == ap_CS_fsm_pp0_stage24)) | ((1'b0 == ap_block_pp0_stage23_11001_ignoreCallOp300) & (1'b1 == ap_CS_fsm_pp0_stage23)) | ((1'b0 == ap_block_pp0_stage22_11001_ignoreCallOp299) & (1'b1 == ap_CS_fsm_pp0_stage22)) | ((1'b0 == ap_block_pp0_stage21_11001_ignoreCallOp298) & (1'b1 == ap_CS_fsm_pp0_stage21)) | ((1'b0 == ap_block_pp0_stage20_11001_ignoreCallOp297) & (1'b1 == ap_CS_fsm_pp0_stage20)) | ((1'b0 == ap_block_pp0_stage19_11001_ignoreCallOp296) & (1'b1 == ap_CS_fsm_pp0_stage19)) | ((1'b0 == ap_block_pp0_stage18_11001_ignoreCallOp295) & (1'b1 == ap_CS_fsm_pp0_stage18)) | ((1'b0 == ap_block_pp0_stage17_11001_ignoreCallOp294) & (1'b1 == ap_CS_fsm_pp0_stage17)) | ((1'b0 == ap_block_pp0_stage16_11001_ignoreCallOp293) & (1'b1 == ap_CS_fsm_pp0_stage16)) | ((1'b0 == ap_block_pp0_stage15_11001_ignoreCallOp292) & (1'b1 == ap_CS_fsm_pp0_stage15)) | ((1'b0 == ap_block_pp0_stage14_11001_ignoreCallOp291) & (1'b1 == ap_CS_fsm_pp0_stage14)) | ((1'b0 == ap_block_pp0_stage13_11001_ignoreCallOp290) & (1'b1 == ap_CS_fsm_pp0_stage13)) | ((1'b0 == ap_block_pp0_stage12_11001_ignoreCallOp289) & (1'b1 == ap_CS_fsm_pp0_stage12)) | ((1'b0 == ap_block_pp0_stage11_11001_ignoreCallOp288) & (1'b1 == ap_CS_fsm_pp0_stage11)) | ((1'b0 == ap_block_pp0_stage10_11001_ignoreCallOp287) & (1'b1 == ap_CS_fsm_pp0_stage10)) | ((1'b0 == ap_block_pp0_stage9_11001_ignoreCallOp284) & (1'b1 == ap_CS_fsm_pp0_stage9)) | ((1'b0 == ap_block_pp0_stage8_11001_ignoreCallOp278) & (1'b1 == ap_CS_fsm_pp0_stage8)) | ((1'b0 == ap_block_pp0_stage7_11001_ignoreCallOp271) & (1'b1 == ap_CS_fsm_pp0_stage7)) | ((1'b0 == ap_block_pp0_stage6_11001_ignoreCallOp264) & (1'b1 == ap_CS_fsm_pp0_stage6)) | ((1'b0 == ap_block_pp0_stage5_11001_ignoreCallOp259) & (1'b1 == ap_CS_fsm_pp0_stage5)) | ((1'b0 == ap_block_pp0_stage4_11001_ignoreCallOp257) & (1'b1 == ap_CS_fsm_pp0_stage4)) | ((1'b0 == ap_block_pp0_stage3_11001_ignoreCallOp256) & (1'b1 == ap_CS_fsm_pp0_stage3)) | ((1'b0 == ap_block_pp0_stage2_11001_ignoreCallOp255) & (1'b1 == ap_CS_fsm_pp0_stage2)) | ((1'b0 == ap_block_pp0_stage1_11001_ignoreCallOp254) & (1'b1 == ap_CS_fsm_pp0_stage1)))
+INFO: [RTGEN 206-100] Generating core module 'mul_32s_32s_32_2_1': 9 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mux_332_32_1_1': 18 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mux_42_32_1_1': 10 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'srem_32ns_3ns_3_36_1': 15 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'convolution'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1.17 seconds. CPU system time: 0.03 seconds. Elapsed time: 1.25 seconds; current allocated memory: 854.371 MB.
+INFO: [RTMG 210-278] Implementing memory 'convolution_pes_local_cycle_count_RAM_AUTO_1R1W_ram (RAM)' using auto RAMs with power-on initialization.
+INFO: [RTMG 210-285] Implementing FIFO 'psum_accumulation_0_U(convolution_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'psum_accumulation_1_U(convolution_fifo_w32_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'psum_accumulation_2_U(convolution_fifo_w32_d3_S)' using Shift Registers.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 4.39 seconds. CPU system time: 0.09 seconds. Elapsed time: 4.49 seconds; current allocated memory: 871.930 MB.
+INFO: [HLS 200-111] Finished Updating report files: CPU user time: 0.7 seconds. CPU system time: 0.03 seconds. Elapsed time: 0.73 seconds; current allocated memory: 882.160 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for convolution.
+INFO: [VLOG 209-307] Generating Verilog RTL for convolution.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were NOT satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 136.99 MHz
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 25.33 seconds. CPU system time: 2.04 seconds. Elapsed time: 27.7 seconds; current allocated memory: 122.211 MB.
+INFO: [HLS 200-1510] Running: export_design -format ip_catalog 
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+
+****** Vivado v2022.1.2 (64-bit)
+  **** SW Build 3605665 on Fri Aug  5 22:52:02 MDT 2022
+  **** IP Build 3603185 on Sat Aug  6 04:07:44 MDT 2022
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+source run_ippack.tcl -notrace
+ipx::create_core: Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 3337.254 ; gain = 2.016 ; free physical = 135803 ; free virtual = 244199
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/software/xilinx/Vivado/2022.1/data/ip'.
+INFO: [Common 17-206] Exiting Vivado at Thu May  4 22:17:38 2023...
+INFO: [HLS 200-802] Generated output file proj/solution1/impl/export.zip
+INFO: [HLS 200-111] Finished Command export_design CPU user time: 18.54 seconds. CPU system time: 2.9 seconds. Elapsed time: 37.87 seconds; current allocated memory: 7.262 MB.
+INFO: [HLS 200-112] Total CPU user time: 49.5 seconds. Total CPU system time: 6.23 seconds. Total elapsed time: 70.55 seconds; peak allocated memory: 889.844 MB.
+INFO: [Common 17-206] Exiting vitis_hls at Thu May  4 22:17:48 2023...

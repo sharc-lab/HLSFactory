@@ -1,0 +1,250 @@
+
+
+================================================================
+== Synthesis Summary Report of 'convolution'
+================================================================
++ General Information: 
+    * Date:           Thu May  4 22:17:09 2023
+    * Version:        2022.1.2 (Build 3605665 on Fri Aug  5 22:52:02 MDT 2022)
+    * Project:        proj
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: zynq
+    * Target device:  xc7z020-clg400-1
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +---------------------+------+------+---------+-----------+----------+---------+------+----------+------+----------+-------------+-------------+-----+
+    |       Modules       | Issue|      | Latency |  Latency  | Iteration|         | Trip |          |      |          |             |             |     |
+    |       & Loops       | Type | Slack| (cycles)|    (ns)   |  Latency | Interval| Count| Pipelined| BRAM |    DSP   |      FF     |     LUT     | URAM|
+    +---------------------+------+------+---------+-----------+----------+---------+------+----------+------+----------+-------------+-------------+-----+
+    |+ convolution        |     -|  0.00|     2001|  2.001e+04|         -|     2002|     -|        no|     -|  36 (16%)|  58780 (55%)|  44040 (82%)|    -|
+    | o ITERATION_LOOP    |    II|  7.30|     1999|  1.999e+04|       180|      130|    15|       yes|     -|         -|            -|            -|    -|
+    |  + read_data_DRAM   |    II|  0.00|      128|  1.280e+03|         -|       11|     -|       yes|     -|    9 (4%)|  14777 (13%)|   9264 (17%)|    -|
+    |  + write_data_DRAM  |    II|  0.00|        9|     90.000|         -|        3|     -|       yes|     -|         -|    618 (~0%)|     640 (1%)|    -|
+    +---------------------+------+------+---------+-----------+----------+---------+------+----------+------+----------+-------------+-------------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* M_AXI
++-----------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+
+| Interface | Data Width | Address Width | Latency | Offset | Register | Max Widen | Max Read     | Max Write    | Num Read    | Num Write   |
+|           | (SW->HW)   |               |         |        |          | Bitwidth  | Burst Length | Burst Length | Outstanding | Outstanding |
++-----------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+
+| m_axi_ifm | 32 -> 32   | 64            | 0       | slave  | 0        | 0         | 16           | 16           | 16          | 16          |
++-----------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+
+
+* S_AXILITE Interfaces
++---------------+------------+---------------+--------+----------+
+| Interface     | Data Width | Address Width | Offset | Register |
++---------------+------------+---------------+--------+----------+
+| s_axi_control | 32         | 6             | 16     | 0        |
++---------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++---------------+----------------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| Interface     | Register       | Offset | Width | Access | Description                      | Bit Fields                                                           |
++---------------+----------------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| s_axi_control | CTRL           | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_control | GIER           | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                             |
+| s_axi_control | IP_IER         | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                        |
+| s_axi_control | IP_ISR         | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                        |
+| s_axi_control | DRAM_ip_data_1 | 0x10   | 32    | W      | Data signal of DRAM_ip_data      |                                                                      |
+| s_axi_control | DRAM_ip_data_2 | 0x14   | 32    | W      | Data signal of DRAM_ip_data      |                                                                      |
+| s_axi_control | DRAM_Wt_data_1 | 0x1c   | 32    | W      | Data signal of DRAM_Wt_data      |                                                                      |
+| s_axi_control | DRAM_Wt_data_2 | 0x20   | 32    | W      | Data signal of DRAM_Wt_data      |                                                                      |
+| s_axi_control | DRAM_op_data_1 | 0x28   | 32    | W      | Data signal of DRAM_op_data      |                                                                      |
+| s_axi_control | DRAM_op_data_2 | 0x2c   | 32    | W      | Data signal of DRAM_op_data      |                                                                      |
++---------------+----------------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------+
+| Interface | Type       | Ports     |
++-----------+------------+-----------+
+| ap_clk    | clock      | ap_clk    |
+| ap_rst_n  | reset      | ap_rst_n  |
+| interrupt | interrupt  | interrupt |
+| ap_ctrl   | ap_ctrl_hs |           |
++-----------+------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++--------------+-----------+----------+
+| Argument     | Direction | Datatype |
++--------------+-----------+----------+
+| DRAM_ip_data | inout     | int*     |
+| DRAM_Wt_data | inout     | int*     |
+| DRAM_op_data | inout     | int*     |
++--------------+-----------+----------+
+
+* SW-to-HW Mapping
++--------------+---------------+-----------+----------+------------------------------------------+
+| Argument     | HW Interface  | HW Type   | HW Usage | HW Info                                  |
++--------------+---------------+-----------+----------+------------------------------------------+
+| DRAM_ip_data | m_axi_ifm     | interface |          |                                          |
+| DRAM_ip_data | s_axi_control | register  | offset   | name=DRAM_ip_data_1 offset=0x10 range=32 |
+| DRAM_ip_data | s_axi_control | register  | offset   | name=DRAM_ip_data_2 offset=0x14 range=32 |
+| DRAM_Wt_data | m_axi_ifm     | interface |          |                                          |
+| DRAM_Wt_data | s_axi_control | register  | offset   | name=DRAM_Wt_data_1 offset=0x1c range=32 |
+| DRAM_Wt_data | s_axi_control | register  | offset   | name=DRAM_Wt_data_2 offset=0x20 range=32 |
+| DRAM_op_data | m_axi_ifm     | interface |          |                                          |
+| DRAM_op_data | s_axi_control | register  | offset   | name=DRAM_op_data_1 offset=0x28 range=32 |
+| DRAM_op_data | s_axi_control | register  | offset   | name=DRAM_op_data_2 offset=0x2c range=32 |
++--------------+---------------+-----------+----------+------------------------------------------+
+
+
+================================================================
+== Bind Op Report
+================================================================
++----------------------------+-----+--------+-------------+-----+--------+---------+
+| Name                       | DSP | Pragma | Variable    | Op  | Impl   | Latency |
++----------------------------+-----+--------+-------------+-----+--------+---------+
+| + convolution              | 36  |        |             |     |        |         |
+|   cycles_2_fu_871_p2       | -   |        | cycles_2    | add | fabric | 0       |
+|   add_ln170_fu_1030_p2     | -   |        | add_ln170   | add | fabric | 0       |
+|   mul_32s_32s_32_2_1_U47   | 3   |        | mul_ln235   | mul | auto   | 1       |
+|   add_ln235_fu_2052_p2     | -   |        | add_ln235   | add | fabric | 0       |
+|   grp_fu_842_p2            | -   |        | add_ln236   | add | fabric | 0       |
+|   grp_fu_1817_p0           | -   |        | add_ln281   | add | fabric | 0       |
+|   add_ln170_1_fu_1085_p2   | -   |        | add_ln170_1 | add | fabric | 0       |
+|   mul_32s_32s_32_2_1_U51   | 3   |        | mul_ln235_1 | mul | auto   | 1       |
+|   add_ln235_1_fu_2098_p2   | -   |        | add_ln235_1 | add | fabric | 0       |
+|   grp_fu_849_p2            | -   |        | add_ln236_1 | add | fabric | 0       |
+|   grp_fu_1854_p0           | -   |        | add_ln281_1 | add | fabric | 0       |
+|   add_ln170_2_fu_1371_p2   | -   |        | add_ln170_2 | add | fabric | 0       |
+|   mul_32s_32s_32_2_1_U55   | 3   |        | mul_ln235_2 | mul | auto   | 1       |
+|   add_ln235_2_fu_2147_p2   | -   |        | add_ln235_2 | add | fabric | 0       |
+|   add_ln236_2_fu_2104_p2   | -   |        | add_ln236_2 | add | fabric | 0       |
+|   grp_fu_1873_p0           | -   |        | add_ln281_2 | add | fabric | 0       |
+|   add_ln170_3_fu_1144_p2   | -   |        | add_ln170_3 | add | fabric | 0       |
+|   mul_32s_32s_32_2_1_U59   | 3   |        | mul_ln235_3 | mul | auto   | 1       |
+|   add_ln235_3_fu_2190_p2   | -   |        | add_ln235_3 | add | fabric | 0       |
+|   add_ln236_3_fu_2152_p2   | -   |        | add_ln236_3 | add | fabric | 0       |
+|   grp_fu_1911_p0           | -   |        | add_ln281_3 | add | fabric | 0       |
+|   add_ln170_4_fu_1553_p2   | -   |        | add_ln170_4 | add | fabric | 0       |
+|   mul_32s_32s_32_2_1_U63   | 3   |        | mul_ln235_4 | mul | auto   | 1       |
+|   add_ln235_4_fu_2245_p2   | -   |        | add_ln235_4 | add | fabric | 0       |
+|   add_ln236_4_fu_2162_p2   | -   |        | add_ln236_4 | add | fabric | 0       |
+|   grp_fu_1970_p0           | -   |        | add_ln281_4 | add | fabric | 0       |
+|   add_ln170_5_fu_1449_p2   | -   |        | add_ln170_5 | add | fabric | 0       |
+|   mul_32s_32s_32_2_1_U66   | 3   |        | mul_ln235_5 | mul | auto   | 1       |
+|   add_ln235_5_fu_2298_p2   | -   |        | add_ln235_5 | add | fabric | 0       |
+|   add_ln236_5_fu_2199_p2   | -   |        | add_ln236_5 | add | fabric | 0       |
+|   grp_fu_2009_p0           | -   |        | add_ln281_5 | add | fabric | 0       |
+|   add_ln170_6_fu_1471_p2   | -   |        | add_ln170_6 | add | fabric | 0       |
+|   mul_32s_32s_32_2_1_U69   | 3   |        | mul_ln235_6 | mul | auto   | 1       |
+|   add_ln235_6_fu_2347_p2   | -   |        | add_ln235_6 | add | fabric | 0       |
+|   grp_fu_842_p2            | -   |        | add_ln236_6 | add | fabric | 0       |
+|   grp_fu_2046_p0           | -   |        | add_ln281_6 | add | fabric | 0       |
+|   add_ln170_7_fu_1220_p2   | -   |        | add_ln170_7 | add | fabric | 0       |
+|   mul_32s_32s_32_2_1_U72   | 3   |        | mul_ln235_7 | mul | auto   | 1       |
+|   add_ln235_7_fu_2356_p2   | -   |        | add_ln235_7 | add | fabric | 0       |
+|   add_ln236_7_fu_2292_p2   | -   |        | add_ln236_7 | add | fabric | 0       |
+|   grp_fu_2092_p0           | -   |        | add_ln281_7 | add | fabric | 0       |
+|   add_ln170_8_fu_1261_p2   | -   |        | add_ln170_8 | add | fabric | 0       |
+|   mul_32s_32s_32_2_1_U75   | 3   |        | mul_ln235_8 | mul | auto   | 1       |
+|   add_ln235_8_fu_2361_p2   | -   |        | add_ln235_8 | add | fabric | 0       |
+|   grp_fu_849_p2            | -   |        | add_ln236_8 | add | fabric | 0       |
+|   grp_fu_2141_p0           | -   |        | add_ln281_8 | add | fabric | 0       |
+|  + read_data_DRAM          | 9   |        |             |     |        |         |
+|    add_ln50_fu_798_p2      | -   |        | add_ln50    | add | fabric | 0       |
+|    add_ln59_fu_844_p2      | -   |        | add_ln59    | add | fabric | 0       |
+|    add_ln60_fu_888_p2      | -   |        | add_ln60    | add | fabric | 0       |
+|    add_ln64_fu_916_p2      | -   |        | add_ln64    | add | fabric | 0       |
+|    add_ln64_1_fu_926_p2    | -   |        | add_ln64_1  | add | fabric | 0       |
+|    add_ln65_fu_951_p2      | -   |        | add_ln65    | add | fabric | 0       |
+|    add_ln65_1_fu_961_p2    | -   |        | add_ln65_1  | add | fabric | 0       |
+|    add_ln69_fu_986_p2      | -   |        | add_ln69    | add | fabric | 0       |
+|    add_ln69_1_fu_996_p2    | -   |        | add_ln69_1  | add | fabric | 0       |
+|    add_ln70_fu_1021_p2     | -   |        | add_ln70    | add | fabric | 0       |
+|    add_ln70_1_fu_1031_p2   | -   |        | add_ln70_1  | add | fabric | 0       |
+|    add_ln76_fu_1072_p2     | -   |        | add_ln76    | add | fabric | 0       |
+|    add_ln76_1_fu_1088_p2   | -   |        | add_ln76_1  | add | fabric | 0       |
+|    add_ln76_2_fu_1098_p2   | -   |        | add_ln76_2  | add | fabric | 0       |
+|    add_ln82_fu_1128_p2     | -   |        | add_ln82    | add | fabric | 0       |
+|    add_ln82_1_fu_1144_p2   | -   |        | add_ln82_1  | add | fabric | 0       |
+|    add_ln82_2_fu_1154_p2   | -   |        | add_ln82_2  | add | fabric | 0       |
+|    grp_fu_882_p0           | -   |        | add_ln88    | add | fabric | 0       |
+|    mul_32s_34ns_65_2_1_U6  | 3   |        | mul_ln101   | mul | auto   | 1       |
+|    sub_ln101_fu_1349_p2    | -   |        | sub_ln101   | sub | fabric | 0       |
+|    sub_ln101_1_fu_1370_p2  | -   |        | sub_ln101_1 | sub | fabric | 0       |
+|    add_ln101_fu_1381_p2    | -   |        | add_ln101   | add | fabric | 0       |
+|    add_ln101_1_fu_1399_p2  | -   |        | add_ln101_1 | add | fabric | 0       |
+|    add_ln101_2_fu_1409_p2  | -   |        | add_ln101_2 | add | fabric | 0       |
+|    mul_32ns_34ns_64_2_1_U5 | 3   |        | mul1        | mul | auto   | 1       |
+|    add_ln97_fu_1387_p2     | -   |        | add_ln97    | add | fabric | 0       |
+|    add_ln97_1_fu_1441_p2   | -   |        | add_ln97_1  | add | fabric | 0       |
+|    add_ln97_2_fu_1451_p2   | -   |        | add_ln97_2  | add | fabric | 0       |
+|    mul_32s_34ns_65_2_1_U3  | 3   |        | mul_ln91    | mul | auto   | 1       |
+|    sub_ln91_fu_1241_p2     | -   |        | sub_ln91    | sub | fabric | 0       |
+|    sub_ln91_1_fu_1262_p2   | -   |        | sub_ln91_1  | sub | fabric | 0       |
+|    add_ln91_fu_1273_p2     | -   |        | add_ln91    | add | fabric | 0       |
+|    add_ln91_1_fu_1487_p2   | -   |        | add_ln91_1  | add | fabric | 0       |
+|    add_ln92_fu_1512_p2     | -   |        | add_ln92    | add | fabric | 0       |
+|    add_ln92_1_fu_1522_p2   | -   |        | add_ln92_1  | add | fabric | 0       |
+|    add_ln93_fu_1547_p2     | -   |        | add_ln93    | add | fabric | 0       |
+|    add_ln93_1_fu_1557_p2   | -   |        | add_ln93_1  | add | fabric | 0       |
+|  + write_data_DRAM         | 0   |        |             |     |        |         |
+|    add_ln149_fu_172_p2     | -   |        | add_ln149   | add | fabric | 0       |
+|    add_ln153_fu_215_p2     | -   |        | add_ln153   | add | fabric | 0       |
+|    add_ln153_1_fu_225_p2   | -   |        | add_ln153_1 | add | fabric | 0       |
+|    add_ln157_fu_267_p2     | -   |        | add_ln157   | add | fabric | 0       |
+|    add_ln157_1_fu_277_p2   | -   |        | add_ln157_1 | add | fabric | 0       |
+|    add_ln158_fu_302_p2     | -   |        | add_ln158   | add | fabric | 0       |
++----------------------------+-----+--------+-------------+-----+--------+---------+
+
+
+================================================================
+== Bind Storage Report
+================================================================
++------------------------------+------+------+--------+--------------------------+---------+------+---------+
+| Name                         | BRAM | URAM | Pragma | Variable                 | Storage | Impl | Latency |
++------------------------------+------+------+--------+--------------------------+---------+------+---------+
+| + convolution                | 0    | 0    |        |                          |         |      |         |
+|   psum_accumulation_0_fifo_U | -    | -    |        | psum_accumulation_0      | fifo    | srl  | 0       |
+|   psum_accumulation_1_fifo_U | -    | -    |        | psum_accumulation_1      | fifo    | srl  | 0       |
+|   psum_accumulation_2_fifo_U | -    | -    |        | psum_accumulation_2      | fifo    | srl  | 0       |
+|   psum_DRAM_0_fifo_U         | -    | -    |        | psum_DRAM_0              | fifo    | srl  | 0       |
+|   psum_DRAM_1_fifo_U         | -    | -    |        | psum_DRAM_1              | fifo    | srl  | 0       |
+|   psum_DRAM_2_fifo_U         | -    | -    |        | psum_DRAM_2              | fifo    | srl  | 0       |
+|   pes_local_cycle_count_U    | -    | -    |        | pes_local_cycle_count    | ram_t2p | auto | 1       |
+|   pes_psum_count_U           | -    | -    |        | pes_psum_count           | ram_t2p | auto | 1       |
+|   pes_psum_buffer_internal_U | -    | -    |        | pes_psum_buffer_internal | ram_t2p | auto | 1       |
++------------------------------+------+------+--------+--------------------------+---------+------+---------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Valid Pragma Syntax
++-----------------+-------------------------------------------------------+------------------------------------------+
+| Type            | Options                                               | Location                                 |
++-----------------+-------------------------------------------------------+------------------------------------------+
+| inline          | OFF                                                   | convolution.cpp:49 in read_data_dram     |
+| inline          | OFF                                                   | convolution.cpp:145 in write_data_dram   |
+| inline          |                                                       | convolution.cpp:166 in processingelement |
+| interface       | m_axi depth = 1 port = DRAM_ip_data bundle = ifm      | convolution.cpp:303 in convolution       |
+| interface       | m_axi depth = 1 port = DRAM_Wt_data bundle = ifm      | convolution.cpp:304 in convolution       |
+| interface       | m_axi depth = 1 port = DRAM_op_data bundle = ifm      | convolution.cpp:305 in convolution       |
+| interface       | s_axilite register port = return                      | convolution.cpp:307 in convolution       |
+| stream          | variable = psum_accumulation[0] type = fifo depth = 3 | convolution.cpp:312 in convolution       |
+| stream          | variable = psum_accumulation[1] type = fifo depth = 3 | convolution.cpp:313 in convolution       |
+| stream          | variable = psum_accumulation[2] type = fifo depth = 3 | convolution.cpp:314 in convolution       |
+| stream          | variable = psum_DRAM type = fifo depth = 1            | convolution.cpp:315 in convolution       |
+| array_partition | variable = horizontal_pipes dim = 0 complete          | convolution.cpp:321 in convolution       |
+| array_partition | variable = vertical_pipes dim = 0 complete            | convolution.cpp:322 in convolution       |
+| array_partition | variable = diagonal_pipes dim = 0 complete            | convolution.cpp:323 in convolution       |
+| array_partition | variable = PE_IFM_Buffer dim = 0 complete             | convolution.cpp:325 in convolution       |
+| array_partition | variable = PE_Wt_Buffer dim = 0 complete              | convolution.cpp:326 in convolution       |
+| pipeline        |                                                       | convolution.cpp:342 in convolution       |
+| unroll          |                                                       | convolution.cpp:354 in convolution       |
+| unroll          |                                                       | convolution.cpp:359 in convolution       |
++-----------------+-------------------------------------------------------+------------------------------------------+
+
+

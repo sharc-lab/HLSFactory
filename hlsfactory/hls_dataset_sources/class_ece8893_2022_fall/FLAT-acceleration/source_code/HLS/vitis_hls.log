@@ -1,0 +1,44 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2021.1 (64-bit)
+  **** SW Build 3247384 on Thu Jun 10 19:36:07 MDT 2021
+  **** IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+    ** Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+
+source /tools/software/xilinx/Vitis_HLS/2021.1/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] Running '/tools/software/xilinx/Vitis_HLS/2021.1/bin/unwrapped/lnx64.o/vitis_hls'
+INFO: [HLS 200-10] For user 'zchen752' on host 'ece-linlab12.ece.gatech.edu' (Linux_x86_64 version 3.10.0-1160.62.1.el7.x86_64) on Thu Apr 28 19:25:05 EDT 2022
+INFO: [HLS 200-10] On os "Red Hat Enterprise Linux Workstation release 7.9 (Maipo)"
+INFO: [HLS 200-10] In directory '/nethome/zchen752/FLAT_8893Project_HLS'
+Sourcing Tcl script 'run_hls.tcl'
+INFO: [HLS 200-1510] Running: open_project flat 
+INFO: [HLS 200-10] Opening project '/nethome/zchen752/FLAT_8893Project_HLS/flat'.
+INFO: [HLS 200-1510] Running: set_top FlatDataflow 
+INFO: [HLS 200-1510] Running: add_files flat.cpp 
+INFO: [HLS 200-10] Adding design file 'flat.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files utils.cpp 
+INFO: [HLS 200-10] Adding design file 'utils.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution solution1 -flow_target vivado 
+INFO: [HLS 200-10] Opening solution '/nethome/zchen752/FLAT_8893Project_HLS/flat/solution1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v=2021.1;t=hls+guidance;d=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xc7z020-clg400-1 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 316.310 MB.
+INFO: [HLS 200-10] Analyzing design file 'utils.cpp' ... 
+WARNING: [HLS 207-5301] unused parameter 'print': /tools/software/xilinx/Vitis_HLS/2021.1/common/technology/autopilot/ap_int_base.h:792:16
+INFO: [HLS 200-10] Analyzing design file 'flat.cpp' ... 
+ERROR: [HLS 207-1398] unexpected ';' before ')': flat.cpp:48:97
+WARNING: [HLS 207-5528] Ignore interface attribute or pragma which is not used in top function: flat.cpp:23:9
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 5.35 seconds. CPU system time: 0.39 seconds. Elapsed time: 7.76 seconds; current allocated memory: 317.783 MB.
+ 
+    while executing
+"source run_hls.tcl"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel \#0 [list source $arg] "
+
+INFO: [HLS 200-112] Total CPU user time: 8.28 seconds. Total CPU system time: 1.02 seconds. Total elapsed time: 15.57 seconds; peak allocated memory: 317.469 MB.
+INFO: [Common 17-206] Exiting vitis_hls at Thu Apr 28 19:25:20 2022...

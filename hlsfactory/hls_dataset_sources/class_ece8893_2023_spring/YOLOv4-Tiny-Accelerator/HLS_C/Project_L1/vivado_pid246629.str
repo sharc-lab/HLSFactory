@@ -1,0 +1,195 @@
+/*
+
+Xilinx Vivado v2022.1.2 (64-bit) [Major: 2022, Minor: 1]
+SW Build: 3605665 on Fri Aug  5 22:52:02 MDT 2022
+IP Build: 3603185 on Sat Aug  6 04:07:44 MDT 2022
+
+Process ID (PID): 246629
+License: Customer
+Mode: GUI Mode
+
+Current time: 	Thu May 04 11:19:02 EDT 2023
+Time zone: 	Eastern Standard Time (America/New_York)
+
+OS: Red Hat Enterprise Linux release 8.7 (Ootpa)
+OS Version: 4.18.0-425.19.2.el8_7.x86_64
+OS Architecture: amd64
+Available processors (cores): 112
+
+Display: localhost:16.0
+Screen size: 1536x864
+Screen resolution (DPI): 100
+Available screens: 1
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+Scale size: 12
+
+Java version: 	11.0.11 64-bit
+Java home: 	/tools/software/xilinx/Vivado/2022.1/tps/lnx64/jre11.0.11_9
+Java executable: 	/tools/software/xilinx/Vivado/2022.1/tps/lnx64/jre11.0.11_9/bin/java
+Java arguments: 	[-Dsun.java2d.pmoffscreen=false, -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2, -Dsun.java2d.xrender=false, -Djdk.gtk.version=2, -Dsun.java2d.uiScale.enabled=false, -Xverify:none, -Dswing.aatext=true, -XX:-UsePerfData, -Djdk.map.althashing.threshold=512, -XX:StringTableSize=4072, --add-opens=java.desktop/com.sun.awt=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-opens=java.base/java.nio=ALL-UNNAMED, --add-opens=java.desktop/sun.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-opens=java.desktop/javax.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-opens=java.desktop/java.awt.event=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-exports=java.base/java.nio=ALL-UNNAMED, --add-exports=java.desktop/sun.swing=ALL-UNNAMED, --add-exports=java.desktop/javax.swing=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-exports=java.desktop/sun.swing=ALL-UNNAMED, --add-exports=java.desktop/sun.swing.table=ALL-UNNAMED, --add-exports=java.desktop/sun.swing.plaf.synth=ALL-UNNAMED, --add-exports=java.desktop/sun.awt.shell=ALL-UNNAMED, --add-exports=java.base/sun.security.action=ALL-UNNAMED, --add-exports=java.desktop/sun.font=ALL-UNNAMED, --add-opens=java.desktop/sun.awt.X11=ALL-UNNAMED, -XX:NewSize=60m, -XX:MaxNewSize=60m, -Xms256m, -Xmx3072m, -Xss5m, -Xrs]
+Java initial memory (-Xms): 	256 MB
+Java maximum memory (-Xmx):	 3 GB
+
+
+User name: 	asumbetla3
+User home directory: /nethome/asumbetla3
+User working directory: /nethome/asumbetla3/FPGA/Project
+User country: 	US
+User language: 	en
+User locale: 	en_US
+
+RDI_BASEROOT: /tools/software/xilinx/Vivado
+HDI_APPROOT: /tools/software/xilinx/Vivado/2022.1
+RDI_DATADIR: /tools/software/xilinx/Vivado/2022.1/data
+RDI_BINDIR: /tools/software/xilinx/Vivado/2022.1/bin
+
+Vivado preferences file: /nethome/asumbetla3/.Xilinx/Vivado/2022.1/vivado.xml
+Vivado preferences directory: /nethome/asumbetla3/.Xilinx/Vivado/2022.1/
+Vivado layouts directory: /nethome/asumbetla3/.Xilinx/Vivado/2022.1/data/layouts
+PlanAhead jar file: 	/tools/software/xilinx/Vivado/2022.1/lib/classes/planAhead.jar
+Vivado log file: 	/nethome/asumbetla3/FPGA/Project/vivado.log
+Vivado journal file: 	/nethome/asumbetla3/FPGA/Project/vivado.jou
+Engine tmp dir: 	./.Xil/Vivado-246629-ece-linlabsrv01.ece.gatech.edu
+
+Xilinx Environment Variables
+----------------------------
+XILINX: /tools/software/xilinx/Vivado/2022.1/ids_lite/ISE
+XILINXD_LICENSE_FILE: 2100@ece-winlic.ece.gatech.edu
+XILINX_DSP: /tools/software/xilinx/Vivado/2022.1/ids_lite/ISE
+XILINX_HLS: /tools/software/xilinx/Vitis_HLS/2022.1
+XILINX_PLANAHEAD: /tools/software/xilinx/Vivado/2022.1
+XILINX_SDK: /tools/software/xilinx/Vitis/2022.1
+XILINX_VITIS: /tools/software/xilinx/Vitis/2022.1
+XILINX_VIVADO: /tools/software/xilinx/Vivado/2022.1
+XILINX_VIVADO_HLS: /tools/software/xilinx/Vivado/2022.1
+
+
+GUI allocated memory:	256 MB
+GUI max memory:		3,072 MB
+Engine allocated memory: 1,829 MB
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+// HMemoryUtils.trashcanNow. Engine heap size: 1,830 MB. GUI used memory: 53 MB. Current time: 5/4/23, 11:19:03 AM EDT
+selectCodeEditor(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, 456, 14); // dT
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, "set_param gui.addressMap 0", true); // l
+// Tcl Command: 'set_param gui.addressMap 0'
+// Tcl Command: 'set_param gui.addressMap 0'
+// Tcl Message: set_param gui.addressMap 0 
+// Tcl Message: 0 
+// Elapsed time: 11 seconds
+selectMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // aj
+selectMenu(PAResourceItoN.MainMenuMgr_PROJECT, "Project"); // ao
+selectMenuItem(PAResourceCommand.PACommandNames_NEW_PROJECT, "New..."); // ar
+dismissMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // aj
+// Run Command: PAResourceCommand.PACommandNames_NEW_PROJECT
+selectButton("NEXT", "Next >"); // JButton
+selectButton("NEXT", "Next >"); // JButton
+// [GUI Memory]: 111 MB (+113524kb) [00:01:56]
+// [Engine Memory]: 1,840 MB (+1777867kb) [00:01:56]
+selectButton("NEXT", "Next >"); // JButton
+// Elapsed time: 17 seconds
+setText("PAResourceEtoH.FPGAChooser_FPGA_TABLE_SEARCH_FIELD", "xc7z020clg400-1"); // OverlayTextField
+selectTable(PAResourceEtoH.FPGAChooser_FPGA_TABLE, "xc7z020clg400-1 ; 400 ; 125 ; 53200 ; 106400 ; 140 ; 0 ; 220 ; 0 ; 0 ; 0 ; 0 ; 0 ; 0 ; 0 ; 0 ; 0 ; 0 ; 0 ; 0 ; 0 ; 0 ; 0 ; 4 ;  ;  ;  ;  ; 0 ;  ;  ;  ;  ;  ;  ; 0.95 ; 0.95 ; 1.05", 0, "xc7z020clg400-1", 0); // r
+selectButton("NEXT", "Next >"); // JButton
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: FLOW_ADDED
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_ADD
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_NEW
+// Tcl Message: create_project project_1 /nethome/asumbetla3/FPGA/Project/project_1 -part xc7z020clg400-1 
+// TclEventType: PROJECT_NEW
+// WARNING: HEventQueue.dispatchEvent() is taking  1890 ms.
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/software/xilinx/Vivado/2022.1/data/ip'. 
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// HMemoryUtils.trashcanNow. Engine heap size: 1,948 MB. GUI used memory: 61 MB. Current time: 5/4/23, 11:21:03 AM EDT
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// [Engine Memory]: 1,948 MB (+16990kb) [00:02:21]
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+selectButton("FINISH", "Finish"); // JButton
+// 'g' command handler elapsed time: 45 seconds
+dismissDialog("Create Project"); // bA
+dismissDialog("New Project"); // f
+// [GUI Memory]: 119 MB (+2557kb) [00:02:25]
+// Elapsed time: 17 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager, IP Catalog]", 4, false); // n
+// Run Command: PAResourceCommand.PACommandNames_CORE_GEN
+// PAPropertyPanels.initPanels (/tools/software/xilinx/Vivado/2022.1/data) elapsed time: 0.3s
+selectTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "User Repository ;  ;  ;  ; ", 0, "User Repository", 0, true); // L - Node
+selectTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "User Repository ;  ;  ;  ; ", 0, "User Repository", 0, true, false, false, false, true, false); // L - Popup Trigger - Node
+selectMenuItem(PAResourceAtoD.CoreAndInterfacesBaseTreeTablePanel_ADD_REPOSITORY, "Add Repository..."); // ar
+// Elapsed time: 14 seconds
+setFolderChooser("/nethome/asumbetla3/FPGA/Project/proj/solution1");
+// TclEventType: PROJECT_CHANGE
+// Tcl Message: set_property  ip_repo_paths  /nethome/asumbetla3/FPGA/Project/proj/solution1 [current_project] 
+// TclEventType: CREATE_IP_CATALOG
+// Tcl Message: update_ip_catalog 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories 
+// [GUI Memory]: 129 MB (+4450kb) [00:03:00]
+// TclEventType: CREATE_IP_CATALOG
+// Tcl Message: INFO: [IP_Flow 19-1700] Loaded user IP repository '/nethome/asumbetla3/FPGA/Project/proj/solution1'. 
+selectTree(RDIResource.AddRepositoryInfoDialog_REPOSITORY_TREE, "[root, /nethome/asumbetla3/FPGA/Project/proj/solution1]", 0, false); // a
+selectTree(RDIResource.AddRepositoryInfoDialog_REPOSITORY_TREE, "[root, /nethome/asumbetla3/FPGA/Project/proj/solution1]", 0, false); // a
+selectTree(RDIResource.AddRepositoryInfoDialog_REPOSITORY_TREE, "[root, /nethome/asumbetla3/FPGA/Project/proj/solution1]", 0, false); // a
+// Elapsed time: 31 seconds
+selectTree(RDIResource.AddRepositoryInfoDialog_REPOSITORY_TREE, "[root, /nethome/asumbetla3/FPGA/Project/proj/solution1]", 0, false); // a
+selectButton(RDIResource.AddRepositoryInfoDialog_COLLAPSE_ALL, "Add Repository_collapse_all"); // D
+selectTree(RDIResource.AddRepositoryInfoDialog_REPOSITORY_TREE, "[root, /nethome/asumbetla3/FPGA/Project/proj/solution1]", 0, false); // a
+selectButton(RDIResource.AddRepositoryInfoDialog_COLLAPSE_ALL, "Add Repository_collapse_all"); // D
+selectButton(RDIResource.AddRepositoryInfoDialog_EXPAND_ALL, "Add Repository_expand_all"); // D
+dismissDialog("Add Repository"); // c
+// PAPropertyPanels.initPanels (/tools/software/xilinx/Vivado/2022.1/data) elapsed time: 0.2s
+selectTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "User Repository ;  ;  ;  ; ", 1, "User Repository", 0, true); // L - Node
+selectTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "User Repository ;  ;  ;  ; ", 0, "User Repository", 0, false); // L
+selectTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "User Repository ;  ;  ;  ; ", 0, "User Repository", 0, false, false, false, false, true, false); // L - Popup Trigger
+selectMenuItem(PAResourceAtoD.CoreAndInterfacesBaseTreeTablePanel_REMOVE_FROM_PROJECT, "Remove from project"); // ar
+// Run Command: RDIResourceCommand.RDICommands_DELETE
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+// TclEventType: PROJECT_CHANGE
+// TclEventType: CREATE_IP_CATALOG
+// Tcl Message: set_property  ip_repo_paths  {} [current_project] 
+// Tcl Message: update_ip_catalog 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified 
+dismissDialog("Remove Repository"); // ao
+selectTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "User Repository ;  ;  ;  ; ", 0, "User Repository", 0, true); // L - Node
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager, IP Catalog]", 4, false); // n
+// Run Command: PAResourceCommand.PACommandNames_CORE_GEN
+// PAPropertyPanels.initPanels (/tools/software/xilinx/Vivado/2022.1/data) elapsed time: 0.2s
+selectTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "User Repository ;  ;  ;  ; ", 0, "User Repository", 0, true); // L - Node
+selectTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "User Repository ;  ;  ;  ; ", 0, "User Repository", 0, true, false, false, false, true, false); // L - Popup Trigger - Node
+selectMenuItem(PAResourceAtoD.CoreAndInterfacesBaseTreeTablePanel_ADD_REPOSITORY, "Add Repository..."); // ar
+// Elapsed time: 172 seconds
+dismissFolderChooser();
+selectTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "User Repository ;  ;  ;  ; ", 0, "User Repository", 0, true, false, false, false, true, false); // L - Popup Trigger - Node
+selectMenuItem(PAResourceAtoD.CoreAndInterfacesBaseTreeTablePanel_ADD_REPOSITORY, "Add Repository..."); // ar
+setFolderChooser("/nethome/asumbetla3/FPGA/Project/proj/solution1");
+// TclEventType: PROJECT_CHANGE
+// Tcl Message: set_property  ip_repo_paths  /nethome/asumbetla3/FPGA/Project/proj/solution1 [current_project] 
+// TclEventType: CREATE_IP_CATALOG
+// Tcl Message: update_ip_catalog 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories 
+// TclEventType: CREATE_IP_CATALOG
+// [GUI Memory]: 142 MB (+7369kb) [00:07:07]
+// Tcl Message: INFO: [IP_Flow 19-1700] Loaded user IP repository '/nethome/asumbetla3/FPGA/Project/proj/solution1'. 
+expandTree(RDIResource.AddRepositoryInfoDialog_REPOSITORY_TREE, "[root, /nethome/asumbetla3/FPGA/Project/proj/solution1, <html>IPs<span style='color: rgb(128, 128, 128)'>&nbsp;(1)</span></html>]", 1); // a
+selectButton(RDIResource.AddRepositoryInfoDialog_OK, "OK"); // a
+dismissDialog("Add Repository"); // c

@@ -1,0 +1,199 @@
+
+
+================================================================
+== Synthesis Summary Report of 'tiled_maxpool2D'
+================================================================
++ General Information: 
+    * Date:           Tue May  2 17:19:43 2023
+    * Version:        2022.1.2 (Build 3605665 on Fri Aug  5 22:52:02 MDT 2022)
+    * Project:        proj
+    * Solution:       solution2 (Vivado IP Flow Target)
+    * Product family: zynq
+    * Target device:  xc7z020-clg400-1
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +-----------------------------------------------------------------------+------+------+----------+-----------+----------+----------+-------+----------+---------+---------+-----------+-----------+-----+
+    |                                Modules                                | Issue|      | Latency  |  Latency  | Iteration|          |  Trip |          |         |         |           |           |     |
+    |                                & Loops                                | Type | Slack| (cycles) |    (ns)   |  Latency | Interval | Count | Pipelined|  BRAM   |   DSP   |     FF    |    LUT    | URAM|
+    +-----------------------------------------------------------------------+------+------+----------+-----------+----------+----------+-------+----------+---------+---------+-----------+-----------+-----+
+    |+ tiled_maxpool2D                                                      |     -|  0.00|  19793281|  1.979e+08|         -|  19793282|      -|        no|  2 (~0%)|   4 (1%)|  1874 (1%)|  3987 (7%)|    -|
+    | o TILE_ROW_KERNEL_GROUP_VITIS_LOOP_59_1                               |     -|  7.30|  19793280|  1.979e+08|      1830|         -|  10816|        no|        -|        -|          -|          -|    -|
+    |  + tiled_maxpool2D_Pipeline_INPUT_BUFFER_DEPTH_INPUT_BUFFER_HEIGHT    |     -|  0.00|      1038|  1.038e+04|         -|      1038|      -|        no|        -|  2 (~0%)|  137 (~0%)|  462 (~0%)|    -|
+    |   o INPUT_BUFFER_DEPTH_INPUT_BUFFER_HEIGHT                            |    II|  7.30|      1036|  1.036e+04|        21|         8|    128|       yes|        -|        -|          -|          -|    -|
+    |  + tiled_maxpool2D_Pipeline_OW_OH_OD                                  |     -|  0.44|       516|  5.160e+03|         -|       516|      -|        no|        -|        -|  119 (~0%)|  385 (~0%)|    -|
+    |   o OW_OH_OD                                                          |    II|  7.30|       514|  5.140e+03|         5|         2|    256|       yes|        -|        -|          -|          -|    -|
+    |  + tiled_maxpool2D_Pipeline_OUTPUT_BUFFER_DEPTH_OUTPUT_BUFFER_HEIGHT  |     -|  0.00|       268|  2.680e+03|         -|       268|      -|        no|        -|  2 (~0%)|  237 (~0%)|  444 (~0%)|    -|
+    |   o OUTPUT_BUFFER_DEPTH_OUTPUT_BUFFER_HEIGHT                          |    II|  7.30|       266|  2.660e+03|        15|         4|     64|       yes|        -|        -|          -|          -|    -|
+    +-----------------------------------------------------------------------+------+------+----------+-----------+----------+----------+-------+----------+---------+---------+-----------+-----------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* M_AXI
++-----------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+
+| Interface | Data Width | Address Width | Latency | Offset | Register | Max Widen | Max Read     | Max Write    | Num Read    | Num Write   |
+|           | (SW->HW)   |               |         |        |          | Bitwidth  | Burst Length | Burst Length | Outstanding | Outstanding |
++-----------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+
+| m_axi_fm  | 16 -> 16   | 64            | 0       | slave  | 0        | 0         | 16           | 16           | 16          | 16          |
++-----------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+
+
+* S_AXILITE Interfaces
++---------------+------------+---------------+--------+----------+
+| Interface     | Data Width | Address Width | Offset | Register |
++---------------+------------+---------------+--------+----------+
+| s_axi_control | 32         | 6             | 16     | 0        |
++---------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++---------------+----------------------+--------+-------+--------+-----------------------------------+----------------------------------------------------------------------+
+| Interface     | Register             | Offset | Width | Access | Description                       | Bit Fields                                                           |
++---------------+----------------------+--------+-------+--------+-----------------------------------+----------------------------------------------------------------------+
+| s_axi_control | CTRL                 | 0x00   | 32    | RW     | Control signals                   | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_control | GIER                 | 0x04   | 32    | RW     | Global Interrupt Enable Register  | 0=Enable                                                             |
+| s_axi_control | IP_IER               | 0x08   | 32    | RW     | IP Interrupt Enable Register      | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                        |
+| s_axi_control | IP_ISR               | 0x0c   | 32    | RW     | IP Interrupt Status Register      | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                        |
+| s_axi_control | input_feature_map_1  | 0x10   | 32    | W      | Data signal of input_feature_map  |                                                                      |
+| s_axi_control | input_feature_map_2  | 0x14   | 32    | W      | Data signal of input_feature_map  |                                                                      |
+| s_axi_control | output_feature_map_1 | 0x1c   | 32    | W      | Data signal of output_feature_map |                                                                      |
+| s_axi_control | output_feature_map_2 | 0x20   | 32    | W      | Data signal of output_feature_map |                                                                      |
++---------------+----------------------+--------+-------+--------+-----------------------------------+----------------------------------------------------------------------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------+
+| Interface | Type       | Ports     |
++-----------+------------+-----------+
+| ap_clk    | clock      | ap_clk    |
+| ap_rst_n  | reset      | ap_rst_n  |
+| interrupt | interrupt  | interrupt |
+| ap_ctrl   | ap_ctrl_hs |           |
++-----------+------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++--------------------+-----------+--------------------------------------+
+| Argument           | Direction | Datatype                             |
++--------------------+-----------+--------------------------------------+
+| input_feature_map  | inout     | ap_fixed<16, 6, AP_TRN, AP_WRAP, 0>* |
+| output_feature_map | inout     | ap_fixed<16, 6, AP_TRN, AP_WRAP, 0>* |
++--------------------+-----------+--------------------------------------+
+
+* SW-to-HW Mapping
++--------------------+---------------+-----------+----------+------------------------------------------------+
+| Argument           | HW Interface  | HW Type   | HW Usage | HW Info                                        |
++--------------------+---------------+-----------+----------+------------------------------------------------+
+| input_feature_map  | m_axi_fm      | interface |          |                                                |
+| input_feature_map  | s_axi_control | register  | offset   | name=input_feature_map_1 offset=0x10 range=32  |
+| input_feature_map  | s_axi_control | register  | offset   | name=input_feature_map_2 offset=0x14 range=32  |
+| output_feature_map | m_axi_fm      | interface |          |                                                |
+| output_feature_map | s_axi_control | register  | offset   | name=output_feature_map_1 offset=0x1c range=32 |
+| output_feature_map | s_axi_control | register  | offset   | name=output_feature_map_2 offset=0x20 range=32 |
++--------------------+---------------+-----------+----------+------------------------------------------------+
+
+
+================================================================
+== M_AXI Burst Information
+================================================================
+ Note: All burst requests might be further partitioned into multiple requests during RTL generation based on max_read_burst_length or max_write_burst_length settings.
+
+* Inferred Burst Summary
++--------------+---------------------+-----------+--------+-------+-----------------+
+| HW Interface | Loop                | Direction | Length | Width | Location        |
++--------------+---------------------+-----------+--------+-------+-----------------+
+| m_axi_fm     | INPUT_BUFFER_WIDTH  | read      | 8      | 16    | utils.cpp:42:13 |
+| m_axi_fm     | OUTPUT_BUFFER_WIDTH | write     | 4      | 16    | utils.cpp:84:13 |
++--------------+---------------------+-----------+--------+-------+-----------------+
+
+* Inferred Bursts and Widening Missed
++--------------+--------------------+----------------------+-------------------------------------------------------------------------------------------------------+------------+-----------------+
+| HW Interface | Variable           | Loop                 | Problem                                                                                               | Resolution | Location        |
++--------------+--------------------+----------------------+-------------------------------------------------------------------------------------------------------+------------+-----------------+
+| m_axi_fm     | input_feature_map  | INPUT_BUFFER_HEIGHT  | Stride is incompatible                                                                                | 214-230    | utils.cpp:39:9  |
+| m_axi_fm     | output_feature_map | OUTPUT_BUFFER_HEIGHT | Stride is incompatible                                                                                | 214-230    | utils.cpp:81:9  |
+| m_axi_fm     | output_feature_map | OUTPUT_BUFFER_WIDTH  | Could not widen since type i16 size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | utils.cpp:84:13 |
+| m_axi_fm     | input_feature_map  | INPUT_BUFFER_WIDTH   | Could not widen since type i16 size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | utils.cpp:42:13 |
++--------------+--------------------+----------------------+-------------------------------------------------------------------------------------------------------+------------+-----------------+
+
+    * Resolution URL: www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=XXX-YYY.html (replace XXX-YYY with column value)
+
+================================================================
+== Bind Op Report
+================================================================
++----------------------------------------------------------------------+-----+--------+------------+-----+--------+---------+
+| Name                                                                 | DSP | Pragma | Variable   | Op  | Impl   | Latency |
++----------------------------------------------------------------------+-----+--------+------------+-----+--------+---------+
+| + tiled_maxpool2D                                                    | 4   |        |            |     |        |         |
+|   tmp_fu_253_p2                                                      | -   |        | tmp        | add | fabric | 0       |
+|   tmp2_fu_258_p2                                                     | -   |        | tmp2       | add | fabric | 0       |
+|   add_ln37_1_fu_269_p2                                               | -   |        | add_ln37_1 | add | fabric | 0       |
+|   add_ln37_fu_483_p2                                                 | -   |        | add_ln37   | add | fabric | 0       |
+|   add_ln40_fu_361_p2                                                 | -   |        | add_ln40   | add | fabric | 0       |
+|   tmp_mid1_fu_390_p2                                                 | -   |        | tmp_mid1   | add | fabric | 0       |
+|   tmp2_mid1_fu_403_p2                                                | -   |        | tmp2_mid1  | add | fabric | 0       |
+|   add_ln59_fu_524_p2                                                 | -   |        | add_ln59   | add | fabric | 0       |
+|   add_ln57_fu_451_p2                                                 | -   |        | add_ln57   | add | fabric | 0       |
+|   add_ln40_1_fu_292_p2                                               | -   |        | add_ln40_1 | add | fabric | 0       |
+|  + tiled_maxpool2D_Pipeline_INPUT_BUFFER_DEPTH_INPUT_BUFFER_HEIGHT   | 2   |        |            |     |        |         |
+|    add_ln36_2_fu_240_p2                                              | -   |        | add_ln36_2 | add | fabric | 0       |
+|    add_ln36_fu_252_p2                                                | -   |        | add_ln36   | add | fabric | 0       |
+|    add_ln36_1_fu_296_p2                                              | -   |        | add_ln36_1 | add | fabric | 0       |
+|    mul_mul_7ns_15ns_22_4_1_U1                                        | 1   |        | mul_ln36   | mul | dsp48  | 3       |
+|    add_ln51_fu_310_p2                                                | -   |        | add_ln51   | add | fabric | 0       |
+|    ama_addmuladd_4ns_7ns_8ns_22ns_22_4_1_U2                          | 1   |        | empty_27   | add | dsp48  | 3       |
+|    ama_addmuladd_4ns_7ns_8ns_22ns_22_4_1_U2                          | 1   |        | empty_28   | mul | dsp48  | 3       |
+|    ama_addmuladd_4ns_7ns_8ns_22ns_22_4_1_U2                          | 1   |        | tmp1       | add | dsp48  | 3       |
+|    empty_29_fu_332_p2                                                | -   |        | empty_29   | add | fabric | 0       |
+|    add_ln39_fu_357_p2                                                | -   |        | add_ln39   | add | fabric | 0       |
+|  + tiled_maxpool2D_Pipeline_OW_OH_OD                                 | 0   |        |            |     |        |         |
+|    add_ln17_1_fu_210_p2                                              | -   |        | add_ln17_1 | add | fabric | 0       |
+|    add_ln17_fu_221_p2                                                | -   |        | add_ln17   | add | fabric | 0       |
+|    add_ln21_fu_274_p2                                                | -   |        | add_ln21   | add | fabric | 0       |
+|    add_ln28_fu_447_p2                                                | -   |        | add_ln28   | add | fabric | 0       |
+|    add_ln28_1_fu_459_p2                                              | -   |        | add_ln28_1 | add | fabric | 0       |
+|    add_ln25_fu_465_p2                                                | -   |        | add_ln25   | add | fabric | 0       |
+|    add_ln21_1_fu_371_p2                                              | -   |        | add_ln21_1 | add | fabric | 0       |
+|  + tiled_maxpool2D_Pipeline_OUTPUT_BUFFER_DEPTH_OUTPUT_BUFFER_HEIGHT | 2   |        |            |     |        |         |
+|    add_ln78_2_fu_227_p2                                              | -   |        | add_ln78_2 | add | fabric | 0       |
+|    add_ln78_fu_239_p2                                                | -   |        | add_ln78   | add | fabric | 0       |
+|    add_ln78_1_fu_263_p2                                              | -   |        | add_ln78_1 | add | fabric | 0       |
+|    mul_mul_7ns_13ns_20_4_1_U12                                       | 1   |        | mul_ln78   | mul | dsp48  | 3       |
+|    add_ln86_fu_304_p2                                                | -   |        | add_ln86   | add | fabric | 0       |
+|    ama_addmuladd_3ns_6ns_7ns_20ns_20_4_1_U13                         | 1   |        | empty_22   | add | dsp48  | 3       |
+|    ama_addmuladd_3ns_6ns_7ns_20ns_20_4_1_U13                         | 1   |        | empty_23   | mul | dsp48  | 3       |
+|    ama_addmuladd_3ns_6ns_7ns_20ns_20_4_1_U13                         | 1   |        | tmp3       | add | dsp48  | 3       |
+|    empty_24_fu_368_p2                                                | -   |        | empty_24   | add | fabric | 0       |
+|    add_ln81_fu_345_p2                                                | -   |        | add_ln81   | add | fabric | 0       |
++----------------------------------------------------------------------+-----+--------+------------+-----+--------+---------+
+
+
+================================================================
+== Bind Storage Report
+================================================================
++-----------------------+------+------+--------+-------------------+---------+------+---------+
+| Name                  | BRAM | URAM | Pragma | Variable          | Storage | Impl | Latency |
++-----------------------+------+------+--------+-------------------+---------+------+---------+
+| + tiled_maxpool2D     | 2    | 0    |        |                   |         |      |         |
+|   maxpool_in_buf_V_U  | 1    | -    |        | maxpool_in_buf_V  | ram_s2p | auto | 1       |
+|   maxpool_out_buf_V_U | 1    | -    |        | maxpool_out_buf_V | rom_np  | auto | 1       |
++-----------------------+------+------+--------+-------------------+---------+------+---------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Valid Pragma Syntax
++-----------+-------------------------------------------------+---------------------------------------------------------------+
+| Type      | Options                                         | Location                                                      |
++-----------+-------------------------------------------------+---------------------------------------------------------------+
+| interface | m_axi depth=1 port=input_feature_map bundle=fm  | tiled_maxpool2D.cpp:21 in tiled_maxpool2d, input_feature_map  |
+| interface | m_axi depth=1 port=output_feature_map bundle=fm | tiled_maxpool2D.cpp:22 in tiled_maxpool2d, output_feature_map |
+| interface | s_axilite register port=return                  | tiled_maxpool2D.cpp:24 in tiled_maxpool2d, return             |
++-----------+-------------------------------------------------+---------------------------------------------------------------+
+
+

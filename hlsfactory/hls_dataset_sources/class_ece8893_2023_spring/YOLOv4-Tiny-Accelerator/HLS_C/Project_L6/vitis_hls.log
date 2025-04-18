@@ -1,0 +1,389 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1.2 (64-bit)
+  **** SW Build 3605665 on Fri Aug  5 22:52:02 MDT 2022
+  **** IP Build 3603185 on Sat Aug  6 04:07:44 MDT 2022
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+source /tools/software/xilinx/Vitis_HLS/2022.1/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] Running '/tools/software/xilinx/Vitis_HLS/2022.1/bin/unwrapped/lnx64.o/vitis_hls'
+INFO: [HLS 200-10] For user 'asumbetla3' on host 'ece-linlabsrv01.ece.gatech.edu' (Linux_x86_64 version 4.18.0-425.19.2.el8_7.x86_64) on Tue May 02 16:55:02 EDT 2023
+INFO: [HLS 200-10] On os "Red Hat Enterprise Linux release 8.7 (Ootpa)"
+INFO: [HLS 200-10] In directory '/nethome/asumbetla3/FPGA/Project_L6'
+Sourcing Tcl script 'script.tcl'
+INFO: [HLS 200-1510] Running: source script.tcl
+INFO: [HLS 200-1510] Running: open_project proj 
+INFO: [HLS 200-10] Creating and opening project '/nethome/asumbetla3/FPGA/Project_L6/proj'.
+INFO: [HLS 200-1510] Running: set_top tiled_conv 
+INFO: [HLS 200-1510] Running: add_files conv.h 
+INFO: [HLS 200-10] Adding design file 'conv.h' to the project
+INFO: [HLS 200-1510] Running: add_files utils.cpp 
+INFO: [HLS 200-10] Adding design file 'utils.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files conv_7x7.cpp 
+INFO: [HLS 200-10] Adding design file 'conv_7x7.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files tiled_conv.cpp 
+INFO: [HLS 200-10] Adding design file 'tiled_conv.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution solution1 -flow_target vivado 
+INFO: [HLS 200-10] Creating and opening solution '/nethome/asumbetla3/FPGA/Project_L6/proj/solution1'.
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-1505.html
+INFO: [HLS 200-435] Setting 'open_solution -flow_target vivado' configuration: config_interface -m_axi_latency=0
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 757.336 MB.
+INFO: [HLS 200-10] Analyzing design file 'tiled_conv.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'conv_7x7.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'utils.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 39 seconds. CPU system time: 4.23 seconds. Elapsed time: 44.1 seconds; current allocated memory: 763.500 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-291] Loop 'OH' is marked as complete unroll implied by the pipeline pragma (conv_7x7.cpp:48:21)
+INFO: [HLS 214-291] Loop 'OD' is marked as complete unroll implied by the pipeline pragma (conv_7x7.cpp:51:25)
+INFO: [HLS 214-291] Loop 'BOH' is marked as complete unroll implied by the pipeline pragma (conv_7x7.cpp:27:9)
+INFO: [HLS 214-291] Loop 'BOD' is marked as complete unroll implied by the pipeline pragma (conv_7x7.cpp:30:13)
+INFO: [HLS 214-186] Unrolling loop 'OH' (conv_7x7.cpp:48:21) in function 'conv_7x7' completely with a factor of 8 (conv_7x7.cpp:16:0)
+INFO: [HLS 214-186] Unrolling loop 'OD' (conv_7x7.cpp:51:25) in function 'conv_7x7' completely with a factor of 4 (conv_7x7.cpp:16:0)
+INFO: [HLS 214-186] Unrolling loop 'BOH' (conv_7x7.cpp:27:9) in function 'conv_7x7' completely with a factor of 8 (conv_7x7.cpp:16:0)
+INFO: [HLS 214-186] Unrolling loop 'BOD' (conv_7x7.cpp:30:13) in function 'conv_7x7' completely with a factor of 4 (conv_7x7.cpp:16:0)
+INFO: [HLS 214-178] Inlining function 'load_input_tile_block_from_DRAM(ap_fixed<16, 3, (ap_q_mode)5, (ap_o_mode)3, 0> (*) [8][8], ap_fixed<16, 3, (ap_q_mode)5, (ap_o_mode)3, 0> (*) [104][104], int, int)' into 'tiled_conv(ap_fixed<16, 3, (ap_q_mode)5, (ap_o_mode)3, 0> (*) [104][104], ap_fixed<16, 3, (ap_q_mode)5, (ap_o_mode)3, 0> (*) [64][1][1], ap_fixed<16, 3, (ap_q_mode)5, (ap_o_mode)3, 0>*, ap_fixed<16, 3, (ap_q_mode)5, (ap_o_mode)3, 0> (*) [104][104])' (tiled_conv.cpp:16:0)
+INFO: [HLS 214-178] Inlining function 'store_output_tile_to_DRAM(ap_fixed<16, 3, (ap_q_mode)5, (ap_o_mode)3, 0> (*) [104][104], ap_fixed<16, 3, (ap_q_mode)5, (ap_o_mode)3, 0> (*) [8][8], int, int, int)' into 'tiled_conv(ap_fixed<16, 3, (ap_q_mode)5, (ap_o_mode)3, 0> (*) [104][104], ap_fixed<16, 3, (ap_q_mode)5, (ap_o_mode)3, 0> (*) [64][1][1], ap_fixed<16, 3, (ap_q_mode)5, (ap_o_mode)3, 0>*, ap_fixed<16, 3, (ap_q_mode)5, (ap_o_mode)3, 0> (*) [104][104])' (tiled_conv.cpp:16:0)
+INFO: [HLS 214-248] Applying array_partition to 'conv_in_buf': Complete partitioning on dimension 2. (tiled_conv.cpp:31:7)
+INFO: [HLS 214-248] Applying array_partition to 'conv_wt_buf': Complete partitioning on dimension 1. (tiled_conv.cpp:32:10)
+INFO: [HLS 214-248] Applying array_partition to 'conv_bias_buf': Complete partitioning on dimension 1. (tiled_conv.cpp:33:10)
+INFO: [HLS 214-248] Applying array_partition to 'conv_out_buf': Complete partitioning on dimension 1. Complete partitioning on dimension 2. (tiled_conv.cpp:34:10)
+INFO: [HLS 214-241] Aggregating maxi variable 'output_feature_map' with compact=none mode in 16-bits
+INFO: [HLS 214-241] Aggregating maxi variable 'layer_bias' with compact=none mode in 16-bits (tiled_conv.cpp:16:0)
+INFO: [HLS 214-241] Aggregating maxi variable 'layer_weights' with compact=none mode in 16-bits
+INFO: [HLS 214-241] Aggregating maxi variable 'input_feature_map' with compact=none mode in 16-bits
+INFO: [HLS 214-248] Applying array_partition to 'conv_wt_buf_0': Complete partitioning on dimension 2. Complete partitioning on dimension 3. (tiled_conv.cpp:32:10)
+INFO: [HLS 214-248] Applying array_partition to 'conv_wt_buf_1': Complete partitioning on dimension 2. Complete partitioning on dimension 3. (tiled_conv.cpp:32:10)
+INFO: [HLS 214-248] Applying array_partition to 'conv_wt_buf_2': Complete partitioning on dimension 2. Complete partitioning on dimension 3. (tiled_conv.cpp:32:10)
+INFO: [HLS 214-248] Applying array_partition to 'conv_wt_buf_3': Complete partitioning on dimension 2. Complete partitioning on dimension 3. (tiled_conv.cpp:32:10)
+INFO: [HLS 214-115] Multiple burst reads of length 256 and bit width 16 in loop 'WEIGHT_KERNEL_NUM'(utils.cpp:79:5) has been inferred on bundle 'wt'. These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings. (utils.cpp:79:5)
+INFO: [HLS 214-115] Multiple burst reads of length 4 and bit width 16 in loop 'BIAS'(utils.cpp:97:5) has been inferred on bundle 'wt'. These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings. (utils.cpp:97:5)
+INFO: [HLS 214-115] Multiple burst reads of length 8 and bit width 16 in loop 'INPUT_BUFFER_WIDTH'(utils.cpp:35:13) has been inferred on bundle 'fm'. These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings. (utils.cpp:35:13)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 5.97 seconds. CPU system time: 1 seconds. Elapsed time: 7.33 seconds; current allocated memory: 763.871 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 763.871 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.17 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.26 seconds; current allocated memory: 775.465 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.22 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.25 seconds; current allocated memory: 793.152 MB.
+INFO: [XFORM 203-510] Pipelining loop 'WEIGHT_KERNEL_DEPTH' (utils.cpp:82) in function 'load_layer_params_from_DRAM' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'BIAS' (utils.cpp:97) in function 'load_layer_params_from_DRAM' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'INPUT_BUFFER_HEIGHT' (utils.cpp:32) in function 'tiled_conv' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'OUTPUT_BUFFER_WIDTH' (utils.cpp:129) in function 'tiled_conv' automatically.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'INPUT_BUFFER_HEIGHT' (utils.cpp:32) in function 'tiled_conv' for pipelining.
+INFO: [HLS 200-489] Unrolling loop 'INPUT_BUFFER_WIDTH' (utils.cpp:35) in function 'tiled_conv' completely with a factor of 8.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (utils.cpp:129:22) to (utils.cpp:129:13) in function 'tiled_conv'... converting 3 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'tiled_conv' (utils.cpp:11:13)...6 expression(s) balanced.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.52 seconds. CPU system time: 0.04 seconds. Elapsed time: 0.68 seconds; current allocated memory: 833.039 MB.
+INFO: [XFORM 203-541] Flattening a loop nest 'INPUT_BUFFER_DEPTH' (utils.cpp:29:14) in function 'tiled_conv'.
+INFO: [XFORM 203-541] Flattening a loop nest 'OUTPUT_BUFFER_HEIGHT' (utils.cpp:126:18) in function 'tiled_conv'.
+INFO: [XFORM 203-541] Flattening a loop nest 'OUTPUT_BUFFER_DEPTH' (utils.cpp:123:14) in function 'tiled_conv'.
+WARNING: [HLS 200-960] Cannot flatten loop 'FILTER_SIZE' (tiled_conv.cpp:54:22) in function 'tiled_conv' the outer loop is not a perfect loop.
+Resolution: For help on HLS 200-960 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-960.html
+WARNING: [HLS 200-960] Cannot flatten loop 'TILE_COL' (tiled_conv.cpp:43:18) in function 'tiled_conv' more than one sub loop.
+Resolution: For help on HLS 200-960 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-960.html
+INFO: [XFORM 203-541] Flattening a loop nest 'TILE_ROW' (tiled_conv.cpp:40:14) in function 'tiled_conv'.
+INFO: [XFORM 203-541] Flattening a loop nest 'WEIGHT_KERNEL_NUM' (utils.cpp:79:14) in function 'load_layer_params_from_DRAM'.
+INFO: [XFORM 203-541] Flattening a loop nest 'ID' (conv_7x7.cpp:35:14) in function 'conv_7x7'.
+INFO: [HLS 200-472] Inferring partial write operation for 'conv_out_buf.V' 
+INFO: [HLS 200-472] Inferring partial write operation for 'conv_in_buf.V' (utils.cpp:54:40)
+INFO: [HLS 200-472] Inferring partial write operation for 'weight_buf_0' (utils.cpp:90:46)
+INFO: [HLS 200-472] Inferring partial write operation for 'Y_buf_0_0' 
+INFO: [HLS 200-472] Inferring partial write operation for 'Y_buf_0_0' (conv_7x7.cpp:32:40)
+INFO: [HLS 200-444] Inferring multiple bus burst write of a total cumulative length 8 on port 'fm' (utils.cpp:138:83). These data requests might be further partitioned to multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.36 seconds. CPU system time: 0.06 seconds. Elapsed time: 0.47 seconds; current allocated memory: 911.082 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'tiled_conv' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'tiled_conv_Pipeline_INPUT_BUFFER_DEPTH_INPUT_BUFFER_HEIGHT' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=empty_36) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln29) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'INPUT_BUFFER_DEPTH_INPUT_BUFFER_HEIGHT'.
+WARNING: [HLS 200-880] The II Violation in module 'tiled_conv_Pipeline_INPUT_BUFFER_DEPTH_INPUT_BUFFER_HEIGHT' (loop 'INPUT_BUFFER_DEPTH_INPUT_BUFFER_HEIGHT'): Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1) between bus read operation ('fm_addr_read_7', utils.cpp:54) on port 'fm' (utils.cpp:54) and bus read operation ('fm_addr_read', utils.cpp:54) on port 'fm' (utils.cpp:54).
+Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'tiled_conv_Pipeline_INPUT_BUFFER_DEPTH_INPUT_BUFFER_HEIGHT' (loop 'INPUT_BUFFER_DEPTH_INPUT_BUFFER_HEIGHT'): Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 1) between bus read operation ('fm_addr_read_7', utils.cpp:54) on port 'fm' (utils.cpp:54) and bus read operation ('fm_addr_read', utils.cpp:54) on port 'fm' (utils.cpp:54).
+Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'tiled_conv_Pipeline_INPUT_BUFFER_DEPTH_INPUT_BUFFER_HEIGHT' (loop 'INPUT_BUFFER_DEPTH_INPUT_BUFFER_HEIGHT'): Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 1) between bus read operation ('fm_addr_read_7', utils.cpp:54) on port 'fm' (utils.cpp:54) and bus read operation ('fm_addr_read', utils.cpp:54) on port 'fm' (utils.cpp:54).
+Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'tiled_conv_Pipeline_INPUT_BUFFER_DEPTH_INPUT_BUFFER_HEIGHT' (loop 'INPUT_BUFFER_DEPTH_INPUT_BUFFER_HEIGHT'): Unable to enforce a carried dependence constraint (II = 4, distance = 1, offset = 1) between bus read operation ('fm_addr_read_7', utils.cpp:54) on port 'fm' (utils.cpp:54) and bus read operation ('fm_addr_read', utils.cpp:54) on port 'fm' (utils.cpp:54).
+Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'tiled_conv_Pipeline_INPUT_BUFFER_DEPTH_INPUT_BUFFER_HEIGHT' (loop 'INPUT_BUFFER_DEPTH_INPUT_BUFFER_HEIGHT'): Unable to enforce a carried dependence constraint (II = 7, distance = 1, offset = 1) between bus read operation ('fm_addr_read_7', utils.cpp:54) on port 'fm' (utils.cpp:54) and bus read operation ('fm_addr_read', utils.cpp:54) on port 'fm' (utils.cpp:54).
+Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-880.html
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 8, Depth = 21, loop 'INPUT_BUFFER_DEPTH_INPUT_BUFFER_HEIGHT'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.32 seconds. CPU system time: 0.07 seconds. Elapsed time: 0.47 seconds; current allocated memory: 914.477 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.15 seconds. CPU system time: 0 seconds. Elapsed time: 0.29 seconds; current allocated memory: 914.477 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'load_layer_params_from_DRAM_Pipeline_WEIGHT_KERNEL_NUM_WEIGHT_KERNEL_DEPTH' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'WEIGHT_KERNEL_NUM_WEIGHT_KERNEL_DEPTH'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 3, loop 'WEIGHT_KERNEL_NUM_WEIGHT_KERNEL_DEPTH'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.11 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.17 seconds; current allocated memory: 914.477 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.04 seconds. CPU system time: 0 seconds. Elapsed time: 0.07 seconds; current allocated memory: 914.477 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'load_layer_params_from_DRAM_Pipeline_BIAS' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'BIAS'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 2, loop 'BIAS'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.07 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.11 seconds; current allocated memory: 914.477 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.06 seconds; current allocated memory: 914.477 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'load_layer_params_from_DRAM' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.08 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.11 seconds; current allocated memory: 914.477 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.11 seconds. CPU system time: 0 seconds. Elapsed time: 0.15 seconds; current allocated memory: 914.477 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'conv_7x7_Pipeline_BOW' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'BOW'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'BOW'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.12 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.17 seconds; current allocated memory: 914.906 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.03 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.1 seconds; current allocated memory: 915.160 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'conv_7x7_Pipeline_ID_OW' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_31) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_30) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_29) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_28) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_27) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_26) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_25) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_24) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_23) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_22) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_21) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_20) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_19) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_18) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_17) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_16) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_15) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_14) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_13) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_12) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_11) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_10) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_9) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_8) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_7) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_6) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_5) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_4) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_3) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_2) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393_1) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln1393) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'ID_OW'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 6, loop 'ID_OW'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.26 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.51 seconds; current allocated memory: 917.934 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.14 seconds. CPU system time: 0 seconds. Elapsed time: 0.22 seconds; current allocated memory: 917.934 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'conv_7x7' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.16 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.29 seconds; current allocated memory: 917.957 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.06 seconds. CPU system time: 0 seconds. Elapsed time: 0.09 seconds; current allocated memory: 918.172 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'tiled_conv_Pipeline_OUTPUT_BUFFER_DEPTH_OUTPUT_BUFFER_HEIGHT_OUTPUT_BUFFER_WIDTH' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=empty_30) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln134) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=r_V) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=p_mid1) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln134_3) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'OUTPUT_BUFFER_DEPTH_OUTPUT_BUFFER_HEIGHT_OUTPUT_BUFFER_WIDTH'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 12, loop 'OUTPUT_BUFFER_DEPTH_OUTPUT_BUFFER_HEIGHT_OUTPUT_BUFFER_WIDTH'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.23 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.3 seconds; current allocated memory: 920.383 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.14 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.21 seconds; current allocated memory: 920.383 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'tiled_conv' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.22 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.28 seconds; current allocated memory: 920.422 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.17 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.21 seconds; current allocated memory: 920.855 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'tiled_conv_Pipeline_INPUT_BUFFER_DEPTH_INPUT_BUFFER_HEIGHT' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'tiled_conv_Pipeline_INPUT_BUFFER_DEPTH_INPUT_BUFFER_HEIGHT' pipeline 'INPUT_BUFFER_DEPTH_INPUT_BUFFER_HEIGHT' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'ama_addmuladd_4ns_7ns_8ns_21ns_21_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_mul_7ns_15ns_21_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'tiled_conv_Pipeline_INPUT_BUFFER_DEPTH_INPUT_BUFFER_HEIGHT'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.36 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.42 seconds; current allocated memory: 921.363 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'load_layer_params_from_DRAM_Pipeline_WEIGHT_KERNEL_NUM_WEIGHT_KERNEL_DEPTH' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'load_layer_params_from_DRAM_Pipeline_WEIGHT_KERNEL_NUM_WEIGHT_KERNEL_DEPTH' pipeline 'WEIGHT_KERNEL_NUM_WEIGHT_KERNEL_DEPTH' pipeline type 'loop pipeline'
+WARNING: [RTGEN 206-101] Setting dangling out port 'load_layer_params_from_DRAM_Pipeline_WEIGHT_KERNEL_NUM_WEIGHT_KERNEL_DEPTH/m_axi_wt_ARVALID' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'load_layer_params_from_DRAM_Pipeline_WEIGHT_KERNEL_NUM_WEIGHT_KERNEL_DEPTH/m_axi_wt_ARADDR' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'load_layer_params_from_DRAM_Pipeline_WEIGHT_KERNEL_NUM_WEIGHT_KERNEL_DEPTH/m_axi_wt_ARID' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'load_layer_params_from_DRAM_Pipeline_WEIGHT_KERNEL_NUM_WEIGHT_KERNEL_DEPTH/m_axi_wt_ARLEN' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'load_layer_params_from_DRAM_Pipeline_WEIGHT_KERNEL_NUM_WEIGHT_KERNEL_DEPTH/m_axi_wt_ARSIZE' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'load_layer_params_from_DRAM_Pipeline_WEIGHT_KERNEL_NUM_WEIGHT_KERNEL_DEPTH/m_axi_wt_ARBURST' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'load_layer_params_from_DRAM_Pipeline_WEIGHT_KERNEL_NUM_WEIGHT_KERNEL_DEPTH/m_axi_wt_ARLOCK' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'load_layer_params_from_DRAM_Pipeline_WEIGHT_KERNEL_NUM_WEIGHT_KERNEL_DEPTH/m_axi_wt_ARCACHE' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'load_layer_params_from_DRAM_Pipeline_WEIGHT_KERNEL_NUM_WEIGHT_KERNEL_DEPTH/m_axi_wt_ARPROT' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'load_layer_params_from_DRAM_Pipeline_WEIGHT_KERNEL_NUM_WEIGHT_KERNEL_DEPTH/m_axi_wt_ARQOS' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'load_layer_params_from_DRAM_Pipeline_WEIGHT_KERNEL_NUM_WEIGHT_KERNEL_DEPTH/m_axi_wt_ARREGION' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'load_layer_params_from_DRAM_Pipeline_WEIGHT_KERNEL_NUM_WEIGHT_KERNEL_DEPTH/m_axi_wt_ARUSER' to 0.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'load_layer_params_from_DRAM_Pipeline_WEIGHT_KERNEL_NUM_WEIGHT_KERNEL_DEPTH'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.29 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.46 seconds; current allocated memory: 924.875 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'load_layer_params_from_DRAM_Pipeline_BIAS' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'load_layer_params_from_DRAM_Pipeline_BIAS' pipeline 'BIAS' pipeline type 'loop pipeline'
+WARNING: [RTGEN 206-101] Setting dangling out port 'load_layer_params_from_DRAM_Pipeline_BIAS/m_axi_wt_ARVALID' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'load_layer_params_from_DRAM_Pipeline_BIAS/m_axi_wt_ARADDR' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'load_layer_params_from_DRAM_Pipeline_BIAS/m_axi_wt_ARID' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'load_layer_params_from_DRAM_Pipeline_BIAS/m_axi_wt_ARLEN' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'load_layer_params_from_DRAM_Pipeline_BIAS/m_axi_wt_ARSIZE' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'load_layer_params_from_DRAM_Pipeline_BIAS/m_axi_wt_ARBURST' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'load_layer_params_from_DRAM_Pipeline_BIAS/m_axi_wt_ARLOCK' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'load_layer_params_from_DRAM_Pipeline_BIAS/m_axi_wt_ARCACHE' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'load_layer_params_from_DRAM_Pipeline_BIAS/m_axi_wt_ARPROT' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'load_layer_params_from_DRAM_Pipeline_BIAS/m_axi_wt_ARQOS' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'load_layer_params_from_DRAM_Pipeline_BIAS/m_axi_wt_ARREGION' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'load_layer_params_from_DRAM_Pipeline_BIAS/m_axi_wt_ARUSER' to 0.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'load_layer_params_from_DRAM_Pipeline_BIAS'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.16 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.31 seconds; current allocated memory: 926.215 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'load_layer_params_from_DRAM' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'load_layer_params_from_DRAM'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.08 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.18 seconds; current allocated memory: 928.242 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'conv_7x7_Pipeline_BOW' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'conv_7x7_Pipeline_BOW'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.14 seconds. CPU system time: 0 seconds. Elapsed time: 0.23 seconds; current allocated memory: 929.809 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'conv_7x7_Pipeline_ID_OW' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'conv_7x7_Pipeline_ID_OW' pipeline 'ID_OW' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_16s_29ns_29_4_1': 32 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'conv_7x7_Pipeline_ID_OW'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.13 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.21 seconds; current allocated memory: 933.930 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'conv_7x7' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'conv_7x7'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.3 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.47 seconds; current allocated memory: 941.137 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'tiled_conv_Pipeline_OUTPUT_BUFFER_DEPTH_OUTPUT_BUFFER_HEIGHT_OUTPUT_BUFFER_WIDTH' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'tiled_conv_Pipeline_OUTPUT_BUFFER_DEPTH_OUTPUT_BUFFER_HEIGHT_OUTPUT_BUFFER_WIDTH' pipeline 'OUTPUT_BUFFER_DEPTH_OUTPUT_BUFFER_HEIGHT_OUTPUT_BUFFER_WIDTH' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'ama_addmuladd_4ns_7ns_8ns_8ns_15_4_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_mul_16s_10ns_27_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_mul_6ns_15ns_21_4_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mux_43_16_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mux_84_16_1_1': 4 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'tiled_conv_Pipeline_OUTPUT_BUFFER_DEPTH_OUTPUT_BUFFER_HEIGHT_OUTPUT_BUFFER_WIDTH'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.22 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.32 seconds; current allocated memory: 944.008 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'tiled_conv' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [RTGEN 206-101] Design contains AXI ports. Reset is fixed to synchronous and active low.
+INFO: [RTGEN 206-500] Setting interface mode on port 'tiled_conv/fm' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'tiled_conv/wt' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'tiled_conv/input_feature_map' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'tiled_conv/layer_weights' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'tiled_conv/layer_bias' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'tiled_conv/output_feature_map' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'tiled_conv' to 's_axilite & ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Bundling port 'input_feature_map', 'layer_weights', 'layer_bias', 'output_feature_map' and 'return' to AXI-Lite port control.
+INFO: [RTGEN 206-100] Generating core module 'mul_7ns_9ns_15_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'tiled_conv'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.51 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.73 seconds; current allocated memory: 952.820 MB.
+INFO: [RTMG 210-278] Implementing memory 'tiled_conv_conv_in_buf_V_RAM_AUTO_1R1W_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'tiled_conv_conv_wt_buf_V_RAM_AUTO_1R1W_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'tiled_conv_conv_out_buf_V_RAM_AUTO_1R1W_ram (RAM)' using auto RAMs.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 1.51 seconds. CPU system time: 0.12 seconds. Elapsed time: 2.6 seconds; current allocated memory: 958.332 MB.
+INFO: [HLS 200-1603] Design has inferred MAXI bursts and missed bursts, see Vitis HLS GUI synthesis summary report for detailed information.
+INFO: [HLS 200-111] Finished Updating report files: CPU user time: 1.61 seconds. CPU system time: 0.08 seconds. Elapsed time: 1.81 seconds; current allocated memory: 968.770 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for tiled_conv.
+INFO: [VLOG 209-307] Generating Verilog RTL for tiled_conv.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were NOT satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 136.99 MHz
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 54.09 seconds. CPU system time: 5.89 seconds. Elapsed time: 65.08 seconds; current allocated memory: 211.684 MB.
+INFO: [HLS 200-1510] Running: export_design -format ip_catalog 
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+
+****** Vivado v2022.1.2 (64-bit)
+  **** SW Build 3605665 on Fri Aug  5 22:52:02 MDT 2022
+  **** IP Build 3603185 on Sat Aug  6 04:07:44 MDT 2022
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+source run_ippack.tcl -notrace
+ipx::create_core: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 3401.820 ; gain = 2.016 ; free physical = 80389 ; free virtual = 203672
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/software/xilinx/Vivado/2022.1/data/ip'.
+INFO: [Common 17-206] Exiting Vivado at Tue May  2 16:56:37 2023...
+INFO: [HLS 200-802] Generated output file proj/solution1/impl/export.zip
+INFO: [HLS 200-111] Finished Command export_design CPU user time: 21.03 seconds. CPU system time: 2.94 seconds. Elapsed time: 35.88 seconds; current allocated memory: 6.938 MB.
+INFO: [HLS 200-112] Total CPU user time: 80.86 seconds. Total CPU system time: 10.38 seconds. Total elapsed time: 106.07 seconds; peak allocated memory: 975.957 MB.
+INFO: [Common 17-206] Exiting vitis_hls at Tue May  2 16:56:47 2023...

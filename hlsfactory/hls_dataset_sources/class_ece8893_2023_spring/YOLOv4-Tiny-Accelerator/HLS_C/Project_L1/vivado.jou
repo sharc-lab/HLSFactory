@@ -1,0 +1,21 @@
+#-----------------------------------------------------------
+# Vivado v2022.1.2 (64-bit)
+# SW Build 3605665 on Fri Aug  5 22:52:02 MDT 2022
+# IP Build 3603185 on Sat Aug  6 04:07:44 MDT 2022
+# Start of session at: Thu May  4 11:18:30 2023
+# Process ID: 246629
+# Current directory: /nethome/asumbetla3/FPGA/Project
+# Command line: vivado
+# Log file: /nethome/asumbetla3/FPGA/Project/vivado.log
+# Journal file: /nethome/asumbetla3/FPGA/Project/vivado.jou
+# Running On: ece-linlabsrv01.ece.gatech.edu, OS: Linux, CPU Frequency: 2800.000 MHz, CPU Physical cores: 27, Host memory: 200903 MB
+#-----------------------------------------------------------
+start_gui
+set_param gui.addressMap 0
+create_project project_1 /nethome/asumbetla3/FPGA/Project/project_1 -part xc7z020clg400-1
+set_property  ip_repo_paths  /nethome/asumbetla3/FPGA/Project/proj/solution1 [current_project]
+update_ip_catalog
+set_property  ip_repo_paths  {} [current_project]
+update_ip_catalog
+set_property  ip_repo_paths  /nethome/asumbetla3/FPGA/Project/proj/solution1 [current_project]
+update_ip_catalog

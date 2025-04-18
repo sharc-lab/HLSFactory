@@ -1,0 +1,515 @@
+
+
+================================================================
+== Synthesis Summary Report of 'tiled_conv'
+================================================================
++ General Information: 
+    * Date:           Tue May  2 23:14:13 2023
+    * Version:        2022.1.2 (Build 3605665 on Fri Aug  5 22:52:02 MDT 2022)
+    * Project:        proj
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: zynq
+    * Target device:  xc7z020-clg400-1
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +------------------------+------+------+----------+-----------+----------+----------+------+----------+-----------+--------+-----------+-------------+-----+
+    |         Modules        | Issue|      | Latency  |  Latency  | Iteration|          | Trip |          |           |        |           |             |     |
+    |         & Loops        | Type | Slack| (cycles) |    (ns)   |  Latency | Interval | Count| Pipelined|   BRAM    |   DSP  |     FF    |     LUT     | URAM|
+    +------------------------+------+------+----------+-----------+----------+----------+------+----------+-----------+--------+-----------+-------------+-----+
+    |+ tiled_conv            |     -|  0.00|  11388579|  1.139e+08|         -|  11388580|     -|        no|  103 (36%)|  5 (2%)|  9307 (8%)|  15353 (28%)|    -|
+    | + conv1d_1             |     -|  0.00|    413000|  4.130e+06|         -|    413000|     -|        no|          -|       -|  408 (~0%)|    504 (~0%)|    -|
+    |  o conv1d_1a           |     -|  7.30|    412993|  4.130e+06|     12906|         -|    32|        no|          -|       -|          -|            -|    -|
+    |   o conv1d_1b          |     -|  7.30|     12903|  1.290e+05|        69|         -|   187|        no|          -|       -|          -|            -|    -|
+    |    o conv1d_1c         |     -|  7.30|        60|    600.000|        12|         -|     5|        no|          -|       -|          -|            -|    -|
+    | + max_pooling1         |     -|  0.19|     64833|  6.483e+05|         -|     64833|     -|        no|          -|       -|  185 (~0%)|    322 (~0%)|    -|
+    |  o VITIS_LOOP_206_1    |     -|  7.30|     64832|  6.483e+05|      2026|         -|    32|        no|          -|       -|          -|            -|    -|
+    |   o VITIS_LOOP_208_2   |     -|  7.30|      2024|  2.024e+04|        22|         -|    92|        no|          -|       -|          -|            -|    -|
+    |    o VITIS_LOOP_213_3  |     -|  7.30|        20|    200.000|         4|         -|     5|        no|          -|       -|          -|            -|    -|
+    | + conv1d_2             |     -|  0.00|   6338536|  6.339e+07|         -|   6338536|     -|        no|          -|       -|  411 (~0%)|    510 (~0%)|    -|
+    |  o conv1d_2a           |     -|  7.30|   6338529|  6.339e+07|    198079|         -|    32|        no|          -|       -|          -|            -|    -|
+    |   o conv1d_2c          |     -|  7.30|    198076|  1.981e+06|      2153|         -|    92|        no|          -|       -|          -|            -|    -|
+    |    o conv1d_2b         |     -|  7.30|      2144|  2.144e+04|        67|         -|    32|        no|          -|       -|          -|            -|    -|
+    |     o conv1d_2d        |     -|  7.30|        65|    650.000|        13|         -|     5|        no|          -|       -|          -|            -|    -|
+    | + max_pooling2         |     -|  0.19|     45826|  4.583e+05|         -|     45826|     -|        no|          -|       -|  259 (~0%)|    526 (~0%)|    -|
+    |  o VITIS_LOOP_238_1    |     -|  7.30|     14784|  1.478e+05|       462|         -|    32|        no|          -|       -|          -|            -|    -|
+    |   o VITIS_LOOP_240_2   |     -|  7.30|       460|  4.600e+03|         5|         -|    92|        no|          -|       -|          -|            -|    -|
+    |  o VITIS_LOOP_257_3    |     -|  7.30|     31040|  3.104e+05|       970|         -|    32|        no|          -|       -|          -|            -|    -|
+    |   o VITIS_LOOP_261_4   |     -|  7.30|       968|  9.680e+03|        22|         -|    44|        no|          -|       -|          -|            -|    -|
+    |    o VITIS_LOOP_266_5  |     -|  7.30|        20|    200.000|         4|         -|     5|        no|          -|       -|          -|            -|    -|
+    | + conv1d_3             |     -|  0.00|   3031528|  3.032e+07|         -|   3031528|     -|        no|          -|       -|  399 (~0%)|    508 (~0%)|    -|
+    |  o conv1d_3a           |     -|  7.30|   3031521|  3.032e+07|     94735|         -|    32|        no|          -|       -|          -|            -|    -|
+    |   o conv1d_3c          |     -|  7.30|     94732|  9.473e+05|      2153|         -|    44|        no|          -|       -|          -|            -|    -|
+    |    o conv1d_3b         |     -|  7.30|      2144|  2.144e+04|        67|         -|    32|        no|          -|       -|          -|            -|    -|
+    |     o conv1d_3d        |     -|  7.30|        65|    650.000|        13|         -|     5|        no|          -|       -|          -|            -|    -|
+    | + max_pooling3         |     -|  0.19|     21250|  2.125e+05|         -|     21250|     -|        no|          -|       -|  221 (~0%)|    508 (~0%)|    -|
+    |  o VITIS_LOOP_291_1    |     -|  7.30|      7104|  7.104e+04|       222|         -|    32|        no|          -|       -|          -|            -|    -|
+    |   o VITIS_LOOP_293_2   |     -|  7.30|       220|  2.200e+03|         5|         -|    44|        no|          -|       -|          -|            -|    -|
+    |  o VITIS_LOOP_311_3    |     -|  7.30|     14144|  1.414e+05|       442|         -|    32|        no|          -|       -|          -|            -|    -|
+    |   o VITIS_LOOP_313_4   |     -|  7.30|       440|  4.400e+03|        22|         -|    20|        no|          -|       -|          -|            -|    -|
+    |    o VITIS_LOOP_318_5  |     -|  7.30|        20|    200.000|         4|         -|     5|        no|          -|       -|          -|            -|    -|
+    | + conv1d_4             |     -|  0.00|   1378024|  1.378e+07|         -|   1378024|     -|        no|          -|       -|  345 (~0%)|    487 (~0%)|    -|
+    |  o conv1d_4a           |     -|  7.30|   1378017|  1.378e+07|     43063|         -|    32|        no|          -|       -|          -|            -|    -|
+    |   o conv1d_4c          |     -|  7.30|     43060|  4.306e+05|      2153|         -|    20|        no|          -|       -|          -|            -|    -|
+    |    o conv1d_4b         |     -|  7.30|      2144|  2.144e+04|        67|         -|    32|        no|          -|       -|          -|            -|    -|
+    |     o conv1d_4d        |     -|  7.30|        65|    650.000|        13|         -|     5|        no|          -|       -|          -|            -|    -|
+    | + max_pooling4         |     -|  0.19|      8962|  8.962e+04|         -|      8962|     -|        no|          -|       -|  170 (~0%)|    480 (~0%)|    -|
+    |  o VITIS_LOOP_343_1    |     -|  7.30|      3264|  3.264e+04|       102|         -|    32|        no|          -|       -|          -|            -|    -|
+    |   o VITIS_LOOP_345_2   |     -|  7.30|       100|  1.000e+03|         5|         -|    20|        no|          -|       -|          -|            -|    -|
+    |  o VITIS_LOOP_363_3    |     -|  7.30|      5696|  5.696e+04|       178|         -|    32|        no|          -|       -|          -|            -|    -|
+    |   o VITIS_LOOP_365_4   |     -|  7.30|       176|  1.760e+03|        22|         -|     8|        no|          -|       -|          -|            -|    -|
+    |    o VITIS_LOOP_370_5  |     -|  7.30|        20|    200.000|         4|         -|     5|        no|          -|       -|          -|            -|    -|
+    | + max_pooling5         |     -|  0.19|      1473|  1.473e+04|         -|      1473|     -|        no|          -|       -|  110 (~0%)|    256 (~0%)|    -|
+    |  o VITIS_LOOP_398_1    |     -|  7.30|      1472|  1.472e+04|        46|         -|    32|        no|          -|       -|          -|            -|    -|
+    |   o VITIS_LOOP_400_2   |     -|  7.30|        44|    440.000|        22|         -|     2|        no|          -|       -|          -|            -|    -|
+    |    o VITIS_LOOP_405_3  |     -|  7.30|        20|    200.000|         4|         -|     5|        no|          -|       -|          -|            -|    -|
+    | + dense1               |     -|  0.00|     22825|  2.282e+05|         -|     22825|     -|        no|          -|       -|  280 (~0%)|    326 (~0%)|    -|
+    |  o dense1_a            |     -|  7.30|     22657|  2.266e+05|       708|         -|    32|        no|          -|       -|          -|            -|    -|
+    |   o dense1_b           |     -|  7.30|       704|  7.040e+03|        11|         -|    64|        no|          -|       -|          -|            -|    -|
+    |  o last_acc            |     -|  7.30|       160|  1.600e+03|         5|         -|    32|        no|          -|       -|          -|            -|    -|
+    | + dense2               |     -|  0.00|      1788|  1.788e+04|         -|      1788|     -|        no|          -|       -|  206 (~0%)|    218 (~0%)|    -|
+    |  o dense2_a            |     -|  7.30|      1781|  1.781e+04|       356|         -|     5|        no|          -|       -|          -|            -|    -|
+    |   o dense2_b           |     -|  7.30|       352|  3.520e+03|        11|         -|    32|        no|          -|       -|          -|            -|    -|
+    | o load_input           |     -|  7.30|       562|  5.620e+03|         3|         -|   187|        no|          -|       -|          -|            -|    -|
+    | o load_conv_weights1   |     -|  7.30|       544|  5.440e+03|        17|         -|    32|        no|          -|       -|          -|            -|    -|
+    |  o VITIS_LOOP_561_1    |     -|  7.30|        15|    150.000|         3|         -|     5|        no|          -|       -|          -|            -|    -|
+    | o load_conv_weights2   |     -|  7.30|     17472|  1.747e+05|       546|         -|    32|        no|          -|       -|          -|            -|    -|
+    |  o VITIS_LOOP_568_2    |     -|  7.30|       544|  5.440e+03|        17|         -|    32|        no|          -|       -|          -|            -|    -|
+    |   o VITIS_LOOP_569_3   |     -|  7.30|        15|    150.000|         3|         -|     5|        no|          -|       -|          -|            -|    -|
+    | o load_conv_weights3   |     -|  7.30|     17472|  1.747e+05|       546|         -|    32|        no|          -|       -|          -|            -|    -|
+    |  o VITIS_LOOP_577_4    |     -|  7.30|       544|  5.440e+03|        17|         -|    32|        no|          -|       -|          -|            -|    -|
+    |   o VITIS_LOOP_578_5   |     -|  7.30|        15|    150.000|         3|         -|     5|        no|          -|       -|          -|            -|    -|
+    | o load_conv_weights4   |     -|  7.30|     17472|  1.747e+05|       546|         -|    32|        no|          -|       -|          -|            -|    -|
+    |  o VITIS_LOOP_587_6    |     -|  7.30|       544|  5.440e+03|        17|         -|    32|        no|          -|       -|          -|            -|    -|
+    |   o VITIS_LOOP_588_7   |     -|  7.30|        15|    150.000|         3|         -|     5|        no|          -|       -|          -|            -|    -|
+    | o load_dense1_weights  |     -|  7.30|      6208|  6.208e+04|       194|         -|    32|        no|          -|       -|          -|            -|    -|
+    |  o VITIS_LOOP_597_8    |     -|  7.30|       192|  1.920e+03|         3|         -|    64|        no|          -|       -|          -|            -|    -|
+    | o load_dense2_weights  |     -|  7.30|       490|  4.900e+03|        98|         -|     5|        no|          -|       -|          -|            -|    -|
+    |  o VITIS_LOOP_604_9    |     -|  7.30|        96|    960.000|         3|         -|    32|        no|          -|       -|          -|            -|    -|
+    | o load_output          |     -|  7.30|        16|    160.000|         3|         -|     5|        no|          -|       -|          -|            -|    -|
+    | o flatten_a            |     -|  7.30|       192|  1.920e+03|         6|         -|    32|        no|          -|       -|          -|            -|    -|
+    |  o flatten_b           |     -|  7.30|         4|     40.000|         2|         -|     2|        no|          -|       -|          -|            -|    -|
+    | o VITIS_LOOP_671_10    |     -|  7.30|        15|    150.000|         3|         -|     5|        no|          -|       -|          -|            -|    -|
+    +------------------------+------+------+----------+-----------+----------+----------+------+----------+-----------+--------+-----------+-------------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* M_AXI
++----------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+
+| Interface      | Data Width | Address Width | Latency | Offset | Register | Max Widen | Max Read     | Max Write    | Num Read    | Num Write   |
+|                | (SW->HW)   |               |         |        |          | Bitwidth  | Burst Length | Burst Length | Outstanding | Outstanding |
++----------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+
+| m_axi_c_bias   | 32 -> 32   | 64            | 0       | slave  | 0        | 0         | 16           | 16           | 16          | 16          |
+| m_axi_c_weight | 32 -> 32   | 64            | 0       | slave  | 0        | 0         | 16           | 16           | 16          | 16          |
+| m_axi_dense    | 32 -> 32   | 64            | 0       | slave  | 0        | 0         | 16           | 16           | 16          | 16          |
+| m_axi_fm       | 32 -> 32   | 64            | 0       | slave  | 0        | 0         | 16           | 16           | 16          | 16          |
++----------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+
+
+* S_AXILITE Interfaces
++---------------+------------+---------------+--------+----------+
+| Interface     | Data Width | Address Width | Offset | Register |
++---------------+------------+---------------+--------+----------+
+| s_axi_control | 32         | 8             | 16     | 0        |
++---------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++---------------+----------------------------+--------+-------+--------+-----------------------------------------+----------------------------------------------------------------------+
+| Interface     | Register                   | Offset | Width | Access | Description                             | Bit Fields                                                           |
++---------------+----------------------------+--------+-------+--------+-----------------------------------------+----------------------------------------------------------------------+
+| s_axi_control | CTRL                       | 0x00   | 32    | RW     | Control signals                         | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_control | GIER                       | 0x04   | 32    | RW     | Global Interrupt Enable Register        | 0=Enable                                                             |
+| s_axi_control | IP_IER                     | 0x08   | 32    | RW     | IP Interrupt Enable Register            | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                        |
+| s_axi_control | IP_ISR                     | 0x0c   | 32    | RW     | IP Interrupt Status Register            | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                        |
+| s_axi_control | input_feature_map_1        | 0x10   | 32    | W      | Data signal of input_feature_map        |                                                                      |
+| s_axi_control | input_feature_map_2        | 0x14   | 32    | W      | Data signal of input_feature_map        |                                                                      |
+| s_axi_control | fixp_conv_layer_weights1_1 | 0x1c   | 32    | W      | Data signal of fixp_conv_layer_weights1 |                                                                      |
+| s_axi_control | fixp_conv_layer_weights1_2 | 0x20   | 32    | W      | Data signal of fixp_conv_layer_weights1 |                                                                      |
+| s_axi_control | fixp_conv_layer_bias1_1    | 0x28   | 32    | W      | Data signal of fixp_conv_layer_bias1    |                                                                      |
+| s_axi_control | fixp_conv_layer_bias1_2    | 0x2c   | 32    | W      | Data signal of fixp_conv_layer_bias1    |                                                                      |
+| s_axi_control | fixp_conv_layer_weights2_1 | 0x34   | 32    | W      | Data signal of fixp_conv_layer_weights2 |                                                                      |
+| s_axi_control | fixp_conv_layer_weights2_2 | 0x38   | 32    | W      | Data signal of fixp_conv_layer_weights2 |                                                                      |
+| s_axi_control | fixp_conv_layer_bias2_1    | 0x40   | 32    | W      | Data signal of fixp_conv_layer_bias2    |                                                                      |
+| s_axi_control | fixp_conv_layer_bias2_2    | 0x44   | 32    | W      | Data signal of fixp_conv_layer_bias2    |                                                                      |
+| s_axi_control | fixp_conv_layer_weights3_1 | 0x4c   | 32    | W      | Data signal of fixp_conv_layer_weights3 |                                                                      |
+| s_axi_control | fixp_conv_layer_weights3_2 | 0x50   | 32    | W      | Data signal of fixp_conv_layer_weights3 |                                                                      |
+| s_axi_control | fixp_conv_layer_bias3_1    | 0x58   | 32    | W      | Data signal of fixp_conv_layer_bias3    |                                                                      |
+| s_axi_control | fixp_conv_layer_bias3_2    | 0x5c   | 32    | W      | Data signal of fixp_conv_layer_bias3    |                                                                      |
+| s_axi_control | fixp_conv_layer_weights4_1 | 0x64   | 32    | W      | Data signal of fixp_conv_layer_weights4 |                                                                      |
+| s_axi_control | fixp_conv_layer_weights4_2 | 0x68   | 32    | W      | Data signal of fixp_conv_layer_weights4 |                                                                      |
+| s_axi_control | fixp_conv_layer_bias4_1    | 0x70   | 32    | W      | Data signal of fixp_conv_layer_bias4    |                                                                      |
+| s_axi_control | fixp_conv_layer_bias4_2    | 0x74   | 32    | W      | Data signal of fixp_conv_layer_bias4    |                                                                      |
+| s_axi_control | fixp_dense1_weights_1      | 0x7c   | 32    | W      | Data signal of fixp_dense1_weights      |                                                                      |
+| s_axi_control | fixp_dense1_weights_2      | 0x80   | 32    | W      | Data signal of fixp_dense1_weights      |                                                                      |
+| s_axi_control | fixp_dense1_bias_1         | 0x88   | 32    | W      | Data signal of fixp_dense1_bias         |                                                                      |
+| s_axi_control | fixp_dense1_bias_2         | 0x8c   | 32    | W      | Data signal of fixp_dense1_bias         |                                                                      |
+| s_axi_control | fixp_dense2_weights_1      | 0x94   | 32    | W      | Data signal of fixp_dense2_weights      |                                                                      |
+| s_axi_control | fixp_dense2_weights_2      | 0x98   | 32    | W      | Data signal of fixp_dense2_weights      |                                                                      |
+| s_axi_control | fixp_dense2_bias_1         | 0xa0   | 32    | W      | Data signal of fixp_dense2_bias         |                                                                      |
+| s_axi_control | fixp_dense2_bias_2         | 0xa4   | 32    | W      | Data signal of fixp_dense2_bias         |                                                                      |
+| s_axi_control | output_feature_map_1       | 0xac   | 32    | W      | Data signal of output_feature_map       |                                                                      |
+| s_axi_control | output_feature_map_2       | 0xb0   | 32    | W      | Data signal of output_feature_map       |                                                                      |
++---------------+----------------------------+--------+-------+--------+-----------------------------------------+----------------------------------------------------------------------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------+
+| Interface | Type       | Ports     |
++-----------+------------+-----------+
+| ap_clk    | clock      | ap_clk    |
+| ap_rst_n  | reset      | ap_rst_n  |
+| interrupt | interrupt  | interrupt |
+| ap_ctrl   | ap_ctrl_hs |           |
++-----------+------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++--------------------------+-----------+----------+
+| Argument                 | Direction | Datatype |
++--------------------------+-----------+----------+
+| input_feature_map        | inout     | float*   |
+| fixp_conv_layer_weights1 | in        | float*   |
+| fixp_conv_layer_bias1    | in        | float*   |
+| fixp_conv_layer_weights2 | in        | float*   |
+| fixp_conv_layer_bias2    | in        | float*   |
+| fixp_conv_layer_weights3 | in        | float*   |
+| fixp_conv_layer_bias3    | in        | float*   |
+| fixp_conv_layer_weights4 | in        | float*   |
+| fixp_conv_layer_bias4    | in        | float*   |
+| fixp_dense1_weights      | in        | float*   |
+| fixp_dense1_bias         | in        | float*   |
+| fixp_dense2_weights      | in        | float*   |
+| fixp_dense2_bias         | in        | float*   |
+| output_feature_map       | inout     | float*   |
++--------------------------+-----------+----------+
+
+* SW-to-HW Mapping
++--------------------------+----------------+-----------+----------+------------------------------------------------------+
+| Argument                 | HW Interface   | HW Type   | HW Usage | HW Info                                              |
++--------------------------+----------------+-----------+----------+------------------------------------------------------+
+| input_feature_map        | m_axi_fm       | interface |          |                                                      |
+| input_feature_map        | s_axi_control  | register  | offset   | name=input_feature_map_1 offset=0x10 range=32        |
+| input_feature_map        | s_axi_control  | register  | offset   | name=input_feature_map_2 offset=0x14 range=32        |
+| fixp_conv_layer_weights1 | m_axi_c_weight | interface |          |                                                      |
+| fixp_conv_layer_weights1 | s_axi_control  | register  | offset   | name=fixp_conv_layer_weights1_1 offset=0x1c range=32 |
+| fixp_conv_layer_weights1 | s_axi_control  | register  | offset   | name=fixp_conv_layer_weights1_2 offset=0x20 range=32 |
+| fixp_conv_layer_bias1    | m_axi_c_bias   | interface |          |                                                      |
+| fixp_conv_layer_bias1    | s_axi_control  | register  | offset   | name=fixp_conv_layer_bias1_1 offset=0x28 range=32    |
+| fixp_conv_layer_bias1    | s_axi_control  | register  | offset   | name=fixp_conv_layer_bias1_2 offset=0x2c range=32    |
+| fixp_conv_layer_weights2 | m_axi_c_weight | interface |          |                                                      |
+| fixp_conv_layer_weights2 | s_axi_control  | register  | offset   | name=fixp_conv_layer_weights2_1 offset=0x34 range=32 |
+| fixp_conv_layer_weights2 | s_axi_control  | register  | offset   | name=fixp_conv_layer_weights2_2 offset=0x38 range=32 |
+| fixp_conv_layer_bias2    | m_axi_c_bias   | interface |          |                                                      |
+| fixp_conv_layer_bias2    | s_axi_control  | register  | offset   | name=fixp_conv_layer_bias2_1 offset=0x40 range=32    |
+| fixp_conv_layer_bias2    | s_axi_control  | register  | offset   | name=fixp_conv_layer_bias2_2 offset=0x44 range=32    |
+| fixp_conv_layer_weights3 | m_axi_c_weight | interface |          |                                                      |
+| fixp_conv_layer_weights3 | s_axi_control  | register  | offset   | name=fixp_conv_layer_weights3_1 offset=0x4c range=32 |
+| fixp_conv_layer_weights3 | s_axi_control  | register  | offset   | name=fixp_conv_layer_weights3_2 offset=0x50 range=32 |
+| fixp_conv_layer_bias3    | m_axi_c_bias   | interface |          |                                                      |
+| fixp_conv_layer_bias3    | s_axi_control  | register  | offset   | name=fixp_conv_layer_bias3_1 offset=0x58 range=32    |
+| fixp_conv_layer_bias3    | s_axi_control  | register  | offset   | name=fixp_conv_layer_bias3_2 offset=0x5c range=32    |
+| fixp_conv_layer_weights4 | m_axi_c_weight | interface |          |                                                      |
+| fixp_conv_layer_weights4 | s_axi_control  | register  | offset   | name=fixp_conv_layer_weights4_1 offset=0x64 range=32 |
+| fixp_conv_layer_weights4 | s_axi_control  | register  | offset   | name=fixp_conv_layer_weights4_2 offset=0x68 range=32 |
+| fixp_conv_layer_bias4    | m_axi_c_bias   | interface |          |                                                      |
+| fixp_conv_layer_bias4    | s_axi_control  | register  | offset   | name=fixp_conv_layer_bias4_1 offset=0x70 range=32    |
+| fixp_conv_layer_bias4    | s_axi_control  | register  | offset   | name=fixp_conv_layer_bias4_2 offset=0x74 range=32    |
+| fixp_dense1_weights      | m_axi_dense    | interface |          |                                                      |
+| fixp_dense1_weights      | s_axi_control  | register  | offset   | name=fixp_dense1_weights_1 offset=0x7c range=32      |
+| fixp_dense1_weights      | s_axi_control  | register  | offset   | name=fixp_dense1_weights_2 offset=0x80 range=32      |
+| fixp_dense1_bias         | m_axi_dense    | interface |          |                                                      |
+| fixp_dense1_bias         | s_axi_control  | register  | offset   | name=fixp_dense1_bias_1 offset=0x88 range=32         |
+| fixp_dense1_bias         | s_axi_control  | register  | offset   | name=fixp_dense1_bias_2 offset=0x8c range=32         |
+| fixp_dense2_weights      | m_axi_dense    | interface |          |                                                      |
+| fixp_dense2_weights      | s_axi_control  | register  | offset   | name=fixp_dense2_weights_1 offset=0x94 range=32      |
+| fixp_dense2_weights      | s_axi_control  | register  | offset   | name=fixp_dense2_weights_2 offset=0x98 range=32      |
+| fixp_dense2_bias         | m_axi_dense    | interface |          |                                                      |
+| fixp_dense2_bias         | s_axi_control  | register  | offset   | name=fixp_dense2_bias_1 offset=0xa0 range=32         |
+| fixp_dense2_bias         | s_axi_control  | register  | offset   | name=fixp_dense2_bias_2 offset=0xa4 range=32         |
+| output_feature_map       | m_axi_fm       | interface |          |                                                      |
+| output_feature_map       | s_axi_control  | register  | offset   | name=output_feature_map_1 offset=0xac range=32       |
+| output_feature_map       | s_axi_control  | register  | offset   | name=output_feature_map_2 offset=0xb0 range=32       |
++--------------------------+----------------+-----------+----------+------------------------------------------------------+
+
+
+================================================================
+== M_AXI Burst Information
+================================================================
+ Note: All burst requests might be further partitioned into multiple requests during RTL generation based on max_read_burst_length or max_write_burst_length settings.
+
+* Inferred Burst Summary
++----------------+---------------------+-----------+--------+-------+-------------------+
+| HW Interface   | Loop                | Direction | Length | Width | Location          |
++----------------+---------------------+-----------+--------+-------+-------------------+
+| m_axi_c_bias   | conv1d_1a           | read      | 32     | 32    | conv1d.cpp:45:5   |
+| m_axi_c_bias   | conv1d_2a           | read      | 32     | 32    | conv1d.cpp:93:5   |
+| m_axi_c_bias   | conv1d_3a           | read      | 32     | 32    | conv1d.cpp:131:5  |
+| m_axi_c_bias   | conv1d_4a           | read      | 32     | 32    | conv1d.cpp:168:5  |
+| m_axi_dense    | dense1_a            | read      | 32     | 32    | conv1d.cpp:454:5  |
+| m_axi_dense    | dense2_a            | read      | 5      | 32    | conv1d.cpp:484:5  |
+| m_axi_fm       | load_input          | read      | 187    | 32    | conv1d.cpp:555:5  |
+| m_axi_c_weight | load_conv_weights1  | read      | 160    | 32    | conv1d.cpp:560:5  |
+| m_axi_c_weight | load_conv_weights2  | read      | 5120   | 32    | conv1d.cpp:567:5  |
+| m_axi_c_weight | load_conv_weights3  | read      | 5120   | 32    | conv1d.cpp:576:5  |
+| m_axi_c_weight | load_conv_weights4  | read      | 5120   | 32    | conv1d.cpp:586:5  |
+| m_axi_dense    | load_dense1_weights | read      | 2048   | 32    | conv1d.cpp:596:5  |
+| m_axi_dense    | load_dense2_weights | read      | 160    | 32    | conv1d.cpp:603:5  |
+| m_axi_fm       | load_output         | read      | 5      | 32    | conv1d.cpp:610:5  |
+| m_axi_fm       | VITIS_LOOP_671_10   | write     | 5      | 32    | conv1d.cpp:671:24 |
++----------------+---------------------+-----------+--------+-------+-------------------+
+
+* Inferred Bursts and Widening Missed
++----------------+--------------------------+-------------------+---------------------------------------------------------------------------------------------------------+------------+-------------------+
+| HW Interface   | Variable                 | Loop              | Problem                                                                                                 | Resolution | Location          |
++----------------+--------------------------+-------------------+---------------------------------------------------------------------------------------------------------+------------+-------------------+
+| m_axi_c_bias   | B_buf                    | conv1d_1a         | Could not widen since type float size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | conv1d.cpp:45:5   |
+| m_axi_c_bias   | B_buf                    | conv1d_2a         | Could not widen since type float size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | conv1d.cpp:93:5   |
+| m_axi_c_bias   | B_buf                    | conv1d_3a         | Could not widen since type float size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | conv1d.cpp:131:5  |
+| m_axi_c_bias   | B_buf                    | conv1d_4a         | Could not widen since type float size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | conv1d.cpp:168:5  |
+| m_axi_dense    | fixp_dense1_bias         | dense1_a          | Could not widen since type float size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | conv1d.cpp:454:5  |
+| m_axi_dense    | fixp_dense2_bias         | dense2_a          | Could not widen since type float size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | conv1d.cpp:484:5  |
+| m_axi_fm       | output_feature_map       | VITIS_LOOP_671_10 | Could not widen since type float size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | conv1d.cpp:671:24 |
+| m_axi_fm       | output_feature_map       | load_output       | Could not widen since type float size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | conv1d.cpp:610:5  |
+| m_axi_dense    | fixp_dense2_weights      | VITIS_LOOP_604_9  | Could not widen since type float size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | conv1d.cpp:604:27 |
+| m_axi_dense    | fixp_dense1_weights      | VITIS_LOOP_597_8  | Could not widen since type float size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | conv1d.cpp:597:27 |
+| m_axi_c_weight | fixp_conv_layer_weights4 | VITIS_LOOP_588_7  | Could not widen since type float size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | conv1d.cpp:588:31 |
+| m_axi_c_weight | fixp_conv_layer_weights3 | VITIS_LOOP_578_5  | Could not widen since type float size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | conv1d.cpp:578:31 |
+| m_axi_c_weight | fixp_conv_layer_weights2 | VITIS_LOOP_569_3  | Could not widen since type float size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | conv1d.cpp:569:31 |
+| m_axi_c_weight | fixp_conv_layer_weights1 | VITIS_LOOP_561_1  | Could not widen since type float size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | conv1d.cpp:561:27 |
+| m_axi_fm       | input_feature_map        | load_input        | Could not widen since type float size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | conv1d.cpp:555:5  |
++----------------+--------------------------+-------------------+---------------------------------------------------------------------------------------------------------+------------+-------------------+
+
+    * Resolution URL: www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=XXX-YYY.html (replace XXX-YYY with column value)
+
+================================================================
+== Bind Op Report
+================================================================
++--------------------------+-----+--------+-------------+-----+--------+---------+
+| Name                     | DSP | Pragma | Variable    | Op  | Impl   | Latency |
++--------------------------+-----+--------+-------------+-----+--------+---------+
+| + tiled_conv             | 5   |        |             |     |        |         |
+|   add_ln555_fu_919_p2    | -   |        | add_ln555   | add | fabric | 0       |
+|   add_ln562_fu_973_p2    | -   |        | add_ln562   | add | fabric | 0       |
+|   add_ln560_fu_985_p2    | -   |        | add_ln560   | add | fabric | 0       |
+|   add_ln562_1_fu_1019_p2 | -   |        | add_ln562_1 | add | fabric | 0       |
+|   add_ln561_fu_1035_p2   | -   |        | add_ln561   | add | fabric | 0       |
+|   add_ln567_fu_1070_p2   | -   |        | add_ln567   | add | fabric | 0       |
+|   add_ln570_fu_1104_p2   | -   |        | add_ln570   | add | fabric | 0       |
+|   add_ln570_1_fu_1125_p2 | -   |        | add_ln570_1 | add | fabric | 0       |
+|   add_ln568_fu_1137_p2   | -   |        | add_ln568   | add | fabric | 0       |
+|   add_ln570_2_fu_1151_p2 | -   |        | add_ln570_2 | add | fabric | 0       |
+|   add_ln569_fu_1167_p2   | -   |        | add_ln569   | add | fabric | 0       |
+|   add_ln576_fu_1198_p2   | -   |        | add_ln576   | add | fabric | 0       |
+|   add_ln579_fu_1232_p2   | -   |        | add_ln579   | add | fabric | 0       |
+|   add_ln579_1_fu_1253_p2 | -   |        | add_ln579_1 | add | fabric | 0       |
+|   add_ln577_fu_1265_p2   | -   |        | add_ln577   | add | fabric | 0       |
+|   add_ln579_2_fu_1279_p2 | -   |        | add_ln579_2 | add | fabric | 0       |
+|   add_ln578_fu_1295_p2   | -   |        | add_ln578   | add | fabric | 0       |
+|   add_ln586_fu_1326_p2   | -   |        | add_ln586   | add | fabric | 0       |
+|   add_ln589_fu_1360_p2   | -   |        | add_ln589   | add | fabric | 0       |
+|   add_ln589_1_fu_1381_p2 | -   |        | add_ln589_1 | add | fabric | 0       |
+|   add_ln587_fu_1393_p2   | -   |        | add_ln587   | add | fabric | 0       |
+|   add_ln589_2_fu_1407_p2 | -   |        | add_ln589_2 | add | fabric | 0       |
+|   add_ln588_fu_1423_p2   | -   |        | add_ln588   | add | fabric | 0       |
+|   add_ln596_fu_1454_p2   | -   |        | add_ln596   | add | fabric | 0       |
+|   add_ln598_fu_1488_p2   | -   |        | add_ln598   | add | fabric | 0       |
+|   add_ln597_fu_1504_p2   | -   |        | add_ln597   | add | fabric | 0       |
+|   add_ln603_fu_1535_p2   | -   |        | add_ln603   | add | fabric | 0       |
+|   add_ln605_fu_1569_p2   | -   |        | add_ln605   | add | fabric | 0       |
+|   add_ln604_fu_1585_p2   | -   |        | add_ln604   | add | fabric | 0       |
+|   add_ln610_fu_1611_p2   | -   |        | add_ln610   | add | fabric | 0       |
+|   add_ln435_fu_1645_p2   | -   |        | add_ln435   | add | fabric | 0       |
+|   add_ln438_fu_1655_p2   | -   |        | add_ln438   | add | fabric | 0       |
+|   add_ln437_fu_1671_p2   | -   |        | add_ln437   | add | fabric | 0       |
+|   add_ln671_fu_1700_p2   | -   |        | add_ln671   | add | fabric | 0       |
+|  + conv1d_1              | 0   |        |             |     |        |         |
+|    add_ln45_1_fu_260_p2  | -   |        | add_ln45_1  | add | fabric | 0       |
+|    add_ln61_fu_276_p2    | -   |        | add_ln61    | add | fabric | 0       |
+|    add_ln45_fu_282_p2    | -   |        | add_ln45    | add | fabric | 0       |
+|    empty_166_fu_295_p2   | -   |        | empty_166   | add | fabric | 0       |
+|    add_ln49_fu_311_p2    | -   |        | add_ln49    | add | fabric | 0       |
+|    add_ln61_1_fu_333_p2  | -   |        | add_ln61_1  | add | fabric | 0       |
+|    add_ln53_fu_349_p2    | -   |        | add_ln53    | add | fabric | 0       |
+|    add_ln55_fu_355_p2    | -   |        | add_ln55    | add | fabric | 0       |
+|    add_ln55_1_fu_365_p2  | -   |        | add_ln55_1  | add | fabric | 0       |
+|    add_ln55_2_fu_380_p2  | -   |        | add_ln55_2  | add | fabric | 0       |
+|  + max_pooling1          | 0   |        |             |     |        |         |
+|    add_ln206_1_fu_167_p2 | -   |        | add_ln206_1 | add | fabric | 0       |
+|    add_ln206_2_fu_173_p2 | -   |        | add_ln206_2 | add | fabric | 0       |
+|    add_ln206_fu_185_p2   | -   |        | add_ln206   | add | fabric | 0       |
+|    add_ln226_fu_195_p2   | -   |        | add_ln226   | add | fabric | 0       |
+|    add_ln208_fu_211_p2   | -   |        | add_ln208   | add | fabric | 0       |
+|    add_ln213_fu_247_p2   | -   |        | add_ln213   | add | fabric | 0       |
+|    add_ln215_fu_253_p2   | -   |        | add_ln215   | add | fabric | 0       |
+|    add_ln216_fu_262_p2   | -   |        | add_ln216   | add | fabric | 0       |
+|  + conv1d_2              | 0   |        |             |     |        |         |
+|    add_ln93_1_fu_274_p2  | -   |        | add_ln93_1  | add | fabric | 0       |
+|    add_ln93_fu_283_p2    | -   |        | add_ln93    | add | fabric | 0       |
+|    add_ln98_fu_296_p2    | -   |        | add_ln98    | add | fabric | 0       |
+|    add_ln96_fu_316_p2    | -   |        | add_ln96    | add | fabric | 0       |
+|    add_ln100_1_fu_330_p2 | -   |        | add_ln100_1 | add | fabric | 0       |
+|    empty_161_fu_336_p2   | -   |        | empty_161   | add | fabric | 0       |
+|    add_ln112_fu_358_p2   | -   |        | add_ln112   | add | fabric | 0       |
+|    add_ln112_1_fu_379_p2 | -   |        | add_ln112_1 | add | fabric | 0       |
+|    add_ln100_fu_391_p2   | -   |        | add_ln100   | add | fabric | 0       |
+|    add_ln112_2_fu_401_p2 | -   |        | add_ln112_2 | add | fabric | 0       |
+|    add_ln104_fu_417_p2   | -   |        | add_ln104   | add | fabric | 0       |
+|    add_ln106_fu_423_p2   | -   |        | add_ln106   | add | fabric | 0       |
+|    add_ln106_1_fu_433_p2 | -   |        | add_ln106_1 | add | fabric | 0       |
+|    add_ln112_3_fu_442_p2 | -   |        | add_ln112_3 | add | fabric | 0       |
+|  + max_pooling2          | 0   |        |             |     |        |         |
+|    add_ln238_1_fu_218_p2 | -   |        | add_ln238_1 | add | fabric | 0       |
+|    add_ln238_fu_230_p2   | -   |        | add_ln238   | add | fabric | 0       |
+|    add_ln242_fu_255_p2   | -   |        | add_ln242   | add | fabric | 0       |
+|    add_ln240_fu_271_p2   | -   |        | add_ln240   | add | fabric | 0       |
+|    add_ln257_1_fu_334_p2 | -   |        | add_ln257_1 | add | fabric | 0       |
+|    add_ln257_2_fu_340_p2 | -   |        | add_ln257_2 | add | fabric | 0       |
+|    add_ln257_fu_352_p2   | -   |        | add_ln257   | add | fabric | 0       |
+|    add_ln279_fu_362_p2   | -   |        | add_ln279   | add | fabric | 0       |
+|    add_ln261_fu_378_p2   | -   |        | add_ln261   | add | fabric | 0       |
+|    add_ln266_fu_414_p2   | -   |        | add_ln266   | add | fabric | 0       |
+|    add_ln268_fu_420_p2   | -   |        | add_ln268   | add | fabric | 0       |
+|    add_ln269_fu_429_p2   | -   |        | add_ln269   | add | fabric | 0       |
+|  + conv1d_3              | 0   |        |             |     |        |         |
+|    add_ln131_1_fu_270_p2 | -   |        | add_ln131_1 | add | fabric | 0       |
+|    add_ln131_fu_279_p2   | -   |        | add_ln131   | add | fabric | 0       |
+|    add_ln136_fu_292_p2   | -   |        | add_ln136   | add | fabric | 0       |
+|    add_ln134_fu_312_p2   | -   |        | add_ln134   | add | fabric | 0       |
+|    add_ln138_1_fu_326_p2 | -   |        | add_ln138_1 | add | fabric | 0       |
+|    empty_155_fu_332_p2   | -   |        | empty_155   | add | fabric | 0       |
+|    add_ln150_fu_354_p2   | -   |        | add_ln150   | add | fabric | 0       |
+|    add_ln150_1_fu_375_p2 | -   |        | add_ln150_1 | add | fabric | 0       |
+|    add_ln138_fu_387_p2   | -   |        | add_ln138   | add | fabric | 0       |
+|    add_ln150_2_fu_397_p2 | -   |        | add_ln150_2 | add | fabric | 0       |
+|    add_ln142_fu_413_p2   | -   |        | add_ln142   | add | fabric | 0       |
+|    add_ln144_fu_419_p2   | -   |        | add_ln144   | add | fabric | 0       |
+|    add_ln144_1_fu_429_p2 | -   |        | add_ln144_1 | add | fabric | 0       |
+|    add_ln150_3_fu_438_p2 | -   |        | add_ln150_3 | add | fabric | 0       |
+|  + max_pooling3          | 0   |        |             |     |        |         |
+|    add_ln291_1_fu_203_p2 | -   |        | add_ln291_1 | add | fabric | 0       |
+|    add_ln291_fu_215_p2   | -   |        | add_ln291   | add | fabric | 0       |
+|    add_ln295_fu_235_p2   | -   |        | add_ln295   | add | fabric | 0       |
+|    add_ln293_fu_251_p2   | -   |        | add_ln293   | add | fabric | 0       |
+|    add_ln311_1_fu_311_p2 | -   |        | add_ln311_1 | add | fabric | 0       |
+|    add_ln331_fu_337_p2   | -   |        | add_ln331   | add | fabric | 0       |
+|    add_ln311_fu_349_p2   | -   |        | add_ln311   | add | fabric | 0       |
+|    add_ln331_1_fu_359_p2 | -   |        | add_ln331_1 | add | fabric | 0       |
+|    add_ln313_fu_375_p2   | -   |        | add_ln313   | add | fabric | 0       |
+|    add_ln318_fu_407_p2   | -   |        | add_ln318   | add | fabric | 0       |
+|    add_ln320_fu_413_p2   | -   |        | add_ln320   | add | fabric | 0       |
+|    add_ln321_fu_422_p2   | -   |        | add_ln321   | add | fabric | 0       |
+|  + conv1d_4              | 0   |        |             |     |        |         |
+|    add_ln187_fu_272_p2   | -   |        | add_ln187   | add | fabric | 0       |
+|    add_ln168_fu_278_p2   | -   |        | add_ln168   | add | fabric | 0       |
+|    add_ln173_fu_291_p2   | -   |        | add_ln173   | add | fabric | 0       |
+|    add_ln171_fu_311_p2   | -   |        | add_ln171   | add | fabric | 0       |
+|    add_ln187_1_fu_369_p2 | -   |        | add_ln187_1 | add | fabric | 0       |
+|    add_ln187_2_fu_390_p2 | -   |        | add_ln187_2 | add | fabric | 0       |
+|    add_ln175_fu_402_p2   | -   |        | add_ln175   | add | fabric | 0       |
+|    add_ln187_3_fu_412_p2 | -   |        | add_ln187_3 | add | fabric | 0       |
+|    add_ln179_fu_428_p2   | -   |        | add_ln179   | add | fabric | 0       |
+|    add_ln181_fu_434_p2   | -   |        | add_ln181   | add | fabric | 0       |
+|    add_ln181_1_fu_444_p2 | -   |        | add_ln181_1 | add | fabric | 0       |
+|    add_ln187_4_fu_453_p2 | -   |        | add_ln187_4 | add | fabric | 0       |
+|  + max_pooling4          | 0   |        |             |     |        |         |
+|    add_ln347_fu_203_p2   | -   |        | add_ln347   | add | fabric | 0       |
+|    add_ln343_fu_215_p2   | -   |        | add_ln343   | add | fabric | 0       |
+|    add_ln347_1_fu_230_p2 | -   |        | add_ln347_1 | add | fabric | 0       |
+|    add_ln345_fu_246_p2   | -   |        | add_ln345   | add | fabric | 0       |
+|    add_ln373_fu_323_p2   | -   |        | add_ln373   | add | fabric | 0       |
+|    add_ln363_fu_343_p2   | -   |        | add_ln363   | add | fabric | 0       |
+|    add_ln383_fu_353_p2   | -   |        | add_ln383   | add | fabric | 0       |
+|    add_ln365_fu_369_p2   | -   |        | add_ln365   | add | fabric | 0       |
+|    add_ln370_fu_399_p2   | -   |        | add_ln370   | add | fabric | 0       |
+|    add_ln372_fu_405_p2   | -   |        | add_ln372   | add | fabric | 0       |
+|    add_ln373_1_fu_414_p2 | -   |        | add_ln373_1 | add | fabric | 0       |
+|  + max_pooling5          | 0   |        |             |     |        |         |
+|    add_ln398_fu_149_p2   | -   |        | add_ln398   | add | fabric | 0       |
+|    add_ln418_fu_159_p2   | -   |        | add_ln418   | add | fabric | 0       |
+|    add_ln400_fu_175_p2   | -   |        | add_ln400   | add | fabric | 0       |
+|    add_ln405_fu_201_p2   | -   |        | add_ln405   | add | fabric | 0       |
+|    add_ln407_fu_207_p2   | -   |        | add_ln407   | add | fabric | 0       |
+|  + dense1                | 0   |        |             |     |        |         |
+|    add_ln454_fu_243_p2   | -   |        | add_ln454   | add | fabric | 0       |
+|    add_ln459_fu_265_p2   | -   |        | add_ln459   | add | fabric | 0       |
+|    add_ln458_fu_281_p2   | -   |        | add_ln458   | add | fabric | 0       |
+|    add_ln466_fu_305_p2   | -   |        | add_ln466   | add | fabric | 0       |
+|  + dense2                | 0   |        |             |     |        |         |
+|    add_ln484_fu_209_p2   | -   |        | add_ln484   | add | fabric | 0       |
+|    add_ln489_fu_226_p2   | -   |        | add_ln489   | add | fabric | 0       |
+|    add_ln488_fu_242_p2   | -   |        | add_ln488   | add | fabric | 0       |
++--------------------------+-----+--------+-------------+-----+--------+---------+
+
+
+================================================================
+== Bind Storage Report
+================================================================
++---------------------------------------------+------+------+--------+-----------------------------------------+---------+------+---------+
+| Name                                        | BRAM | URAM | Pragma | Variable                                | Storage | Impl | Latency |
++---------------------------------------------+------+------+--------+-----------------------------------------+---------+------+---------+
+| + tiled_conv                                | 103  | 0    |        |                                         |         |      |         |
+|   temp_fixp_conv_layer_weights1_0_U         | 1    | -    |        | temp_fixp_conv_layer_weights1_0         | ram_1p  | auto | 1       |
+|   fcmp_32ns_32ns_1_2_no_dsp_1_U62           | 16   | -    |        | temp_fixp_conv_layer_weights2           | ram_1p  | auto | 1       |
+|   temp_fixp_conv_layer_weights3_U           | 16   | -    |        | temp_fixp_conv_layer_weights3           | ram_1p  | auto | 1       |
+|   temp_fixp_conv_layer_weights4_U           | 16   | -    |        | temp_fixp_conv_layer_weights4           | ram_1p  | auto | 1       |
+|   temp_fixp_dense1_weights_U                | 4    | -    |        | temp_fixp_dense1_weights                | ram_1p  | auto | 1       |
+|   temp_fixp_dense2_weights_U                | 1    | -    |        | temp_fixp_dense2_weights                | ram_1p  | auto | 1       |
+|   temp_input_0_0_U                          | 1    | -    |        | temp_input_0_0                          | ram_1p  | auto | 1       |
+|   temp_output_feature_map_U                 | -    | -    |        | temp_output_feature_map                 | ram_1p  | auto | 1       |
+|   fixp_conv_layer_output_feature_map1_U     | 16   | -    |        | fixp_conv_layer_output_feature_map1     | ram_1p  | auto | 1       |
+|   fixp_conv_layer_output_feature_map1_max_U | 8    | -    |        | fixp_conv_layer_output_feature_map1_max | ram_1p  | auto | 1       |
+|   fixp_conv_layer_output_feature_map2_U     | 8    | -    |        | fixp_conv_layer_output_feature_map2     | ram_1p  | auto | 1       |
+|   fixp_conv_layer_output_feature_map2_max_U | 4    | -    |        | fixp_conv_layer_output_feature_map2_max | ram_1p  | auto | 1       |
+|   fixp_conv_layer_output_feature_map3_U     | 4    | -    |        | fixp_conv_layer_output_feature_map3     | ram_1p  | auto | 1       |
+|   fixp_conv_layer_output_feature_map3_max_U | 2    | -    |        | fixp_conv_layer_output_feature_map3_max | ram_1p  | auto | 1       |
+|   fixp_conv_layer_output_feature_map4_U     | 2    | -    |        | fixp_conv_layer_output_feature_map4     | ram_1p  | auto | 1       |
+|   fixp_conv_layer_output_feature_map4_max_U | 1    | -    |        | fixp_conv_layer_output_feature_map4_max | ram_1p  | auto | 1       |
+|   fixp_conv_layer_output_feature_map5_max_U | 1    | -    |        | fixp_conv_layer_output_feature_map5_max | ram_1p  | auto | 1       |
+|   fixp_conv_layer_output_feature_flat_U     | 1    | -    |        | fixp_conv_layer_output_feature_flat     | ram_1p  | auto | 1       |
+|   fixp_dense1_output_U                      | 1    | -    |        | fixp_dense1_output                      | ram_1p  | auto | 1       |
++---------------------------------------------+------+------+--------+-----------------------------------------+---------+------+---------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Valid Pragma Syntax
++-----------+-------------------------------------------------------------+--------------------------------------------------------+
+| Type      | Options                                                     | Location                                               |
++-----------+-------------------------------------------------------------+--------------------------------------------------------+
+| pipeline  | off                                                         | conv1d.cpp:43 in conv1d_1                              |
+| pipeline  | off                                                         | conv1d.cpp:90 in conv1d_2                              |
+| pipeline  | off                                                         | conv1d.cpp:129 in conv1d_3                             |
+| pipeline  | off                                                         | conv1d.cpp:166 in conv1d_4                             |
+| pipeline  | off                                                         | conv1d.cpp:200 in max_pooling1                         |
+| pipeline  | off                                                         | conv1d.cpp:235 in max_pooling2                         |
+| pipeline  | off                                                         | conv1d.cpp:289 in max_pooling3                         |
+| pipeline  | off                                                         | conv1d.cpp:341 in max_pooling4                         |
+| pipeline  | off                                                         | conv1d.cpp:393 in max_pooling5                         |
+| pipeline  | off                                                         | conv1d.cpp:428 in flatten                              |
+| pipeline  | off                                                         | conv1d.cpp:452 in dense1                               |
+| pipeline  | off                                                         | conv1d.cpp:479 in dense2                               |
+| interface | m_axi depth=1 port=input_feature_map bundle=fm              | conv1d.cpp:515 in tiled_conv, input_feature_map        |
+| interface | m_axi depth=1 port=output_feature_map bundle=fm             | conv1d.cpp:516 in tiled_conv, output_feature_map       |
+| interface | m_axi depth=1 port=fixp_conv_layer_weights1 bundle=c_weight | conv1d.cpp:518 in tiled_conv, fixp_conv_layer_weights1 |
+| interface | m_axi depth=1 port=fixp_conv_layer_weights2 bundle=c_weight | conv1d.cpp:519 in tiled_conv, fixp_conv_layer_weights2 |
+| interface | m_axi depth=1 port=fixp_conv_layer_weights3 bundle=c_weight | conv1d.cpp:520 in tiled_conv, fixp_conv_layer_weights3 |
+| interface | m_axi depth=1 port=fixp_conv_layer_weights4 bundle=c_weight | conv1d.cpp:521 in tiled_conv, fixp_conv_layer_weights4 |
+| interface | m_axi depth=1 port=fixp_conv_layer_bias1 bundle=c_bias      | conv1d.cpp:523 in tiled_conv, fixp_conv_layer_bias1    |
+| interface | m_axi depth=1 port=fixp_conv_layer_bias2 bundle=c_bias      | conv1d.cpp:524 in tiled_conv, fixp_conv_layer_bias2    |
+| interface | m_axi depth=1 port=fixp_conv_layer_bias3 bundle=c_bias      | conv1d.cpp:525 in tiled_conv, fixp_conv_layer_bias3    |
+| interface | m_axi depth=1 port=fixp_conv_layer_bias4 bundle=c_bias      | conv1d.cpp:526 in tiled_conv, fixp_conv_layer_bias4    |
+| interface | m_axi depth=1 port=fixp_dense1_weights bundle=dense         | conv1d.cpp:528 in tiled_conv, fixp_dense1_weights      |
+| interface | m_axi depth=1 port=fixp_dense1_bias bundle=dense            | conv1d.cpp:529 in tiled_conv, fixp_dense1_bias         |
+| interface | m_axi depth=1 port=fixp_dense2_weights bundle=dense         | conv1d.cpp:530 in tiled_conv, fixp_dense2_weights      |
+| interface | m_axi depth=1 port=fixp_dense2_bias bundle=dense            | conv1d.cpp:531 in tiled_conv, fixp_dense2_bias         |
+| interface | s_axilite register port=return                              | conv1d.cpp:533 in tiled_conv, return                   |
+| pipeline  | off                                                         | conv1d.cpp:535 in tiled_conv                           |
++-----------+-------------------------------------------------------------+--------------------------------------------------------+
+
+

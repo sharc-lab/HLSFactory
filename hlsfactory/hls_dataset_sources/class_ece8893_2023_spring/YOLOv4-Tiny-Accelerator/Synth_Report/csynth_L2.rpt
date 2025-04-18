@@ -1,0 +1,380 @@
+
+
+================================================================
+== Synthesis Summary Report of 'tiled_conv'
+================================================================
++ General Information: 
+    * Date:           Tue May  2 16:50:36 2023
+    * Version:        2022.1.2 (Build 3605665 on Fri Aug  5 22:52:02 MDT 2022)
+    * Project:        proj
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: zynq
+    * Target device:  xc7z020-clg400-1
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +------------------------------------------------------------------------------------+------+------+----------+-----------+----------+----------+------+----------+---------+----------+-----------+-------------+-----+
+    |                                       Modules                                      | Issue|      | Latency  |  Latency  | Iteration|          | Trip |          |         |          |           |             |     |
+    |                                       & Loops                                      | Type | Slack| (cycles) |    (ns)   |  Latency | Interval | Count| Pipelined|  BRAM   |    DSP   |     FF    |     LUT     | URAM|
+    +------------------------------------------------------------------------------------+------+------+----------+-----------+----------+----------+------+----------+---------+----------+-----------+-------------+-----+
+    |+ tiled_conv                                                                        |     -|  0.00|  11997987|  1.200e+08|         -|  11997988|     -|        no|  21 (7%)|  40 (18%)|  7481 (7%)|  12902 (24%)|    -|
+    | o TILE_ROW_TILE_COL                                                                |     -|  7.30|  11997986|  1.200e+08|     70994|         -|   169|        no|        -|         -|          -|            -|    -|
+    |  + tiled_conv_Pipeline_INPUT_BUFFER_HEIGHT_INPUT_BUFFER_WIDTH_INPUT_BUFFER_DEPTH   |     -|  0.00|      9263|  9.263e+04|         -|      9263|     -|        no|        -|   1 (~0%)|  1926 (1%)|    1396 (2%)|    -|
+    |   o INPUT_BUFFER_HEIGHT_INPUT_BUFFER_WIDTH_INPUT_BUFFER_DEPTH                      |     -|  7.30|      9261|  9.261e+04|        15|         1|  9248|       yes|        -|         -|          -|            -|    -|
+    |  o KERNEL_GRP                                                                      |     -|  7.30|     61728|  6.173e+05|      3858|         -|    16|        no|        -|         -|          -|            -|    -|
+    |   + tiled_conv_Pipeline_WEIGHT_KERNEL_NUM_WEIGHT_KERNEL_WIDTH_WEIGHT_KERNEL_DEPTH  |     -|  0.00|      1165|  1.165e+04|         -|      1165|     -|        no|        -|         -|  586 (~0%)|    1014 (1%)|    -|
+    |    o WEIGHT_KERNEL_NUM_WEIGHT_KERNEL_WIDTH_WEIGHT_KERNEL_DEPTH                     |     -|  7.30|      1163|  1.163e+04|        13|         1|  1152|       yes|        -|         -|          -|            -|    -|
+    |   + tiled_conv_Pipeline_BIAS                                                       |     -|  0.00|         7|     70.000|         -|         7|     -|        no|        -|         -|   93 (~0%)|    105 (~0%)|    -|
+    |    o BIAS                                                                          |     -|  7.30|         5|     50.000|         3|         1|     4|       yes|        -|         -|          -|            -|    -|
+    |   + conv_7x7                                                                       |     -|  0.17|      2404|  2.404e+04|         -|      2404|     -|        no|        -|  32 (14%)|  1299 (1%)|    3135 (5%)|    -|
+    |    + conv_7x7_Pipeline_INIT_OUTPUT_WIDTH                                           |     -|  3.68|        10|    100.000|         -|        10|     -|        no|        -|         -|    6 (~0%)|     49 (~0%)|    -|
+    |     o INIT_OUTPUT_WIDTH                                                            |     -|  7.30|         8|     80.000|         1|         1|     8|       yes|        -|         -|          -|            -|    -|
+    |    o OUTPUT_WIDTH_CONV                                                             |     -|  7.30|      2392|  2.392e+04|       299|         -|     8|        no|        -|         -|          -|            -|    -|
+    |     + conv_7x7_Pipeline_KERNEL_HEIGHT_CONV_KERNEL_WIDTH_CONV_INPUT_DEPTH_CONV      |     -|  0.17|       295|  2.950e+03|         -|       295|     -|        no|        -|  32 (14%)|  666 (~0%)|    1034 (1%)|    -|
+    |      o KERNEL_HEIGHT_CONV_KERNEL_WIDTH_CONV_INPUT_DEPTH_CONV                       |     -|  7.30|       293|  2.930e+03|         7|         1|   288|       yes|        -|         -|          -|            -|    -|
+    |   + tiled_conv_Pipeline_OUTPUT_BUFFER_HEIGHT_OUTPUT_BUFFER_WIDTH                   |     -|  0.00|       267|  2.670e+03|         -|       267|     -|        no|        -|    4 (1%)|  692 (~0%)|    1035 (1%)|    -|
+    |    o OUTPUT_BUFFER_HEIGHT_OUTPUT_BUFFER_WIDTH                                      |    II|  7.30|       265|  2.650e+03|        14|         4|    64|       yes|        -|         -|          -|            -|    -|
+    +------------------------------------------------------------------------------------+------+------+----------+-----------+----------+----------+------+----------+---------+----------+-----------+-------------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* M_AXI
++-----------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+
+| Interface | Data Width | Address Width | Latency | Offset | Register | Max Widen | Max Read     | Max Write    | Num Read    | Num Write   |
+|           | (SW->HW)   |               |         |        |          | Bitwidth  | Burst Length | Burst Length | Outstanding | Outstanding |
++-----------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+
+| m_axi_fm  | 16 -> 16   | 64            | 0       | slave  | 0        | 0         | 16           | 16           | 16          | 16          |
+| m_axi_wt  | 16 -> 16   | 64            | 0       | slave  | 0        | 0         | 16           | 16           | 16          | 16          |
++-----------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+
+
+* S_AXILITE Interfaces
++---------------+------------+---------------+--------+----------+
+| Interface     | Data Width | Address Width | Offset | Register |
++---------------+------------+---------------+--------+----------+
+| s_axi_control | 32         | 6             | 16     | 0        |
++---------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++---------------+----------------------+--------+-------+--------+-----------------------------------+----------------------------------------------------------------------+
+| Interface     | Register             | Offset | Width | Access | Description                       | Bit Fields                                                           |
++---------------+----------------------+--------+-------+--------+-----------------------------------+----------------------------------------------------------------------+
+| s_axi_control | CTRL                 | 0x00   | 32    | RW     | Control signals                   | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_control | GIER                 | 0x04   | 32    | RW     | Global Interrupt Enable Register  | 0=Enable                                                             |
+| s_axi_control | IP_IER               | 0x08   | 32    | RW     | IP Interrupt Enable Register      | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                        |
+| s_axi_control | IP_ISR               | 0x0c   | 32    | RW     | IP Interrupt Status Register      | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                        |
+| s_axi_control | input_feature_map_1  | 0x10   | 32    | W      | Data signal of input_feature_map  |                                                                      |
+| s_axi_control | input_feature_map_2  | 0x14   | 32    | W      | Data signal of input_feature_map  |                                                                      |
+| s_axi_control | layer_weights_1      | 0x1c   | 32    | W      | Data signal of layer_weights      |                                                                      |
+| s_axi_control | layer_weights_2      | 0x20   | 32    | W      | Data signal of layer_weights      |                                                                      |
+| s_axi_control | layer_bias_1         | 0x28   | 32    | W      | Data signal of layer_bias         |                                                                      |
+| s_axi_control | layer_bias_2         | 0x2c   | 32    | W      | Data signal of layer_bias         |                                                                      |
+| s_axi_control | output_feature_map_1 | 0x34   | 32    | W      | Data signal of output_feature_map |                                                                      |
+| s_axi_control | output_feature_map_2 | 0x38   | 32    | W      | Data signal of output_feature_map |                                                                      |
++---------------+----------------------+--------+-------+--------+-----------------------------------+----------------------------------------------------------------------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------+
+| Interface | Type       | Ports     |
++-----------+------------+-----------+
+| ap_clk    | clock      | ap_clk    |
+| ap_rst_n  | reset      | ap_rst_n  |
+| interrupt | interrupt  | interrupt |
+| ap_ctrl   | ap_ctrl_hs |           |
++-----------+------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++--------------------+-----------+--------------------------------------+
+| Argument           | Direction | Datatype                             |
++--------------------+-----------+--------------------------------------+
+| input_feature_map  | inout     | ap_fixed<16, 5, AP_TRN, AP_WRAP, 0>* |
+| layer_weights      | in        | ap_fixed<16, 5, AP_TRN, AP_WRAP, 0>* |
+| layer_bias         | in        | ap_fixed<16, 5, AP_TRN, AP_WRAP, 0>* |
+| output_feature_map | inout     | ap_fixed<16, 5, AP_TRN, AP_WRAP, 0>* |
++--------------------+-----------+--------------------------------------+
+
+* SW-to-HW Mapping
++--------------------+---------------+-----------+----------+------------------------------------------------+
+| Argument           | HW Interface  | HW Type   | HW Usage | HW Info                                        |
++--------------------+---------------+-----------+----------+------------------------------------------------+
+| input_feature_map  | m_axi_fm      | interface |          |                                                |
+| input_feature_map  | s_axi_control | register  | offset   | name=input_feature_map_1 offset=0x10 range=32  |
+| input_feature_map  | s_axi_control | register  | offset   | name=input_feature_map_2 offset=0x14 range=32  |
+| layer_weights      | m_axi_wt      | interface |          |                                                |
+| layer_weights      | s_axi_control | register  | offset   | name=layer_weights_1 offset=0x1c range=32      |
+| layer_weights      | s_axi_control | register  | offset   | name=layer_weights_2 offset=0x20 range=32      |
+| layer_bias         | m_axi_wt      | interface |          |                                                |
+| layer_bias         | s_axi_control | register  | offset   | name=layer_bias_1 offset=0x28 range=32         |
+| layer_bias         | s_axi_control | register  | offset   | name=layer_bias_2 offset=0x2c range=32         |
+| output_feature_map | m_axi_fm      | interface |          |                                                |
+| output_feature_map | s_axi_control | register  | offset   | name=output_feature_map_1 offset=0x34 range=32 |
+| output_feature_map | s_axi_control | register  | offset   | name=output_feature_map_2 offset=0x38 range=32 |
++--------------------+---------------+-----------+----------+------------------------------------------------+
+
+
+================================================================
+== M_AXI Burst Information
+================================================================
+ Note: All burst requests might be further partitioned into multiple requests during RTL generation based on max_read_burst_length or max_write_burst_length settings.
+
+* Inferred Burst Summary
++--------------+------+-----------+--------+-------+----------------+
+| HW Interface | Loop | Direction | Length | Width | Location       |
++--------------+------+-----------+--------+-------+----------------+
+| m_axi_wt     | BIAS | read      | 4      | 16    | utils.cpp:91:5 |
++--------------+------+-----------+--------+-------+----------------+
+
+* Inferred Bursts and Widening Missed
++--------------+--------------------+---------------------+-------------------------------------------------------------------------------------------------------+------------+------------------+
+| HW Interface | Variable           | Loop                | Problem                                                                                               | Resolution | Location         |
++--------------+--------------------+---------------------+-------------------------------------------------------------------------------------------------------+------------+------------------+
+| m_axi_fm     | input_feature_map  | INPUT_BUFFER_DEPTH  | Access load is in the conditional branch                                                              | 214-232    | utils.cpp:38:13  |
+| m_axi_wt     | layer_weights      | WEIGHT_KERNEL_DEPTH | Stride is incompatible                                                                                | 214-230    | utils.cpp:82:17  |
+| m_axi_fm     | output_feature_map | OUTPUT_BUFFER_DEPTH | Access store is in the conditional branch                                                             | 214-232    | utils.cpp:125:13 |
+| m_axi_fm     | output_feature_map | OUTPUT_BUFFER_DEPTH | Access store is in the conditional branch                                                             | 214-232    | utils.cpp:125:13 |
+| m_axi_wt     | layer_bias         |                     | Access is clobbered by load                                                                           | 214-231    | utils.cpp:91:5   |
+| m_axi_wt     | layer_bias         | BIAS                | Could not widen since type i16 size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | utils.cpp:91:5   |
++--------------+--------------------+---------------------+-------------------------------------------------------------------------------------------------------+------------+------------------+
+
+    * Resolution URL: www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=XXX-YYY.html (replace XXX-YYY with column value)
+
+================================================================
+== Bind Op Report
+================================================================
++----------------------------------------------------------------------------------+-----+--------+---------------+-----+--------+---------+
+| Name                                                                             | DSP | Pragma | Variable      | Op  | Impl   | Latency |
++----------------------------------------------------------------------------------+-----+--------+---------------+-----+--------+---------+
+| + tiled_conv                                                                     | 40  |        |               |     |        |         |
+|   add_ln52_1_fu_626_p2                                                           | -   |        | add_ln52_1    | add | fabric | 0       |
+|   add_ln52_fu_638_p2                                                             | -   |        | add_ln52      | add | fabric | 0       |
+|   add_ln61_1_fu_719_p2                                                           | -   |        | add_ln61_1    | add | fabric | 0       |
+|   add_ln61_fu_731_p2                                                             | -   |        | add_ln61      | add | fabric | 0       |
+|   add_ln68_fu_762_p2                                                             | -   |        | add_ln68      | add | fabric | 0       |
+|   mul_mul_6ns_15ns_21_4_1_U319                                                   | 1   |        | mul_ln131     | mul | dsp48  | 3       |
+|   mul_mul_6ns_15ns_21_4_1_U320                                                   | 1   |        | mul_ln131_1   | mul | dsp48  | 3       |
+|   mul_mul_6ns_15ns_21_4_1_U321                                                   | 1   |        | mul_ln131_2   | mul | dsp48  | 3       |
+|   add_ln56_fu_777_p2                                                             | -   |        | add_ln56      | add | fabric | 0       |
+|  + tiled_conv_Pipeline_INPUT_BUFFER_HEIGHT_INPUT_BUFFER_WIDTH_INPUT_BUFFER_DEPTH | 1   |        |               |     |        |         |
+|    add_ln49_fu_840_p2                                                            | -   |        | add_ln49      | add | fabric | 0       |
+|    add_ln31_3_fu_568_p2                                                          | -   |        | add_ln31_3    | add | fabric | 0       |
+|    add_ln31_fu_647_p2                                                            | -   |        | add_ln31      | add | fabric | 0       |
+|    add_ln31_1_fu_848_p2                                                          | -   |        | add_ln31_1    | add | fabric | 0       |
+|    mul_8ns_10ns_17_1_1_U1                                                        | -   |        | mul_ln31      | mul | auto   | 0       |
+|    add_ln31_2_fu_904_p2                                                          | -   |        | add_ln31_2    | add | fabric | 0       |
+|    add_ln34_fu_714_p2                                                            | -   |        | add_ln34      | add | fabric | 0       |
+|    add_ln49_1_fu_866_p2                                                          | -   |        | add_ln49_1    | add | fabric | 0       |
+|    mac_muladd_6ns_17ns_10s_23_4_1_U2                                             | 1   |        | mul_ln49      | mul | dsp48  | 3       |
+|    mac_muladd_6ns_17ns_10s_23_4_1_U2                                             | 1   |        | add_ln49_2    | add | dsp48  | 3       |
+|    add_ln49_4_fu_896_p2                                                          | -   |        | add_ln49_4    | add | fabric | 0       |
+|    add_ln49_3_fu_912_p2                                                          | -   |        | add_ln49_3    | add | fabric | 0       |
+|    add_ln38_fu_770_p2                                                            | -   |        | add_ln38      | add | fabric | 0       |
+|    add_ln34_1_fu_586_p2                                                          | -   |        | add_ln34_1    | add | fabric | 0       |
+|  + tiled_conv_Pipeline_WEIGHT_KERNEL_NUM_WEIGHT_KERNEL_WIDTH_WEIGHT_KERNEL_DEPTH | 0   |        |               |     |        |         |
+|    empty_fu_417_p2                                                               | -   |        | empty         | add | fabric | 0       |
+|    sub_ln84_fu_479_p2                                                            | -   |        | sub_ln84      | sub | fabric | 0       |
+|    add_ln84_2_fu_497_p2                                                          | -   |        | add_ln84_2    | add | fabric | 0       |
+|    add_ln71_1_fu_268_p2                                                          | -   |        | add_ln71_1    | add | fabric | 0       |
+|    add_ln71_fu_319_p2                                                            | -   |        | add_ln71      | add | fabric | 0       |
+|    p_mid183_fu_509_p2                                                            | -   |        | p_mid183      | add | fabric | 0       |
+|    add_ln75_fu_360_p2                                                            | -   |        | add_ln75      | add | fabric | 0       |
+|    sub_ln84_1_fu_603_p2                                                          | -   |        | sub_ln84_1    | sub | fabric | 0       |
+|    add_ln78_fu_639_p2                                                            | -   |        | add_ln78      | add | fabric | 0       |
+|    add_ln84_8_fu_683_p2                                                          | -   |        | add_ln84_8    | add | fabric | 0       |
+|    sub_ln84_2_fu_713_p2                                                          | -   |        | sub_ln84_2    | sub | fabric | 0       |
+|    add_ln84_9_fu_784_p2                                                          | -   |        | add_ln84_9    | add | fabric | 0       |
+|    add_ln84_4_fu_745_p2                                                          | -   |        | add_ln84_4    | add | fabric | 0       |
+|    add_ln84_5_fu_821_p2                                                          | -   |        | add_ln84_5    | add | fabric | 0       |
+|    add_ln84_3_fu_831_p2                                                          | -   |        | add_ln84_3    | add | fabric | 0       |
+|    add_ln82_fu_751_p2                                                            | -   |        | add_ln82      | add | fabric | 0       |
+|    add_ln78_1_fu_382_p2                                                          | -   |        | add_ln78_1    | add | fabric | 0       |
+|    add_ln75_1_fu_286_p2                                                          | -   |        | add_ln75_1    | add | fabric | 0       |
+|  + tiled_conv_Pipeline_BIAS                                                      | 0   |        |               |     |        |         |
+|    add_ln91_fu_199_p2                                                            | -   |        | add_ln91      | add | fabric | 0       |
+|  + conv_7x7                                                                      | 32  |        |               |     |        |         |
+|    add_ln41_fu_946_p2                                                            | -   |        | add_ln41      | add | fabric | 0       |
+|   + conv_7x7_Pipeline_INIT_OUTPUT_WIDTH                                          | 0   |        |               |     |        |         |
+|     add_ln26_fu_588_p2                                                           | -   |        | add_ln26      | add | fabric | 0       |
+|   + conv_7x7_Pipeline_KERNEL_HEIGHT_CONV_KERNEL_WIDTH_CONV_INPUT_DEPTH_CONV      | 32  |        |               |     |        |         |
+|     empty_fu_1389_p2                                                             | -   |        | empty         | add | fabric | 0       |
+|     add_ln44_1_fu_1297_p2                                                        | -   |        | add_ln44_1    | add | fabric | 0       |
+|     add_ln44_fu_1397_p2                                                          | -   |        | add_ln44      | add | fabric | 0       |
+|     add_ln47_fu_1427_p2                                                          | -   |        | add_ln47      | add | fabric | 0       |
+|     p_mid1_fu_1444_p2                                                            | -   |        | p_mid1        | add | fabric | 0       |
+|     empty_36_fu_1470_p2                                                          | -   |        | empty_36      | sub | fabric | 0       |
+|     empty_37_fu_1480_p2                                                          | -   |        | empty_37      | add | fabric | 0       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U89                                           | 1   |        | mul_ln1393    | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U89                                           | 1   |        | ret_V         | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U90                                           | 1   |        | mul_ln1393_1  | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U90                                           | 1   |        | ret_V_1       | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U91                                           | 1   |        | mul_ln1393_2  | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U91                                           | 1   |        | ret_V_2       | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U92                                           | 1   |        | mul_ln1393_3  | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U92                                           | 1   |        | ret_V_3       | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U93                                           | 1   |        | mul_ln1393_4  | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U93                                           | 1   |        | ret_V_4       | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U94                                           | 1   |        | mul_ln1393_5  | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U94                                           | 1   |        | ret_V_5       | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U95                                           | 1   |        | mul_ln1393_6  | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U95                                           | 1   |        | ret_V_6       | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U96                                           | 1   |        | mul_ln1393_7  | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U96                                           | 1   |        | ret_V_7       | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U97                                           | 1   |        | mul_ln1393_8  | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U97                                           | 1   |        | ret_V_8       | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U98                                           | 1   |        | mul_ln1393_9  | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U98                                           | 1   |        | ret_V_9       | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U99                                           | 1   |        | mul_ln1393_10 | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U99                                           | 1   |        | ret_V_10      | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U100                                          | 1   |        | mul_ln1393_11 | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U100                                          | 1   |        | ret_V_11      | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U101                                          | 1   |        | mul_ln1393_12 | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U101                                          | 1   |        | ret_V_12      | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U102                                          | 1   |        | mul_ln1393_13 | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U102                                          | 1   |        | ret_V_13      | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U103                                          | 1   |        | mul_ln1393_14 | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U103                                          | 1   |        | ret_V_14      | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U104                                          | 1   |        | mul_ln1393_15 | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U104                                          | 1   |        | ret_V_15      | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U105                                          | 1   |        | mul_ln1393_16 | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U105                                          | 1   |        | ret_V_16      | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U106                                          | 1   |        | mul_ln1393_17 | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U106                                          | 1   |        | ret_V_17      | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U107                                          | 1   |        | mul_ln1393_18 | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U107                                          | 1   |        | ret_V_18      | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U108                                          | 1   |        | mul_ln1393_19 | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U108                                          | 1   |        | ret_V_19      | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U109                                          | 1   |        | mul_ln1393_20 | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U109                                          | 1   |        | ret_V_20      | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U110                                          | 1   |        | mul_ln1393_21 | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U110                                          | 1   |        | ret_V_21      | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U111                                          | 1   |        | mul_ln1393_22 | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U111                                          | 1   |        | ret_V_22      | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U112                                          | 1   |        | mul_ln1393_23 | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U112                                          | 1   |        | ret_V_23      | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U113                                          | 1   |        | mul_ln1393_24 | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U113                                          | 1   |        | ret_V_24      | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U114                                          | 1   |        | mul_ln1393_25 | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U114                                          | 1   |        | ret_V_25      | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U115                                          | 1   |        | mul_ln1393_26 | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U115                                          | 1   |        | ret_V_26      | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U116                                          | 1   |        | mul_ln1393_27 | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U116                                          | 1   |        | ret_V_27      | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U117                                          | 1   |        | mul_ln1393_28 | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U117                                          | 1   |        | ret_V_28      | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U118                                          | 1   |        | mul_ln1393_29 | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U118                                          | 1   |        | ret_V_29      | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U119                                          | 1   |        | mul_ln1393_30 | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U119                                          | 1   |        | ret_V_30      | add | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U120                                          | 1   |        | mul_ln1393_31 | mul | dsp48  | 3       |
+|     mac_muladd_16s_16s_27ns_27_4_1_U120                                          | 1   |        | ret_V_31      | add | dsp48  | 3       |
+|     add_ln51_fu_1347_p2                                                          | -   |        | add_ln51      | add | fabric | 0       |
+|     add_ln47_1_fu_1353_p2                                                        | -   |        | add_ln47_1    | add | fabric | 0       |
+|  + tiled_conv_Pipeline_OUTPUT_BUFFER_HEIGHT_OUTPUT_BUFFER_WIDTH                  | 4   |        |               |     |        |         |
+|    add_ln118_2_fu_742_p2                                                         | -   |        | add_ln118_2   | add | fabric | 0       |
+|    add_ln118_fu_754_p2                                                           | -   |        | add_ln118     | add | fabric | 0       |
+|    add_ln118_1_fu_828_p2                                                         | -   |        | add_ln118_1   | add | fabric | 0       |
+|    mul_7ns_9ns_15_1_1_U267                                                       | -   |        | mul_ln118     | mul | auto   | 0       |
+|    add_ln131_2_fu_1001_p2                                                        | -   |        | add_ln131_2   | add | fabric | 0       |
+|    mul_mul_16s_8ns_25_4_1_U272                                                   | 1   |        | mul_ln1319    | mul | dsp48  | 3       |
+|    add_ln131_3_fu_1025_p2                                                        | -   |        | add_ln131_3   | add | fabric | 0       |
+|    mul_mul_16s_8ns_25_4_1_U273                                                   | 1   |        | mul_ln1319_1  | mul | dsp48  | 3       |
+|    add_ln131_4_fu_1052_p2                                                        | -   |        | add_ln131_4   | add | fabric | 0       |
+|    mul_mul_16s_8ns_25_4_1_U274                                                   | 1   |        | mul_ln1319_2  | mul | dsp48  | 3       |
+|    add_ln131_5_fu_1076_p2                                                        | -   |        | add_ln131_5   | add | fabric | 0       |
+|    mul_mul_16s_8ns_25_4_1_U275                                                   | 1   |        | mul_ln1319_3  | mul | dsp48  | 3       |
+|    add_ln121_fu_1100_p2                                                          | -   |        | add_ln121     | add | fabric | 0       |
++----------------------------------------------------------------------------------+-----+--------+---------------+-----+--------+---------+
+
+
+================================================================
+== Bind Storage Report
+================================================================
++----------------------+------+------+--------+------------------+---------+------+---------+
+| Name                 | BRAM | URAM | Pragma | Variable         | Storage | Impl | Latency |
++----------------------+------+------+--------+------------------+---------+------+---------+
+| + tiled_conv         | 21   | 0    |        |                  |         |      |         |
+|   conv_in_buf_V_U    | 1    | -    |        | conv_in_buf_V    | ram_t2p | auto | 1       |
+|   conv_in_buf_V_1_U  | 1    | -    |        | conv_in_buf_V_1  | ram_t2p | auto | 1       |
+|   conv_in_buf_V_2_U  | 1    | -    |        | conv_in_buf_V_2  | ram_t2p | auto | 1       |
+|   conv_in_buf_V_3_U  | 1    | -    |        | conv_in_buf_V_3  | ram_t2p | auto | 1       |
+|   conv_in_buf_V_4_U  | 1    | -    |        | conv_in_buf_V_4  | ram_t2p | auto | 1       |
+|   conv_in_buf_V_5_U  | 1    | -    |        | conv_in_buf_V_5  | ram_t2p | auto | 1       |
+|   conv_in_buf_V_6_U  | 1    | -    |        | conv_in_buf_V_6  | ram_t2p | auto | 1       |
+|   conv_in_buf_V_7_U  | 1    | -    |        | conv_in_buf_V_7  | ram_t2p | auto | 1       |
+|   conv_in_buf_V_8_U  | 1    | -    |        | conv_in_buf_V_8  | ram_t2p | auto | 1       |
+|   conv_in_buf_V_9_U  | 1    | -    |        | conv_in_buf_V_9  | ram_t2p | auto | 1       |
+|   conv_in_buf_V_10_U | 1    | -    |        | conv_in_buf_V_10 | ram_t2p | auto | 1       |
+|   conv_in_buf_V_11_U | 1    | -    |        | conv_in_buf_V_11 | ram_t2p | auto | 1       |
+|   conv_in_buf_V_12_U | 1    | -    |        | conv_in_buf_V_12 | ram_t2p | auto | 1       |
+|   conv_in_buf_V_13_U | 1    | -    |        | conv_in_buf_V_13 | ram_t2p | auto | 1       |
+|   conv_in_buf_V_14_U | 1    | -    |        | conv_in_buf_V_14 | ram_t2p | auto | 1       |
+|   conv_in_buf_V_15_U | 1    | -    |        | conv_in_buf_V_15 | ram_t2p | auto | 1       |
+|   conv_in_buf_V_16_U | 1    | -    |        | conv_in_buf_V_16 | ram_t2p | auto | 1       |
+|   conv_wt_buf_V_U    | 1    | -    |        | conv_wt_buf_V    | ram_1p  | auto | 1       |
+|   conv_wt_buf_V_1_U  | 1    | -    |        | conv_wt_buf_V_1  | ram_1p  | auto | 1       |
+|   conv_wt_buf_V_2_U  | 1    | -    |        | conv_wt_buf_V_2  | ram_1p  | auto | 1       |
+|   conv_wt_buf_V_3_U  | 1    | -    |        | conv_wt_buf_V_3  | ram_1p  | auto | 1       |
+|   conv_out_buf_0_0_U | -    | -    |        | conv_out_buf_0_0 | ram_1p  | auto | 1       |
+|   conv_out_buf_0_1_U | -    | -    |        | conv_out_buf_0_1 | ram_1p  | auto | 1       |
+|   conv_out_buf_0_2_U | -    | -    |        | conv_out_buf_0_2 | ram_1p  | auto | 1       |
+|   conv_out_buf_0_3_U | -    | -    |        | conv_out_buf_0_3 | ram_1p  | auto | 1       |
+|   conv_out_buf_0_4_U | -    | -    |        | conv_out_buf_0_4 | ram_1p  | auto | 1       |
+|   conv_out_buf_0_5_U | -    | -    |        | conv_out_buf_0_5 | ram_1p  | auto | 1       |
+|   conv_out_buf_0_6_U | -    | -    |        | conv_out_buf_0_6 | ram_1p  | auto | 1       |
+|   conv_out_buf_0_7_U | -    | -    |        | conv_out_buf_0_7 | ram_1p  | auto | 1       |
+|   conv_out_buf_1_0_U | -    | -    |        | conv_out_buf_1_0 | ram_1p  | auto | 1       |
+|   conv_out_buf_1_1_U | -    | -    |        | conv_out_buf_1_1 | ram_1p  | auto | 1       |
+|   conv_out_buf_1_2_U | -    | -    |        | conv_out_buf_1_2 | ram_1p  | auto | 1       |
+|   conv_out_buf_1_3_U | -    | -    |        | conv_out_buf_1_3 | ram_1p  | auto | 1       |
+|   conv_out_buf_1_4_U | -    | -    |        | conv_out_buf_1_4 | ram_1p  | auto | 1       |
+|   conv_out_buf_1_5_U | -    | -    |        | conv_out_buf_1_5 | ram_1p  | auto | 1       |
+|   conv_out_buf_1_6_U | -    | -    |        | conv_out_buf_1_6 | ram_1p  | auto | 1       |
+|   conv_out_buf_1_7_U | -    | -    |        | conv_out_buf_1_7 | ram_1p  | auto | 1       |
+|   conv_out_buf_2_0_U | -    | -    |        | conv_out_buf_2_0 | ram_1p  | auto | 1       |
+|   conv_out_buf_2_1_U | -    | -    |        | conv_out_buf_2_1 | ram_1p  | auto | 1       |
+|   conv_out_buf_2_2_U | -    | -    |        | conv_out_buf_2_2 | ram_1p  | auto | 1       |
+|   conv_out_buf_2_3_U | -    | -    |        | conv_out_buf_2_3 | ram_1p  | auto | 1       |
+|   conv_out_buf_2_4_U | -    | -    |        | conv_out_buf_2_4 | ram_1p  | auto | 1       |
+|   conv_out_buf_2_5_U | -    | -    |        | conv_out_buf_2_5 | ram_1p  | auto | 1       |
+|   conv_out_buf_2_6_U | -    | -    |        | conv_out_buf_2_6 | ram_1p  | auto | 1       |
+|   conv_out_buf_2_7_U | -    | -    |        | conv_out_buf_2_7 | ram_1p  | auto | 1       |
+|   conv_out_buf_3_0_U | -    | -    |        | conv_out_buf_3_0 | ram_1p  | auto | 1       |
+|   conv_out_buf_3_1_U | -    | -    |        | conv_out_buf_3_1 | ram_1p  | auto | 1       |
+|   conv_out_buf_3_2_U | -    | -    |        | conv_out_buf_3_2 | ram_1p  | auto | 1       |
+|   conv_out_buf_3_3_U | -    | -    |        | conv_out_buf_3_3 | ram_1p  | auto | 1       |
+|   conv_out_buf_3_4_U | -    | -    |        | conv_out_buf_3_4 | ram_1p  | auto | 1       |
+|   conv_out_buf_3_5_U | -    | -    |        | conv_out_buf_3_5 | ram_1p  | auto | 1       |
+|   conv_out_buf_3_6_U | -    | -    |        | conv_out_buf_3_6 | ram_1p  | auto | 1       |
+|   conv_out_buf_3_7_U | -    | -    |        | conv_out_buf_3_7 | ram_1p  | auto | 1       |
++----------------------+------+------+--------+------------------+---------+------+---------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Valid Pragma Syntax
++-----------------+-------------------------------------------------------+---------------------------------+
+| Type            | Options                                               | Location                        |
++-----------------+-------------------------------------------------------+---------------------------------+
+| inline          | off                                                   | conv_7x7.cpp:18 in conv_7x7     |
+| array_partition | variable = X_buf dim = 2                              | conv_7x7.cpp:19 in conv_7x7     |
+| array_partition | variable = Y_buf dim = 2                              | conv_7x7.cpp:20 in conv_7x7     |
+| array_partition | variable = Y_buf dim = 1                              | conv_7x7.cpp:21 in conv_7x7     |
+| array_partition | variable = W_buf dim = 1                              | conv_7x7.cpp:22 in conv_7x7     |
+| array_partition | variable = B_buf dim = 1                              | conv_7x7.cpp:23 in conv_7x7     |
+| pipeline        | II = 1                                                | conv_7x7.cpp:28 in conv_7x7     |
+| pipeline        | II = 1                                                | conv_7x7.cpp:54 in conv_7x7     |
+| interface       | m_axi depth = 1 port = input_feature_map bundle = fm  | tiled_conv.cpp:25 in tiled_conv |
+| interface       | m_axi depth = 1 port = layer_weights bundle = wt      | tiled_conv.cpp:26 in tiled_conv |
+| interface       | m_axi depth = 1 port = layer_bias bundle = wt         | tiled_conv.cpp:27 in tiled_conv |
+| interface       | m_axi depth = 1 port = output_feature_map bundle = fm | tiled_conv.cpp:28 in tiled_conv |
+| interface       | s_axilite register port = return                      | tiled_conv.cpp:30 in tiled_conv |
++-----------------+-------------------------------------------------------+---------------------------------+
+
+

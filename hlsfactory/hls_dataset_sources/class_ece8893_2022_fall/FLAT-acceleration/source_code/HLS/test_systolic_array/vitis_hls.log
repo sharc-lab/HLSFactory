@@ -1,0 +1,107 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2021.1 (64-bit)
+  **** SW Build 3247384 on Thu Jun 10 19:36:07 MDT 2021
+  **** IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+    ** Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+
+source /tools/software/xilinx/Vitis_HLS/2021.1/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] Running '/tools/software/xilinx/Vitis_HLS/2021.1/bin/unwrapped/lnx64.o/vitis_hls'
+INFO: [HLS 200-10] For user 'jnativ3' on host 'ece-linlab09.ece.gatech.edu' (Linux_x86_64 version 3.10.0-1160.62.1.el7.x86_64) on Sun May 01 08:30:07 EDT 2022
+INFO: [HLS 200-10] On os "Red Hat Enterprise Linux Workstation release 7.9 (Maipo)"
+INFO: [HLS 200-10] In directory '/nethome/jnativ3/ece8893/project2/test_systolic_array'
+Sourcing Tcl script 'run_hls.tcl'
+INFO: [HLS 200-1510] Running: open_project Systolic 
+INFO: [HLS 200-10] Opening project '/nethome/jnativ3/ece8893/project2/test_systolic_array/Systolic'.
+INFO: [HLS 200-1510] Running: set_top systolic_array 
+INFO: [HLS 200-1510] Running: add_files systolic.h 
+INFO: [HLS 200-10] Adding design file 'systolic.h' to the project
+INFO: [HLS 200-1510] Running: add_files systolic.cpp 
+INFO: [HLS 200-10] Adding design file 'systolic.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb systolic_test.cpp 
+INFO: [HLS 200-10] Adding test bench file 'systolic_test.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution solution2 -flow_target vivado 
+INFO: [HLS 200-10] Opening solution '/nethome/jnativ3/ece8893/project2/test_systolic_array/Systolic/solution2'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v=2021.1;t=hls+guidance;d=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xc7z020-clg400-1 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: csim_design -clean 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../systolic_test.cpp in debug mode
+   Compiling ../../../../systolic.cpp in debug mode
+   Generating csim.exe
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 0.59 seconds. CPU system time: 0.32 seconds. Elapsed time: 2.08 seconds; current allocated memory: 316.412 MB.
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.01 seconds; current allocated memory: 316.601 MB.
+INFO: [HLS 200-10] Analyzing design file 'systolic.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 1.18 seconds. CPU system time: 0.28 seconds. Elapsed time: 2.95 seconds; current allocated memory: 318.060 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-279] Initial Interval estimation mode is set into default.
+INFO: [HLS 214-284] Auto array partition mode is set into default.
+INFO: [HLS 214-131] Inlining function 'computeLogit(unsigned int (*) [64], unsigned int (*) [64], unsigned int (*) [64], unsigned int (*) [64])' into 'systolic_array(unsigned int (*) [64], unsigned int (*) [64], unsigned int (*) [64], unsigned int (*) [64], unsigned int (*) [64])' (systolic.cpp:14:5)
+INFO: [HLS 214-131] Inlining function 'computeAttention(unsigned int (*) [64], unsigned int (*) [64], unsigned int (*) [64])' into 'systolic_array(unsigned int (*) [64], unsigned int (*) [64], unsigned int (*) [64], unsigned int (*) [64], unsigned int (*) [64])' (systolic.cpp:15:5)
+INFO: [HLS 214-186] Unrolling loop 'systolic2_outer' (systolic.cpp:97:3) in function 'systolic_array' completely with a factor of 4 (systolic.cpp:5:0)
+INFO: [HLS 214-186] Unrolling loop 'systolic3_outer' (systolic.cpp:100:4) in function 'systolic_array' completely with a factor of 4 (systolic.cpp:5:0)
+INFO: [HLS 214-186] Unrolling loop 'systolic3_outer' (systolic.cpp:100:4) in function 'systolic_array' completely with a factor of 4 (systolic.cpp:5:0)
+INFO: [HLS 214-186] Unrolling loop 'systolic3_outer' (systolic.cpp:100:4) in function 'systolic_array' completely with a factor of 4 (systolic.cpp:5:0)
+INFO: [HLS 214-186] Unrolling loop 'systolic3_outer' (systolic.cpp:100:4) in function 'systolic_array' completely with a factor of 4 (systolic.cpp:5:0)
+INFO: [HLS 214-186] Unrolling loop 'systolic_t_outer' (systolic.cpp:44:6) in function 'systolic_array' completely with a factor of 4 (systolic.cpp:5:0)
+INFO: [HLS 214-186] Unrolling loop 'systolic_h_outer' (systolic.cpp:47:7) in function 'systolic_array' completely with a factor of 4 (systolic.cpp:5:0)
+INFO: [HLS 214-186] Unrolling loop 'systolic_h_outer' (systolic.cpp:47:7) in function 'systolic_array' completely with a factor of 4 (systolic.cpp:5:0)
+INFO: [HLS 214-186] Unrolling loop 'systolic_h_outer' (systolic.cpp:47:7) in function 'systolic_array' completely with a factor of 4 (systolic.cpp:5:0)
+INFO: [HLS 214-186] Unrolling loop 'systolic_h_outer' (systolic.cpp:47:7) in function 'systolic_array' completely with a factor of 4 (systolic.cpp:5:0)
+INFO: [HLS 214-248] Applying array_partition to 'query_matrix': Complete partitioning on dimension 1. (systolic.cpp:5:0)
+INFO: [HLS 214-248] Applying array_partition to 'key_matrix': Complete partitioning on dimension 1. (systolic.cpp:5:0)
+INFO: [HLS 214-248] Applying array_partition to 'value_matrix': Complete partitioning on dimension 1. (systolic.cpp:5:0)
+INFO: [HLS 214-248] Applying array_partition to 'bias_matrix': Complete partitioning on dimension 1. (systolic.cpp:5:0)
+INFO: [HLS 214-248] Applying array_partition to 'output': Complete partitioning on dimension 1. Complete partitioning on dimension 2. (systolic.cpp:5:0)
+INFO: [HLS 214-270] Starting automatic array partition analysis...
+INFO: [HLS 214-270] Inferring cyclic partitioning for array 'logit' on dimension 2 with factor 8 (systolic.cpp:13:12)
+INFO: [HLS 214-270] Inferring cyclic partitioning for array 'local_out.i' on dimension 2 with factor 17 (systolic.cpp:29:9)
+INFO: [HLS 214-270] Inferring cyclic partitioning for array 'local_out.i1' on dimension 2 with factor 17 (systolic.cpp:85:8)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 136.81 seconds. CPU system time: 0.96 seconds. Elapsed time: 139.51 seconds; current allocated memory: 495.521 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 495.522 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 952.86 seconds. CPU system time: 0.13 seconds. Elapsed time: 953.07 seconds; current allocated memory: 582.033 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 468.17 seconds. CPU system time: 0.01 seconds. Elapsed time: 468.21 seconds; current allocated memory: 534.536 MB.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic_t_inner' (systolic.cpp:51) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic_t_inner' (systolic.cpp:51) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic_t_inner' (systolic.cpp:51) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic_t_inner' (systolic.cpp:51) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic_t_inner' (systolic.cpp:51) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic_t_inner' (systolic.cpp:51) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic_t_inner' (systolic.cpp:51) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic_t_inner' (systolic.cpp:51) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic_t_inner' (systolic.cpp:51) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic_t_inner' (systolic.cpp:51) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic_t_inner' (systolic.cpp:51) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic_t_inner' (systolic.cpp:51) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic_t_inner' (systolic.cpp:51) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic_t_inner' (systolic.cpp:51) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic_t_inner' (systolic.cpp:51) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic_t_inner' (systolic.cpp:51) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic2_inner' (systolic.cpp:104) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic2_inner' (systolic.cpp:104) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic2_inner' (systolic.cpp:104) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic2_inner' (systolic.cpp:104) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic2_inner' (systolic.cpp:104) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic2_inner' (systolic.cpp:104) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic2_inner' (systolic.cpp:104) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic2_inner' (systolic.cpp:104) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic2_inner' (systolic.cpp:104) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic2_inner' (systolic.cpp:104) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic2_inner' (systolic.cpp:104) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic2_inner' (systolic.cpp:104) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic2_inner' (systolic.cpp:104) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic2_inner' (systolic.cpp:104) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic2_inner' (systolic.cpp:104) in function 'systolic_array' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'systolic2_inner' (systolic.cpp:104) in function 'systolic_array' for pipelining.
+INFO: [HLS 200-489] Unrolling loop 'systolic_h_inner' (systolic.cpp:54) in function 'systolic_array' completely with a factor of 16.
+INFO: [HLS 200-489] Unrolling loop 'systolic3_inner' (systolic.cpp:107) in function 'systolic_array' completely with a factor of 16.
+/tools/software/xilinx/Vitis_HLS/2021.1/bin/loader: line 312: 30638 Killed                  "$RDI_PROG" "$@"

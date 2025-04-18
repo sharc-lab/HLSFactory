@@ -365,32 +365,62 @@ class VitisHLSCosimSetupFlow(ToolFlow):
 
         self.log_output = log_output
 
-        self.patch_sim_fp = Path(__file__).parent / "patch_sim.sh"
+    def execute(self, design: Design, timeout: float | None = None) -> list[Design]:
+        design_dir = design.dir
+
+        fp_hls_cosim_setup_tcl = design_dir / "dataset_hls_cosim_setup.tcl"
+        build_files = [fp_hls_cosim_setup_tcl]
+        check_build_files_exist(build_files)
+        warn_for_reset_flags(build_files)
+
+        return_result = call_tool(
+            f"{self.vitis_hls_bin} dataset_hls_cosim_setup.tcl",
+            cwd=design_dir,
+            log_output=self.log_output,
+            timeout=timeout,
+            raise_on_error=False,
+        )
+        if return_result == CallToolResult.SUCCESS:
+            return [design]
+
+        return []
+
+
+class VitisHLSCosimFlow(ToolFlow):
+    name = "VitisHLSCosimFlow"
+
+    def __init__(
+        self,
+        vitis_hls_bin: str | None = None,
+        log_output: bool = False,
+    ) -> None:
+        if vitis_hls_bin is None:
+            self.vitis_hls_bin = find_bin_path("vitis_hls")
+        else:
+            self.vitis_hls_bin = vitis_hls_bin
+
+        self.log_output = log_output
 
     def execute(self, design: Design, timeout: float | None = None) -> list[Design]:
-        # design_dir = design.dir
+        design_dir = design.dir
 
-        # fp_hls_cosim_setup_tcl = design_dir / "dataset_hls_cosim_setup.tcl"
-        # build_files = [fp_hls_cosim_setup_tcl]
-        # check_build_files_exist(build_files)
-        # warn_for_reset_flags(build_files)
+        fp_hls_cosim_setup_tcl = design_dir / "dataset_hls_cosim.tcl"
+        build_files = [fp_hls_cosim_setup_tcl]
+        check_build_files_exist(build_files)
+        warn_for_reset_flags(build_files)
 
-        # call_tool(
-        #     f"{self.vitis_hls_bin} dataset_hls_cosim_setup.tcl",
-        #     cwd=design_dir,
-        #     log_output=self.log_output,
-        # )
-        # cosim_dir = next(iter(design_dir.rglob("**/sim")))
-        # solution_dir = cosim_dir.parent
-        # call_tool(
-        #     f"bash {self.patch_sim_fp}",
-        #     cwd=solution_dir,
-        #     log_output=self.log_output,
-        # )
+        r = call_tool(
+            f"{self.vitis_hls_bin} dataset_hls_cosim.tcl",
+            cwd=design_dir,
+            log_output=self.log_output,
+            timeout=timeout,
+            raise_on_error=False,
+        )
 
-        # return [design]
+        if r == CallToolResult.SUCCESS:
+            return [design]
 
-        raise NotImplementedError("This flow is not yet implemented")
+        return []
 
 
 class VitisHLSImplFlow(ToolFlow):

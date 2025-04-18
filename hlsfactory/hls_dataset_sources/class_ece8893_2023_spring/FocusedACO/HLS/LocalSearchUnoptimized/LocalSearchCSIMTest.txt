@@ -1,0 +1,124 @@
+vitis_hls synth.tcl
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1.2 (64-bit)
+  **** SW Build 3605665 on Fri Aug  5 22:52:02 MDT 2022
+  **** IP Build 3603185 on Sat Aug  6 04:07:44 MDT 2022
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+source /tools/software/xilinx/Vitis_HLS/2022.1/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] Running '/tools/software/xilinx/Vitis_HLS/2022.1/bin/unwrapped/lnx64.o/vitis_hls'
+INFO: [HLS 200-10] For user 'nsharma93' on host 'ece-linlabsrv01.ece.gatech.edu' (Linux_x86_64 version 4.18.0-425.19.2.el8_7.x86_64) on Wed May 03 13:26:26 EDT 2023
+INFO: [HLS 200-10] On os "Red Hat Enterprise Linux release 8.7 (Ootpa)"
+INFO: [HLS 200-10] In directory '/usr/scratch/nsharma93/LocalSearchTest_Unoptimized'
+Sourcing Tcl script 'synth.tcl'
+INFO: [HLS 200-1510] Running: source synth.tcl
+INFO: [HLS 200-1510] Running: open_project proj 
+INFO: [HLS 200-10] Opening project '/usr/scratch/nsharma93/LocalSearchTest_Unoptimized/proj'.
+INFO: [HLS 200-1510] Running: set_top two_opt_nn 
+INFO: [HLS 200-1510] Running: add_files two_opt_nn.cpp 
+INFO: [HLS 200-10] Adding design file 'two_opt_nn.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb main.cpp 
+INFO: [HLS 200-10] Adding test bench file 'main.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution solution2 
+INFO: [HLS 200-10] Opening solution '/usr/scratch/nsharma93/LocalSearchTest_Unoptimized/proj/solution2'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=200-1505.html
+INFO: [HLS 200-1464] Running solution command: config_interface -m_axi_latency=0
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: csim_design -O -clean 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+make[1]: Entering directory '/usr/scratch/nsharma93/LocalSearchTest_Unoptimized/proj/solution2/csim/build'
+   Compiling ../../../../main.cpp in release mode
+   Compiling ../../../../two_opt_nn.cpp in release mode
+   Generating csim.exe
+make[1]: Leaving directory '/usr/scratch/nsharma93/LocalSearchTest_Unoptimized/proj/solution2/csim/build'
+Pre Two Opt route distance: 396797
+elapsed time: 0.714785 ms
+Post Two Opt route distance: 393875
+Correct Two Opt route distance: 393875
+Pre Two Opt route distance: 400481
+elapsed time: 0.858245 ms
+Post Two Opt route distance: 394165
+Correct Two Opt route distance: 394165
+Pre Two Opt route distance: 396366
+elapsed time: 0.489087 ms
+Post Two Opt route distance: 393699
+Correct Two Opt route distance: 393699
+Pre Two Opt route distance: 395970
+elapsed time: 0.259384 ms
+Post Two Opt route distance: 393866
+Correct Two Opt route distance: 393866
+Pre Two Opt route distance: 397136
+elapsed time: 0.417122 ms
+Post Two Opt route distance: 393714
+Correct Two Opt route distance: 393714
+Pre Two Opt route distance: 397439
+elapsed time: 0.585064 ms
+Post Two Opt route distance: 396059
+Correct Two Opt route distance: 394323
+Pre Two Opt route distance: 397683
+elapsed time: 0.527909 ms
+Post Two Opt route distance: 393713
+Correct Two Opt route distance: 393713
+Pre Two Opt route distance: 397600
+elapsed time: 0.357656 ms
+Post Two Opt route distance: 393864
+Correct Two Opt route distance: 393864
+Pre Two Opt route distance: 397048
+elapsed time: 0.607149 ms
+Post Two Opt route distance: 393711
+Correct Two Opt route distance: 393711
+Pre Two Opt route distance: 397249
+elapsed time: 0.536914 ms
+Post Two Opt route distance: 394053
+Correct Two Opt route distance: 394053
+Pre Two Opt route distance: 396074
+elapsed time: 0.437428 ms
+Post Two Opt route distance: 393813
+Correct Two Opt route distance: 393813
+Pre Two Opt route distance: 397172
+elapsed time: 0.634287 ms
+Post Two Opt route distance: 393824
+Correct Two Opt route distance: 393824
+Pre Two Opt route distance: 396564
+elapsed time: 0.593797 ms
+Post Two Opt route distance: 393741
+Correct Two Opt route distance: 393741
+Pre Two Opt route distance: 398267
+elapsed time: 0.57473 ms
+Post Two Opt route distance: 393940
+Correct Two Opt route distance: 393940
+Pre Two Opt route distance: 398695
+elapsed time: 0.434737 ms
+Post Two Opt route distance: 394120
+Correct Two Opt route distance: 394120
+Pre Two Opt route distance: 398492
+elapsed time: 0.61467 ms
+Post Two Opt route distance: 394405
+Correct Two Opt route distance: 394405
+Pre Two Opt route distance: 397179
+elapsed time: 0.54544 ms
+Post Two Opt route distance: 393925
+Correct Two Opt route distance: 393925
+Pre Two Opt route distance: 396901
+elapsed time: 0.568019 ms
+Post Two Opt route distance: 393784
+Correct Two Opt route distance: 393784
+Pre Two Opt route distance: 396633
+elapsed time: 0.423185 ms
+Post Two Opt route distance: 393998
+Correct Two Opt route distance: 393998
+Pre Two Opt route distance: 396044
+elapsed time: 0.346053 ms
+Post Two Opt route distance: 393872
+Correct Two Opt route distance: 393872
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 8.24 seconds. CPU system time: 1.35 seconds. Elapsed time: 9.58 seconds; current allocated memory: 0.000 MB.
+INFO: [HLS 200-112] Total CPU user time: 14.6 seconds. Total CPU system time: 2.86 seconds. Total elapsed time: 14.54 seconds; peak allocated memory: 760.496 MB.
+INFO: [Common 17-206] Exiting vitis_hls at Wed May  3 13:26:41 2023...

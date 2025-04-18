@@ -1,0 +1,5 @@
+﻿  LKof_main.cpp
+C:\Users\hp\source\repos\LK_ref\LKof_defines.h(186,28): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\hp\source\repos\LK_ref\LKof_main.cpp(161,16): warning C4101: 'inv_points': unreferenced local variable
+C:\Users\hp\source\repos\LK_ref\LKof_main.cpp(159,7): warning C4101: 'check_results': unreferenced local variable
+  LK_ref.vcxproj -> C:\Users\hp\source\repos\LK_ref\Debug\LK_ref.exe

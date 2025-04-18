@@ -1,0 +1,19 @@
+#!/bin/bash
+#SBATCH -J st_k15mmtree_imbalanced
+#SBATCH -o cosim_%x.%J.out # <JOB_NAME>.<JOB_ID>.out
+#SBATCH -p batch
+#SBATCH -p batch -c4 --mem=16GB
+
+work_dir=$(pwd)
+scratch_dir=/scratch/$USER/${SLURM_JOB_NAME}.${SLURM_JOB_ID}
+
+mkdir $scratch_dir && cd $scratch_dir
+rsync -av --exclude='*.log' --exclude='*.out' $work_dir/* $scratch_dir
+
+ml load xilinx/vivado/2023.2
+export PRJ_PATH=$PWD
+
+vitis_hls hls.tcl k15mmtree_imbalanced cosim -l cosim.log
+
+rsync -av $scratch_dir/* $work_dir
+

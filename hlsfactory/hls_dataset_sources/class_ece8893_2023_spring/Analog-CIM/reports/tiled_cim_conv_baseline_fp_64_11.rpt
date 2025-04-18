@@ -1,0 +1,330 @@
+
+
+================================================================
+== Synthesis Summary Report of 'tiled_cim_conv'
+================================================================
++ General Information: 
+    * Date:           Sun May  7 17:16:49 2023
+    * Version:        2022.1.2 (Build 3605665 on Fri Aug  5 22:52:02 MDT 2022)
+    * Project:        proj
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: zynq
+    * Target device:  xc7z020-clg400-1
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +-----------------------------------------------------------------------+------+------+------------+-----------+----------+------------+------+----------+-----------+----------+-------------+-------------+-----+
+    |                                Modules                                | Issue|      |  Latency   |  Latency  | Iteration|            | Trip |          |           |          |             |             |     |
+    |                                & Loops                                | Type | Slack|  (cycles)  |    (ns)   |  Latency |  Interval  | Count| Pipelined|   BRAM    |    DSP   |      FF     |     LUT     | URAM|
+    +-----------------------------------------------------------------------+------+------+------------+-----------+----------+------------+------+----------+-----------+----------+-------------+-------------+-----+
+    |+ tiled_cim_conv                                                       |     -|  0.00|  1736417456|  1.736e+10|         -|  1736417457|     -|        no|  172 (61%)|  73 (33%)|  30693 (28%)|  26159 (49%)|    -|
+    | + load_v_ref_from_DRAM                                                |     -|  0.00|          43|    430.000|         -|          43|     -|        no|          -|         -|    159 (~0%)|    269 (~0%)|    -|
+    |  + load_v_ref_from_DRAM_Pipeline_V_REF_BUFFER                         |     -|  0.00|          35|    350.000|         -|          35|     -|        no|          -|         -|     88 (~0%)|     75 (~0%)|    -|
+    |   o V_REF_BUFFER                                                      |     -|  7.30|          33|    330.000|         3|           1|    32|       yes|          -|         -|            -|            -|    -|
+    | + load_cim_args_from_DRAM                                             |     -|  0.00|          14|    140.000|         -|          14|     -|        no|          -|         -|    179 (~0%)|    333 (~0%)|    -|
+    |  + load_cim_args_from_DRAM_Pipeline_CIM_ARGS_BUFFER                   |     -|  0.00|           5|     50.000|         -|           5|     -|        no|          -|         -|    106 (~0%)|    133 (~0%)|    -|
+    |   o CIM_ARGS_BUFFER                                                   |     -|  7.30|           3|     30.000|         3|           1|     2|       yes|          -|         -|            -|            -|    -|
+    | o TILE_ROW_TILE_COL                                                   |     -|  7.30|  1736417410|  1.736e+10|   3816302|           -|   455|        no|          -|         -|            -|            -|    -|
+    |  + tiled_cim_conv_Pipeline_INPUT_BUFFER_HEIGHT_INPUT_BUFFER_WIDTH     |     -|  0.00|        4068|  4.068e+04|         -|        4068|     -|        no|          -|   2 (~0%)|    534 (~0%)|     713 (1%)|    -|
+    |   o INPUT_BUFFER_HEIGHT_INPUT_BUFFER_WIDTH                            |     -|  7.30|        4066|  4.066e+04|        15|           1|  4053|       yes|          -|         -|            -|            -|    -|
+    |  o TILE_WEIGHT                                                        |     -|  7.30|     3812230|  3.812e+07|    762446|           -|     5|        no|          -|         -|            -|            -|    -|
+    |   + load_weight_tile_block_from_DRAM                                  |     -|  0.00|        2197|  2.197e+04|         -|        2197|     -|        no|          -|   1 (~0%)|    542 (~0%)|     654 (1%)|    -|
+    |    + load_weight_tile_block_from_DRAM_Pipeline_WEIGHT_BUFFER_WIDTH    |     -|  0.00|        2195|  2.195e+04|         -|        2195|     -|        no|          -|   1 (~0%)|    457 (~0%)|    478 (~0%)|    -|
+    |     o WEIGHT_BUFFER_HEIGHT_WEIGHT_BUFFER_WIDTH                        |     -|  7.30|        2193|  2.193e+04|        11|           1|  2184|       yes|          -|         -|            -|            -|    -|
+    |   + tiled_cim_conv_Pipeline_OUTPUT_BUFFER_HEIGHT_OUTPUT_BUFFER_WIDTH  |     -|  0.00|       40147|  4.015e+05|         -|       40147|     -|        no|          -|   1 (~0%)|    396 (~0%)|     996 (1%)|    -|
+    |    o OUTPUT_BUFFER_HEIGHT_OUTPUT_BUFFER_WIDTH                         |    II|  7.30|       40145|  4.014e+05|        18|          16|  2509|       yes|          -|         -|            -|            -|    -|
+    |   o VITIS_LOOP_12_1_VITIS_LOOP_13_2                                   |     -|  7.30|      720083|  7.201e+06|       287|           -|  2509|        no|          -|         -|            -|            -|    -|
+    |    + tiled_cim_conv_Pipeline_VITIS_LOOP_16_3_VITIS_LOOP_19_4          |     -|  0.32|         271|  2.710e+03|         -|         271|     -|        no|          -|  68 (30%)|  23438 (22%)|  16736 (31%)|    -|
+    |     o VITIS_LOOP_16_3_VITIS_LOOP_19_4                                 |    II|  7.30|         269|  2.690e+03|       144|           2|    64|       yes|          -|         -|            -|            -|    -|
+    +-----------------------------------------------------------------------+------+------+------------+-----------+----------+------------+------+----------+-----------+----------+-------------+-------------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* M_AXI
++------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+
+| Interface  | Data Width | Address Width | Latency | Offset | Register | Max Widen | Max Read     | Max Write    | Num Read    | Num Write   |
+|            | (SW->HW)   |               |         |        |          | Bitwidth  | Burst Length | Burst Length | Outstanding | Outstanding |
++------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+
+| m_axi_mem1 | 32 -> 64   | 64            | 0       | slave  | 0        | 0         | 16           | 16           | 16          | 16          |
+| m_axi_mem2 | 64 -> 64   | 64            | 0       | slave  | 0        | 0         | 16           | 16           | 16          | 16          |
+| m_axi_mem3 | 32 -> 32   | 64            | 0       | slave  | 0        | 0         | 16           | 16           | 16          | 16          |
++------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+
+
+* S_AXILITE Interfaces
++---------------+------------+---------------+--------+----------+
+| Interface     | Data Width | Address Width | Offset | Register |
++---------------+------------+---------------+--------+----------+
+| s_axi_control | 32         | 7             | 16     | 0        |
++---------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++---------------+-----------------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| Interface     | Register        | Offset | Width | Access | Description                      | Bit Fields                                                           |
++---------------+-----------------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| s_axi_control | CTRL            | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_control | GIER            | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                             |
+| s_axi_control | IP_IER          | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                        |
+| s_axi_control | IP_ISR          | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                        |
+| s_axi_control | input2d_1       | 0x10   | 32    | W      | Data signal of input2d           |                                                                      |
+| s_axi_control | input2d_2       | 0x14   | 32    | W      | Data signal of input2d           |                                                                      |
+| s_axi_control | weight2d_cond_1 | 0x1c   | 32    | W      | Data signal of weight2d_cond     |                                                                      |
+| s_axi_control | weight2d_cond_2 | 0x20   | 32    | W      | Data signal of weight2d_cond     |                                                                      |
+| s_axi_control | v_ref_1         | 0x28   | 32    | W      | Data signal of v_ref             |                                                                      |
+| s_axi_control | v_ref_2         | 0x2c   | 32    | W      | Data signal of v_ref             |                                                                      |
+| s_axi_control | output_r_1      | 0x34   | 32    | W      | Data signal of output_r          |                                                                      |
+| s_axi_control | output_r_2      | 0x38   | 32    | W      | Data signal of output_r          |                                                                      |
+| s_axi_control | cim_args_1      | 0x40   | 32    | W      | Data signal of cim_args          |                                                                      |
+| s_axi_control | cim_args_2      | 0x44   | 32    | W      | Data signal of cim_args          |                                                                      |
++---------------+-----------------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------+
+| Interface | Type       | Ports     |
++-----------+------------+-----------+
+| ap_clk    | clock      | ap_clk    |
+| ap_rst_n  | reset      | ap_rst_n  |
+| interrupt | interrupt  | interrupt |
+| ap_ctrl   | ap_ctrl_hs |           |
++-----------+------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++---------------+-----------+---------------------------------------+
+| Argument      | Direction | Datatype                              |
++---------------+-----------+---------------------------------------+
+| input2d       | in        | int*                                  |
+| weight2d_cond | in        | ap_fixed<64, 11, AP_TRN, AP_WRAP, 0>* |
+| v_ref         | inout     | ap_fixed<64, 11, AP_TRN, AP_WRAP, 0>* |
+| output        | inout     | int*                                  |
+| cim_args      | in        | int*                                  |
++---------------+-----------+---------------------------------------+
+
+* SW-to-HW Mapping
++---------------+---------------+-----------+----------+-------------------------------------------+
+| Argument      | HW Interface  | HW Type   | HW Usage | HW Info                                   |
++---------------+---------------+-----------+----------+-------------------------------------------+
+| input2d       | m_axi_mem1    | interface |          |                                           |
+| input2d       | s_axi_control | register  | offset   | name=input2d_1 offset=0x10 range=32       |
+| input2d       | s_axi_control | register  | offset   | name=input2d_2 offset=0x14 range=32       |
+| weight2d_cond | m_axi_mem1    | interface |          |                                           |
+| weight2d_cond | s_axi_control | register  | offset   | name=weight2d_cond_1 offset=0x1c range=32 |
+| weight2d_cond | s_axi_control | register  | offset   | name=weight2d_cond_2 offset=0x20 range=32 |
+| v_ref         | m_axi_mem2    | interface |          |                                           |
+| v_ref         | s_axi_control | register  | offset   | name=v_ref_1 offset=0x28 range=32         |
+| v_ref         | s_axi_control | register  | offset   | name=v_ref_2 offset=0x2c range=32         |
+| output        | m_axi_mem2    | interface |          |                                           |
+| output        | s_axi_control | interface | offset   |                                           |
+| cim_args      | m_axi_mem3    | interface |          |                                           |
+| cim_args      | s_axi_control | register  | offset   | name=cim_args_1 offset=0x40 range=32      |
+| cim_args      | s_axi_control | register  | offset   | name=cim_args_2 offset=0x44 range=32      |
++---------------+---------------+-----------+----------+-------------------------------------------+
+
+
+================================================================
+== M_AXI Burst Information
+================================================================
+ Note: All burst requests might be further partitioned into multiple requests during RTL generation based on max_read_burst_length or max_write_burst_length settings.
+
+* Inferred Burst Summary
++--------------+---------------------+-----------+--------+-------+----------------+
+| HW Interface | Loop                | Direction | Length | Width | Location       |
++--------------+---------------------+-----------+--------+-------+----------------+
+| m_axi_mem2   | V_REF_BUFFER        | read      | 32     | 64    | utils.cpp:61:3 |
+| m_axi_mem3   | CIM_ARGS_BUFFER     | read      | 2      | 32    | utils.cpp:78:3 |
+| m_axi_mem1   | WEIGHT_BUFFER_WIDTH | read      | 104    | 64    | utils.cpp:44:5 |
++--------------+---------------------+-----------+--------+-------+----------------+
+
+* Inferred Bursts and Widening Missed
++--------------+----------+----------------------+-------------------------------------------------------------------------------------------------------+------------+------------------+
+| HW Interface | Variable | Loop                 | Problem                                                                                               | Resolution | Location         |
++--------------+----------+----------------------+-------------------------------------------------------------------------------------------------------+------------+------------------+
+| m_axi_mem1   | input2d  | INPUT_BUFFER_HEIGHT  | Stride is incompatible                                                                                | 214-230    | utils.cpp:18:3   |
+| m_axi_mem2   | output   |                      | Access is clobbered by store                                                                          | 214-231    | utils.cpp:101:51 |
+| m_axi_mem2   | output   |                      | Access is clobbered by load                                                                           | 214-231    | utils.cpp:101:51 |
+| m_axi_mem1   | weights  | WEIGHT_BUFFER_HEIGHT | Stride is incompatible                                                                                | 214-230    | utils.cpp:42:3   |
+| m_axi_mem1   | input2d  | INPUT_BUFFER_WIDTH   | Could not widen since type i32 size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | utils.cpp:20:5   |
+| m_axi_mem2   | v_ref    | V_REF_BUFFER         | Could not widen since type i64 size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | utils.cpp:61:3   |
+| m_axi_mem3   | cim_args | CIM_ARGS_BUFFER      | Could not widen since type i32 size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | utils.cpp:78:3   |
+| m_axi_mem1   | weights  | WEIGHT_BUFFER_WIDTH  | Could not widen since type i64 size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | utils.cpp:44:5   |
++--------------+----------+----------------------+-------------------------------------------------------------------------------------------------------+------------+------------------+
+
+    * Resolution URL: www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=XXX-YYY.html (replace XXX-YYY with column value)
+
+================================================================
+== Bind Op Report
+================================================================
++---------------------------------------------------------------------+-----+--------+---------------+-----+--------+---------+
+| Name                                                                | DSP | Pragma | Variable      | Op  | Impl   | Latency |
++---------------------------------------------------------------------+-----+--------+---------------+-----+--------+---------+
+| + tiled_cim_conv                                                    | 73  |        |               |     |        |         |
+|   add_ln35_1_fu_930_p2                                              | -   |        | add_ln35_1    | add | fabric | 0       |
+|   add_ln35_fu_942_p2                                                | -   |        | add_ln35      | add | fabric | 0       |
+|   mul_7ns_9ns_14_1_1_U131                                           | -   |        | mul_ln37      | mul | auto   | 0       |
+|   mul_3ns_8ns_10_1_1_U132                                           | -   |        | empty_38      | mul | auto   | 0       |
+|   add_ln45_1_fu_994_p2                                              | -   |        | add_ln45_1    | add | fabric | 0       |
+|   add_ln45_fu_1006_p2                                               | -   |        | add_ln45      | add | fabric | 0       |
+|   add_ln12_21_fu_1036_p2                                            | -   |        | add_ln12_21   | add | fabric | 0       |
+|   add_ln12_fu_1042_p2                                               | -   |        | add_ln12      | add | fabric | 0       |
+|   mac_muladd_8ns_4ns_4ns_12_4_1_U134                                | 1   |        | mul_ln14      | mul | dsp48  | 3       |
+|   mul_8ns_6ns_13_1_1_U133                                           | -   |        | mul_ln12      | mul | auto   | 0       |
+|   add_ln12_1_fu_1093_p2                                             | -   |        | add_ln12_1    | add | fabric | 0       |
+|   add_ln12_2_fu_1103_p2                                             | -   |        | add_ln12_2    | add | fabric | 0       |
+|   add_ln12_3_fu_1113_p2                                             | -   |        | add_ln12_3    | add | fabric | 0       |
+|   add_ln12_4_fu_1123_p2                                             | -   |        | add_ln12_4    | add | fabric | 0       |
+|   add_ln12_5_fu_1133_p2                                             | -   |        | add_ln12_5    | add | fabric | 0       |
+|   add_ln12_6_fu_1143_p2                                             | -   |        | add_ln12_6    | add | fabric | 0       |
+|   add_ln12_7_fu_1153_p2                                             | -   |        | add_ln12_7    | add | fabric | 0       |
+|   add_ln12_8_fu_1163_p2                                             | -   |        | add_ln12_8    | add | fabric | 0       |
+|   add_ln12_9_fu_1173_p2                                             | -   |        | add_ln12_9    | add | fabric | 0       |
+|   add_ln12_10_fu_1183_p2                                            | -   |        | add_ln12_10   | add | fabric | 0       |
+|   add_ln12_11_fu_1193_p2                                            | -   |        | add_ln12_11   | add | fabric | 0       |
+|   add_ln12_12_fu_1203_p2                                            | -   |        | add_ln12_12   | add | fabric | 0       |
+|   add_ln12_13_fu_1213_p2                                            | -   |        | add_ln12_13   | add | fabric | 0       |
+|   add_ln12_14_fu_1223_p2                                            | -   |        | add_ln12_14   | add | fabric | 0       |
+|   add_ln12_15_fu_1233_p2                                            | -   |        | add_ln12_15   | add | fabric | 0       |
+|   add_ln12_16_fu_1243_p2                                            | -   |        | add_ln12_16   | add | fabric | 0       |
+|   add_ln12_17_fu_1253_p2                                            | -   |        | add_ln12_17   | add | fabric | 0       |
+|   add_ln12_18_fu_1263_p2                                            | -   |        | add_ln12_18   | add | fabric | 0       |
+|   add_ln12_19_fu_1276_p2                                            | -   |        | add_ln12_19   | add | fabric | 0       |
+|   add_ln12_20_fu_1286_p2                                            | -   |        | add_ln12_20   | add | fabric | 0       |
+|   mac_muladd_8ns_4ns_4ns_12_4_1_U134                                | 1   |        | add_ln14      | add | dsp48  | 3       |
+|   add_ln13_fu_1070_p2                                               | -   |        | add_ln13      | add | fabric | 0       |
+|   add_ln37_fu_1012_p2                                               | -   |        | add_ln37      | add | fabric | 0       |
+|  + load_v_ref_from_DRAM                                             | 0   |        |               |     |        |         |
+|   + load_v_ref_from_DRAM_Pipeline_V_REF_BUFFER                      | 0   |        |               |     |        |         |
+|     add_ln61_fu_94_p2                                               | -   |        | add_ln61      | add | fabric | 0       |
+|  + load_cim_args_from_DRAM                                          | 0   |        |               |     |        |         |
+|   + load_cim_args_from_DRAM_Pipeline_CIM_ARGS_BUFFER                | 0   |        |               |     |        |         |
+|     add_ln78_fu_105_p2                                              | -   |        | add_ln78      | add | fabric | 0       |
+|  + tiled_cim_conv_Pipeline_INPUT_BUFFER_HEIGHT_INPUT_BUFFER_WIDTH   | 2   |        |               |     |        |         |
+|    add_ln18_6_fu_193_p2                                             | -   |        | add_ln18_6    | add | fabric | 0       |
+|    add_ln18_fu_205_p2                                               | -   |        | add_ln18      | add | fabric | 0       |
+|    mac_muladd_8ns_5ns_5ns_12_4_1_U14                                | 1   |        | mul_ln18_1    | mul | dsp48  | 3       |
+|    add_ln18_1_fu_237_p2                                             | -   |        | add_ln18_1    | add | fabric | 0       |
+|    mul_mul_14ns_10ns_24_4_1_U13                                     | 1   |        | mul_ln18      | mul | dsp48  | 3       |
+|    add_ln18_2_fu_275_p2                                             | -   |        | add_ln18_2    | add | fabric | 0       |
+|    add_ln18_4_fu_283_p2                                             | -   |        | add_ln18_4    | add | fabric | 0       |
+|    mac_muladd_8ns_5ns_5ns_12_4_1_U14                                | 1   |        | add_ln21_2    | add | dsp48  | 3       |
+|    add_ln20_fu_251_p2                                               | -   |        | add_ln20      | add | fabric | 0       |
+|  + load_weight_tile_block_from_DRAM                                 | 1   |        |               |     |        |         |
+|    mul_3ns_6ns_8_1_1_U30                                            | -   |        | height_offset | mul | auto   | 0       |
+|    mul_3ns_8ns_9_1_1_U31                                            | -   |        | width_offset  | mul | auto   | 0       |
+|    tmp_fu_101_p2                                                    | -   |        | tmp           | add | fabric | 0       |
+|   + load_weight_tile_block_from_DRAM_Pipeline_WEIGHT_BUFFER_WIDTH   | 1   |        |               |     |        |         |
+|     empty_fu_171_p2                                                 | -   |        | empty         | add | fabric | 0       |
+|     tmp1_fu_275_p2                                                  | -   |        | tmp1          | add | fabric | 0       |
+|     add_ln42_2_fu_183_p2                                            | -   |        | add_ln42_2    | add | fabric | 0       |
+|     add_ln42_fu_192_p2                                              | -   |        | add_ln42      | add | fabric | 0       |
+|     mac_muladd_5ns_7ns_7ns_12_4_1_U24                               | 1   |        | mul_ln45      | mul | dsp48  | 3       |
+|     p_mid1_fu_230_p2                                                | -   |        | p_mid1        | add | fabric | 0       |
+|     tmp1_mid1_fu_299_p2                                             | -   |        | tmp1_mid1     | add | fabric | 0       |
+|     add_ln42_1_fu_316_p2                                            | -   |        | add_ln42_1    | add | fabric | 0       |
+|     mac_muladd_5ns_7ns_7ns_12_4_1_U24                               | 1   |        | add_ln45      | add | dsp48  | 3       |
+|     add_ln44_fu_236_p2                                              | -   |        | add_ln44      | add | fabric | 0       |
+|  + tiled_cim_conv_Pipeline_OUTPUT_BUFFER_HEIGHT_OUTPUT_BUFFER_WIDTH | 1   |        |               |     |        |         |
+|    empty_fu_201_p2                                                  | -   |        | empty         | add | fabric | 0       |
+|    add_ln101_1_fu_227_p2                                            | -   |        | add_ln101_1   | add | fabric | 0       |
+|    add_ln98_1_fu_239_p2                                             | -   |        | add_ln98_1    | add | fabric | 0       |
+|    add_ln98_fu_248_p2                                               | -   |        | add_ln98      | add | fabric | 0       |
+|    mac_muladd_8ns_4ns_4ns_12_4_1_U123                               | 1   |        | mul_ln101     | mul | dsp48  | 3       |
+|    p_mid157_fu_284_p2                                               | -   |        | p_mid157      | add | fabric | 0       |
+|    add_ln101_7_fu_318_p2                                            | -   |        | add_ln101_7   | add | fabric | 0       |
+|    mac_muladd_8ns_4ns_4ns_12_4_1_U123                               | 1   |        | add_ln101_8   | add | dsp48  | 3       |
+|    add_ln101_fu_369_p2                                              | -   |        | add_ln101     | add | fabric | 0       |
+|    add_ln101_3_fu_480_p2                                            | -   |        | add_ln101_3   | add | fabric | 0       |
+|    add_ln100_fu_494_p2                                              | -   |        | add_ln100     | add | fabric | 0       |
+|  + tiled_cim_conv_Pipeline_VITIS_LOOP_16_3_VITIS_LOOP_19_4          | 68  |        |               |     |        |         |
+|    add_ln16_fu_1363_p2                                              | -   |        | add_ln16      | add | fabric | 0       |
+|    m_3_fu_1372_p2                                                   | -   |        | m_3           | add | fabric | 0       |
+|    empty_30_fu_1818_p2                                              | -   |        | empty_30      | add | fabric | 0       |
+|    add_ln1319_fu_1995_p2                                            | -   |        | add_ln1319    | add | fabric | 0       |
+|    add_ln1319_1_fu_1835_p2                                          | -   |        | add_ln1319_1  | add | fabric | 0       |
+|    add_ln1319_2_fu_1846_p2                                          | -   |        | add_ln1319_2  | add | fabric | 0       |
+|    add_ln1319_3_fu_1857_p2                                          | -   |        | add_ln1319_3  | add | fabric | 0       |
+|    add_ln1319_4_fu_2006_p2                                          | -   |        | add_ln1319_4  | add | fabric | 0       |
+|    add_ln1319_5_fu_2016_p2                                          | -   |        | add_ln1319_5  | add | fabric | 0       |
+|    add_ln1319_6_fu_1868_p2                                          | -   |        | add_ln1319_6  | add | fabric | 0       |
+|    add_ln1319_7_fu_1879_p2                                          | -   |        | add_ln1319_7  | add | fabric | 0       |
+|    add_ln1319_8_fu_2026_p2                                          | -   |        | add_ln1319_8  | add | fabric | 0       |
+|    add_ln1319_9_fu_2036_p2                                          | -   |        | add_ln1319_9  | add | fabric | 0       |
+|    add_ln1319_10_fu_1894_p2                                         | -   |        | add_ln1319_10 | add | fabric | 0       |
+|    add_ln1319_11_fu_1905_p2                                         | -   |        | add_ln1319_11 | add | fabric | 0       |
+|    add_ln1319_12_fu_1916_p2                                         | -   |        | add_ln1319_12 | add | fabric | 0       |
+|    add_ln1319_13_fu_1927_p2                                         | -   |        | add_ln1319_13 | add | fabric | 0       |
+|    add_ln1319_14_fu_1938_p2                                         | -   |        | add_ln1319_14 | add | fabric | 0       |
+|    add_ln1319_15_fu_2046_p2                                         | -   |        | add_ln1319_15 | add | fabric | 0       |
+|    add_ln1319_16_fu_2060_p2                                         | -   |        | add_ln1319_16 | add | fabric | 0       |
+|    add_ln1319_17_fu_2074_p2                                         | -   |        | add_ln1319_17 | add | fabric | 0       |
+|    add_ln1319_18_fu_2085_p2                                         | -   |        | add_ln1319_18 | add | fabric | 0       |
+|    mul_64s_8ns_64_5_1_U50                                           | 3   |        | mul_ln859_1   | mul | auto   | 4       |
+|    mul_64s_8ns_64_5_1_U51                                           | 3   |        | mul_ln859_2   | mul | auto   | 4       |
+|    mul_64s_8ns_64_5_1_U39                                           | 3   |        | mul_ln859_3   | mul | auto   | 4       |
+|    mul_64s_8ns_64_5_1_U40                                           | 3   |        | mul_ln859_4   | mul | auto   | 4       |
+|    mul_64s_8ns_64_5_1_U41                                           | 3   |        | mul_ln859_5   | mul | auto   | 4       |
+|    mul_64s_8ns_64_5_1_U52                                           | 3   |        | mul_ln859_6   | mul | auto   | 4       |
+|    mul_64s_8ns_64_5_1_U53                                           | 3   |        | mul_ln859_7   | mul | auto   | 4       |
+|    mul_64s_8ns_64_5_1_U42                                           | 3   |        | mul_ln859_8   | mul | auto   | 4       |
+|    mul_64s_8ns_64_5_1_U43                                           | 3   |        | mul_ln859_9   | mul | auto   | 4       |
+|    mul_64s_8ns_64_5_1_U54                                           | 3   |        | mul_ln859_10  | mul | auto   | 4       |
+|    mul_64s_8ns_64_5_1_U55                                           | 3   |        | mul_ln859_11  | mul | auto   | 4       |
+|    mul_64s_8ns_64_5_1_U44                                           | 3   |        | mul_ln859_12  | mul | auto   | 4       |
+|    mul_64s_8ns_64_5_1_U45                                           | 3   |        | mul_ln859_13  | mul | auto   | 4       |
+|    mul_64s_8ns_64_5_1_U46                                           | 3   |        | mul_ln859_14  | mul | auto   | 4       |
+|    mul_64s_8ns_64_5_1_U47                                           | 3   |        | mul_ln859_15  | mul | auto   | 4       |
+|    mul_64s_8ns_64_5_1_U48                                           | 3   |        | mul_ln859_16  | mul | auto   | 4       |
+|    mul_64s_8ns_64_5_1_U49                                           | 3   |        | mul_ln859_17  | mul | auto   | 4       |
+|    mul_64s_8ns_64_5_1_U56                                           | 3   |        | mul_ln859_18  | mul | auto   | 4       |
+|    mul_64s_8ns_64_5_1_U57                                           | 3   |        | mul_ln859_19  | mul | auto   | 4       |
+|    mul_64s_8ns_64_5_1_U58                                           | 3   |        | mul_ln859_20  | mul | auto   | 4       |
+|    mul_64s_8ns_64_5_1_U59                                           | 3   |        | mul_ln859_21  | mul | auto   | 4       |
+|    add_ln859_9_fu_2273_p2                                           | -   |        | add_ln859_9   | add | fabric | 0       |
+|    add_ln859_13_fu_2277_p2                                          | -   |        | add_ln859_13  | add | fabric | 0       |
+|    add_ln859_15_fu_2303_p2                                          | -   |        | add_ln859_15  | add | fabric | 0       |
+|    add_ln859_16_fu_2307_p2                                          | -   |        | add_ln859_16  | add | fabric | 0       |
+|    mul_64s_32s_64_5_1_U60                                           | 5   |        | mul_ln859     | mul | auto   | 4       |
+|    temp_fu_2356_p2                                                  | -   |        | temp          | add | fabric | 0       |
+|    add_ln45_fu_2578_p2                                              | -   |        | add_ln45      | add | fabric | 0       |
+|    add_ln19_fu_1970_p2                                              | -   |        | add_ln19      | add | fabric | 0       |
++---------------------------------------------------------------------+-----+--------+---------------+-----+--------+---------+
+
+
+================================================================
+== Bind Storage Report
+================================================================
++-----------------------+------+------+--------+-------------------+---------+------+---------+
+| Name                  | BRAM | URAM | Pragma | Variable          | Storage | Impl | Latency |
++-----------------------+------+------+--------+-------------------+---------+------+---------+
+| + tiled_cim_conv      | 172  | 0    |        |                   |         |      |         |
+|   input_buf_U         | 2    | -    |        | input_buf         | ram_s2p | auto | 1       |
+|   weight2d_cond_buf_U | 16   | -    |        | weight2d_cond_buf | rom_np  | auto | 1       |
+|   v_ref_buf_U         | 4    | -    |        | v_ref_buf         | ram_s2p | auto | 1       |
+|   output_buf_U        | 6    | -    |        | output_buf        | ram_1p  | auto | 1       |
++-----------------------+------+------+--------+-------------------+---------+------+---------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Valid Pragma Syntax
++-----------+-----------------------------------------------------------+--------------------------------------------------------+
+| Type      | Options                                                   | Location                                               |
++-----------+-----------------------------------------------------------+--------------------------------------------------------+
+| interface | m_axi depth=1 port=input2d offset=slave bundle=mem1       | tiled_cim_conv.cpp:12 in tiled_cim_conv, input2d       |
+| interface | m_axi depth=1 port=weight2d_cond offset=slave bundle=mem1 | tiled_cim_conv.cpp:13 in tiled_cim_conv, weight2d_cond |
+| interface | m_axi depth=1 port=v_ref offset=slave bundle=mem2         | tiled_cim_conv.cpp:14 in tiled_cim_conv, v_ref         |
+| interface | m_axi depth=1 port=output offset=slave bundle=mem2        | tiled_cim_conv.cpp:15 in tiled_cim_conv, output        |
+| interface | m_axi depth=1 port=cim_args offset=slave bundle=mem3      | tiled_cim_conv.cpp:16 in tiled_cim_conv, cim_args      |
+| interface | s_axilite register port=return                            | tiled_cim_conv.cpp:18 in tiled_cim_conv, return        |
+| inline    | off                                                       | utils.cpp:36 in load_weight_tile_block_from_dram       |
+| inline    | off                                                       | utils.cpp:58 in load_v_ref_from_dram                   |
+| inline    | off                                                       | utils.cpp:75 in load_cim_args_from_dram                |
++-----------+-----------------------------------------------------------+--------------------------------------------------------+
+
+

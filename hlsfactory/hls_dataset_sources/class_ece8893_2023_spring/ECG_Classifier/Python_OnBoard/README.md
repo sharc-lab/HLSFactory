@@ -1,0 +1,1 @@
+Make sure to have the bin files and fixed_point_converter python file for the ipynb to properly run. It should run as is if all the files are left where they are in the same directory structure as you downloaded them (for ease of use).

@@ -1,0 +1,351 @@
+
+
+================================================================
+== Synthesis Summary Report of 'gausFilter'
+================================================================
++ General Information: 
+    * Date:           Thu May  4 07:38:25 2023
+    * Version:        2022.1.2 (Build 3605665 on Fri Aug  5 22:52:02 MDT 2022)
+    * Project:        proj
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: zynq
+    * Target device:  xc7z020-clg400-1
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +--------------------------------------------------------+------+------+---------+-----------+----------+---------+-------+----------+-----------+---------+-----------+-------------+-----+
+    |                         Modules                        | Issue|      | Latency |  Latency  | Iteration|         |  Trip |          |           |         |           |             |     |
+    |                         & Loops                        | Type | Slack| (cycles)|    (ns)   |  Latency | Interval| Count | Pipelined|   BRAM    |   DSP   |     FF    |     LUT     | URAM|
+    +--------------------------------------------------------+------+------+---------+-----------+----------+---------+-------+----------+-----------+---------+-----------+-------------+-----+
+    |+ gausFilter                                            |     -|  0.00|        -|          -|         -|        -|      -|        no|  228 (81%)|  14 (6%)|  7008 (6%)|  15637 (29%)|    -|
+    | + gausFilter_Pipeline_1                                |     -|  1.84|    10002|  1.000e+05|         -|    10002|      -|        no|          -|        -|   16 (~0%)|     56 (~0%)|    -|
+    |  o Loop 1                                              |     -|  7.30|    10000|  1.000e+05|         1|        1|  10000|       yes|          -|        -|          -|            -|    -|
+    | + gausFilter_Pipeline_2                                |     -|  1.84|    10002|  1.000e+05|         -|    10002|      -|        no|          -|        -|   16 (~0%)|     56 (~0%)|    -|
+    |  o Loop 1                                              |     -|  7.30|    10000|  1.000e+05|         1|        1|  10000|       yes|          -|        -|          -|            -|    -|
+    | + gausFilter_Pipeline_VITIS_LOOP_17_1_VITIS_LOOP_18_2  |     -|  0.00|    10012|  1.001e+05|         -|    10012|      -|        no|          -|        -|  559 (~0%)|     552 (1%)|    -|
+    |  o VITIS_LOOP_17_1_VITIS_LOOP_18_2                     |     -|  7.30|    10010|  1.001e+05|        12|        1|  10000|       yes|          -|        -|          -|            -|    -|
+    | + gausFilter_Pipeline_VITIS_LOOP_31_3_VITIS_LOOP_33_4  |     -|  0.22|    10012|  1.001e+05|         -|    10012|      -|        no|          -|  1 (~0%)|  987 (~0%)|    1186 (2%)|    -|
+    |  o VITIS_LOOP_31_3_VITIS_LOOP_33_4                     |     -|  7.30|    10010|  1.001e+05|        12|        1|  10000|       yes|          -|        -|          -|            -|    -|
+    | + gausFilter_Pipeline_VITIS_LOOP_35_1_VITIS_LOOP_37_2  |     -|  0.09|     8848|  8.848e+04|         -|     8848|      -|        no|          -|   4 (1%)|  1119 (1%)|    1064 (2%)|    -|
+    |  o VITIS_LOOP_35_1_VITIS_LOOP_37_2                     |     -|  7.30|     8846|  8.846e+04|        12|        1|   8836|       yes|          -|        -|          -|            -|    -|
+    | + gausFilter_Pipeline_VITIS_LOOP_43_5_VITIS_LOOP_44_6  |     -|  0.00|    10013|  1.001e+05|         -|    10013|      -|        no|          -|        -|  881 (~0%)|    1124 (2%)|    -|
+    |  o VITIS_LOOP_43_5_VITIS_LOOP_44_6                     |     -|  7.30|    10011|  1.001e+05|        13|        1|  10000|       yes|          -|        -|          -|            -|    -|
+    | o VITIS_LOOP_11_1_VITIS_LOOP_13_2                      |     -|  7.30|        -|          -|         -|        -|      -|        no|          -|        -|          -|            -|    -|
+    |  + gausFilter_Pipeline_VITIS_LOOP_22_3                 |     -|  0.38|        -|          -|         -|        -|      -|        no|          -|   8 (3%)|  2209 (2%)|    1310 (2%)|    -|
+    |   o VITIS_LOOP_22_3                                    |    II|  7.30|        -|          -|        11|        2|      -|       yes|          -|        -|          -|            -|    -|
+    +--------------------------------------------------------+------+------+---------+-----------+----------+---------+-------+----------+-----------+---------+-----------+-------------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* M_AXI
++-----------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+
+| Interface | Data Width | Address Width | Latency | Offset | Register | Max Widen | Max Read     | Max Write    | Num Read    | Num Write   |
+|           | (SW->HW)   |               |         |        |          | Bitwidth  | Burst Length | Burst Length | Outstanding | Outstanding |
++-----------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+
+| m_axi_mem | 32 -> 32   | 64            | 0       | slave  | 0        | 0         | 16           | 16           | 16          | 16          |
++-----------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+
+
+* S_AXILITE Interfaces
++---------------+------------+---------------+--------+----------+
+| Interface     | Data Width | Address Width | Offset | Register |
++---------------+------------+---------------+--------+----------+
+| s_axi_control | 32         | 5             | 16     | 0        |
++---------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++---------------+--------------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| Interface     | Register     | Offset | Width | Access | Description                      | Bit Fields                                                           |
++---------------+--------------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| s_axi_control | CTRL         | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_control | GIER         | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                             |
+| s_axi_control | IP_IER       | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                        |
+| s_axi_control | IP_ISR       | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                        |
+| s_axi_control | INPUT_DRAM_1 | 0x10   | 32    | W      | Data signal of INPUT_DRAM        |                                                                      |
+| s_axi_control | INPUT_DRAM_2 | 0x14   | 32    | W      | Data signal of INPUT_DRAM        |                                                                      |
++---------------+--------------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------+
+| Interface | Type       | Ports     |
++-----------+------------+-----------+
+| ap_clk    | clock      | ap_clk    |
+| ap_rst_n  | reset      | ap_rst_n  |
+| interrupt | interrupt  | interrupt |
+| ap_ctrl   | ap_ctrl_hs |           |
++-----------+------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++------------+-----------+----------+
+| Argument   | Direction | Datatype |
++------------+-----------+----------+
+| INPUT_DRAM | inout     | int*     |
++------------+-----------+----------+
+
+* SW-to-HW Mapping
++------------+---------------+-----------+----------+----------------------------------------+
+| Argument   | HW Interface  | HW Type   | HW Usage | HW Info                                |
++------------+---------------+-----------+----------+----------------------------------------+
+| INPUT_DRAM | m_axi_mem     | interface |          |                                        |
+| INPUT_DRAM | s_axi_control | register  | offset   | name=INPUT_DRAM_1 offset=0x10 range=32 |
+| INPUT_DRAM | s_axi_control | register  | offset   | name=INPUT_DRAM_2 offset=0x14 range=32 |
++------------+---------------+-----------+----------+----------------------------------------+
+
+
+================================================================
+== M_AXI Burst Information
+================================================================
+ Note: All burst requests might be further partitioned into multiple requests during RTL generation based on max_read_burst_length or max_write_burst_length settings.
+
+* Inferred Burst Summary
++--------------+-----------------+-----------+--------+-------+----------------------+
+| HW Interface | Loop            | Direction | Length | Width | Location             |
++--------------+-----------------+-----------+--------+-------+----------------------+
+| m_axi_mem    | VITIS_LOOP_17_1 | read      | 10000  | 32    | gausFilter.cpp:17:19 |
+| m_axi_mem    | VITIS_LOOP_43_5 | write     | 10000  | 32    | gausFilter.cpp:43:19 |
++--------------+-----------------+-----------+--------+-------+----------------------+
+
+* Inferred Bursts and Widening Missed
++--------------+------------+-----------------+-------------------------------------------------------------------------------------------------------+------------+----------------------+
+| HW Interface | Variable   | Loop            | Problem                                                                                               | Resolution | Location             |
++--------------+------------+-----------------+-------------------------------------------------------------------------------------------------------+------------+----------------------+
+| m_axi_mem    | INPUT_DRAM | VITIS_LOOP_44_6 | Could not widen since type i32 size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | gausFilter.cpp:44:20 |
+| m_axi_mem    | INPUT_DRAM | VITIS_LOOP_18_2 | Could not widen since type i32 size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | gausFilter.cpp:18:20 |
++--------------+------------+-----------------+-------------------------------------------------------------------------------------------------------+------------+----------------------+
+
+    * Resolution URL: www.xilinx.com/cgi-bin/docs/rdoc?v=2022.1;t=hls+guidance;d=XXX-YYY.html (replace XXX-YYY with column value)
+
+================================================================
+== Bind Op Report
+================================================================
++--------------------------------------------------------+-----+--------+-------------------+-----+--------+---------+
+| Name                                                   | DSP | Pragma | Variable          | Op  | Impl   | Latency |
++--------------------------------------------------------+-----+--------+-------------------+-----+--------+---------+
+| + gausFilter                                           | 14  |        |                   |     |        |         |
+|   add_ln11_3_fu_1140_p2                                | -   |        | add_ln11_3        | add | fabric | 0       |
+|   add_ln11_fu_1149_p2                                  | -   |        | add_ln11          | add | fabric | 0       |
+|   add_ln11_1_fu_1246_p2                                | -   |        | add_ln11_1        | add | fabric | 0       |
+|   add_ln11_2_fu_1252_p2                                | -   |        | add_ln11_2        | add | fabric | 0       |
+|   mac_muladd_7ns_7ns_7ns_14_4_1_U500                   | 1   |        | mul_ln17          | mul | dsp48  | 3       |
+|   sub_ln11_fu_1279_p2                                  | -   |        | sub_ln11          | sub | fabric | 0       |
+|   mac_muladd_7ns_7ns_7ns_14_4_1_U500                   | 1   |        | add_ln17_1        | add | dsp48  | 3       |
+|   p_neg1_0_fu_1296_p2                                  | -   |        | p_neg1_0          | sub | fabric | 0       |
+|   grp_fu_1054_p2                                       | -   |        | add_ln24          | add | fabric | 0       |
+|   add_ln24_6_fu_1302_p2                                | -   |        | add_ln24_6        | add | fabric | 0       |
+|   add_ln24_1_fu_1308_p2                                | -   |        | add_ln24_1        | add | fabric | 0       |
+|   add_ln24_7_fu_1314_p2                                | -   |        | add_ln24_7        | add | fabric | 0       |
+|   add_ln24_2_fu_1320_p2                                | -   |        | add_ln24_2        | add | fabric | 0       |
+|   add_ln24_8_fu_1326_p2                                | -   |        | add_ln24_8        | add | fabric | 0       |
+|   add_ln24_3_fu_1332_p2                                | -   |        | add_ln24_3        | add | fabric | 0       |
+|   add_ln24_9_fu_1338_p2                                | -   |        | add_ln24_9        | add | fabric | 0       |
+|   add_ln24_4_fu_1344_p2                                | -   |        | add_ln24_4        | add | fabric | 0       |
+|   add_ln24_10_fu_1350_p2                               | -   |        | add_ln24_10       | add | fabric | 0       |
+|   add_ln24_5_fu_1356_p2                                | -   |        | add_ln24_5        | add | fabric | 0       |
+|   add_ln24_5_cast20_fu_1362_p2                         | -   |        | add_ln24_5_cast20 | add | fabric | 0       |
+|   add_ln13_fu_1368_p2                                  | -   |        | add_ln13          | add | fabric | 0       |
+|   grp_fu_1054_p2                                       | -   |        | add_ln13_1        | add | fabric | 0       |
+|  + gausFilter_Pipeline_1                               | 0   |        |                   |     |        |         |
+|    empty_37_fu_76_p2                                   | -   |        | empty_37          | add | fabric | 0       |
+|  + gausFilter_Pipeline_2                               | 0   |        |                   |     |        |         |
+|    empty_35_fu_56_p2                                   | -   |        | empty_35          | add | fabric | 0       |
+|  + gausFilter_Pipeline_VITIS_LOOP_17_1_VITIS_LOOP_18_2 | 0   |        |                   |     |        |         |
+|    add_ln17_1_fu_1643_p2                               | -   |        | add_ln17_1        | add | fabric | 0       |
+|    add_ln17_fu_1655_p2                                 | -   |        | add_ln17          | add | fabric | 0       |
+|    mul_7ns_9ns_15_1_1_U4                               | -   |        | mul_ln17          | mul | auto   | 0       |
+|    mul_7ns_9ns_15_1_1_U7                               | -   |        | mul_ln19          | mul | auto   | 0       |
+|    add_ln18_fu_1735_p2                                 | -   |        | add_ln18          | add | fabric | 0       |
+|  + gausFilter_Pipeline_VITIS_LOOP_31_3_VITIS_LOOP_33_4 | 1   |        |                   |     |        |         |
+|    add_ln31_1_fu_1626_p2                               | -   |        | add_ln31_1        | add | fabric | 0       |
+|    add_ln31_fu_1638_p2                                 | -   |        | add_ln31          | add | fabric | 0       |
+|    mul_7ns_9ns_15_1_1_U114                             | -   |        | mul_ln31          | mul | auto   | 0       |
+|    mac_muladd_7ns_6ns_6ns_13_4_1_U127                  | 1   |        | mul_ln31_1        | mul | dsp48  | 3       |
+|    mul_7ns_9ns_15_1_1_U115                             | -   |        | mul_ln35          | mul | auto   | 0       |
+|    mac_muladd_7ns_6ns_6ns_13_4_1_U127                  | 1   |        | add_ln35          | add | dsp48  | 3       |
+|    add_ln33_fu_1692_p2                                 | -   |        | add_ln33          | add | fabric | 0       |
+|  + gausFilter_Pipeline_VITIS_LOOP_35_1_VITIS_LOOP_37_2 | 4   |        |                   |     |        |         |
+|    add_ln35_fu_1641_p2                                 | -   |        | add_ln35          | add | fabric | 0       |
+|    add_ln35_1_fu_1653_p2                               | -   |        | add_ln35_1        | add | fabric | 0       |
+|    mac_muladd_7ns_7ns_7ns_14_4_1_U279                  | 1   |        | mul_ln39          | mul | dsp48  | 3       |
+|    mul_7ns_9ns_15_1_1_U274                             | -   |        | mul_ln35          | mul | auto   | 0       |
+|    mac_muladd_7ns_7ns_7ns_14_4_1_U279                  | 1   |        | add_ln39_1        | add | dsp48  | 3       |
+|    neg_fu_1805_p2                                      | -   |        | neg               | sub | fabric | 0       |
+|    mul_32s_34ns_65_2_1_U278                            | 3   |        | mul_ln39_1        | mul | auto   | 1       |
+|    sub_ln39_1_fu_1851_p2                               | -   |        | sub_ln39_1        | sub | fabric | 0       |
+|    sub_ln39_2_fu_1872_p2                               | -   |        | sub_ln39_2        | sub | fabric | 0       |
+|    sub_ln39_fu_1888_p2                                 | -   |        | sub_ln39          | sub | fabric | 0       |
+|    mul_7ns_9ns_15_1_1_U277                             | -   |        | mul_ln39_2        | mul | auto   | 0       |
+|    add_ln37_fu_1733_p2                                 | -   |        | add_ln37          | add | fabric | 0       |
+|  + gausFilter_Pipeline_VITIS_LOOP_22_3                 | 8   |        |                   |     |        |         |
+|    mul_mul_14s_7ns_14_4_1_U247                         | 1   |        | empty_30          | mul | dsp48  | 3       |
+|    empty_31_fu_512_p2                                  | -   |        | empty_31          | add | fabric | 0       |
+|    add_ln26_fu_703_p2                                  | -   |        | add_ln26          | add | fabric | 0       |
+|    add_ln26_2_fu_580_p2                                | -   |        | add_ln26_2        | add | fabric | 0       |
+|    mul_5ns_32s_32_2_1_U244                             | 1   |        | mul_ln26          | mul | auto   | 1       |
+|    add_ln26_3_fu_727_p2                                | -   |        | add_ln26_3        | add | fabric | 0       |
+|    add_ln26_7_fu_589_p2                                | -   |        | add_ln26_7        | add | fabric | 0       |
+|    mul_5ns_32s_32_2_1_U245                             | 1   |        | mul_ln26_1        | mul | auto   | 1       |
+|    add_ln26_8_fu_751_p2                                | -   |        | add_ln26_8        | add | fabric | 0       |
+|    add_ln26_9_fu_598_p2                                | -   |        | add_ln26_9        | add | fabric | 0       |
+|    mul_5ns_32s_32_2_1_U246                             | 1   |        | mul_ln26_2        | mul | auto   | 1       |
+|    add_ln26_10_fu_607_p2                               | -   |        | add_ln26_10       | add | fabric | 0       |
+|    add_ln26_11_fu_544_p2                               | -   |        | add_ln26_11       | add | fabric | 0       |
+|    mul_5ns_32s_32_2_1_U240                             | 1   |        | mul_ln26_3        | mul | auto   | 1       |
+|    add_ln26_4_fu_631_p2                                | -   |        | add_ln26_4        | add | fabric | 0       |
+|    add_ln26_12_fu_553_p2                               | -   |        | add_ln26_12       | add | fabric | 0       |
+|    mul_5ns_32s_32_2_1_U241                             | 1   |        | mul_ln26_4        | mul | auto   | 1       |
+|    add_ln26_5_fu_655_p2                                | -   |        | add_ln26_5        | add | fabric | 0       |
+|    add_ln26_13_fu_562_p2                               | -   |        | add_ln26_13       | add | fabric | 0       |
+|    mul_5ns_32s_32_2_1_U242                             | 1   |        | mul_ln26_5        | mul | auto   | 1       |
+|    add_ln26_6_fu_679_p2                                | -   |        | add_ln26_6        | add | fabric | 0       |
+|    add_ln26_14_fu_571_p2                               | -   |        | add_ln26_14       | add | fabric | 0       |
+|    mul_5ns_32s_32_2_1_U243                             | 1   |        | mul_ln26_6        | mul | auto   | 1       |
+|    add_ln26_15_fu_929_p2                               | -   |        | add_ln26_15       | add | fabric | 0       |
+|    add_ln26_16_fu_934_p2                               | -   |        | add_ln26_16       | add | fabric | 0       |
+|    add_ln26_19_fu_910_p2                               | -   |        | add_ln26_19       | add | fabric | 0       |
+|    add_ln22_fu_534_p2                                  | -   |        | add_ln22          | add | fabric | 0       |
+|  + gausFilter_Pipeline_VITIS_LOOP_43_5_VITIS_LOOP_44_6 | 0   |        |                   |     |        |         |
+|    add_ln43_1_fu_1632_p2                               | -   |        | add_ln43_1        | add | fabric | 0       |
+|    add_ln43_fu_1680_p2                                 | -   |        | add_ln43          | add | fabric | 0       |
+|    mul_7ns_9ns_15_1_1_U385                             | -   |        | mul_ln43          | mul | auto   | 0       |
+|    mul_7ns_9ns_15_1_1_U386                             | -   |        | mul_ln45          | mul | auto   | 0       |
+|    add_ln44_fu_1661_p2                                 | -   |        | add_ln44          | add | fabric | 0       |
++--------------------------------------------------------+-----+--------+-------------------+-----+--------+---------+
+
+
+================================================================
+== Bind Storage Report
+================================================================
++----------------------------------------+------+------+--------+----------------+---------+------+---------+
+| Name                                   | BRAM | URAM | Pragma | Variable       | Storage | Impl | Latency |
++----------------------------------------+------+------+--------+----------------+---------+------+---------+
+| + gausFilter                           | 228  | 0    |        |                |         |      |         |
+|   input_U                              | 2    | -    |        | input          | ram_1p  | auto | 1       |
+|   input_1_U                            | 2    | -    |        | input_1        | ram_1p  | auto | 1       |
+|   input_2_U                            | 2    | -    |        | input_2        | ram_1p  | auto | 1       |
+|   input_3_U                            | 2    | -    |        | input_3        | ram_1p  | auto | 1       |
+|   input_4_U                            | 2    | -    |        | input_4        | ram_1p  | auto | 1       |
+|   input_5_U                            | 2    | -    |        | input_5        | ram_1p  | auto | 1       |
+|   input_6_U                            | 2    | -    |        | input_6        | ram_1p  | auto | 1       |
+|   input_7_U                            | 2    | -    |        | input_7        | ram_1p  | auto | 1       |
+|   input_8_U                            | 2    | -    |        | input_8        | ram_1p  | auto | 1       |
+|   input_9_U                            | 2    | -    |        | input_9        | ram_1p  | auto | 1       |
+|   input_10_U                           | 2    | -    |        | input_10       | ram_1p  | auto | 1       |
+|   input_11_U                           | 2    | -    |        | input_11       | ram_1p  | auto | 1       |
+|   input_12_U                           | 2    | -    |        | input_12       | ram_1p  | auto | 1       |
+|   input_13_U                           | 2    | -    |        | input_13       | ram_1p  | auto | 1       |
+|   input_14_U                           | 2    | -    |        | input_14       | ram_1p  | auto | 1       |
+|   input_15_U                           | 2    | -    |        | input_15       | ram_1p  | auto | 1       |
+|   input_16_U                           | 2    | -    |        | input_16       | ram_1p  | auto | 1       |
+|   input_17_U                           | 2    | -    |        | input_17       | ram_1p  | auto | 1       |
+|   input_18_U                           | 2    | -    |        | input_18       | ram_1p  | auto | 1       |
+|   input_19_U                           | 2    | -    |        | input_19       | ram_1p  | auto | 1       |
+|   input_20_U                           | 2    | -    |        | input_20       | ram_1p  | auto | 1       |
+|   input_21_U                           | 2    | -    |        | input_21       | ram_1p  | auto | 1       |
+|   input_22_U                           | 2    | -    |        | input_22       | ram_1p  | auto | 1       |
+|   input_23_U                           | 2    | -    |        | input_23       | ram_1p  | auto | 1       |
+|   input_24_U                           | 2    | -    |        | input_24       | ram_1p  | auto | 1       |
+|   input_25_U                           | 2    | -    |        | input_25       | ram_1p  | auto | 1       |
+|   input_26_U                           | 2    | -    |        | input_26       | ram_1p  | auto | 1       |
+|   input_27_U                           | 2    | -    |        | input_27       | ram_1p  | auto | 1       |
+|   input_28_U                           | 2    | -    |        | input_28       | ram_1p  | auto | 1       |
+|   input_29_U                           | 2    | -    |        | input_29       | ram_1p  | auto | 1       |
+|   input_30_U                           | 2    | -    |        | input_30       | ram_1p  | auto | 1       |
+|   input_31_U                           | 2    | -    |        | input_31       | ram_1p  | auto | 1       |
+|   input_32_U                           | 2    | -    |        | input_32       | ram_1p  | auto | 1       |
+|   input_33_U                           | 2    | -    |        | input_33       | ram_1p  | auto | 1       |
+|   input_34_U                           | 2    | -    |        | input_34       | ram_1p  | auto | 1       |
+|   input_35_U                           | 2    | -    |        | input_35       | ram_1p  | auto | 1       |
+|   input_36_U                           | 2    | -    |        | input_36       | ram_1p  | auto | 1       |
+|   input_37_U                           | 2    | -    |        | input_37       | ram_1p  | auto | 1       |
+|   input_38_U                           | 2    | -    |        | input_38       | ram_1p  | auto | 1       |
+|   input_39_U                           | 2    | -    |        | input_39       | ram_1p  | auto | 1       |
+|   input_40_U                           | 2    | -    |        | input_40       | ram_1p  | auto | 1       |
+|   input_41_U                           | 2    | -    |        | input_41       | ram_1p  | auto | 1       |
+|   input_42_U                           | 2    | -    |        | input_42       | ram_1p  | auto | 1       |
+|   input_43_U                           | 2    | -    |        | input_43       | ram_1p  | auto | 1       |
+|   input_44_U                           | 2    | -    |        | input_44       | ram_1p  | auto | 1       |
+|   input_45_U                           | 2    | -    |        | input_45       | ram_1p  | auto | 1       |
+|   input_46_U                           | 2    | -    |        | input_46       | ram_1p  | auto | 1       |
+|   input_47_U                           | 2    | -    |        | input_47       | ram_1p  | auto | 1       |
+|   input_48_U                           | 2    | -    |        | input_48       | ram_1p  | auto | 1       |
+|   input_49_U                           | 2    | -    |        | input_49       | ram_1p  | auto | 1       |
+|   input_50_U                           | 2    | -    |        | input_50       | ram_1p  | auto | 1       |
+|   input_51_U                           | 2    | -    |        | input_51       | ram_1p  | auto | 1       |
+|   input_52_U                           | 2    | -    |        | input_52       | ram_1p  | auto | 1       |
+|   input_53_U                           | 2    | -    |        | input_53       | ram_1p  | auto | 1       |
+|   input_54_U                           | 2    | -    |        | input_54       | ram_1p  | auto | 1       |
+|   input_55_U                           | 2    | -    |        | input_55       | ram_1p  | auto | 1       |
+|   input_56_U                           | 2    | -    |        | input_56       | ram_1p  | auto | 1       |
+|   input_57_U                           | 2    | -    |        | input_57       | ram_1p  | auto | 1       |
+|   input_58_U                           | 2    | -    |        | input_58       | ram_1p  | auto | 1       |
+|   input_59_U                           | 2    | -    |        | input_59       | ram_1p  | auto | 1       |
+|   input_60_U                           | 2    | -    |        | input_60       | ram_1p  | auto | 1       |
+|   input_61_U                           | 2    | -    |        | input_61       | ram_1p  | auto | 1       |
+|   input_62_U                           | 2    | -    |        | input_62       | ram_1p  | auto | 1       |
+|   input_63_U                           | 2    | -    |        | input_63       | ram_1p  | auto | 1       |
+|   input_64_U                           | 2    | -    |        | input_64       | ram_1p  | auto | 1       |
+|   input_65_U                           | 2    | -    |        | input_65       | ram_1p  | auto | 1       |
+|   input_66_U                           | 2    | -    |        | input_66       | ram_1p  | auto | 1       |
+|   input_67_U                           | 2    | -    |        | input_67       | ram_1p  | auto | 1       |
+|   input_68_U                           | 2    | -    |        | input_68       | ram_1p  | auto | 1       |
+|   input_69_U                           | 2    | -    |        | input_69       | ram_1p  | auto | 1       |
+|   input_70_U                           | 2    | -    |        | input_70       | ram_1p  | auto | 1       |
+|   input_71_U                           | 2    | -    |        | input_71       | ram_1p  | auto | 1       |
+|   input_72_U                           | 2    | -    |        | input_72       | ram_1p  | auto | 1       |
+|   input_73_U                           | 2    | -    |        | input_73       | ram_1p  | auto | 1       |
+|   input_74_U                           | 2    | -    |        | input_74       | ram_1p  | auto | 1       |
+|   input_75_U                           | 2    | -    |        | input_75       | ram_1p  | auto | 1       |
+|   input_76_U                           | 2    | -    |        | input_76       | ram_1p  | auto | 1       |
+|   input_77_U                           | 2    | -    |        | input_77       | ram_1p  | auto | 1       |
+|   input_78_U                           | 2    | -    |        | input_78       | ram_1p  | auto | 1       |
+|   input_79_U                           | 2    | -    |        | input_79       | ram_1p  | auto | 1       |
+|   input_80_U                           | 2    | -    |        | input_80       | ram_1p  | auto | 1       |
+|   input_81_U                           | 2    | -    |        | input_81       | ram_1p  | auto | 1       |
+|   input_82_U                           | 2    | -    |        | input_82       | ram_1p  | auto | 1       |
+|   input_83_U                           | 2    | -    |        | input_83       | ram_1p  | auto | 1       |
+|   input_84_U                           | 2    | -    |        | input_84       | ram_1p  | auto | 1       |
+|   input_85_U                           | 2    | -    |        | input_85       | ram_1p  | auto | 1       |
+|   input_86_U                           | 2    | -    |        | input_86       | ram_1p  | auto | 1       |
+|   input_87_U                           | 2    | -    |        | input_87       | ram_1p  | auto | 1       |
+|   input_88_U                           | 2    | -    |        | input_88       | ram_1p  | auto | 1       |
+|   input_89_U                           | 2    | -    |        | input_89       | ram_1p  | auto | 1       |
+|   input_90_U                           | 2    | -    |        | input_90       | ram_1p  | auto | 1       |
+|   input_91_U                           | 2    | -    |        | input_91       | ram_1p  | auto | 1       |
+|   input_92_U                           | 2    | -    |        | input_92       | ram_1p  | auto | 1       |
+|   input_93_U                           | 2    | -    |        | input_93       | ram_1p  | auto | 1       |
+|   input_94_U                           | 2    | -    |        | input_94       | ram_1p  | auto | 1       |
+|   input_95_U                           | 2    | -    |        | input_95       | ram_1p  | auto | 1       |
+|   input_96_U                           | 2    | -    |        | input_96       | ram_1p  | auto | 1       |
+|   input_97_U                           | 2    | -    |        | input_97       | ram_1p  | auto | 1       |
+|   input_98_U                           | 2    | -    |        | input_98       | ram_1p  | auto | 1       |
+|   input_99_U                           | 2    | -    |        | input_99       | ram_1p  | auto | 1       |
+|   oneDImgArray_U                       | 16   | -    |        | oneDImgArray   | rom_np  | auto | 1       |
+|   oneDImgArray_1_U                     | 16   | -    |        | oneDImgArray_1 | rom_np  | auto | 1       |
+|   tmpConvArray_U                       | 32   | -    |        | tmpConvArray   | ram_1p  | auto | 1       |
+|  + gausFilter_Pipeline_VITIS_LOOP_22_3 | 0    | 0    |        |                |         |      |         |
+|    givenGausFil_U                      | -    | -    |        | givenGausFil   | rom_np  | auto | 1       |
++----------------------------------------+------+------+--------+----------------+---------+------+---------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Valid Pragma Syntax
++-----------------+-------------------------------------------------------+-----------------------------------------------+
+| Type            | Options                                               | Location                                      |
++-----------------+-------------------------------------------------------+-----------------------------------------------+
+| interface       | m_axi depth=1 port=INPUT_DRAM offset=slave bundle=mem | gausFilter.cpp:6 in gausfilter, INPUT_DRAM    |
+| interface       | s_axilite port=return                                 | gausFilter.cpp:8 in gausfilter, return        |
+| array_partition | variable=input dim=1 type=cyclic factor= 10           | gausFilter.cpp:11 in gausfilter, input        |
+| array_partition | variable=input dim=2 type=cyclic factor= 10           | gausFilter.cpp:12 in gausfilter, input        |
+| array_partition | variable=oneDImgArray type=cyclic factor=2            | gausFilter.cpp:24 in gausfilter, oneDImgArray |
++-----------------+-------------------------------------------------------+-----------------------------------------------+
+
+
