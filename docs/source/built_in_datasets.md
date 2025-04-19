@@ -104,5 +104,3 @@ HLSFactory provides several built-in datasets of HLS design sources.
 **Design Type:** Concrete
 
 **Supported Vendors:** Xilinx
-
-
