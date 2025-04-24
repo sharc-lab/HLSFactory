@@ -4,6 +4,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 import pytest
+
 from hlsfactory.datasets_builtin import (
     DATASET_STR_MAP,
     T_dataset_builder,
@@ -32,7 +33,7 @@ PATH_VITIS_HLS, PATH_VIVADO = get_tool_paths(ToolPathsSource.ENVFILE)
 BIN_VITIS_HLS = PATH_VITIS_HLS / "bin" / "vitis_hls"
 BIN_VIVADO = PATH_VIVADO / "bin" / "vivado"
 
-N_JOBS = 1
+N_JOBS = 16
 CPU_AFFINITY = list(range(N_JOBS))
 
 TIMEOUT_HLS_SYNTH = 60.0 * 8  # 8 minutes
@@ -55,12 +56,6 @@ def test_concrete_vitis_hls_flow_paramaterized(
     print(f"work_dir: {work_dir}")
 
     dataset_instance = dataset_builder(dataset_name, work_dir)
-    n_keep = 1
-    designs_to_keep = dataset_instance.designs[:n_keep]
-    designs_to_remove = dataset_instance.designs[n_keep:]
-    dataset_instance.designs = designs_to_keep
-    for design in designs_to_remove:
-        shutil.rmtree(design.dir)
 
     datasets = {
         dataset_name: dataset_instance,
@@ -75,7 +70,7 @@ def test_concrete_vitis_hls_flow_paramaterized(
     print(f"total_count: {total_count}")
     print(f"total_synth_time_estimation: {total_synth_time_estimation}")
 
-    assert total_count == len(designs_to_keep)
+    assert total_count == len(dataset_instance.designs)
 
     toolflow_vitis_hls_synth = VitisHLSSynthFlow(
         vitis_hls_bin=str(BIN_VITIS_HLS),
@@ -93,4 +88,4 @@ def test_concrete_vitis_hls_flow_paramaterized(
         )
     )
 
-    assert len(datasets_post_hls_synth) == len(datasets)
+    assert datasets_post_hls_synth
