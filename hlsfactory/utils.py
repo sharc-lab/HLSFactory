@@ -503,3 +503,14 @@ def remove_and_make_new_dir_if_exists(dir_path: pathlib.Path) -> None:
     """
     remove_dir_if_exists(dir_path)
     dir_path.mkdir(parents=True, exist_ok=True)
+
+
+T_unwrap = TypeVar("T_unwrap")
+
+
+def unwrap(value: T_unwrap | None, error_message: str | None = None) -> T_unwrap:
+    if value is None:
+        if error_message is None:
+            raise ValueError("Unwrapped a None value")
+        raise ValueError(error_message)
+    return value

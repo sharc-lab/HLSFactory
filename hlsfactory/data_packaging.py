@@ -112,12 +112,11 @@ class DataAggregator(ABC):
     ) -> list[CompleteHLSData]:
         if n_jobs < 1:
             raise ValueError("n_jobs must be greater than 0")
-        elif n_jobs == 1:
+        if n_jobs == 1:
             return [self.gather_all_data(design) for design in designs]
-        else:
-            pool = multiprocessing.Pool(n_jobs)
-            data = pool.map(self.gather_all_data, designs)
-            return data
+        pool = multiprocessing.Pool(n_jobs)
+        data = pool.map(self.gather_all_data, designs)
+        return data
 
     def aggregated_data_to_csv(self, data: list[CompleteHLSData]) -> str:
         s = io.StringIO()
@@ -231,16 +230,14 @@ class DataAggregatorXilinx(DataAggregator):
         if len(solutions) != 1:
             if error_if_missing_data:
                 raise ValueError(f"Found 0 or more than 1 solution for {design.dir}")
-            else:
-                return {}
+            return {}
         solution = solutions[0]
 
         adb_fp = Path(solution) / ".autopilot" / "db"
         if not adb_fp.exists():
             if error_if_missing_data:
                 raise FileNotFoundError(f"Autopilot DB directory not found: {adb_fp}")
-            else:
-                return {}
+            return {}
 
         report_fp = Path(solution) / "syn" / "report"
         if not report_fp.exists():

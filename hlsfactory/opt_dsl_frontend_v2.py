@@ -1,23 +1,25 @@
 import hashlib
 import itertools
-import random
-from pathlib import Path
-import time
 import json
-from hlsfactory.opt_dsl_v2.opt_dsl import OptDSL
+import random
+import time
+from pathlib import Path
 
 from hlsfactory.framework import Design, Frontend
+from hlsfactory.opt_dsl_v2.opt_dsl import OptDSL
 from hlsfactory.utils import log_execution_time_to_file
+
 
 def count_possible_samples(data):
     total = 1
     for values in data.values():
-        total *= (1 + len(values))
+        total *= 1 + len(values)
     return total
+
 
 def unique_random_samples(data, num_samples):
     seen_samples = set()
-    
+
     values_list = list(data.values())
 
     while len(seen_samples) < num_samples:
@@ -25,7 +27,8 @@ def unique_random_samples(data, num_samples):
         sample = frozenset(random.choice(lst) for lst in selected_lists)
         seen_samples.add(sample)
 
-    return list(seen_samples)  
+    return list(seen_samples)
+
 
 def generate_opt_sources(
     pipelines,
@@ -33,18 +36,19 @@ def generate_opt_sources(
     partitions,
     random_sample: bool = False,
     random_sample_num: int = 10,
-    random_sample_seed: int = 42
+    random_sample_seed: int = 42,
 ) -> list[str]:
-
     all_directives = pipelines | unrolls | partitions
 
     if random_sample and random_sample_num < count_possible_samples(all_directives):
         # Ensure that we're not sampling more than the size of the powerset
-        design_space = unique_random_samples(all_directives, random_sample_num) 
+        design_space = unique_random_samples(all_directives, random_sample_num)
     else:
         # None represents no directive chosen for that loop/variable
-        design_space = list(itertools.product(*([[None] + lst for lst in all_directives.items()])))
-    
+        design_space = list(
+            itertools.product(*([[None] + lst for lst in all_directives.items()]))
+        )
+
     opt_tcl_sources: list[str] = []
     # opt_configs = []
     for design_point in design_space:
@@ -74,9 +78,10 @@ def generate_opt_sources(
         #     config_single["partitions"].append(x)
 
         # opt_configs.append(config_single)
-    
+
     return opt_tcl_sources
     # return opt_tcl_sources, opt_configs
+
 
 class OptDSLFrontend(Frontend):
     name = "OptDSLFrontend"
@@ -101,7 +106,7 @@ class OptDSLFrontend(Frontend):
         opt_template_fp = design.dir / "opt_template.tcl"
         opt_dsl = None
 
-        with open(opt_template_fp, "r") as file:
+        with open(opt_template_fp) as file:
             opt_dsl = OptDSL(file.read())
 
         pipelines, unrolls, partitions = opt_dsl.get_directives()

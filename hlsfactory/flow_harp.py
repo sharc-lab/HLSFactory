@@ -1,25 +1,25 @@
 # Copied from https://github.com/UCLA-VAST/HARP/ to generate HARP graphs for HLS programs
 # depedns on programl
+# very much a work in progress
 
 
-import os
-import networkx as nx
+import ast
+import csv
 import json
+import os
+import re
 import shutil
-from os.path import join, abspath, basename, exists, dirname, isfile
-from subprocess import Popen, PIPE
 from collections import OrderedDict
 from copy import deepcopy
-import ast
+from glob import glob, iglob
+from os.path import abspath, basename, dirname, exists, isfile, join
 from pprint import pprint
 from shutil import copy
-from glob import glob, iglob
-import csv
-import re
+from subprocess import PIPE, Popen
+
+import networkx as nx
 import programl
-
 from utils import create_dir_if_not_exists, get_root_path, natural_keys
-
 
 PRAGMA_POSITION = {"PIPELINE": 0, "TILE": 2, "PARALLEL": 1}
 BENCHMARK = "machsuite"
@@ -27,7 +27,8 @@ BENCHMARK = "poly"
 type_graph = "harp"
 processed_gexf_folder = join(get_root_path(), f"{type_graph}/{BENCHMARK}/processed")
 auxiliary_node_gexf_folder = join(
-    get_root_path(), f"{type_graph}/{BENCHMARK}/processed/extended-pseudo-block-base/"
+    get_root_path(),
+    f"{type_graph}/{BENCHMARK}/processed/extended-pseudo-block-base/",
 )
 MACHSUITE_KERNEL = [
     "aes",
@@ -149,11 +150,14 @@ def copy_files(name, src, dest):
     """
     gen_files = [f for f in sorted(glob(join(src, f"{name}.*")))]
     gen_files.append(join(src, f"{name}_pretty.json"))
-    gen_files.append(join(src, f"ds_info.json"))
+    gen_files.append(join(src, "ds_info.json"))
     for f in gen_files:
         if "ds_info.json" in f:
             source_dest = join(
-                os.getcwd(), BENCHMARK, "config", f"{name}_ds_config.json"
+                os.getcwd(),
+                BENCHMARK,
+                "config",
+                f"{name}_ds_config.json",
             )
             copy(f, source_dest)
             continue
@@ -258,9 +262,8 @@ def get_tc_for_loop(for_loop_text):
         else:
             TC = int(eval(comp.replace(" ", "").split(delim)[-1].strip()))
         return TC
-    else:
-        print(f"no comparison sign found in {for_loop_text}")
-        raise RuntimeError()
+    print(f"no comparison sign found in {for_loop_text}")
+    raise RuntimeError
 
 
 def get_icmp(path, name, log=False):
@@ -277,7 +280,7 @@ def get_icmp(path, name, log=False):
         number of for loops
     """
     for_dict_llvm = OrderedDict()  ## {function inst: {for loop id: [icmp instruction, for.cond line number, icmp line number]}} ## function inst is the LLVM-equivalent of function defintion starting with "define"
-    f_llvm = open(join(path, f"{name}.ll"), "r")
+    f_llvm = open(join(path, f"{name}.ll"))
     lines_llvm = f_llvm.readlines()
     for_count_llvm, local_for_count_llvm = 0, 0
     func_inst = None
@@ -292,10 +295,10 @@ def get_icmp(path, name, log=False):
             for idx2, line2 in enumerate(lines_llvm[idx + 1 :]):
                 if line2.strip().startswith("for.body"):
                     print(
-                        f"Do you have the right LLVM code? no icmp instruction found for loop at line {idx}."
+                        f"Do you have the right LLVM code? no icmp instruction found for loop at line {idx}.",
                     )
-                    raise RuntimeError()
-                elif "icmp" in line2.strip():
+                    raise RuntimeError
+                if "icmp" in line2.strip():
                     assert func_inst != None, "no function scope found"
                     for_dict_llvm[func_inst][local_for_count_llvm] = [
                         line2.strip(),
@@ -325,10 +328,10 @@ def get_pragmas_loops(path, name, EXT="c", log=False):
     for_dict_source = (
         OrderedDict()
     )  ## {function name: {for loop id: [for loop source code, [list of pragmas]]}}
-    f_source = open(join(path, f"{name}.{EXT}"), "r")
+    f_source = open(join(path, f"{name}.{EXT}"))
     lines_source = f_source.readlines()
     f_source.close()
-    with open(join(path, f"{name}.{EXT}"), "r") as f_source:
+    with open(join(path, f"{name}.{EXT}")) as f_source:
         function_names_list = extract_function_names(f_source.read())
     for_count_source, local_for_count_source = 0, 0
     pragma_zone = False
@@ -361,13 +364,12 @@ def get_pragmas_loops(path, name, EXT="c", log=False):
                     pragma_zone = False
                 else:
                     print(
-                        f"Do you have the right source code? expected either for loop or pragma at line {idx} but got {line}."
+                        f"Do you have the right source code? expected either for loop or pragma at line {idx} but got {line}.",
                     )
-                    raise RuntimeError()
-            else:
-                if line.startswith("#pragma") and not "KERNEL" in line.upper():
-                    pragma_list = [line]
-                    pragma_zone = True
+                    raise RuntimeError
+            elif line.startswith("#pragma") and "KERNEL" not in line.upper():
+                pragma_list = [line]
+                pragma_zone = True
 
     if log:
         print(json.dumps(for_dict_source, indent=4))
@@ -424,7 +426,7 @@ def create_pragma_nodes(g_nx, g_nx_nodes, for_dict_source, for_dict_llvm, log=Tr
                         break
             if not node_id:
                 print(f"icmp instruction {icmp_inst} not found.")
-                raise RuntimeError()
+                raise RuntimeError
 
             for pragma in pragmas:
                 p_dict = {}
@@ -550,12 +552,15 @@ def graph_generator(name, path, benchmark, generate_programl=False, csv_dict=Non
     if augment_graph:
         ## create pragma nodes and their edges
         new_nodes, new_edges = create_pragma_nodes(
-            g_nx, g_nx_nodes, for_dict_source, for_dict_llvm
+            g_nx,
+            g_nx_nodes,
+            for_dict_source,
+            for_dict_llvm,
         )
 
         add_to_graph(g_nx, new_nodes, new_edges)
         print(
-            f"number of new nodes: {g_nx.number_of_nodes()} and number of new edges: {len(g_nx.edges)}"
+            f"number of new nodes: {g_nx.number_of_nodes()} and number of new edges: {len(g_nx.edges)}",
         )
         process = True
         if process:
@@ -575,7 +580,7 @@ def graph_generator(name, path, benchmark, generate_programl=False, csv_dict=Non
 
 
 def get_for_blocks_info(name, path):
-    with open(join(path, name, f"{name}.ll"), "r") as f_llvm:
+    with open(join(path, name, f"{name}.ll")) as f_llvm:
         lines_llvm = f_llvm.readlines()
 
     for_blocks_info = OrderedDict()  # label: {ind: loop number, preds:, next_instr:, line_num:, end: [(for.end line num, for.end label)], possible_children: children:}
@@ -618,7 +623,7 @@ def get_for_blocks_info(name, path):
     for idx, start_num in enumerate(for_start):
         child_idx = idx + 1
         possible_children = []
-        for s, e in zip(for_start[idx + 1 :], for_end[idx + 1 :]):
+        for s, e in zip(for_start[idx + 1 :], for_end[idx + 1 :], strict=False):
             if s > start_num and e < for_end[idx]:
                 possible_children.append(for_label[child_idx])
                 child_idx += 1
@@ -639,7 +644,12 @@ def get_for_blocks_info(name, path):
 
 
 def augment_graph_hierarchy(
-    name, for_blocks_info, src_path, dst_path, csv_dict=None, node_type="block"
+    name,
+    for_blocks_info,
+    src_path,
+    dst_path,
+    csv_dict=None,
+    node_type="block",
 ):
     if node_type == "block":
         gexf_file = join(src_path, f"{name}_processed_result.gexf")
@@ -692,7 +702,7 @@ def augment_graph_hierarchy(
                         break
             if not found:
                 print(f"could not find the respective block for label {for_l}")
-                raise RuntimeError()
+                raise RuntimeError
 
         node_ids_block = {}
         for for_l in for_blocks_info:
@@ -739,17 +749,22 @@ def augment_graph_hierarchy(
         nx.write_gexf(g_new, new_gexf_file)
 
     else:
-        raise NotImplementedError()
+        raise NotImplementedError
 
 
 def add_auxiliary_nodes(
-    name, path, processed_path, csv_dict, node_type="block", connected=False
+    name,
+    path,
+    processed_path,
+    csv_dict,
+    node_type="block",
+    connected=False,
 ):
     if node_type == "block":
         gexf_file = join(path, f"{name}_processed_result.gexf")
         new_gexf_file = join(processed_path, f"{name}_processed_result.gexf")
         if not isfile(gexf_file):
-            return None
+            return
         print(f"processing {gexf_file}")
         g = nx.readwrite.gexf.read_gexf(gexf_file)
         g_nx_nodes, g_nx_edges = g.number_of_nodes(), len(g.edges)
@@ -786,10 +801,9 @@ def add_auxiliary_nodes(
                 block_func[ndata["function"]] = {}
                 block_func[ndata["function"]]["count"] = 1
                 block_func[ndata["function"]]["blocks"] = [ndata["block"]]
-            else:
-                if ndata["block"] not in block_func[ndata["function"]]["blocks"]:
-                    block_func[ndata["function"]]["count"] += 1
-                    block_func[ndata["function"]]["blocks"].append(ndata["block"])
+            elif ndata["block"] not in block_func[ndata["function"]]["blocks"]:
+                block_func[ndata["function"]]["count"] += 1
+                block_func[ndata["function"]]["blocks"].append(ndata["block"])
 
             key = f"function-{ndata['function']}-block-{ndata['block']}"
             pseudo_node = block_nodes[key]["node"]
@@ -829,7 +843,7 @@ def add_auxiliary_nodes(
             max_block += b["count"]
         assert g_nx_nodes == orig_nodes + max_block
         print(
-            f"ending with {g_nx_nodes} nodes and {g_nx_edges} edges, max block: {max_block}"
+            f"ending with {g_nx_nodes} nodes and {g_nx_edges} edges, max block: {max_block}",
         )
         current_g_value["new_node"] = g_nx_nodes
         current_g_value["new_edge"] = g_nx_edges
@@ -839,7 +853,7 @@ def add_auxiliary_nodes(
         nx.write_gexf(g_new, new_gexf_file)
 
     else:
-        raise NotImplementedError()
+        raise NotImplementedError
 
 
 def remove_extra_header(src_dir, kernel_name):
@@ -869,7 +883,10 @@ def write_csv_file(csv_dict, csv_header, file_path):
 
 
 def run_graph_gen(
-    mode="initial", connected=True, target=["machsuite", "poly"], ALL_KERNEL=ALL_KERNEL
+    mode="initial",
+    connected=True,
+    target=["machsuite", "poly"],
+    ALL_KERNEL=ALL_KERNEL,
 ):
     test = "original"
     global processed_gexf_folder
@@ -883,7 +900,8 @@ def run_graph_gen(
     if mode == "initial":
         for BENCHMARK in target:
             processed_gexf_folder = join(
-                get_root_path(), f"{type_graph}/{BENCHMARK}/processed/"
+                get_root_path(),
+                f"{type_graph}/{BENCHMARK}/processed/",
             )
             create_dir_if_not_exists(processed_gexf_folder)
             for kernel in ALL_KERNEL[BENCHMARK]:
@@ -905,9 +923,9 @@ def run_graph_gen(
                             print("Error: no source file found")
                         else:
                             print(
-                                f"Error: multiple source files found at {kernel_path}"
+                                f"Error: multiple source files found at {kernel_path}",
                             )
-                        raise RuntimeError()
+                        raise RuntimeError
                     kernel_path = kernel_path[0]
                     ext = kernel_path.split(".")[-1]
                     new_file_path = join(path, f"{kernel}.{ext}")
@@ -915,14 +933,19 @@ def run_graph_gen(
                     print(new_file_path)
                     shutil.copyfile(kernel_path, new_file_path)
                 graph_generator(
-                    kernel, path, BENCHMARK, generate_programl=True, csv_dict=csv_dict
+                    kernel,
+                    path,
+                    BENCHMARK,
+                    generate_programl=True,
+                    csv_dict=csv_dict,
                 )
                 print()
         write_csv_file(csv_dict, csv_header, f"{type_graph}/{mode}.csv")
     elif mode == "auxiliary":
         for BENCHMARK in target:
             processed_gexf_folder = join(
-                get_root_path(), f"{type_graph}/{BENCHMARK}/processed"
+                get_root_path(),
+                f"{type_graph}/{BENCHMARK}/processed",
             )
             if connected:
                 auxiliary_node_gexf_folder = join(
@@ -976,7 +999,7 @@ def run_graph_gen(
                 print()
         write_csv_file(csv_dict, csv_header, f"{type_graph}/{mode}.csv")
     else:
-        raise NotImplementedError()
+        raise NotImplementedError
 
 
 if __name__ == "__main__":

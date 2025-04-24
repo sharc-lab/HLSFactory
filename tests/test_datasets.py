@@ -43,7 +43,7 @@ def test_load_datasets_with_labels() -> None:
     work_dir = top_work_dir / "test_load_datasets_with_labels"
     remove_and_make_new_dir_if_exists(work_dir)
 
-    dataset_names = DATASET_STR_MAP
+    dataset_names = list(DATASET_STR_MAP.keys())
     dataset_labels = [f"{dset}_labeled" for dset in dataset_names]
 
     datasets = datasets_builder(work_dir, dataset_names, dataset_labels)
