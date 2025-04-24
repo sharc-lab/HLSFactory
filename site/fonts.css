@@ -3,16 +3,13 @@
 
 body,
 html {
-    /* font-family: sans-serif; */
-    /* font-family: 'Noto Sans', sans-serif;
-     */
-    font-family: "Open Sans", sans-serif;
-    font-size: 16px;
-    line-height: 1.2;
-    font-smooth: antialiased;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-weight: 400;
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px;
+  line-height: 1.2;
+  font-smooth: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
 }
 
 h1,
@@ -21,6 +18,6 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Noto Serif", serif;
-    font-weight: bold;
+  font-family: "Noto Serif", serif;
+  font-weight: bold;
 }
