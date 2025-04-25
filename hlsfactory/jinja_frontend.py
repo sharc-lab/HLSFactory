@@ -40,9 +40,8 @@ class JinjaFrontend(Frontend):
             )
             new_designs.append(new_design)
 
-            # in the new desing find all .jinja files recursively
-            # and replace the content with the jinja_config
             jinja_files = sorted(new_design.dir.rglob("*.jinja"))
+
             for jinja_file in jinja_files:
                 t: Template = Template(
                     jinja_file.read_text(),
