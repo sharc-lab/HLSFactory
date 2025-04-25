@@ -17,6 +17,7 @@ DIR_DATASET_VITIS_EXAMPLES = HLS_DATASET_DIR / "vitis_examples"
 DIR_DATASET_ACCELERATORS = HLS_DATASET_DIR / "accelerators"
 
 DIR_DATASET_SODA = HLS_DATASET_DIR / "soda"
+DIR_DATASET_FORGEBENCH = HLS_DATASET_DIR / "forgebench"
 
 DIR_ALL = [
     DIR_DATASET_POLYBENCH,
@@ -26,6 +27,7 @@ DIR_ALL = [
     DIR_DATASET_VITIS_EXAMPLES,
     DIR_DATASET_ACCELERATORS,
     DIR_DATASET_SODA,
+    DIR_DATASET_FORGEBENCH,
 ]
 
 
@@ -88,6 +90,13 @@ def dataset_soda_builder(name: str, work_dir: Path) -> DesignDataset:
     return DesignDataset.from_dir(name, new_dir)
 
 
+def dataset_forgebench_builder(name: str, work_dir: Path) -> DesignDataset:
+    check_dataset_dir_exists(DIR_DATASET_FORGEBENCH)
+    new_dir = work_dir / name
+    shutil.copytree(DIR_DATASET_FORGEBENCH, new_dir)
+    return DesignDataset.from_dir(name, new_dir)
+
+
 T_dataset_builder = Callable[[str, Path], DesignDataset]
 
 DATASET_STR_MAP: dict[str, T_dataset_builder] = {
@@ -98,6 +107,7 @@ DATASET_STR_MAP: dict[str, T_dataset_builder] = {
     "vitis_examples": dataset_vitis_examples_builder,
     "accelerators": dataset_accelerators_builder,
     "soda": dataset_soda_builder,
+    "forgebench": dataset_forgebench_builder,
 }
 
 
@@ -138,6 +148,7 @@ def datasets_all_builder(work_dir: Path) -> DesignDatasetCollection:
     dataset_vitis_examples = dataset_vitis_examples_builder("vitis_examples", work_dir)
     dataset_accelerators = dataset_accelerators_builder("accelerators", work_dir)
     dataset_soda = dataset_soda_builder("soda", work_dir)
+    dataset_forgebench = dataset_forgebench_builder("forgebench", work_dir)
     return {
         dataset_polybench.name: dataset_polybench,
         dataset_machsuite.name: dataset_machsuite,
@@ -146,4 +157,5 @@ def datasets_all_builder(work_dir: Path) -> DesignDatasetCollection:
         dataset_vitis_examples.name: dataset_vitis_examples,
         dataset_accelerators.name: dataset_accelerators,
         dataset_soda.name: dataset_soda,
+        dataset_forgebench.name: dataset_forgebench,
     }

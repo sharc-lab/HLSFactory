@@ -1,5 +1,5 @@
 # Auto-generated TCL file for HLS
-open_project -reset project_1
+open_project project_1
 
 set_top top
 
@@ -17,12 +17,12 @@ set_part xczu9eg-ffvb1156-2-e
 
 create_clock -period 10 -name default
 
-csim_design
+# csim_design
 
 csynth_design
 
-cosim_design
+# cosim_design
 
-export_design -format ip_catalog
+# export_design -format ip_catalog
 
 exit

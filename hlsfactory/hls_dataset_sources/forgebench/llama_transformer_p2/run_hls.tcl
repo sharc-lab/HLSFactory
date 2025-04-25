@@ -1,5 +1,5 @@
 # Auto-generated TCL file for HLS
-open_project -reset project_1
+open_project project_1
 
 set_top top
 
@@ -24,6 +24,6 @@ create_clock -period 10 -name default
 
 csynth_design
 
-export_design -format ip_catalog -flow impl
+# export_design -format ip_catalog -flow impl
 
 exit

@@ -264,7 +264,7 @@ class OptDSLFrontend(Frontend):
 
         new_designs = []
         for opt_source, opt_config in zip(opt_sources, opt_configs, strict=False):
-            opt_source_hash = hashlib.md5(opt_source.encode()).hexdigest()
+            opt_source_hash = hashlib.md5(opt_source.encode()).hexdigest()  # noqa: S324
             new_design = design.copy_and_rename_to_new_parent_dir(
                 f"{design.name}_opt_{opt_source_hash}",
                 design.dir.parent,
