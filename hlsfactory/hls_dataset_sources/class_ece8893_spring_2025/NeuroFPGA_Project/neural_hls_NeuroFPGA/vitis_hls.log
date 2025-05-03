@@ -1,0 +1,1330 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2024.1.2 (64-bit)
+  **** SW Build 5096458 on Sep  5 2024
+  **** IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+  **** SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+  **** Start of session at: Thu May  1 21:39:02 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source /tools/software/xilinx/Vitis_HLS/2024.1/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] For user 'mzain9' on host 'ece-linlab01.ece.gatech.edu' (Linux_x86_64 version 4.18.0-553.47.1.el8_10.x86_64) on Thu May 01 21:39:05 EDT 2025
+INFO: [HLS 200-10] On os "Red Hat Enterprise Linux release 8.10 (Ootpa)"
+INFO: [HLS 200-10] In directory '/nethome/mzain9/FPGA/2025_Spring/topic4/src'
+WARNING: [HLS 200-2053] The vitis_hls executable is deprecated. Consider using vitis-run --mode hls --tcl
+Sourcing Tcl script 'script.tcl'
+INFO: [HLS 200-1510] Running: open_project project_3 
+INFO: [HLS 200-10] Opening project '/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3'.
+INFO: [HLS 200-1510] Running: set_top ResNet 
+INFO: [HLS 200-1510] Running: add_files top_new.cpp 
+INFO: [HLS 200-10] Adding design file 'top_new.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb host.cpp 
+INFO: [HLS 200-10] Adding test bench file 'host.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb input_1.bin 
+INFO: [HLS 200-10] Adding test bench file 'input_1.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb layer4_block0_conv1_weights.bin 
+INFO: [HLS 200-10] Adding test bench file 'layer4_block0_conv1_weights.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb layer4_block0_batch_norm_1_beta.bin 
+INFO: [HLS 200-10] Adding test bench file 'layer4_block0_batch_norm_1_beta.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb layer4_block0_batch_norm_1_gamma.bin 
+INFO: [HLS 200-10] Adding test bench file 'layer4_block0_batch_norm_1_gamma.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb block0_output.bin 
+INFO: [HLS 200-10] Adding test bench file 'block0_output.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb layer4_block0_batch_norm_1_mean.bin 
+INFO: [HLS 200-10] Adding test bench file 'layer4_block0_batch_norm_1_mean.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb layer4_block0_batch_norm_1_var.bin 
+INFO: [HLS 200-10] Adding test bench file 'layer4_block0_batch_norm_1_var.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb layer4_block0_conv2_weights.bin 
+INFO: [HLS 200-10] Adding test bench file 'layer4_block0_conv2_weights.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb layer4_block0_batch_norm_2_beta.bin 
+INFO: [HLS 200-10] Adding test bench file 'layer4_block0_batch_norm_2_beta.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb layer4_block0_batch_norm_2_gamma.bin 
+INFO: [HLS 200-10] Adding test bench file 'layer4_block0_batch_norm_2_gamma.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb layer4_block0_batch_norm_2_mean.bin 
+INFO: [HLS 200-10] Adding test bench file 'layer4_block0_batch_norm_2_mean.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb layer4_block0_batch_norm_2_var.bin 
+INFO: [HLS 200-10] Adding test bench file 'layer4_block0_batch_norm_2_var.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb layer4_block0_downsample_weights.bin 
+INFO: [HLS 200-10] Adding test bench file 'layer4_block0_downsample_weights.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb layer4_block0_downsample_batch_norm_gamma.bin 
+INFO: [HLS 200-10] Adding test bench file 'layer4_block0_downsample_batch_norm_gamma.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb layer4_block0_downsample_batch_norm_beta.bin 
+INFO: [HLS 200-10] Adding test bench file 'layer4_block0_downsample_batch_norm_beta.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb layer4_block0_downsample_batch_norm_mean.bin 
+INFO: [HLS 200-10] Adding test bench file 'layer4_block0_downsample_batch_norm_mean.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb layer4_block0_downsample_batch_norm_var.bin 
+INFO: [HLS 200-10] Adding test bench file 'layer4_block0_downsample_batch_norm_var.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb layer4_block1_conv1_weights.bin 
+INFO: [HLS 200-10] Adding test bench file 'layer4_block1_conv1_weights.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb layer4_block1_batch_norm_1_beta.bin 
+INFO: [HLS 200-10] Adding test bench file 'layer4_block1_batch_norm_1_beta.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb layer4_block1_batch_norm_1_gamma.bin 
+INFO: [HLS 200-10] Adding test bench file 'layer4_block1_batch_norm_1_gamma.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb layer4_block1_batch_norm_1_mean.bin 
+INFO: [HLS 200-10] Adding test bench file 'layer4_block1_batch_norm_1_mean.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb layer4_block1_batch_norm_1_var.bin 
+INFO: [HLS 200-10] Adding test bench file 'layer4_block1_batch_norm_1_var.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb layer4_block1_conv2_weights.bin 
+INFO: [HLS 200-10] Adding test bench file 'layer4_block1_conv2_weights.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb layer4_block1_batch_norm_2_beta.bin 
+INFO: [HLS 200-10] Adding test bench file 'layer4_block1_batch_norm_2_beta.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb layer4_block1_batch_norm_2_gamma.bin 
+INFO: [HLS 200-10] Adding test bench file 'layer4_block1_batch_norm_2_gamma.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb layer4_block1_batch_norm_2_mean.bin 
+INFO: [HLS 200-10] Adding test bench file 'layer4_block1_batch_norm_2_mean.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb layer4_block1_batch_norm_2_var.bin 
+INFO: [HLS 200-10] Adding test bench file 'layer4_block1_batch_norm_2_var.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb fc_bias.bin 
+INFO: [HLS 200-10] Adding test bench file 'fc_bias.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb fc_weights.bin 
+INFO: [HLS 200-10] Adding test bench file 'fc_weights.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb output_1.bin 
+INFO: [HLS 200-10] Adding test bench file 'output_1.bin' to the project
+INFO: [HLS 200-1510] Running: open_solution solution1 
+INFO: [HLS 200-10] Opening solution '/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xcu250-figd2104-2L-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xcu250-figd2104-2L-e 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.08 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.23 seconds; current allocated memory: 392.145 MB.
+INFO: [HLS 200-10] Analyzing design file 'top_new.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 16.58 seconds. CPU system time: 0.69 seconds. Elapsed time: 19.96 seconds; current allocated memory: 398.723 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 200-1995] There were 1,086 instructions in the design after the 'Compile/Link' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,913 instructions in the design after the 'Unroll/Inline (step 1)' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,580 instructions in the design after the 'Unroll/Inline (step 2)' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,209 instructions in the design after the 'Unroll/Inline (step 3)' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 941 instructions in the design after the 'Unroll/Inline (step 4)' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 9,808 instructions in the design after the 'Array/Struct (step 1)' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 9,493 instructions in the design after the 'Array/Struct (step 2)' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 9,634 instructions in the design after the 'Array/Struct (step 3)' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 9,631 instructions in the design after the 'Array/Struct (step 4)' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 9,633 instructions in the design after the 'Array/Struct (step 5)' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 9,633 instructions in the design after the 'Performance' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 9,619 instructions in the design after the 'Performance (step 2)' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 9,847 instructions in the design after the 'Performance (step 3)' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 9,698 instructions in the design after the 'Performance (step 4)' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 9,863 instructions in the design after the 'HW Transforms (step 1)' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 9,161 instructions in the design after the 'HW Transforms (step 2)' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 214-131] Inlining function 'hls::vector<float, 20ul>::operator+=(hls::vector<float, 20ul> const&)' into 'hls::operator+(hls::vector<float, 20ul>, hls::vector<float, 20ul> const&)' (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/hls_vector.h:273:138)
+INFO: [HLS 214-131] Inlining function 'hls::operator+(hls::vector<float, 20ul>, hls::vector<float, 20ul> const&)' into 'Add_4D(hls::vector<float, 20ul> (*) [512][20], hls::vector<float, 20ul> (*) [512][20], float (*) [512][20][20])' (top_new.cpp:235:34)
+WARNING: [HLS 214-340] The resource pragma (bind_storage) on top-level function argument, in 'call' is unsupported, please use INTERFACE pragma instead (top_new.cpp:187:5)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_424_4' is marked as complete unroll implied by the pipeline pragma (top_new.cpp:424:20)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_198_1' is marked as complete unroll implied by the pipeline pragma (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/hls_vector.h:198:124)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_236_4' is marked as complete unroll implied by the pipeline pragma (top_new.cpp:236:35)
+INFO: [HLS 214-188] Unrolling loop 'VITIS_LOOP_468_5' (top_new.cpp:468:31) in function 'fully_connected' partially with a factor of 8 (top_new.cpp:438:0)
+INFO: [HLS 214-188] Unrolling loop 'VITIS_LOOP_449_2' (top_new.cpp:449:27) in function 'fully_connected' partially with a factor of 8 (top_new.cpp:438:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_424_4' (top_new.cpp:424:20) in function 'average_pooling' completely with a factor of 20 (top_new.cpp:415:0)
+INFO: [HLS 214-359] Unrolling loop 'VITIS_LOOP_385_7' (top_new.cpp:385:47) in function 'conv2d': changing partial unrolling into complete unrolling since the unrolling factor (=3) is no less than the loop trip count (=3). (top_new.cpp:365:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_385_7' (top_new.cpp:385:47) in function 'conv2d' completely with a factor of 3 (top_new.cpp:365:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_198_1' (/tools/software/xilinx/Vitis_HLS/2024.1/common/technology/autopilot/hls_vector.h:198:124) in function 'Add_4D' completely with a factor of 20 (top_new.cpp:225:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_236_4' (top_new.cpp:236:35) in function 'Add_4D' completely with a factor of 20 (top_new.cpp:225:0)
+INFO: [HLS 214-359] Unrolling loop 'VITIS_LOOP_61_7' (top_new.cpp:61:46) in function 'conv2d_vector': changing partial unrolling into complete unrolling since the unrolling factor (=3) is no less than the loop trip count (=3). (top_new.cpp:41:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_61_7' (top_new.cpp:61:46) in function 'conv2d_vector' completely with a factor of 3 (top_new.cpp:41:0)
+WARNING: [HLS 214-366] Duplicating function 'std::array<float, 20ul>::operator[](unsigned long)' as different function signatures were detected between this call site and other call site(s). This may impact the resources used in the design. (top_new.cpp:348:21)
+WARNING: [HLS 214-366] Duplicating function 'std::array<float, 20ul>::operator[](unsigned long)' as different function signatures were detected between this call site and other call site(s). This may impact the resources used in the design. (top_new.cpp:78:21)
+WARNING: [HLS 214-366] Duplicating function 'std::__array_traits<float, 20ul>::_S_ref(float const (&) [20], unsigned long)' as different function signatures were detected between this call site and other call site(s). This may impact the resources used in the design. (/tools/software/xilinx/Vitis_HLS/2024.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/../../../../include/c++/8.3.0/array:186:16)
+INFO: [HLS 214-178] Inlining function 'load_weights_per_out_channel(float (*) [3][3], float (*) [3][3])' into 'conv2d_stride(float (*) [256][40][40], float (*) [256][3][3], float (*) [512][20][20], float*, float*, float*, float*, bool)' (top_new.cpp:267:0)
+INFO: [HLS 214-178] Inlining function 'std::__array_traits<float, 20ul>::_S_ref(float const (&) [20], unsigned long)' into 'std::array<float, 20ul>::operator[](unsigned long) (.1)' (/tools/software/xilinx/Vitis_HLS/2024.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/../../../../include/c++/8.3.0/array:186:0)
+INFO: [HLS 214-178] Inlining function 'std::array<float, 20ul>::operator[](unsigned long) (.1)' into 'conv2d_vector(float (*) [512][20][20], float (*) [512][3][3], hls::vector<float, 20ul> (*) [512][20], float*, float*, float*, float*, bool)' (top_new.cpp:41:0)
+INFO: [HLS 214-178] Inlining function 'std::array<float, 20ul>::operator[](unsigned long) (.1)' into 'conv2d_stride_ds(float (*) [256][40][40], float (*) [256], hls::vector<float, 20ul> (*) [512][20], float*, float*, float*, float*)' (top_new.cpp:325:0)
+INFO: [HLS 214-178] Inlining function 'std::__array_traits<float, 20ul>::_S_ref(float const (&) [20], unsigned long) (.2)' into 'std::array<float, 20ul>::operator[](unsigned long)' (/tools/software/xilinx/Vitis_HLS/2024.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/../../../../include/c++/8.3.0/array:186:0)
+INFO: [HLS 214-178] Inlining function 'std::__array_traits<float, 20ul>::_S_ref(float const (&) [20], unsigned long)' into 'std::array<float, 20ul>::operator[](unsigned long) const' (/tools/software/xilinx/Vitis_HLS/2024.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/../../../../include/c++/8.3.0/array:190:0)
+INFO: [HLS 214-178] Inlining function 'std::array<float, 20ul>::operator[](unsigned long)' into 'Add_4D(hls::vector<float, 20ul> (*) [512][20], hls::vector<float, 20ul> (*) [512][20], float (*) [512][20][20])' (top_new.cpp:225:0)
+INFO: [HLS 214-178] Inlining function 'std::array<float, 20ul>::operator[](unsigned long) const' into 'Add_4D(hls::vector<float, 20ul> (*) [512][20], hls::vector<float, 20ul> (*) [512][20], float (*) [512][20][20])' (top_new.cpp:225:0)
+INFO: [HLS 214-178] Inlining function 'load_weights_ds(float (*) [256][1][1], float (*) [256])' into 'ResNet(float (*) [256][40][40], float (*) [256][3][3], float*, float*, float*, float*, float (*) [512][20][20], float (*) [512][3][3], float*, float*, float*, float*, hls::vector<float, 20ul> (*) [512][20], hls::vector<float, 20ul> (*) [512][20], float (*) [256][1][1], float*, float*, float*, float*, float (*) [512][20][20], float (*) [512][3][3], float*, float*, float*, float*, float (*) [512][20][20], float (*) [512][3][3], float*, float*, float*, float*, float (*) [512][20][20], float (*) [512], float*, float (*) [512])' (top_new.cpp:120:0)
+INFO: [HLS 214-178] Inlining function 'conv2d_vector(float (*) [512][20][20], float (*) [512][3][3], hls::vector<float, 20ul> (*) [512][20], float*, float*, float*, float*, bool)' into 'ResNet(float (*) [256][40][40], float (*) [256][3][3], float*, float*, float*, float*, float (*) [512][20][20], float (*) [512][3][3], float*, float*, float*, float*, hls::vector<float, 20ul> (*) [512][20], hls::vector<float, 20ul> (*) [512][20], float (*) [256][1][1], float*, float*, float*, float*, float (*) [512][20][20], float (*) [512][3][3], float*, float*, float*, float*, float (*) [512][20][20], float (*) [512][3][3], float*, float*, float*, float*, float (*) [512][20][20], float (*) [512], float*, float (*) [512])' (top_new.cpp:120:0)
+INFO: [HLS 214-178] Inlining function 'conv2d_stride_ds(float (*) [256][40][40], float (*) [256], hls::vector<float, 20ul> (*) [512][20], float*, float*, float*, float*)' into 'ResNet(float (*) [256][40][40], float (*) [256][3][3], float*, float*, float*, float*, float (*) [512][20][20], float (*) [512][3][3], float*, float*, float*, float*, hls::vector<float, 20ul> (*) [512][20], hls::vector<float, 20ul> (*) [512][20], float (*) [256][1][1], float*, float*, float*, float*, float (*) [512][20][20], float (*) [512][3][3], float*, float*, float*, float*, float (*) [512][20][20], float (*) [512][3][3], float*, float*, float*, float*, float (*) [512][20][20], float (*) [512], float*, float (*) [512])' (top_new.cpp:120:0)
+INFO: [HLS 214-178] Inlining function 'average_pooling(float (*) [512][20][20], float (*) [512])' into 'ResNet(float (*) [256][40][40], float (*) [256][3][3], float*, float*, float*, float*, float (*) [512][20][20], float (*) [512][3][3], float*, float*, float*, float*, hls::vector<float, 20ul> (*) [512][20], hls::vector<float, 20ul> (*) [512][20], float (*) [256][1][1], float*, float*, float*, float*, float (*) [512][20][20], float (*) [512][3][3], float*, float*, float*, float*, float (*) [512][20][20], float (*) [512][3][3], float*, float*, float*, float*, float (*) [512][20][20], float (*) [512], float*, float (*) [512])' (top_new.cpp:120:0)
+INFO: [HLS 214-248] Applying array_partition to 'local_weights': Complete partitioning on dimension 1. (top_new.cpp:279:20)
+INFO: [HLS 214-248] Applying array_partition to 'input_local': Cyclic partitioning with factor 16 on dimension 2. (top_new.cpp:442:9)
+INFO: [HLS 214-248] Applying array_partition to 'avg_pooling_local_output': Complete partitioning on dimension 1. (top_new.cpp:162:8)
+INFO: [HLS 214-248] Applying array_partition to 'local_weights_ds': Complete partitioning on dimension 1. (top_new.cpp:165:8)
+INFO: [HLS 214-241] Aggregating bram variable 'block0_output_bn2' with compact=bit mode in 640-bits
+INFO: [HLS 214-241] Aggregating bram variable 'output_local' with compact=bit mode in 640-bits
+INFO: [HLS 214-376] automatically set the pipeline for Loop< VITIS_LOOP_449_2> at top_new.cpp:449:27 
+INFO: [HLS 214-376] automatically set the pipeline for Loop< VITIS_LOOP_468_5> at top_new.cpp:468:31 
+INFO: [HLS 214-376] automatically set the pipeline for Loop< VITIS_LOOP_383_6> at top_new.cpp:383:43 
+INFO: [HLS 214-376] automatically set the pipeline for Loop< VITIS_LOOP_293_7> at top_new.cpp:293:47 
+INFO: [HLS 214-376] automatically set the pipeline for Loop< VITIS_LOOP_59_6> at top_new.cpp:59:42 
+INFO: [HLS 214-376] automatically set the pipeline for Loop< VITIS_LOOP_343_5> at top_new.cpp:343:39 
+INFO: [HLS 214-270] Inferring pragma 'array_partition type=cyclic factor=4 dim=1' for array 'avg_pooling_local_output_0' due to pipeline pragma (top_new.cpp:162:8)
+INFO: [HLS 214-270] Inferring pragma 'array_partition type=cyclic factor=4 dim=1' for array 'avg_pooling_local_output_1' due to pipeline pragma (top_new.cpp:162:8)
+INFO: [HLS 214-248] Applying array_partition to 'avg_pooling_local_output_0': Cyclic partitioning with factor 4 on dimension 1. (top_new.cpp:162:8)
+INFO: [HLS 214-248] Applying array_partition to 'avg_pooling_local_output_1': Cyclic partitioning with factor 4 on dimension 1. (top_new.cpp:162:8)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 71.23 seconds. CPU system time: 0.35 seconds. Elapsed time: 72.98 seconds; current allocated memory: 407.777 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 407.777 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.46 seconds. CPU system time: 0 seconds. Elapsed time: 0.63 seconds; current allocated memory: 416.523 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.67 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.69 seconds; current allocated memory: 457.375 MB.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (top_new.cpp:288:28) to (top_new.cpp:293:47) in function 'conv2d_stride'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (top_new.cpp:380:28) to (top_new.cpp:383:43) in function 'conv2d'... converting 7 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (top_new.cpp:56:28) to (top_new.cpp:59:42) in function 'ResNet'... converting 7 basic blocks.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 2.28 seconds. CPU system time: 0 seconds. Elapsed time: 2.32 seconds; current allocated memory: 462.605 MB.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_447_1'(top_new.cpp:447:20) and 'VITIS_LOOP_449_2'(top_new.cpp:449:27) in function 'fully_connected' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_465_4'(top_new.cpp:465:27) and 'VITIS_LOOP_468_5'(top_new.cpp:468:31) in function 'fully_connected' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_461_3'(top_new.cpp:461:23) and 'VITIS_LOOP_465_4'(top_new.cpp:465:27) in function 'fully_connected' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_195_2'(top_new.cpp:195:27) and 'VITIS_LOOP_197_3'(top_new.cpp:197:31) in function 'conv2d_stride' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_193_1'(top_new.cpp:193:23) and 'VITIS_LOOP_195_2'(top_new.cpp:195:27) in function 'conv2d_stride' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_291_6'(top_new.cpp:291:43) and 'VITIS_LOOP_293_7'(top_new.cpp:293:47) in function 'conv2d_stride' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_289_5'(top_new.cpp:289:39) and 'VITIS_LOOP_291_6'(top_new.cpp:291:43) in function 'conv2d_stride' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_286_4'(top_new.cpp:286:35) and 'VITIS_LOOP_289_5'(top_new.cpp:289:39) in function 'conv2d_stride' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_283_3'(top_new.cpp:283:31) and 'VITIS_LOOP_286_4'(top_new.cpp:286:35) in function 'conv2d_stride' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_381_5'(top_new.cpp:381:39) and 'VITIS_LOOP_383_6'(top_new.cpp:383:43) in function 'conv2d' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_378_4'(top_new.cpp:378:35) and 'VITIS_LOOP_381_5'(top_new.cpp:381:39) in function 'conv2d' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_376_3'(top_new.cpp:376:31) and 'VITIS_LOOP_378_4'(top_new.cpp:378:35) in function 'conv2d' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_369_2'(top_new.cpp:369:27) and 'VITIS_LOOP_376_3'(top_new.cpp:376:31) in function 'conv2d' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_367_1'(top_new.cpp:367:23) and 'VITIS_LOOP_369_2'(top_new.cpp:369:27) in function 'conv2d' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_210_1'(top_new.cpp:210:23) and 'VITIS_LOOP_212_2'(top_new.cpp:212:27) in function 'ResNet' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_57_5'(top_new.cpp:57:38) and 'VITIS_LOOP_59_6'(top_new.cpp:59:42) in function 'ResNet' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_54_4'(top_new.cpp:54:34) and 'VITIS_LOOP_57_5'(top_new.cpp:57:38) in function 'ResNet' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_52_3'(top_new.cpp:52:30) and 'VITIS_LOOP_54_4'(top_new.cpp:54:34) in function 'ResNet' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_45_2'(top_new.cpp:45:26) and 'VITIS_LOOP_52_3'(top_new.cpp:52:30) in function 'ResNet' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_43_1'(top_new.cpp:43:22) and 'VITIS_LOOP_45_2'(top_new.cpp:45:26) in function 'ResNet' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_338_4'(top_new.cpp:338:35) and 'VITIS_LOOP_343_5'(top_new.cpp:343:39) in function 'ResNet' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_336_3'(top_new.cpp:336:31) and 'VITIS_LOOP_338_4'(top_new.cpp:338:35) in function 'ResNet' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_329_2'(top_new.cpp:329:27) and 'VITIS_LOOP_336_3'(top_new.cpp:336:31) in function 'ResNet' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_327_1'(top_new.cpp:327:23) and 'VITIS_LOOP_329_2'(top_new.cpp:329:27) in function 'ResNet' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_230_2'(top_new.cpp:230:27) and 'VITIS_LOOP_232_3'(top_new.cpp:232:31) in function 'Add_4D' into perfectly nested loops.
+INFO: [HLS 200-2061] Successfully converted nested loops 'VITIS_LOOP_228_1'(top_new.cpp:228:23) and 'VITIS_LOOP_230_2'(top_new.cpp:230:27) in function 'Add_4D' into perfectly nested loops.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_447_1' (top_new.cpp:447:20) in function 'fully_connected'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_465_4' (top_new.cpp:465:27) in function 'fully_connected'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_461_3' (top_new.cpp:461:23) in function 'fully_connected'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_195_2' (top_new.cpp:195:27) in function 'conv2d_stride'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_193_1' (top_new.cpp:193:23) in function 'conv2d_stride'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_291_6' (top_new.cpp:291:43) in function 'conv2d_stride'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_289_5' (top_new.cpp:289:39) in function 'conv2d_stride'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_286_4' (top_new.cpp:286:35) in function 'conv2d_stride'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_283_3' (top_new.cpp:283:31) in function 'conv2d_stride'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_381_5' (top_new.cpp:381:39) in function 'conv2d'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_378_4' (top_new.cpp:378:35) in function 'conv2d'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_376_3' (top_new.cpp:376:31) in function 'conv2d'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_369_2' (top_new.cpp:369:27) in function 'conv2d'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_367_1' (top_new.cpp:367:23) in function 'conv2d'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_210_1' (top_new.cpp:210:23) in function 'ResNet'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_57_5' (top_new.cpp:57:38) in function 'ResNet'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_54_4' (top_new.cpp:54:34) in function 'ResNet'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_52_3' (top_new.cpp:52:30) in function 'ResNet'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_45_2' (top_new.cpp:45:26) in function 'ResNet'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_43_1' (top_new.cpp:43:22) in function 'ResNet'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_338_4' (top_new.cpp:338:35) in function 'ResNet'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_336_3' (top_new.cpp:336:31) in function 'ResNet'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_329_2' (top_new.cpp:329:27) in function 'ResNet'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_327_1' (top_new.cpp:327:23) in function 'ResNet'.
+WARNING: [HLS 200-960] Cannot flatten loop 'VITIS_LOOP_418_2' (top_new.cpp:418:27) in function 'ResNet' the outer loop is not a perfect loop because there is nontrivial logic before entering the inner loop.
+Resolution: For help on HLS 200-960 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-960.html
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_230_2' (top_new.cpp:230:27) in function 'Add_4D'.
+INFO: [XFORM 203-541] Flattening a loop nest 'VITIS_LOOP_228_1' (top_new.cpp:228:23) in function 'Add_4D'.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 10.74 seconds. CPU system time: 0.04 seconds. Elapsed time: 10.95 seconds; current allocated memory: 744.484 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'ResNet' ...
+WARNING: [SYN 201-103] Legalizing function name 'conv2d_stride_Pipeline_VITIS_LOOP_283_3_VITIS_LOOP_286_4_VITIS_LOOP_289_5_VITIS_' to 'conv2d_stride_Pipeline_VITIS_LOOP_283_3_VITIS_LOOP_286_4_VITIS_LOOP_289_5_VITIS_s'.
+WARNING: [SYN 201-103] Legalizing function name 'ResNet_Pipeline_VITIS_LOOP_43_1_VITIS_LOOP_45_2_VITIS_LOOP_52_3_VITIS_LOOP_54_4_' to 'ResNet_Pipeline_VITIS_LOOP_43_1_VITIS_LOOP_45_2_VITIS_LOOP_52_3_VITIS_LOOP_54_4_s'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'ResNet_Pipeline_VITIS_LOOP_210_1_VITIS_LOOP_212_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_210_1_VITIS_LOOP_212_2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_210_1_VITIS_LOOP_212_2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 3.51 seconds. CPU system time: 0.03 seconds. Elapsed time: 4.35 seconds; current allocated memory: 766.523 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.19 seconds. CPU system time: 0 seconds. Elapsed time: 0.29 seconds; current allocated memory: 766.523 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'conv2d_stride_Pipeline_VITIS_LOOP_193_1_VITIS_LOOP_195_2_VITIS_LOOP_197_3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_193_1_VITIS_LOOP_195_2_VITIS_LOOP_197_3'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_193_1_VITIS_LOOP_195_2_VITIS_LOOP_197_3'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1.19 seconds. CPU system time: 0.01 seconds. Elapsed time: 1.31 seconds; current allocated memory: 771.570 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.08 seconds. CPU system time: 0 seconds. Elapsed time: 0.14 seconds; current allocated memory: 771.570 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'conv2d_stride_Pipeline_VITIS_LOOP_283_3_VITIS_LOOP_286_4_VITIS_LOOP_289_5_VITIS_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_283_3_VITIS_LOOP_286_4_VITIS_LOOP_289_5_VITIS_LOOP_291_6_VITIS_LOOP_293_7'.
+WARNING: [HLS 200-880] The II Violation in module 'conv2d_stride_Pipeline_VITIS_LOOP_283_3_VITIS_LOOP_286_4_VITIS_LOOP_289_5_VITIS_s' (loop 'VITIS_LOOP_283_3_VITIS_LOOP_286_4_VITIS_LOOP_289_5_VITIS_LOOP_291_6_VITIS_LOOP_293_7'): Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 0) between 'store' operation 0 bit ('sum_10_write_ln288', top_new.cpp:288) of variable 'sum_3', top_new.cpp:298 on local variable 'sum', top_new.cpp:288 and 'load' operation 32 bit ('sum_10_load') on local variable 'sum', top_new.cpp:288.
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 2, Depth = 18, loop 'VITIS_LOOP_283_3_VITIS_LOOP_286_4_VITIS_LOOP_289_5_VITIS_LOOP_291_6_VITIS_LOOP_293_7'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1.06 seconds. CPU system time: 0.01 seconds. Elapsed time: 1.14 seconds; current allocated memory: 774.902 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.11 seconds. CPU system time: 0 seconds. Elapsed time: 0.17 seconds; current allocated memory: 774.938 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'conv2d_stride' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.2 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.28 seconds; current allocated memory: 778.012 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.25 seconds. CPU system time: 0 seconds. Elapsed time: 0.3 seconds; current allocated memory: 778.254 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'ResNet_Pipeline_VITIS_LOOP_43_1_VITIS_LOOP_45_2_VITIS_LOOP_52_3_VITIS_LOOP_54_4_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_43_1_VITIS_LOOP_45_2_VITIS_LOOP_52_3_VITIS_LOOP_54_4_VITIS_LOOP_57_5_VITIS_LOOP_59_6'.
+WARNING: [HLS 200-880] The II Violation in module 'ResNet_Pipeline_VITIS_LOOP_43_1_VITIS_LOOP_45_2_VITIS_LOOP_52_3_VITIS_LOOP_54_4_s' (loop 'VITIS_LOOP_43_1_VITIS_LOOP_45_2_VITIS_LOOP_52_3_VITIS_LOOP_54_4_VITIS_LOOP_57_5_VITIS_LOOP_59_6'): Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 0) between 'store' operation 0 bit ('sum_write_ln56', top_new.cpp:56->top_new.cpp:175) of variable 'sum', top_new.cpp:66->top_new.cpp:175 on local variable 'sum', top_new.cpp:56->top_new.cpp:175 and 'load' operation 32 bit ('sum_load') on local variable 'sum', top_new.cpp:56->top_new.cpp:175.
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'ResNet_Pipeline_VITIS_LOOP_43_1_VITIS_LOOP_45_2_VITIS_LOOP_52_3_VITIS_LOOP_54_4_s' (loop 'VITIS_LOOP_43_1_VITIS_LOOP_45_2_VITIS_LOOP_52_3_VITIS_LOOP_54_4_VITIS_LOOP_57_5_VITIS_LOOP_59_6'): Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 0) between 'store' operation 0 bit ('sum_write_ln56', top_new.cpp:56->top_new.cpp:175) of variable 'sum', top_new.cpp:66->top_new.cpp:175 on local variable 'sum', top_new.cpp:56->top_new.cpp:175 and 'load' operation 32 bit ('sum_load') on local variable 'sum', top_new.cpp:56->top_new.cpp:175.
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'ResNet_Pipeline_VITIS_LOOP_43_1_VITIS_LOOP_45_2_VITIS_LOOP_52_3_VITIS_LOOP_54_4_s' (loop 'VITIS_LOOP_43_1_VITIS_LOOP_45_2_VITIS_LOOP_52_3_VITIS_LOOP_54_4_VITIS_LOOP_57_5_VITIS_LOOP_59_6'): Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 0) between 'store' operation 0 bit ('sum_write_ln56', top_new.cpp:56->top_new.cpp:175) of variable 'sum', top_new.cpp:66->top_new.cpp:175 on local variable 'sum', top_new.cpp:56->top_new.cpp:175 and 'load' operation 32 bit ('sum_load') on local variable 'sum', top_new.cpp:56->top_new.cpp:175.
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'ResNet_Pipeline_VITIS_LOOP_43_1_VITIS_LOOP_45_2_VITIS_LOOP_52_3_VITIS_LOOP_54_4_s' (loop 'VITIS_LOOP_43_1_VITIS_LOOP_45_2_VITIS_LOOP_52_3_VITIS_LOOP_54_4_VITIS_LOOP_57_5_VITIS_LOOP_59_6'): Unable to enforce a carried dependence constraint (II = 4, distance = 1, offset = 0) between 'store' operation 0 bit ('sum_write_ln56', top_new.cpp:56->top_new.cpp:175) of variable 'sum', top_new.cpp:66->top_new.cpp:175 on local variable 'sum', top_new.cpp:56->top_new.cpp:175 and 'load' operation 32 bit ('sum_load') on local variable 'sum', top_new.cpp:56->top_new.cpp:175.
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'ResNet_Pipeline_VITIS_LOOP_43_1_VITIS_LOOP_45_2_VITIS_LOOP_52_3_VITIS_LOOP_54_4_s' (loop 'VITIS_LOOP_43_1_VITIS_LOOP_45_2_VITIS_LOOP_52_3_VITIS_LOOP_54_4_VITIS_LOOP_57_5_VITIS_LOOP_59_6'): Unable to enforce a carried dependence constraint (II = 7, distance = 1, offset = 0) between 'store' operation 0 bit ('sum_write_ln56', top_new.cpp:56->top_new.cpp:175) of variable 'sum', top_new.cpp:66->top_new.cpp:175 on local variable 'sum', top_new.cpp:56->top_new.cpp:175 and 'load' operation 32 bit ('sum_load') on local variable 'sum', top_new.cpp:56->top_new.cpp:175.
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 8, Depth = 29, loop 'VITIS_LOOP_43_1_VITIS_LOOP_45_2_VITIS_LOOP_52_3_VITIS_LOOP_54_4_VITIS_LOOP_57_5_VITIS_LOOP_59_6'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.24 seconds. CPU system time: 0 seconds. Elapsed time: 0.32 seconds; current allocated memory: 781.594 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.04 seconds. CPU system time: 0 seconds. Elapsed time: 0.11 seconds; current allocated memory: 781.594 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'ResNet_Pipeline_VITIS_LOOP_327_1_VITIS_LOOP_329_2_VITIS_LOOP_336_3_VITIS_LOOP_33' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_327_1_VITIS_LOOP_329_2_VITIS_LOOP_336_3_VITIS_LOOP_338_4_VITIS_LOOP_343_5'.
+WARNING: [HLS 200-880] The II Violation in module 'ResNet_Pipeline_VITIS_LOOP_327_1_VITIS_LOOP_329_2_VITIS_LOOP_336_3_VITIS_LOOP_33' (loop 'VITIS_LOOP_327_1_VITIS_LOOP_329_2_VITIS_LOOP_336_3_VITIS_LOOP_338_4_VITIS_LOOP_343_5'): Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 0) between 'store' operation 0 bit ('sum_44_write_ln340', top_new.cpp:340->top_new.cpp:177) of variable 'sum', top_new.cpp:345->top_new.cpp:177 on local variable 'sum', top_new.cpp:340->top_new.cpp:177 and 'load' operation 32 bit ('sum_44_load') on local variable 'sum', top_new.cpp:340->top_new.cpp:177.
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 2, Depth = 26, loop 'VITIS_LOOP_327_1_VITIS_LOOP_329_2_VITIS_LOOP_336_3_VITIS_LOOP_338_4_VITIS_LOOP_343_5'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 2.82 seconds. CPU system time: 0.01 seconds. Elapsed time: 2.88 seconds; current allocated memory: 795.113 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.35 seconds. CPU system time: 0 seconds. Elapsed time: 0.44 seconds; current allocated memory: 795.113 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'Add_4D' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_228_1_VITIS_LOOP_230_2_VITIS_LOOP_232_3'.
+WARNING: [HLS 200-885] The II Violation in module 'Add_4D' (loop 'VITIS_LOOP_228_1_VITIS_LOOP_230_2_VITIS_LOOP_232_3'): Unable to schedule 'store' operation 0 bit ('output_block0_addr_3_write_ln238', top_new.cpp:238) of variable 'select_ln238_1', top_new.cpp:238 on array 'output_block0' due to limited memory ports (II = 1). Please consider using a memory core with more ports or partitioning the array 'output_block0'.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'Add_4D' (loop 'VITIS_LOOP_228_1_VITIS_LOOP_230_2_VITIS_LOOP_232_3'): Unable to schedule 'store' operation 0 bit ('output_block0_addr_5_write_ln238', top_new.cpp:238) of variable 'select_ln238_3', top_new.cpp:238 on array 'output_block0' due to limited memory ports (II = 2). Please consider using a memory core with more ports or partitioning the array 'output_block0'.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'Add_4D' (loop 'VITIS_LOOP_228_1_VITIS_LOOP_230_2_VITIS_LOOP_232_3'): Unable to schedule 'store' operation 0 bit ('output_block0_addr_7_write_ln238', top_new.cpp:238) of variable 'select_ln238_5', top_new.cpp:238 on array 'output_block0' due to limited memory ports (II = 3). Please consider using a memory core with more ports or partitioning the array 'output_block0'.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'Add_4D' (loop 'VITIS_LOOP_228_1_VITIS_LOOP_230_2_VITIS_LOOP_232_3'): Unable to schedule 'store' operation 0 bit ('output_block0_addr_9_write_ln238', top_new.cpp:238) of variable 'select_ln238_7', top_new.cpp:238 on array 'output_block0' due to limited memory ports (II = 4). Please consider using a memory core with more ports or partitioning the array 'output_block0'.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'Add_4D' (loop 'VITIS_LOOP_228_1_VITIS_LOOP_230_2_VITIS_LOOP_232_3'): Unable to schedule 'store' operation 0 bit ('output_block0_addr_15_write_ln238', top_new.cpp:238) of variable 'select_ln238_13', top_new.cpp:238 on array 'output_block0' due to limited memory ports (II = 7). Please consider using a memory core with more ports or partitioning the array 'output_block0'.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'Add_4D' (loop 'VITIS_LOOP_228_1_VITIS_LOOP_230_2_VITIS_LOOP_232_3'): Unable to schedule 'store' operation 0 bit ('output_block0_addr_19_write_ln238', top_new.cpp:238) of variable 'select_ln238_17', top_new.cpp:238 on array 'output_block0' due to limited memory ports (II = 9). Please consider using a memory core with more ports or partitioning the array 'output_block0'.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 10, Depth = 17, loop 'VITIS_LOOP_228_1_VITIS_LOOP_230_2_VITIS_LOOP_232_3'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.83 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.96 seconds; current allocated memory: 799.426 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.05 seconds. CPU system time: 0 seconds. Elapsed time: 0.09 seconds; current allocated memory: 799.426 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'conv2d' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_367_1_VITIS_LOOP_369_2_VITIS_LOOP_376_3_VITIS_LOOP_378_4_VITIS_LOOP_381_5_VITIS_LOOP_383_6'.
+WARNING: [HLS 200-880] The II Violation in module 'conv2d' (loop 'VITIS_LOOP_367_1_VITIS_LOOP_369_2_VITIS_LOOP_376_3_VITIS_LOOP_378_4_VITIS_LOOP_381_5_VITIS_LOOP_383_6'): Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 0) between 'store' operation 0 bit ('sum_13_write_ln380', top_new.cpp:380) of variable 'sum_12', top_new.cpp:390 on local variable 'sum', top_new.cpp:380 and 'load' operation 32 bit ('sum_13_load') on local variable 'sum', top_new.cpp:380.
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'conv2d' (loop 'VITIS_LOOP_367_1_VITIS_LOOP_369_2_VITIS_LOOP_376_3_VITIS_LOOP_378_4_VITIS_LOOP_381_5_VITIS_LOOP_383_6'): Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 0) between 'store' operation 0 bit ('sum_13_write_ln380', top_new.cpp:380) of variable 'sum_12', top_new.cpp:390 on local variable 'sum', top_new.cpp:380 and 'load' operation 32 bit ('sum_13_load') on local variable 'sum', top_new.cpp:380.
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'conv2d' (loop 'VITIS_LOOP_367_1_VITIS_LOOP_369_2_VITIS_LOOP_376_3_VITIS_LOOP_378_4_VITIS_LOOP_381_5_VITIS_LOOP_383_6'): Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 0) between 'store' operation 0 bit ('sum_13_write_ln380', top_new.cpp:380) of variable 'sum_12', top_new.cpp:390 on local variable 'sum', top_new.cpp:380 and 'load' operation 32 bit ('sum_13_load') on local variable 'sum', top_new.cpp:380.
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'conv2d' (loop 'VITIS_LOOP_367_1_VITIS_LOOP_369_2_VITIS_LOOP_376_3_VITIS_LOOP_378_4_VITIS_LOOP_381_5_VITIS_LOOP_383_6'): Unable to enforce a carried dependence constraint (II = 4, distance = 1, offset = 0) between 'store' operation 0 bit ('sum_13_write_ln380', top_new.cpp:380) of variable 'sum_12', top_new.cpp:390 on local variable 'sum', top_new.cpp:380 and 'load' operation 32 bit ('sum_13_load') on local variable 'sum', top_new.cpp:380.
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'conv2d' (loop 'VITIS_LOOP_367_1_VITIS_LOOP_369_2_VITIS_LOOP_376_3_VITIS_LOOP_378_4_VITIS_LOOP_381_5_VITIS_LOOP_383_6'): Unable to enforce a carried dependence constraint (II = 7, distance = 1, offset = 0) between 'store' operation 0 bit ('sum_13_write_ln380', top_new.cpp:380) of variable 'sum_12', top_new.cpp:390 on local variable 'sum', top_new.cpp:380 and 'load' operation 32 bit ('sum_13_load') on local variable 'sum', top_new.cpp:380.
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 8, Depth = 29, loop 'VITIS_LOOP_367_1_VITIS_LOOP_369_2_VITIS_LOOP_376_3_VITIS_LOOP_378_4_VITIS_LOOP_381_5_VITIS_LOOP_383_6'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.17 seconds. CPU system time: 0 seconds. Elapsed time: 0.25 seconds; current allocated memory: 801.977 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.07 seconds; current allocated memory: 801.977 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'ResNet_Pipeline_VITIS_LOOP_421_3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_421_3'.
+WARNING: [HLS 200-880] The II Violation in module 'ResNet_Pipeline_VITIS_LOOP_421_3' (loop 'VITIS_LOOP_421_3'): Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 0) between 'store' operation 0 bit ('sum_write_ln420', top_new.cpp:420->top_new.cpp:185) of variable 'sum', top_new.cpp:426->top_new.cpp:185 on local variable 'sum', top_new.cpp:420->top_new.cpp:185 and 'load' operation 32 bit ('sum_load', top_new.cpp:426->top_new.cpp:185) on local variable 'sum', top_new.cpp:420->top_new.cpp:185.
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'ResNet_Pipeline_VITIS_LOOP_421_3' (loop 'VITIS_LOOP_421_3'): Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 0) between 'store' operation 0 bit ('sum_write_ln420', top_new.cpp:420->top_new.cpp:185) of variable 'sum', top_new.cpp:426->top_new.cpp:185 on local variable 'sum', top_new.cpp:420->top_new.cpp:185 and 'load' operation 32 bit ('sum_load', top_new.cpp:426->top_new.cpp:185) on local variable 'sum', top_new.cpp:420->top_new.cpp:185.
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'ResNet_Pipeline_VITIS_LOOP_421_3' (loop 'VITIS_LOOP_421_3'): Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 0) between 'store' operation 0 bit ('sum_write_ln420', top_new.cpp:420->top_new.cpp:185) of variable 'sum', top_new.cpp:426->top_new.cpp:185 on local variable 'sum', top_new.cpp:420->top_new.cpp:185 and 'load' operation 32 bit ('sum_load', top_new.cpp:426->top_new.cpp:185) on local variable 'sum', top_new.cpp:420->top_new.cpp:185.
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'ResNet_Pipeline_VITIS_LOOP_421_3' (loop 'VITIS_LOOP_421_3'): Unable to enforce a carried dependence constraint (II = 4, distance = 1, offset = 0) between 'store' operation 0 bit ('sum_write_ln420', top_new.cpp:420->top_new.cpp:185) of variable 'sum', top_new.cpp:426->top_new.cpp:185 on local variable 'sum', top_new.cpp:420->top_new.cpp:185 and 'load' operation 32 bit ('sum_load', top_new.cpp:426->top_new.cpp:185) on local variable 'sum', top_new.cpp:420->top_new.cpp:185.
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'ResNet_Pipeline_VITIS_LOOP_421_3' (loop 'VITIS_LOOP_421_3'): Unable to enforce a carried dependence constraint (II = 19, distance = 1, offset = 0) between 'store' operation 0 bit ('sum_write_ln420', top_new.cpp:420->top_new.cpp:185) of variable 'sum', top_new.cpp:426->top_new.cpp:185 on local variable 'sum', top_new.cpp:420->top_new.cpp:185 and 'load' operation 32 bit ('sum_load', top_new.cpp:426->top_new.cpp:185) on local variable 'sum', top_new.cpp:420->top_new.cpp:185.
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 20, Depth = 22, loop 'VITIS_LOOP_421_3'
+WARNING: [HLS 200-871] Estimated clock period (12.610 ns) exceeds the target (target clock period: 10.000 ns, clock uncertainty: 2.700 ns, effective delay budget: 7.300 ns).
+Resolution: For help on HLS 200-871 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-871.html
+WARNING: [HLS 200-1016] The critical path in module 'ResNet_Pipeline_VITIS_LOOP_421_3' consists of the following:
+	'fadd' operation 32 bit ('sum', top_new.cpp:426->top_new.cpp:185) [92]  (6.305 ns)
+	'fadd' operation 32 bit ('sum', top_new.cpp:426->top_new.cpp:185) [95]  (6.305 ns)
+
+Resolution: For help on HLS 200-1016 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-1016.html
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.13 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.2 seconds; current allocated memory: 802.422 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.06 seconds; current allocated memory: 802.902 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'fully_connected_Pipeline_VITIS_LOOP_447_1_VITIS_LOOP_449_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_447_1_VITIS_LOOP_449_2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 2, loop 'VITIS_LOOP_447_1_VITIS_LOOP_449_2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.11 seconds. CPU system time: 0 seconds. Elapsed time: 0.15 seconds; current allocated memory: 803.305 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.05 seconds; current allocated memory: 803.926 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'fully_connected_Pipeline_VITIS_LOOP_461_3_VITIS_LOOP_465_4_VITIS_LOOP_468_5' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_461_3_VITIS_LOOP_465_4_VITIS_LOOP_468_5'.
+WARNING: [HLS 200-880] The II Violation in module 'fully_connected_Pipeline_VITIS_LOOP_461_3_VITIS_LOOP_465_4_VITIS_LOOP_468_5' (loop 'VITIS_LOOP_461_3_VITIS_LOOP_465_4_VITIS_LOOP_468_5'): Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1) between 'fadd' operation 32 bit ('sum', top_new.cpp:473) and 'fadd' operation 32 bit ('sum', top_new.cpp:473).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'fully_connected_Pipeline_VITIS_LOOP_461_3_VITIS_LOOP_465_4_VITIS_LOOP_468_5' (loop 'VITIS_LOOP_461_3_VITIS_LOOP_465_4_VITIS_LOOP_468_5'): Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 1) between 'fadd' operation 32 bit ('sum', top_new.cpp:473) and 'fadd' operation 32 bit ('sum', top_new.cpp:473).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'fully_connected_Pipeline_VITIS_LOOP_461_3_VITIS_LOOP_465_4_VITIS_LOOP_468_5' (loop 'VITIS_LOOP_461_3_VITIS_LOOP_465_4_VITIS_LOOP_468_5'): Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 1) between 'fadd' operation 32 bit ('sum', top_new.cpp:473) and 'fadd' operation 32 bit ('sum', top_new.cpp:473).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'fully_connected_Pipeline_VITIS_LOOP_461_3_VITIS_LOOP_465_4_VITIS_LOOP_468_5' (loop 'VITIS_LOOP_461_3_VITIS_LOOP_465_4_VITIS_LOOP_468_5'): Unable to enforce a carried dependence constraint (II = 4, distance = 1, offset = 1) between 'fadd' operation 32 bit ('sum', top_new.cpp:473) and 'fadd' operation 32 bit ('sum', top_new.cpp:473).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'fully_connected_Pipeline_VITIS_LOOP_461_3_VITIS_LOOP_465_4_VITIS_LOOP_468_5' (loop 'VITIS_LOOP_461_3_VITIS_LOOP_465_4_VITIS_LOOP_468_5'): Unable to enforce a carried dependence constraint (II = 19, distance = 1, offset = 1) between 'fadd' operation 32 bit ('sum', top_new.cpp:473) and 'fadd' operation 32 bit ('sum', top_new.cpp:473).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+WARNING: [HLS 200-880] The II Violation in module 'fully_connected_Pipeline_VITIS_LOOP_461_3_VITIS_LOOP_465_4_VITIS_LOOP_468_5' (loop 'VITIS_LOOP_461_3_VITIS_LOOP_465_4_VITIS_LOOP_468_5'): Unable to enforce a carried dependence constraint (II = 23, distance = 1, offset = 1) between 'fadd' operation 32 bit ('sum', top_new.cpp:473) and 'fadd' operation 32 bit ('sum', top_new.cpp:473).
+Resolution: For help on HLS 200-880 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 24, Depth = 48, loop 'VITIS_LOOP_461_3_VITIS_LOOP_465_4_VITIS_LOOP_468_5'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.15 seconds. CPU system time: 0 seconds. Elapsed time: 0.21 seconds; current allocated memory: 805.254 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.06 seconds; current allocated memory: 805.465 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'fully_connected' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.04 seconds. CPU system time: 0 seconds. Elapsed time: 0.07 seconds; current allocated memory: 805.719 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.03 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.06 seconds; current allocated memory: 806.074 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'ResNet' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.25 seconds. CPU system time: 0 seconds. Elapsed time: 0.27 seconds; current allocated memory: 809.566 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.5 seconds. CPU system time: 0 seconds. Elapsed time: 0.56 seconds; current allocated memory: 810.043 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'ResNet_Pipeline_VITIS_LOOP_210_1_VITIS_LOOP_212_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'ResNet_Pipeline_VITIS_LOOP_210_1_VITIS_LOOP_212_2' pipeline 'VITIS_LOOP_210_1_VITIS_LOOP_212_2' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'ResNet_Pipeline_VITIS_LOOP_210_1_VITIS_LOOP_212_2'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.44 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.53 seconds; current allocated memory: 842.715 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'conv2d_stride_Pipeline_VITIS_LOOP_193_1_VITIS_LOOP_195_2_VITIS_LOOP_197_3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'conv2d_stride_Pipeline_VITIS_LOOP_193_1_VITIS_LOOP_195_2_VITIS_LOOP_197_3' pipeline 'VITIS_LOOP_193_1_VITIS_LOOP_195_2_VITIS_LOOP_197_3' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'conv2d_stride_Pipeline_VITIS_LOOP_193_1_VITIS_LOOP_195_2_VITIS_LOOP_197_3'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.6 seconds. CPU system time: 0.03 seconds. Elapsed time: 0.87 seconds; current allocated memory: 881.910 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'conv2d_stride_Pipeline_VITIS_LOOP_283_3_VITIS_LOOP_286_4_VITIS_LOOP_289_5_VITIS_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'conv2d_stride_Pipeline_VITIS_LOOP_283_3_VITIS_LOOP_286_4_VITIS_LOOP_289_5_VITIS_s' pipeline 'VITIS_LOOP_283_3_VITIS_LOOP_286_4_VITIS_LOOP_289_5_VITIS_LOOP_291_6_VITIS_LOOP_293_7' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'fadd_32ns_32ns_32_3_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'faddfsub_32ns_32ns_32_3_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fcmp_32ns_32ns_1_1_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fmul_32ns_32ns_32_2_max_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'sparsemux_513_8_32_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'conv2d_stride_Pipeline_VITIS_LOOP_283_3_VITIS_LOOP_286_4_VITIS_LOOP_289_5_VITIS_s'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.39 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.63 seconds; current allocated memory: 906.535 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'conv2d_stride' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [RTGEN 206-101] Setting dangling out port 'conv2d_stride/grp_fu_4207_p_opcode' to 0.
+INFO: [RTGEN 206-100] Generating core module 'fadd_32ns_32ns_32_3_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'faddfsub_32ns_32ns_32_3_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fdiv_32ns_32ns_32_6_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fmul_32ns_32ns_32_2_max_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fsqrt_32ns_32ns_32_6_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'conv2d_stride'.
+INFO: [RTMG 210-278] Implementing memory 'ResNet_conv2d_stride_local_weights_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.34 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.54 seconds; current allocated memory: 937.754 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'ResNet_Pipeline_VITIS_LOOP_43_1_VITIS_LOOP_45_2_VITIS_LOOP_52_3_VITIS_LOOP_54_4_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'ResNet_Pipeline_VITIS_LOOP_43_1_VITIS_LOOP_45_2_VITIS_LOOP_52_3_VITIS_LOOP_54_4_s' pipeline 'VITIS_LOOP_43_1_VITIS_LOOP_45_2_VITIS_LOOP_52_3_VITIS_LOOP_54_4_VITIS_LOOP_57_5_VITIS_LOOP_59_6' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'fadd_32ns_32ns_32_3_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'faddfsub_32ns_32ns_32_3_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fcmp_32ns_32ns_1_1_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fdiv_32ns_32ns_32_6_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fmul_32ns_32ns_32_2_max_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fsqrt_32ns_32ns_32_6_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'ResNet_Pipeline_VITIS_LOOP_43_1_VITIS_LOOP_45_2_VITIS_LOOP_52_3_VITIS_LOOP_54_4_s'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.46 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.61 seconds; current allocated memory: 948.875 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'ResNet_Pipeline_VITIS_LOOP_327_1_VITIS_LOOP_329_2_VITIS_LOOP_336_3_VITIS_LOOP_33' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'ResNet_Pipeline_VITIS_LOOP_327_1_VITIS_LOOP_329_2_VITIS_LOOP_336_3_VITIS_LOOP_33' pipeline 'VITIS_LOOP_327_1_VITIS_LOOP_329_2_VITIS_LOOP_336_3_VITIS_LOOP_338_4_VITIS_LOOP_343_5' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'fadd_32ns_32ns_32_3_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'faddfsub_32ns_32ns_32_3_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fdiv_32ns_32ns_32_6_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fmul_32ns_32ns_32_2_max_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fsqrt_32ns_32ns_32_6_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'sparsemux_1025_9_32_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'ResNet_Pipeline_VITIS_LOOP_327_1_VITIS_LOOP_329_2_VITIS_LOOP_336_3_VITIS_LOOP_33'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.41 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.54 seconds; current allocated memory: 969.891 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'Add_4D' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'Add_4D' pipeline 'VITIS_LOOP_228_1_VITIS_LOOP_230_2_VITIS_LOOP_232_3' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'fadd_32ns_32ns_32_3_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'faddfsub_32ns_32ns_32_3_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fcmp_32ns_32ns_1_1_no_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'Add_4D'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.54 seconds. CPU system time: 0.03 seconds. Elapsed time: 0.8 seconds; current allocated memory: 1000.965 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'conv2d' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'conv2d' pipeline 'VITIS_LOOP_367_1_VITIS_LOOP_369_2_VITIS_LOOP_376_3_VITIS_LOOP_378_4_VITIS_LOOP_381_5_VITIS_LOOP_383_6' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'fadd_32ns_32ns_32_3_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'faddfsub_32ns_32ns_32_3_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fcmp_32ns_32ns_1_1_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fdiv_32ns_32ns_32_6_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fmul_32ns_32ns_32_2_max_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fsqrt_32ns_32ns_32_6_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'conv2d'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.19 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.31 seconds; current allocated memory: 1009.809 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'ResNet_Pipeline_VITIS_LOOP_421_3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'ResNet_Pipeline_VITIS_LOOP_421_3' pipeline 'VITIS_LOOP_421_3' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'fadd_32ns_32ns_32_2_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'ResNet_Pipeline_VITIS_LOOP_421_3'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.13 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.24 seconds; current allocated memory: 1016.457 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'fully_connected_Pipeline_VITIS_LOOP_447_1_VITIS_LOOP_449_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'fully_connected_Pipeline_VITIS_LOOP_447_1_VITIS_LOOP_449_2' pipeline 'VITIS_LOOP_447_1_VITIS_LOOP_449_2' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'fully_connected_Pipeline_VITIS_LOOP_447_1_VITIS_LOOP_449_2'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.1 seconds. CPU system time: 0 seconds. Elapsed time: 0.16 seconds; current allocated memory: 1020.598 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'fully_connected_Pipeline_VITIS_LOOP_461_3_VITIS_LOOP_465_4_VITIS_LOOP_468_5' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'fully_connected_Pipeline_VITIS_LOOP_461_3_VITIS_LOOP_465_4_VITIS_LOOP_468_5' pipeline 'VITIS_LOOP_461_3_VITIS_LOOP_465_4_VITIS_LOOP_468_5' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'faddfsub_32ns_32ns_32_3_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fdiv_32ns_32ns_32_6_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fmul_32ns_32ns_32_2_max_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'fully_connected_Pipeline_VITIS_LOOP_461_3_VITIS_LOOP_465_4_VITIS_LOOP_468_5'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.09 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.18 seconds; current allocated memory: 1.000 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'fully_connected' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'faddfsub_32ns_32ns_32_3_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fdiv_32ns_32ns_32_6_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fmul_32ns_32ns_32_2_max_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'fully_connected'.
+INFO: [RTMG 210-278] Implementing memory 'ResNet_fully_connected_input_local_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.11 seconds. CPU system time: 0 seconds. Elapsed time: 0.2 seconds; current allocated memory: 1.004 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'ResNet' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [RTGEN 206-101] Design contains AXI ports. Reset is fixed to synchronous and active low.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/input_r' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block0_weights_conv1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block0_gamma1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block0_beta1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block0_mean1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block0_var1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block0_output_bn1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block0_weights_conv2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block0_gamma2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block0_beta2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block0_mean2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block0_var2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block0_output_bn2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/output_local' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block0_weights_ds_conv1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block0_ds_gamma1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block0_ds_beta1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block0_ds_mean1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block0_ds_var1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/output_block0' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block1_weights_conv1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block1_gamma1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block1_beta1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block1_mean1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block1_var1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block1_output_bn1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block1_weights_conv2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block1_gamma2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block1_beta2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block1_mean2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block1_var2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/block1_output_bn2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/fc_weights' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/fc_bias' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'ResNet/tanh_output' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'ResNet' to 's_axilite & ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Bundling port 'return' to AXI-Lite port control.
+INFO: [RTGEN 206-104] Estimated max fanout for 'ResNet' is 6452 from HDL expression: (1'b1 == ap_CS_fsm_state4)
+INFO: [RTGEN 206-100] Generating core module 'fadd_32ns_32ns_32_3_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'faddfsub_32ns_32ns_32_3_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fdiv_32ns_32ns_32_6_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fmul_32ns_32ns_32_2_max_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fsqrt_32ns_32ns_32_6_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'ResNet'.
+INFO: [RTMG 210-278] Implementing memory 'ResNet_avg_pooling_local_output_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'ResNet_local_weights_ds_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.37 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.66 seconds; current allocated memory: 1.034 GB.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 1.12 seconds. CPU system time: 0.06 seconds. Elapsed time: 1.91 seconds; current allocated memory: 1.054 GB.
+INFO: [HLS 200-111] Finished Updating report files: CPU user time: 3.74 seconds. CPU system time: 0.05 seconds. Elapsed time: 4.12 seconds; current allocated memory: 1.098 GB.
+INFO: [VHDL 208-304] Generating VHDL RTL for ResNet.
+INFO: [VLOG 209-307] Generating Verilog RTL for ResNet.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were NOT satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 79.30 MHz
+INFO: [HLS 200-2161] Finished Command csynth_design Elapsed time: 00:02:15; Allocated memory: 732.094 MB.
+INFO: [HLS 200-1510] Running: cosim_design 
+INFO: [COSIM 212-47] Using XSIM for RTL simulation.
+INFO: [COSIM 212-14] Instrumenting C test bench ...
+   Build using "/tools/software/xilinx/Vitis_HLS/2024.1/vcxx/libexec/clang++"
+   Compiling top_new.cpp_pre.cpp.tb.cpp
+   Compiling apatb_ResNet.cpp
+   Compiling host.cpp_pre.cpp.tb.cpp
+   Compiling apatb_ResNet_ir.ll
+   Generating cosim.tv.exe
+INFO: [COSIM 212-302] Starting C TB testing ... 
+Memory allocated successfully!
+Input 1 loaded!
+Input 3 loaded!
+Input 4 loaded!
+Input 5 loaded!
+Input 6 loaded!
+Input 7 loaded!
+Input 8 loaded!
+Input 9 loaded!
+Input 10 loaded!
+Input 11 loaded!
+Input 12 loaded!
+Input 13 loaded!
+Input 14 loaded!
+Input 15 loaded!
+Input 16 loaded!
+Input 17 loaded!
+Input 18 loaded!
+Input 19 loaded!
+Input 20 loaded!
+Input 21 loaded!
+Input 22 loaded!
+Input 23 loaded!
+Input 24 loaded!
+Input 25 loaded!
+Input 26 loaded!
+Input 27 loaded!
+Input 28 loaded!
+Input 29 loaded!
+Input 30 loaded!
+MSE compared to the main reference: 0.0041055
+Test Passed.
+INFO: [COSIM 212-333] Generating C post check test bench ...
+INFO: [COSIM 212-12] Generating RTL test bench ...
+
+****** Vivado v2024.1.2 (64-bit)
+  **** SW Build 5164865 on Thu Sep  5 14:36:28 MDT 2024
+  **** IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+  **** SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+  **** Start of session at: Thu May  1 21:43:16 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source run_vivado_gen_ip.tcl -notrace
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:09 . Memory (MB): peak = 1771.438 ; gain = 151.820 ; free physical = 2037 ; free virtual = 18244
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/software/xilinx/Vivado/2024.1/data/ip'.
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'ResNet_fcmp_32ns_32ns_1_1_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'ResNet_fcmp_32ns_32ns_1_1_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'ResNet_fpext_32ns_64_1_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'ResNet_fpext_32ns_64_1_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'ResNet_fadd_32ns_32ns_32_2_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'ResNet_fadd_32ns_32ns_32_2_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'ResNet_fdiv_32ns_32ns_32_6_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'ResNet_fdiv_32ns_32ns_32_6_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'ResNet_faddfsub_32ns_32ns_32_3_full_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'ResNet_faddfsub_32ns_32ns_32_3_full_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'ResNet_fmul_32ns_32ns_32_2_max_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'ResNet_fmul_32ns_32ns_32_2_max_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'ResNet_fsqrt_32ns_32ns_32_6_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'ResNet_fsqrt_32ns_32ns_32_6_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'ResNet_fadd_32ns_32ns_32_3_full_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'ResNet_fadd_32ns_32ns_32_3_full_dsp_1_ip'...
+INFO: [Common 17-206] Exiting Vivado at Thu May  1 21:43:49 2025...
+INFO: [COSIM 212-1] *** C/RTL co-simulation file generation completed. ***
+INFO: [COSIM 212-323] Starting verilog simulation. 
+INFO: [COSIM 212-15] Starting XSIM ...
+Vivado Simulator v2024.1.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: /tools/software/xilinx/Vivado/2024.1/bin/unwrapped/lnx64.o/xelab xil_defaultlib.apatb_ResNet_top glbl -Oenable_linking_all_libraries -prj ResNet.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm -L floating_point_v7_1_18 -L floating_point_v7_0_23 --lib ieee_proposed=./ieee_proposed -s ResNet 
+Multi-threading is on. Using 6 slave threads.
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ip/xil_defaultlib/ResNet_fcmp_32ns_32ns_1_1_no_dsp_1_ip.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_fcmp_32ns_32ns_1_1_no_dsp_1_ip
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ip/xil_defaultlib/ResNet_fpext_32ns_64_1_no_dsp_1_ip.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_fpext_32ns_64_1_no_dsp_1_ip
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ip/xil_defaultlib/ResNet_fadd_32ns_32ns_32_2_no_dsp_1_ip.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_fadd_32ns_32ns_32_2_no_dsp_1_ip
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ip/xil_defaultlib/ResNet_fdiv_32ns_32ns_32_6_no_dsp_1_ip.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_fdiv_32ns_32ns_32_6_no_dsp_1_ip
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ip/xil_defaultlib/ResNet_faddfsub_32ns_32ns_32_3_full_dsp_1_ip.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_faddfsub_32ns_32ns_32_3_full_dsp_1_ip
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ip/xil_defaultlib/ResNet_fmul_32ns_32ns_32_2_max_dsp_1_ip.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_fmul_32ns_32ns_32_2_max_dsp_1_ip
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ip/xil_defaultlib/ResNet_fsqrt_32ns_32ns_32_6_no_dsp_1_ip.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_fsqrt_32ns_32ns_32_6_no_dsp_1_ip
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ip/xil_defaultlib/ResNet_fadd_32ns_32ns_32_3_full_dsp_1_ip.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_fadd_32ns_32ns_32_3_full_dsp_1_ip
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet.autotb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apatb_ResNet_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_input_r.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_input_r
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block0_weights_conv1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block0_weights_conv1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block0_gamma1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block0_gamma1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block0_beta1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block0_beta1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block0_mean1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block0_mean1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block0_var1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block0_var1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block0_output_bn1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block0_output_bn1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block0_weights_conv2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block0_weights_conv2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block0_gamma2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block0_gamma2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block0_beta2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block0_beta2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block0_mean2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block0_mean2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block0_var2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block0_var2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block0_output_bn2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block0_output_bn2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_output_local.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_output_local
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block0_weights_ds_conv1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block0_weights_ds_conv1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block0_ds_gamma1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block0_ds_gamma1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block0_ds_beta1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block0_ds_beta1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block0_ds_mean1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block0_ds_mean1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block0_ds_var1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block0_ds_var1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_output_block0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_output_block0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block1_weights_conv1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block1_weights_conv1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block1_gamma1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block1_gamma1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block1_beta1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block1_beta1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block1_mean1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block1_mean1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block1_var1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block1_var1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block1_output_bn1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block1_output_bn1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block1_weights_conv2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block1_weights_conv2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block1_gamma2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block1_gamma2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block1_beta2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block1_beta2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block1_mean2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block1_mean2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block1_var2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block1_var2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_block1_output_bn2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_block1_output_bn2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_fc_weights.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_fc_weights
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_fc_bias.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_fc_bias
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_automem_tanh_output.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_tanh_output
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/AESL_axi_slave_control.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_slave_control
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_ResNet_Pipeline_VITIS_LOOP_210_1_VITIS_LOOP_212_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_ResNet_Pipeline_VITIS_LOOP_210_1_VITIS_LOOP_212_2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_conv2d_stride_Pipeline_VITIS_LOOP_193_1_VITIS_LOOP_195_2_VITIS_LOOP_197_3.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_conv2d_stride_Pipeline_VITIS_LOOP_193_1_VITIS_LOOP_195_2_VITIS_LOOP_197_3
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_conv2d_stride_Pipeline_VITIS_LOOP_283_3_VITIS_LOOP_286_4_VITIS_LOOP_289_5_VITIS_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_conv2d_stride_Pipeline_VITIS_LOOP_283_3_VITIS_LOOP_286_4_VITIS_LOOP_289_5_VITIS_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_conv2d_stride.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_conv2d_stride
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_ResNet_Pipeline_VITIS_LOOP_43_1_VITIS_LOOP_45_2_VITIS_LOOP_52_3_VITIS_LOOP_54_4_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_ResNet_Pipeline_VITIS_LOOP_43_1_VITIS_LOOP_45_2_VITIS_LOOP_52_3_VITIS_LOOP_54_4_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_ResNet_Pipeline_VITIS_LOOP_327_1_VITIS_LOOP_329_2_VITIS_LOOP_336_3_VITIS_LOOP_33.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_ResNet_Pipeline_VITIS_LOOP_327_1_VITIS_LOOP_329_2_VITIS_LOOP_336_3_VITIS_LOOP_33
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_Add_4D.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_Add_4D
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_conv2d.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_conv2d
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_ResNet_Pipeline_VITIS_LOOP_421_3.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_ResNet_Pipeline_VITIS_LOOP_421_3
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_fully_connected_Pipeline_VITIS_LOOP_447_1_VITIS_LOOP_449_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_fully_connected_Pipeline_VITIS_LOOP_447_1_VITIS_LOOP_449_2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_fully_connected_Pipeline_VITIS_LOOP_461_3_VITIS_LOOP_465_4_VITIS_LOOP_468_5.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_fully_connected_Pipeline_VITIS_LOOP_461_3_VITIS_LOOP_465_4_VITIS_LOOP_468_5
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_fully_connected.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_fully_connected
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_flow_control_loop_pipe_sequential_init.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_flow_control_loop_pipe_sequential_init
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_fcmp_32ns_32ns_1_1_no_dsp_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_fcmp_32ns_32ns_1_1_no_dsp_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_sparsemux_513_8_32_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_sparsemux_513_8_32_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_conv2d_stride_local_weights_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_conv2d_stride_local_weights_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_sparsemux_1025_9_32_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_sparsemux_1025_9_32_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_fpext_32ns_64_1_no_dsp_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_fpext_32ns_64_1_no_dsp_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_sparsemux_9_3_16_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_sparsemux_9_3_16_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_fadd_32ns_32ns_32_2_no_dsp_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_fadd_32ns_32ns_32_2_no_dsp_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_fully_connected_input_local_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_fully_connected_input_local_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_fdiv_32ns_32ns_32_6_no_dsp_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_fdiv_32ns_32ns_32_6_no_dsp_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_faddfsub_32ns_32ns_32_3_full_dsp_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_faddfsub_32ns_32ns_32_3_full_dsp_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_fmul_32ns_32ns_32_2_max_dsp_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_fmul_32ns_32ns_32_2_max_dsp_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_fsqrt_32ns_32ns_32_6_no_dsp_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_fsqrt_32ns_32ns_32_6_no_dsp_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_fadd_32ns_32ns_32_3_full_dsp_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_fadd_32ns_32ns_32_3_full_dsp_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_avg_pooling_local_output_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_avg_pooling_local_output_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_local_weights_ds_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_local_weights_ds_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/ResNet_control_s_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ResNet_control_s_axi
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/src/project_3/solution1/sim/verilog/dataflow_monitor.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dataflow_monitor
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package floating_point_v7_1_18.floating_point_v7_1_18_viv_comp
+Compiling package ieee.numeric_std
+Compiling package xbip_utils_v3_0_13.xbip_utils_v3_0_13_pkg
+Compiling package axi_utils_v2_0_9.axi_utils_v2_0_9_pkg
+Compiling package floating_point_v7_1_18.floating_point_v7_1_18_consts
+Compiling package ieee.math_real
+Compiling package floating_point_v7_1_18.floating_point_v7_1_18_exp_table...
+Compiling package mult_gen_v12_0_21.mult_gen_v12_0_21_pkg
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_signed
+Compiling package floating_point_v7_1_18.floating_point_v7_1_18_pkg
+Compiling package floating_point_v7_1_18.flt_utils
+Compiling package unisim.vcomponents
+Compiling package xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv_comp
+Compiling package ieee.vital_timing
+Compiling package ieee.vital_primitives
+Compiling package unisim.vpkg
+Compiling package xil_defaultlib.$unit_dataflow_monitor_sv
+Compiling module xil_defaultlib.ResNet_avg_pooling_local_output_...
+Compiling module xil_defaultlib.ResNet_local_weights_ds_RAM_AUTO...
+Compiling module xil_defaultlib.ResNet_flow_control_loop_pipe_se...
+Compiling module xil_defaultlib.ResNet_ResNet_Pipeline_VITIS_LOO...
+Compiling module xil_defaultlib.ResNet_conv2d_stride_local_weigh...
+Compiling module xil_defaultlib.ResNet_conv2d_stride_Pipeline_VI...
+Compiling architecture muxcy_v of entity unisim.MUXCY [muxcy_default]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=3,length=0)\]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.compare_eq_im [\compare_eq_im(c_xdevicefamily="...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=4,length=0)\]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.compare_ne_im [\compare_ne_im(c_xdevicefamily="...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=2,length=0)\]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.compare_eq_im [\compare_eq_im(c_xdevicefamily="...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=11,length=0)\]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.compare_eq [\compare_eq(c_xdevicefamily="vir...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=16,length=0)\]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.compare_gt [\compare_gt(c_xdevicefamily="vir...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(length=0)\]
+Compiling architecture rtl of entity floating_point_v7_1_18.fp_cmp [\fp_cmp(c_xdevicefamily="virtexu...]
+Compiling module unisims_ver.x_lut1_mux2
+Compiling module unisims_ver.LUT1
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture xilinx of entity floating_point_v7_1_18.floating_point_v7_1_18_viv [\floating_point_v7_1_18_viv(c_xd...]
+Compiling architecture xilinx of entity floating_point_v7_1_18.floating_point_v7_1_18 [\floating_point_v7_1_18(c_xdevic...]
+Compiling module xil_defaultlib.ResNet_fcmp_32ns_32ns_1_1_no_dsp...
+Compiling module xil_defaultlib.ResNet_fcmp_32ns_32ns_1_1_no_dsp...
+Compiling module xil_defaultlib.ResNet_sparsemux_513_8_32_1_1(di...
+Compiling module xil_defaultlib.ResNet_conv2d_stride_Pipeline_VI...
+Compiling module xil_defaultlib.ResNet_conv2d_stride
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=7,length=0)\]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.compare_eq_im [\compare_eq_im(c_xdevicefamily="...]
+Compiling architecture xorcy_v of entity unisim.XORCY [xorcy_default]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=24,length=0,fast_in...]
+Compiling architecture dsp48e1_v of entity unisim.DSP48E1 [\DSP48E1(acascreg=0,adreg=0,alum...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=48,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=24,length=0)\]
+Compiling architecture rtl of entity floating_point_v7_1_18.dsp48e1_wrapper [\dsp48e1_wrapper(c_part="xcu250-...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=13,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=27,length=0)\]
+Compiling architecture synth of entity floating_point_v7_1_18.align_add_dsp48e1_sgl [\align_add_dsp48e1_sgl(c_xdevice...]
+Compiling architecture lut5_v of entity unisim.LUT5 [\LUT5(init="00000000000000001111...]
+Compiling architecture lut5_v of entity unisim.LUT5 [\LUT5(init="00000000000000000000...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=5,length=0)\]
+Compiling architecture rtl of entity floating_point_v7_1_18.lead_zero_encode_shift [\lead_zero_encode_shift(ab_fw=24...]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="11111110010101001011...]
+Compiling architecture lut5_v of entity unisim.LUT5 [\LUT5(init="00010001010111110000...]
+Compiling architecture lut5_v of entity unisim.LUT5 [\LUT5(init="11101110101000001111...]
+Compiling architecture dsp48e1_v of entity unisim.DSP48E1 [\DSP48E1(acascreg=0,adreg=0,alum...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=25,length=0)\]
+Compiling architecture rtl of entity floating_point_v7_1_18.dsp48e1_wrapper [\dsp48e1_wrapper(a_width=24,c_wi...]
+Compiling architecture rtl of entity floating_point_v7_1_18.norm_and_round_dsp48e1_sgl [\norm_and_round_dsp48e1_sgl(c_mu...]
+Compiling architecture lut5_v of entity unisim.LUT5 [\LUT5(init="10011001100110011001...]
+Compiling architecture lut5_v of entity unisim.LUT5 [\LUT5(init="11111111000000001111...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=9,length=0)\]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=8,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=10,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=4,length=0,fast_inp...]
+Compiling architecture fdre_v of entity unisim.FDRE [fdre_default]
+Compiling architecture fde_v of entity unisim.FDE [fde_default]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.compare_eq_im [\compare_eq_im(c_xdevicefamily="...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(fast_input=true)\]
+Compiling architecture rtl of entity floating_point_v7_1_18.special_detect [\special_detect(c_xdevicefamily=...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.compare_gt [\compare_gt(c_xdevicefamily="vir...]
+Compiling architecture synth of entity floating_point_v7_1_18.compare [\compare(c_xdevicefamily="virtex...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=8)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [delay_default]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=9)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=2,length=0,fast_inp...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(length=0,fast_input=true)...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=12,length=0)\]
+Compiling architecture rtl of entity floating_point_v7_1_18.flt_add_exp_sp [\flt_add_exp_sp(c_xdevicefamily=...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=23)\]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_dec_op [\flt_dec_op(c_xdevicefamily="vir...]
+Compiling architecture rtl of entity floating_point_v7_1_18.flt_add_dsp [\flt_add_dsp(c_xdevicefamily="vi...]
+Compiling architecture rtl of entity floating_point_v7_1_18.flt_add [\flt_add(c_xdevicefamily="virtex...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=32,length=0)\]
+Compiling architecture xilinx of entity floating_point_v7_1_18.floating_point_v7_1_18_viv [\floating_point_v7_1_18_viv(c_xd...]
+Compiling architecture xilinx of entity floating_point_v7_1_18.floating_point_v7_1_18 [\floating_point_v7_1_18(c_xdevic...]
+Compiling module xil_defaultlib.ResNet_faddfsub_32ns_32ns_32_3_f...
+Compiling module xil_defaultlib.ResNet_faddfsub_32ns_32ns_32_3_f...
+Compiling architecture rtl of entity floating_point_v7_1_18.flt_add [\flt_add(c_xdevicefamily="virtex...]
+Compiling architecture xilinx of entity floating_point_v7_1_18.floating_point_v7_1_18_viv [\floating_point_v7_1_18_viv(c_xd...]
+Compiling architecture xilinx of entity floating_point_v7_1_18.floating_point_v7_1_18 [\floating_point_v7_1_18(c_xdevic...]
+Compiling module xil_defaultlib.ResNet_fadd_32ns_32ns_32_3_full_...
+Compiling module xil_defaultlib.ResNet_fadd_32ns_32ns_32_3_full_...
+Compiling architecture dsp48e1_v of entity unisim.DSP48E1 [\DSP48E1(acascreg=0,adreg=0,alum...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=17,length=0)\]
+Compiling architecture rtl of entity floating_point_v7_1_18.dsp48e1_wrapper [\dsp48e1_wrapper(a_width=24,b_wi...]
+Compiling architecture dsp48e1_v of entity unisim.DSP48E1 [\DSP48E1(acascreg=0,adreg=0,alum...]
+Compiling architecture rtl of entity floating_point_v7_1_18.dsp48e1_wrapper [\dsp48e1_wrapper(a_width=24,b_wi...]
+Compiling architecture struct of entity floating_point_v7_1_18.fix_mult_dsp48e1_sgl [\fix_mult_dsp48e1_sgl(registers=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.fix_mult [\fix_mult(c_xdevicefamily="virte...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=8,length=0,fast_inp...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.compare_eq_im [\compare_eq_im(c_xdevicefamily="...]
+Compiling architecture rtl of entity floating_point_v7_1_18.special_detect [\special_detect(c_xdevicefamily=...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=3,length=0,fast_inp...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=14,length=0)\]
+Compiling architecture rtl of entity floating_point_v7_1_18.flt_mult_exp [\flt_mult_exp(c_xdevicefamily="v...]
+Compiling architecture dsp48e1_v of entity unisim.DSP48E1 [\DSP48E1(acascreg=0,adreg=0,alum...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=30,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=18,length=0)\]
+Compiling architecture rtl of entity floating_point_v7_1_18.dsp48e1_wrapper [\dsp48e1_wrapper(a_width=30,b_wi...]
+Compiling architecture struct of entity floating_point_v7_1_18.flt_round_dsp_opt_full [\flt_round_dsp_opt_full(c_xdevic...]
+Compiling architecture rtl of entity floating_point_v7_1_18.flt_mult_round [\flt_mult_round(c_xdevicefamily=...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_dec_op_lat [\flt_dec_op_lat(c_xdevicefamily=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.flt_mult [\flt_mult(c_xdevicefamily="virte...]
+Compiling architecture xilinx of entity floating_point_v7_1_18.floating_point_v7_1_18_viv [\floating_point_v7_1_18_viv(c_xd...]
+Compiling architecture xilinx of entity floating_point_v7_1_18.floating_point_v7_1_18 [\floating_point_v7_1_18(c_xdevic...]
+Compiling module xil_defaultlib.ResNet_fmul_32ns_32ns_32_2_max_d...
+Compiling module xil_defaultlib.ResNet_fmul_32ns_32ns_32_2_max_d...
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=23,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=25,length=0,fast_in...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_div_mant_addsub [\flt_div_mant_addsub(c_xdevicefa...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=26,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=25,fast_input=true)...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_div_mant_addsub [\flt_div_mant_addsub(c_xdevicefa...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=26)\]
+Compiling architecture virtex of entity floating_point_v7_1_18.flt_div_mant [\flt_div_mant(c_xdevicefamily="v...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=10,length=0,fast_in...]
+Compiling architecture rtl of entity floating_point_v7_1_18.special_detect [\special_detect(c_xdevicefamily=...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(length=3,fast_input=true)...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=8,length=3)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=3,length=3,fast_inp...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=4,length=3,fast_inp...]
+Compiling architecture rtl of entity floating_point_v7_1_18.flt_div_exp [\flt_div_exp(c_xdevicefamily="no...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=12,length=0,fast_in...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture rtl of entity floating_point_v7_1_18.flt_round_bit [\flt_round_bit(c_xdevicefamily="...]
+Compiling architecture rtl of entity floating_point_v7_1_18.renorm_and_round_logic [\renorm_and_round_logic(c_xdevic...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_dec_op_lat [\flt_dec_op_lat(c_xdevicefamily=...]
+Compiling architecture virtex of entity floating_point_v7_1_18.flt_div [\flt_div(c_xdevicefamily="virtex...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture xilinx of entity floating_point_v7_1_18.floating_point_v7_1_18_viv [\floating_point_v7_1_18_viv(c_xd...]
+Compiling architecture xilinx of entity floating_point_v7_1_18.floating_point_v7_1_18 [\floating_point_v7_1_18(c_xdevic...]
+Compiling module xil_defaultlib.ResNet_fdiv_32ns_32ns_32_6_no_ds...
+Compiling module xil_defaultlib.ResNet_fdiv_32ns_32ns_32_6_no_ds...
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=5,length=0,fast_inp...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_sqrt_mant_addsub [\flt_sqrt_mant_addsub(c_xdevicef...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=6,length=0,fast_inp...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_sqrt_mant_addsub [\flt_sqrt_mant_addsub(c_xdevicef...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=22,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=7,length=0,fast_inp...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_sqrt_mant_addsub [\flt_sqrt_mant_addsub(c_xdevicef...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=20,length=0)\]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_sqrt_mant_addsub [\flt_sqrt_mant_addsub(c_xdevicef...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=9,length=0,fast_inp...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_sqrt_mant_addsub [\flt_sqrt_mant_addsub(c_xdevicef...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=6,length=0)\]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_sqrt_mant_addsub [\flt_sqrt_mant_addsub(c_xdevicef...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=11,length=0,fast_in...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_sqrt_mant_addsub [\flt_sqrt_mant_addsub(c_xdevicef...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_sqrt_mant_addsub [\flt_sqrt_mant_addsub(c_xdevicef...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=10)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=13,fast_input=true)...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_sqrt_mant_addsub [\flt_sqrt_mant_addsub(c_xdevicef...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=14,length=0,fast_in...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_sqrt_mant_addsub [\flt_sqrt_mant_addsub(c_xdevicef...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=15,length=0,fast_in...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_sqrt_mant_addsub [\flt_sqrt_mant_addsub(c_xdevicef...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=16,length=0,fast_in...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_sqrt_mant_addsub [\flt_sqrt_mant_addsub(c_xdevicef...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=17,length=0,fast_in...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_sqrt_mant_addsub [\flt_sqrt_mant_addsub(c_xdevicef...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=18,length=0,fast_in...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_sqrt_mant_addsub [\flt_sqrt_mant_addsub(c_xdevicef...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=15,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=19,length=0,fast_in...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_sqrt_mant_addsub [\flt_sqrt_mant_addsub(c_xdevicef...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=20,length=0,fast_in...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_sqrt_mant_addsub [\flt_sqrt_mant_addsub(c_xdevicef...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=21,length=0,fast_in...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_sqrt_mant_addsub [\flt_sqrt_mant_addsub(c_xdevicef...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=21,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=22,fast_input=true)...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_sqrt_mant_addsub [\flt_sqrt_mant_addsub(c_xdevicef...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=19)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=23,length=0,fast_in...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_sqrt_mant_addsub [\flt_sqrt_mant_addsub(c_xdevicef...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_sqrt_mant_addsub [\flt_sqrt_mant_addsub(c_xdevicef...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_sqrt_mant_addsub [\flt_sqrt_mant_addsub(c_xdevicef...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=26,length=0,fast_in...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_sqrt_mant_addsub [\flt_sqrt_mant_addsub(c_xdevicef...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=27,length=0,fast_in...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_sqrt_mant_addsub [\flt_sqrt_mant_addsub(c_xdevicef...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=28,length=0,fast_in...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_sqrt_mant_addsub [\flt_sqrt_mant_addsub(c_xdevicef...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=29,length=0,fast_in...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_sqrt_mant_addsub [\flt_sqrt_mant_addsub(c_xdevicef...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_sqrt_mant [\flt_sqrt_mant(c_xdevicefamily="...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=8,length=3,fast_inp...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=2,length=3,fast_inp...]
+Compiling architecture rtl of entity floating_point_v7_1_18.flt_sqrt_exp [\flt_sqrt_exp(c_xdevicefamily="n...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture rtl of entity floating_point_v7_1_18.flt_round_bit [\flt_round_bit(c_xdevicefamily="...]
+Compiling architecture rtl of entity floating_point_v7_1_18.renorm_and_round_logic [\renorm_and_round_logic(c_xdevic...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_dec_op [\flt_dec_op(c_xdevicefamily="vir...]
+Compiling architecture virtex of entity floating_point_v7_1_18.flt_sqrt [\flt_sqrt(c_xdevicefamily="virte...]
+Compiling architecture xilinx of entity floating_point_v7_1_18.floating_point_v7_1_18_viv [\floating_point_v7_1_18_viv(c_xd...]
+Compiling architecture xilinx of entity floating_point_v7_1_18.floating_point_v7_1_18 [\floating_point_v7_1_18(c_xdevic...]
+Compiling module xil_defaultlib.ResNet_fsqrt_32ns_32ns_32_6_no_d...
+Compiling module xil_defaultlib.ResNet_fsqrt_32ns_32ns_32_6_no_d...
+Compiling module xil_defaultlib.ResNet_ResNet_Pipeline_VITIS_LOO...
+Compiling module xil_defaultlib.ResNet_sparsemux_1025_9_32_1_1(d...
+Compiling module xil_defaultlib.ResNet_ResNet_Pipeline_VITIS_LOO...
+Compiling module xil_defaultlib.ResNet_Add_4D
+Compiling module xil_defaultlib.ResNet_conv2d
+Compiling module xil_defaultlib.ResNet_fully_connected_input_loc...
+Compiling module xil_defaultlib.ResNet_fully_connected_Pipeline_...
+Compiling module xil_defaultlib.ResNet_fully_connected_Pipeline_...
+Compiling module xil_defaultlib.ResNet_fully_connected
+Compiling architecture muxf7_v of entity unisim.MUXF7 [muxf7_default]
+Compiling architecture muxf8_v of entity unisim.MUXF8 [muxf8_default]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.compare_eq_im [\compare_eq_im(c_xdevicefamily="...]
+Compiling architecture rtl of entity floating_point_v7_1_18.zero_det_sel [\zero_det_sel(c_xdevicefamily="v...]
+Compiling architecture rtl of entity floating_point_v7_1_18.shift_msb_first [\shift_msb_first(a_width=25,resu...]
+Compiling architecture rtl of entity floating_point_v7_1_18.alignment [\alignment(c_xdevicefamily="virt...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture rtl of entity floating_point_v7_1_18.addsub_logic [\addsub_logic(c_xdevicefamily="v...]
+Compiling architecture rtl of entity floating_point_v7_1_18.addsub [\addsub(c_xdevicefamily="virtexu...]
+Compiling architecture rtl of entity floating_point_v7_1_18.align_add [\align_add(c_xdevicefamily="virt...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture rtl of entity floating_point_v7_1_18.mux4 [\mux4(c_xdevicefamily="virtexupl...]
+Compiling architecture rtl of entity floating_point_v7_1_18.mux4 [\mux4(c_xdevicefamily="virtexupl...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture rtl of entity floating_point_v7_1_18.lead_zero_encode [\lead_zero_encode(c_xdevicefamil...]
+Compiling architecture rtl of entity floating_point_v7_1_18.shift_msb_first [\shift_msb_first(a_width=27,resu...]
+Compiling architecture struct of entity floating_point_v7_1_18.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture rtl of entity floating_point_v7_1_18.renorm_and_round_logic [\renorm_and_round_logic(c_xdevic...]
+Compiling architecture rtl of entity floating_point_v7_1_18.norm_and_round_logic [\norm_and_round_logic(c_xdevicef...]
+Compiling architecture synth of entity floating_point_v7_1_18.compare [\compare(c_xdevicefamily="virtex...]
+Compiling architecture rtl of entity floating_point_v7_1_18.flt_add_exp [\flt_add_exp(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_18.flt_dec_op [\flt_dec_op(c_xdevicefamily="vir...]
+Compiling architecture rtl of entity floating_point_v7_1_18.flt_add_logic [\flt_add_logic(c_xdevicefamily="...]
+Compiling architecture rtl of entity floating_point_v7_1_18.flt_add [\flt_add(c_xdevicefamily="virtex...]
+Compiling architecture xilinx of entity floating_point_v7_1_18.floating_point_v7_1_18_viv [\floating_point_v7_1_18_viv(c_xd...]
+Compiling architecture xilinx of entity floating_point_v7_1_18.floating_point_v7_1_18 [\floating_point_v7_1_18(c_xdevic...]
+Compiling module xil_defaultlib.ResNet_fadd_32ns_32ns_32_2_no_ds...
+Compiling module xil_defaultlib.ResNet_fadd_32ns_32ns_32_2_no_ds...
+Compiling module xil_defaultlib.ResNet_ResNet_Pipeline_VITIS_LOO...
+Compiling module xil_defaultlib.ResNet_control_s_axi
+Compiling module xil_defaultlib.ResNet
+Compiling module xil_defaultlib.AESL_automem_input_r
+Compiling module xil_defaultlib.AESL_automem_block0_weights_conv...
+Compiling module xil_defaultlib.AESL_automem_block0_gamma1
+Compiling module xil_defaultlib.AESL_automem_block0_beta1
+Compiling module xil_defaultlib.AESL_automem_block0_mean1
+Compiling module xil_defaultlib.AESL_automem_block0_var1
+Compiling module xil_defaultlib.AESL_automem_block0_output_bn1
+Compiling module xil_defaultlib.AESL_automem_block0_weights_conv...
+Compiling module xil_defaultlib.AESL_automem_block0_gamma2
+Compiling module xil_defaultlib.AESL_automem_block0_beta2
+Compiling module xil_defaultlib.AESL_automem_block0_mean2
+Compiling module xil_defaultlib.AESL_automem_block0_var2
+Compiling module xil_defaultlib.AESL_automem_block0_output_bn2
+Compiling module xil_defaultlib.AESL_automem_output_local
+Compiling module xil_defaultlib.AESL_automem_block0_weights_ds_c...
+Compiling module xil_defaultlib.AESL_automem_block0_ds_gamma1
+Compiling module xil_defaultlib.AESL_automem_block0_ds_beta1
+Compiling module xil_defaultlib.AESL_automem_block0_ds_mean1
+Compiling module xil_defaultlib.AESL_automem_block0_ds_var1
+Compiling module xil_defaultlib.AESL_automem_output_block0
+Compiling module xil_defaultlib.AESL_automem_block1_weights_conv...
+Compiling module xil_defaultlib.AESL_automem_block1_gamma1
+Compiling module xil_defaultlib.AESL_automem_block1_beta1
+Compiling module xil_defaultlib.AESL_automem_block1_mean1
+Compiling module xil_defaultlib.AESL_automem_block1_var1
+Compiling module xil_defaultlib.AESL_automem_block1_output_bn1
+Compiling module xil_defaultlib.AESL_automem_block1_weights_conv...
+Compiling module xil_defaultlib.AESL_automem_block1_gamma2
+Compiling module xil_defaultlib.AESL_automem_block1_beta2
+Compiling module xil_defaultlib.AESL_automem_block1_mean2
+Compiling module xil_defaultlib.AESL_automem_block1_var2
+Compiling module xil_defaultlib.AESL_automem_block1_output_bn2
+Compiling module xil_defaultlib.AESL_automem_fc_weights
+Compiling module xil_defaultlib.AESL_automem_fc_bias
+Compiling module xil_defaultlib.AESL_automem_tanh_output
+Compiling module xil_defaultlib.AESL_axi_slave_control
+Compiling module xil_defaultlib.nodf_module_intf_default
+Compiling module xil_defaultlib.seq_loop_intf(FSM_WIDTH=21)
+Compiling module xil_defaultlib.seq_loop_intf(FSM_WIDTH=23)
+Compiling module xil_defaultlib.upc_loop_intf(FSM_WIDTH=1)
+Compiling module xil_defaultlib.upc_loop_intf_default
+Compiling module xil_defaultlib.upc_loop_intf(FSM_WIDTH=8)
+Compiling module xil_defaultlib.upc_loop_intf(FSM_WIDTH=10)
+Compiling module xil_defaultlib.upc_loop_intf(FSM_WIDTH=24)
+Compiling module xil_defaultlib.upc_loop_intf(FSM_WIDTH=20)
+Compiling module xil_defaultlib.dataflow_monitor_1
+Compiling module xil_defaultlib.apatb_ResNet_top
+Compiling module work.glbl
+Built simulation snapshot ResNet
+
+****** xsim v2024.1.2 (64-bit)
+  **** SW Build 5164865 on Thu Sep  5 14:36:28 MDT 2024
+  **** IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+  **** SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+  **** Start of session at: Thu May  1 21:44:42 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/ResNet/xsim_script.tcl
+# xsim {ResNet} -autoloadwcfg -tclbatch {ResNet.tcl}
+Time resolution is 1 ps
+source ResNet.tcl
+## run all
+////////////////////////////////////////////////////////////////////////////////////
+// Inter-Transaction Progress: Completed Transaction / Total Transaction
+// Intra-Transaction Progress: Measured Latency / Latency Estimation * 100%
+//
+// RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
+////////////////////////////////////////////////////////////////////////////////////
+// RTL Simulation : 0 / 1 [0.00%] @ "125000"
+Warning: OPMODE Input Warning : The OPMODE 0110X0X with CARRYINSEL  000 to DSP48E1 instance is invalid.
+Time: 23325 ns  Iteration: 11  Process: /apatb_ResNet_top/AESL_inst_ResNet/faddfsub_32ns_32ns_32_3_full_dsp_1_U1681/ResNet_faddfsub_32ns_32ns_32_3_full_dsp_1_ip_u/inst/i_synth/addsub_op/ADDSUB/dsp/OP/dsp48e1_body/ALIGN_ADD/DSP2/i_no_versal_es1_workaround/DSP/prcs_opmode_drc  File: /tools/software/xilinx/Vivado/2024.1/data/vhdl/src/unisims/primitive/DSP48E1.vhd
+Warning: OPMODE Input Warning : The OPMODE 0110X0X with CARRYINSEL  000 to DSP48E1 instance is invalid.
+Time: 23545 ns  Iteration: 12  Process: /apatb_ResNet_top/AESL_inst_ResNet/faddfsub_32ns_32ns_32_3_full_dsp_1_U1681/ResNet_faddfsub_32ns_32ns_32_3_full_dsp_1_ip_u/inst/i_synth/addsub_op/ADDSUB/dsp/OP/dsp48e1_body/ALIGN_ADD/DSP2/i_no_versal_es1_workaround/DSP/prcs_opmode_drc  File: /tools/software/xilinx/Vivado/2024.1/data/vhdl/src/unisims/primitive/DSP48E1.vhd
+Warning: OPMODE Input Warning : The OPMODE 0110X0X with CARRYINSEL  000 to DSP48E1 instance is invalid.
+Time: 69615 ns  Iteration: 11  Process: /apatb_ResNet_top/AESL_inst_ResNet/faddfsub_32ns_32ns_32_3_full_dsp_1_U1681/ResNet_faddfsub_32ns_32ns_32_3_full_dsp_1_ip_u/inst/i_synth/addsub_op/ADDSUB/dsp/OP/dsp48e1_body/ALIGN_ADD/DSP2/i_no_versal_es1_workaround/DSP/prcs_opmode_drc  File: /tools/software/xilinx/Vivado/2024.1/data/vhdl/src/unisims/primitive/DSP48E1.vhd
+Warning: OPMODE Input Warning : The OPMODE 0110X0X with CARRYINSEL  000 to DSP48E1 instance is invalid.
+Time: 69635 ns  Iteration: 11  Process: /apatb_ResNet_top/AESL_inst_ResNet/faddfsub_32ns_32ns_32_3_full_dsp_1_U1681/ResNet_faddfsub_32ns_32ns_32_3_full_dsp_1_ip_u/inst/i_synth/addsub_op/ADDSUB/dsp/OP/dsp48e1_body/ALIGN_ADD/DSP2/i_no_versal_es1_workaround/DSP/prcs_opmode_drc  File: /tools/software/xilinx/Vivado/2024.1/data/vhdl/src/unisims/primitive/DSP48E1.vhd
