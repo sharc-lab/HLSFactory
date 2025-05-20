@@ -1,0 +1,15 @@
+design_name = "test_design"
+dataset_name = "test_dataset"
+
+[env_vars]
+VAR1 = "value1"
+VAR2 = "value2"
+
+
+[[flow_configs]]
+flow_name = "test_flow"
+flow_settings = { "setting1" = "value1", "setting2" = "value2" }
+
+[[flow_configs]]
+flow_name = "test_flow2"
+flow_settings = { "setting3" = "value3", "setting4" = "value4" }

@@ -14,7 +14,14 @@ keywords = [
 classifiers = []
 requires-python = ">=3.10"
 
-dependencies = ["pandas", "psutil", "PyYAML", "tqdm", "python-dotenv"]
+dependencies = [
+    "pandas",
+ "psutil",
+ "PyYAML",
+ "tqdm",
+ "python-dotenv",
+ "pydantic>=2.11.3",
+]
 
 [project.optional-dependencies]
 test = ["pytest", "pytest-cov", "pytest-mock"]

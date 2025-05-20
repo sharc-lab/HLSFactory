@@ -13,7 +13,7 @@ if {[lindex $argv 1] == "csim"} {
   csim_design
 } elseif {[lindex $argv 1] == "cosim"} {
   cosim_design
-} elseif {[lindex $argv 1] == "syn"} { 
+} elseif {[lindex $argv 1] == "syn"} {
   # config_op fmacc -impl auto -precision high
   csynth_design
 } elseif {[lindex $argv 1] == "pnr"} {

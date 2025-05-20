@@ -423,6 +423,49 @@ class VitisHLSCosimFlow(ToolFlow):
         return []
 
 
+# TODO: Add step to extract Cosim report / results data
+
+
+class VitisHLSCsimFlow(ToolFlow):
+    name = "VitisHLSCsimFlow"
+
+    def __init__(
+        self,
+        vitis_hls_bin: str | None = None,
+        log_output: bool = False,
+    ) -> None:
+        if vitis_hls_bin is None:
+            self.vitis_hls_bin = find_bin_path("vitis_hls")
+        else:
+            self.vitis_hls_bin = vitis_hls_bin
+
+        self.log_output = log_output
+
+    def execute(self, design: Design, timeout: float | None = None) -> list[Design]:
+        design_dir = design.dir
+
+        fp_hls_cosim_setup_tcl = design_dir / "dataset_hls_csim.tcl"
+        build_files = [fp_hls_cosim_setup_tcl]
+        check_build_files_exist(build_files)
+        warn_for_reset_flags(build_files)
+
+        r = call_tool(
+            f"{self.vitis_hls_bin} dataset_hls_csim.tcl",
+            cwd=design_dir,
+            log_output=self.log_output,
+            timeout=timeout,
+            raise_on_error=False,
+        )
+
+        if r == CallToolResult.SUCCESS:
+            return [design]
+
+        return []
+
+
+# TODO: Add step to extract Csim report / results data
+
+
 class VitisHLSImplFlow(ToolFlow):
     name = "VitisHLSImplFlow"
 
