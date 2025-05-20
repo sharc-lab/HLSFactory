@@ -1,0 +1,758 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2024.1.2 (64-bit)
+  **** SW Build 5096458 on Sep  5 2024
+  **** IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+  **** SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+  **** Start of session at: Fri May  2 18:50:06 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source /tools/software/xilinx/Vitis_HLS/2024.1/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] For user 'mzain9' on host 'ece-linlab01.ece.gatech.edu' (Linux_x86_64 version 4.18.0-553.47.1.el8_10.x86_64) on Fri May 02 18:50:09 EDT 2025
+INFO: [HLS 200-10] On os "Red Hat Enterprise Linux release 8.10 (Ootpa)"
+INFO: [HLS 200-10] In directory '/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic'
+WARNING: [HLS 200-2053] The vitis_hls executable is deprecated. Consider using vitis-run --mode hls --tcl
+Sourcing Tcl script 'script.tcl'
+INFO: [HLS 200-1510] Running: open_project project_1 
+INFO: [HLS 200-10] Creating and opening project '/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1'.
+INFO: [HLS 200-1510] Running: set_top circular_convolution_3d 
+INFO: [HLS 200-1510] Running: add_files top.cpp 
+INFO: [HLS 200-10] Adding design file 'top.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb host.cpp 
+INFO: [HLS 200-10] Adding test bench file 'host.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb input1_A.bin 
+INFO: [HLS 200-10] Adding test bench file 'input1_A.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb input1_B.bin 
+INFO: [HLS 200-10] Adding test bench file 'input1_B.bin' to the project
+INFO: [HLS 200-1510] Running: add_files -tb output1_C.bin 
+INFO: [HLS 200-10] Adding test bench file 'output1_C.bin' to the project
+INFO: [HLS 200-1510] Running: open_solution solution1 
+INFO: [HLS 200-10] Creating and opening solution '/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1'.
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xave1752-vsva1596-1LJ-i-S 
+WARNING: [HLS 200-655] The device family 'aversalaiedge-1LJ' is new to HLS - using 'versalaicore-2HP' characterization library
+WARNING: [HLS 200-655] The device family 'aversalaiedge-1LJ' is new to HLS - using 'versalaicore-2HP' characterization library
+INFO: [HLS 200-1611] Setting target device to 'xave1752-vsva1596-1LJ-i-S'
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.07 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.09 seconds; current allocated memory: 339.727 MB.
+INFO: [HLS 200-10] Analyzing design file 'top.cpp' ... 
+WARNING: [HLS 214-114] Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region (top.cpp:49:9)
+Resolution: For help on HLS 214-114 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=214-114.html
+WARNING: [HLS 200-471] Dataflow form checks found 1 issue(s) in file top.cpp
+Resolution: For help on HLS 200-471 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-471.html
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 0.29 seconds. CPU system time: 0.27 seconds. Elapsed time: 1.92 seconds; current allocated memory: 341.371 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 200-1995] There were 135 instructions in the design after the 'Compile/Link' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 2,147 instructions in the design after the 'Unroll/Inline (step 1)' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 2,130 instructions in the design after the 'Unroll/Inline (step 2)' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,874 instructions in the design after the 'Unroll/Inline (step 3)' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 1,874 instructions in the design after the 'Unroll/Inline (step 4)' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 5,777 instructions in the design after the 'Array/Struct (step 1)' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 3,923 instructions in the design after the 'Array/Struct (step 2)' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 3,923 instructions in the design after the 'Array/Struct (step 3)' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 3,923 instructions in the design after the 'Array/Struct (step 4)' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 3,923 instructions in the design after the 'Array/Struct (step 5)' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 3,923 instructions in the design after the 'Performance' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 3,923 instructions in the design after the 'Performance (step 2)' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 3,923 instructions in the design after the 'Performance (step 3)' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 3,923 instructions in the design after the 'Performance (step 4)' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 3,933 instructions in the design after the 'HW Transforms (step 1)' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 3,934 instructions in the design after the 'HW Transforms (step 2)' phase of compilation. See the Design Size Report for more details: /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 214-291] Loop 'systolic_mac' is marked as complete unroll implied by the pipeline pragma (top.cpp:36:27)
+INFO: [HLS 214-186] Unrolling loop 'systolic_mac' (top.cpp:36:27) in function 'compute_convolution' completely with a factor of 256 (top.cpp:31:0)
+INFO: [HLS 214-248] Applying array_partition to 'padded_A': Cyclic partitioning with factor 4 on dimension 1. (top.cpp:58:9)
+INFO: [HLS 214-248] Applying array_partition to 'kernel': Cyclic partitioning with factor 4 on dimension 1. (top.cpp:61:9)
+WARNING: [HLS 214-346] Cannot apply performance pragma for loop 'VITIS_LOOP_54_2' (top.cpp:54:19) in function 'circular_convolution_3d'because dataflow pragma takes precedence (top.cpp:55:9)
+Resolution: For help on HLS 214-346 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=214-346.html
+WARNING: [HLS 214-395] The performance pragma target_ti=1 cycles for loop 'VITIS_LOOP_51_1' (top.cpp:51:19) in function 'circular_convolution_3d' may not be applied because the target is too tight to be met (top.cpp:52:9)
+Resolution: For help on HLS 214-395 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=214-395.html
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 91.12 seconds. CPU system time: 0.23 seconds. Elapsed time: 92.9 seconds; current allocated memory: 350.992 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 350.992 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.48 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.72 seconds; current allocated memory: 356.168 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.16 seconds. CPU system time: 0 seconds. Elapsed time: 0.18 seconds; current allocated memory: 357.625 MB.
+INFO: [XFORM 203-721] Changing loop 'VITIS_LOOP_51_1' (top.cpp:51)  to a process function for dataflow in function 'circular_convolution_3d'.
+INFO: [XFORM 203-712] Applying dataflow to function 'dataflow_in_loop_VITIS_LOOP_54_2.1' (top.cpp:58:9), detected/extracted 4 process function(s): 
+	 'entry_proc'
+	 'pad_input2'
+	 'prepare_kernel3'
+	 'compute_convolution4'.
+INFO: [XFORM 203-712] Applying dataflow to function 'circular_convolution_3d' (top.cpp:44:5), detected/extracted 1 process function(s): 
+	 'VITIS_LOOP_51_1_proc'.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 2.41 seconds. CPU system time: 0.02 seconds. Elapsed time: 2.48 seconds; current allocated memory: 386.141 MB.
+WARNING: [HLS 200-1449] Process dataflow_in_loop_VITIS_LOOP_54_2.1 has both a predecessor and reads an input from its caller (see the GUI dataflow viewer). This may lead to lower throughput. Consider copying this input via a predecessor process.
+WARNING: [HLS 200-1449] Process dataflow_parent_loop_proc has both a predecessor and reads an input from its caller (see the GUI dataflow viewer). This may lead to lower throughput. Consider copying this input via a predecessor process.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 1.82 seconds. CPU system time: 0.01 seconds. Elapsed time: 1.87 seconds; current allocated memory: 470.270 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'circular_convolution_3d' ...
+WARNING: [SYN 201-103] Legalizing function name 'dataflow_in_loop_VITIS_LOOP_54_2.1' to 'dataflow_in_loop_VITIS_LOOP_54_2_1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'entry_proc8' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.22 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.34 seconds; current allocated memory: 470.633 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 471.629 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'pad_input29' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'pad_loop'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'pad_loop'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1.2 seconds. CPU system time: 0 seconds. Elapsed time: 1.22 seconds; current allocated memory: 472.109 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.08 seconds. CPU system time: 0 seconds. Elapsed time: 0.1 seconds; current allocated memory: 472.203 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'prepare_kernel310' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'kernel_prep'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'kernel_prep'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1.24 seconds. CPU system time: 0 seconds. Elapsed time: 1.28 seconds; current allocated memory: 472.539 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.07 seconds. CPU system time: 0 seconds. Elapsed time: 0.11 seconds; current allocated memory: 472.668 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'compute_convolution4_Pipeline_conv_loop' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'conv_loop'.
+WARNING: [HLS 200-885] The II Violation in module 'compute_convolution4_Pipeline_conv_loop' (loop 'conv_loop'): Unable to schedule 'load' operation 32 bit ('padded_A_2_i_load_4', top.cpp:37->top.cpp:68->top.cpp:61) on array 'padded_A_2_i' due to limited memory ports (II = 1). Please consider using a memory core with more ports or partitioning the array 'padded_A_2_i'.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'compute_convolution4_Pipeline_conv_loop' (loop 'conv_loop'): Unable to schedule 'load' operation 32 bit ('padded_A_2_i_load_12', top.cpp:37->top.cpp:68->top.cpp:61) on array 'padded_A_2_i' due to limited memory ports (II = 2). Please consider using a memory core with more ports or partitioning the array 'padded_A_2_i'.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'compute_convolution4_Pipeline_conv_loop' (loop 'conv_loop'): Unable to schedule 'load' operation 32 bit ('padded_A_2_i_load_20', top.cpp:37->top.cpp:68->top.cpp:61) on array 'padded_A_2_i' due to limited memory ports (II = 3). Please consider using a memory core with more ports or partitioning the array 'padded_A_2_i'.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'compute_convolution4_Pipeline_conv_loop' (loop 'conv_loop'): Unable to schedule 'load' operation 32 bit ('padded_A_2_i_load_28', top.cpp:37->top.cpp:68->top.cpp:61) on array 'padded_A_2_i' due to limited memory ports (II = 4). Please consider using a memory core with more ports or partitioning the array 'padded_A_2_i'.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'compute_convolution4_Pipeline_conv_loop' (loop 'conv_loop'): Unable to schedule 'load' operation 32 bit ('padded_A_2_i_load_148', top.cpp:37->top.cpp:68->top.cpp:61) on array 'padded_A_2_i' due to limited memory ports (II = 19). Please consider using a memory core with more ports or partitioning the array 'padded_A_2_i'.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'compute_convolution4_Pipeline_conv_loop' (loop 'conv_loop'): Unable to schedule 'load' operation 32 bit ('padded_A_2_i_load_212', top.cpp:37->top.cpp:68->top.cpp:61) on array 'padded_A_2_i' due to limited memory ports (II = 27). Please consider using a memory core with more ports or partitioning the array 'padded_A_2_i'.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+WARNING: [HLS 200-885] The II Violation in module 'compute_convolution4_Pipeline_conv_loop' (loop 'conv_loop'): Unable to schedule 'load' operation 32 bit ('padded_A_2_i_load_244', top.cpp:37->top.cpp:68->top.cpp:61) on array 'padded_A_2_i' due to limited memory ports (II = 31). Please consider using a memory core with more ports or partitioning the array 'padded_A_2_i'.
+Resolution: For help on HLS 200-885 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-885.html
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 32, Depth = 258, loop 'conv_loop'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 452.42 seconds. CPU system time: 2.61 seconds. Elapsed time: 458.37 seconds; current allocated memory: 610.867 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 6.63 seconds. CPU system time: 0.02 seconds. Elapsed time: 7.55 seconds; current allocated memory: 610.867 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'compute_convolution4' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 35.67 seconds. CPU system time: 0.02 seconds. Elapsed time: 37.03 seconds; current allocated memory: 610.867 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 2.17 seconds. CPU system time: 0 seconds. Elapsed time: 2.28 seconds; current allocated memory: 610.867 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dataflow_in_loop_VITIS_LOOP_54_2_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 6.49 seconds. CPU system time: 0 seconds. Elapsed time: 6.59 seconds; current allocated memory: 610.867 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 2.32 seconds. CPU system time: 0 seconds. Elapsed time: 2.35 seconds; current allocated memory: 610.867 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dataflow_parent_loop_proc' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 6.57 seconds. CPU system time: 0 seconds. Elapsed time: 6.6 seconds; current allocated memory: 610.867 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 2.31 seconds. CPU system time: 0 seconds. Elapsed time: 2.34 seconds; current allocated memory: 610.867 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'VITIS_LOOP_51_1_proc' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 6.83 seconds. CPU system time: 0.01 seconds. Elapsed time: 6.87 seconds; current allocated memory: 610.867 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 2.37 seconds. CPU system time: 0 seconds. Elapsed time: 2.43 seconds; current allocated memory: 610.867 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'circular_convolution_3d' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 7.08 seconds. CPU system time: 0 seconds. Elapsed time: 7.12 seconds; current allocated memory: 610.867 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 2.42 seconds. CPU system time: 0 seconds. Elapsed time: 2.45 seconds; current allocated memory: 610.867 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'entry_proc8' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'entry_proc8'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 7.14 seconds. CPU system time: 0 seconds. Elapsed time: 7.18 seconds; current allocated memory: 610.867 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'pad_input29' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'pad_input29' pipeline 'pad_loop' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'pad_input29'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.09 seconds. CPU system time: 0 seconds. Elapsed time: 0.15 seconds; current allocated memory: 610.867 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'prepare_kernel310' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'prepare_kernel310' pipeline 'kernel_prep' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Finished creating RTL model for 'prepare_kernel310'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1.02 seconds. CPU system time: 0.01 seconds. Elapsed time: 1.09 seconds; current allocated memory: 610.867 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'compute_convolution4_Pipeline_conv_loop' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'compute_convolution4_Pipeline_conv_loop' pipeline 'conv_loop' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'fmadd_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1': 8 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'sparsemux_9_2_32_1_1': 16 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'compute_convolution4_Pipeline_conv_loop'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1.84 seconds. CPU system time: 0 seconds. Elapsed time: 1.96 seconds; current allocated memory: 610.867 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'compute_convolution4' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'compute_convolution4'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 17.32 seconds. CPU system time: 0.08 seconds. Elapsed time: 18.62 seconds; current allocated memory: 634.848 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dataflow_in_loop_VITIS_LOOP_54_2_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [HLS 200-656] Deadlocks can occur since process pad_input29 is instantiated in a dataflow region with ap_ctrl_none or without start propagation and contains an auto-rewind pipeline.
+Resolution: For help on HLS 200-656 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-656.html
+WARNING: [HLS 200-656] Deadlocks can occur since process prepare_kernel310 is instantiated in a dataflow region with ap_ctrl_none or without start propagation and contains an auto-rewind pipeline.
+Resolution: For help on HLS 200-656 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-656.html
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dataflow_in_loop_VITIS_LOOP_54_2_1'.
+INFO: [HLS 200-740] Implementing PIPO circular_convolution_3d_dataflow_in_loop_VITIS_LOOP_54_2_1_kernel_RAM_AUTO_1R1W using a separate memory for each block
+INFO: [RTMG 210-278] Implementing memory 'circular_convolution_3d_dataflow_in_loop_VITIS_LOOP_54_2_1_kernel_RAM_AUTO_1R1W_memcore' using auto RAMs.
+INFO: [HLS 200-740] Implementing PIPO circular_convolution_3d_dataflow_in_loop_VITIS_LOOP_54_2_1_padded_A_RAM_AUTO_1R1W using a separate memory for each block
+INFO: [RTMG 210-278] Implementing memory 'circular_convolution_3d_dataflow_in_loop_VITIS_LOOP_54_2_1_padded_A_RAM_AUTO_1R1W_memcore' using auto RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'j_c_i_U(circular_convolution_3d_fifo_w2_d3_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'tmp_1_U(circular_convolution_3d_fifo_w4_d2_S)' using Shift Registers.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 7.74 seconds. CPU system time: 0.01 seconds. Elapsed time: 8.02 seconds; current allocated memory: 648.512 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dataflow_parent_loop_proc' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [HLS 200-656] Deadlocks can occur since process pad_input29 is instantiated in a dataflow region with ap_ctrl_none or without start propagation and contains an auto-rewind pipeline.
+Resolution: For help on HLS 200-656 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-656.html
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dataflow_parent_loop_proc'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 6.79 seconds. CPU system time: 0 seconds. Elapsed time: 6.96 seconds; current allocated memory: 652.145 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'VITIS_LOOP_51_1_proc' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [HLS 200-656] Deadlocks can occur since process pad_input29 is instantiated in a dataflow region with ap_ctrl_none or without start propagation and contains an auto-rewind pipeline.
+Resolution: For help on HLS 200-656 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-656.html
+INFO: [RTGEN 206-100] Finished creating RTL model for 'VITIS_LOOP_51_1_proc'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 7.18 seconds. CPU system time: 0.01 seconds. Elapsed time: 7.27 seconds; current allocated memory: 653.125 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'circular_convolution_3d' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'circular_convolution_3d/A' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'circular_convolution_3d/B' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'circular_convolution_3d/C' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'circular_convolution_3d' to 'ap_ctrl_hs'.
+WARNING: [HLS 200-656] Deadlocks can occur since process pad_input29 is instantiated in a dataflow region with ap_ctrl_none or without start propagation and contains an auto-rewind pipeline.
+Resolution: For help on HLS 200-656 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-656.html
+INFO: [RTGEN 206-100] Finished creating RTL model for 'circular_convolution_3d'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 6.86 seconds. CPU system time: 0 seconds. Elapsed time: 6.96 seconds; current allocated memory: 653.766 MB.
+INFO: [HLS 200-1957] Failed to apply performance pragma with Target TI='1' on loop 'VITIS_LOOP_51_1'.
+INFO: [HLS 200-1957] Failed to apply performance pragma with Target TI='1' on loop 'VITIS_LOOP_54_2'.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 12.77 seconds. CPU system time: 0.03 seconds. Elapsed time: 13.49 seconds; current allocated memory: 654.281 MB.
+INFO: [HLS 200-111] Finished Updating report files: CPU user time: 0.81 seconds. CPU system time: 0.03 seconds. Elapsed time: 1.01 seconds; current allocated memory: 669.195 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for circular_convolution_3d.
+INFO: [VLOG 209-307] Generating Verilog RTL for circular_convolution_3d.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 180.93 MHz
+INFO: [HLS 200-2161] Finished Command csynth_design Elapsed time: 00:11:58; Allocated memory: 330.469 MB.
+INFO: [HLS 200-1510] Running: cosim_design 
+INFO: [COSIM 212-47] Using XSIM for RTL simulation.
+INFO: [COSIM 212-14] Instrumenting C test bench ...
+   Build using "/tools/software/xilinx/Vitis_HLS/2024.1/vcxx/libexec/clang++"
+   Compiling host.cpp_pre.cpp.tb.cpp
+   Compiling top.cpp_pre.cpp.tb.cpp
+   Compiling apatb_circular_convolution_3d.cpp
+   Compiling apatb_circular_convolution_3d_ir.ll
+   Generating cosim.tv.exe
+INFO: [COSIM 212-302] Starting C TB testing ... 
+MSE: 10.87623215
+INFO: [COSIM 212-333] Generating C post check test bench ...
+INFO: [COSIM 212-12] Generating RTL test bench ...
+
+****** Vivado v2024.1.2 (64-bit)
+  **** SW Build 5164865 on Thu Sep  5 14:36:28 MDT 2024
+  **** IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+  **** SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+  **** Start of session at: Fri May  2 19:02:25 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source run_vivado_gen_ip.tcl -notrace
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 1763.434 ; gain = 151.820 ; free physical = 230 ; free virtual = 15328
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/software/xilinx/Vivado/2024.1/data/ip'.
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'circular_convolution_3d_fmadd_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'circular_convolution_3d_fmadd_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1_ip'...
+INFO: [Common 17-206] Exiting Vivado at Fri May  2 19:02:59 2025...
+INFO: [COSIM 212-1] *** C/RTL co-simulation file generation completed. ***
+INFO: [COSIM 212-323] Starting verilog simulation. 
+INFO: [COSIM 212-15] Starting XSIM ...
+Vivado Simulator v2024.1.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: /tools/software/xilinx/Vivado/2024.1/bin/unwrapped/lnx64.o/xelab xil_defaultlib.apatb_circular_convolution_3d_top glbl -Oenable_linking_all_libraries -prj circular_convolution_3d.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm -L floating_point_v7_1_18 -L floating_point_v7_0_23 --lib ieee_proposed=./ieee_proposed -s circular_convolution_3d 
+Multi-threading is on. Using 6 slave threads.
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/ip/xil_defaultlib/circular_convolution_3d_fmadd_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1_ip.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module circular_convolution_3d_fmadd_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1_ip
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/circular_convolution_3d.autotb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apatb_circular_convolution_3d_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/AESL_automem_A.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_A
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/AESL_automem_B.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_B
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/AESL_automem_C.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_C
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/AESL_deadlock_detection_unit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_detect_unit
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/AESL_deadlock_report_unit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_report_unit
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/AESL_deadlock_detector.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_detector
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/circular_convolution_3d_entry_proc8.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module circular_convolution_3d_entry_proc8
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/circular_convolution_3d_pad_input29.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module circular_convolution_3d_pad_input29
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/circular_convolution_3d_prepare_kernel310.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module circular_convolution_3d_prepare_kernel310
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/circular_convolution_3d_compute_convolution4_Pipeline_conv_loop.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module circular_convolution_3d_compute_convolution4_Pipeline_conv_loop
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/circular_convolution_3d_compute_convolution4.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module circular_convolution_3d_compute_convolution4
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/circular_convolution_3d_dataflow_in_loop_VITIS_LOOP_54_2_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module circular_convolution_3d_dataflow_in_loop_VITIS_LOOP_54_2_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/circular_convolution_3d_dataflow_parent_loop_proc.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module circular_convolution_3d_dataflow_parent_loop_proc
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/circular_convolution_3d_VITIS_LOOP_51_1_proc.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module circular_convolution_3d_VITIS_LOOP_51_1_proc
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/circular_convolution_3d.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module circular_convolution_3d
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/circular_convolution_3d_flow_control_loop_pipe.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module circular_convolution_3d_flow_control_loop_pipe
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/circular_convolution_3d_flow_control_loop_pipe_sequential_init.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module circular_convolution_3d_flow_control_loop_pipe_sequential_init
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/circular_convolution_3d_fmadd_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module circular_convolution_3d_fmadd_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/circular_convolution_3d_sparsemux_9_2_32_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module circular_convolution_3d_sparsemux_9_2_32_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/circular_convolution_3d_dataflow_in_loop_VITIS_LOOP_54_2_1_kernel_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module circular_convolution_3d_dataflow_in_loop_VITIS_LOOP_54_2_1_kernel_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/circular_convolution_3d_dataflow_in_loop_VITIS_LOOP_54_2_1_kernel_RAM_AUTO_1R1W_memcore.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module circular_convolution_3d_dataflow_in_loop_VITIS_LOOP_54_2_1_kernel_RAM_AUTO_1R1W_memcore
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/circular_convolution_3d_dataflow_in_loop_VITIS_LOOP_54_2_1_padded_A_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module circular_convolution_3d_dataflow_in_loop_VITIS_LOOP_54_2_1_padded_A_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/circular_convolution_3d_dataflow_in_loop_VITIS_LOOP_54_2_1_padded_A_RAM_AUTO_1R1W_memcore.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module circular_convolution_3d_dataflow_in_loop_VITIS_LOOP_54_2_1_padded_A_RAM_AUTO_1R1W_memcore
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/circular_convolution_3d_fifo_w2_d3_S.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module circular_convolution_3d_fifo_w2_d3_S
+INFO: [VRFC 10-311] analyzing module circular_convolution_3d_fifo_w2_d3_S_ShiftReg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/circular_convolution_3d_fifo_w4_d2_S.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module circular_convolution_3d_fifo_w4_d2_S
+INFO: [VRFC 10-311] analyzing module circular_convolution_3d_fifo_w4_d2_S_ShiftReg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/dataflow_monitor.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dataflow_monitor
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package floating_point_v7_1_18.floating_point_v7_1_18_viv_comp
+Compiling package ieee.numeric_std
+Compiling package xbip_utils_v3_0_13.xbip_utils_v3_0_13_pkg
+Compiling package axi_utils_v2_0_9.axi_utils_v2_0_9_pkg
+Compiling package floating_point_v7_1_18.floating_point_v7_1_18_consts
+Compiling package ieee.math_real
+Compiling package floating_point_v7_1_18.floating_point_v7_1_18_exp_table...
+Compiling package mult_gen_v12_0_21.mult_gen_v12_0_21_pkg
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_signed
+Compiling package floating_point_v7_1_18.floating_point_v7_1_18_pkg
+Compiling package floating_point_v7_1_18.flt_utils
+Compiling package xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv_comp
+Compiling package xil_defaultlib.$unit_dataflow_monitor_sv
+Compiling module xil_defaultlib.circular_convolution_3d_dataflow...
+Compiling module xil_defaultlib.circular_convolution_3d_dataflow...
+Compiling module xil_defaultlib.circular_convolution_3d_dataflow...
+Compiling module xil_defaultlib.circular_convolution_3d_dataflow...
+Compiling module xil_defaultlib.circular_convolution_3d_entry_pr...
+Compiling module xil_defaultlib.circular_convolution_3d_flow_con...
+Compiling module xil_defaultlib.circular_convolution_3d_pad_inpu...
+Compiling module xil_defaultlib.circular_convolution_3d_prepare_...
+Compiling module unisims_ver.DSPFP32(ACASCREG=0,AREG=0,A_FPTY...
+Compiling architecture rtl of entity floating_point_v7_1_18.flt_ufma [\flt_ufma(c_xdevicefamily="versa...]
+Compiling module unisims_ver.x_lut1_mux2
+Compiling module unisims_ver.LUT1
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(width=32,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_9.xbip_pipe_v3_0_9_viv [\xbip_pipe_v3_0_9_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_18.delay [\delay(length=0)\]
+Compiling architecture xilinx of entity floating_point_v7_1_18.floating_point_v7_1_18_viv [\floating_point_v7_1_18_viv(c_xd...]
+Compiling architecture xilinx of entity floating_point_v7_1_18.floating_point_v7_1_18 [\floating_point_v7_1_18(c_xdevic...]
+Compiling module xil_defaultlib.circular_convolution_3d_fmadd_32...
+Compiling module xil_defaultlib.circular_convolution_3d_fmadd_32...
+Compiling module xil_defaultlib.circular_convolution_3d_sparsemu...
+Compiling module xil_defaultlib.circular_convolution_3d_flow_con...
+Compiling module xil_defaultlib.circular_convolution_3d_compute_...
+Compiling module xil_defaultlib.circular_convolution_3d_compute_...
+Compiling module xil_defaultlib.circular_convolution_3d_fifo_w2_...
+Compiling module xil_defaultlib.circular_convolution_3d_fifo_w2_...
+Compiling module xil_defaultlib.circular_convolution_3d_fifo_w4_...
+Compiling module xil_defaultlib.circular_convolution_3d_fifo_w4_...
+Compiling module xil_defaultlib.circular_convolution_3d_dataflow...
+Compiling module xil_defaultlib.circular_convolution_3d_dataflow...
+Compiling module xil_defaultlib.circular_convolution_3d_VITIS_LO...
+Compiling module xil_defaultlib.circular_convolution_3d
+Compiling module xil_defaultlib.AESL_automem_A
+Compiling module xil_defaultlib.AESL_automem_B
+Compiling module xil_defaultlib.AESL_automem_C
+Compiling module xil_defaultlib.AESL_deadlock_detect_unit(IN_CHA...
+Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_I...
+Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_I...
+Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_I...
+Compiling module xil_defaultlib.AESL_deadlock_report_unit_defaul...
+Compiling module xil_defaultlib.AESL_deadlock_detector_2
+Compiling module xil_defaultlib.df_fifo_intf_default
+Compiling module xil_defaultlib.df_process_intf_default
+Compiling module xil_defaultlib.nodf_module_intf_default
+Compiling module xil_defaultlib.df_loop_intf_default
+Compiling module xil_defaultlib.upc_loop_intf(FSM_WIDTH=1)
+Compiling module xil_defaultlib.upc_loop_intf(FSM_WIDTH=32)
+Compiling module xil_defaultlib.dataflow_monitor_1
+Compiling module xil_defaultlib.apatb_circular_convolution_3d_to...
+Compiling module work.glbl
+Built simulation snapshot circular_convolution_3d
+
+****** xsim v2024.1.2 (64-bit)
+  **** SW Build 5164865 on Thu Sep  5 14:36:28 MDT 2024
+  **** IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+  **** SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+  **** Start of session at: Fri May  2 19:03:35 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/circular_convolution_3d/xsim_script.tcl
+# xsim {circular_convolution_3d} -autoloadwcfg -tclbatch {circular_convolution_3d.tcl}
+Time resolution is 1 ps
+source circular_convolution_3d.tcl
+## run all
+////////////////////////////////////////////////////////////////////////////////////
+// Inter-Transaction Progress: Completed Transaction / Total Transaction
+// Intra-Transaction Progress: Measured Latency / Latency Estimation * 100%
+//
+// RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
+////////////////////////////////////////////////////////////////////////////////////
+// RTL Simulation : 0 / 1 [0.00%] @ "125000"
+// RTL Simulation : 1 / 1 [100.00%] @ "5413895000"
+////////////////////////////////////////////////////////////////////////////////////
+$finish called at time : 5413955 ns : File "/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/sim/verilog/circular_convolution_3d.autotb.v" Line 361
+run: Time (s): cpu = 00:00:00.01 ; elapsed = 00:03:09 . Memory (MB): peak = 1542.820 ; gain = 0.000 ; free physical = 555 ; free virtual = 15563
+## quit
+INFO: xsimkernel Simulation Memory Usage: 132556 KB (Peak: 180988 KB), Simulation CPU Usage: 188870 ms
+INFO: [Common 17-206] Exiting xsim at Fri May  2 19:06:48 2025...
+INFO: [COSIM 212-316] Starting C post checking ...
+MSE: 10.87623215
+INFO: [COSIM 212-1000] *** C/RTL co-simulation finished: PASS ***
+INFO: [COSIM 212-211] II is measurable only when transaction number is greater than 1 in RTL simulation. Otherwise, they will be marked as all NA. If user wants to calculate them, please make sure there are at least 2 transactions in RTL simulation.
+INFO: [HLS 200-2161] Finished Command cosim_design Elapsed time: 00:04:34; Allocated memory: 1.957 MB.
+INFO: [HLS 200-1510] Running: export_design -format ip_catalog -flow syn 
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+
+****** Vivado v2024.1.2 (64-bit)
+  **** SW Build 5164865 on Thu Sep  5 14:36:28 MDT 2024
+  **** IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+  **** SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+  **** Start of session at: Fri May  2 19:06:51 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source run_ippack.tcl -notrace
+INFO: calling package_hls_ip ip_types=vitis sysgen json_file=/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/solution1_data.json outdir=/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/impl/ip srcdir=/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1 sort_interfaces_ports=false
+INFO: Copied 1 ipmisc file(s) to /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/impl/ip/misc
+INFO: Copied 22 verilog file(s) to /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/impl/ip/hdl/verilog
+INFO: Copied 19 vhdl file(s) to /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/impl/ip/hdl/vhdl
+Generating 1 subcores in /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/impl/ip/hdl/ip.tmp:
+impl/misc/circular_convolution_3d_fmadd_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1_ip.tcl
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1707.621 ; gain = 63.867 ; free physical = 207 ; free virtual = 15218
+INFO: Using COE_DIR=/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/impl/ip/hdl/verilog
+INFO: Generating circular_convolution_3d_fmadd_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1_ip via file impl/misc/circular_convolution_3d_fmadd_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1_ip.tcl
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/software/xilinx/Vivado/2024.1/data/ip'.
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'circular_convolution_3d_fmadd_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'circular_convolution_3d_fmadd_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1_ip'...
+INFO: Done generating circular_convolution_3d_fmadd_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1_ip via file impl/misc/circular_convolution_3d_fmadd_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1_ip.tcl
+INFO: Import ports from HDL: /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/impl/ip/hdl/vhdl/circular_convolution_3d.vhd (circular_convolution_3d)
+INFO: Add data interface A_address0
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/software/xilinx/Vivado/2024.1/data/ip'.
+INFO: Add data interface A_d0
+INFO: Add data interface A_q0
+INFO: Add data interface A_address1
+INFO: Add data interface A_d1
+INFO: Add data interface A_q1
+INFO: Add data interface B_address0
+INFO: Add data interface B_d0
+INFO: Add data interface B_q0
+INFO: Add data interface B_address1
+INFO: Add data interface B_d1
+INFO: Add data interface B_q1
+INFO: Add data interface C_address0
+INFO: Add data interface C_d0
+INFO: Add data interface C_q0
+INFO: Add data interface C_address1
+INFO: Add data interface C_d1
+INFO: Add data interface C_q1
+INFO: Add clock interface ap_clk
+INFO: Add reset interface ap_rst
+INFO: Add ap_ctrl interface ap_ctrl
+INFO: Calling post_process_vitis to specialize IP
+INFO: Calling post_process_sysgen to specialize IP
+Generating sysgen info xml from json file
+INFO: Created IP /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/impl/ip/component.xml
+INFO: Created IP archive /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/impl/ip/xilinx_com_hls_circular_convolution_3d_1_0.zip
+INFO: [Common 17-206] Exiting Vivado at Fri May  2 19:07:10 2025...
+INFO: [IMPL 213-8] Starting RTL evaluation using Vivado ...
+
+****** Vivado v2024.1.2 (64-bit)
+  **** SW Build 5164865 on Thu Sep  5 14:36:28 MDT 2024
+  **** IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+  **** SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+  **** Start of session at: Fri May  2 19:07:22 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source run_vivadosyn.tcl
+# source ./settings.tcl
+## set top_module circular_convolution_3d
+## set language verilog
+## set family versal
+## set device xave1752
+## set package -vsva1596
+## set speed -1LJ-i-S
+## set clock ap_clk
+## set fsm_ext "off"
+## set add_io_buffers false 
+# source -notrace ./extraction.tcl
+# set vivado_proj_name project
+# set vivado_proj_dir .
+# set target_device "${device}${package}${speed}"
+# set target_clk_period_ns "10.000"
+# set target_clk_freq_hz [expr {floor(1000 / $target_clk_period_ns) * 1000000}]
+# set ip_vlnv xilinx.com:hls:circular_convolution_3d:1.0
+# set ip_repo_path ../ip
+# set bd_design_name bd_0
+# set bd_inst_name hls_inst
+# set bd_props {}
+# set has_synth true
+# set synth_design_args {-directive sdx_optimization_effort_high}
+# set synth_dcp ""
+# set synth_props {}
+# set has_impl false
+# set impl_props {}
+# set report_options [dict create]
+# dict set report_options report_level 2
+# dict set report_options report_max_paths 10
+# dict set report_options stdout_hls_reports 1
+# dict set report_options stdout_vivado_reports 0
+# dict set report_options hls_project project_1
+# dict set report_options hls_solution solution1
+# dict set report_options has_synth $has_synth
+# dict set report_options has_impl $has_impl
+# dict set report_options vivado_reportbasename $top_module
+# dict set report_options vivado_reportdir ./report
+# dict set report_options hls_impl_dir ..
+# dict set report_options hls_reportdir ../report/$language
+# dict set report_options target_clk_period $target_clk_period_ns
+# dict set report_options target_device $target_device
+# dict set report_options language $language
+# dict set report_options clock_name $clock
+# dict set report_options error_if_impl_timing_fails false
+# dict set report_options topmodule "circular_convolution_3d"
+# dict set report_options funcmodules {circular_convolution_3d_entry_proc8 circular_convolution_3d_pad_input29 circular_convolution_3d_prepare_kernel310 circular_convolution_3d_compute_convolution4_Pipeline_conv_loop circular_convolution_3d_compute_convolution4 circular_convolution_3d_dataflow_in_loop_VITIS_LOOP_54_2_1 circular_convolution_3d_dataflow_parent_loop_proc circular_convolution_3d_VITIS_LOOP_51_1_proc}
+# dict set report_options bindmodules {circular_convolution_3d_flow_control_loop_pipe circular_convolution_3d_fmadd_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1 circular_convolution_3d_sparsemux_9_2_32_1_1 circular_convolution_3d_flow_control_loop_pipe_sequential_init circular_convolution_3d_dataflow_in_loop_VITIS_LOOP_54_2_1_kernel_RAM_AUTO_1R1W_memcore circular_convolution_3d_dataflow_in_loop_VITIS_LOOP_54_2_1_kernel_RAM_AUTO_1R1W circular_convolution_3d_dataflow_in_loop_VITIS_LOOP_54_2_1_padded_A_RAM_AUTO_1R1W_memcore circular_convolution_3d_dataflow_in_loop_VITIS_LOOP_54_2_1_padded_A_RAM_AUTO_1R1W circular_convolution_3d_fifo_w2_d3_S circular_convolution_3d_fifo_w4_d2_S}
+# dict set report_options max_module_depth 10
+# create_project $vivado_proj_name $vivado_proj_dir -part $target_device -force
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:10 . Memory (MB): peak = 1707.711 ; gain = 65.867 ; free physical = 158 ; free virtual = 15087
+# set_property target_language $language [current_project]
+# if { ![file exists $ip_repo_path] } {
+#   error "Cannot find packaged HLS IP"
+# }
+# set_property ip_repo_paths [file normalize $ip_repo_path] [current_project]
+# update_ip_catalog
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/impl/ip'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/software/xilinx/Vivado/2024.1/data/ip'.
+# create_bd_design bd_0
+Wrote  : </nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/impl/verilog/project.srcs/sources_1/bd/bd_0/bd_0.bd> 
+create_bd_design: Time (s): cpu = 00:00:00.31 ; elapsed = 00:00:05 . Memory (MB): peak = 1825.949 ; gain = 27.914 ; free physical = 158 ; free virtual = 15083
+# set cell_inst [create_bd_cell -type ip -vlnv $ip_vlnv $bd_inst_name]
+# if { [llength $bd_props] } { 
+#   set_property -dict $bd_props $cell_inst 
+# }
+# make_bd_pins_external $cell_inst
+# make_bd_intf_pins_external $cell_inst
+# set bd_clk_ports [get_bd_ports -filter {TYPE==clk}]
+# if { [llength $bd_clk_ports] && $target_clk_freq_hz ne "" } { 
+#   set_property CONFIG.FREQ_HZ $target_clk_freq_hz $bd_clk_ports 
+# }
+# foreach bd_port [get_bd_intf_ports] {
+#   set_property name [regsub {_0$} [get_property name $bd_port] {}] $bd_port
+# }
+# foreach bd_port [get_bd_ports -filter {INTF!=TRUE}] {
+#   set_property name [regsub {_0$} [get_property name $bd_port] {}] $bd_port
+# }
+# set s_axi_addr_width_min 32
+WARNING: [BD 5-233] No interface ports matched 'get_bd_intf_ports -filter {MODE == "Slave" && VLNV =~ "xilinx.com:interface:aximm_rtl:*"}'
+# foreach bd_port [get_bd_intf_ports -filter {MODE == "Slave" && VLNV =~ "xilinx.com:interface:aximm_rtl:*"}] {
+#   set bd_port_addr_width [get_property CONFIG.ADDR_WIDTH $bd_port]
+#   if { $bd_port_addr_width < $s_axi_addr_width_min } {
+#     puts "INFO: Updating $bd_port CONFIG.ADDR_WIDTH to $s_axi_addr_width_min"
+#     set_property CONFIG.ADDR_WIDTH $s_axi_addr_width_min $bd_port
+#   }
+# }
+# set_msg_config -id {[BD 41-1265]} -severity {CRITICAL WARNING} -new_severity {INFO}
+# assign_bd_address
+INFO: [BD 41-3093] Triggering Legacy Auto Assign Algorithm
+Wrote  : </nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/impl/verilog/project.srcs/sources_1/bd/bd_0/bd_0.bd> 
+Verilog Output written to : /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/synth/bd_0.v
+Verilog Output written to : /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/sim/bd_0.v
+Verilog Output written to : /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/hdl/bd_0_wrapper.v
+make_wrapper: Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 2038.480 ; gain = 212.531 ; free physical = 170 ; free virtual = 14912
+# set toprtl [make_wrapper -files [get_files ${bd_design_name}.bd] -top]
+# add_files -norecurse $toprtl
+# set top_inst_name [file root [file tail $toprtl]]
+# puts "Using BD top: $top_inst_name"
+Using BD top: bd_0_wrapper
+# set xdc_files [glob -nocomplain ./*.xdc]
+# if { [llength $xdc_files] } {
+#     add_files -fileset constrs_1 -norecurse $xdc_files
+# }
+# launch_runs synth_1 -scripts_only
+INFO: [BD 41-1662] The design 'bd_0.bd' is already validated. Therefore parameter propagation will not be re-run.
+Verilog Output written to : /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/synth/bd_0.v
+Verilog Output written to : /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/sim/bd_0.v
+Verilog Output written to : /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/hdl/bd_0_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block hls_inst .
+Exporting to file /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/hw_handoff/bd_0.hwh
+Generated Hardware Definition File /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/synth/bd_0.hwdef
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: bd_0_hls_inst_0
+WARNING: [Vivado 12-7122] Auto Incremental Compile:: No reference checkpoint was found in run synth_1. Auto-incremental flow will not be run, the standard flow will be run instead.
+launch_runs: Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 2110.516 ; gain = 72.035 ; free physical = 201 ; free virtual = 14903
+# foreach run [get_runs -filter {IS_SYNTHESIS == 1}] {
+#   reset_run [get_runs $run]
+# }
+# set_property XPM_LIBRARIES {XPM_MEMORY XPM_FIFO} [current_project]
+# hls_vivado_reports_setup $report_options
+TIMESTAMP: HLS-REPORT: initialize report directories: 2025-05-02 19:07:58 EDT
+# if { $has_synth || $has_impl } {
+#   # synth properties setting
+#   set_property -name {STEPS.SYNTH_DESIGN.ARGS.MORE OPTIONS} -value {-mode out_of_context} -objects [get_runs synth_1]
+#   set ip_inst [get_ips -quiet ${bd_design_name}*${bd_inst_name}*]
+#   if { ![llength $ip_inst] } {
+#       error "Cannot find HLS IP instance: ${bd_design_name}*${bd_inst_name}*"
+#   }
+#   set synth_run [get_runs -filter {IS_SYNTHESIS == 1} ${ip_inst}*]
+#   if { ![llength $synth_run] } {
+#       error "Cannot find synth run for HLS IP: ${ip_inst}*"
+#   }
+# 
+#   if { [llength $synth_design_args] } {
+#       set_property -name {STEPS.SYNTH_DESIGN.ARGS.MORE OPTIONS} -value $synth_design_args -objects $synth_run
+#   }
+# 
+#   if { [llength $synth_props] } {
+#     set_property -dict $synth_props $synth_run
+#   }
+# 
+#   # launch run synth
+#   launch_runs synth_1
+#   wait_on_run synth_1
+#   # synth reports
+#   hls_vivado_reports_synth synth_1 $report_options
+#   if { $synth_dcp ne "" } {
+#     file mkdir [file dirname $synth_dcp]
+#     set run_dcp [glob -nocomplain [get_property DIRECTORY $synth_run]/*.dcp]
+#     if { [llength $run_dcp] != 1 } { error "Cannot find single dcp file for run $synth_run" }
+#     file copy -force $run_dcp $synth_dcp
+#   }
+# }
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: bd_0_hls_inst_0
+WARNING: [Vivado 12-7122] Auto Incremental Compile:: No reference checkpoint was found in run synth_1. Auto-incremental flow will not be run, the standard flow will be run instead.
+[Fri May  2 19:07:58 2025] Launched bd_0_hls_inst_0_synth_1...
+Run output will be captured here: /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/impl/verilog/project.runs/bd_0_hls_inst_0_synth_1/runme.log
+[Fri May  2 19:07:58 2025] Launched synth_1...
+Run output will be captured here: /nethome/mzain9/FPGA/2025_Spring/topic4/symbolic/project_1/solution1/impl/verilog/project.runs/synth_1/runme.log
+[Fri May  2 19:07:58 2025] Waiting for synth_1 to finish...
+[Fri May  2 19:50:06 2025] synth_1 finished
+ERROR: [Vivado 12-13638] Failed runs(s) : 'bd_0_hls_inst_0_synth_1'
+ 'bd_0_hls_inst_0_synth_1' run failed with below errors.
+wait_on_runs: Time (s): cpu = 00:01:59 ; elapsed = 00:42:57 . Memory (MB): peak = 2116.656 ; gain = 0.000 ; free physical = 11854 ; free virtual = 16993
+ERROR: [Common 17-39] 'wait_on_runs' failed due to earlier errors.
+
+    while executing
+"wait_on_run synth_1"
+    invoked from within
+"if { $has_synth || $has_impl } {
+  # synth properties setting
+  set_property -name {STEPS.SYNTH_DESIGN.ARGS.MORE OPTIONS} -value {-mode out_of_context..."
+    (file "run_vivadosyn.tcl" line 132)
+INFO: [Common 17-206] Exiting Vivado at Fri May  2 19:51:07 2025...
+ERROR: [HLS 200-478] vivado returned an error 
+INFO: [HLS 200-2161] Finished Command export_design Elapsed time: 00:45:56; Allocated memory: 7.594 MB.
+command 'ap_source' returned error code
+    while executing
+"source script.tcl"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel \#0 [list source $tclfile] "
+
+INFO: [HLS 200-112] Total CPU user time: 1094.37 seconds. Total CPU system time: 39.08 seconds. Total elapsed time: 3792.64 seconds; peak allocated memory: 678.746 MB.
