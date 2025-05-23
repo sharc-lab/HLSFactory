@@ -1,4 +1,5 @@
 import time
+
 from hlsfactory.flow_vitis import check_build_files_exist
 from hlsfactory.framework import Design, ToolFlow
 from hlsfactory.utils import (

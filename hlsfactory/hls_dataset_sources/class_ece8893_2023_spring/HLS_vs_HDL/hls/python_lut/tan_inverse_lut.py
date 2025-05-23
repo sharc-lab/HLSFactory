@@ -7,17 +7,19 @@ Created on Thu May  4 08:10:48 2023
 
 import math
 
+
 def create_lookup_table(start, end, step):
     table = {}
     radians_start = math.radians(start)
     radians_end = math.radians(end)
     current_angle = radians_start
-    
+
     while current_angle <= radians_end:
         table[round(current_angle, 2)] = round(math.atan(current_angle), 2)
         current_angle += step
-    
+
     return table
+
 
 lookup_table = create_lookup_table(-1, 1, 0.01)
 

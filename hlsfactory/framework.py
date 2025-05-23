@@ -261,36 +261,35 @@ class Flow(ABC):
                 )
                 for dataset_name, designs in new_design_datasets.items()
             }
-        else:
-            if new_dataset_name_fn is None:
-                new_dataset_name_fn = self.default_new_dataset_name_fn()
+        if new_dataset_name_fn is None:
+            new_dataset_name_fn = self.default_new_dataset_name_fn()
 
-            new_design_datasets_copied = {}
-            old_dataset_names = list(set(design_datasets.keys()))
-            new_dataset_names = list(map(new_dataset_name_fn, old_dataset_names))
+        new_design_datasets_copied = {}
+        old_dataset_names = list(set(design_datasets.keys()))
+        new_dataset_names = list(map(new_dataset_name_fn, old_dataset_names))
 
-            for old_name, new_name in zip(
-                old_dataset_names,
-                new_dataset_names,
-                strict=False,
-            ):
-                if old_name == new_name:
-                    raise ValueError(
-                        f"Old and new dataset names are the same, {old_name}=={new_name}, the new_dataset_name_fn must provide a unique renaming",
-                    )
+        for old_name, new_name in zip(
+            old_dataset_names,
+            new_dataset_names,
+            strict=False,
+        ):
+            if old_name == new_name:
+                raise ValueError(
+                    f"Old and new dataset names are the same, {old_name}=={new_name}, the new_dataset_name_fn must provide a unique renaming",
+                )
 
-            for old_name, new_name in zip(
-                old_dataset_names,
-                new_dataset_names,
-                strict=False,
-            ):
-                d_new = DesignDataset.from_empty_dir(new_name, self.work_dir)
-                for design in new_design_datasets[old_name]:
-                    design.move_to_new_parent_dir(d_new.dataset_dir)
-                    d_new.add_design(design)
-                new_design_datasets_copied[new_name] = d_new
+        for old_name, new_name in zip(
+            old_dataset_names,
+            new_dataset_names,
+            strict=False,
+        ):
+            d_new = DesignDataset.from_empty_dir(new_name, self.work_dir)
+            for design in new_design_datasets[old_name]:
+                design.move_to_new_parent_dir(d_new.dataset_dir)
+                d_new.add_design(design)
+            new_design_datasets_copied[new_name] = d_new
 
-            return new_design_datasets_copied
+        return new_design_datasets_copied
 
     def execute_multiple_design_datasets_fine_grained_parallel(
         self,
@@ -352,38 +351,37 @@ class Flow(ABC):
                 )
                 for dataset_name, designs in designs_collected.items()
             }
-        else:
-            if new_dataset_name_fn is None:
-                new_dataset_name_fn = self.default_new_dataset_name_fn()
+        if new_dataset_name_fn is None:
+            new_dataset_name_fn = self.default_new_dataset_name_fn()
 
-            new_design_datasets_copied: dict[str, DesignDataset] = {}
-            old_dataset_names = list(set(designs_collected.keys()))
-            new_dataset_names = list(map(new_dataset_name_fn, old_dataset_names))
+        new_design_datasets_copied: dict[str, DesignDataset] = {}
+        old_dataset_names = list(set(designs_collected.keys()))
+        new_dataset_names = list(map(new_dataset_name_fn, old_dataset_names))
 
-            for old_name, new_name in zip(
-                old_dataset_names,
-                new_dataset_names,
-                strict=False,
-            ):
-                if old_name == new_name:
-                    raise ValueError(
-                        f"Old and new dataset names are the same, "
-                        f"{old_name}=={new_name}, "
-                        f"the new_dataset_name_fn must provide a unique renaming",
-                    )
+        for old_name, new_name in zip(
+            old_dataset_names,
+            new_dataset_names,
+            strict=False,
+        ):
+            if old_name == new_name:
+                raise ValueError(
+                    f"Old and new dataset names are the same, "
+                    f"{old_name}=={new_name}, "
+                    f"the new_dataset_name_fn must provide a unique renaming",
+                )
 
-            for old_name, new_name in zip(
-                old_dataset_names,
-                new_dataset_names,
-                strict=False,
-            ):
-                d_new = DesignDataset.from_empty_dir(new_name, self.work_dir)
-                for design in designs_collected[old_name]:
-                    design.move_to_new_parent_dir(d_new.dataset_dir)
-                    d_new.add_design(design)
-                new_design_datasets_copied[new_name] = d_new
+        for old_name, new_name in zip(
+            old_dataset_names,
+            new_dataset_names,
+            strict=False,
+        ):
+            d_new = DesignDataset.from_empty_dir(new_name, self.work_dir)
+            for design in designs_collected[old_name]:
+                design.move_to_new_parent_dir(d_new.dataset_dir)
+                d_new.add_design(design)
+            new_design_datasets_copied[new_name] = d_new
 
-            return new_design_datasets_copied
+        return new_design_datasets_copied
 
 
 class Frontend(Flow): ...

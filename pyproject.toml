@@ -16,11 +16,11 @@ requires-python = ">=3.10"
 
 dependencies = [
     "pandas",
- "psutil",
- "PyYAML",
- "tqdm",
- "python-dotenv",
- "pydantic>=2.11.3",
+    "psutil",
+    "PyYAML",
+    "tqdm",
+    "python-dotenv",
+    "pydantic>=2.11.3",
 ]
 
 [project.optional-dependencies]
@@ -70,8 +70,6 @@ ignore = [
     "EM101",
     "PGH003",
     "D",
-    "ANN101",
-    "ANN102",
     "FBT001",
     "FBT002",
     "PLR0913",
@@ -79,4 +77,11 @@ ignore = [
     "SIM108",
     "PLR0912",
     "PLR0915",
+    "COM812",
 ]
+
+[tool.ruff]
+extend-exclude = ["hlsfactory/hls_dataset_sources"]
+
+[dependency-groups]
+dev = ["ruff>=0.11.11"]

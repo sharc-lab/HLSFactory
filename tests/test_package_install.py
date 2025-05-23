@@ -6,7 +6,7 @@ from tempfile import TemporaryDirectory
 import pytest
 
 
-@pytest.mark.skip()
+@pytest.mark.skip
 def test_package_install() -> None:
     github_url = "https://github.com/sharc-lab/HLSFactory"
 

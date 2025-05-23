@@ -410,9 +410,9 @@ def create_pragma_nodes(g_nx, g_nx_nodes, for_dict_source, for_dict_llvm, log=Tr
                     break
             TC_icmp = int(eval(split_icmp_inst[TC_id].strip()))
             TC_for = get_tc_for_loop(for_loop_text)
-            assert (
-                TC_for == TC_icmp
-            ), f"trip count of loop {for_loop_text} did not match {icmp_inst}."
+            assert TC_for == TC_icmp, (
+                f"trip count of loop {for_loop_text} did not match {icmp_inst}."
+            )
 
             node_id, block_id, function_id = None, None, None
             for node, ndata in g_nx.nodes(data=True):

@@ -9,7 +9,13 @@ import torch
 
 from torch_geometric.utils import from_networkx
 
-from gnn_builder import GCNConv_GNNB, GINConv_GNNB, PNAConv_GNNB, SAGEConv_GNNB, SimpleConv_GNNB
+from gnn_builder import (
+    GCNConv_GNNB,
+    GINConv_GNNB,
+    PNAConv_GNNB,
+    SAGEConv_GNNB,
+    SimpleConv_GNNB,
+)
 from gnn_builder.utils import compute_in_deg_histogram
 
 
@@ -158,11 +164,7 @@ def gen_graph_data(test_data_dir: Path, seed=0):
     gin_output = gin_layer(pyg_graph.x, pyg_graph.edge_index).detach().numpy()
 
     # PNA
-    pna_layer = PNAConv_GNNB(
-        INPUT_NODE_FEATURE_SIZE,
-        OUTPUT_FEATURE_SIZE,
-        delta=1.0
-    )
+    pna_layer = PNAConv_GNNB(INPUT_NODE_FEATURE_SIZE, OUTPUT_FEATURE_SIZE, delta=1.0)
 
     pna_avg_degree_log = pna_layer.delta_scaler
     print(f"pna_avg_degree_log: {pna_avg_degree_log}")
@@ -170,7 +172,7 @@ def gen_graph_data(test_data_dir: Path, seed=0):
     pna_transform_lin = pna_layer.conv.pre_nns[0][0]
     pna_transform_lin_weights = pna_transform_lin.weight.detach().numpy()
     pna_transform_lin_bias = pna_transform_lin.bias.detach().numpy()
-    
+
     pna_apply_lin = pna_layer.conv.post_nns[0][0]
     pna_apply_lin_weights = pna_apply_lin.weight.detach().numpy()
     pna_apply_lin_bias = pna_apply_lin.bias.detach().numpy()
@@ -180,7 +182,6 @@ def gen_graph_data(test_data_dir: Path, seed=0):
     pna_final_lin_bias = pna_final_lin.bias.detach().numpy()
 
     pna_output = pna_layer(pyg_graph.x, pyg_graph.edge_index).detach().numpy()
-
 
     # SAGE
     sage_layer = SAGEConv_GNNB(INPUT_NODE_FEATURE_SIZE, OUTPUT_FEATURE_SIZE)
@@ -194,7 +195,6 @@ def gen_graph_data(test_data_dir: Path, seed=0):
     simple_output = simple_layer(pyg_graph.x, pyg_graph.edge_index).detach().numpy()
 
     ##############
-
 
     os.makedirs(test_data_dir, exist_ok=True)
     np.savetxt(test_data_dir / "tb_max_nodes.txt", [MAX_NODES], fmt="%d")
@@ -329,21 +329,67 @@ def gen_graph_data(test_data_dir: Path, seed=0):
         gin_output, Path(test_data_dir / "tb_gin_output.bin"), np_type=np.float32
     )
 
-    serialize_numpy(np.array(pna_avg_degree_log), Path(test_data_dir / "tb_pna_avg_degree_log.bin"), np_type=np.float32)
-    serialize_numpy(pna_transform_lin_weights, Path(test_data_dir / "tb_pna_transform_lin_weights.bin"), np_type=np.float32)
-    serialize_numpy(pna_transform_lin_bias, Path(test_data_dir / "tb_pna_transform_lin_bias.bin"), np_type=np.float32)
-    serialize_numpy(pna_apply_lin_weights, Path(test_data_dir / "tb_pna_apply_lin_weights.bin"), np_type=np.float32)
-    serialize_numpy(pna_apply_lin_bias, Path(test_data_dir / "tb_pna_apply_lin_bias.bin"), np_type=np.float32)
-    serialize_numpy(pna_final_lin_weights, Path(test_data_dir / "tb_pna_final_lin_weights.bin"), np_type=np.float32)
-    serialize_numpy(pna_final_lin_bias, Path(test_data_dir / "tb_pna_final_lin_bias.bin"), np_type=np.float32)
-    serialize_numpy(pna_output, Path(test_data_dir / "tb_pna_output.bin"), np_type=np.float32)
+    serialize_numpy(
+        np.array(pna_avg_degree_log),
+        Path(test_data_dir / "tb_pna_avg_degree_log.bin"),
+        np_type=np.float32,
+    )
+    serialize_numpy(
+        pna_transform_lin_weights,
+        Path(test_data_dir / "tb_pna_transform_lin_weights.bin"),
+        np_type=np.float32,
+    )
+    serialize_numpy(
+        pna_transform_lin_bias,
+        Path(test_data_dir / "tb_pna_transform_lin_bias.bin"),
+        np_type=np.float32,
+    )
+    serialize_numpy(
+        pna_apply_lin_weights,
+        Path(test_data_dir / "tb_pna_apply_lin_weights.bin"),
+        np_type=np.float32,
+    )
+    serialize_numpy(
+        pna_apply_lin_bias,
+        Path(test_data_dir / "tb_pna_apply_lin_bias.bin"),
+        np_type=np.float32,
+    )
+    serialize_numpy(
+        pna_final_lin_weights,
+        Path(test_data_dir / "tb_pna_final_lin_weights.bin"),
+        np_type=np.float32,
+    )
+    serialize_numpy(
+        pna_final_lin_bias,
+        Path(test_data_dir / "tb_pna_final_lin_bias.bin"),
+        np_type=np.float32,
+    )
+    serialize_numpy(
+        pna_output, Path(test_data_dir / "tb_pna_output.bin"), np_type=np.float32
+    )
 
-    serialize_numpy(sage_neighbor_lin_weights, test_data_dir / Path("tb_sage_neighbor_lin_weights.bin"), np_type=np.float32)
-    serialize_numpy(sage_neighbor_lin_bias, test_data_dir / Path("tb_sage_neighbor_lin_bias.bin"), np_type=np.float32)
-    serialize_numpy(sage_self_lin_weights, test_data_dir / Path("tb_sage_self_lin_weights.bin"), np_type=np.float32)
-    serialize_numpy(sage_output, test_data_dir / Path("tb_sage_output.bin"), np_type=np.float32)
+    serialize_numpy(
+        sage_neighbor_lin_weights,
+        test_data_dir / Path("tb_sage_neighbor_lin_weights.bin"),
+        np_type=np.float32,
+    )
+    serialize_numpy(
+        sage_neighbor_lin_bias,
+        test_data_dir / Path("tb_sage_neighbor_lin_bias.bin"),
+        np_type=np.float32,
+    )
+    serialize_numpy(
+        sage_self_lin_weights,
+        test_data_dir / Path("tb_sage_self_lin_weights.bin"),
+        np_type=np.float32,
+    )
+    serialize_numpy(
+        sage_output, test_data_dir / Path("tb_sage_output.bin"), np_type=np.float32
+    )
 
-    serialize_numpy(simple_output, test_data_dir / Path("tb_simple_output.bin"), np_type=np.float32)
+    serialize_numpy(
+        simple_output, test_data_dir / Path("tb_simple_output.bin"), np_type=np.float32
+    )
     # serialize_numpy(simple_lin_weights, test_data_dir / Path("tb_simple_lin_weights.bin"), np_type=np.float32)
     # serialize_numpy(simple_lin_bias, test_data_dir / Path("tb_simple_lin_bias.bin"), np_type=np.float32)
 

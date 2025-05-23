@@ -1,19 +1,33 @@
 import torch
 
+
 # global CIM arguments that can be set by the user
 class CIMArgs:
-    def __init__(self, inference=False, batch_size=16,
-                mem_values=torch.tensor([float('inf'), 10000]), 
-                sub_array=[128,128], open_rows=128,
-                adc_precision=7, weight_precision=8,
-                input_precision=8, conversion_type='PU', vdd=1,
-                crossbar_type='resistive',
-                v_range=1, v_noise=0,
-                output_noise=0, resistance_std=[],
-                layer_seed=[], map=False,
-                R_parasistic=0, stress_time=0,
-                calc_BER=False, dummy_column=False,
-                debug=False):
+    def __init__(
+        self,
+        inference=False,
+        batch_size=16,
+        mem_values=torch.tensor([float("inf"), 10000]),
+        sub_array=[128, 128],
+        open_rows=128,
+        adc_precision=7,
+        weight_precision=8,
+        input_precision=8,
+        conversion_type="PU",
+        vdd=1,
+        crossbar_type="resistive",
+        v_range=1,
+        v_noise=0,
+        output_noise=0,
+        resistance_std=[],
+        layer_seed=[],
+        map=False,
+        R_parasistic=0,
+        stress_time=0,
+        calc_BER=False,
+        dummy_column=False,
+        debug=False,
+    ):
         """
         Initializes the CIM parameters.
 
@@ -33,7 +47,7 @@ class CIMArgs:
             stress_time (float): Time to stress the memory before inference.
             calc_BER (bool): Whether to calculate error rate of CIM operation.
         """
-        
+
         self.inference = inference
         self.adc_precision = adc_precision
         self.batch_size = batch_size
@@ -56,5 +70,3 @@ class CIMArgs:
         self.v_range = v_range
         self.v_noise = v_noise
         self.debug = debug
-
-

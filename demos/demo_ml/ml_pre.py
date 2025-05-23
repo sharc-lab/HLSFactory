@@ -223,7 +223,7 @@ for design_id in data_all["design_id"]:
             expression_data[f"op_{op}_ff"] = 0
             expression_data[f"op_{op}_dsp"] = 0
 
-    if df_mux_all is not []:
+    if df_mux_all != []:
         df_mux = pd.concat(df_mux_all)
         mux_data["mux_lut_sum"] = df_mux["LUT"].sum()
         mux_data["mux_input_size_sum"] = df_mux["Input Size"].sum()
