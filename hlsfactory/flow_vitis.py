@@ -433,6 +433,8 @@ class VitisHLSCsimFlow(ToolFlow):
         self,
         vitis_hls_bin: str | None = None,
         log_output: bool = False,
+        env_var_xilinx_hls: str | None = None,
+        env_var_xilinx_vivado: str | None = None,
     ) -> None:
         if vitis_hls_bin is None:
             self.vitis_hls_bin = find_bin_path("vitis_hls")
@@ -441,6 +443,9 @@ class VitisHLSCsimFlow(ToolFlow):
 
         self.log_output = log_output
 
+        self.env_var_xilinx_hls = env_var_xilinx_hls
+        self.env_var_xilinx_vivado = env_var_xilinx_vivado
+
     def execute(self, design: Design, timeout: float | None = None) -> list[Design]:
         design_dir = design.dir
 
@@ -448,6 +453,11 @@ class VitisHLSCsimFlow(ToolFlow):
         build_files = [fp_hls_cosim_setup_tcl]
         check_build_files_exist(build_files)
         warn_for_reset_flags(build_files)
+
+        if self.env_var_xilinx_hls:
+            os.environ["XILINX_HLS"] = self.env_var_xilinx_hls
+        if self.env_var_xilinx_vivado:
+            os.environ["XILINX_VIVADO"] = self.env_var_xilinx_vivado
 
         r = call_tool(
             f"{self.vitis_hls_bin} dataset_hls_csim.tcl",
