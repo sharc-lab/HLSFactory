@@ -47,7 +47,7 @@ def main(args) -> None:
     BIN_VIVADO = PATH_VIVADO / "bin" / "vivado"
 
     N_JOBS = args.n_jobs
-    CPU_AFFINITY = list(range(N_JOBS))
+    CPU_AFFINITY = None
 
     TIMEOUT_HLS_SYNTH = 60.0 * 8  # 8 minutes
     TIMEOUT_HLS_IMPL = 60.0 * 30  # 30 minutes
