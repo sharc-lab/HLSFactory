@@ -1,0 +1,116 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2024.2 (64-bit)
+  **** SW Build 5238294 on Nov  8 2024
+  **** IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+  **** SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+  **** Start of session at: Mon Jun  2 22:56:14 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source /opt/xilinx/tools/Vitis/2024.2/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] For user 'cy' on host 'c05' (Linux_x86_64 version 5.15.0-130-generic) on Mon Jun 02 22:56:16 PDT 2025
+INFO: [HLS 200-10] On os Ubuntu 22.04.5 LTS
+INFO: [HLS 200-10] In directory '/home/cy/github/HLSFactory/hlsfactory/hls_dataset_sources/hp_fft_hls/n256__no_StagePipeline'
+WARNING: [HLS 200-2053] The vitis_hls executable is deprecated. Consider using vitis-run --mode hls --tcl
+Sourcing Tcl script 'dataset_hls_ip_export.tcl'
+INFO: [HLS 200-1510] Running: open_project ./build 
+INFO: [HLS 200-10] Opening project '/home/cy/github/HLSFactory/hlsfactory/hls_dataset_sources/hp_fft_hls/n256__no_StagePipeline/build'.
+INFO: [HLS 200-1510] Running: add_files ./FFT.cpp 
+INFO: [HLS 200-10] Adding design file './FFT.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files ./testbench.cpp 
+INFO: [HLS 200-10] Adding design file './testbench.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb ./testbench.cpp 
+INFO: [HLS 200-10] Adding test bench file './testbench.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution solution1 
+INFO: [HLS 200-10] Opening solution '/home/cy/github/HLSFactory/hlsfactory/hls_dataset_sources/hp_fft_hls/n256__no_StagePipeline/build/solution1'.
+INFO: [SYN 201-201] Setting up clock 'clk' with a period of 4ns.
+INFO: [HLS 200-1611] Setting target device to 'xcvp1802-lsvc4072-3HP-e-S'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.2%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1464] Running solution command: config_compile -complex-mul-dsp=1
+INFO: [HLS 200-1464] Running solution command: config_compile -unsafe_math_optimizations=1
+INFO: [XFORM 203-1172] Optimizing floating point zeros and discarding its signedness.
+INFO: [XFORM 203-1176] Optimizing floating point comparison without checking NaN.
+INFO: [XFORM 203-1173] Reordering floating point operations aggressively.
+INFO: [HLS 200-1510] Running: set_part xcvp1802-lsvc4072-3HP-e-S 
+INFO: [XFORM 203-1172] Optimizing floating point zeros and discarding its signedness.
+INFO: [XFORM 203-1176] Optimizing floating point comparison without checking NaN.
+INFO: [XFORM 203-1173] Reordering floating point operations aggressively.
+INFO: [HLS 200-1510] Running: set_top FFT_TOP 
+INFO: [HLS 200-1510] Running: create_clock -period 4.0 -name clk 
+INFO: [HLS 200-1510] Running: config_compile -unsafe_math_optimizations 
+INFO: [XFORM 203-1172] Optimizing floating point zeros and discarding its signedness.
+INFO: [XFORM 203-1176] Optimizing floating point comparison without checking NaN.
+INFO: [XFORM 203-1173] Reordering floating point operations aggressively.
+INFO: [HLS 200-1510] Running: config_export -vivado_impl_strategy Flow_Quick -vivado_synth_strategy Flow_RuntimeOptimized 
+INFO: [HLS 200-1510] Running: export_design -flow impl -format ip_catalog -rtl verilog 
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+WARNING: /opt/xilinx/tools/Vivado/2024.2/tps/lnx64/jre11.0.16_1 does not exist.
+
+****** Vivado v2024.2 (64-bit)
+  **** SW Build 5239630 on Fri Nov 08 22:34:34 MST 2024
+  **** IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+  **** SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+  **** Start of session at: Mon Jun  2 22:56:33 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source run_ippack.tcl -notrace
+INFO: calling package_hls_ip ip_types=vitis sysgen json_file=/home/cy/github/HLSFactory/hlsfactory/hls_dataset_sources/hp_fft_hls/n256__no_StagePipeline/build/solution1/solution1_data.json outdir=/home/cy/github/HLSFactory/hlsfactory/hls_dataset_sources/hp_fft_hls/n256__no_StagePipeline/build/solution1/impl/ip srcdir=/home/cy/github/HLSFactory/hlsfactory/hls_dataset_sources/hp_fft_hls/n256__no_StagePipeline/build/solution1 sort_interfaces_ports=false
+INFO: Copied 1 ipmisc file(s) to /home/cy/github/HLSFactory/hlsfactory/hls_dataset_sources/hp_fft_hls/n256__no_StagePipeline/build/solution1/impl/ip/misc
+INFO: Copied 20 verilog file(s) to /home/cy/github/HLSFactory/hlsfactory/hls_dataset_sources/hp_fft_hls/n256__no_StagePipeline/build/solution1/impl/ip/hdl/verilog
+INFO: Copied 16 vhdl file(s) to /home/cy/github/HLSFactory/hlsfactory/hls_dataset_sources/hp_fft_hls/n256__no_StagePipeline/build/solution1/impl/ip/hdl/vhdl
+Generating 5 subcores in /home/cy/github/HLSFactory/hlsfactory/hls_dataset_sources/hp_fft_hls/n256__no_StagePipeline/build/solution1/impl/ip/hdl/ip.tmp:
+impl/misc/FFT_TOP_fadd_32ns_32ns_32_1_primitive_dsp_1_ip.tcl
+impl/misc/FFT_TOP_fmadd_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1_ip.tcl
+impl/misc/FFT_TOP_fmsub_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1_ip.tcl
+impl/misc/FFT_TOP_fmul_32ns_32ns_32_1_primitive_dsp_1_ip.tcl
+impl/misc/FFT_TOP_fsub_32ns_32ns_32_1_primitive_dsp_1_ip.tcl
+create_project: Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1527.570 ; gain = 144.836 ; free physical = 654123 ; free virtual = 682955
+INFO: Using COE_DIR=/home/cy/github/HLSFactory/hlsfactory/hls_dataset_sources/hp_fft_hls/n256__no_StagePipeline/build/solution1/impl/ip/hdl/verilog
+INFO: Generating FFT_TOP_fadd_32ns_32ns_32_1_primitive_dsp_1_ip via file impl/misc/FFT_TOP_fadd_32ns_32ns_32_1_primitive_dsp_1_ip.tcl
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/xilinx/tools/Vivado/2024.2/data/ip'.
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'FFT_TOP_fadd_32ns_32ns_32_1_primitive_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'FFT_TOP_fadd_32ns_32ns_32_1_primitive_dsp_1_ip'...
+INFO: Done generating FFT_TOP_fadd_32ns_32ns_32_1_primitive_dsp_1_ip via file impl/misc/FFT_TOP_fadd_32ns_32ns_32_1_primitive_dsp_1_ip.tcl
+INFO: Generating FFT_TOP_fmadd_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1_ip via file impl/misc/FFT_TOP_fmadd_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1_ip.tcl
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'FFT_TOP_fmadd_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'FFT_TOP_fmadd_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1_ip'...
+INFO: Done generating FFT_TOP_fmadd_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1_ip via file impl/misc/FFT_TOP_fmadd_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1_ip.tcl
+INFO: Generating FFT_TOP_fmsub_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1_ip via file impl/misc/FFT_TOP_fmsub_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1_ip.tcl
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'FFT_TOP_fmsub_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'FFT_TOP_fmsub_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1_ip'...
+INFO: Done generating FFT_TOP_fmsub_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1_ip via file impl/misc/FFT_TOP_fmsub_32ns_32ns_32ns_32ns_32_1_primitive_dsp_1_ip.tcl
+INFO: Generating FFT_TOP_fmul_32ns_32ns_32_1_primitive_dsp_1_ip via file impl/misc/FFT_TOP_fmul_32ns_32ns_32_1_primitive_dsp_1_ip.tcl
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'FFT_TOP_fmul_32ns_32ns_32_1_primitive_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'FFT_TOP_fmul_32ns_32ns_32_1_primitive_dsp_1_ip'...
+INFO: Done generating FFT_TOP_fmul_32ns_32ns_32_1_primitive_dsp_1_ip via file impl/misc/FFT_TOP_fmul_32ns_32ns_32_1_primitive_dsp_1_ip.tcl
+INFO: Generating FFT_TOP_fsub_32ns_32ns_32_1_primitive_dsp_1_ip via file impl/misc/FFT_TOP_fsub_32ns_32ns_32_1_primitive_dsp_1_ip.tcl
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'FFT_TOP_fsub_32ns_32ns_32_1_primitive_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'FFT_TOP_fsub_32ns_32ns_32_1_primitive_dsp_1_ip'...
+INFO: Done generating FFT_TOP_fsub_32ns_32ns_32_1_primitive_dsp_1_ip via file impl/misc/FFT_TOP_fsub_32ns_32ns_32_1_primitive_dsp_1_ip.tcl
+INFO: Import ports from HDL: /home/cy/github/HLSFactory/hlsfactory/hls_dataset_sources/hp_fft_hls/n256__no_StagePipeline/build/solution1/impl/ip/hdl/vhdl/FFT_TOP.vhd (FFT_TOP)
+INFO: Add clock interface ap_clk
+INFO: Add reset interface ap_rst
+INFO: Add ap_ctrl interface ap_ctrl
+INFO: Add data interface dataIn_address0
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/xilinx/tools/Vivado/2024.2/data/ip'.
+INFO: Add data interface dataIn_q0
+INFO: Add data interface dataIn_address1
+INFO: Add data interface dataIn_q1
+INFO: Add data interface dataOut_address0
+INFO: Add data interface dataOut_d0
+INFO: Add data interface dataOut_address1
+INFO: Add data interface dataOut_d1
+INFO: Calling post_process_vitis to specialize IP
+INFO: Calling post_process_sysgen to specialize IP
+Generating sysgen info xml from json file
+INFO: Created IP /home/cy/github/HLSFactory/hlsfactory/hls_dataset_sources/hp_fft_hls/n256__no_StagePipeline/build/solution1/impl/ip/component.xml
+INFO: Created IP archive /home/cy/github/HLSFactory/hlsfactory/hls_dataset_sources/hp_fft_hls/n256__no_StagePipeline/build/solution1/impl/ip/xilinx_com_hls_FFT_TOP_1_0.zip
+INFO: [Common 17-206] Exiting Vivado at Mon Jun  2 22:56:56 2025...
+INFO: [IMPL 213-8] Starting RTL evaluation using Vivado ...
+WARNING: /opt/xilinx/tools/Vivado/2024.2/tps/lnx64/jre11.0.16_1 does not exist.

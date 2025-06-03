@@ -41,6 +41,9 @@ if {[lindex $argv 0] == "csim"} {
     csynth_design
 } elseif {[lindex $argv 0] == "pnr"} {
     export_design -flow syn -rtl verilog
+} elseif {[lindex $argv 0] == "impl"} {
+    config_export -vivado_impl_strategy Flow_Quick -vivado_synth_strategy Flow_RuntimeOptimized
+    export_design -flow impl -format ip_catalog -rtl verilog
 } elseif {[lindex $argv 0] == "toCosim"} {
     csim_design
     csynth_design
