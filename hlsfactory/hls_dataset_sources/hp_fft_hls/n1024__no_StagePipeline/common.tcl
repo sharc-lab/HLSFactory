@@ -1,12 +1,12 @@
 # Set project name and path
-set project_name "build"
+set project_name "build_prj"
 set src_path "."
 
 set TARGET_FREQ 250
 set TARGET_PART_NUM "xcvp1802-lsvc4072-3HP-e-S"
 
 # Create a new HLS project
-open_project "$src_path/$project_name"
+open_project "$project_name"
 
 # Add C++ source files
 set source_files [list \
