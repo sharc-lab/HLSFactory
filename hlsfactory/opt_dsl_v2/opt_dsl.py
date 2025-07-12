@@ -80,6 +80,7 @@ class OptDSL:
         # exec is potentially unsafe, but seems like the easiest way to go about this
         #############################################################################
         exec(opt_dsl_source)
+        self.validate_grouped_directives()
 
     def pipeline(self, label: str, function: str, optional: bool = False) -> None:
         directive = f"set_directive_pipeline {function}/{label}"
@@ -107,6 +108,19 @@ class OptDSL:
                 self.grouped_directives[group][f].append(directive)
             else:
                 self.ungrouped_partition_directives[f"{function}/{array_var}"].append(directive)
+
+    def validate_grouped_directives(self) -> None:
+        # Validate all directive sets in the same group must have same number of lines
+        for group, directives_by_factor in self.grouped_directives.items():
+            if len(directives_by_factor) < 2:
+                continue
+            factor_list = list(directives_by_factor.keys())
+            reference_len = len(directives_by_factor[factor_list[0]])
+            for factor, directives in directives_by_factor.items():
+                if len(directives) != reference_len:
+                    raise ValueError(
+                        f"Inconsistent factor list in group '{group}'"
+                    )
 
     def get_directives(self):
         return (
