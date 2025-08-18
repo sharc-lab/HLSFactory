@@ -52,6 +52,8 @@ class OptDSL:
         self.pipeline_directives = defaultdict(list)
         self.ungrouped_partition_directives = defaultdict(list)
         self.ungrouped_unroll_directives = defaultdict(list)
+        self.inconsistent_error = False
+        self.error_message = ""
         self.parse_opt_dsl_lang(opt_dsl_source)
 
     def parse_opt_dsl_lang(self, opt_dsl_source):
@@ -109,7 +111,7 @@ class OptDSL:
             else:
                 self.ungrouped_partition_directives[f"{function}/{array_var}"].append(directive)
 
-    def validate_grouped_directives(self) -> None:
+    def validate_grouped_directives(self) -> bool:
         # Validate all directive sets in the same group must have same number of lines
         for group, directives_by_factor in self.grouped_directives.items():
             if len(directives_by_factor) < 2:
@@ -118,9 +120,10 @@ class OptDSL:
             reference_len = len(directives_by_factor[factor_list[0]])
             for factor, directives in directives_by_factor.items():
                 if len(directives) != reference_len:
-                    raise ValueError(
-                        f"Inconsistent factor list in group '{group}'"
-                    )
+                    self.inconsistent_error = True
+                    self.error_message = (f"Inconsistent factor list in group '{group}'")
+                    return self.inconsistent_error
+        return self.inconsistent_error
 
     def get_directives(self):
         return (

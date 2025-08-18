@@ -240,6 +240,9 @@ class OptDSLFrontend(Frontend):
         with open(opt_template_fp) as file:
             opt_dsl = OptDSL(file.read())
 
+        if opt_dsl.inconsistent_error:
+            raise ValueError(f"Inconsistent error found: {opt_dsl.error_message}")
+
         static_lines, groups, pipelines, partitions, unrolls  = opt_dsl.get_directives()
         # print(groups)
 
