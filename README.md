@@ -83,12 +83,20 @@ We provide documented demos, python scripts and Jupyter notebooks, to get you st
 (🚧 under construction)
 
 ```bibtex
-@article{hlsfactory,
-  title={HLSFactory: A Framework Empowering High-Level Synthesis Datasets for Machine Learning and Beyond},
-  author={},
-  journal={},
-  year={},
-  publisher={}
+@inproceedings{hlsfactoryc,
+  title = {{{HLSFactory}}: {{A Framework Empowering High-Level Synthesis Datasets}} for {{Machine Learning}} and {{Beyond}}},
+  shorttitle = {{{HLSFactory}}},
+  booktitle = {2024 {{ACM}}/{{IEEE}} 6th {{Symposium}} on {{Machine Learning}} for {{CAD}} ({{MLCAD}})},
+  author = {{Abi-Karam}, Stefan and Sarkar, Rishov and Seigler, Allison and Lowe, Sean and Wei, Zhigang and Chen, Hanqiu and Rao, Nanditha and John, Lizy and Arora, Aman and Hao, Cong},
+  year = {2024},
+  month = sep,
+  pages = {1--9},
+  publisher = {IEEE},
+  address = {Salt Lake City (Snowbird), UT, USA},
+  doi = {10.1109/MLCAD62225.2024.10740213},
+  urldate = {2025-08-21},
+  copyright = {https://doi.org/10.15223/policy-029},
+  isbn = {979-8-3503-6356-2}
 }
 ```
 
