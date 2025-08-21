@@ -80,8 +80,6 @@ We provide documented demos, python scripts and Jupyter notebooks, to get you st
 
 ## How to Cite
 
-(🚧 under construction)
-
 ```bibtex
 @inproceedings{hlsfactoryc,
   title = {{{HLSFactory}}: {{A Framework Empowering High-Level Synthesis Datasets}} for {{Machine Learning}} and {{Beyond}}},
