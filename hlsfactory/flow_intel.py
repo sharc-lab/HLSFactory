@@ -78,6 +78,7 @@ class DesignHLSSynthData:
             resources_MLABs_avail=resource_data["avail_abs"]["MALBs"],
         )
         fd.close()
+        return None
 
 
 @serialize_methods_for_dataclass
@@ -140,7 +141,7 @@ class IntelHLSSynthFlow(ToolFlow):
         arch: str = "1ST110EN1F43E1VG",
         clock: str = "10ns",
         verbose: bool = True,
-    ):
+    ) -> None:
         if ipp_bin is None:
             self.ipp_bin = find_bin_path("i++")
         else:
@@ -274,7 +275,7 @@ class IntelImpDesignResource:
 class IntelQuartusImplFlow(ToolFlow):
     name = "IntelQuartusImplFlow"
 
-    def __init__(self, quartus_bin: str | None = None, verbose: bool = True):
+    def __init__(self, quartus_bin: str | None = None, verbose: bool = True) -> None:
         if quartus_bin is None:
             self.quartus_bin = find_bin_path("quartus_sh")
         else:

@@ -5,7 +5,7 @@ from io import BytesIO
 from pathlib import Path
 from pprint import pp
 
-import matplotlib
+import matplotlib as mpl
 import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
@@ -78,8 +78,7 @@ def get_report_table_block(rpt_raw: str, block_name: str) -> str | None:
 def parse_ascii_line(line: str) -> list[str]:
     line = line.strip()
     parts = line.split("|")
-    parts = [part.strip() for part in parts if part.strip() != ""]
-    return parts
+    return [part.strip() for part in parts if part.strip() != ""]
 
 
 def parse_ascii_table(table: str) -> pd.DataFrame:

@@ -6,7 +6,7 @@ from io import BytesIO
 from pathlib import Path
 from pprint import pp
 
-import matplotlib
+import matplotlib as mpl
 import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
@@ -40,25 +40,23 @@ expression_cols = [col for col in data_all.columns if "expression__" in col]
 mux_cols = [col for col in data_all.columns if "mux__" in col]
 binding_cols = [col for col in data_all.columns if "binding__" in col]
 
-input_columns = (
-    [
-        "synthesis__clock_period",
-        "synthesis__latency_best_cycles",
-        "synthesis__latency_best_seconds",
-        "synthesis__latency_average_cycles",
-        "synthesis__latency_average_seconds",
-        "synthesis__latency_worst_cycles",
-        "synthesis__latency_worst_seconds",
-        "synthesis__resources_lut_used",
-        "synthesis__resources_ff_used",
-        "synthesis__resources_dsp_used",
-        "synthesis__resources_bram_used",
-        "synthesis__resources_uram_used",
-    ]
-    + expression_cols
-    + mux_cols
-    + binding_cols
-)
+input_columns = [
+    "synthesis__clock_period",
+    "synthesis__latency_best_cycles",
+    "synthesis__latency_best_seconds",
+    "synthesis__latency_average_cycles",
+    "synthesis__latency_average_seconds",
+    "synthesis__latency_worst_cycles",
+    "synthesis__latency_worst_seconds",
+    "synthesis__resources_lut_used",
+    "synthesis__resources_ff_used",
+    "synthesis__resources_dsp_used",
+    "synthesis__resources_bram_used",
+    "synthesis__resources_uram_used",
+    *expression_cols,
+    *mux_cols,
+    *binding_cols,
+]
 
 output_columns = [
     "implementation__utilization__Total LUTs",
@@ -299,13 +297,13 @@ for col_idx, col in enumerate(output_columns):
         # verticalalignment="top",
         # weight="bold",
         # white background with some padding
-        bbox=dict(
-            facecolor="white",
-            edgecolor="black",
-            pad=4,
-            alpha=0.9,
-            linewidth=0.0,
-        ),
+        bbox={
+            "facecolor": "white",
+            "edgecolor": "black",
+            "pad": 4,
+            "alpha": 0.9,
+            "linewidth": 0.0,
+        },
         fontsize=7.75,
     ).set_zorder(100)
 

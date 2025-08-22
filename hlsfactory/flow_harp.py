@@ -81,7 +81,7 @@ ALL_KERNEL = {"machsuite": MACHSUITE_KERNEL, "poly": poly_KERNEL}
 
 
 class Node:
-    def __init__(self, block, function, text, type_n, features=None):
+    def __init__(self, block, function, text, type_n, features=None) -> None:
         self.block: int = block
         self.function: int = function
         self.text: str = text
@@ -108,7 +108,7 @@ class Node:
 
 
 class Edge:
-    def __init__(self, src, dst, flow, position):
+    def __init__(self, src, dst, flow, position) -> None:
         self.src: int = src
         self.dst: int = dst
         self.flow: int = flow  ## 0: control, 1: data, 2: call, 3: pragma, 4: pseudo node for block, 5: connections between pseudo nodes, 6: for loop hierarchyhierarchy
@@ -132,14 +132,14 @@ def create_pseudo_node_block(block, function):
     )
 
 
-def add_to_graph(g_nx, nodes, edges):
+def add_to_graph(g_nx, nodes, edges) -> None:
     if len(nodes) > 0:
         g_nx.add_nodes_from(nodes)
     if len(edges) > 0:
         g_nx.add_edges_from(edges)
 
 
-def copy_files(name, src, dest):
+def copy_files(name, src, dest) -> None:
     """
     copy the generated files to the project directory
 
@@ -148,7 +148,7 @@ def copy_files(name, src, dest):
         src: the path to the files
         dest: where you want to copy the files
     """
-    gen_files = [f for f in sorted(glob(join(src, f"{name}.*")))]
+    gen_files = sorted(glob(join(src, f"{name}.*")))
     gen_files.append(join(src, f"{name}_pretty.json"))
     gen_files.append(join(src, "ds_info.json"))
     for f in gen_files:
@@ -161,7 +161,7 @@ def copy_files(name, src, dest):
             )
             copy(f, source_dest)
             continue
-        if f.endswith(".c") or f.endswith(".cpp"):
+        if f.endswith((".c", ".cpp")):
             new_f_name = basename(f).replace(f"{name}", f"{name}_kernel")
             source_dest = join(os.getcwd(), BENCHMARK, "sources", new_f_name)
             copy(f, source_dest)
@@ -203,12 +203,10 @@ def llvm_to_nx(name):
     with open(filename) as f:
         ll_file = f.read()
         G = programl.from_llvm_ir(ll_file)
-        g_nx = programl.to_networkx(G)
-
-    return g_nx
+        return programl.to_networkx(G)
 
 
-def make_json_readable(name, js_graph):
+def make_json_readable(name, js_graph) -> None:
     """
     gets a json file and beautifies it to make it readable
 
@@ -299,7 +297,7 @@ def get_icmp(path, name, log=False):
                     )
                     raise RuntimeError
                 if "icmp" in line2.strip():
-                    assert func_inst != None, "no function scope found"
+                    assert func_inst is not None, "no function scope found"
                     for_dict_llvm[func_inst][local_for_count_llvm] = [
                         line2.strip(),
                         idx,
@@ -348,7 +346,7 @@ def get_pragmas_loops(path, name, EXT="c", log=False):
                 not line or "scop" in line
             ):  ## if it's a blank line or #pragma scop in it, skip it
                 continue
-            if line.startswith("for(") or line.startswith("for "):
+            if line.startswith(("for(", "for ")):
                 for_count_source += 1
                 local_for_count_source += 1
             if pragma_zone:
@@ -368,7 +366,6 @@ def get_pragmas_loops(path, name, EXT="c", log=False):
                     )
                     raise RuntimeError
             elif line.startswith("#pragma") and "KERNEL" not in line.upper():
-                pragma_list = [line]
                 pragma_zone = True
 
     if log:
@@ -446,13 +443,12 @@ def create_pragma_nodes(g_nx, g_nx_nodes, for_dict_source, for_dict_llvm, log=Tr
 
                 new_node_id += 1
     if log:
-        pprint(new_nodes)
-        pprint(new_edges)
+        pass
 
     return new_nodes, new_edges
 
 
-def prune_redundant_nodes(g_new):
+def prune_redundant_nodes(g_new) -> None:
     while True:
         remove_nodes = set()
         for node in g_new.nodes():
@@ -466,7 +462,7 @@ def prune_redundant_nodes(g_new):
             break
 
 
-def process_graph(name, g, csv_dict=None):
+def process_graph(name, g, csv_dict=None) -> None:
     """
     adjusts the node/edge attributes, removes redundant nodes,
         and writes the final graph to be used by GNN-DSE
@@ -510,7 +506,9 @@ def process_graph(name, g, csv_dict=None):
         csv_dict[name] = current_g_value
 
 
-def graph_generator(name, path, benchmark, generate_programl=False, csv_dict=None):
+def graph_generator(
+    name, path, benchmark, generate_programl=False, csv_dict=None
+) -> None:
     """
     runs ProGraML [ICML'21] to generate the graph, adds the pragma nodes,
         processes the final graph to be accepted by GNN-DSE
@@ -650,7 +648,7 @@ def augment_graph_hierarchy(
     dst_path,
     csv_dict=None,
     node_type="block",
-):
+) -> None:
     if node_type == "block":
         gexf_file = join(src_path, f"{name}_processed_result.gexf")
         new_gexf_file = join(dst_path, f"{name}_processed_result.gexf")
@@ -759,7 +757,7 @@ def add_auxiliary_nodes(
     csv_dict,
     node_type="block",
     connected=False,
-):
+) -> None:
     if node_type == "block":
         gexf_file = join(path, f"{name}_processed_result.gexf")
         new_gexf_file = join(processed_path, f"{name}_processed_result.gexf")
@@ -838,7 +836,7 @@ def add_auxiliary_nodes(
         add_to_graph(g_new, nodes=new_nodes, edges=new_edges)
         prune_redundant_nodes(g_new)
         g_nx_nodes, g_nx_edges = g_new.number_of_nodes(), len(g_new.edges)
-        for f, b in block_func.items():
+        for b in block_func.values():
             # print(f, b)
             max_block += b["count"]
         assert g_nx_nodes == orig_nodes + max_block
@@ -856,23 +854,22 @@ def add_auxiliary_nodes(
         raise NotImplementedError
 
 
-def remove_extra_header(src_dir, kernel_name):
+def remove_extra_header(src_dir, kernel_name) -> None:
     from tempfile import mkstemp
 
     orig_file = join(src_dir, f"{kernel_name}.c")
     fnew, abs_path = mkstemp()
-    with open(fnew, "w") as fpnew:
-        with open(orig_file) as fp:
-            for line in fp:
-                if line.startswith("#include") and "merlin_type_define" in line:
-                    continue
-                fpnew.write(line)
+    with open(fnew, "w") as fpnew, open(orig_file) as fp:
+        for line in fp:
+            if line.startswith("#include") and "merlin_type_define" in line:
+                continue
+            fpnew.write(line)
 
     shutil.copymode(orig_file, abs_path)
     shutil.copy(abs_path, orig_file)
 
 
-def write_csv_file(csv_dict, csv_header, file_path):
+def write_csv_file(csv_dict, csv_header, file_path) -> None:
     with open(join(get_root_path(), file_path), mode="w") as f:
         f_writer = csv.DictWriter(f, fieldnames=csv_header)
         f_writer.writeheader()
@@ -885,10 +882,11 @@ def write_csv_file(csv_dict, csv_header, file_path):
 def run_graph_gen(
     mode="initial",
     connected=True,
-    target=["machsuite", "poly"],
+    target=None,
     ALL_KERNEL=ALL_KERNEL,
-):
-    test = "original"
+) -> None:
+    if target is None:
+        target = ["machsuite", "poly"]
     global processed_gexf_folder
     if mode == "initial":
         csv_header = ["name", "num_node", "num_edge"]

@@ -3,7 +3,7 @@
 import hashlib
 import time
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any
 
 from hlsfactory.framework import Design, Frontend
 from hlsfactory.utils import log_execution_time_to_file
@@ -39,7 +39,7 @@ class CPPPreprocessorFrontend(Frontend):
             new_designs.append(new_design)
 
             # Process the design files with the C++ preprocessor
-            design_files = sorted(new_design.dir.rglob("*.*"))
+            sorted(new_design.dir.rglob("*.*"))
 
         t_1 = time.perf_counter()
 

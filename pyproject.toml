@@ -12,7 +12,7 @@ keywords = [
     "Dataset",
 ]
 classifiers = []
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 
 dependencies = [
     "pandas",
@@ -20,7 +20,7 @@ dependencies = [
     "PyYAML",
     "tqdm",
     "python-dotenv",
-    "pydantic>=2.11.3",
+    "pydantic",
 ]
 
 [project.optional-dependencies]

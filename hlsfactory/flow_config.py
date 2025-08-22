@@ -1,7 +1,7 @@
+import tomllib
 from dataclasses import field
 from pathlib import Path
 
-import tomllib
 from pydantic.dataclasses import dataclass
 
 
@@ -46,4 +46,4 @@ def write_design_config(file_path: Path, config: DesignConfig) -> None:
         ],
     }
 
-    file_path.write_text(tomllib.dumps(config_dict))
+    file_path.write_text(tomllib.dumps(config_dict, indent=4, sort_keys=True))

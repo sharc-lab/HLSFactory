@@ -3,7 +3,7 @@ from copy import deepcopy
 from dataclasses import dataclass, field
 from itertools import product
 from pathlib import Path
-from typing import Dict, List, Self, TypeVar
+from typing import Self
 
 RE_PARAM_SET = re.compile(
     r"^auto\{\s*?([a-zA-Z0-9_]+?(?:\s*?,\s*?[a-zA-Z0-9_]+?)*?)\s*?\}(?:\[(\w+?)\])?$"

@@ -115,13 +115,12 @@ class DataAggregator(ABC):
         if n_jobs == 1:
             return [self.gather_all_data(design) for design in designs]
         pool = multiprocessing.Pool(n_jobs)
-        data = pool.map(self.gather_all_data, designs)
-        return data
+        return pool.map(self.gather_all_data, designs)
 
     def aggregated_data_to_csv(self, data: list[CompleteHLSData]) -> str:
         s = io.StringIO()
-        df = pd.DataFrame([d.to_flat_dict() for d in data])
-        df.to_csv(s, index=False)
+        df_agg = pd.DataFrame([d.to_flat_dict() for d in data])
+        df_agg.to_csv(s, index=False)
         return s.getvalue()
 
     def aggregated_data_to_csv_file(
@@ -134,8 +133,8 @@ class DataAggregator(ABC):
 
     def aggregated_data_to_json(self, data: list[CompleteHLSData]) -> str:
         s = io.StringIO()
-        df = pd.DataFrame([d.to_flat_dict() for d in data])
-        df.to_json(s, orient="records", indent=4)
+        df_agg = pd.DataFrame([d.to_flat_dict() for d in data])
+        df_agg.to_json(s, orient="records", indent=4)
         return s.getvalue()
 
     def aggregated_data_to_json_file(
@@ -156,7 +155,7 @@ class DataAggregator(ABC):
         with ZipFile(file_path, "w", ZIP_DEFLATED) as archive:
             archive.writestr("data_all.json", json_data_all)
             archive.writestr("data_all.csv", csv_data_all)
-            for i, d in enumerate(data):
+            for _i, d in enumerate(data):
                 design_id = d.design_id
                 json_data = d.to_json()
                 csv_data = d.to_csv()
@@ -260,7 +259,7 @@ class DataAggregatorXilinx(DataAggregator):
                 raise FileNotFoundError(f"No .adb files found in {adb_fp}")
             adb_xml_files = list(adb_fp.glob("*.adb.xml"))
             adb_xml_files = list(
-                filter(lambda x: x.name.count(".") == 2, adb_xml_files),
+                filter(lambda x: x.name.count(".") == 2, adb_xml_files),  # noqa: PLR2004
             )
             if len(adb_xml_files) == 0:
                 raise FileNotFoundError(f"No .adb.xml files found in {adb_fp}")

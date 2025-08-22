@@ -1,22 +1,16 @@
-import json
 import os
-import subprocess
-import unittest
 from dataclasses import dataclass
 from pathlib import Path
-from unittest.mock import mock_open, patch
+from unittest.mock import patch
 
 import pytest
 
 from hlsfactory.utils import (
-    CallToolResult,
     DirSource,
     ToolPathsSource,
-    call_tool,
     find_bin_path,
     get_tool_paths,
     get_work_dir,
-    log_execution_time_to_file,
     remove_and_make_new_dir_if_exists,
     serialize_methods_for_dataclass,
     timeout_not_supported,
@@ -47,11 +41,11 @@ def test_serialize_methods_for_dataclass() -> None:
     json_path = work_dir / "test.json"
     yaml_path = work_dir / "test.yaml"
 
-    test.to_json(json_path)
-    test.to_yaml(yaml_path)
+    test.to_json(json_path)  # type: ignore
+    test.to_yaml(yaml_path)  # type: ignore
 
-    test_from_json = TestDataclass.from_json(json_path)
-    test_from_yaml = TestDataclass.from_yaml(yaml_path)
+    test_from_json = TestDataclass.from_json(json_path)  # type: ignore
+    test_from_yaml = TestDataclass.from_yaml(yaml_path)  # type: ignore
 
     assert test == test_from_json
     assert test == test_from_yaml
@@ -103,7 +97,7 @@ def test_get_work_dir_temp() -> None:
 
 def test_get_work_dir_fallthrough() -> None:
     with pytest.raises(ValueError, match="Invalid dir_source"):
-        get_work_dir(dir_source=None)
+        get_work_dir(dir_source=None)  # type: ignore
 
 
 def test_get_tool_paths_envfile() -> None:
@@ -114,7 +108,7 @@ def test_get_tool_paths_envfile() -> None:
             "HLSFACTORY_VIVADO_PATH": "/non_existent_dir/vivado",
         },
     ):
-        assert get_tool_paths(tool_paths_source=ToolPathsSource.ENVFILE)
+        assert get_tool_paths(tool_paths_source=ToolPathsSource.ENVFILE)  # type: ignore
 
     with (
         patch(
@@ -138,7 +132,7 @@ def test_get_tool_paths_envfile() -> None:
 def test_get_tool_paths_env() -> None:
     os.environ["HLSFACTORY_VITIS_HLS_PATH"] = "/non_existent_dir/vitis_hls"
     os.environ["HLSFACTORY_VIVADO_PATH"] = "/non_existent_dir/vivado"
-    assert get_tool_paths(tool_paths_source=ToolPathsSource.ENV)
+    assert get_tool_paths(tool_paths_source=ToolPathsSource.ENV)  # type: ignore
     del os.environ["HLSFACTORY_VITIS_HLS_PATH"]
     with pytest.raises(
         ValueError,
@@ -153,4 +147,4 @@ def test_get_tool_paths_env() -> None:
 
 def test_get_tool_paths_fallthrough() -> None:
     with pytest.raises(ValueError, match="Invalid tool_paths_source"):
-        get_tool_paths(tool_paths_source=None)
+        get_tool_paths(tool_paths_source=None)  # type: ignore

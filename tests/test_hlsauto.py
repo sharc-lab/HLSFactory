@@ -74,7 +74,7 @@ def test_param_set_parse_invalid(invalid: str) -> None:
         HLSAutoParamSet.parse(invalid)
 
 
-def test_definition_pragma_single_positional_param():
+def test_definition_pragma_single_positional_param() -> None:
     p = HLSAutoDefinitionPragma.parse("#pragma HLS_AUTO inline auto{on, off}")
     assert p.pragma_name == "inline"
     assert p.args_const == {}
@@ -85,7 +85,7 @@ def test_definition_pragma_single_positional_param():
     assert p.kwargs_paramaterized == {}
 
 
-def test_definition_pragma_single_keyword_param():
+def test_definition_pragma_single_keyword_param() -> None:
     p = HLSAutoDefinitionPragma.parse("#pragma HLS_AUTO pipeline II=auto{1,2,4}")
     assert p.pragma_name == "pipeline"
     assert p.args_const == {}
@@ -97,7 +97,7 @@ def test_definition_pragma_single_keyword_param():
     assert param.group is None
 
 
-def test_definition_pragma_keyword_param_with_group():
+def test_definition_pragma_keyword_param_with_group() -> None:
     p = HLSAutoDefinitionPragma.parse(
         "#pragma HLS_AUTO array_partition variable=a type=cyclic factor=auto{1,2,4,8}[unroll_group]"
     )
@@ -111,7 +111,7 @@ def test_definition_pragma_keyword_param_with_group():
     assert param.group == "unroll_group"
 
 
-def test_definition_pragma_multiple_args_and_kwargs():
+def test_definition_pragma_multiple_args_and_kwargs() -> None:
     p = HLSAutoDefinitionPragma.parse(
         "#pragma HLS_AUTO foo bar baz auto{x, y} alpha=auto{1,2,3}[g] beta=2"
     )
@@ -125,7 +125,7 @@ def test_definition_pragma_multiple_args_and_kwargs():
     assert p.kwargs_const["beta"] == "2"
 
 
-def test_definition_pragma_multiple_positional_param():
+def test_definition_pragma_multiple_positional_param() -> None:
     p = HLSAutoDefinitionPragma.parse("#pragma HLS_AUTO test auto{1,2,3} auto{a,b,c}")
     assert p.pragma_name == "test"
     assert p.args_const == {}
@@ -134,7 +134,7 @@ def test_definition_pragma_multiple_positional_param():
     assert p.args_paramaterized[1].values == ["a", "b", "c"]
 
 
-def test_definition_pragma_args_only():
+def test_definition_pragma_args_only() -> None:
     p = HLSAutoDefinitionPragma.parse("#pragma HLS_AUTO reset sequential fast")
     assert p.pragma_name == "reset"
     assert p.args_const == {0: "sequential", 1: "fast"}
@@ -143,7 +143,7 @@ def test_definition_pragma_args_only():
     assert p.kwargs_paramaterized == {}
 
 
-def test_definition_pragma_no_params():
+def test_definition_pragma_no_params() -> None:
     p = HLSAutoDefinitionPragma.parse("#pragma HLS_AUTO latency")
     assert p.pragma_name == "latency"
     assert p.args_const == {}
@@ -152,7 +152,7 @@ def test_definition_pragma_no_params():
     assert p.kwargs_paramaterized == {}
 
 
-def test_definition_pragma_keyword_and_positional_param():
+def test_definition_pragma_keyword_and_positional_param() -> None:
     p = HLSAutoDefinitionPragma.parse(
         "#pragma HLS_AUTO example auto{fast,slow} mode=auto{a,b}"
     )
@@ -187,7 +187,7 @@ def test_definition_pragma_keyword_and_positional_param():
         "#pragma HLS_AUTO foo=}",  # Closing brace with no opening
     ],
 )
-def test_definition_pragma_invalid(txt):
+def test_definition_pragma_invalid(txt) -> None:
     with pytest.raises(ValueError):
         HLSAutoDefinitionPragma.parse(txt)
 

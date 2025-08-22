@@ -44,7 +44,7 @@ def main(args) -> None:
 
     PATH_VITIS_HLS, PATH_VIVADO = get_tool_paths(ToolPathsSource.ENVFILE)
     BIN_VITIS_HLS = PATH_VITIS_HLS / "bin" / "vitis_hls"
-    BIN_VIVADO = PATH_VIVADO / "bin" / "vivado"
+    PATH_VIVADO / "bin" / "vivado"
 
     N_JOBS = args.n_jobs
     CPU_AFFINITY = None

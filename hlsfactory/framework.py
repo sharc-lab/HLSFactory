@@ -184,7 +184,12 @@ def count_total_designs_in_dataset_collection(
 def worker_init(core_queue: multiprocessing.Queue) -> None:
     worker_core = core_queue.get()
     current_process = psutil.Process()
-    current_process.cpu_affinity([worker_core])
+    if hasattr(current_process, "cpu_affinity"):
+        current_process.cpu_affinity([worker_core])
+    else:
+        raise RuntimeError(
+            "Setting CPU affinity for subprocesses using psutil on this platform is not supported."
+        )
 
 
 class Flow(ABC):
@@ -225,8 +230,7 @@ class Flow(ABC):
         )
         pool.close()
         pool.join()
-        new_designs = [design for sublist in new_designs_lists for design in sublist]
-        return new_designs
+        return [design for sublist in new_designs_lists for design in sublist]
 
     def default_new_dataset_name_fn(self) -> Callable[[str], str]:
         return lambda x: f"{x}_post_{self.name}"

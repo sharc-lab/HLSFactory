@@ -31,7 +31,7 @@ class ArrayPartition:
     def get_num_of_directives(self):
         return self.num_of_directives
 
-    def append_directives(self, line):
+    def append_directives(self, line) -> None:
         self.directives.append(line)
 
     def get_directives(self):
@@ -39,7 +39,7 @@ class ArrayPartition:
 
 
 class LoopOpt:
-    def __init__(self, loop_settings: str):
+    def __init__(self, loop_settings: str) -> None:
         self.num_of_parameters = int(loop_settings.split(",")[1])
         self.num_of_directives = int(loop_settings.split(",")[2])
         # lines are actual templates to wrtie to tcl files
@@ -59,10 +59,10 @@ class LoopOpt:
                 output.append([loop_name, loop_pipeline, loop_unroll, unroll_factor])
         return output
 
-    def append_parameters(self, line):
+    def append_parameters(self, line) -> None:
         self.parameter_lines.append(line)
 
-    def append_directives(self, line):
+    def append_directives(self, line) -> None:
         self.directives.append(line)
 
     def get_directives(self):

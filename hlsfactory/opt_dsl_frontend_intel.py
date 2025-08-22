@@ -11,7 +11,7 @@ from hlsfactory.framework import Design, Frontend
 
 class ArrayPartition:
     # the first line as the input array_settings
-    def __init__(self, array_settings: str):
+    def __init__(self, array_settings: str) -> None:
         setting_lists = array_settings.split(",")
         self.num_of_directives = int(setting_lists[1])
         self.factors = setting_lists[2].strip("[]").split()
@@ -29,7 +29,7 @@ class ArrayPartition:
     def get_num_of_directives(self):
         return self.num_of_directives
 
-    def append_directives(self, line):
+    def append_directives(self, line) -> None:
         self.directives.append(line)
 
     def get_directives(self):
@@ -37,7 +37,7 @@ class ArrayPartition:
 
 
 class LoopOpt:
-    def __init__(self, loop_settings):
+    def __init__(self, loop_settings) -> None:
         self.num_of_parameters = int(loop_settings.split(",")[1])
         self.num_of_directives = int(loop_settings.split(",")[2])
         # lines are actual templates to wrtie to tcl files
@@ -57,10 +57,10 @@ class LoopOpt:
                 output.append([loop_name, loop_pipeline, loop_unroll, unroll_factor])
         return output
 
-    def append_parameters(self, line):
+    def append_parameters(self, line) -> None:
         self.parameter_lines.append(line)
 
-    def append_directives(self, line):
+    def append_directives(self, line) -> None:
         self.directives.append(line)
 
     def get_directives(self):
@@ -366,9 +366,8 @@ def generate_annotate_c(
             # numbanks( ) and array partition for machsuite
         elif "machsuite" in str(design_dir):
             #         component_names= ("void " + kernel_name, "int " +kernel_name)
-            for num, line in enumerate(kernel_f, 1):
+            for _num, line in enumerate(kernel_f, 1):
                 # iterate for functions only#
-                oldline = line
                 new_line = line
                 is_function = re.search(r"\bint\b.*\b\(\b", line) or re.search(
                     r"\bvoid\b.*\b\(\b",
@@ -497,7 +496,7 @@ class OptDSLFrontendIntel(Frontend):
             loop_opt_object_lists,
         )
 
-        design_list = generate_annotate_c(
+        return generate_annotate_c(
             design_dir,
             array_partition_lines,
             loop_opt_lines,
@@ -508,5 +507,3 @@ class OptDSLFrontendIntel(Frontend):
             self.random_sample,
             self.random_sample_num,
         )
-
-        return design_list
