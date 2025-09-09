@@ -1,0 +1,6 @@
+CompileFlags:
+  Add:
+    - "-I/tools/software/xilinx/ARCHIVE/Vitis_HLS/2024.1/include"
+    - "-xc++"
+    - "-std=c++14"
+  Compiler: "/usr/scratch/skaram7/vitis_clang_wrapper.sh"
