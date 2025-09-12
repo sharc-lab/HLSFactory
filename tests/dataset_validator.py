@@ -49,7 +49,7 @@ def main(args) -> None:
     N_JOBS = args.n_jobs
     CPU_AFFINITY = None
 
-    TIMEOUT_HLS_SYNTH = 60.0 * 12  # 8 minutes
+    TIMEOUT_HLS_SYNTH = 60.0 * 12  # 12 minutes
     TIMEOUT_HLS_IMPL = 60.0 * 30  # 30 minutes
 
     if args.name is None:

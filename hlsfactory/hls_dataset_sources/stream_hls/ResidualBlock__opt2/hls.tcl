@@ -2,8 +2,9 @@ open_project hls_[lindex $argv 0]
 set_top forward
 add_files src/[lindex $argv 0].cpp
 add_files -tb src/[lindex $argv 0]_tb.cpp
+add_files -tb data/
 open_solution "solution1"
-set_part xcu200-fsgd2104-2-e
+set_part {xczu9eg-ffvb1156-2-i}
 create_clock -name ap_clk -period 3.33
 # config_interface -m_axi_addr64 -m_axi_offset off -register_io off
 # if [lindex $argv 1] is csim, then csim_design, else if [lindex $argv 1] is csynth, then csynth_design

@@ -37,13 +37,14 @@ void forward(
 );
 int32_t main(int argc, char **argv) {
   // get environment variable PRJ_PATH
-  char* prj_path_c_str = getenv("PRJ_PATH");
-  if (prj_path_c_str == NULL) {
-    std::cerr << "Environment variable PRJ_PATH not set" << std::endl;
-    return 1;
-  }
-  std::string prj_path_str(prj_path_c_str);
-  std::cout << "PRJ_PATH: " << prj_path_str << std::endl;
+//   char* prj_path_c_str = getenv("PRJ_PATH");
+//   if (prj_path_c_str == NULL) {
+//     std::cerr << "Environment variable PRJ_PATH not set" << std::endl;
+//     return 1;
+//   }
+//   std::string prj_path_str(prj_path_c_str);
+//   std::cout << "PRJ_PATH: " << prj_path_str << std::endl;
+  std::string prj_path_str = ".";
 
   float v0[1][512][128];
   std::ifstream input_0ifs(prj_path_str + "/data/input_0.bin", std::ios::binary);
@@ -110,4 +111,3 @@ int32_t main(int argc, char **argv) {
   assert(v18 && "Error!");
   return 0;
 }
-

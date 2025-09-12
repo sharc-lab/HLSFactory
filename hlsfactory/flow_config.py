@@ -17,7 +17,6 @@ class DesignConfig:
     dataset_name: str
 
     env_vars: dict[str, str] = field(default_factory=dict)
-
     flow_configs: list[FlowConfig] = field(default_factory=list)
 
 
