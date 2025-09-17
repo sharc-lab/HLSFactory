@@ -13,7 +13,7 @@ run_hls:
 	ln -sf ../cpp/ntt.h .; \
 	ln -sf ../src .; \
 	sed -i 's/@MODULE_NAME@/$(target)/g' run_hls.tcl; \
-	vitis_hls -f run_hls.tcl
+	# vitis_hls -f run_hls.tcl
 
 clean:
 	rm -rf *_project

@@ -1,0 +1,52 @@
+#include "gemm-p.h"
+#include <string.h>
+void kernel_gemm(int ni,int nj,int nk,double alpha,double beta,double C[60][70],double A[60][80],double B[80][70])
+{
+  double C_buf[60][70];
+  double A_buf[60][80];
+  double B_buf[80][70];
+  int i;
+  int j;
+  int k;
+//BLAS PARAMS
+//TRA_bufNSA_buf = 'N'
+//TRA_bufNSB_buf = 'N'
+// => Form C_buf := alpha_buf*A_buf*B_buf + beta_buf*C_buf,
+//A is NIxNK
+//B is NKxNJ
+//C is NIxNJ
+  memcpy(A_buf, A, sizeof(double) * 60 * 80);
+  memcpy(B_buf, B, sizeof(double) * 80 * 70);
+  memcpy(C_buf, C, sizeof(double) * 60 * 70);
+L0:   for (i = 0; i < 60; i++) {
+
+#pragma HLS pipeline auto{__PIPE__L0}
+
+#pragma HLS unroll factor=auto{__PARA__L0}
+
+L1:     for (j = 0; j < 70; j++) {
+
+#pragma HLS pipeline auto{__PIPE__L1}
+
+#pragma HLS unroll factor=auto{__PARA__L1}
+
+      C_buf[i][j] *= beta;
+    }
+L2:     for (k = 0; k < 80; k++) {
+
+#pragma HLS pipeline auto{__PIPE__L2}
+
+#pragma HLS unroll factor=auto{__PARA__L2}
+
+L3:       for (j = 0; j < 70; j++) {
+
+#pragma HLS pipeline auto{__PIPE__L3}
+
+#pragma HLS unroll factor=auto{__PARA__L3}
+
+        C_buf[i][j] += alpha * A_buf[i][k] * B_buf[k][j];
+      }
+    }
+  }
+  memcpy(C, C_buf, sizeof(double) * 60 * 70);
+}
