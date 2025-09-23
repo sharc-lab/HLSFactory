@@ -124,6 +124,9 @@ class OptDSLFrontend(Frontend):
 
         with open(opt_template_fp) as file:
             opt_dsl = OptDSL(file.read())
+        
+        if opt_dsl.opt_dsl_error:
+            raise ValueError(opt_dsl.error_message)
 
         static_lines, groups, pipelines, partitions, unrolls = opt_dsl.get_directives()
 
