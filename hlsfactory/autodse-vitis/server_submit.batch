@@ -1,0 +1,14 @@
+#!/bin/bash
+#SBATCH --job-name=hls-dse
+#SBATCH -o %x-%A_%a.out
+#SBATCH --cpus-per-task=8
+#SBATCH --mem 45G
+#SBATCH --qos=low
+#SBATCH -p batch
+###SBATCH -w c00
+
+# Run the single DSE experiment
+bash server_single_run.sh
+
+
+
