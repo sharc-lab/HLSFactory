@@ -66,16 +66,16 @@ hls_data.to_csv_file(Path("output.csv"))
 
 The `DataAggregator` class is a utility class that provides a set of methods to aggregate and package data from multiple designs and datasets. The `DataAggregator` class is designed to be used in conjunction with the `DesignDataset` and `DesignDatasetCollection` classes to aggregate and package data across multiple designs and datasets.
 
-### Abstarct Methods
+### Abstract Methods
 
 Below is the set of abstract methods a `DataAggregator` subclass can implement:
 
 - `gather_hls_design_data(design)`: Gathers design data for the specified design.
 - `gather_hls_synthesis_data(design)`: Gathers synthesis data for the specified design.
 - `gather_hls_implementation_data(design)`: Gathers implementation data for the specified design.
-- `gather_hls_execution_data(design)`: Gathers execution data for the specified design. -->
+- `gather_hls_execution_data(design)`: Gathers execution data for the specified design.
 
-A `DataAggregator` subclass can implement one or more of these methods to gather data from different HLS tools and flows and does not need to implement all of them. THis is because not all runs and flows may generate all types of data. This also means that end users can also call a subset of these methods to gather only the data they are interested in.
+A `DataAggregator` subclass can implement one or more of these methods to gather data from different HLS tools and flows and does not need to implement all of them. This is because not all runs and flows may generate all types of data. This also means that end users can call a subset of these methods to gather only the data they are interested in.
 
 ## Xilinx Data Aggregation
 

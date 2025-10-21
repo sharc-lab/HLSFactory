@@ -69,6 +69,9 @@ Functions
    * - :py:obj:`remove_and_make_new_dir_if_exists <hlsfactory.utils.remove_and_make_new_dir_if_exists>`
      - .. autodoc2-docstring:: hlsfactory.utils.remove_and_make_new_dir_if_exists
           :summary:
+   * - :py:obj:`unwrap <hlsfactory.utils.unwrap>`
+     - .. autodoc2-docstring:: hlsfactory.utils.unwrap
+          :summary:
 
 Data
 ~~~~
@@ -80,16 +83,23 @@ Data
    * - :py:obj:`T <hlsfactory.utils.T>`
      - .. autodoc2-docstring:: hlsfactory.utils.T
           :summary:
+   * - :py:obj:`T_unwrap <hlsfactory.utils.T_unwrap>`
+     - .. autodoc2-docstring:: hlsfactory.utils.T_unwrap
+          :summary:
 
 API
 ~~~
 
-.. py:class:: CallToolResult
+.. py:class:: CallToolResult(*args, **kwds)
    :canonical: hlsfactory.utils.CallToolResult
 
    Bases: :py:obj:`enum.Enum`
 
    .. autodoc2-docstring:: hlsfactory.utils.CallToolResult
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: hlsfactory.utils.CallToolResult.__init__
 
    .. py:attribute:: SUCCESS
       :canonical: hlsfactory.utils.CallToolResult.SUCCESS
@@ -109,7 +119,7 @@ API
 
       .. autodoc2-docstring:: hlsfactory.utils.CallToolResult.ERROR
 
-.. py:function:: call_tool(cmd: str, cwd: pathlib.Path, shell: bool = False, timeout: float | None = None, log_output: bool = False, raise_on_error: bool = True) -> hlsfactory.utils.CallToolResult
+.. py:function:: call_tool(cmd: str, cwd: pathlib.Path, shell: bool = False, timeout: float | None = None, log_output: bool = False, raise_on_error: bool = False) -> hlsfactory.utils.CallToolResult
    :canonical: hlsfactory.utils.call_tool
 
    .. autodoc2-docstring:: hlsfactory.utils.call_tool
@@ -184,12 +194,16 @@ API
 
    .. autodoc2-docstring:: hlsfactory.utils.timeout_not_supported
 
-.. py:class:: DirSource
+.. py:class:: DirSource(*args, **kwds)
    :canonical: hlsfactory.utils.DirSource
 
    Bases: :py:obj:`enum.Enum`
 
    .. autodoc2-docstring:: hlsfactory.utils.DirSource
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: hlsfactory.utils.DirSource.__init__
 
    .. py:attribute:: ENVFILE
       :canonical: hlsfactory.utils.DirSource.ENVFILE
@@ -209,17 +223,21 @@ API
 
       .. autodoc2-docstring:: hlsfactory.utils.DirSource.TEMP
 
-.. py:function:: get_work_dir(dir_source: hlsfactory.utils.DirSource = DirSource.ENVFILE) -> pathlib.Path
+.. py:function:: get_work_dir(dir_source: hlsfactory.utils.DirSource = DirSource.ENVFILE, env_file_path: pathlib.Path | None = None, use_cwd: bool = True) -> pathlib.Path
    :canonical: hlsfactory.utils.get_work_dir
 
    .. autodoc2-docstring:: hlsfactory.utils.get_work_dir
 
-.. py:class:: ToolPathsSource
+.. py:class:: ToolPathsSource(*args, **kwds)
    :canonical: hlsfactory.utils.ToolPathsSource
 
    Bases: :py:obj:`enum.Enum`
 
    .. autodoc2-docstring:: hlsfactory.utils.ToolPathsSource
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: hlsfactory.utils.ToolPathsSource.__init__
 
    .. py:attribute:: ENVFILE
       :canonical: hlsfactory.utils.ToolPathsSource.ENVFILE
@@ -233,7 +251,7 @@ API
 
       .. autodoc2-docstring:: hlsfactory.utils.ToolPathsSource.ENV
 
-.. py:function:: get_tool_paths(tool_paths_source: hlsfactory.utils.ToolPathsSource) -> tuple[pathlib.Path, pathlib.Path]
+.. py:function:: get_tool_paths(tool_paths_source: hlsfactory.utils.ToolPathsSource, env_file_path: pathlib.Path | None = None, use_cwd: bool = True) -> tuple[pathlib.Path, pathlib.Path]
    :canonical: hlsfactory.utils.get_tool_paths
 
    .. autodoc2-docstring:: hlsfactory.utils.get_tool_paths
@@ -247,3 +265,14 @@ API
    :canonical: hlsfactory.utils.remove_and_make_new_dir_if_exists
 
    .. autodoc2-docstring:: hlsfactory.utils.remove_and_make_new_dir_if_exists
+
+.. py:data:: T_unwrap
+   :canonical: hlsfactory.utils.T_unwrap
+   :value: 'TypeVar(...)'
+
+   .. autodoc2-docstring:: hlsfactory.utils.T_unwrap
+
+.. py:function:: unwrap(value: hlsfactory.utils.T_unwrap | None, error_message: str | None = None) -> hlsfactory.utils.T_unwrap
+   :canonical: hlsfactory.utils.unwrap
+
+   .. autodoc2-docstring:: hlsfactory.utils.unwrap

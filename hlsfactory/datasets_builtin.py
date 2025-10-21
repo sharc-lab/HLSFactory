@@ -17,6 +17,9 @@ DIR_DATASET_VITIS_EXAMPLES = HLS_DATASET_DIR / "vitis_examples"
 DIR_DATASET_ACCELERATORS = HLS_DATASET_DIR / "accelerators"
 
 DIR_DATASET_SODA = HLS_DATASET_DIR / "soda"
+DIR_DATASET_HP_FFT = HLS_DATASET_DIR / "hp_fft_hls"
+DIR_DATASET_STREAM_HLS = HLS_DATASET_DIR / "stream_hls"
+DIR_DATASET_AUTO_NTT = HLS_DATASET_DIR / "auto_ntt"
 DIR_DATASET_FORGEBENCH = HLS_DATASET_DIR / "forgebench"
 
 DIR_ALL = [
@@ -27,6 +30,9 @@ DIR_ALL = [
     DIR_DATASET_VITIS_EXAMPLES,
     DIR_DATASET_ACCELERATORS,
     DIR_DATASET_SODA,
+    DIR_DATASET_HP_FFT,
+    DIR_DATASET_STREAM_HLS,
+    DIR_DATASET_AUTO_NTT,
     DIR_DATASET_FORGEBENCH,
 ]
 
@@ -90,6 +96,27 @@ def dataset_soda_builder(name: str, work_dir: Path) -> DesignDataset:
     return DesignDataset.from_dir(name, new_dir)
 
 
+def dataset_hp_fft_builder(name: str, work_dir: Path) -> DesignDataset:
+    check_dataset_dir_exists(DIR_DATASET_HP_FFT)
+    new_dir = work_dir / name
+    shutil.copytree(DIR_DATASET_HP_FFT, new_dir)
+    return DesignDataset.from_dir(name, new_dir)
+
+
+def dataset_stream_hls_builder(name: str, work_dir: Path) -> DesignDataset:
+    check_dataset_dir_exists(DIR_DATASET_STREAM_HLS)
+    new_dir = work_dir / name
+    shutil.copytree(DIR_DATASET_STREAM_HLS, new_dir)
+    return DesignDataset.from_dir(name, new_dir)
+
+
+def dataset_auto_ntt_builder(name: str, work_dir: Path) -> DesignDataset:
+    check_dataset_dir_exists(DIR_DATASET_AUTO_NTT)
+    new_dir = work_dir / name
+    shutil.copytree(DIR_DATASET_AUTO_NTT, new_dir)
+    return DesignDataset.from_dir(name, new_dir)
+
+
 def dataset_forgebench_builder(name: str, work_dir: Path) -> DesignDataset:
     check_dataset_dir_exists(DIR_DATASET_FORGEBENCH)
     new_dir = work_dir / name
@@ -107,6 +134,12 @@ DATASET_STR_MAP: dict[str, T_dataset_builder] = {
     "vitis_examples": dataset_vitis_examples_builder,
     "accelerators": dataset_accelerators_builder,
     "soda": dataset_soda_builder,
+    "hp_fft": dataset_hp_fft_builder,
+    "hpfft": dataset_hp_fft_builder,
+    "stream_hls": dataset_stream_hls_builder,
+    "streamhls": dataset_stream_hls_builder,
+    "auto_ntt": dataset_auto_ntt_builder,
+    "autontt": dataset_auto_ntt_builder,
     "forgebench": dataset_forgebench_builder,
 }
 
@@ -148,6 +181,9 @@ def datasets_all_builder(work_dir: Path) -> DesignDatasetCollection:
     dataset_vitis_examples = dataset_vitis_examples_builder("vitis_examples", work_dir)
     dataset_accelerators = dataset_accelerators_builder("accelerators", work_dir)
     dataset_soda = dataset_soda_builder("soda", work_dir)
+    dataset_hp_fft = dataset_hp_fft_builder("hp_fft", work_dir)
+    dataset_stream_hls = dataset_stream_hls_builder("stream_hls", work_dir)
+    dataset_auto_ntt = dataset_auto_ntt_builder("auto_ntt", work_dir)
     dataset_forgebench = dataset_forgebench_builder("forgebench", work_dir)
     return {
         dataset_polybench.name: dataset_polybench,
@@ -157,5 +193,8 @@ def datasets_all_builder(work_dir: Path) -> DesignDatasetCollection:
         dataset_vitis_examples.name: dataset_vitis_examples,
         dataset_accelerators.name: dataset_accelerators,
         dataset_soda.name: dataset_soda,
+        dataset_hp_fft.name: dataset_hp_fft,
+        dataset_stream_hls.name: dataset_stream_hls,
+        dataset_auto_ntt.name: dataset_auto_ntt,
         dataset_forgebench.name: dataset_forgebench,
     }

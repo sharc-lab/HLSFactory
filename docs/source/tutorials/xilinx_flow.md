@@ -1,12 +1,12 @@
 # End-to-End Xilinx Flow
 
-This tutorial demonstrates an end-to-end for dataset setup, frontend elaboration, HLS synthesis, implementation, and reporting using the Xilinx Vitis HLS and Vivado tools.
+This tutorial demonstrates an end-to-end workflow for dataset setup, frontend elaboration, HLS synthesis, implementation, and reporting using the Xilinx Vitis HLS and Vivado tools.
 
-This demo can be found as as single script and as a Jupyter notebook in the `demos/demo_full_flow_xilinx` directory of the HLSFactory repository.
+This demo can be found as a single script and as a Jupyter notebook in the `demos/demo_full_flow_xilinx` directory of the HLSFactory repository.
 
 ## Setup
 
-First, we need to set up some basic configurations such as the working directory where designs will be stored and built, the number of cores to run stuff in parallel, and the paths to the Xilinx Vitis HLS and Vivado tools.
+First, we need to set up some basic configurations such as the working directory where designs will be stored and built, the number of cores to run jobs in parallel, and the paths to the Xilinx Vitis HLS and Vivado tools.
 
 ```python
 from hlsfactory.utils import (
@@ -22,7 +22,7 @@ WORK_DIR_TOP = get_work_dir(dir_source=DirSource.ENVFILE)
 WORK_DIR = WORK_DIR_TOP / "demo_full_flow_xilinx"
 remove_and_make_new_dir_if_exists(WORK_DIR)
 
-# Number of cores to run stuff in parallel
+# Number of cores to run jobs in parallel
 N_JOBS = 32
 CPU_AFFINITY = list(range(N_JOBS))
 
@@ -32,9 +32,9 @@ VIVADO_BIN = VIVADO_PATH / "bin" / "vivado"
 VITIS_HLS_BIN = VITIS_HLS_PATH / "bin" / "vitis_hls"
 ```
 
-HLSFactory provides helper functions to set up the working directory and tool paths. The `get_work_dir` function looks for a variable/key in an `.env` file called `HLSFACTORY_WORK_DIR`. The `get_tool_paths` function looks for variables/keys in an `.env` file called `HLSFACTORY_VITIS_HLS_PATH` and `HLSFACTORY_VIVADO_PATH`. These helper functions can also search in other places for the variables/keys; see [](hlsfactory.utils) module API documentation for more info.
+HLSFactory provides helper functions to set up the working directory and tool paths. The `get_work_dir` function looks for a variable/key in an `.env` file called `HLSFACTORY_WORK_DIR`. The `get_tool_paths` function looks for variables/keys in an `.env` file called `HLSFACTORY_VITIS_HLS_PATH` and `HLSFACTORY_VIVADO_PATH`. These helper functions can also search in other places for these variables; see the [](hlsfactory.utils) module API documentation for more information.
 
-For this demo please set the `HLSFACTORY_WORK_DIR`, `HLSFACTORY_VITIS_HLS_PATH`, and `HLSFACTORY_VIVADO_PATH` variables in an local `.env` file to the paths of your working directory where you want to store and build the designs, the path to the Xilinx Vitis HLS tool, and the path to the Xilinx Vivado tool. You can also modify the code to define these paths directly in the script as `pathlib.Path` objects.
+For this demo, please set the `HLSFACTORY_WORK_DIR`, `HLSFACTORY_VITIS_HLS_PATH`, and `HLSFACTORY_VIVADO_PATH` variables in a local `.env` file to the paths of your working directory where you want to store and build the designs, the path to the Xilinx Vitis HLS tool, and the path to the Xilinx Vivado tool. You can also modify the code to define these paths directly in the script as `pathlib.Path` objects.
 
 ## Dataset Setup
 
@@ -62,11 +62,11 @@ total_count = count_total_designs_in_dataset_collection(datasets)
 print(f"Total Designs: {total_count}")
 ```
 
-The `datasets_builder` function creates a dataset collection with the specified datasets. The HLS source code for the deigns in these datasets are built into the HLSFactory package itself so no other external downloads or setup is needed to load these datasets. The `dataset_labels` argument is optional and can be used to assign user specified names to the datasets rather than the default names. Datasets are loaded by a list of keys that correspond to the datasets in the `datasets_builtin` module. For more information about the datasets and the keys, see the [](../built_in_datasets.md) page as well as the [](hlsfactory.datasets_builtin) module API documentation.
+The `datasets_builder` function creates a dataset collection with the specified datasets. The HLS source code for the designs in these datasets is built into the HLSFactory package itself, so no other external downloads or setup are needed to load these datasets. The `dataset_labels` argument is optional and can be used to assign user-specified names to the datasets rather than the default names. Datasets are loaded by a list of keys that correspond to the datasets in the `datasets_builtin` module. For more information about the datasets and the keys, see the [](../built_in_datasets.md) page as well as the [](hlsfactory.datasets_builtin) module API documentation.
 
 In this demo, we load the Polybench, MachSuite, and CHStone datasets built into HLSFactory.
 
-After this step, the working directory will look as follows.
+After this step, the working directory looks as follows:
 
 ```text
 - WORK_DIR/
@@ -115,7 +115,7 @@ print(f"Total Designs post-frontend: {total_count_post_frontend}")
 
 This step will take the designs in the datasets and generate many different variations of each design based on the specified design space. This is done by specifying what pragmas can be inserted into the design and the different possible values for pragma parameters.
 
-For example, I can specify a design space to include three loop unroll pragmas for three different loops. For each pragma, I can set a range of values for the unroll factor. The `OptDSLFrontend` can then look at this design space, sample different combinations of enabling loop unrolling and the unrolling factor, and generate a new design for each combination. Currently, the `OptDSLFrontend` supports pipelining, loop unrolling, and array partitioning for Xilinx Vitis HLS and Intel HLS flows.
+For example, you can specify a design space to include three loop unroll pragmas for three different loops. For each pragma, you can set a range of values for the unroll factor. The `OptDSLFrontend` can then look at this design space, sample different combinations of enabling loop unrolling and the unrolling factor, and generate a new design for each combination. Currently, the `OptDSLFrontend` supports pipelining, loop unrolling, and array partitioning for Xilinx Vitis HLS and Intel HLS flows.
 
 In most cases, enumerating designs for the entire design space can result in hundreds or thousands of design variations for a single design. For some users, this is overkill and may be limited by the amount of compute and time they have to run HLS synthesis and implementation. Therefore, the `OptDSLFrontend` has an option to sample a fixed random subset of the design space. This is done by setting the `random_sample` flag to `True` and specifying the number of random samples to take with the `random_sample_num` argument. The `random_sample_seed` argument is used to set the seed for the random number generator to ensure reproducibility.
 
@@ -123,9 +123,8 @@ Note that the built-in datasets have pre-defined design spaces that are used by 
 
 The main motivation of a frontend like OptDSL is to expand and diversify the final generated dataset of HLS designs. In the end, this will result in a larger and more robust dataset for applications such as machine learning and benchmarking.
 
-After this step the working directory will look as follows.
+After this step, the working directory looks as follows:
 
-```text
 ```text
 - WORK_DIR/
     - polybench_xilinx/
@@ -147,7 +146,7 @@ After this step the working directory will look as follows.
         - ...
 ```
 
-This is because the `OptDSLFrontend` was setup to copy the datasets and add a `__post_frontend` suffix to the dataset labels. The frontend then generates new designs in these copied datasets.
+This is because the `OptDSLFrontend` was set up to copy the datasets and add a `__post_frontend` suffix to the dataset labels. The frontend then generates new designs in these copied datasets.
 
 ## HLS Synthesis and Implementation Flows
 
@@ -247,4 +246,4 @@ The `VitisHLSImplFlow` generates a `data_implementation.json` file that contains
 
 Additionally, any time a flow is run, its execution data is logged to a common `execution_time_data.json` file in the design directory. When a flow is run, it finds the existing `execution_time_data.json` file (or creates it if it does not exist) and appends the execution time of the current flow and the core ID the flow ran on to the file.
 
-This data can be manually aggregated by the user, but HLSFactory also provides facilities to aggregate and process this data into data tables and archived datasets along with automatically extracting build artifacts. See [](./data_agg.md) tutorial to explore these features.
+This data can be manually aggregated by the user, but HLSFactory also provides facilities to aggregate and process this data into data tables and archived datasets along with automatically extracting build artifacts. See the [](./data_agg.md) tutorial to explore these features.

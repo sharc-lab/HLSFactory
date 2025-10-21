@@ -244,6 +244,6 @@ Example: `atax_a1b2c3d4e5f6`
 
 ## Required Files
 
-For OptDSL to work with a design, the following files must be present in a desin directory:
+For OptDSL to work with a design, the following files must be present in a design directory:
 
 - **`opt_template.tcl`**: OptDSL specification and directive templates

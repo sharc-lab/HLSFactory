@@ -21,12 +21,14 @@ dependencies = [
     "tqdm",
     "python-dotenv",
     "pydantic",
+    "sphinx>=8.2.3",
 ]
 
 [project.optional-dependencies]
 test = ["pytest", "pytest-cov", "pytest-mock"]
 docs = [
     "sphinx",
+    "sphinx-autobuild",
     "furo",
     "sphinx-autodoc-typehints",
     "myst-parser",
@@ -34,6 +36,15 @@ docs = [
     "sphinx-copybutton",
     "sphinxext-opengraph",
     "sphinx-autodoc2",
+]
+demos = [
+    "matplotlib",
+    "seaborn",
+    "numpy",
+    "scipy",
+    "scikit-learn",
+    "pandas",
+    "jupyter",
 ]
 
 [project.urls]

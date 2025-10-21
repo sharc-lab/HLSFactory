@@ -66,7 +66,7 @@ API
 
       .. autodoc2-docstring:: hlsfactory.opt_dsl_frontend.ArrayPartition.get_num_of_directives
 
-   .. py:method:: append_directives(line)
+   .. py:method:: append_directives(line) -> None
       :canonical: hlsfactory.opt_dsl_frontend.ArrayPartition.append_directives
 
       .. autodoc2-docstring:: hlsfactory.opt_dsl_frontend.ArrayPartition.append_directives
@@ -90,12 +90,12 @@ API
 
       .. autodoc2-docstring:: hlsfactory.opt_dsl_frontend.LoopOpt.get_flattened
 
-   .. py:method:: append_parameters(line)
+   .. py:method:: append_parameters(line) -> None
       :canonical: hlsfactory.opt_dsl_frontend.LoopOpt.append_parameters
 
       .. autodoc2-docstring:: hlsfactory.opt_dsl_frontend.LoopOpt.append_parameters
 
-   .. py:method:: append_directives(line)
+   .. py:method:: append_directives(line) -> None
       :canonical: hlsfactory.opt_dsl_frontend.LoopOpt.append_directives
 
       .. autodoc2-docstring:: hlsfactory.opt_dsl_frontend.LoopOpt.append_directives
@@ -125,7 +125,7 @@ API
 
    .. autodoc2-docstring:: hlsfactory.opt_dsl_frontend.gen_opt
 
-.. py:function:: generate_opt_sources(array_partition_lines, loop_opt_lines, static_lines, random_sample: bool = False, random_sample_num: int = 10, random_sample_seed: int = 42) -> list[str]
+.. py:function:: generate_opt_sources(array_partition_lines, loop_opt_lines, static_lines, random_sample: bool = False, random_sample_num: int = 10, random_sample_seed: int = 42) -> tuple[list[str], list[dict]]
    :canonical: hlsfactory.opt_dsl_frontend.generate_opt_sources
 
    .. autodoc2-docstring:: hlsfactory.opt_dsl_frontend.generate_opt_sources

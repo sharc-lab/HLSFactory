@@ -26,6 +26,10 @@ Classes
      -
    * - :py:obj:`VitisHLSCosimSetupFlow <hlsfactory.flow_vitis.VitisHLSCosimSetupFlow>`
      -
+   * - :py:obj:`VitisHLSCosimFlow <hlsfactory.flow_vitis.VitisHLSCosimFlow>`
+     -
+   * - :py:obj:`VitisHLSCsimFlow <hlsfactory.flow_vitis.VitisHLSCsimFlow>`
+     -
    * - :py:obj:`VitisHLSImplFlow <hlsfactory.flow_vitis.VitisHLSImplFlow>`
      -
    * - :py:obj:`VitisHLSImplReportFlow <hlsfactory.flow_vitis.VitisHLSImplReportFlow>`
@@ -274,10 +278,42 @@ API
 
       .. autodoc2-docstring:: hlsfactory.flow_vitis.VitisHLSCosimSetupFlow.name
 
-   .. py:method:: execute(design: hlsfactory.framework.Design) -> list[hlsfactory.framework.Design]
+   .. py:method:: execute(design: hlsfactory.framework.Design, timeout: float | None = None) -> list[hlsfactory.framework.Design]
       :canonical: hlsfactory.flow_vitis.VitisHLSCosimSetupFlow.execute
 
       .. autodoc2-docstring:: hlsfactory.flow_vitis.VitisHLSCosimSetupFlow.execute
+
+.. py:class:: VitisHLSCosimFlow(vitis_hls_bin: str | None = None, log_output: bool = False)
+   :canonical: hlsfactory.flow_vitis.VitisHLSCosimFlow
+
+   Bases: :py:obj:`hlsfactory.framework.ToolFlow`
+
+   .. py:attribute:: name
+      :canonical: hlsfactory.flow_vitis.VitisHLSCosimFlow.name
+      :value: 'VitisHLSCosimFlow'
+
+      .. autodoc2-docstring:: hlsfactory.flow_vitis.VitisHLSCosimFlow.name
+
+   .. py:method:: execute(design: hlsfactory.framework.Design, timeout: float | None = None) -> list[hlsfactory.framework.Design]
+      :canonical: hlsfactory.flow_vitis.VitisHLSCosimFlow.execute
+
+      .. autodoc2-docstring:: hlsfactory.flow_vitis.VitisHLSCosimFlow.execute
+
+.. py:class:: VitisHLSCsimFlow(vitis_hls_bin: str | None = None, log_output: bool = False, env_var_xilinx_hls: str | None = None, env_var_xilinx_vivado: str | None = None)
+   :canonical: hlsfactory.flow_vitis.VitisHLSCsimFlow
+
+   Bases: :py:obj:`hlsfactory.framework.ToolFlow`
+
+   .. py:attribute:: name
+      :canonical: hlsfactory.flow_vitis.VitisHLSCsimFlow.name
+      :value: 'VitisHLSCsimFlow'
+
+      .. autodoc2-docstring:: hlsfactory.flow_vitis.VitisHLSCsimFlow.name
+
+   .. py:method:: execute(design: hlsfactory.framework.Design, timeout: float | None = None) -> list[hlsfactory.framework.Design]
+      :canonical: hlsfactory.flow_vitis.VitisHLSCsimFlow.execute
+
+      .. autodoc2-docstring:: hlsfactory.flow_vitis.VitisHLSCsimFlow.execute
 
 .. py:class:: VitisHLSImplFlow(vitis_hls_bin: str | None = None, log_output: bool = False, env_var_xilinx_hls: str | None = None, env_var_xilinx_vivado: str | None = None)
    :canonical: hlsfactory.flow_vitis.VitisHLSImplFlow
@@ -306,7 +342,7 @@ API
 
       .. autodoc2-docstring:: hlsfactory.flow_vitis.VitisHLSImplReportFlow.name
 
-   .. py:method:: execute(design: hlsfactory.framework.Design, timeout: float | None) -> list[hlsfactory.framework.Design]
+   .. py:method:: execute(design: hlsfactory.framework.Design, timeout: float | None = None) -> list[hlsfactory.framework.Design]
       :canonical: hlsfactory.flow_vitis.VitisHLSImplReportFlow.execute
 
       .. autodoc2-docstring:: hlsfactory.flow_vitis.VitisHLSImplReportFlow.execute

@@ -100,6 +100,13 @@ API
 
       .. autodoc2-docstring:: hlsfactory.data_packaging.CompleteHLSData.artifacts
 
+   .. py:attribute:: design_id
+      :canonical: hlsfactory.data_packaging.CompleteHLSData.design_id
+      :type: str
+      :value: 'field(...)'
+
+      .. autodoc2-docstring:: hlsfactory.data_packaging.CompleteHLSData.design_id
+
    .. py:method:: to_flat_dict() -> dict
       :canonical: hlsfactory.data_packaging.CompleteHLSData.to_flat_dict
 
@@ -207,7 +214,7 @@ API
 
    .. autodoc2-docstring:: hlsfactory.data_packaging.ArtifactCollection
 
-.. py:class:: ArtifactsXilinx
+.. py:class:: ArtifactsXilinx(*args, **kwds)
    :canonical: hlsfactory.data_packaging.ArtifactsXilinx
 
    Bases: :py:obj:`enum.Enum`

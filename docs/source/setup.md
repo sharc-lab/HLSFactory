@@ -4,31 +4,46 @@ HLSFactory is a Python library. Therefore, it only requires Python and other Pyt
 
 ## Installation
 
-HLSFactory can be installed as a regular Python package using `pip`, or as a conda package using `conda` or `mamba`.
-
-### `pip` Install (via GitHub)
+We recommend managing your environment with [`uv`](https://docs.astral.sh/uv/). When working from a cloned repository, simply run:
 
 ```bash
-pip install git+https://github.com/sharc-lab/HLSFactory
+uv sync
 ```
 
-### `conda` Install
+This creates a project-specific virtual environment and installs the package in editable mode along with the extras declared in `pyproject.toml`. Subsequent commands can be run through `uv run`, for example:
 
 ```bash
-conda install --channel https://sharc-lab.github.io/HLSFactory/dist-conda hlsfactory
+uv run pytest
+uv run python demos/demo_full_flow_xilinx/full_flow_xilinx.py
 ```
 
-### `mamba` Install
+If you prefer to install directly from GitHub without cloning, use:
 
 ```bash
-mamba install --channel https://sharc-lab.github.io/HLSFactory/dist-conda hlsfactory
+uv pip install git+https://github.com/sharc-lab/HLSFactory
 ```
 
-The repository also includes demo scripts and Jupyter notebooks that demonstrate how to use the library. These are not included in the package but can be found in the source code repository on GitHub. You can access them by cloning the repository and following the instructions in the respective notebooks and scripts.
+Legacy alternatives remain available:
 
-```{todo}
-Link to the path in the source repo.
-```
+- **pip**:
+
+  ```bash
+  pip install git+https://github.com/sharc-lab/HLSFactory
+  ```
+
+- **conda**:
+
+  ```bash
+  conda install --channel https://sharc-lab.github.io/HLSFactory/dist-conda hlsfactory
+  ```
+
+- **mamba**:
+
+  ```bash
+  mamba install --channel https://sharc-lab.github.io/HLSFactory/dist-conda hlsfactory
+  ```
+
+The repository also includes demo scripts and Jupyter notebooks that demonstrate how to use the library. These are not included in the package but can be found in the source code repository on GitHub. You can access them by cloning the repository and exploring the `demos/` directory (for example, `demos/demo_full_flow_xilinx/` for the complete Xilinx walkthrough and `demos/demo_full_flow_intel/` for the Intel variant).
 
 ## Vendor Tools
 
@@ -37,12 +52,14 @@ To run specific vendor flows (e.g., Xilinx Vitis HLS and Vivado, Intel HLS and Q
 
 HLSFactory also includes some helper functions that can try to automatically find the vendor tool paths on your machine if you have included them in your environment `PATH` variable.
 
-```{todo}
-Link to the helper functions that can automatically find the vendor tool paths.
+See the [`hlsfactory.utils`](./apidocs/index) API documentation for details on `get_work_dir` and `get_tool_paths`, including examples of how the functions search the filesystem, `.env` files, and environment variables.
+
+Additionally, HLSFactory supports auto-finding the vendor tool paths from a local `.env` file located in your project tree. Create a `.env` file with content similar to the following:
+
+```text
+HLSFACTORY_WORK_DIR=/absolute/path/to/your/workdir
+HLSFACTORY_VITIS_HLS_PATH=/opt/Xilinx/Vitis_HLS/2023.1
+HLSFACTORY_VIVADO_PATH=/opt/Xilinx/Vivado/2023.1
 ```
 
-Additionally, HLSFactory supports auto-finding the vendor tool paths from a local `.env` file.
-
-```{todo}
-Add more details for the `.env` file, and supported keys for different vendor tools.
-```
+`get_work_dir(DirSource.ENVFILE)` and `get_tool_paths(ToolPathsSource.ENVFILE)` will read these keys automatically. You can also provide the same keys as environment variables if you prefer not to use a `.env` file.

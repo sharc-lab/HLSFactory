@@ -63,6 +63,6 @@ autodoc2_packages = [
     # "../../hlsfactory",
     {
         "path": "../../hlsfactory",
-        "exclude_dirs": ["__pycache__", "hls_dataset_sources"],
+        "exclude_dirs": ["__pycache__", "hls_dataset_sources", "autodse"],
     },
 ]

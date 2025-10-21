@@ -90,7 +90,7 @@ API
 
       .. autodoc2-docstring:: hlsfactory.opt_dsl_frontend_intel.ArrayPartition.get_num_of_directives
 
-   .. py:method:: append_directives(line)
+   .. py:method:: append_directives(line) -> None
       :canonical: hlsfactory.opt_dsl_frontend_intel.ArrayPartition.append_directives
 
       .. autodoc2-docstring:: hlsfactory.opt_dsl_frontend_intel.ArrayPartition.append_directives
@@ -114,12 +114,12 @@ API
 
       .. autodoc2-docstring:: hlsfactory.opt_dsl_frontend_intel.LoopOpt.get_flattened
 
-   .. py:method:: append_parameters(line)
+   .. py:method:: append_parameters(line) -> None
       :canonical: hlsfactory.opt_dsl_frontend_intel.LoopOpt.append_parameters
 
       .. autodoc2-docstring:: hlsfactory.opt_dsl_frontend_intel.LoopOpt.append_parameters
 
-   .. py:method:: append_directives(line)
+   .. py:method:: append_directives(line) -> None
       :canonical: hlsfactory.opt_dsl_frontend_intel.LoopOpt.append_directives
 
       .. autodoc2-docstring:: hlsfactory.opt_dsl_frontend_intel.LoopOpt.append_directives

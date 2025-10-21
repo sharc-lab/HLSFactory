@@ -53,6 +53,9 @@ Functions
    * - :py:obj:`count_total_designs_in_dataset_collection <hlsfactory.framework.count_total_designs_in_dataset_collection>`
      - .. autodoc2-docstring:: hlsfactory.framework.count_total_designs_in_dataset_collection
           :summary:
+   * - :py:obj:`worker_init <hlsfactory.framework.worker_init>`
+     - .. autodoc2-docstring:: hlsfactory.framework.worker_init
+          :summary:
 
 Data
 ~~~~
@@ -123,7 +126,7 @@ API
 
    .. autodoc2-docstring:: hlsfactory.framework.filter_files_by_ext
 
-.. py:class:: DesignStage
+.. py:class:: DesignStage(*args, **kwds)
    :canonical: hlsfactory.framework.DesignStage
 
    Bases: :py:obj:`enum.Enum`
@@ -264,6 +267,11 @@ API
    :canonical: hlsfactory.framework.count_total_designs_in_dataset_collection
 
    .. autodoc2-docstring:: hlsfactory.framework.count_total_designs_in_dataset_collection
+
+.. py:function:: worker_init(core_queue: multiprocessing.Queue) -> None
+   :canonical: hlsfactory.framework.worker_init
+
+   .. autodoc2-docstring:: hlsfactory.framework.worker_init
 
 .. py:class:: Flow(work_dir: pathlib.Path)
    :canonical: hlsfactory.framework.Flow

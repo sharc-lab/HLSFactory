@@ -1,6 +1,6 @@
 # End-to-End Intel Flow
 
-This tutorial demonstrates the end-to-end flow of the HLSFactory framework using Intel toolflows. This demo is very similar to the [](./xilinx_flow.md) tutorial, with minimal differences. The main difference is the use of Intel flow classes for each step (frontend, HLS synthesis, and implementation) rather than Xilinx flow classes. The rest of the code is generally the same.
+This tutorial demonstrates the end-to-end flow of the HLSFactory framework using Intel tool flows. This demo is very similar to the [](./xilinx_flow.md) tutorial, with minimal differences. The main difference is the use of Intel flow classes for each step (frontend, HLS synthesis, and implementation) rather than Xilinx flow classes. The rest of the code is generally the same.
 
 Please refer to the [](./xilinx_flow.md) tutorial for more detailed explanations of each step.
 
@@ -22,7 +22,7 @@ WORK_DIR_TOP = get_work_dir(dir_source=DirSource.ENVFILE)
 WORK_DIR = WORK_DIR_TOP / "demo_full_flow_intel"
 remove_and_make_new_dir_if_exists(WORK_DIR)
 
-# Number of cores to run stuff in parallel
+# Number of cores to run jobs in parallel
 N_JOBS = 32
 CPU_AFFINITY = list(range(N_JOBS))
 ```
@@ -77,7 +77,7 @@ designs_after_frontend = (
 
 ## HLS Synthesis and Implementation
 
-Finally, we perform HLS synthesis and implementation using Intel toolflows.
+Finally, we perform HLS synthesis and implementation using Intel tool flows.
 
 ```python
 from hlsfactory.flow_intel import IntelHLSSynthFlow, IntelQuartusImplFlow

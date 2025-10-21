@@ -37,6 +37,21 @@ Functions
    * - :py:obj:`dataset_accelerators_builder <hlsfactory.datasets_builtin.dataset_accelerators_builder>`
      - .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_accelerators_builder
           :summary:
+   * - :py:obj:`dataset_soda_builder <hlsfactory.datasets_builtin.dataset_soda_builder>`
+     - .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_soda_builder
+          :summary:
+   * - :py:obj:`dataset_hp_fft_builder <hlsfactory.datasets_builtin.dataset_hp_fft_builder>`
+     - .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_hp_fft_builder
+          :summary:
+   * - :py:obj:`dataset_stream_hls_builder <hlsfactory.datasets_builtin.dataset_stream_hls_builder>`
+     - .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_stream_hls_builder
+          :summary:
+   * - :py:obj:`dataset_auto_ntt_builder <hlsfactory.datasets_builtin.dataset_auto_ntt_builder>`
+     - .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_auto_ntt_builder
+          :summary:
+   * - :py:obj:`dataset_forgebench_builder <hlsfactory.datasets_builtin.dataset_forgebench_builder>`
+     - .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_forgebench_builder
+          :summary:
    * - :py:obj:`datasets_builder <hlsfactory.datasets_builtin.datasets_builder>`
      - .. autodoc2-docstring:: hlsfactory.datasets_builtin.datasets_builder
           :summary:
@@ -78,8 +93,26 @@ Data
    * - :py:obj:`DIR_DATASET_ACCELERATORS <hlsfactory.datasets_builtin.DIR_DATASET_ACCELERATORS>`
      - .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_ACCELERATORS
           :summary:
+   * - :py:obj:`DIR_DATASET_SODA <hlsfactory.datasets_builtin.DIR_DATASET_SODA>`
+     - .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_SODA
+          :summary:
+   * - :py:obj:`DIR_DATASET_HP_FFT <hlsfactory.datasets_builtin.DIR_DATASET_HP_FFT>`
+     - .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_HP_FFT
+          :summary:
+   * - :py:obj:`DIR_DATASET_STREAM_HLS <hlsfactory.datasets_builtin.DIR_DATASET_STREAM_HLS>`
+     - .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_STREAM_HLS
+          :summary:
+   * - :py:obj:`DIR_DATASET_AUTO_NTT <hlsfactory.datasets_builtin.DIR_DATASET_AUTO_NTT>`
+     - .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_AUTO_NTT
+          :summary:
+   * - :py:obj:`DIR_DATASET_FORGEBENCH <hlsfactory.datasets_builtin.DIR_DATASET_FORGEBENCH>`
+     - .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_FORGEBENCH
+          :summary:
    * - :py:obj:`DIR_ALL <hlsfactory.datasets_builtin.DIR_ALL>`
      - .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_ALL
+          :summary:
+   * - :py:obj:`T_dataset_builder <hlsfactory.datasets_builtin.T_dataset_builder>`
+     - .. autodoc2-docstring:: hlsfactory.datasets_builtin.T_dataset_builder
           :summary:
    * - :py:obj:`DATASET_STR_MAP <hlsfactory.datasets_builtin.DATASET_STR_MAP>`
      - .. autodoc2-docstring:: hlsfactory.datasets_builtin.DATASET_STR_MAP
@@ -142,6 +175,36 @@ API
 
    .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_ACCELERATORS
 
+.. py:data:: DIR_DATASET_SODA
+   :canonical: hlsfactory.datasets_builtin.DIR_DATASET_SODA
+   :value: None
+
+   .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_SODA
+
+.. py:data:: DIR_DATASET_HP_FFT
+   :canonical: hlsfactory.datasets_builtin.DIR_DATASET_HP_FFT
+   :value: None
+
+   .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_HP_FFT
+
+.. py:data:: DIR_DATASET_STREAM_HLS
+   :canonical: hlsfactory.datasets_builtin.DIR_DATASET_STREAM_HLS
+   :value: None
+
+   .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_STREAM_HLS
+
+.. py:data:: DIR_DATASET_AUTO_NTT
+   :canonical: hlsfactory.datasets_builtin.DIR_DATASET_AUTO_NTT
+   :value: None
+
+   .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_AUTO_NTT
+
+.. py:data:: DIR_DATASET_FORGEBENCH
+   :canonical: hlsfactory.datasets_builtin.DIR_DATASET_FORGEBENCH
+   :value: None
+
+   .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_FORGEBENCH
+
 .. py:data:: DIR_ALL
    :canonical: hlsfactory.datasets_builtin.DIR_ALL
    :value: None
@@ -183,8 +246,40 @@ API
 
    .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_accelerators_builder
 
+.. py:function:: dataset_soda_builder(name: str, work_dir: pathlib.Path) -> hlsfactory.framework.DesignDataset
+   :canonical: hlsfactory.datasets_builtin.dataset_soda_builder
+
+   .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_soda_builder
+
+.. py:function:: dataset_hp_fft_builder(name: str, work_dir: pathlib.Path) -> hlsfactory.framework.DesignDataset
+   :canonical: hlsfactory.datasets_builtin.dataset_hp_fft_builder
+
+   .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_hp_fft_builder
+
+.. py:function:: dataset_stream_hls_builder(name: str, work_dir: pathlib.Path) -> hlsfactory.framework.DesignDataset
+   :canonical: hlsfactory.datasets_builtin.dataset_stream_hls_builder
+
+   .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_stream_hls_builder
+
+.. py:function:: dataset_auto_ntt_builder(name: str, work_dir: pathlib.Path) -> hlsfactory.framework.DesignDataset
+   :canonical: hlsfactory.datasets_builtin.dataset_auto_ntt_builder
+
+   .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_auto_ntt_builder
+
+.. py:function:: dataset_forgebench_builder(name: str, work_dir: pathlib.Path) -> hlsfactory.framework.DesignDataset
+   :canonical: hlsfactory.datasets_builtin.dataset_forgebench_builder
+
+   .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_forgebench_builder
+
+.. py:data:: T_dataset_builder
+   :canonical: hlsfactory.datasets_builtin.T_dataset_builder
+   :value: None
+
+   .. autodoc2-docstring:: hlsfactory.datasets_builtin.T_dataset_builder
+
 .. py:data:: DATASET_STR_MAP
    :canonical: hlsfactory.datasets_builtin.DATASET_STR_MAP
+   :type: dict[str, hlsfactory.datasets_builtin.T_dataset_builder]
    :value: None
 
    .. autodoc2-docstring:: hlsfactory.datasets_builtin.DATASET_STR_MAP

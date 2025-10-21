@@ -6,6 +6,15 @@
 .. autodoc2-docstring:: hlsfactory
    :allowtitles:
 
+Subpackages
+-----------
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 3
+
+   hlsfactory.opt_dsl_v2
+
 Submodules
 ----------
 
@@ -15,13 +24,19 @@ Submodules
 
    hlsfactory.data_packaging
    hlsfactory.datasets_builtin
+   hlsfactory.flow_bambu
+   hlsfactory.flow_config
+   hlsfactory.flow_harp
    hlsfactory.flow_intel
    hlsfactory.flow_vitis
+   hlsfactory.framework
    hlsfactory.gather_data
+   hlsfactory.jinja_frontend
    hlsfactory.opt_dsl_frontend
    hlsfactory.opt_dsl_frontend_intel
+   hlsfactory.opt_dsl_frontend_v2
    hlsfactory.utils
-   hlsfactory.framework
+   hlsfactory.define_frontend
 
 Package Contents
 ----------------

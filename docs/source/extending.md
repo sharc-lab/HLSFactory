@@ -8,7 +8,7 @@ The goal is to centralize design and flow support for different HLS tools, creat
 
 HLSFactory already supports loading user designs and design datasets at runtime. However, we encourage users to contribute their designs and design datasets to HLSFactory itself as a built-in package so that they can be shared and used by all HLSFactory users.
 
-If you have any questions upfront or would like some guided assistance in integrating new designs and design datasets into HLSFactory, please reach out to the HLSFactory maintainers for help. You can contact us either by email or by opening an issue on the HLSFactory GitHub repository. We are happy to help and provide guidance on how to integrate your designs into HLSFactory.
+If you have any questions up front or would like some guided assistance in integrating new designs and design datasets into HLSFactory, please reach out to the HLSFactory maintainers for help. You can contact us either by email or by opening an issue on the HLSFactory GitHub repository. We are happy to help and provide guidance on how to integrate your designs into HLSFactory.
 
 To add a new design or collection of designs as a dataset, follow the concrete steps outlined below.
 
@@ -25,7 +25,7 @@ Xilinx-based flows require two different entry point Tcl scripts that must be in
 - `dataset_hls.tcl`: This script must be defined by the user to take a design, set up a Vitis HLS project, add the source files to the project, create a single solution, and run `csynth` on the solution successfully. The `VitisHLSSynthFlow` class will call this entry point using Vitis HLS and then look for the resulting HLS project and solution files in the design directory.
 - `dataset_hls_ip_export.tcl`: This script must be defined by the user to open an existing project, open an existing synthesized solution, and then call the Vitis HLS `export_design` command with the argument `-flow impl` to export the synthesized design to Vivado and run the Vivado implementation flow. The `VitisHLSImplFlow` class will call this entry point using Vitis HLS and then look for the resulting Vivado project and solution files in the design directory.
 
-If these files are not present, and one of these Xilinx flows is run on the design, the flow will fail, and helpful error messages will be raised for the user to indicate that the entry points are missing.
+If these files are not present and one of these Xilinx flows is run on the design, the flow will fail, and helpful error messages will be raised for the user to indicate that the entry points are missing.
 
 Your final design directory for a Xilinx-ready design should look as follows:
 
@@ -90,14 +90,14 @@ git clone git@github.com:sharc-lab/HLSFactory.git
 
 Using HTTPS:
 ```bash
-git clone https://github.com:sharc-lab/HLSFactory.git
+git clone https://github.com/sharc-lab/HLSFactory.git
 ```
 
 ### Step 4: Add the Designs to the Correct Directory in the HLSFactory Package
 
 With the repository cloned to your local machine, you can add your designs to the HLSFactory package.
 
-All built-in packages are located in the `hlsfactory/hls_dataset_sources` directory of the HLSFactory repository. You should directly copy your prepared design dataset directory into the `hls_dataset_sources` directory.
+All built-in datasets are located in the `hlsfactory/hls_dataset_sources` directory of the HLSFactory repository. You should directly copy your prepared design dataset directory into the `hls_dataset_sources` directory.
 
 For example, if you have a design dataset directory named `my_dataset` that you want to add to the HLSFactory package, you should copy the `my_dataset` directory into the `hls_dataset_sources` directory.
 
@@ -114,7 +114,7 @@ For example, if you have a design dataset directory named `my_dataset` that you 
                 - <more designs...>
 ```
 
-Keep in mind that whatever files are in your design dataset directory will be copied to the HLSFactory package, so make sure that you only include the necessary files for your designs. Including large and unnecessary data files can bloat the HLSFactory package and make it harder to maintain as well as hit the git file size limit. It's okay to include data files that are needed for testing or co-simulation, but try to manage these data files so that they can be included in the package in a reasonable way.
+Keep in mind that whatever files are in your design dataset directory will be copied to the HLSFactory package, so make sure that you only include the necessary files for your designs. Including large and unnecessary data files can bloat the HLSFactory package, make it harder to maintain, and may hit the Git file size limit. It's okay to include data files that are needed for testing or co-simulation, but try to manage these data files so that they can be included in the package in a reasonable way.
 
 ### Step 5: Add Support for the New Dataset in the `hlsfactory.datasets_builtin` Module
 

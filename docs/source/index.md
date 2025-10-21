@@ -21,27 +21,41 @@ HLSFactory is a framework for High-Level Synthesis (HLS) design datasets. It pro
 
 HLSFactory has been published in the following places:
 
+- 2024 ACM/IEEE 6th Symposium on Machine Learning for CAD (MLCAD)
+  - [HLSFactory: A Framework Empowering High-Level Synthesis Datasets for Machine Learning and Beyond](https://doi.org/10.1109/MLCAD62225.2024.10740213)
 - ArXiv
   - [HLSFactory: A Framework Empowering High-Level Synthesis Datasets for Machine Learning and Beyond](https://arxiv.org/abs/2405.00820)
 - Open-Source Computer Architecture Research (OSCAR) Workshop at ISCA 2024
   - [An Open Source Framework for High-Level Synthesis Dataset Generation for Machine Learning](https://oscar-workshop.github.io)
+
+### Awards
+
+- **Best Paper Award** at the 2024 ACM/IEEE 6th Symposium on Machine Learning for CAD (MLCAD).
+- **Artifact Evaluation Award Nomination** at the 2024 ACM/IEEE 6th Symposium on Machine Learning for CAD (MLCAD).
 
 ## Citing and Referencing
 
 If you use HLSFactory in your research, please cite as follows:
 
 ```text
-S. Abi-Karam et al., “HLSFactory: A Framework Empowering High-Level Synthesis Datasets for Machine Learning and Beyond.” arXiv, May 01, 2024. doi: 10.48550/arXiv.2405.00820.
+S. Abi-Karam et al., “HLSFactory: A Framework Empowering High-Level Synthesis Datasets for Machine Learning and Beyond,” in 2024 ACM/IEEE 6th Symposium on Machine Learning for CAD (MLCAD), Sep. 2024, pp. 1–9. doi: 10.1109/MLCAD62225.2024.10740213.
 ```
 
 ```bibtex
-@misc{hlsfactory,
-      title={HLSFactory: A Framework Empowering High-Level Synthesis Datasets for Machine Learning and Beyond}, 
-      author={Stefan Abi-Karam and Rishov Sarkar and Allison Seigler and Sean Lowe and Zhigang Wei and Hanqiu Chen and Nanditha Rao and Lizy John and Aman Arora and Cong Hao},
-      year={2024},
-      eprint={2405.00820},
-      archivePrefix={arXiv},
-      primaryClass={cs.AR}
+@inproceedings{hlsfactory,
+  title = {{{HLSFactory}}: {{A Framework Empowering High-Level Synthesis Datasets}} for {{Machine Learning}} and {{Beyond}}},
+  shorttitle = {{{HLSFactory}}},
+  booktitle = {2024 {{ACM}}/{{IEEE}} 6th {{Symposium}} on {{Machine Learning}} for {{CAD}} ({{MLCAD}})},
+  author = {{Abi-Karam}, Stefan and Sarkar, Rishov and Seigler, Allison and Lowe, Sean and Wei, Zhigang and Chen, Hanqiu and Rao, Nanditha and John, Lizy and Arora, Aman and Hao, Cong},
+  year = {2024},
+  month = sep,
+  pages = {1--9},
+  publisher = {IEEE},
+  address = {Salt Lake City (Snowbird), UT, USA},
+  doi = {10.1109/MLCAD62225.2024.10740213},
+  urldate = {2025-08-21},
+  copyright = {https://doi.org/10.15223/policy-029},
+  isbn = {979-8-3503-6356-2}
 }
 ```
 
