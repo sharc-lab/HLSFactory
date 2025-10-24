@@ -11,7 +11,7 @@ from pathlib import Path
 import psutil
 import tqdm
 
-EXTENSIONS_CPP = [".cpp", ".cc", ".hpp", ".h"]
+EXTENSIONS_CPP = [".cpp", ".cc", ".c", ".hpp", ".h"]
 EXTENTIONS_TCL = [".tcl"]
 EXTENSIONS_PYTHON = [".py"]
 
