@@ -1,1 +1,0 @@
-get_algorithm(name) -> BaseAlgorithm
