@@ -25,7 +25,7 @@ Submodules
    hlsfactory.data_packaging
    hlsfactory.datasets_builtin
    hlsfactory.flow_bambu
-   hlsfactory.flow_config
+   hlsfactory.design_config
    hlsfactory.flow_harp
    hlsfactory.flow_intel
    hlsfactory.flow_vitis
