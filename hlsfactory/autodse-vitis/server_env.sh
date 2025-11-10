@@ -46,13 +46,9 @@ fi
 export BUILD_LOC=~/scratch/run-${BENCHMARK_NAME}              # Temporary scratch workspace
 
 # DSE framework paths (derived from WORKSPACE)
-export BASE_DATABASE_PATH="${WORKSPACE}/database/vitishlssyn"
+export BASE_DATABASE_PATH="${WORKSPACE}/database/hlsyn-vivado-target"
 export BASE_OUTPUT_PATH="${WORKSPACE}/dse_levelheap_done"
 export RESUM_FROM_PATH="${WORKSPACE}/dse_levelheap_done"
-
-
-# HLS LLVM Plugin Directory
-export HLS_LLVM_PLUGIN_DIR="${WORKSPACE}/database/vitishlssyn/llvmpass"
 
 # export XILINX_VITIS=$XILINX_INSTALL_PATH/Vitis/2024.2
 export XILINX_VITIS=$XILINX_INSTALL_PATH/2025.1/Vitis

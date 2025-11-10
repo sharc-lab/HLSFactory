@@ -28,10 +28,10 @@ echo "🔧 Removing: $BUILD_LOC"
 rm -rf "$BUILD_LOC/"
 # mkdir -p "$BUILD_LOC/"
 
-echo "🔧 Copying essential files to $BUILD_LOC (0_src/, database/, *.sh)"
+echo "🔧 Copying essential files to $BUILD_LOC (src/, database/, *.sh)"
 mkdir -p "$BUILD_LOC"
-cp -R "$WORKSPACE/0_src" "$BUILD_LOC/"
-echo "✅  Finished copying 0_src/ to $BUILD_LOC"
+cp -R "$WORKSPACE/src" "$BUILD_LOC/"
+echo "✅  Finished copying src/ to $BUILD_LOC"
 cp -R "$WORKSPACE/database" "$BUILD_LOC/"
 echo "✅  Finished copying database/ to $BUILD_LOC"
 cp "$WORKSPACE"/*.sh "$BUILD_LOC/" 2>/dev/null || true
@@ -52,7 +52,7 @@ echo "   Final Output: $OUTPUT_DIR"
 
 resume=true
 max_iterations=None   # Maximum number of iterations (use None for time-based exploration)
-hours=2           # Exploration time in hours for time-based exploratio
+hours=70           # Exploration time in hours for time-based exploratio
 timeout=15          # Synthesis timeout in minutes
 
 # Create temporary output directory in BUILD_LOC
@@ -76,13 +76,73 @@ if [ "$resume" = true ]; then
     fi
 fi
 
-cd "$BUILD_LOC/0_src"
+cd "$BUILD_LOC/src"
+
+# Function to create and copy zip of work* directories
+create_and_copy_work_zip() {
+    cd "$TEMP_OUTPUT_DIR"
+
+    if ! compgen -G "work*" > /dev/null; then
+        echo "⚠️ No work* directories found to zip"
+        cd "$BUILD_LOC/src"
+        return
+    fi
+
+    # Find the highest work directory number to use in zip name
+    last_work_num=$(find . -maxdepth 1 -type d -name "work_*" \
+        | sed -E 's#./work_([0-9]+)$#\1#' | sort -n | tail -n1)
+
+    if [ -z "$last_work_num" ]; then
+        echo "⚠️ Could not determine work directory numbers"
+        cd "$BUILD_LOC/src"
+        return
+    fi
+
+    ZIP_NAME="work_until_${last_work_num}.zip"
+    echo "📦 Creating ${ZIP_NAME} from work* directories (up to work_${last_work_num})..."
+
+    # Process each work directory for selective copying
+    for work_dir in work_*; do
+        if [[ -d "$work_dir" ]]; then
+            echo "📁 Processing $work_dir for zip..."
+
+            # Handle project directory selectively - copy only specific report files
+            if [[ -d "$work_dir/project/solution/syn/report" ]]; then
+                mkdir -p "$work_dir/logs"
+                cp "$work_dir/project/solution/syn/report/csynth.rpt" "$work_dir/logs/csynth.rpt" 2>/dev/null || true
+                cp "$work_dir/project/solution/syn/report/csynth.xml" "$work_dir/logs/csynth.xml" 2>/dev/null || true
+            fi
+
+            # Remove the entire project directory to save space
+            rm -rf "$work_dir/project"
+        fi
+    done
+
+    # Create the zip file with all work* directories
+    zip -r "$ZIP_NAME" work_* -q
+    echo "✅ Created ${ZIP_NAME}"
+
+    # Copy zip to output directory
+    mkdir -p "$OUTPUT_DIR"
+    cp "$ZIP_NAME" "$OUTPUT_DIR/"
+    echo "✅ Copied ${ZIP_NAME} to $OUTPUT_DIR"
+
+    # Clean up work* directories and zip from temp to free memory and disk space
+    echo "🧹 Cleaning up work* directories from temp to free memory..."
+    rm -rf work_*
+    rm -f "$ZIP_NAME"
+    echo "✅ Cleaned up temp work directories and zip file"
+
+    cd "$BUILD_LOC/src"
+}
 
 # Trap handler to ensure cleanup on exit or termination (SLURM signals)
 cleanup() {
     echo "🧹 Cleaning up background processes..."
     kill $SNAPSHOT_PID 2>/dev/null || true
     wait $SNAPSHOT_PID 2>/dev/null || true
+    kill $ZIP_BACKUP_PID 2>/dev/null || true
+    wait $ZIP_BACKUP_PID 2>/dev/null || true
     # Don't kill MAIN_PID here as it might be finishing naturally
 }
 trap cleanup EXIT INT TERM
@@ -131,68 +191,50 @@ echo "⏱️ Resuming snapshots from hour${hour_counter}"
 ) &
 SNAPSHOT_PID=$!
 
+# Start 4-hour zip backup background process
+(
+    while true; do
+        sleep 14400  # Wait 4 hours (4 * 3600 seconds)
+
+        # Check if main process is still running
+        if ! kill -0 $MAIN_PID 2>/dev/null; then
+            echo "📦 Main DSE process completed, stopping periodic zip backups"
+            break
+        fi
+
+        echo "📦 [$(date '+%Y-%m-%d %H:%M:%S')] Starting 4-hour zip backup..."
+        create_and_copy_work_zip
+    done
+) &
+ZIP_BACKUP_PID=$!
+
 # Wait for main process to complete
 wait $MAIN_PID
 MAIN_EXIT_CODE=$?
 
-# Ensure snapshot process is terminated
+# Ensure background processes are terminated
 kill $SNAPSHOT_PID 2>/dev/null || true
 wait $SNAPSHOT_PID 2>/dev/null || true
+kill $ZIP_BACKUP_PID 2>/dev/null || true
+wait $ZIP_BACKUP_PID 2>/dev/null || true
 
 echo "✅ Main DSE process finished with exit code: $MAIN_EXIT_CODE"
 
 # Copy results from temporary location back to main workspace
-echo "📂 Copying results from $TEMP_OUTPUT_DIR to $OUTPUT_DIR"
+echo "📂 Copying final results from $TEMP_OUTPUT_DIR to $OUTPUT_DIR"
 mkdir -p "$(dirname "$OUTPUT_DIR")"
-
-# Remove existing output directory if it exists and copy fresh results
-# if [[ -d "$OUTPUT_DIR" ]]; then
-#     echo "🗑️ Removing existing output directory: $OUTPUT_DIR"
-#     rm -rf "$OUTPUT_DIR"
-# fi
-
-# Create the output directory
-# If the specified directory already exists, no new directory is created.
 mkdir -p "$OUTPUT_DIR"
 
-# Copy work* directories with selective project contents
-for work_dir in "$TEMP_OUTPUT_DIR"/work*; do
-    if [[ -d "$work_dir" ]]; then
-        work_name=$(basename "$work_dir")
-        echo "📁 Copying $work_name..."
-        
-        # Create work directory structure
-        mkdir -p "$OUTPUT_DIR/$work_name"
-        
-        # Copy all contents except the project directory
-        find "$work_dir" -maxdepth 1 -type f -exec cp {} "$OUTPUT_DIR/$work_name/" \;
-        find "$work_dir" -maxdepth 1 -type d ! -name "project" ! -path "$work_dir" -exec cp -R {} "$OUTPUT_DIR/$work_name/" \;
-        
-        # Handle project directory selectively
-        if [[ -d "$work_dir/project" ]]; then
-            mkdir -p "$OUTPUT_DIR/$work_name/project/solution/syn"
-            
-            # Copy only syn/report and syn/verilog if they exist
-            # if [[ -d "$work_dir/project/solution/syn/report" ]]; then
-            #     cp -R "$work_dir/project/solution/syn/report" "$OUTPUT_DIR/$work_name/project/solution/syn/"
-            # fi
-            # if [[ -d "$work_dir/project/solution/syn/verilog" ]]; then
-            #     cp -R "$work_dir/project/solution/syn/verilog" "$OUTPUT_DIR/$work_name/project/solution/syn/"
-            # fi
-            if [[ -d "$work_dir/project/solution/syn/report/csynth.rpt" ]]; then
-                cp -R "$work_dir/project/solution/syn/report/csynth.rpt" "$OUTPUT_DIR/$work_name/logs/csynth.rpt"
-                cp -R "$work_dir/project/solution/syn/report/csynth.xml" "$OUTPUT_DIR/$work_name/logs/csynth.xml"
-            fi
-
-
-        fi
-    fi
-done
+# Create final zip for any remaining work* directories
+echo "📦 Creating final zip for any remaining work* directories..."
+create_and_copy_work_zip
 
 # Copy any other files/directories that are not variant_* or work*
 find "$TEMP_OUTPUT_DIR" -maxdepth 1 ! -name "variant_*" ! -name "work*" ! -path "$TEMP_OUTPUT_DIR" -exec cp -R {} "$OUTPUT_DIR/" \;
 
 echo "✅ Results copied successfully to $OUTPUT_DIR"
+
+rm -rf "$BUILD_LOC/"
 
 # Finished
 echo "All configurations built successfully."

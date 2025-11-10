@@ -87,30 +87,60 @@ class ConcreteDesign:
             "timeout" if time limit exceeded,
             "hls_failed" if HLS failed for another reason.
         """
+        import signal
         max_sec = timeout_min * 60
         tcl_name = self.tcl_file.name
         orig_dir = os.getcwd()
         os.chdir(self.work_dir)
 
+        process = None
         try:
             if self.logger:
                 self.logger.print(f"[ConcreteDesign] Running Vitis HLS in {self.work_dir} using {tcl_name}...")
             else:
                 print(f"[ConcreteDesign] Running Vitis HLS in {self.work_dir} using {tcl_name}...")
-            subprocess.run(["vitis-run", "--mode", "hls", "--tcl", tcl_name], check=True, timeout=max_sec)
+
+            # Use Popen with process group to ensure all child processes can be killed
+            process = subprocess.Popen(
+                ["vitis-run", "--mode", "hls", "--tcl", tcl_name],
+                start_new_session=True  # Create new process group
+            )
+            process.wait(timeout=max_sec)
+
+            if process.returncode != 0:
+                raise subprocess.CalledProcessError(process.returncode, process.args)
             return "success"
+
         except subprocess.TimeoutExpired:
+            if process:
+                # Kill the entire process group to ensure all child processes are terminated
+                try:
+                    import os as os_module
+                    os_module.killpg(os_module.getpgid(process.pid), signal.SIGTERM)
+                    # Wait briefly for graceful termination
+                    try:
+                        process.wait(timeout=5)
+                    except subprocess.TimeoutExpired:
+                        # Force kill if still running
+                        os_module.killpg(os_module.getpgid(process.pid), signal.SIGKILL)
+                        process.wait()
+                except ProcessLookupError:
+                    # Process already terminated
+                    pass
+
             if self.logger:
                 self.logger.print(f"[ConcreteDesign] ⏱ Timeout after {timeout_min} min in {self.work_dir}")
             else:
                 print(f"[ConcreteDesign] ⏱ Timeout after {timeout_min} min in {self.work_dir}")
             return "timeout"
+
         except subprocess.CalledProcessError as e:
             if self.logger:
                 self.logger.print(f"[ConcreteDesign] ❌ Vitis HLS failed in {self.work_dir}: {e}")
             else:
                 print(f"[ConcreteDesign] ❌ Vitis HLS failed in {self.work_dir}: {e}")
             return "hls_failed"
+
         finally:
             os.chdir(orig_dir)
 

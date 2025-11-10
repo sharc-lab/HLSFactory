@@ -795,7 +795,8 @@ class TeeLogger:
         pragma_groups = {
             "__PARA__": [],
             "__PIPE__": [],
-            "__TILE__": []
+            "__TILE__": [],
+            "__DATA__": []
         }
         
         # Process each pragma and group by type
@@ -804,7 +805,9 @@ class TeeLogger:
                 pragma_info = pragma_locations[i]
                 pragma_type = pragma_info.get('pragma_type', '')
                 region = pragma_info.get('region', '')
-                
+                placeholder = pragma_info.get('placeholder', '')
+                location_id = pragma_info.get('location_id', '')
+
                 # Map pragma types to groups
                 if 'unroll' in pragma_type.lower():
                     group_key = "__PARA__"
@@ -812,11 +815,22 @@ class TeeLogger:
                     group_key = "__PIPE__"
                 elif 'tile' in pragma_type.lower():
                     group_key = "__TILE__"
+                elif 'data_pack' in pragma_type.lower():
+                    group_key = "__DATA__"
                 else:
                     continue  # Skip unknown pragma types
-                    
-                # Extract level from region (e.g., "L1" -> "L1")
-                level_id = region if region.startswith('L') else f"L{len(pragma_groups[group_key])}"
+
+                # Extract level_id from placeholder name if available (for JSON format)
+                # Otherwise use location_id (file:line format), region, or generate sequential ID
+                if placeholder:
+                    # Extract the suffix from placeholder (e.g., "__PARA__R0" -> "R0")
+                    level_id = placeholder.replace(group_key, '')
+                elif location_id:
+                    level_id = location_id
+                elif region:
+                    level_id = region
+                else:
+                    level_id = f"L{len(pragma_groups[group_key])}"
                 
                 pragma_groups[group_key].append({
                     'level': level_id,
@@ -838,7 +852,7 @@ class TeeLogger:
                         point_dict[point_key] = ""  # Empty means no unrolling
         
         # Build the configuration key string
-        for group_name in ["__PARA__", "__PIPE__", "__TILE__"]:
+        for group_name in ["__PARA__", "__PIPE__", "__TILE__", "__DATA__"]:
             for pragma in pragma_groups[group_name]:
                 key_part = f"{group_name}{pragma['level']}-{pragma['choice']}"
                 pragma_key_parts.append(key_part)
