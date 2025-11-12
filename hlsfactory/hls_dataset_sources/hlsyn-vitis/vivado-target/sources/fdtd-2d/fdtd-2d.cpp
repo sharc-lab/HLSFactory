@@ -1,4 +1,4 @@
-#include "fdtd-2d.h"
+  #include "fdtd-2d.h"
 void kernel_fdtd_2d(int tmax, int nx, int ny, double ex[60][80],
                     double ey[60][80], double hz[60][80], double _fict_[40]) {
   double ex_buf[60][80];
@@ -18,36 +18,36 @@ void kernel_fdtd_2d(int tmax, int nx, int ny, double ex[60][80],
 #pragma HLS pipeline auto{__PIPE__L0}
 #pragma HLS unroll factor=auto{__PARA__L0}
     L1: for (j = 0; j < 80; j++) {
-#pragma HLS unroll factor=auto{__PARA__L0_0}
+#pragma HLS unroll factor=auto{__PARA__L1}
 
       ey_buf[0][j] = _fict__buf[t];
     }
 
     L2: for (i = 1; i < 60; i++) {
-#pragma HLS pipeline auto{__PIPE__L0_1}
-#pragma HLS unroll factor=auto{__PARA__L0_1}
+#pragma HLS pipeline auto{__PIPE__L2}
+#pragma HLS unroll factor=auto{__PARA__L2}
       L3: for (j = 0; j < 80; j++) {
-#pragma HLS unroll factor=auto{__PARA__L0_1_0}
+#pragma HLS unroll factor=auto{__PARA__L3}
 
         ey_buf[i][j] = ey_buf[i][j] - 0.5 * (hz_buf[i][j] - hz_buf[i - 1][j]);
       }
     }
 
     L4: for (i = 0; i < 60; i++) {
-#pragma HLS pipeline auto{__PIPE__L0_2}
-#pragma HLS unroll factor=auto{__PARA__L0_2}
+#pragma HLS pipeline auto{__PIPE__L4}
+#pragma HLS unroll factor=auto{__PARA__L4}
       L5: for (j = 1; j < 80; j++) {
-#pragma HLS unroll factor=auto{__PARA__L0_2_0}
+#pragma HLS unroll factor=auto{__PARA__L5}
 
         ex_buf[i][j] = ex_buf[i][j] - 0.5 * (hz_buf[i][j] - hz_buf[i][j - 1]);
       }
     }
 
     L6: for (i = 0; i < 59; i++) {
-#pragma HLS pipeline auto{__PIPE__L0_3}
-#pragma HLS unroll factor=auto{__PARA__L0_3}
+#pragma HLS pipeline auto{__PIPE__L6}
+#pragma HLS unroll factor=auto{__PARA__L6}
       L7: for (j = 0; j < 79; j++) {
-#pragma HLS unroll factor=auto{__PARA__L0_3_0}
+#pragma HLS unroll factor=auto{__PARA__L7}
 
         hz_buf[i][j] = hz_buf[i][j] - 0.7 * (ex_buf[i][j + 1] - ex_buf[i][j] +
                                              ey_buf[i + 1][j] - ey_buf[i][j]);

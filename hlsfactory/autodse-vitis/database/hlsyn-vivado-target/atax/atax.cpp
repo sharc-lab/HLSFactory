@@ -21,13 +21,13 @@ void kernel_atax(int m, int n, double A[116][124], double x[124], double y[124],
     tmp_buf[i] = 0.0;
 
     L2: for (j = 0; j < 124; j++) {
-#pragma HLS unroll factor=auto{__PARA__L0_0}
+#pragma HLS unroll factor=auto{__PARA__L2}
 
       tmp_buf[i] += A_buf[i][j] * x_buf[j];
     }
 
     L3: for (j = 0; j < 124; j++) {
-#pragma HLS unroll factor=auto{__PARA__L0_1}
+#pragma HLS unroll factor=auto{__PARA__L3}
 
       y_buf[j] += A_buf[i][j] * tmp_buf[i];
     }

@@ -70,7 +70,7 @@ void kernel_correlation(double float_n, double data[100][80],
       corr_buf[i][j] = 0.0;
 
       L8: for (k = 0; k < 100; k++) {
-#pragma HLS unroll factor=auto{__PARA__L7_0}
+#pragma HLS unroll factor=auto{__PARA__L8}
 
         corr_buf[i][j] += data_buf[k][i] * data_buf[k][j];
       }
