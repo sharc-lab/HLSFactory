@@ -1,0 +1,7 @@
+<hierarchy>
+[SC_MODULE:idct]
+  module_kind	single_process	module
+  process	SC_CTHREAD	sequantial	run	idct.IFF
+
+<hash>
+  733759e8e04f1e70d221933f39785278	idct.IFF

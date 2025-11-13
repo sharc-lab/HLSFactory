@@ -21,6 +21,7 @@ DIR_DATASET_HP_FFT = HLS_DATASET_DIR / "hp_fft_hls"
 DIR_DATASET_STREAM_HLS = HLS_DATASET_DIR / "stream_hls"
 DIR_DATASET_AUTO_NTT = HLS_DATASET_DIR / "auto_ntt"
 DIR_DATASET_FORGEBENCH = HLS_DATASET_DIR / "forgebench"
+DIR_DATASET_S2CBENCH = HLS_DATASET_DIR / "s2cbench"
 
 DIR_ALL = [
     DIR_DATASET_POLYBENCH,
@@ -34,6 +35,7 @@ DIR_ALL = [
     DIR_DATASET_STREAM_HLS,
     DIR_DATASET_AUTO_NTT,
     DIR_DATASET_FORGEBENCH,
+    DIR_DATASET_S2CBENCH,
 ]
 
 
@@ -124,6 +126,13 @@ def dataset_forgebench_builder(name: str, work_dir: Path) -> DesignDataset:
     return DesignDataset.from_dir(name, new_dir)
 
 
+def dataset_s2cbench_builder(name: str, work_dir: Path) -> DesignDataset:
+    check_dataset_dir_exists(DIR_DATASET_S2CBENCH)
+    new_dir = work_dir / name
+    shutil.copytree(DIR_DATASET_S2CBENCH, new_dir)
+    return DesignDataset.from_dir(name, new_dir)
+
+
 T_dataset_builder = Callable[[str, Path], DesignDataset]
 
 DATASET_STR_MAP: dict[str, T_dataset_builder] = {
@@ -141,6 +150,7 @@ DATASET_STR_MAP: dict[str, T_dataset_builder] = {
     "auto_ntt": dataset_auto_ntt_builder,
     "autontt": dataset_auto_ntt_builder,
     "forgebench": dataset_forgebench_builder,
+    "s2cbench": dataset_s2cbench_builder,
 }
 
 
@@ -185,6 +195,7 @@ def datasets_all_builder(work_dir: Path) -> DesignDatasetCollection:
     dataset_stream_hls = dataset_stream_hls_builder("stream_hls", work_dir)
     dataset_auto_ntt = dataset_auto_ntt_builder("auto_ntt", work_dir)
     dataset_forgebench = dataset_forgebench_builder("forgebench", work_dir)
+    dataset_s2cbench = dataset_s2cbench_builder("s2cbench", work_dir)
     return {
         dataset_polybench.name: dataset_polybench,
         dataset_machsuite.name: dataset_machsuite,
@@ -197,4 +208,5 @@ def datasets_all_builder(work_dir: Path) -> DesignDatasetCollection:
         dataset_stream_hls.name: dataset_stream_hls,
         dataset_auto_ntt.name: dataset_auto_ntt,
         dataset_forgebench.name: dataset_forgebench,
+        dataset_s2cbench.name: dataset_s2cbench,
     }
