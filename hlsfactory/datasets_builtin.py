@@ -22,6 +22,8 @@ DIR_DATASET_STREAM_HLS = HLS_DATASET_DIR / "stream_hls"
 DIR_DATASET_AUTO_NTT = HLS_DATASET_DIR / "auto_ntt"
 DIR_DATASET_FORGEBENCH = HLS_DATASET_DIR / "forgebench"
 
+DIR_DATASET_SPECTOR_HLS = HLS_DATASET_DIR / "spector_hls"
+
 DIR_ALL = [
     DIR_DATASET_POLYBENCH,
     DIR_DATASET_MACHSUITE,
@@ -124,6 +126,13 @@ def dataset_forgebench_builder(name: str, work_dir: Path) -> DesignDataset:
     return DesignDataset.from_dir(name, new_dir)
 
 
+def dataset_spector_hls_builder(name: str, work_dir: Path) -> DesignDataset:
+    check_dataset_dir_exists(DIR_DATASET_SPECTOR_HLS)
+    new_dir = work_dir / name
+    shutil.copytree(DIR_DATASET_SPECTOR_HLS, new_dir)
+    return DesignDataset.from_dir(name, new_dir)
+
+
 T_dataset_builder = Callable[[str, Path], DesignDataset]
 
 DATASET_STR_MAP: dict[str, T_dataset_builder] = {
@@ -141,6 +150,7 @@ DATASET_STR_MAP: dict[str, T_dataset_builder] = {
     "auto_ntt": dataset_auto_ntt_builder,
     "autontt": dataset_auto_ntt_builder,
     "forgebench": dataset_forgebench_builder,
+    "spector_hls": dataset_spector_hls_builder,
 }
 
 
