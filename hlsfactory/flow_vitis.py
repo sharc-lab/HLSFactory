@@ -6,6 +6,7 @@ import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 from pathlib import Path
 
+from hlsfactory.design_config import FlowName
 from hlsfactory.framework import Design, ToolFlow
 from hlsfactory.utils import (
     CallToolResult,
@@ -283,7 +284,12 @@ class VitisHLSSynthFlow(ToolFlow):
 
         design_dir = design.dir
 
-        fp_hls_synth_tcl = design_dir / "dataset_hls.tcl"
+        # Get TCL file path from design config
+        config = design.require_config()
+        synth_tcl_name = config.require_flow_setting(
+            FlowName.VITIS_HLS_SYNTH, "synth_tcl"
+        )
+        fp_hls_synth_tcl = design_dir / synth_tcl_name
         build_files = [fp_hls_synth_tcl]
         check_build_files_exist(build_files)
 
@@ -294,7 +300,7 @@ class VitisHLSSynthFlow(ToolFlow):
 
         if timeout is not None:
             return_result = call_tool(
-                f"{self.vitis_hls_bin} dataset_hls.tcl",
+                f"{self.vitis_hls_bin} {synth_tcl_name}",
                 cwd=design_dir,
                 log_output=self.log_output,
                 timeout=timeout,
@@ -320,7 +326,7 @@ class VitisHLSSynthFlow(ToolFlow):
                 return []
         else:
             return_result = call_tool(
-                f"{self.vitis_hls_bin} dataset_hls.tcl",
+                f"{self.vitis_hls_bin} {synth_tcl_name}",
                 cwd=design_dir,
                 log_output=self.log_output,
                 raise_on_error=False,
@@ -368,13 +374,18 @@ class VitisHLSCosimSetupFlow(ToolFlow):
     def execute(self, design: Design, timeout: float | None = None) -> list[Design]:
         design_dir = design.dir
 
-        fp_hls_cosim_setup_tcl = design_dir / "dataset_hls_cosim_setup.tcl"
+        # Get TCL file path from design config
+        config = design.require_config()
+        cosim_setup_tcl_name = config.require_flow_setting(
+            FlowName.VITIS_HLS_COSIM_SETUP, "cosim_setup_tcl"
+        )
+        fp_hls_cosim_setup_tcl = design_dir / cosim_setup_tcl_name
         build_files = [fp_hls_cosim_setup_tcl]
         check_build_files_exist(build_files)
         warn_for_reset_flags(build_files)
 
         return_result = call_tool(
-            f"{self.vitis_hls_bin} dataset_hls_cosim_setup.tcl",
+            f"{self.vitis_hls_bin} {cosim_setup_tcl_name}",
             cwd=design_dir,
             log_output=self.log_output,
             timeout=timeout,
@@ -404,13 +415,18 @@ class VitisHLSCosimFlow(ToolFlow):
     def execute(self, design: Design, timeout: float | None = None) -> list[Design]:
         design_dir = design.dir
 
-        fp_hls_cosim_setup_tcl = design_dir / "dataset_hls_cosim.tcl"
-        build_files = [fp_hls_cosim_setup_tcl]
+        # Get TCL file path from design config
+        config = design.require_config()
+        cosim_tcl_name = config.require_flow_setting(
+            FlowName.VITIS_HLS_COSIM, "cosim_tcl"
+        )
+        fp_hls_cosim_tcl = design_dir / cosim_tcl_name
+        build_files = [fp_hls_cosim_tcl]
         check_build_files_exist(build_files)
         warn_for_reset_flags(build_files)
 
         r = call_tool(
-            f"{self.vitis_hls_bin} dataset_hls_cosim.tcl",
+            f"{self.vitis_hls_bin} {cosim_tcl_name}",
             cwd=design_dir,
             log_output=self.log_output,
             timeout=timeout,
@@ -449,8 +465,13 @@ class VitisHLSCsimFlow(ToolFlow):
     def execute(self, design: Design, timeout: float | None = None) -> list[Design]:
         design_dir = design.dir
 
-        fp_hls_cosim_setup_tcl = design_dir / "dataset_hls_csim.tcl"
-        build_files = [fp_hls_cosim_setup_tcl]
+        # Get TCL file path from design config
+        config = design.require_config()
+        csim_tcl_name = config.require_flow_setting(
+            FlowName.VITIS_HLS_CSIM, "csim_tcl"
+        )
+        fp_hls_csim_tcl = design_dir / csim_tcl_name
+        build_files = [fp_hls_csim_tcl]
         check_build_files_exist(build_files)
         warn_for_reset_flags(build_files)
 
@@ -460,7 +481,7 @@ class VitisHLSCsimFlow(ToolFlow):
             os.environ["XILINX_VIVADO"] = self.env_var_xilinx_vivado
 
         r = call_tool(
-            f"{self.vitis_hls_bin} dataset_hls_csim.tcl",
+            f"{self.vitis_hls_bin} {csim_tcl_name}",
             cwd=design_dir,
             log_output=self.log_output,
             timeout=timeout,
@@ -500,7 +521,12 @@ class VitisHLSImplFlow(ToolFlow):
 
         design_dir = design.dir
 
-        fp_hls_ip_export = design_dir / "dataset_hls_ip_export.tcl"
+        # Get TCL file path from design config
+        config = design.require_config()
+        impl_tcl_name = config.require_flow_setting(
+            FlowName.VITIS_HLS_IMPL, "impl_tcl"
+        )
+        fp_hls_ip_export = design_dir / impl_tcl_name
         build_files = [fp_hls_ip_export]
         check_build_files_exist(build_files)
         warn_for_reset_flags(build_files)
@@ -512,7 +538,7 @@ class VitisHLSImplFlow(ToolFlow):
 
         if timeout is not None:
             return_result = call_tool(
-                f"{self.vitis_hls_bin} dataset_hls_ip_export.tcl",
+                f"{self.vitis_hls_bin} {impl_tcl_name}",
                 cwd=design_dir,
                 log_output=self.log_output,
                 timeout=timeout,
@@ -533,7 +559,7 @@ class VitisHLSImplFlow(ToolFlow):
                 return []
         else:
             return_result = call_tool(
-                f"{self.vitis_hls_bin} dataset_hls_ip_export.tcl",
+                f"{self.vitis_hls_bin} {impl_tcl_name}",
                 cwd=design_dir,
                 log_output=self.log_output,
                 raise_on_error=False,

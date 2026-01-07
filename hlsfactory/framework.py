@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import enum
 import multiprocessing
 import shutil
@@ -7,9 +9,20 @@ from collections.abc import Callable
 from enum import Enum
 from functools import partial
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 import psutil
 import tqdm
+
+from hlsfactory.design_config import (
+    DESIGN_CONFIG_FILENAME,
+    DesignConfig,
+    DesignConfigError,
+    read_design_config,
+)
+
+if TYPE_CHECKING:
+    pass
 
 EXTENSIONS_CPP = [".cpp", ".cc", ".c", ".hpp", ".h"]
 EXTENTIONS_TCL = [".tcl"]
@@ -35,12 +48,43 @@ class DesignStage(Enum):
 
 
 class Design:
-    def __init__(self, name: str, dir_path: Path) -> None:
+    def __init__(
+        self,
+        name: str,
+        dir_path: Path,
+        config: DesignConfig | None = None,
+    ) -> None:
         self.name = name
         self.dir = dir_path
+        self._config = config
 
     def __repr__(self) -> str:
         return f"Design(name={self.name}, dir={self.dir})"
+
+    @property
+    def config(self) -> DesignConfig | None:
+        """Return the design config if loaded, else None."""
+        return self._config
+
+    def require_config(self) -> DesignConfig:
+        """Return the design config, raising if not loaded."""
+        if self._config is None:
+            raise DesignConfigError(
+                f"Design '{self.name}' at {self.dir} has no loaded configuration. "
+                f"Ensure {DESIGN_CONFIG_FILENAME} exists and was loaded."
+            )
+        return self._config
+
+    @classmethod
+    def from_dir_with_config(cls, dir_path: Path) -> Design:
+        """Create a Design from a directory, loading config from hlsfactory.toml."""
+        config_path = dir_path / DESIGN_CONFIG_FILENAME
+        if not config_path.exists():
+            raise DesignConfigError(
+                f"Required config file {DESIGN_CONFIG_FILENAME} not found in {dir_path}"
+            )
+        config = read_design_config(config_path)
+        return cls(name=dir_path.name, dir_path=dir_path, config=config)
 
     @property
     def all_files(self) -> list[Path]:
@@ -57,18 +101,18 @@ class Design:
             source_files.extend(filter_files_by_ext(self.all_files, ext))
         return source_files
 
-    def rename(self, new_name: str) -> "Design":
+    def rename(self, new_name: str) -> Design:
         self.dir.rename(self.dir.parent / new_name)
         self.dir = self.dir.parent / new_name
         self.name = new_name
         return self
 
-    def move_to_new_parent_dir(self, new_parent_dir: Path) -> "Design":
+    def move_to_new_parent_dir(self, new_parent_dir: Path) -> Design:
         shutil.move(self.dir, new_parent_dir / self.name)
         self.dir = new_parent_dir / self.name
         return self
 
-    def copy_to_new_parent_dir(self, new_parent_dir: Path) -> "Design":
+    def copy_to_new_parent_dir(self, new_parent_dir: Path) -> Design:
         shutil.copytree(self.dir, new_parent_dir / self.name)
         self.dir = new_parent_dir / self.name
         return self
@@ -77,12 +121,22 @@ class Design:
         self,
         new_name: str,
         new_parent_dir: Path,
-    ) -> "Design":
+    ) -> Design:
         new_dir = new_parent_dir / new_name
         if new_dir.exists():
             shutil.rmtree(new_dir)
         shutil.copytree(self.dir, new_dir)
-        return Design(new_name, new_dir)
+
+        # Load config from the new location if it exists
+        config_path = new_dir / DESIGN_CONFIG_FILENAME
+        new_config = None
+        if config_path.exists():
+            new_config = read_design_config(config_path)
+        elif self._config is not None:
+            # Preserve existing config reference
+            new_config = self._config
+
+        return Design(new_name, new_dir, config=new_config)
 
 
 class DesignDataset:
@@ -100,13 +154,37 @@ class DesignDataset:
         name: str,
         dir_path: Path,
         exclude_dir_filter: None | Callable[[Path], bool] = None,
-    ) -> "DesignDataset":
+        require_config: bool = True,
+    ) -> DesignDataset:
+        """Create a DesignDataset from a directory containing design subdirectories.
+
+        Args:
+            name: Name for the dataset.
+            dir_path: Path to the directory containing design subdirectories.
+            exclude_dir_filter: Optional callable that returns True for directories to exclude.
+            require_config: If True (default), each design must have an hlsfactory.toml file.
+                           If False, designs are created without loading configs.
+        """
         designs = []
         for sub_dir in dir_path.iterdir():
             if sub_dir.is_dir():
                 if exclude_dir_filter is not None and exclude_dir_filter(sub_dir):
                     continue
-                designs.append(Design(sub_dir.name, sub_dir))
+
+                if require_config:
+                    config_path = sub_dir / DESIGN_CONFIG_FILENAME
+                    if not config_path.exists():
+                        raise DesignConfigError(
+                            f"Required config file {DESIGN_CONFIG_FILENAME} not found "
+                            f"in design directory {sub_dir}. "
+                            f"All designs must have a {DESIGN_CONFIG_FILENAME} file."
+                        )
+                    design = Design.from_dir_with_config(sub_dir)
+                else:
+                    design = Design(sub_dir.name, sub_dir)
+
+                designs.append(design)
+
         designs = sorted(designs, key=lambda design: design.name)
         return DesignDataset(name, dir_path, designs)
 

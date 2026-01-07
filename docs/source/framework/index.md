@@ -18,6 +18,7 @@ Below is a diagram of all the core components of HLSFactory laid out to show the
 
 ```{toctree}
 designs_datasets
+design_config
 flows
 data
 optdsl

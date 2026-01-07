@@ -6,6 +6,7 @@ import time
 from collections import defaultdict
 from pathlib import Path
 
+from hlsfactory.design_config import FlowName
 from hlsfactory.framework import Design, Frontend
 from hlsfactory.opt_dsl_v2.opt_dsl import OptDSL
 from hlsfactory.utils import log_execution_time_to_file
@@ -119,7 +120,12 @@ class OptDSLFrontend(Frontend):
     def execute(self, design: Design, timeout: float | None = None) -> list[Design]:
         t_0 = time.perf_counter()
 
-        opt_template_fp = design.dir / "opt_template.tcl"
+        # Get OptDSL file path from design config
+        config = design.require_config()
+        opt_dsl_file = config.require_flow_setting(
+            FlowName.OPT_DSL_V2, "opt_dsl_file"
+        )
+        opt_template_fp = design.dir / opt_dsl_file
         opt_dsl = None
 
         with open(opt_template_fp) as file:

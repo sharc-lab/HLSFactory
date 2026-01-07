@@ -28,7 +28,7 @@ synth_tcl = "run_synth_xilinx.tcl"
 
 [[flow_configs]]
 flow_name = "VitisHLSCsimFlow"
-synth_tcl = "run_csim_xilinx.tcl"
+csim_tcl = "run_csim_xilinx.tcl"
 """
 
 
@@ -83,7 +83,7 @@ def test_read_design_config_supports_examples(tmp_path: Path) -> None:
         == "run_synth_xilinx.tcl"
     )
     assert (
-        config.get_flow_setting("VitisHLSCsimFlow", "synth_tcl")
+        config.get_flow_setting("VitisHLSCsimFlow", "csim_tcl")
         == "run_csim_xilinx.tcl"
     )
 
@@ -146,3 +146,67 @@ def test_write_roundtrip(tmp_path: Path) -> None:
 
     loaded = read_design_config(path)
     assert loaded == config
+
+
+# Tests for new FlowName enum values
+def test_new_flow_names_supported(tmp_path: Path) -> None:
+    """Test that new flow names are properly validated."""
+    config_text = """
+    design_name = "test"
+    dataset_name = "test_dataset"
+
+    [[flow_configs]]
+    flow_name = "VitisHLSImplFlow"
+    impl_tcl = "impl.tcl"
+
+    [[flow_configs]]
+    flow_name = "VitisHLSCosimFlow"
+    cosim_tcl = "cosim.tcl"
+
+    [[flow_configs]]
+    flow_name = "VitisHLSCosimSetupFlow"
+    cosim_setup_tcl = "cosim_setup.tcl"
+    """
+    path = _write_config(tmp_path, config_text)
+    config = read_design_config(path)
+
+    assert config.supports_flow("VitisHLSImplFlow")
+    assert config.supports_flow("VitisHLSCosimFlow")
+    assert config.supports_flow("VitisHLSCosimSetupFlow")
+
+    assert config.require_flow_setting("VitisHLSImplFlow", "impl_tcl") == "impl.tcl"
+    assert config.require_flow_setting("VitisHLSCosimFlow", "cosim_tcl") == "cosim.tcl"
+    assert (
+        config.require_flow_setting("VitisHLSCosimSetupFlow", "cosim_setup_tcl")
+        == "cosim_setup.tcl"
+    )
+
+
+def test_missing_required_impl_setting_raises(tmp_path: Path) -> None:
+    """Test that missing required settings for VitisHLSImplFlow raises error."""
+    bad_config = """
+    design_name = "bad"
+    dataset_name = "test"
+
+    [[flow_configs]]
+    flow_name = "VitisHLSImplFlow"
+    """
+    path = _write_config(tmp_path, bad_config)
+
+    with pytest.raises(DesignConfigError):
+        read_design_config(path)
+
+
+def test_missing_required_csim_setting_raises(tmp_path: Path) -> None:
+    """Test that missing required settings for VitisHLSCsimFlow raises error."""
+    bad_config = """
+    design_name = "bad"
+    dataset_name = "test"
+
+    [[flow_configs]]
+    flow_name = "VitisHLSCsimFlow"
+    """
+    path = _write_config(tmp_path, bad_config)
+
+    with pytest.raises(DesignConfigError):
+        read_design_config(path)

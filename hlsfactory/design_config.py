@@ -14,10 +14,17 @@ class FlowConfigError(ValueError):
     """Raised when a flow configuration is invalid."""
 
 
+DESIGN_CONFIG_FILENAME = "hlsfactory.toml"
+
+
 class FlowName(StrEnum):
     OPT_DSL_V2 = "OptDSLv2"
     VITIS_HLS_SYNTH = "VitisHLSSynthFlow"
     VITIS_HLS_CSIM = "VitisHLSCsimFlow"
+    VITIS_HLS_IMPL = "VitisHLSImplFlow"
+    VITIS_HLS_COSIM = "VitisHLSCosimFlow"
+    VITIS_HLS_COSIM_SETUP = "VitisHLSCosimSetupFlow"
+    VITIS_HLS_IMPL_REPORT = "VitisHLSImplReportFlow"
     LIGHTNING_SIM_V2 = "LightningSimV2Flow"
 
 
@@ -89,7 +96,10 @@ class FlowConfig:
     _REQUIRED_SETTINGS: ClassVar[dict[str, frozenset[str]]] = {
         FlowName.OPT_DSL_V2.value: frozenset({"opt_dsl_file"}),
         FlowName.VITIS_HLS_SYNTH.value: frozenset({"synth_tcl"}),
-        FlowName.VITIS_HLS_CSIM.value: frozenset({"synth_tcl"}),
+        FlowName.VITIS_HLS_CSIM.value: frozenset({"csim_tcl"}),
+        FlowName.VITIS_HLS_IMPL.value: frozenset({"impl_tcl"}),
+        FlowName.VITIS_HLS_COSIM.value: frozenset({"cosim_tcl"}),
+        FlowName.VITIS_HLS_COSIM_SETUP.value: frozenset({"cosim_setup_tcl"}),
     }
 
     def __post_init__(self) -> None:
@@ -360,6 +370,7 @@ def _quote_toml_string(value: str) -> str:
 
 
 __all__ = [
+    "DESIGN_CONFIG_FILENAME",
     "DesignConfig",
     "DesignConfigError",
     "FlowConfig",
