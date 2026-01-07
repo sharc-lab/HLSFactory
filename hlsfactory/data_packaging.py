@@ -225,6 +225,12 @@ class DataAggregatorXilinx(DataAggregator):
             )
             return {}
 
+        if (design.dir / "error__VitisHLSSynthFlow.txt").exists():
+            print(
+                "WARNING: Error file found, synthesis never completed, no artifacts to extract",
+            )
+            return {}
+
         solutions = auto_find_solutions(design.dir)
         if len(solutions) != 1:
             if error_if_missing_data:
