@@ -100,7 +100,8 @@ class TemplateContainer:
         """
         # Regex pattern for HLS_AUTO pragmas
         # Example: #pragma HLS_AUTO dataflow auto{NULL, disable_start_propagation}
-        pragma_pattern = r'#pragma\s+HLS_AUTO\s+(\w+)\s+([^{]*?)auto\{([^}]+)\}'
+        # Example: #pragma HLS_AUTO data_pack variable=auto{in_muons, in_tracks, iso_muons}
+        pragma_pattern = r'#pragma\s+HLS_AUTO\s+([\w_]+)\s+([^{]*?)auto\{([^}]+)\}'
         
         for filename, content in self.template_files.items():
             lines = content.split('\n')
@@ -129,7 +130,8 @@ class TemplateContainer:
                         "options": options,
                         "category": pragma_category,
                         "original_line": line,
-                        "region": region
+                        "region": region,
+                        "location_id": f"{filename.replace('.cpp', '')}:{line_num}"
                     }
                     
                     self.pragma_locations.append(pragma_location)
@@ -345,12 +347,12 @@ class TemplateContainer:
             if choice_idx < len(pragma_choices):
                 choice = pragma_choices[choice_idx]
                 line_idx = pragma_info["line"] - 1  # Convert to 0-based index
-                
-                if choice == "" or choice == "NULL" or choice == "off":
-                    # Remove pragma entirely
+
+                if choice == "" or choice == "NA" :
+                    # Remove pragma entirely (empty choice means no pragma)
                     lines[line_idx] = ""
                 else:
-                    # Replace with specific pragma
+                    # Replace with specific pragma (including "NULL" and "off")
                     new_pragma = self._build_pragma_line(pragma_info, choice)
                     lines[line_idx] = new_pragma
         
@@ -359,17 +361,21 @@ class TemplateContainer:
     def _build_pragma_line(self, pragma_info: Dict, choice: str) -> str:
         """
         Build a specific pragma line from template and choice.
-        
+
         Args:
             pragma_info: Pragma location information
             choice: Chosen option for this pragma
-            
+
         Returns:
             Complete pragma line string
         """
         pragma_type = pragma_info["pragma_type"]
         pragma_params = pragma_info["pragma_params"]
-        
+
+        # Special handling for "NULL": means pragma without parameters
+        if choice == "NULL":
+            return f"    #pragma HLS {pragma_type}"
+
         if self.format_type == "json_format":
             # For JSON format: #pragma HLS pipeline off  or  #pragma HLS unroll factor=2
             if pragma_params:

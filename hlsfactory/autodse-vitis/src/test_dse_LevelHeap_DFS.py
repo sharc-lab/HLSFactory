@@ -237,14 +237,14 @@ def run_levelheap_dfs_test():
         
         # Create objective with the specified configuration
         objective = ResourceConstrainedLatencyObjective(
-            max_dsp=5130, 
-            max_bram=3240, 
-            max_lut=886680,
-            max_ff=1773360,
-            max_uram=720,
+            max_dsp=5472, 
+            max_bram=3456, 
+            max_lut=945792,
+            max_ff=1891584,
+            max_uram=768,
             top_module=top_module_name
         )
-        
+
         # Create explorer
         explorer = DSEExplorer(
             container=container,

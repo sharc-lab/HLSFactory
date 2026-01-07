@@ -47,7 +47,7 @@ BENCHMARKS=(
     "symm-opt-medium"
     "syr2k"
     "syrk"
-    "trmm"
+    "trmm" 
     "trmm-opt"
 )
 
