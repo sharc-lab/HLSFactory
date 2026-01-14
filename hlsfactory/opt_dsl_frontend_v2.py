@@ -3,12 +3,35 @@ import itertools
 import json
 import random
 import time
+import shutil
+import signal
+from contextlib import contextmanager
 from collections import defaultdict
 from pathlib import Path
 
 from hlsfactory.framework import Design, Frontend
 from hlsfactory.opt_dsl_v2.opt_dsl import OptDSL
 from hlsfactory.utils import log_execution_time_to_file
+
+@contextmanager
+def timeout_guard(seconds: float | None, *, label: str = "operation"):
+    if seconds is None:
+        yield
+        return
+    if not hasattr(signal, "SIGALRM"):
+        raise NotImplementedError("timeout_guard requires SIGALRM (POSIX/Linux).")
+
+    def _handler(signum, frame):
+        raise TimeoutError(f"{label} timed out after {seconds}s")
+
+    old = signal.getsignal(signal.SIGALRM)
+    signal.signal(signal.SIGALRM, _handler)
+    signal.setitimer(signal.ITIMER_REAL, float(seconds))
+    try:
+        yield
+    finally:
+        signal.setitimer(signal.ITIMER_REAL, 0.0)
+        signal.signal(signal.SIGALRM, old)
 
 
 def count_possible_samples(data):
@@ -121,49 +144,64 @@ class OptDSLFrontend(Frontend):
 
         opt_template_fp = design.dir / "opt_template.tcl"
         opt_dsl = None
-
-        with open(opt_template_fp) as file:
-            opt_dsl = OptDSL(file.read())
-        
-        if opt_dsl.opt_dsl_error:
-            raise ValueError(opt_dsl.error_message)
-
-        static_lines, groups, pipelines, partitions, unrolls = opt_dsl.get_directives()
-
-        opt_sources = generate_opt_sources(
-            static_lines,
-            groups,
-            pipelines,
-            partitions,
-            unrolls,
-            self.random_sample,
-            self.random_sample_num,
-            self.random_sample_seed,
-        )
-
         new_designs = []
-        # TODO Add config tracking back in
-        for opt_source in opt_sources:
-            # TODO Come up with better naming scheme?
-            opt_source_hash = hashlib.md5(opt_source.encode()).hexdigest()
-            new_design = design.copy_and_rename_to_new_parent_dir(
-                f"{design.name}_opt_{opt_source_hash}",
-                design.dir.parent,
-            )
-            opt_fp = new_design.dir / "opt.tcl"
-            opt_fp.write_text(opt_source)
 
-            # opt_config_fp = new_design.dir / "opt_config.json"
-            # opt_config_fp.write_text(json.dumps(opt_config, indent=4))
+        try:
+            with timeout_guard(timeout, label=f"OptDSL frontend execute (design={design.name})"):
+                with open(opt_template_fp) as file:
+                    opt_dsl = OptDSL(file.read())
+                
+                if opt_dsl.opt_dsl_error:
+                    raise ValueError(opt_dsl.error_message)
 
-            new_designs.append(new_design)
+                static_lines, groups, pipelines, partitions, unrolls = opt_dsl.get_directives()
 
-            t_1 = time.perf_counter()
+                opt_sources = generate_opt_sources(
+                    static_lines,
+                    groups,
+                    pipelines,
+                    partitions,
+                    unrolls,
+                    self.random_sample,
+                    self.random_sample_num,
+                    self.random_sample_seed,
+                )
+
+                # TODO Add config tracking back in
+                for opt_source in opt_sources:
+                    # TODO Come up with better naming scheme?
+                    opt_source_hash = hashlib.md5(opt_source.encode()).hexdigest()
+                    new_design = design.copy_and_rename_to_new_parent_dir(
+                        f"{design.name}_opt_{opt_source_hash}",
+                        design.dir.parent,
+                    )
+                    opt_fp = new_design.dir / "opt.tcl"
+                    opt_fp.write_text(opt_source)
+
+                    # opt_config_fp = new_design.dir / "opt_config.json"
+                    # opt_config_fp.write_text(json.dumps(opt_config, indent=4))
+
+                    new_designs.append(new_design)
+
+                    t_1 = time.perf_counter()
+                    if self.log_execution_time:
+                        log_execution_time_to_file(new_design.dir, self.name, t_0, t_1)
+
+                t_1 = time.perf_counter()
+                if self.log_execution_time:
+                    log_execution_time_to_file(design.dir, self.name, t_0, t_1)
+                    
+                return new_designs
+        
+        except TimeoutError as e:
+            print(f"TimeoutError in OptDSLFrontend for design {design.name}: {e}")
             if self.log_execution_time:
-                log_execution_time_to_file(new_design.dir, self.name, t_0, t_1)
+                t_1 = time.perf_counter()
+                log_execution_time_to_file(design.dir, f"{self.name}__TIMEOUT", t_0, t_1)
+            return new_designs
 
-        t_1 = time.perf_counter()
-        if self.log_execution_time:
-            log_execution_time_to_file(design.dir, self.name, t_0, t_1)
-
-        return new_designs
+        except shutil.Error as e:
+            if self.log_execution_time:
+                t_1 = time.perf_counter()
+                log_execution_time_to_file(design.dir, f"{self.name}__TIMEOUT", t_0, t_1)
+            return new_designs
