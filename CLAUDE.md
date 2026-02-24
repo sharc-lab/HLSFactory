@@ -27,8 +27,8 @@ uv run ruff check .
 # Fix auto-fixable lint issues
 uv run ruff check . --fix
 
-# Build documentation
-uv run sphinx-build -M html docs/source docs/build
+# Build documentation (install docs extra first: uv sync --extra docs)
+uv run sphinx-build -b html docs/source docs/build
 ```
 
 ## Architecture

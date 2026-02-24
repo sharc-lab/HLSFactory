@@ -23,18 +23,16 @@ dependencies = [
     "pydantic",
     "matplotlib>=3.10.8",
     "scikit-learn>=1.8.0",
-    "umap-learn>=0.5.9.post2",
+    "umap-learn>=0.5.11",
 ]
 
 [project.optional-dependencies]
 test = ["pytest", "pytest-cov", "pytest-mock"]
 docs = [
-    "sphinx",
+    "sphinx>=9",
     "sphinx-autobuild",
-    "furo",
-    "sphinx-autodoc-typehints",
+    "furo>=2024",
     "myst-parser",
-    "sphinx_rtd_theme",
     "sphinx-copybutton",
     "sphinxext-opengraph",
     "sphinx-autodoc2",

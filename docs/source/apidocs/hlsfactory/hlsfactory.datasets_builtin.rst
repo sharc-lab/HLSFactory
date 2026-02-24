@@ -52,6 +52,9 @@ Functions
    * - :py:obj:`dataset_forgebench_builder <hlsfactory.datasets_builtin.dataset_forgebench_builder>`
      - .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_forgebench_builder
           :summary:
+   * - :py:obj:`dataset_spector_hls_builder <hlsfactory.datasets_builtin.dataset_spector_hls_builder>`
+     - .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_spector_hls_builder
+          :summary:
    * - :py:obj:`datasets_builder <hlsfactory.datasets_builtin.datasets_builder>`
      - .. autodoc2-docstring:: hlsfactory.datasets_builtin.datasets_builder
           :summary:
@@ -107,6 +110,9 @@ Data
           :summary:
    * - :py:obj:`DIR_DATASET_FORGEBENCH <hlsfactory.datasets_builtin.DIR_DATASET_FORGEBENCH>`
      - .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_FORGEBENCH
+          :summary:
+   * - :py:obj:`DIR_DATASET_SPECTOR_HLS <hlsfactory.datasets_builtin.DIR_DATASET_SPECTOR_HLS>`
+     - .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_SPECTOR_HLS
           :summary:
    * - :py:obj:`DIR_ALL <hlsfactory.datasets_builtin.DIR_ALL>`
      - .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_ALL
@@ -205,6 +211,12 @@ API
 
    .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_FORGEBENCH
 
+.. py:data:: DIR_DATASET_SPECTOR_HLS
+   :canonical: hlsfactory.datasets_builtin.DIR_DATASET_SPECTOR_HLS
+   :value: None
+
+   .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_SPECTOR_HLS
+
 .. py:data:: DIR_ALL
    :canonical: hlsfactory.datasets_builtin.DIR_ALL
    :value: None
@@ -270,6 +282,11 @@ API
    :canonical: hlsfactory.datasets_builtin.dataset_forgebench_builder
 
    .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_forgebench_builder
+
+.. py:function:: dataset_spector_hls_builder(name: str, work_dir: pathlib.Path) -> hlsfactory.framework.DesignDataset
+   :canonical: hlsfactory.datasets_builtin.dataset_spector_hls_builder
+
+   .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_spector_hls_builder
 
 .. py:data:: T_dataset_builder
    :canonical: hlsfactory.datasets_builtin.T_dataset_builder

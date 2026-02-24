@@ -23,8 +23,6 @@ Submodules
    :titlesonly:
    :maxdepth: 1
 
-   hlsfactory.data_packaging
-   hlsfactory.datasets_builtin
    hlsfactory.flow_bambu
    hlsfactory.flow_harp
    hlsfactory.flow_intel
@@ -34,11 +32,13 @@ Submodules
    hlsfactory.jinja_frontend
    hlsfactory.opt_dsl_frontend
    hlsfactory.opt_dsl_frontend_intel
-   hlsfactory.opt_dsl_frontend_v2
    hlsfactory.utils
    hlsfactory.define_frontend
    hlsfactory.loc_flow
    hlsfactory.design_config
+   hlsfactory.data_packaging
+   hlsfactory.datasets_builtin
+   hlsfactory.opt_dsl_frontend_v2
 
 Package Contents
 ----------------

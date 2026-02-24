@@ -26,6 +26,9 @@ Functions
    :class: autosummary longtable
    :align: left
 
+   * - :py:obj:`timeout_guard <hlsfactory.opt_dsl_frontend_v2.timeout_guard>`
+     - .. autodoc2-docstring:: hlsfactory.opt_dsl_frontend_v2.timeout_guard
+          :summary:
    * - :py:obj:`count_possible_samples <hlsfactory.opt_dsl_frontend_v2.count_possible_samples>`
      - .. autodoc2-docstring:: hlsfactory.opt_dsl_frontend_v2.count_possible_samples
           :summary:
@@ -38,6 +41,11 @@ Functions
 
 API
 ~~~
+
+.. py:function:: timeout_guard(seconds: float | None, *, label: str = 'operation')
+   :canonical: hlsfactory.opt_dsl_frontend_v2.timeout_guard
+
+   .. autodoc2-docstring:: hlsfactory.opt_dsl_frontend_v2.timeout_guard
 
 .. py:function:: count_possible_samples(data)
    :canonical: hlsfactory.opt_dsl_frontend_v2.count_possible_samples

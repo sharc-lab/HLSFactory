@@ -52,12 +52,17 @@ API
 
       .. autodoc2-docstring:: hlsfactory.opt_dsl_v2.opt_dsl.OptDSL.partition
 
-   .. py:method:: validate_grouped_directives() -> None
-      :canonical: hlsfactory.opt_dsl_v2.opt_dsl.OptDSL.validate_grouped_directives
-
-      .. autodoc2-docstring:: hlsfactory.opt_dsl_v2.opt_dsl.OptDSL.validate_grouped_directives
-
    .. py:method:: get_directives()
       :canonical: hlsfactory.opt_dsl_v2.opt_dsl.OptDSL.get_directives
 
       .. autodoc2-docstring:: hlsfactory.opt_dsl_v2.opt_dsl.OptDSL.get_directives
+
+   .. py:method:: _validate_syntax(dynamic_lines: list) -> bool
+      :canonical: hlsfactory.opt_dsl_v2.opt_dsl.OptDSL._validate_syntax
+
+      .. autodoc2-docstring:: hlsfactory.opt_dsl_v2.opt_dsl.OptDSL._validate_syntax
+
+   .. py:method:: _validate_grouped_directives() -> bool
+      :canonical: hlsfactory.opt_dsl_v2.opt_dsl.OptDSL._validate_grouped_directives
+
+      .. autodoc2-docstring:: hlsfactory.opt_dsl_v2.opt_dsl.OptDSL._validate_grouped_directives

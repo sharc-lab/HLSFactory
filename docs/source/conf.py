@@ -10,18 +10,14 @@ sys.path.insert(0, CURRENT_DIR.parent.parent.as_posix())
 project = "HLSFactory"
 author = "HLSFactory Authors"
 
-main_doc = "index"
-
-# html_theme = "sphinx_rtd_theme"
-# html_theme_options = {
-#     "collapse_navigation": False,
-# }
-
 html_theme = "furo"
 html_theme_options = {
     "sidebar_hide_name": True,
     "light_logo": "hlsfactory_logo.png",
     "dark_logo": "hlsfactory_logo_dark.png",
+    "source_repository": "https://github.com/sharc-lab/HLSFactory",
+    "source_branch": "main",
+    "source_directory": "docs/source",
 }
 
 
@@ -35,12 +31,11 @@ html_short_title = "HLSFactory"
 html_favicon = "_static/favicon.ico"
 # html_logo = "_static/hlsfactory_logo.png"
 
-github_url = "https://github.com/sharc-lab/hlsfactory"
-
 html_show_sphinx = False
 
+myst_enable_extensions = ["colon_fence", "deflist"]
+
 extensions = [
-    "sphinx.ext.autodoc",
     "sphinx.ext.autosummary",
     "sphinx.ext.viewcode",
     "sphinx.ext.githubpages",
