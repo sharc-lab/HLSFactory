@@ -88,7 +88,7 @@ API
 
 .. py:data:: EXTENSIONS_CPP
    :canonical: hlsfactory.framework.EXTENSIONS_CPP
-   :value: ['.cpp', '.cc', '.hpp', '.h']
+   :value: ['.cpp', '.cc', '.c', '.hpp', '.h']
 
    .. autodoc2-docstring:: hlsfactory.framework.EXTENSIONS_CPP
 
@@ -143,7 +143,7 @@ API
 
       .. autodoc2-docstring:: hlsfactory.framework.DesignStage.CONCRETE
 
-.. py:class:: Design(name: str, dir_path: pathlib.Path)
+.. py:class:: Design(name: str, dir_path: pathlib.Path, config: hlsfactory.design_config.DesignConfig | None = None)
    :canonical: hlsfactory.framework.Design
 
    .. autodoc2-docstring:: hlsfactory.framework.Design
@@ -154,6 +154,23 @@ API
 
    .. py:method:: __repr__() -> str
       :canonical: hlsfactory.framework.Design.__repr__
+
+   .. py:property:: config
+      :canonical: hlsfactory.framework.Design.config
+      :type: hlsfactory.design_config.DesignConfig | None
+
+      .. autodoc2-docstring:: hlsfactory.framework.Design.config
+
+   .. py:method:: require_config() -> hlsfactory.design_config.DesignConfig
+      :canonical: hlsfactory.framework.Design.require_config
+
+      .. autodoc2-docstring:: hlsfactory.framework.Design.require_config
+
+   .. py:method:: from_dir_with_config(dir_path: pathlib.Path) -> hlsfactory.framework.Design
+      :canonical: hlsfactory.framework.Design.from_dir_with_config
+      :classmethod:
+
+      .. autodoc2-docstring:: hlsfactory.framework.Design.from_dir_with_config
 
    .. py:property:: all_files
       :canonical: hlsfactory.framework.Design.all_files
@@ -205,7 +222,7 @@ API
    .. py:method:: __repr__() -> str
       :canonical: hlsfactory.framework.DesignDataset.__repr__
 
-   .. py:method:: from_dir(name: str, dir_path: pathlib.Path, exclude_dir_filter: None | collections.abc.Callable[[pathlib.Path], bool] = None) -> hlsfactory.framework.DesignDataset
+   .. py:method:: from_dir(name: str, dir_path: pathlib.Path, exclude_dir_filter: None | collections.abc.Callable[[pathlib.Path], bool] = None, require_config: bool = True) -> hlsfactory.framework.DesignDataset
       :canonical: hlsfactory.framework.DesignDataset.from_dir
       :classmethod:
 

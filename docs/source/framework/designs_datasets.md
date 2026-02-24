@@ -28,9 +28,10 @@ This section demonstrates how to load a single design into a `Design` object.
 Assume there is an HLS design directory on the disk. For instance, let's assume there is an HLS design for a generic matrix multiplication (GEMM) kernel in the directory `~/hls_designs/gemm/`.
 
 ```python
+from pathlib import Path
 from hlsfactory.framework import Design
 
-my_design = Design("~/hls_designs/gemm/", custom_single_design_fp)
+my_design = Design("gemm", Path("~/hls_designs/gemm").expanduser())
 ```
 
 This command creates a `Design` referencing the design source "in-place." For example, running a workflow on this design might modify the source files and generate project files directly within the local design directory. 
@@ -117,9 +118,9 @@ Here is an example of how to load both the PolyBench and MachSuite datasets into
 from hlsfactory.datasets_builtin import datasets_builder
 
 my_design_datasets = datasets_builder(
-    ["polybench", "machsuite"], # dataset_names: IDs used to uniquely identify the datasets
-    ["my_polybench_dataset", "my_machsuite_dataset"], # dataset_labels: User-provided names for the created DesignDataset objects
-    WORK_DIR
+    WORK_DIR,
+    ["polybench", "machsuite"],  # dataset_names: IDs used to uniquely identify the datasets
+    dataset_labels=["my_polybench_dataset", "my_machsuite_dataset"],  # User-provided names for the created DesignDataset objects
 )
 ```
 

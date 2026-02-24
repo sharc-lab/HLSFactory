@@ -31,8 +31,9 @@ The `CompleteHLSData` class is designed to store and manage data from different 
 ### Example Usage
 
 ```python
-from data_packaging import CompleteHLSData
 from pathlib import Path
+
+from hlsfactory.data_packaging import CompleteHLSData
 
 # Create a CompleteHLSData instance
 hls_data = CompleteHLSData(
@@ -82,13 +83,16 @@ A `DataAggregator` subclass can implement one or more of these methods to gather
 The `DataAggregatorXilinx` class is an implementation of the `DataAggregator` abstract base class, specifically for handling data from Xilinx HLS solutions. It provides methods for gathering various types of data and artifacts from Xilinx HLS solutions.
 
 ```python
-from data_packaging import DataAggregatorXilinx, Design
+from pathlib import Path
+
+from hlsfactory.data_packaging import DataAggregatorXilinx
+from hlsfactory.framework import Design
 
 # Create a DataAggregatorXilinx instance
 aggregator = DataAggregatorXilinx()
 
 # Assume we have a Design object
-design = Design(name="design1", path="/path/to/design1")
+design = Design("design1", Path("/path/to/design1"))
 
 # Gather design data
 design_data = aggregator.gather_hls_design_data(design)

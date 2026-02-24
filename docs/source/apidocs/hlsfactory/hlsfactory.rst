@@ -14,6 +14,7 @@ Subpackages
    :maxdepth: 3
 
    hlsfactory.opt_dsl_v2
+   hlsfactory.scripts
 
 Submodules
 ----------
@@ -25,7 +26,6 @@ Submodules
    hlsfactory.data_packaging
    hlsfactory.datasets_builtin
    hlsfactory.flow_bambu
-   hlsfactory.design_config
    hlsfactory.flow_harp
    hlsfactory.flow_intel
    hlsfactory.flow_vitis
@@ -37,6 +37,8 @@ Submodules
    hlsfactory.opt_dsl_frontend_v2
    hlsfactory.utils
    hlsfactory.define_frontend
+   hlsfactory.loc_flow
+   hlsfactory.design_config
 
 Package Contents
 ----------------

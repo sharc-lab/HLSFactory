@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-HLSFactory is a framework for buildinbg and using High-Level Synthesis (HLS) design datasets. It enables collecting, building, and analyzing HLS designs across multiple vendor tool flows (AMD/Xilinx Vitis HLS, Intel HLS Compiler, Bambu, HARP) and custom user-defined flows.
+HLSFactory is a framework for building and using High-Level Synthesis (HLS) design datasets. It enables collecting, building, and analyzing HLS designs across multiple vendor tool flows (AMD/Xilinx Vitis HLS, Intel HLS Compiler, Bambu, HARP) and custom user-defined flows.
 
 ## Common Commands
 

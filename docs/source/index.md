@@ -6,7 +6,7 @@ HLSFactory is a framework for High-Level Synthesis (HLS) design datasets. It pro
 
 ## Quick Guide
 
-*If you want to jump right in and run some code, we recommend the [](./tutorials/xilinx_flow.md) tutorial along with the [](setup) guide.*
+*If you want to jump right in and run some code, we recommend the [](tutorials/xilinx_flow) tutorial along with the [](setup) guide.*
 
 *If you want to contribute to the dataset as soon as possible, we recommend the [](extending) guide.*
 

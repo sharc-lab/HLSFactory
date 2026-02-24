@@ -85,12 +85,12 @@ To add the new designs to the HLSFactory package, you will need to clone the HLS
 
 Using SSH:
 ```bash
-git clone git@github.com:sharc-lab/HLSFactory.git
+git clone git@github.com:sharc-lab/hlsfactory.git
 ```
 
 Using HTTPS:
 ```bash
-git clone https://github.com/sharc-lab/HLSFactory.git
+git clone https://github.com/sharc-lab/hlsfactory.git
 ```
 
 ### Step 4: Add the Designs to the Correct Directory in the HLSFactory Package
@@ -148,7 +148,7 @@ In most cases, the dataset builder will look as follows and can be used as the s
 ```python
 def dataset_my_dataset_builder(name: str, work_dir: Path) -> DesignDataset:
     check_dataset_dir_exists(DIR_DATASET_MY_DATASET)
-    new_dir = work_dir / DIR_DATASET_MY_DATASET.name
+    new_dir = work_dir / name
     shutil.copytree(DIR_DATASET_MY_DATASET, new_dir)
     return DesignDataset.from_dir(name, new_dir)
 ```
