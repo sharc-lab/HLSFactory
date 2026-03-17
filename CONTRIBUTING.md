@@ -23,8 +23,6 @@ Keeping pull requests small and well-scoped makes reviews faster for everyone.
 
 - Match the existing formatting and prefer descriptive naming.
 - Type hints are encouraged throughout new code.
-- Imports should follow the standard library → third-party → local grouping.
-- Use docstrings for public functions and classes when behaviour is not obvious from the signature alone.
 - Avoid commented-out code; remove it or move it to tests/examples.
 
 We use Ruff for linting; see the configuration in `pyproject.toml` for the enabled rules and exceptions.

@@ -24,6 +24,7 @@ dependencies = [
     "matplotlib>=3.10.8",
     "scikit-learn>=1.8.0",
     "umap-learn>=0.5.11",
+    "jinja2>=3.1.6",
 ]
 
 [project.optional-dependencies]
@@ -71,28 +72,14 @@ addopts = ["-s", "-v", "--cov=hlsfactory", "--cov-report=html"]
 log_cli = true
 
 [tool.ruff.lint]
-unfixable = ["F401"]
-select = ["ALL"]
-ignore = [
-    "EM102",
-    "TRY003",
-    "T201",
-    "S314",
-    "EM101",
-    "PGH003",
-    "D",
-    "FBT001",
-    "FBT002",
-    "PLR0913",
-    "S101",
-    "SIM108",
-    "PLR0912",
-    "PLR0915",
-    "COM812",
+
+[dependency-groups]
+dev = [
+    "ty>=0.0.23",
+    "ruff>=0.11.11"
 ]
 
 [tool.ruff]
 extend-exclude = ["hlsfactory/hls_dataset_sources"]
 
-[dependency-groups]
-dev = ["ruff>=0.11.11"]
+

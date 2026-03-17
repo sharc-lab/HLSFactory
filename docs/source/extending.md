@@ -4,6 +4,49 @@ We encourage the FPGA and High-Level Synthesis (HLS) community to contribute the
 
 The goal is to centralize design and flow support for different HLS tools, creating a common platform for research and experimentation.
 
+## Integrating Your HLS Project
+
+If you have an existing Vitis HLS project and want to run it through HLSFactory (without contributing to the built-in package), you need to add two TCL entry-point scripts to your design directory.
+
+### Directory Layout
+
+Your design directory should look like:
+
+```text
+my_design/
+    - dataset_hls.tcl
+    - dataset_hls_ip_export.tcl
+    - src/
+        - kernel.cpp
+        - kernel.h
+    - (other source and data files...)
+```
+
+### Required TCL Scripts
+
+- **`dataset_hls.tcl`** — Create a Vitis HLS project, add source files, create a solution, and run `csynth`. The flow invokes this script and expects the resulting HLS project and solution in the design directory.
+- **`dataset_hls_ip_export.tcl`** — Open the synthesized project, open the solution, and call `export_design -flow impl` to export to Vivado and run implementation. The flow expects the resulting Vivado project and solution.
+
+You can base these scripts on the built-in datasets (e.g., `hlsfactory/hls_dataset_sources/polybench/atax/`) or the examples in `demos/demo_custom_datasets/`.
+
+### Optional: Design-Space Exploration
+
+To use the OptDSL frontend for automatic pragma enumeration, add `opt_template.tcl` to your design directory. See the [OptDSL framework guide](framework/optdsl) for syntax.
+
+### Optional: hlsfactory.toml
+
+For structured metadata and flow configuration, add an `hlsfactory.toml` file. You can generate one for existing designs with:
+
+```bash
+uv run python -m hlsfactory.scripts.generate_design_configs --dry-run
+```
+
+See [Design Configuration](framework/design_config) for the format. If you omit it, flows fall back to the legacy TCL filename conventions.
+
+### Loading and Running
+
+Once the entry points are in place, load your design with `Design.from_dir()` or `DesignDataset.from_dir()` and pass it to the appropriate flows. See [Loading Custom Designs](tutorials/custom_designs) for examples.
+
 ## Contributing New Built-In Datasets
 
 HLSFactory already supports loading user designs and design datasets at runtime. However, we encourage users to contribute their designs and design datasets to HLSFactory itself as a built-in package so that they can be shared and used by all HLSFactory users.
@@ -170,7 +213,7 @@ DATASET_STR_MAP = {
 
 Please also update the HLSFactory documentation to include your new dataset in the list of built-in datasets. This will help other users know that your dataset is available and provide more information about it.
 
-You will mainly need to update the `built_in_datasets.md` page, which is located in the `docs/source/built_in_datasets.md` file in the HLSFactory repository. The documentation is implemented with Sphinx with the Myst plugin. This means that the documentation is simply written in markdown, which should be familiar to most users.
+You will mainly need to update the HLS Design Collection page, which is located in the `docs/source/built_in_datasets.md` file in the HLSFactory repository. The documentation is implemented with Sphinx with the Myst plugin. This means that the documentation is simply written in markdown, which should be familiar to most users.
 
 When adding your dataset documentation, make a new subheading and include information about your dataset. Try to follow the same format as the other datasets in the documentation to keep it consistent and easy to read. This includes how many designs are in the dataset, what HLS tools and vendors are supported, OptDSL support, source links, and other relevant information about the dataset in general or specific designs in the dataset.
 

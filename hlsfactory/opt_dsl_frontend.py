@@ -5,8 +5,6 @@ import random
 import time
 from pathlib import Path
 
-import psutil
-
 from hlsfactory.framework import Design, Frontend
 from hlsfactory.utils import log_execution_time_to_file
 
@@ -19,7 +17,7 @@ class ArrayPartition:
         self.factors = setting_lists[2].strip("[]").split()
         self.arr_types = setting_lists[3].strip("[]").split()
         # lines are actual templates to wrtie to tcl files
-        self.directives = []
+        self.directives: list[str] = []
 
     def get_flattened(self):
         output = []

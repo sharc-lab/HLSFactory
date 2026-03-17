@@ -7,45 +7,53 @@ llvm_ir_parser.py
 """
 
 from __future__ import annotations
-import re, json, textwrap
+import re
+import json
 from pathlib import Path
 from typing import Dict, Set, List, Optional, Tuple
+
 
 # ── data records ────────────────────────────────────────────────────────────
 class FunctionInfo:
     __slots__ = ("name", "callees", "loop_headers")
+
     def __init__(self, name: str):
-        self.name          = name
+        self.name = name
         self.callees: Set[str] = set()
         self.loop_headers: Set[str] = set()
 
+
 class CallEdge:
     __slots__ = ("callee", "dbg_id", "line", "loop_tag")
+
     def __init__(self, callee: str, dbg_id: Optional[int]):
-        self.callee   = callee
-        self.dbg_id   = dbg_id   # !dbg id; resolved later
-        self.line     = None     # type: Optional[int]
-        self.loop_tag = None     # type: Optional[str]
+        self.callee = callee
+        self.dbg_id = dbg_id  # !dbg id; resolved later
+        self.line = None  # type: Optional[int]
+        self.loop_tag = None  # type: Optional[str]
+
 
 # ── main parser ─────────────────────────────────────────────────────────────
 class LLVMIRParser:
     # --- core patterns ------------------------------------------------------
-    _DEFINE_RE   = re.compile(r'^\s*define\s+[^@]*@(?:"([^"]+)"|([\w.$-]+))\s*\(')
-    _CALL_RE     = re.compile(r'\bcall\b[^@]*@(?:"([^"]+)"|([\w.$-]+))')
-    _DBGLINK_RE  = re.compile(r'!dbg\s*!([0-9]+)')
+    _DEFINE_RE = re.compile(r'^\s*define\s+[^@]*@(?:"([^"]+)"|([\w.$-]+))\s*\(')
+    _CALL_RE = re.compile(r'\bcall\b[^@]*@(?:"([^"]+)"|([\w.$-]+))')
+    _DBGLINK_RE = re.compile(r"!dbg\s*!([0-9]+)")
 
     # --- loop-pragma helpers -----------------------------------------------
     _GLOB_STR_RE = re.compile(r'^\s*@([\w.$-]+)\s*=.*c"([^"]*)')
-    _LOOPNAME_RE = re.compile(r'@_ssdm_op_SpecLoopName\([^@]*@([\w.$-]+)\)')
-    _LOOPTRIP_RE = re.compile(r'@_ssdm_op_SpecLoopTripCount')
+    _LOOPNAME_RE = re.compile(r"@_ssdm_op_SpecLoopName\([^@]*@([\w.$-]+)\)")
+    _LOOPTRIP_RE = re.compile(r"@_ssdm_op_SpecLoopTripCount")
 
     # --- Vivado-style metadata lines  (***NEW / FIX***: allow leading spaces)
-    _META_LOC_RE  = re.compile(
-        r'^\s*!([0-9]+)\s*=\s*metadata\s*!{\s*i32\s+([0-9]+),\s*i32\s+[0-9]+,'
-        r'\s*metadata\s*!([0-9]+)')
-    _META_LEX_RE  = re.compile(
-        r'^\s*!([0-9]+)\s*=\s*metadata\s*!{\s*i32\s+786443,\s*metadata\s*!([0-9]+),'
-        r'\s*i32\s+([0-9]+)')
+    _META_LOC_RE = re.compile(
+        r"^\s*!([0-9]+)\s*=\s*metadata\s*!{\s*i32\s+([0-9]+),\s*i32\s+[0-9]+,"
+        r"\s*metadata\s*!([0-9]+)"
+    )
+    _META_LEX_RE = re.compile(
+        r"^\s*!([0-9]+)\s*=\s*metadata\s*!{\s*i32\s+786443,\s*metadata\s*!([0-9]+),"
+        r"\s*i32\s+([0-9]+)"
+    )
 
     def __init__(self, ll_file: str | Path, input_c_hierarchy_path: str):
         self.ll_path = Path(ll_file)
@@ -54,15 +62,13 @@ class LLVMIRParser:
 
         # data to fill
         self.functions: Dict[str, FunctionInfo] = {}
-        self.edges:     Dict[str, List[CallEdge]] = {}
-        self.loop_string: Dict[str, str] = {}   # @gv -> "HLSAUTOLOOP7"
+        self.edges: Dict[str, List[CallEdge]] = {}
+        self.loop_string: Dict[str, str] = {}  # @gv -> "HLSAUTOLOOP7"
         #            id -> (line, parent)
         self.meta_map: Dict[int, Tuple[Optional[int], Optional[int]]] = {}
         # ── C-source hierarchy: we use it to validate dbg line numbers ──
         self.valid_src_lines: Set[int] = set()
         self._load_source_hierarchy(self.ll_path.parent / input_c_hierarchy_path)
-
-
 
     # ── public helpers ------------------------------------------------------
     def build_llvm_ir_hierarchy_from_top(self, top: str):
@@ -100,7 +106,7 @@ class LLVMIRParser:
                 self.functions.setdefault(cur_fn, FunctionInfo(cur_fn))
                 self.edges.setdefault(cur_fn, [])
                 continue
-            if ln.strip() == '}' and cur_fn:
+            if ln.strip() == "}" and cur_fn:
                 cur_fn = None
                 continue
             if cur_fn is None:
@@ -118,7 +124,7 @@ class LLVMIRParser:
             dbg_match = self._DBGLINK_RE.search(ln)
             dbg_id = int(dbg_match.group(1)) if dbg_match else None
             for callee in call_targets:
-                if callee.startswith(('_ssdm_', 'llvm.')):  # skip intrinsics
+                if callee.startswith(("_ssdm_", "llvm.")):  # skip intrinsics
                     continue
                 self.functions[cur_fn].callees.add(callee)
                 self.edges[cur_fn].append(CallEdge(callee, dbg_id))
@@ -142,8 +148,8 @@ class LLVMIRParser:
             line, parent = self.meta_map.get(cur, (None, None))
             if line is not None:
                 if not self.valid_src_lines or line in self.valid_src_lines:
-                    return line        # good line
-            cur = parent               # climb once more
+                    return line  # good line
+            cur = parent  # climb once more
         return None
 
     # ---- hierarchy / DFS ---------------------------------------------------
@@ -174,7 +180,7 @@ class LLVMIRParser:
 
     # ---- pretty printer (fixed) -------------------------------------------
     def _pretty(self, n: dict, fp, indent: int, width: int):
-        pad   = "  " * indent           # two-space indent per depth
+        pad = "  " * indent  # two-space indent per depth
         parts = [n["name"]]
 
         if "loops" in n:
@@ -188,29 +194,30 @@ class LLVMIRParser:
 
         line = pad + " ".join(parts)
         if width and len(line) > width:
-            line = line[:width - 3] + "..."
+            line = line[: width - 3] + "..."
 
         fp.write(line + "\n")
         for c in n.get("callees", []):
             self._pretty(c, fp, indent + 1, width)
-
 
     # ------------------------------------------------------------------ NEW
     def _load_source_hierarchy(self, json_path: Path):
         """Fill self.valid_src_lines with every 'line' that belongs to a
         loop or call in input_c_hierarchy.json (if the file exists)."""
         if not json_path.exists():
-            return                                    # nothing to do
+            return  # nothing to do
         import json
+
         def collect(node):
             if isinstance(node, dict):
                 if node.get("type") in ("loop", "call") and "line" in node:
                     self.valid_src_lines.add(int(node["line"]))
-                for key in ("children",):             # recursive walk
+                for key in ("children",):  # recursive walk
                     for child in node.get(key, []):
                         collect(child)
             elif isinstance(node, list):
                 for item in node:
                     collect(item)
+
         with json_path.open() as fp:
             collect(json.load(fp))

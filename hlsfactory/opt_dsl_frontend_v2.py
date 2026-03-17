@@ -1,18 +1,17 @@
 import hashlib
 import itertools
-import json
 import random
 import time
 import shutil
 import signal
 from contextlib import contextmanager
-from collections import defaultdict
 from pathlib import Path
 
 from hlsfactory.design_config import FlowName
 from hlsfactory.framework import Design, Frontend
 from hlsfactory.opt_dsl_v2.opt_dsl import OptDSL
 from hlsfactory.utils import log_execution_time_to_file
+
 
 @contextmanager
 def timeout_guard(seconds: float | None, *, label: str = "operation"):
@@ -145,22 +144,24 @@ class OptDSLFrontend(Frontend):
 
         # Get OptDSL file path from design config
         config = design.require_config()
-        opt_dsl_file = config.require_flow_setting(
-            FlowName.OPT_DSL_V2, "opt_dsl_file"
-        )
+        opt_dsl_file = config.require_flow_setting(FlowName.OPT_DSL_V2, "opt_dsl_file")
         opt_template_fp = design.dir / opt_dsl_file
         opt_dsl = None
         new_designs = []
 
         try:
-            with timeout_guard(timeout, label=f"OptDSL frontend execute (design={design.name})"):
+            with timeout_guard(
+                timeout, label=f"OptDSL frontend execute (design={design.name})"
+            ):
                 with open(opt_template_fp) as file:
                     opt_dsl = OptDSL(file.read())
-                
+
                 if opt_dsl.opt_dsl_error:
                     raise ValueError(opt_dsl.error_message)
 
-                static_lines, groups, pipelines, partitions, unrolls = opt_dsl.get_directives()
+                static_lines, groups, pipelines, partitions, unrolls = (
+                    opt_dsl.get_directives()
+                )
 
                 opt_sources = generate_opt_sources(
                     static_lines,
@@ -196,18 +197,22 @@ class OptDSLFrontend(Frontend):
                 t_1 = time.perf_counter()
                 if self.log_execution_time:
                     log_execution_time_to_file(design.dir, self.name, t_0, t_1)
-                    
+
                 return new_designs
-        
+
         except TimeoutError as e:
             print(f"TimeoutError in OptDSLFrontend for design {design.name}: {e}")
             if self.log_execution_time:
                 t_1 = time.perf_counter()
-                log_execution_time_to_file(design.dir, f"{self.name}__TIMEOUT", t_0, t_1)
+                log_execution_time_to_file(
+                    design.dir, f"{self.name}__TIMEOUT", t_0, t_1
+                )
             return new_designs
 
-        except shutil.Error as e:
+        except shutil.Error as _e:
             if self.log_execution_time:
                 t_1 = time.perf_counter()
-                log_execution_time_to_file(design.dir, f"{self.name}__TIMEOUT", t_0, t_1)
+                log_execution_time_to_file(
+                    design.dir, f"{self.name}__TIMEOUT", t_0, t_1
+                )
             return new_designs

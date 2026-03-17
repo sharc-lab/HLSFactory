@@ -35,7 +35,7 @@ def call_tool(
     raise_on_error: bool = False,
 ) -> CallToolResult:
     if shell:
-        cmd_list = cmd
+        cmd_list: list[str] = [cmd]
     else:
         cmd_list = shlex.split(cmd)
 
@@ -396,7 +396,7 @@ class ToolPathsSource(enum.Enum):
 
     ENVFILE = enum.auto()
     ENV = enum.auto()
-    # TODO: Implement the WHICH option to use the shutil.which function
+    # MAGIC = enum.auto() # TODO: Implement the MAGIC option to use the shutil.which function
 
 
 def get_tool_paths(

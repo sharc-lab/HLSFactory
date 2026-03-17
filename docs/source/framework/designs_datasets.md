@@ -102,7 +102,7 @@ Sometimes, a user might want to manage multiple datasets simultaneously or work 
 
 To centralize the efforts of the HLS research community, we include commonly used HLS design datasets in the HLSFactory package, which can be loaded directly into a `DesignDataset` object and placed in a user-defined working directory. For this, we include `datasets_builtin`, which contains utility functions to load these built-in datasets.
 
-For more information about the available built-in datasets, refer to the [built_in_datasets documentation](../built_in_datasets).
+For more information about the available built-in datasets, refer to the [HLS Design Collection](../built_in_datasets).
 
 Below is an example of how to load the PolyBench dataset into a `DesignDataset` object.
 

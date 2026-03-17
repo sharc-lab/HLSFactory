@@ -8,4 +8,4 @@ including synthesis execution and results analysis.
 from .design import ConcreteDesign
 from .c_to_rtl_mapper import CToRTLMapper
 
-__all__ = ['ConcreteDesign', 'CToRTLMapper']
+__all__ = ["ConcreteDesign", "CToRTLMapper"]

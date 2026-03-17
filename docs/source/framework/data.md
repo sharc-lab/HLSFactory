@@ -8,6 +8,19 @@ In some cases, users would like to combine their own data with previously genera
 
 HLSFactory provides code to address all these use cases for the end user in an easy-to-use and easy-to-extend way.
 
+## Output Files
+
+Flows write JSON files into each design directory. `DataAggregatorXilinx` reads these files when aggregating. The following table summarizes the main output files and their key fields (Xilinx flows).
+
+| File | Produced By | Key Fields |
+|------|-------------|------------|
+| `data_design.json` | VitisHLSSynthFlow | `name`, `part`, `target_clock_period`, `version_vitis_hls` |
+| `data_hls.json` | VitisHLSSynthFlow | `clock_period`, `latency_best_cycles`, `latency_average_cycles`, `latency_worst_cycles`, `resources_lut_used`, `resources_ff_used`, `resources_dsp_used`, `resources_bram_used`, `resources_uram_used` |
+| `data_implementation.json` | VitisHLSImplReportFlow | `power__total_power`, `power__dynamic_power`, `power__static_power`, `utilization__Total LUTs`, `utilization__FFs`, `utilization__DSP Blocks`, `utilization__RAMB18`, `utilization__URAM`, `timing__WNS`, `timing__TNS`, `timing__WHS`, `timing__THS`, `timing__clock_period`, `timing__clock_frequency` |
+| `execution_time_data.json` | All flows (when logging enabled) | Per-flow: `t_start`, `t_end`, `dt`, `core` |
+
+When `DataAggregator` aggregates data, `CompleteHLSData.to_flat_dict()` prefixes keys: `design__*`, `synthesis__*`, `implementation__*`, `execution__*`. For example, `data_hls.json` fields become `synthesis__latency_best_cycles`, `synthesis__resources_lut_used`, etc.
+
 ## `CompleteHLSData` Class
 
 The `CompleteHLSData` class is designed to store and manage data from different HLS and implementation flows. It also provides methods to convert this data into different formats such as flat dictionaries, JSON, and CSV.

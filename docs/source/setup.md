@@ -45,16 +45,42 @@ Legacy alternatives remain available:
 
 The repository also includes demo scripts and Jupyter notebooks that demonstrate how to use the library. These are not included in the package but can be found in the source code repository on GitHub. You can access them by cloning the repository and exploring the `demos/` directory (for example, `demos/demo_full_flow_xilinx/` for the complete Xilinx walkthrough and `demos/demo_full_flow_intel/` for the Intel variant).
 
+## Quickstart (5-Minute Run)
+
+To verify your setup and run a minimal end-to-end flow:
+
+1. **Prerequisites:** Python (via `uv`), Vitis HLS and Vivado installed, and a `.env` file in the project root (or current directory) with:
+
+   ```text
+   HLSFACTORY_WORK_DIR=/absolute/path/to/your/workdir
+   HLSFACTORY_VITIS_HLS_PATH=/path/to/Vitis_HLS/2023.1
+   HLSFACTORY_VIVADO_PATH=/path/to/Vivado/2023.1
+   ```
+
+   Copy `.env.template` from the repository root and fill in the paths.
+
+2. **Run the full Xilinx demo** (from the repository root):
+
+   ```bash
+   uv run python demos/demo_full_flow_xilinx/full_flow_xilinx.py
+   ```
+
+3. **Expected output:** After synthesis and implementation complete, each design directory under `$HLSFACTORY_WORK_DIR/demo_full_flow_xilinx/` will contain `data_hls.json`, `data_implementation.json`, and `execution_time_data.json` with latency, resource usage, timing, and power data.
+
+For a step-by-step walkthrough of each stage (dataset setup, OptDSL frontend, synthesis, implementation, reporting), see the [Xilinx Flow tutorial](tutorials/xilinx_flow).
+
 ## Vendor Tools
 
-To run specific vendor flows (e.g., Xilinx Vitis HLS and Vivado, Intel HLS and Quartus), you will need to have the respective tools installed on your machine. It is the user's responsibility to install and set up these tools as needed. Once set up, you can pass the path of these vendor tools to classes and functions in HLSFactory that require them.
+You need the appropriate vendor tools for the flows you run:
 
+- **Xilinx flows** — Vitis HLS and Vivado (e.g., 2021.1, 2023.1)
+- **Intel flows** — Intel HLS Compiler and Quartus
 
-HLSFactory also includes some helper functions that can try to automatically find the vendor tool paths on your machine if you have included them in your environment `PATH` variable.
+It is the user's responsibility to install and set up these tools. Once installed, HLSFactory can discover them via a `.env` file or environment variables.
 
-See the [`hlsfactory.utils`](./apidocs/index) API documentation for details on `get_work_dir` and `get_tool_paths`, including examples of how the functions search the filesystem, `.env` files, and environment variables.
+HLSFactory includes helper functions to find tool paths from your `PATH`, `.env` file, or environment variables. See the [`hlsfactory.utils`](apidocs/index) API documentation for `get_work_dir` and `get_tool_paths`.
 
-Additionally, HLSFactory supports auto-finding the vendor tool paths from a local `.env` file located in your project tree. Create a `.env` file with content similar to the following:
+Create a `.env` file in your project tree (you can copy from `.env.template` in the repository root) with content like:
 
 ```text
 HLSFACTORY_WORK_DIR=/absolute/path/to/your/workdir
@@ -62,4 +88,4 @@ HLSFACTORY_VITIS_HLS_PATH=/opt/Xilinx/Vitis_HLS/2023.1
 HLSFACTORY_VIVADO_PATH=/opt/Xilinx/Vivado/2023.1
 ```
 
-`get_work_dir(DirSource.ENVFILE)` and `get_tool_paths(ToolPathsSource.ENVFILE)` will read these keys automatically. You can also provide the same keys as environment variables if you prefer not to use a `.env` file.
+Typical installation paths: `/opt/Xilinx/Vitis_HLS/<version>` and `/opt/Xilinx/Vivado/<version>` on Linux. `get_work_dir(DirSource.ENVFILE)` and `get_tool_paths(ToolPathsSource.ENVFILE)` read these keys automatically. You can also set the same keys as environment variables instead of using a `.env` file.

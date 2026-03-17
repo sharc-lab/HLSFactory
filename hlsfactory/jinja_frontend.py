@@ -1,5 +1,4 @@
 import hashlib
-import logging
 import time
 from pathlib import Path
 from typing import Any
@@ -24,7 +23,7 @@ class JinjaFrontend(Frontend):
 
         self.jinja_configs = jinja_configs
 
-    def execute(self, design: Design, timeout: float | None = None) -> list[Design]:
+    def execute(self, design: Design, _timeout: float | None = None) -> list[Design]:
         t_0 = time.perf_counter()
 
         new_designs = []

@@ -27,9 +27,11 @@ def auto_find_solutions(dir_path: Path) -> list[Path]:
     solutions = list(
         filter(
             lambda x: (
-                '<AutoPilot:solution xmlns:AutoPilot="com.autoesl.autopilot.solution">'
-            )
-            in x.read_text(),
+                (
+                    '<AutoPilot:solution xmlns:AutoPilot="com.autoesl.autopilot.solution">'
+                )
+                in x.read_text()
+            ),
             solutions,
         ),
     )
@@ -467,9 +469,7 @@ class VitisHLSCsimFlow(ToolFlow):
 
         # Get TCL file path from design config
         config = design.require_config()
-        csim_tcl_name = config.require_flow_setting(
-            FlowName.VITIS_HLS_CSIM, "csim_tcl"
-        )
+        csim_tcl_name = config.require_flow_setting(FlowName.VITIS_HLS_CSIM, "csim_tcl")
         fp_hls_csim_tcl = design_dir / csim_tcl_name
         build_files = [fp_hls_csim_tcl]
         check_build_files_exist(build_files)
@@ -523,9 +523,7 @@ class VitisHLSImplFlow(ToolFlow):
 
         # Get TCL file path from design config
         config = design.require_config()
-        impl_tcl_name = config.require_flow_setting(
-            FlowName.VITIS_HLS_IMPL, "impl_tcl"
-        )
+        impl_tcl_name = config.require_flow_setting(FlowName.VITIS_HLS_IMPL, "impl_tcl")
         fp_hls_ip_export = design_dir / impl_tcl_name
         build_files = [fp_hls_ip_export]
         check_build_files_exist(build_files)

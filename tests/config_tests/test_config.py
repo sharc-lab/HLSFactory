@@ -83,8 +83,7 @@ def test_read_design_config_supports_examples(tmp_path: Path) -> None:
         == "run_synth_xilinx.tcl"
     )
     assert (
-        config.get_flow_setting("VitisHLSCsimFlow", "csim_tcl")
-        == "run_csim_xilinx.tcl"
+        config.get_flow_setting("VitisHLSCsimFlow", "csim_tcl") == "run_csim_xilinx.tcl"
     )
 
 

@@ -62,7 +62,7 @@ total_count = count_total_designs_in_dataset_collection(datasets)
 print(f"Total Designs: {total_count}")
 ```
 
-The `datasets_builder` function creates a dataset collection with the specified datasets. The HLS source code for the designs in these datasets is built into the HLSFactory package itself, so no other external downloads or setup are needed to load these datasets. The `dataset_labels` argument is optional and can be used to assign user-specified names to the datasets rather than the default names. Datasets are loaded by a list of keys that correspond to the datasets in the `datasets_builtin` module. For more information about the datasets and the keys, see the [](../built_in_datasets.md) page as well as the [](hlsfactory.datasets_builtin) module API documentation.
+The `datasets_builder` function creates a dataset collection with the specified datasets. The HLS source code for the designs in these datasets is built into the HLSFactory package itself, so no other external downloads or setup are needed to load these datasets. The `dataset_labels` argument is optional and can be used to assign user-specified names to the datasets rather than the default names. Datasets are loaded by a list of keys that correspond to the datasets in the `datasets_builtin` module. For more information about the datasets and the keys, see the [HLS Design Collection](../built_in_datasets) page as well as the [](hlsfactory.datasets_builtin) module API documentation.
 
 In this demo, we load the Polybench, MachSuite, and CHStone datasets built into HLSFactory.
 

@@ -4,18 +4,33 @@
 
 HLSFactory is a framework for High-Level Synthesis (HLS) design datasets. It provides both the facilities to collect and build custom HLS datasets using various frontends, supported HLS tools, and data aggregation as well as provides built-in design dataset sources for users who want to run their own experiments out of the box. We also provide easy facilities for new users to contribute their own HLS designs to the existing design datasets as well as augment the existing tool flows to support custom flows such as new front ends for design space sampling and new vendor tool support.
 
+## New to HLSFactory?
+
+If you have HLS experience but are new to this framework: start with [Concepts](concepts) for the mental model, then [Setup](setup), then the [Xilinx Flow Tutorial](tutorials/xilinx_flow).
+
 ## Quick Guide
 
-*If you want to jump right in and run some code, we recommend the [](tutorials/xilinx_flow) tutorial along with the [](setup) guide.*
+**Run experiments:** Jump right in with the [Xilinx Flow tutorial](tutorials/xilinx_flow) and the [Setup](setup) guide.
 
-*If you want to contribute to the dataset as soon as possible, we recommend the [](extending) guide.*
+**Contribute designs:** Add your own designs and flows via the [Extending](extending) guide.
 
-- [](setup): Details on how to install and setup HLSFactory
-- [](framework/index): Details on the HLSFactory build framework: 1) frontend parameterization, 2) backend tool flows, 3) data aggregation and formatting
-- [](tutorials/index): Details on how to use the HLSFactory framework with guided tutorials and demos
-- [](built_in_datasets): Details on the built-in HLS design datasets
-- [](extending): Details on how to contribute to HLSFactory to add your own designs and datasets to the built-in datasets, add custom flows, and general contributions to the framework
-- [](apidocs/index): Python API documentation for the HLSFactory framework
+- [Setup](setup): Install and configure HLSFactory
+- [Concepts](concepts): Core abstractions and value proposition
+- [Framework](framework/index): Frontend parameterization, backend tool flows, data aggregation
+- [Tutorials](tutorials/index): Guided tutorials and demos
+- [HLS Design Collection](built_in_datasets): Community-curated HLS design corpora
+- [Extending](extending): Contribute designs, datasets, and custom flows
+- [API Reference](apidocs/index): Python API documentation
+
+## HLS Design Collection
+
+The [HLS Design Collection](built_in_datasets) is a community-organized effort to build the largest collection of HLS designs available in one place. It is a major effort within HLSFactory, bringing together curated HLS design corpora from across the research community.
+
+We hope that this effort allows HLSFactory to be the one-stop-shop for HLS designs for any application or research as well as highlight HLS projects across the HLS and FPGA community. Any contributed design will be cited through our HLS Factory work and linked directly to credit the original authors and their works as well.
+
+### Open to Community Contributions!
+HLSFactory welcomes open-source HLS designs from the community. If you have designs you would like to add to the collection, or need help integrating them, please reach out. We are more than happy to assist!
+
 
 ## Publications
 
@@ -73,6 +88,8 @@ The source code is hosted under the *AGPLv3* license. Please see the LICENSE fil
 self
 
 setup
+
+concepts
 
 framework/index
 

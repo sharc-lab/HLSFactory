@@ -6,7 +6,7 @@
 - [](intel_flow)
 - [](data_agg)
 - [](custom_designs)
-- [](opt_dsl)
+- {ref}`opt_dsl_tutorial`
 
 ## Advanced Demos
 

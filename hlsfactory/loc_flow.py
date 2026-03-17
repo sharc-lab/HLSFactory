@@ -1,6 +1,5 @@
 import json
 import time
-from pprint import pp
 
 from hlsfactory.framework import Design, Flow
 from hlsfactory.utils import log_execution_time_to_file

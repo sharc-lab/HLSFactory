@@ -12,8 +12,7 @@ import shutil
 from collections import OrderedDict
 from copy import deepcopy
 from glob import glob, iglob
-from os.path import abspath, basename, dirname, exists, isfile, join
-from pprint import pprint
+from os.path import basename, exists, isfile, join
 from shutil import copy
 from subprocess import PIPE, Popen
 

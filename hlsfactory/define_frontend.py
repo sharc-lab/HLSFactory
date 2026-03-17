@@ -77,7 +77,9 @@ class CPPPreprocessorFrontend(Frontend):
                 cmd[1:1] = defines_args
 
                 try:
-                    subprocess.run(cmd, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                    subprocess.run(
+                        cmd, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE
+                    )
                     # preserve file permissions
                     shutil.copymode(src, tmp_path)
                     shutil.move(str(tmp_path), str(src))
