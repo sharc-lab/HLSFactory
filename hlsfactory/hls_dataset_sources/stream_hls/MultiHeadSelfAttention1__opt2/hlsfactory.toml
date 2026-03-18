@@ -1,0 +1,10 @@
+design_name = "MultiHeadSelfAttention1__opt2"
+dataset_name = "stream_hls"
+
+[[flow_configs]]
+flow_name = "VitisHLSSynthFlow"
+synth_tcl = "dataset_hls.tcl"
+
+[[flow_configs]]
+flow_name = "VitisHLSCsimFlow"
+csim_tcl = "dataset_hls_csim.tcl"
