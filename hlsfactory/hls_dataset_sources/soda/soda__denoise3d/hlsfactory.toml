@@ -1,0 +1,14 @@
+design_name = "soda__denoise3d"
+dataset_name = "soda"
+
+[[flow_configs]]
+flow_name = "VitisHLSSynthFlow"
+synth_tcl = "dataset_hls.tcl"
+
+[[flow_configs]]
+flow_name = "VitisHLSCsimFlow"
+csim_tcl = "dataset_hls_csim.tcl"
+
+[[flow_configs]]
+flow_name = "VitisHLSImplFlow"
+impl_tcl = "dataset_hls_ip_export.tcl"
