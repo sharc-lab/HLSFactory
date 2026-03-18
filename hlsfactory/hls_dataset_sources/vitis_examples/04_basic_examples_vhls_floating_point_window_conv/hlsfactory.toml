@@ -1,0 +1,15 @@
+design_name = "04_basic_examples_vhls_floating_point_window_conv"
+dataset_name = "vitis_examples"
+tags = []
+
+[[flow_configs]]
+flow_name = "VitisHLSSynthFlow"
+synth_tcl = "dataset_hls.tcl"
+
+[[flow_configs]]
+flow_name = "VitisHLSCsimFlow"
+csim_tcl = "dataset_hls_csim.tcl"
+
+[[flow_configs]]
+flow_name = "VitisHLSImplFlow"
+impl_tcl = "dataset_hls_ip_export.tcl"
