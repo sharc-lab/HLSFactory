@@ -175,6 +175,7 @@ class ArtifactsXilinx(enum.Enum):
     REPORT = "report"
     HDL = "hdl"
     IP = "ip"
+    GRAPH = "graph"
 
 
 def get_file_in_root(dir_fp: Path, file_name: str) -> dict:
@@ -183,7 +184,7 @@ def get_file_in_root(dir_fp: Path, file_name: str) -> dict:
         # raise FileNotFoundError(f"Data file not found: {data_fp}")
         print(f"WARNING: Data file not found: {data_fp}")
         return {}
-    print(f"DATA FOUND: {data_fp}")
+    # print(f"DATA FOUND: {data_fp}")
     return json.loads(data_fp.read_text())
 
 
@@ -211,6 +212,7 @@ class DataAggregatorXilinx(DataAggregator):
             ArtifactsXilinx.REPORT,
             ArtifactsXilinx.HDL,
             ArtifactsXilinx.IP,
+            ArtifactsXilinx.GRAPH,
         },
         error_if_missing_data: bool = True,
     ) -> ArtifactCollection:
@@ -221,13 +223,13 @@ class DataAggregatorXilinx(DataAggregator):
 
         if (design.dir / "timeout__VitisHLSSynthFlow.txt").exists():
             print(
-                "WARNING: Timeout file found, synthesis never completed, no artifacts to extract",
+                f"WARNING: Timeout file found, synthesis never completed: {design.dir}/timeout__VitisHLSSynthFlow.txt",
             )
             return {}
 
         if (design.dir / "error__VitisHLSSynthFlow.txt").exists():
             print(
-                "WARNING: Error file found, synthesis never completed, no artifacts to extract",
+                f"WARNING: Error file found, synthesis never completed: {design.dir}/error__VitisHLSSynthFlow.txt",
             )
             return {}
 
@@ -300,6 +302,14 @@ class DataAggregatorXilinx(DataAggregator):
                 raise FileNotFoundError(f"IP zip file not found: {ip_zip}")
             data["ip"] = [ip_zip]
 
+        if ArtifactsXilinx.GRAPH in artifacts_to_extract:
+            graph_files = list(design.dir.glob("*.gexf"))
+            if len(graph_files) == 0:
+                return data
+            if len(graph_files) > 1:
+                raise ValueError(f"Found more than 1 graph file in {design.dir}")
+            data["graph"] = [graph_files[0]]
+
         return data
 
     def gather_hls_synthesis_artifacts(
@@ -311,6 +321,7 @@ class DataAggregatorXilinx(DataAggregator):
             ArtifactsXilinx.REPORT,
             ArtifactsXilinx.HDL,
             ArtifactsXilinx.IP,
+            ArtifactsXilinx.GRAPH
         },
         error_if_missing_data: bool = True,
     ) -> InMemoryArchive:
