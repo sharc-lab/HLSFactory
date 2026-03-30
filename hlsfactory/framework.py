@@ -7,6 +7,7 @@ from collections.abc import Callable
 from enum import Enum
 from functools import partial
 from pathlib import Path
+from concurrent.futures import ProcessPoolExecutor
 
 import psutil
 import tqdm
@@ -354,6 +355,86 @@ class Flow(ABC):
                     designs,
                 )
                 for dataset_name, designs in designs_collected.items()
+            }
+        if new_dataset_name_fn is None:
+            new_dataset_name_fn = self.default_new_dataset_name_fn()
+
+        new_design_datasets_copied: dict[str, DesignDataset] = {}
+        old_dataset_names = list(set(designs_collected.keys()))
+        new_dataset_names = list(map(new_dataset_name_fn, old_dataset_names))
+
+        for old_name, new_name in zip(
+            old_dataset_names,
+            new_dataset_names,
+            strict=False,
+        ):
+            if old_name == new_name:
+                raise ValueError(
+                    f"Old and new dataset names are the same, "
+                    f"{old_name}=={new_name}, "
+                    f"the new_dataset_name_fn must provide a unique renaming",
+                )
+
+        for old_name, new_name in zip(
+            old_dataset_names,
+            new_dataset_names,
+            strict=False,
+        ):
+            d_new = DesignDataset.from_empty_dir(new_name, self.work_dir)
+            for design in designs_collected[old_name]:
+                design.move_to_new_parent_dir(d_new.dataset_dir)
+                d_new.add_design(design)
+            new_design_datasets_copied[new_name] = d_new
+
+        return new_design_datasets_copied
+
+    def execute_multiple_design_datasets_fine_grained_parallel_v2(
+        self,
+        design_datasets: DesignDatasetCollection,
+        copy_dataset: bool,
+        new_dataset_name_fn: Callable[[str], str] | None = None,
+        n_jobs: int = 1,
+        par_chunksize: int = 1,
+        timeout: float | None = None,
+    ) -> DesignDatasetCollection:
+
+        designs = []
+        dataset_names = []
+        for design_dataset_name, design_dataset in design_datasets.items():
+            for design in design_dataset.designs:
+                designs.append(design)
+                dataset_names.append(design_dataset_name)
+
+        mp_context = multiprocessing.get_context("forkserver")
+        execute_fn = partial(self.execute, timeout=timeout)
+
+        with ProcessPoolExecutor(
+            max_workers=n_jobs,
+            mp_context=mp_context,
+        ) as executor:
+            new_designs_lists = list(
+                tqdm.tqdm(
+                    executor.map(execute_fn, designs, chunksize=par_chunksize),
+                    total=len(designs),
+                )
+            )
+
+        designs_collected: dict[str, list[Design]] = defaultdict(list)
+        for new_designs, dataset_name in zip(
+            new_designs_lists,
+            dataset_names,
+            strict=False,
+        ):
+            designs_collected[dataset_name].extend(new_designs)
+
+        if not copy_dataset:
+            return {
+                dataset_name: DesignDataset(
+                    dataset_name,
+                    design_datasets[dataset_name].dataset_dir,
+                    collected_designs,
+                )
+                for dataset_name, collected_designs in designs_collected.items()
             }
         if new_dataset_name_fn is None:
             new_dataset_name_fn = self.default_new_dataset_name_fn()

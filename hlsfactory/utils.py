@@ -4,6 +4,7 @@ import os
 import pathlib
 import shlex
 import shutil
+import signal
 import subprocess
 import time
 from dataclasses import is_dataclass
@@ -26,6 +27,31 @@ class CallToolResult(enum.Enum):
     ERROR = enum.auto()
 
 
+def _kill_process_tree(p: subprocess.Popen) -> None:
+    """Force-kill a process and all its descendants, then reap."""
+    try:
+        os.killpg(p.pid, signal.SIGKILL)
+    except OSError:
+        pass
+
+    try:
+        parent = psutil.Process(p.pid)
+        for child in parent.children(recursive=True):
+            try:
+                child.kill()
+            except psutil.NoSuchProcess:
+                pass
+    except psutil.NoSuchProcess:
+        pass
+
+    try:
+        p.kill()
+    except OSError:
+        pass
+
+    p.wait()
+
+
 def call_tool(
     cmd: str,
     cwd: Path,
@@ -43,18 +69,21 @@ def call_tool(
         p = subprocess.Popen(
             cmd_list,
             cwd=cwd,
-            stdout=subprocess.DEVNULL,
+            stdout=subprocess.PIPE if log_output else subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
             shell=shell,
+            start_new_session=True,
         )
-        os.sched_setaffinity(p.pid, [psutil.Process().cpu_num()])
+    except OSError as e:
+        if raise_on_error:
+            msg = f"Failed to start command {cmd_list}: {e}"
+            raise RuntimeError(msg) from e
+        return CallToolResult.ERROR
+
+    try:
         p.wait(timeout=timeout)
     except subprocess.TimeoutExpired:
-        process_id = psutil.Process(p.pid)
-        children = process_id.children(recursive=True)
-        for child in children:
-            child.terminate()
-        p.terminate()
+        _kill_process_tree(p)
         return CallToolResult.TIMEOUT
 
     return_code = p.returncode
@@ -64,24 +93,37 @@ def call_tool(
             raise RuntimeError(msg)
         return CallToolResult.ERROR
 
-    if log_output:
-        print(p.stdout)
+    if log_output and p.stdout:
+        stdout_data = p.stdout.read()
+        if stdout_data:
+            print(stdout_data.decode(errors="replace"))
 
     return CallToolResult.SUCCESS
 
 
 def terminate_process_and_children(pid: int) -> None:
     """
-    Terminate a process and all its child processes.
+    Kill a process and all its child processes, block until reaped.
 
     Args:
         pid (int): The process ID of the parent process.
     """
-    process_id = psutil.Process(pid)
-    children = process_id.children(recursive=True)
-    for child in children:
-        child.terminate()
-    process_id.terminate()
+    try:
+        os.killpg(pid, signal.SIGKILL)
+    except OSError:
+        pass
+
+    try:
+        proc = psutil.Process(pid)
+        for child in proc.children(recursive=True):
+            try:
+                child.kill()
+            except psutil.NoSuchProcess:
+                pass
+        proc.kill()
+        proc.wait()
+    except psutil.NoSuchProcess:
+        pass
 
 
 def wait_for_files_creation(
