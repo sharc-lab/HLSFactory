@@ -147,51 +147,51 @@ class OptDSLFrontend(Frontend):
         new_designs = []
 
         try:
-            with timeout_guard(timeout, label=f"OptDSL frontend execute (design={design.name})"):
-                with open(opt_template_fp) as file:
-                    opt_dsl = OptDSL(file.read())
-                
-                if opt_dsl.opt_dsl_error:
-                    raise ValueError(opt_dsl.error_message)
+            # with timeout_guard(timeout, label=f"OptDSL frontend execute (design={design.name})"):
+            with open(opt_template_fp) as file:
+                opt_dsl = OptDSL(file.read())
+            
+            if opt_dsl.opt_dsl_error:
+                raise ValueError(opt_dsl.error_message)
 
-                static_lines, groups, pipelines, partitions, unrolls = opt_dsl.get_directives()
+            static_lines, groups, pipelines, partitions, unrolls = opt_dsl.get_directives()
 
-                opt_sources = generate_opt_sources(
-                    static_lines,
-                    groups,
-                    pipelines,
-                    partitions,
-                    unrolls,
-                    self.random_sample,
-                    self.random_sample_num,
-                    self.random_sample_seed,
+            opt_sources = generate_opt_sources(
+                static_lines,
+                groups,
+                pipelines,
+                partitions,
+                unrolls,
+                self.random_sample,
+                self.random_sample_num,
+                self.random_sample_seed,
+            )
+
+            # TODO Add config tracking back in
+            for opt_source in opt_sources:
+                # TODO Come up with better naming scheme?
+                opt_source_hash = hashlib.md5(opt_source.encode()).hexdigest()
+                new_design = design.copy_and_rename_to_new_parent_dir(
+                    f"{design.name}_opt_{opt_source_hash}",
+                    design.dir.parent,
                 )
+                opt_fp = new_design.dir / "opt.tcl"
+                opt_fp.write_text(opt_source)
 
-                # TODO Add config tracking back in
-                for opt_source in opt_sources:
-                    # TODO Come up with better naming scheme?
-                    opt_source_hash = hashlib.md5(opt_source.encode()).hexdigest()
-                    new_design = design.copy_and_rename_to_new_parent_dir(
-                        f"{design.name}_opt_{opt_source_hash}",
-                        design.dir.parent,
-                    )
-                    opt_fp = new_design.dir / "opt.tcl"
-                    opt_fp.write_text(opt_source)
+                # opt_config_fp = new_design.dir / "opt_config.json"
+                # opt_config_fp.write_text(json.dumps(opt_config, indent=4))
 
-                    # opt_config_fp = new_design.dir / "opt_config.json"
-                    # opt_config_fp.write_text(json.dumps(opt_config, indent=4))
-
-                    new_designs.append(new_design)
-
-                    t_1 = time.perf_counter()
-                    if self.log_execution_time:
-                        log_execution_time_to_file(new_design.dir, self.name, t_0, t_1)
+                new_designs.append(new_design)
 
                 t_1 = time.perf_counter()
                 if self.log_execution_time:
-                    log_execution_time_to_file(design.dir, self.name, t_0, t_1)
-                    
-                return new_designs
+                    log_execution_time_to_file(new_design.dir, self.name, t_0, t_1)
+
+            t_1 = time.perf_counter()
+            if self.log_execution_time:
+                log_execution_time_to_file(design.dir, self.name, t_0, t_1)
+                
+            return new_designs
         
         except TimeoutError as e:
             print(f"TimeoutError in OptDSLFrontend for design {design.name}: {e}")
