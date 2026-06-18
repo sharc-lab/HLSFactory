@@ -1,0 +1,10 @@
+design_name = "n256__UF1"
+dataset_name = "hp_fft"
+
+[[flow_configs]]
+flow_name = "VitisHLSSynthFlow"
+synth_tcl = "dataset_hls.tcl"
+
+[[flow_configs]]
+flow_name = "VitisHLSImplFlow"
+impl_tcl = "dataset_hls_ip_export.tcl"

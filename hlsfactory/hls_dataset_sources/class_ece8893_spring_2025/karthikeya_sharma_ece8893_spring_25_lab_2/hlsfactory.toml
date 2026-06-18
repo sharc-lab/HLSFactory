@@ -1,0 +1,6 @@
+design_name = "karthikeya_sharma_ece8893_spring_25_lab_2"
+dataset_name = "class_ece8893_spring_2025"
+
+[[flow_configs]]
+flow_name = "VitisHLSSynthFlow"
+synth_tcl = "dataset_hls.tcl"

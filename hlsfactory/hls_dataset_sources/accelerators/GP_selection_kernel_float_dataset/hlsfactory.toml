@@ -1,0 +1,6 @@
+design_name = "GP_selection_kernel_float_dataset"
+dataset_name = "accelerators"
+
+[[flow_configs]]
+flow_name = "VitisHLSSynthFlow"
+synth_tcl = "dataset_hls.tcl"

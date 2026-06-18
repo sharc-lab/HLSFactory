@@ -1,0 +1,10 @@
+design_name = "nayan_nair_ece8893_spring25_lab3"
+dataset_name = "class_ece8893_spring_2025"
+
+[[flow_configs]]
+flow_name = "VitisHLSSynthFlow"
+synth_tcl = "dataset_hls.tcl"
+
+[[flow_configs]]
+flow_name = "VitisHLSImplFlow"
+impl_tcl = "dataset_hls_ip_export.tcl"
