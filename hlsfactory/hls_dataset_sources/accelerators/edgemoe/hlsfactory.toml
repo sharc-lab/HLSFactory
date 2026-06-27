@@ -1,0 +1,6 @@
+design_name = "edgemoe"
+dataset_name = "accelerators"
+
+[[flow_configs]]
+flow_name = "VitisHLSSynthFlow"
+synth_tcl = "dataset_hls.tcl"
