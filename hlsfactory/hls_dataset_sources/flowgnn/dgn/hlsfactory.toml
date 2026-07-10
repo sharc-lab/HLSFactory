@@ -1,0 +1,6 @@
+design_name = "dgn"
+dataset_name = "flowgnn"
+
+[[flow_configs]]
+flow_name = "VitisHLSSynthFlow"
+synth_tcl = "dataset_hls.tcl"
