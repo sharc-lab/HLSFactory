@@ -1,0 +1,14 @@
+design_name = "polybench__float__unsafe__math__mini__atax"
+dataset_name = "polybench__reproducible"
+
+[[flow_configs]]
+flow_name = "VitisHLSSynthFlow"
+synth_tcl = "dataset_hls.tcl"
+
+[[flow_configs]]
+flow_name = "VitisHLSCosimSetupFlow"
+cosim_setup_tcl = "dataset_hls_cosim_setup.tcl"
+
+[[flow_configs]]
+flow_name = "VitisHLSImplFlow"
+impl_tcl = "dataset_hls_ip_export.tcl"
