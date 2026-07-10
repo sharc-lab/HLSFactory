@@ -1,0 +1,6 @@
+design_name = "DGNN_Booster_EvolveGCN"
+dataset_name = "accelerators"
+
+[[flow_configs]]
+flow_name = "VitisHLSSynthFlow"
+synth_tcl = "dataset_hls.tcl"
