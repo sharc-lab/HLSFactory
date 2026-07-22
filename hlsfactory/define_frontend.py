@@ -1,6 +1,7 @@
 # create a fornt end that uses the C++ preprocesser where a user passes in a list of stes fo define statenebts and that i used to paramaterse the diisgn using a C++ preprocessor
 
 import hashlib
+import json
 import time
 import subprocess
 import tempfile
@@ -18,12 +19,12 @@ class CPPPreprocessorFrontend(Frontend):
     def __init__(
         self,
         work_dir: Path,
-        define_statements: list[dict[str, Any]],
+        define_statements: list[dict[str, str]],
         log_execution_time: bool = True,
     ) -> None:
-        self.work_dir = work_dir
-        self.define_statements = define_statements
-        self.log_execution_time = log_execution_time
+        self.work_dir: Path = work_dir
+        self.define_statements: list[dict[str, str]] = define_statements
+        self.log_execution_time: bool = log_execution_time
 
     def execute(self, design: Design, timeout: float | None = None) -> list[Design]:
         t_0 = time.perf_counter()

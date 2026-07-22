@@ -1,4 +1,5 @@
 import hashlib
+import json
 import time
 from pathlib import Path
 from typing import Any
@@ -22,7 +23,30 @@ class JinjaFrontend(Frontend):
         self.log_execution_time = log_execution_time
 
         self.jinja_configs = jinja_configs
-
+    
+    def load_configs_from_jsonl(self, fp_jsonl: Path):
+        configs = []
+        txt_config = fp_jsonl.read_text()
+        lines = txt_config.splitlines()
+        for line in lines:
+            config = json.loads(line.strip())
+            configs.append(config)
+        self.jinja_configs = configs
+        return self.jinja_configs
+    
+    def load_configs_from_json(self, fp_json: Path):
+        txt_json = fp_json.read_text()
+        config_list = json.loads(txt_json)
+        if not isinstance(config_list, list):
+            raise ValueError("Configs must be a list of dicts")
+        for list_item_key, list_item_value in config_list.items():
+            if not isinstance(list_item_key, str):
+                raise ValueError("List item keys must be strings")
+            if not isinstance(list_item_value, dict):
+                raise ValueError("List item values must be dicts")
+            self.jinja_configs.append(list_item_value)
+        return self.jinja_configs
+            
     def execute(self, design: Design, _timeout: float | None = None) -> list[Design]:
         t_0 = time.perf_counter()
 
