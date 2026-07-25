@@ -10,6 +10,7 @@ from hlsfactory.flow_vitis import (
     VitisHLSImplFlow,
     VitisHLSSynthFlow,
 )
+from hlsfactory.opt_dsl_frontend import OptDSLPassthroughFrontend
 from hlsfactory.framework import (
     DesignDataset,
     Flow,
@@ -36,6 +37,7 @@ FLOW_NAME_MAP = {
     "VitisHLSCosimSetupFlow": VitisHLSCosimSetupFlow,
     "VitisHLSCosimFlow": VitisHLSCosimFlow,
     "VitisHLSCsimFlow": VitisHLSCsimFlow,
+    "OptDSLPassthroughFrontend": OptDSLPassthroughFrontend,
 }
 
 
@@ -111,6 +113,10 @@ def main(args) -> None:
             ):
                 flow_instance = cls(
                     vitis_hls_bin=str(BIN_VITIS_HLS),
+                )
+            case cls if cls is OptDSLPassthroughFrontend:
+                flow_instance = cls(
+                    work_dir=work_dir,
                 )
             case _:
                 raise NotImplementedError(f"Flow {flow!r} is not yet supported.")
