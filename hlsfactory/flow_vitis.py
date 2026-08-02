@@ -12,6 +12,7 @@ from hlsfactory.utils import (
     CallToolResult,
     call_tool,
     find_bin_path,
+    flow_already_completed,
     log_execution_time_to_file,
     serialize_methods_for_dataclass,
     timeout_not_supported,
@@ -282,9 +283,17 @@ class VitisHLSSynthFlow(ToolFlow):
         self.env_var_xilinx_vivado = env_var_xilinx_vivado
 
     def execute(self, design: Design, timeout: float | None = None) -> list[Design]:
-        t_0 = time.perf_counter()
-
         design_dir = design.dir
+
+        if flow_already_completed(
+            design_dir,
+            self.name,
+            success_marker_fp=design_dir / "data_hls.json",
+        ):
+            print(f"[{design_dir}] Skipping {self.name}, already completed")
+            return [design]
+
+        t_0 = time.perf_counter()
 
         # Get TCL file path from design config
         config = design.require_config()
