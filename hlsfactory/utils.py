@@ -172,6 +172,44 @@ def log_execution_time_to_file(
     execution_time_data_fp.write_text(json.dumps(execution_time_data, indent=4))
 
 
+def flow_already_completed(
+    design_dir: Path,
+    flow_name: str,
+    success_marker_fp: Path | None = None,
+) -> bool:
+    """
+    Checks whether a flow has already been completed successfully for a design.
+
+    Args:
+        design_dir (Path): The directory where the design is located.
+        flow_name (str): The name of the flow to check.
+        success_marker_fp (Path | None): An optional file path that must exist
+            for the flow to be considered successfully completed (e.g. a
+            report or output data file). If None, only the execution time
+            log and absence of error/timeout markers are checked.
+
+    Returns:
+        bool: True if the flow already completed successfully, False otherwise.
+    """
+    execution_time_data_fp = design_dir / "execution_time_data.json"
+    if not execution_time_data_fp.exists():
+        return False
+
+    execution_time_data = json.loads(execution_time_data_fp.read_text())
+    if flow_name not in execution_time_data:
+        return False
+
+    error_fp = design_dir / f"error__{flow_name}.txt"
+    timeout_fp = design_dir / f"timeout__{flow_name}.txt"
+    if error_fp.exists() or timeout_fp.exists():
+        return False
+
+    if success_marker_fp is not None and not success_marker_fp.exists():
+        return False
+
+    return True
+
+
 class FlowTimer:
     """
     A class for measuring the execution time of a flow.
