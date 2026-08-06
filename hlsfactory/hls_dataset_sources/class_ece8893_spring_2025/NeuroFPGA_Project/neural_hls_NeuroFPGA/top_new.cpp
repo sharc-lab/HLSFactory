@@ -120,46 +120,38 @@ void ResNet(
 {
     #pragma HLS INTERFACE m_axi port=input bundle=gmem0 depth=4194304 offset=slave
 #pragma HLS INTERFACE m_axi port=block0_weights_conv1 bundle=gmem1 depth=524288 offset=slave
-#pragma HLS INTERFACE m_axi port=block0_output_conv1 bundle=gmem2 depth=524288 offset=slave
 #pragma HLS INTERFACE m_axi port=block0_gamma1 bundle=gmem3 depth=512 offset=slave
 #pragma HLS INTERFACE m_axi port=block0_beta1 bundle=gmem3 depth=512 offset=slave
 #pragma HLS INTERFACE m_axi port=block0_mean1 bundle=gmem3 depth=512 offset=slave
 #pragma HLS INTERFACE m_axi port=block0_var1 bundle=gmem3 depth=512 offset=slave
 #pragma HLS INTERFACE m_axi port=block0_output_bn1 bundle=gmem4 depth=524288 offset=slave
 #pragma HLS INTERFACE m_axi port=block0_weights_conv2 bundle=gmem5 depth=524288 offset=slave
-#pragma HLS INTERFACE m_axi port=block0_output_conv2 bundle=gmem6 depth=524288 offset=slave
 #pragma HLS INTERFACE m_axi port=block0_gamma2 bundle=gmem7 depth=512 offset=slave
 #pragma HLS INTERFACE m_axi port=block0_beta2 bundle=gmem7 depth=512 offset=slave
 #pragma HLS INTERFACE m_axi port=block0_mean2 bundle=gmem7 depth=512 offset=slave
 #pragma HLS INTERFACE m_axi port=block0_var2 bundle=gmem7 depth=512 offset=slave
 #pragma HLS INTERFACE m_axi port=block0_output_bn2 bundle=gmem8 depth=524288 offset=slave
-#pragma HLS INTERFACE m_axi port=input_local bundle=gmem9 depth=4194304 offset=slave
 #pragma HLS INTERFACE m_axi port=output_local bundle=gmem10 depth=524288 offset=slave
 #pragma HLS INTERFACE m_axi port=block0_weights_ds_conv1 bundle=gmem11 depth=524288 offset=slave
-#pragma HLS INTERFACE m_axi port=block0_output_ds_conv1 bundle=gmem12 depth=524288 offset=slave
 #pragma HLS INTERFACE m_axi port=block0_ds_gamma1 bundle=gmem13 depth=512 offset=slave
 #pragma HLS INTERFACE m_axi port=block0_ds_beta1 bundle=gmem13 depth=512 offset=slave
 #pragma HLS INTERFACE m_axi port=block0_ds_mean1 bundle=gmem13 depth=512 offset=slave
 #pragma HLS INTERFACE m_axi port=block0_ds_var1 bundle=gmem13 depth=512 offset=slave
 #pragma HLS INTERFACE m_axi port=output_block0 bundle=gmem14 depth=524288 offset=slave
 #pragma HLS INTERFACE m_axi port=block1_weights_conv1 bundle=gmem15 depth=524288 offset=slave
-#pragma HLS INTERFACE m_axi port=block1_output_conv1 bundle=gmem16 depth=524288 offset=slave
 #pragma HLS INTERFACE m_axi port=block1_gamma1 bundle=gmem17 depth=512 offset=slave
 #pragma HLS INTERFACE m_axi port=block1_beta1 bundle=gmem17 depth=512 offset=slave
 #pragma HLS INTERFACE m_axi port=block1_mean1 bundle=gmem17 depth=512 offset=slave
 #pragma HLS INTERFACE m_axi port=block1_var1 bundle=gmem17 depth=512 offset=slave
 #pragma HLS INTERFACE m_axi port=block1_output_bn1 bundle=gmem18 depth=524288 offset=slave
 #pragma HLS INTERFACE m_axi port=block1_weights_conv2 bundle=gmem19 depth=524288 offset=slave
-#pragma HLS INTERFACE m_axi port=block1_output_conv2 bundle=gmem20 depth=524288 offset=slave
 #pragma HLS INTERFACE m_axi port=block1_gamma2 bundle=gmem21 depth=512 offset=slave
 #pragma HLS INTERFACE m_axi port=block1_beta2 bundle=gmem21 depth=512 offset=slave
 #pragma HLS INTERFACE m_axi port=block1_mean2 bundle=gmem21 depth=512 offset=slave
 #pragma HLS INTERFACE m_axi port=block1_var2 bundle=gmem21 depth=512 offset=slave
 #pragma HLS INTERFACE m_axi port=block1_output_bn2 bundle=gmem22 depth=524288 offset=slave
-#pragma HLS INTERFACE m_axi port=output_avgpooling bundle=gmem23 depth=131072 offset=slave
 #pragma HLS INTERFACE m_axi port=fc_weights bundle=gmem24 depth=262144 offset=slave
 #pragma HLS INTERFACE m_axi port=fc_bias bundle=gmem25 depth=512 offset=slave
-#pragma HLS INTERFACE m_axi port=fc_output bundle=gmem26 depth=131072 offset=slave
 #pragma HLS INTERFACE m_axi port=tanh_output bundle=gmem27 depth=131072 offset=slave
 
 #pragma HLS INTERFACE s_axilite port=return bundle=control

@@ -134,7 +134,8 @@ void compute_attention_HLS(wide_t Q[B][N][dk / 32], wide_t K[B][N][dk / 32], wid
     }
 
     // Apply softmax
-    softmax_HLS(attention_buf);
+    fixed_t attention_softmax[B][N][N];
+    softmax_HLS(attention_buf, attention_softmax);
     fixed_t Output_buf[B][N][dv];
     #pragma HLS ARRAY_PARTITION variable=Output_buf cyclic factor=8 dim=3
 
@@ -145,7 +146,7 @@ void compute_attention_HLS(wide_t Q[B][N][dk / 32], wide_t K[B][N][dk / 32], wid
                 ap_fixed<32, 8> sum = 0;
                 for (int k = 0; k < N; ++k) {
                     #pragma HLS UNROLL factor=8
-                    sum += attention_buf[b][i][k] * V_buf[b][k][j];
+                    sum += attention_softmax[b][i][k] * V_buf[b][k][j];
                 }
                 Output_buf[b][i][j] = sum;
             }

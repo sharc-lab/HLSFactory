@@ -1,0 +1,11 @@
+design_name = "dehazing_denoising"
+dataset_name = "class_ece8893_2022_fall"
+
+[[flow_configs]]
+flow_name = "VitisHLSSynthFlow"
+synth_tcl = "dataset_hls.tcl"
+
+[[flow_configs]]
+flow_name = "VitisHLSCsimFlow"
+csim_tcl = "dataset_hls_csim.tcl"
+

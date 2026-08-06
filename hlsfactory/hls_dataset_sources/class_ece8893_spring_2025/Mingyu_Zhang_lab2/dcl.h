@@ -18,3 +18,5 @@ typedef ap_fixed<16, 5> fixed_t;
 #define fd  64   // Partition or Unroll factor for 128
 #define fn  4    // Partition or Unroll factor for Softmax
 
+void compute_attention_HLS(fixed_t Q[B][N][dk], fixed_t K[B][N][dk], fixed_t V[B][N][dv], fixed_t Output[B][N][dv]);
+

@@ -1,0 +1,24 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2024.1.2 (64-bit)
+  **** SW Build 5096458 on Sep  5 2024
+  **** IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+  **** SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+  **** Start of session at: Thu Aug  6 16:32:01 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source /tools/software/xilinx/ARCHIVE/Vitis_HLS/2024.1/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] For user 'skaram7' on host 'chao-srv2.ece.gatech.edu' (Linux_x86_64 version 5.14.0-611.55.1.el9_7.x86_64) on Thu Aug 06 16:32:03 EDT 2026
+INFO: [HLS 200-10] In directory '/usr/scratch/skaram7/HLSFactory'
+WARNING: [HLS 200-2053] The vitis_hls executable is deprecated. Consider using vitis-run --mode hls --tcl
+Sourcing Tcl script '/dev/stdin'
+INFO: [HLS 200-1510] Running: open_project /tmp/partcheck_prj 
+INFO: [HLS 200-10] Creating and opening project '/tmp/partcheck_prj'.
+INFO: [HLS 200-1510] Running: open_solution sol1 
+INFO: [HLS 200-10] Creating and opening solution '/tmp/partcheck_prj/sol1'.
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xczu3eg-sbva484-1-e 
+INFO: [HLS 200-1611] Setting target device to 'xczu3eg-sbva484-1-e'
+PART_OK
+INFO: [HLS 200-112] Total CPU user time: 2.79 seconds. Total CPU system time: 0.41 seconds. Total elapsed time: 4.11 seconds; peak allocated memory: 0.000 MB.

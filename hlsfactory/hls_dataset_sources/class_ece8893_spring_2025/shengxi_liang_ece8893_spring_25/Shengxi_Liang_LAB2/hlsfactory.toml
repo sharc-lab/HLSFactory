@@ -1,0 +1,10 @@
+design_name = "shengxi_liang_ece8893_spring_25__Shengxi_Liang_LAB2"
+dataset_name = "class_ece8893_spring_2025"
+
+[[flow_configs]]
+flow_name = "VitisHLSSynthFlow"
+synth_tcl = "dataset_hls.tcl"
+
+[[flow_configs]]
+flow_name = "VitisHLSCsimFlow"
+csim_tcl = "dataset_hls_csim.tcl"

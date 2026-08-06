@@ -8,7 +8,7 @@ void softmax_HLS(fixed_t matrix[B][N][N]) {
             ap_fixed<32, 8> max_val = matrix[b][i][0];
             for (int j = 1; j < N; ++j) {
 				#pragma HLS unroll factor=8
-                max_val = (matrix[b][i][j] > max_val) ? matrix[b][i][j] : max_val;
+                max_val = (matrix[b][i][j] > max_val) ? ap_fixed<32, 8>(matrix[b][i][j]) : max_val;
             }
 
             ap_fixed<32, 8> sum = 0;

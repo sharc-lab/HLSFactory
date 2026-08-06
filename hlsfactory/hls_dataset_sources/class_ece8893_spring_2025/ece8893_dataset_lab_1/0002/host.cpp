@@ -84,15 +84,15 @@ int main() {
     // Read files
     char filename_A[64];
     snprintf(filename_A, sizeof(filename_A), "A_matrix_csr_sparsity_%.2f.bin", SPARSITY);
-    read_sparse_matrix_csr("/usr/scratch/akshat/fpga/lab3/A_matrix_csr_sparsity_0.50.bin", unpacked_values_A, column_indices_A, row_ptr_A, &nnz_A);
+    read_sparse_matrix_csr(filename_A, unpacked_values_A, column_indices_A, row_ptr_A, &nnz_A);
 
     char filename_B[64];
     snprintf(filename_B, sizeof(filename_B), "B_matrix_csc_sparsity_%.2f.bin", SPARSITY);
-    read_sparse_matrix_csc("/usr/scratch/akshat/fpga/lab3/B_matrix_csc_sparsity_0.50.bin", unpacked_values_B, row_indices_B, col_ptr_B, &nnz_B);
+    read_sparse_matrix_csc(filename_B, unpacked_values_B, row_indices_B, col_ptr_B, &nnz_B);
 
     char filename_C[64];
     snprintf(filename_C, sizeof(filename_C), "C_matrix_result_sparsity_%.2f.bin", SPARSITY);
-    read_dense_matrix("/usr/scratch/akshat/fpga/lab3/C_matrix_result_sparsity_0.50.bin", C_ref);
+    read_dense_matrix(filename_C, C_ref);
 
     // Pack A and B into wide_t arrays
     pack_data_array(unpacked_values_A, values_A, N * M);

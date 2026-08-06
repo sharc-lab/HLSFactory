@@ -1,4 +1,5 @@
 #include "dcl.h"
+#include <cstring>
 
 // divisor of dk (128)
 // 1, 2, 4, 8, 16, 32, 64, and 128

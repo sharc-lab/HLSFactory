@@ -26,7 +26,7 @@ void compute_qk_task(
     
     // Local buffer for K to ensure proper burst read
     fixed_t K_local[N][dk];
-    #pragma HLS ARRAY_PARTITION variable=V_local dim=2 factor=2 cyclic
+    #pragma HLS ARRAY_PARTITION variable=K_local dim=2 factor=2 cyclic
     
     // Scaling factor
     const ap_fixed<32, 8> scale = 1.0 / sqrt((float)dk);

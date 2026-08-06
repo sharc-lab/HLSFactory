@@ -9,9 +9,9 @@ const int K = 4;
 const int L = 256;
 
 // Forward declaration of the function from top.cpp
-extern "C" void circular_convolution_3d(fixed_t A[BATCH][K][L],
-                                       fixed_t B[BATCH][K][L],
-                                       fixed_t C[BATCH][K][L]);
+void circular_convolution_3d(fixed_t A[BATCH][K][L],
+                             fixed_t B[BATCH][K][L],
+                             fixed_t C[BATCH][K][L]);
 
 void load_tensor(const char* filename, fixed_t tensor[BATCH][K][L]) {
     FILE* file = fopen(filename, "rb");

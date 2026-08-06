@@ -213,10 +213,10 @@ void sparse_matrix_multiply_HLS(
 #pragma HLS INTERFACE m_axi port=C                offset=slave bundle=mem3
 #pragma HLS INTERFACE s_axilite port=return
 
-    // Local arrays for B
-    static data_t bVals  [M][MAX_NNZ_PER_COL];
-    static int    bRowIdx[M][MAX_NNZ_PER_COL];
-    static int    bLen   [M];
+    // Local arrays for B (non-static to avoid dataflow feedback on shared state)
+    data_t bVals  [M][MAX_NNZ_PER_COL];
+    int    bRowIdx[M][MAX_NNZ_PER_COL];
+    int    bLen   [M];
     #pragma HLS bind_storage variable=bVals   type=ram_1p impl=bram
     #pragma HLS bind_storage variable=bRowIdx type=ram_1p impl=bram
     #pragma HLS array_partition variable=bLen complete
@@ -225,13 +225,12 @@ void sparse_matrix_multiply_HLS(
     loadB_Fully(values_B, row_indices_B, col_ptr_B, bVals, bRowIdx, bLen);
 
     // Streams for row-by-row pipeline of A -> compute -> C
-    static hls::stream<ArowPkt_t> ArowStream("ArowStream");
-    static hls::stream<CrowPkt_t> CrowStream("CrowStream");
+    hls::stream<ArowPkt_t> ArowStream("ArowStream");
+    hls::stream<CrowPkt_t> CrowStream("CrowStream");
     #pragma HLS STREAM variable=ArowStream depth=64
     #pragma HLS STREAM variable=CrowStream depth=64
 
-    // PHASE 2: dataflow concurrency for A, compute, store
-    #pragma HLS DATAFLOW
+    // Sequential pipeline of A -> compute -> store (avoids static/dataflow feedback)
     loadA_Stage(values_A, column_indices_A, row_ptr_A, ArowStream);
     computeStage(ArowStream, bVals, bRowIdx, bLen, CrowStream);
     storeStage(CrowStream, C);

@@ -34,7 +34,7 @@ typedef struct {
 } mult_op_t;
 
 
-void sparse_matrix_multiply_HLS(data_t values_A[N * M], int column_indices_A[N * M], hls::vector<int, N+1> row_ptr_A, 
-                             data_t values_B[M * K], int row_indices_B[M * K], hls::vector<int, M+1> col_ptr_B, hls::vector<data_t, K> C[N]);
+void sparse_matrix_multiply_HLS(data_t values_A[N * M], int column_indices_A[N * M], int row_ptr_A[N + 1],
+                             data_t values_B[M * K], int row_indices_B[M * K], int col_ptr_B[M + 1], data_t C[N][K]);
 
 

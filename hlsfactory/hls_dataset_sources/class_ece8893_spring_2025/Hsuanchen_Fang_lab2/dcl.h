@@ -21,4 +21,5 @@ typedef ap_fixed<DATA_WIDTH, DATA_INT> fixed_t;
 #define dk  128     // Key/Query dimension
 #define dv  128     // Value dimension
 
-void compute_attention_HLS(hls::vector<fixed_t, dk> Q[B][N], hls::vector<fixed_t, dk> K[B][N], hls::vector<fixed_t, dv> V[B][N], hls::vector<fixed_t, dv> Output[B][N]);
+void compute_attention_HLS(fixed_t Q[B][N][dk], fixed_t K[B][N][dk],
+                         fixed_t V[B][N][dv], fixed_t Output[B][N][dv]);

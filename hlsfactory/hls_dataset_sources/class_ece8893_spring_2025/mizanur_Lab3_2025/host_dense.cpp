@@ -1,4 +1,4 @@
-#include "dcl_dense.h"
+#include "dcl.h"
 
 using namespace std;
 
@@ -144,13 +144,9 @@ int main() {
         }
     }
 
-    csr_to_normal(A, values_A, column_indices_A, row_ptr_A);
-    csc_to_normal(B, values_B, row_indices_B, col_ptr_B);
-
-
-
     // Call HLS kernel to perform SpMM
-    sparse_matrix_multiply_HLS(A, B, C_HLS);
+    sparse_matrix_multiply_HLS(values_A, column_indices_A, row_ptr_A,
+                               values_B, row_indices_B, col_ptr_B, C_HLS);
 
  	float error = 0;
 	// compare HLS output and reference output tensor

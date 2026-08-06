@@ -85,7 +85,7 @@ int main() {
 
     // Output matrix C (Dense)
     data_t C_ref[N][K];
-    hls::vector<data_t, K> C_HLS[N];
+    data_t C_HLS[N][K];
 
     // Read matrices from files
     char filename_A[50];
@@ -107,19 +107,9 @@ int main() {
         }
     }
 
-    //copy over ptr arrays to hls vectors
-    hls::vector<int, N+1> row_ptr_A_HLS;
-    hls::vector<int, M+1> col_ptr_B_HLS;
-    for (int i = 0; i < N + 1; i++) {
-        row_ptr_A_HLS[i] = row_ptr_A[i];
-    }
-    for (int i = 0; i < M + 1; i++) {
-        col_ptr_B_HLS[i] = col_ptr_B[i];
-    }
-
     // Call HLS kernel to perform SpMM
-    sparse_matrix_multiply_HLS(values_A, column_indices_A, row_ptr_A_HLS,
-                           values_B, row_indices_B, col_ptr_B_HLS, C_HLS);
+    sparse_matrix_multiply_HLS(values_A, column_indices_A, row_ptr_A,
+                           values_B, row_indices_B, col_ptr_B, C_HLS);
 
  	float error = 0;
 	// compare HLS output and reference output tensor

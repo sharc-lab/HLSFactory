@@ -1,4 +1,5 @@
 #include "dcl.h"
+#include <cstring>
 
 // only represents 0-63
 typedef ap_uint<6> axis_index_t;

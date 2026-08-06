@@ -134,13 +134,13 @@ void sparse_matrix_multiply_HLS(data_t values_A[N*M], int column_indices_A[N*M],
 #pragma HLS STREAM variable=totalB_stream depth=4
     hls::stream<data_t> cRowStream("cRowStream");
 #pragma HLS STREAM variable=cRowStream depth=128
-    static int row_ptr_A_local[N+1];
+    int row_ptr_A_local[N+1];
 #pragma HLS ARRAY_PARTITION variable=row_ptr_A_local complete dim=1
-    static int col_ptr_B_local[M+1];
+    int col_ptr_B_local[M+1];
 #pragma HLS ARRAY_PARTITION variable=col_ptr_B_local complete dim=1
-    static data_t valB_local[M*K];
-    static int rowIdxB_local[M*K];
-	
+    data_t valB_local[M*K];
+    int rowIdxB_local[M*K];
+
 #pragma HLS DATAFLOW
 
 	// dataflow bhavior

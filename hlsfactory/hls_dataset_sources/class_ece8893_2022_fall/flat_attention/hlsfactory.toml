@@ -1,0 +1,7 @@
+design_name = "flat_attention"
+dataset_name = "class_ece8893_2022_fall"
+
+[[flow_configs]]
+flow_name = "VitisHLSSynthFlow"
+synth_tcl = "dataset_hls.tcl"
+

@@ -1,0 +1,10 @@
+design_name = "anuvab_sen_ece_8893_spring_29__Anuvab_Sen_lab_2_ECE_8893_spring_29"
+dataset_name = "class_ece8893_spring_2025"
+
+[[flow_configs]]
+flow_name = "VitisHLSSynthFlow"
+synth_tcl = "dataset_hls.tcl"
+
+[[flow_configs]]
+flow_name = "VitisHLSCsimFlow"
+csim_tcl = "dataset_hls_csim.tcl"

@@ -1,2 +1,0 @@
--DCSIM_DEBUG
---std=c++17

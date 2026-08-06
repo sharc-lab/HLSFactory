@@ -1,0 +1,10 @@
+design_name = "fwd_store_inv_load_poly_1_limbs"
+dataset_name = "auto_ntt"
+
+[[flow_configs]]
+flow_name = "VitisHLSSynthFlow"
+synth_tcl = "dataset_hls.tcl"
+
+[[flow_configs]]
+flow_name = "VitisHLSCsimFlow"
+csim_tcl = "dataset_hls_csim.tcl"
