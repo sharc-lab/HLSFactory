@@ -25,7 +25,7 @@ class FlowName(StrEnum):
     VITIS_HLS_COSIM = "VitisHLSCosimFlow"
     VITIS_HLS_COSIM_SETUP = "VitisHLSCosimSetupFlow"
     VITIS_HLS_IMPL_REPORT = "VitisHLSImplReportFlow"
-    LIGHTNING_SIM_V2 = "LightningSimV2Flow"
+    LIGHTNING_SIM = "LightningSimFlow"
 
 
 def _ensure_non_empty_str(

@@ -450,7 +450,6 @@ class VitisHLSCosimFlow(ToolFlow):
         return []
 
 
-# TODO: Add step to extract Cosim report / results data
 
 
 class VitisHLSCsimFlow(ToolFlow):
@@ -502,8 +501,6 @@ class VitisHLSCsimFlow(ToolFlow):
 
         return []
 
-
-# TODO: Add step to extract Csim report / results data
 
 
 class VitisHLSImplFlow(ToolFlow):
