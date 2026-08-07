@@ -100,6 +100,7 @@ class FlowConfig:
         FlowName.VITIS_HLS_IMPL.value: frozenset({"impl_tcl"}),
         FlowName.VITIS_HLS_COSIM.value: frozenset({"cosim_tcl"}),
         FlowName.VITIS_HLS_COSIM_SETUP.value: frozenset({"cosim_setup_tcl"}),
+        FlowName.LIGHTNING_SIM.value: frozenset({"solution_dir_name"}),
     }
 
     def __post_init__(self) -> None:
