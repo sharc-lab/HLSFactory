@@ -1,0 +1,21 @@
+\begin{table}
+\caption{Pass@1 and Pass@5 for each design and model}
+\label{tab:pass_at_k}
+\begin{tabular}{lllll}
+\toprule
+model & \multicolumn{2}{c}{gpt-oss-20B} & \multicolumn{2}{c}{gpt-oss-120B} \\
+k & 1 & 5 & 1 & 5 \\
+design_name &  &  &  &  \\
+\midrule
+atax & 100.0\% & 100.0\% & 100.0\% & 100.0\% \\
+bicg & 90.0\% & 100.0\% & 90.0\% & 100.0\% \\
+gemm & 100.0\% & 100.0\% & 70.0\% & 100.0\% \\
+gesummv & 100.0\% & 100.0\% & 80.0\% & 100.0\% \\
+k2mm & 100.0\% & 100.0\% & 90.0\% & 100.0\% \\
+k3mm & 100.0\% & 100.0\% & 90.0\% & 100.0\% \\
+mvt & 90.0\% & 100.0\% & 90.0\% & 100.0\% \\
+syr2k & 80.0\% & 100.0\% & 80.0\% & 100.0\% \\
+syrk & 90.0\% & 100.0\% & 40.0\% & 97.6\% \\
+\bottomrule
+\end{tabular}
+\end{table}

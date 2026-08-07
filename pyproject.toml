@@ -46,6 +46,8 @@ demos = [
     "scikit-learn",
     "pandas",
     "jupyter",
+    "llm",
+    "llm-openrouter",
 ]
 
 [project.urls]
