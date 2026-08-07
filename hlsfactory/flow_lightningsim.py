@@ -6,10 +6,7 @@ import sys
 import time
 from dataclasses import dataclass
 from pathlib import Path
-
-from lightningsim.model import Solution
-from lightningsim.runner import Runner, RunnerStep
-from lightningsim.trace_file import ResolvedTrace
+from typing import TYPE_CHECKING
 
 from hlsfactory.design_config import FlowName
 from hlsfactory.framework import Design, ToolFlow
@@ -18,6 +15,12 @@ from hlsfactory.utils import (
     log_execution_time_to_file,
     timeout_not_supported,
 )
+
+if TYPE_CHECKING:
+    # lightningsim is an optional dependency: it must only be imported when
+    # LightningSimFlow is actually instantiated/used (see LSEnv.__init__),
+    # not as a side effect of importing this module.
+    from lightningsim.trace_file import ResolvedTrace
 
 
 @dataclass
@@ -39,6 +42,9 @@ class LSEnv:
         vitis_hls_solution_dir: Path,
         env_vars_extra: dict[str, str] | None = None,
     ) -> None:
+        from lightningsim.model import Solution
+        from lightningsim.runner import Runner, RunnerStep
+
         self.vitis_hls_solution_dir = vitis_hls_solution_dir
         self.env_vars_extra = env_vars_extra or {}
 
@@ -142,6 +148,15 @@ class LightningSimFlow(ToolFlow):
         self,
         log_execution_time: bool = True,
     ) -> None:
+        try:
+            import lightningsim  # noqa: F401
+        except ImportError as e:
+            raise ImportError(
+                "LightningSimFlow requires the optional `lightningsim` package, "
+                "which is not installed. Install it (e.g. `pip install lightningsim`) "
+                "before creating a LightningSimFlow."
+            ) from e
+
         self.log_execution_time = log_execution_time
 
     def execute(self, design: Design, timeout: float | None = None) -> list[Design]:

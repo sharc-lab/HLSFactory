@@ -1,0 +1,4 @@
+open_project hls_Autoencoder
+open_solution solution1
+
+cosim_design -setup

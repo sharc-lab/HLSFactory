@@ -66,6 +66,18 @@ def auto_find_multiple_synth_report(dir_path: Path) -> list[Path]:
     return report_results
 
 
+def auto_find_cosim_report(dir_path: Path) -> Path:
+    report_results = list(dir_path.rglob("**/sim/report/*_cosim.rpt"))
+    if len(report_results) == 0:
+        raise FileNotFoundError(f"No *_cosim.rpt report file found in {dir_path}")
+    if len(report_results) > 1:
+        print(
+            f"Found multiple *_cosim.rpt report files in {dir_path}. "
+            f"Using the first one: {report_results[0]}",
+        )
+    return report_results[0]
+
+
 @serialize_methods_for_dataclass
 @dataclass
 class DesignHLSSynthData:
@@ -222,6 +234,101 @@ class VitisHLSDesign:
             target_clock_period=target_clock_period,
             version_vitis_hls=vitis_hls_version,
             version_vivado=None,
+        )
+
+
+@serialize_methods_for_dataclass
+@dataclass
+class DesignCosimData:
+    rtl: str
+    status: str
+    passed: bool
+
+    latency_min_cycles: int | None
+    latency_avg_cycles: int | None
+    latency_max_cycles: int | None
+
+    interval_min_cycles: int | None
+    interval_avg_cycles: int | None
+    interval_max_cycles: int | None
+
+    total_execution_time_cycles: int | None
+
+    @classmethod
+    def parse_from_cosim_report_file(cls, fp: Path) -> "DesignCosimData":
+        lines = fp.read_text().splitlines()
+
+        # The report's result table looks like:
+        #   |     |        |    Latency(Clock Cycles)   |   Interval(Clock Cycles)   | Total Execution Time |
+        #   + RTL + Status +-----------------------------+-----------------------------+    (Clock Cycles)    +
+        #   |     |        |  min  |  avg  |  max  |  min  |  avg  |  max  |                      |
+        #   +-----+--------+-------+-------+-------+-------+-------+-------+----------------------+
+        #   | VHDL|      NA|     NA|     NA|     NA|     NA|     NA|     NA|                    NA|
+        #   |Verilog|   Pass| 437536| 437536| 437536|     NA|     NA|     NA|                437536|
+        # with one row per RTL target; only the row(s) that were actually
+        # simulated have a real Status/latency instead of "NA".
+        header_line_idx = None
+        for idx, line in enumerate(lines):
+            if "Latency(Clock Cycles)" in line and "Interval(Clock Cycles)" in line:
+                header_line_idx = idx
+                break
+
+        if header_line_idx is None:
+            raise ValueError(
+                f"Could not find the co-simulation latency table header in {fp}"
+            )
+
+        data_rows: list[list[str]] = []
+        for line in lines[header_line_idx + 1 :]:
+            if not line.strip().startswith("|"):
+                if data_rows:
+                    break
+                continue
+            fields = [s.strip() for s in line.split("|")]
+            fields = [x for x in fields if x]
+            if len(fields) == 9:
+                data_rows.append(fields)
+
+        if not data_rows:
+            raise ValueError(f"Could not find co-simulation result rows in {fp}")
+
+        def to_int_or_none(s: str) -> int | None:
+            try:
+                return int(s)
+            except ValueError:
+                return None
+
+        parsed_rows = [
+            {
+                "rtl": fields[0],
+                "status": fields[1],
+                "latency_min_cycles": to_int_or_none(fields[2]),
+                "latency_avg_cycles": to_int_or_none(fields[3]),
+                "latency_max_cycles": to_int_or_none(fields[4]),
+                "interval_min_cycles": to_int_or_none(fields[5]),
+                "interval_avg_cycles": to_int_or_none(fields[6]),
+                "interval_max_cycles": to_int_or_none(fields[7]),
+                "total_execution_time_cycles": to_int_or_none(fields[8]),
+            }
+            for fields in data_rows
+        ]
+
+        # Prefer the row that actually has a passing simulation result over
+        # placeholder "NA" rows for RTL targets that weren't simulated.
+        passed_rows = [r for r in parsed_rows if r["status"].strip().upper() == "PASS"]
+        chosen = passed_rows[0] if passed_rows else parsed_rows[0]
+
+        return cls(
+            rtl=chosen["rtl"],
+            status=chosen["status"],
+            passed=chosen["status"].strip().upper() == "PASS",
+            latency_min_cycles=chosen["latency_min_cycles"],
+            latency_avg_cycles=chosen["latency_avg_cycles"],
+            latency_max_cycles=chosen["latency_max_cycles"],
+            interval_min_cycles=chosen["interval_min_cycles"],
+            interval_avg_cycles=chosen["interval_avg_cycles"],
+            interval_max_cycles=chosen["interval_max_cycles"],
+            total_execution_time_cycles=chosen["total_execution_time_cycles"],
         )
 
 
@@ -415,6 +522,9 @@ class VitisHLSCosimFlow(ToolFlow):
         self,
         vitis_hls_bin: str | None = None,
         log_output: bool = False,
+        log_execution_time: bool = True,
+        env_var_xilinx_hls: str | None = None,
+        env_var_xilinx_vivado: str | None = None,
     ) -> None:
         if vitis_hls_bin is None:
             self.vitis_hls_bin = find_bin_path("vitis_hls")
@@ -422,9 +532,20 @@ class VitisHLSCosimFlow(ToolFlow):
             self.vitis_hls_bin = vitis_hls_bin
 
         self.log_output = log_output
+        self.log_execution_time = log_execution_time
+        self.env_var_xilinx_hls = env_var_xilinx_hls
+        self.env_var_xilinx_vivado = env_var_xilinx_vivado
 
     def execute(self, design: Design, timeout: float | None = None) -> list[Design]:
         design_dir = design.dir
+
+        if flow_already_completed(
+            design_dir,
+            self.name,
+            success_marker_fp=design_dir / "data_cosim.json",
+        ):
+            print(f"[{design_dir}] Skipping {self.name}, already completed")
+            return [design]
 
         # Get TCL file path from design config
         config = design.require_config()
@@ -436,6 +557,13 @@ class VitisHLSCosimFlow(ToolFlow):
         check_build_files_exist(build_files)
         warn_for_reset_flags(build_files)
 
+        if self.env_var_xilinx_hls:
+            os.environ["XILINX_HLS"] = self.env_var_xilinx_hls
+        if self.env_var_xilinx_vivado:
+            os.environ["XILINX_VIVADO"] = self.env_var_xilinx_vivado
+
+        t_0 = time.perf_counter()
+
         r = call_tool(
             f"{self.vitis_hls_bin} {cosim_tcl_name}",
             cwd=design_dir,
@@ -444,10 +572,34 @@ class VitisHLSCosimFlow(ToolFlow):
             raise_on_error=False,
         )
 
-        if r == CallToolResult.SUCCESS:
-            return [design]
+        if r == CallToolResult.TIMEOUT:
+            (design_dir / f"timeout__{self.name}.txt").touch()
+            print(f"[{design_dir}] Timeout of {timeout} seconds reached")
 
-        return []
+            t_1 = time.perf_counter()
+            if self.log_execution_time:
+                log_execution_time_to_file(design_dir, self.name, t_0, t_1)
+
+            return []
+        if r == CallToolResult.ERROR:
+            (design_dir / f"error__{self.name}.txt").touch()
+            print(f"[{design_dir}] Error occurred during execution")
+
+            t_1 = time.perf_counter()
+            if self.log_execution_time:
+                log_execution_time_to_file(design_dir, self.name, t_0, t_1)
+
+            return []
+
+        cosim_report_fp = auto_find_cosim_report(design_dir)
+        cosim_data = DesignCosimData.parse_from_cosim_report_file(cosim_report_fp)
+        cosim_data.to_json(design_dir / "data_cosim.json")  # type: ignore
+
+        t_1 = time.perf_counter()
+        if self.log_execution_time:
+            log_execution_time_to_file(design_dir, self.name, t_0, t_1)
+
+        return [design]
 
 
 
