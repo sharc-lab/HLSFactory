@@ -1,0 +1,10 @@
+design_name = "dfmul"
+dataset_name = "chstone_new"
+
+[[flow_configs]]
+flow_name = "VitisHLSSynthFlow"
+synth_tcl = "dataset_hls.tcl"
+
+[[flow_configs]]
+flow_name = "VitisHLSCsimFlow"
+csim_tcl = "dataset_hls_csim.tcl"
