@@ -49,6 +49,6 @@ Each subdirectory of `dataset_folder` is treated as one `Design`. The result can
 
 ## Design Requirements
 
-Each design directory must contain the entry points required by the flows you run (e.g., `dataset_hls.tcl` and `dataset_hls_ip_export.tcl` for Xilinx flows). See the [Integrating Your HLS Project](../extending) section in the Extending guide for details.
+Each design directory must contain the entry points and configuration required by the flows you run. For example, Xilinx flows use `dataset_hls.tcl` and `dataset_hls_ip_export.tcl`, while `CatapultHLSSynthFlow` uses a configured `synth.tcl` plus `hlsfactory.toml`. See [Extending HLSFactory](../extending) for packaging details and the [Catapult HLS tutorial](catapult_flow) for a complete Catapult example.
 
 For a full walkthrough with concrete examples, see the `demos/demo_custom_datasets` directory in the repository. For detailed API documentation, see [Designs and Design Datasets](../framework/designs_datasets).

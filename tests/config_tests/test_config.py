@@ -60,6 +60,27 @@ flow_settings = { opt_dsl_file = "legacy_opt.txt" }
 """
 
 
+CONFIG_CATAPULT = """
+design_name = "catapult_design"
+dataset_name = "catapult_dataset"
+
+[[flow_configs]]
+flow_name = "CatapultHLSSynthFlow"
+synth_tcl = "synth.tcl"
+"""
+
+
+CONFIG_XLS = """
+design_name = "adder"
+dataset_name = "test_designs_xls"
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "adder.x"
+top = "add"
+"""
+
+
 def _write_config(
     tmp_path: Path, content: str, filename: str = "hlsfactory.toml"
 ) -> Path:
@@ -112,6 +133,55 @@ def test_missing_required_vitis_setting_raises(tmp_path: Path) -> None:
     flow_name = "VitisHLSSynthFlow"
     """
     path = _write_config(tmp_path, bad_config)
+
+    with pytest.raises(DesignConfigError):
+        read_design_config(path)
+
+
+def test_catapult_flow_config(tmp_path: Path) -> None:
+    path = _write_config(tmp_path, CONFIG_CATAPULT)
+    config = read_design_config(path)
+
+    assert (
+        config.require_flow_setting("CatapultHLSSynthFlow", "synth_tcl") == "synth.tcl"
+    )
+
+
+def test_missing_required_catapult_setting_raises(tmp_path: Path) -> None:
+    path = _write_config(
+        tmp_path,
+        """
+        design_name = "bad"
+        dataset_name = "catapult_dataset"
+
+        [[flow_configs]]
+        flow_name = "CatapultHLSSynthFlow"
+        """,
+    )
+
+    with pytest.raises(DesignConfigError):
+        read_design_config(path)
+
+
+def test_xls_flow_config(tmp_path: Path) -> None:
+    config = read_design_config(_write_config(tmp_path, CONFIG_XLS))
+
+    assert config.require_flow_setting("XLSHLSSynthFlow", "dslx_file") == "adder.x"
+    assert config.require_flow_setting("XLSHLSSynthFlow", "top") == "add"
+
+
+def test_missing_required_xls_setting_raises(tmp_path: Path) -> None:
+    path = _write_config(
+        tmp_path,
+        """
+        design_name = "bad"
+        dataset_name = "test_designs_xls"
+
+        [[flow_configs]]
+        flow_name = "XLSHLSSynthFlow"
+        dslx_file = "bad.x"
+        """,
+    )
 
     with pytest.raises(DesignConfigError):
         read_design_config(path)

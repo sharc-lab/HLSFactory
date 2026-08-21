@@ -3,6 +3,7 @@ import shutil
 from pathlib import Path
 from pprint import pp
 
+from hlsfactory.flow_catapult import CatapultHLSSynthFlow
 from hlsfactory.flow_vitis import (
     VitisHLSCosimFlow,
     VitisHLSCosimSetupFlow,
@@ -10,7 +11,9 @@ from hlsfactory.flow_vitis import (
     VitisHLSImplFlow,
     VitisHLSSynthFlow,
 )
+from hlsfactory.flow_xls import XLSHLSSynthFlow
 from hlsfactory.opt_dsl_frontend import OptDSLPassthroughFrontend
+from hlsfactory.stratus_flow import StratusHLSSynthFlow
 from hlsfactory.framework import (
     DesignDataset,
     Flow,
@@ -24,6 +27,9 @@ from hlsfactory.utils import (
 )
 
 FLOWS = [
+    CatapultHLSSynthFlow,
+    StratusHLSSynthFlow,
+    XLSHLSSynthFlow,
     VitisHLSSynthFlow,
     VitisHLSImplFlow,
     VitisHLSCosimSetupFlow,
@@ -32,6 +38,9 @@ FLOWS = [
 ]
 
 FLOW_NAME_MAP = {
+    "CatapultHLSSynthFlow": CatapultHLSSynthFlow,
+    "StratusHLSSynthFlow": StratusHLSSynthFlow,
+    "XLSHLSSynthFlow": XLSHLSSynthFlow,
     "VitisHLSSynthFlow": VitisHLSSynthFlow,
     "VitisHLSImplFlow": VitisHLSImplFlow,
     "VitisHLSCosimSetupFlow": VitisHLSCosimSetupFlow,
@@ -44,15 +53,14 @@ FLOW_NAME_MAP = {
 def main(args) -> None:
     top_work_dir = get_work_dir()
 
-    PATH_VITIS_HLS, PATH_VIVADO = get_tool_paths(ToolPathsSource.ENVFILE)
-    BIN_VITIS_HLS = PATH_VITIS_HLS / "bin" / "vitis_hls"
-    PATH_VIVADO / "bin" / "vivado"
-
     N_JOBS = args.n_jobs
     CPU_AFFINITY = None
 
     TIMEOUT_HLS_SYNTH = 60.0 * 12  # 12 minutes
     TIMEOUT_HLS_IMPL = 60.0 * 30  # 30 minutes
+    TIMEOUT_CATAPULT_SYNTH = 60.0 * 12  # 12 minutes
+    TIMEOUT_STRATUS_SYNTH = 60.0 * 12  # 12 minutes
+    TIMEOUT_XLS_SYNTH = 60.0 * 12  # 12 minutes
 
     if args.name is None:
         dataset_name = args.dataset_source_directory.name
@@ -98,21 +106,46 @@ def main(args) -> None:
 
     flow_classes = [FLOW_NAME_MAP[flow_name] for flow_name in flow]
 
+    vitis_flow_classes = {
+        VitisHLSSynthFlow,
+        VitisHLSImplFlow,
+        VitisHLSCsimFlow,
+        VitisHLSCosimSetupFlow,
+        VitisHLSCosimFlow,
+    }
+    if any(flow_class in vitis_flow_classes for flow_class in flow_classes):
+        path_vitis_hls, path_vivado = get_tool_paths(ToolPathsSource.ENVFILE)
+        bin_vitis_hls = path_vitis_hls / "bin" / "vitis_hls"
+
     flow_instances: list[Flow] = []
     for flow in flow_classes:
         match flow:
+            case cls if cls is CatapultHLSSynthFlow:
+                flow_instance = cls(
+                    catapult_bin=(
+                        str(args.catapult_bin)
+                        if args.catapult_bin is not None
+                        else None
+                    ),
+                )
+            case cls if cls is StratusHLSSynthFlow:
+                flow_instance = cls(
+                    stratus_install_dir=args.stratus_install_dir,
+                )
+            case cls if cls is XLSHLSSynthFlow:
+                flow_instance = cls()
             case cls if cls in (VitisHLSSynthFlow, VitisHLSImplFlow, VitisHLSCsimFlow):
                 flow_instance = cls(
-                    vitis_hls_bin=str(BIN_VITIS_HLS),
-                    env_var_xilinx_hls=str(PATH_VITIS_HLS),
-                    env_var_xilinx_vivado=str(PATH_VIVADO),
+                    vitis_hls_bin=str(bin_vitis_hls),
+                    env_var_xilinx_hls=str(path_vitis_hls),
+                    env_var_xilinx_vivado=str(path_vivado),
                 )
             case cls if cls in (
                 VitisHLSCosimSetupFlow,
                 VitisHLSCosimFlow,
             ):
                 flow_instance = cls(
-                    vitis_hls_bin=str(BIN_VITIS_HLS),
+                    vitis_hls_bin=str(bin_vitis_hls),
                 )
             case cls if cls is OptDSLPassthroughFrontend:
                 flow_instance = cls(
@@ -131,6 +164,12 @@ def main(args) -> None:
             timeout = TIMEOUT_HLS_SYNTH
         elif isinstance(flow, VitisHLSImplFlow):
             timeout = TIMEOUT_HLS_IMPL
+        elif isinstance(flow, CatapultHLSSynthFlow):
+            timeout = TIMEOUT_CATAPULT_SYNTH
+        elif isinstance(flow, StratusHLSSynthFlow):
+            timeout = TIMEOUT_STRATUS_SYNTH
+        elif isinstance(flow, XLSHLSSynthFlow):
+            timeout = TIMEOUT_XLS_SYNTH
         else:
             timeout = None
 
@@ -143,7 +182,11 @@ def main(args) -> None:
                 timeout=timeout,
             )
         )
-        assert datasets_post_flow
+        output_design_count = count_total_designs_in_dataset_collection(
+            datasets_post_flow,
+        )
+        if output_design_count == 0:
+            raise RuntimeError(f"Flow {flow.name} produced no successful designs")
         in_datasets = datasets_post_flow
 
 
@@ -173,6 +216,16 @@ if __name__ == "__main__":
         type=str,
         default="VitisHLSSynthFlow",
         help="Flow that we are testing.",
+    )
+    parser.add_argument(
+        "--catapult-bin",
+        type=Path,
+        help="Path to the Catapult executable (otherwise resolved from PATH).",
+    )
+    parser.add_argument(
+        "--stratus-install-dir",
+        type=Path,
+        help="Stratus installation root containing bin/stratus and bin/bdw_makegen.",
     )
 
     args = parser.parse_args()

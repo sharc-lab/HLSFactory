@@ -1,0 +1,9 @@
+design_name = "maximum"
+dataset_name = "test_designs_xls"
+tags = ["test", "control", "dslx"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "maximum.x"
+top = "maximum"
+generator = "combinational"

@@ -10,16 +10,55 @@ HLSFactory provides code to address all these use cases for the end user in an e
 
 ## Output Files
 
-Flows write JSON files into each design directory. `DataAggregatorXilinx` reads these files when aggregating. The following table summarizes the main output files and their key fields (Xilinx flows).
+Tool flows write JSON files into each design directory. The following table summarizes the main output files and key fields produced by the supported synthesis and implementation flows.
 
 | File | Produced By | Key Fields |
 |------|-------------|------------|
 | `data_design.json` | VitisHLSSynthFlow | `name`, `part`, `target_clock_period`, `version_vitis_hls` |
 | `data_hls.json` | VitisHLSSynthFlow | `clock_period`, `latency_best_cycles`, `latency_average_cycles`, `latency_worst_cycles`, `resources_lut_used`, `resources_ff_used`, `resources_dsp_used`, `resources_bram_used`, `resources_uram_used` |
+| `data_hls.json` | CatapultHLSSynthFlow | `clock_period`, `clock_period_ns`, `latency_cycles`, `throughput_cycles`, `initiation_interval_cycles`, `critical_path_delay_ns`, `critical_path_slack_ns`, `total_area`, `combinational_area`, `sequential_area`, and post-assignment datapath/FSM/component area fields |
+| `data_hls.json` | XLSHLSSynthFlow | `latency_cycles`, `initiation_interval`, `flop_count`, `feedthrough_path_exists`, `metrics_delay_model`, estimated path delays in picoseconds, `operation_counts`, `operation_kind_counts` |
 | `data_implementation.json` | VitisHLSImplReportFlow | `power__total_power`, `power__dynamic_power`, `power__static_power`, `utilization__Total LUTs`, `utilization__FFs`, `utilization__DSP Blocks`, `utilization__RAMB18`, `utilization__URAM`, `timing__WNS`, `timing__TNS`, `timing__WHS`, `timing__THS`, `timing__clock_period`, `timing__clock_frequency` |
 | `execution_time_data.json` | All flows (when logging enabled) | Per-flow: `t_start`, `t_end`, `dt`, `core` |
 
-When `DataAggregator` aggregates data, `CompleteHLSData.to_flat_dict()` prefixes keys: `design__*`, `synthesis__*`, `implementation__*`, `execution__*`. For example, `data_hls.json` fields become `synthesis__latency_best_cycles`, `synthesis__resources_lut_used`, etc.
+When a `DataAggregator` gathers these files, `CompleteHLSData.to_flat_dict()` prefixes keys with `design__*`, `synthesis__*`, `implementation__*`, or `execution__*`. For example, Catapult's `latency_cycles` becomes `synthesis__latency_cycles`.
+
+Catapult obtains schedule and timing metrics from `rtl.rpt` and clock details from `cycle.rpt`. The area fields are standard-cell area estimates for the libraries selected by the design's Tcl script. They are not FPGA LUT, flip-flop, BRAM, or DSP counts.
+
+For XLS, latency and initiation interval come from the generated module
+signature. Flop count and operation counts come from XLS block metrics. The
+reported path delays use XLS's estimator and are not post-place-and-route
+timing. Technology-mapped area, device resources, and physical timing require a
+separate implementation flow with a target device or standard-cell library.
+
+`XLSHLSSynthFlow` also retains the source-to-RTL artifacts used to produce the
+JSON:
+
+| Artifact | Contents |
+|---|---|
+| `<source-stem>.ir` | DSLX converted to XLS IR |
+| `<source-stem>.opt.ir` | Optimized XLS IR passed to codegen |
+| `<source-stem>.v` | Synthesizable Verilog/SystemVerilog |
+| `<source-stem>.signature.textproto` | Ports, channels, reset, latency, and initiation interval |
+| `<source-stem>.block_metrics.textproto` | Flops, estimated path delays, feedthrough status, and bill of materials |
+| `<source-stem>.interface.{pb,textproto}` | DSLX function/proc interface metadata; the binary proto is also supplied to codegen |
+| `<source-stem>.{ir_converter,optimizer,scheduling,codegen}_options.textproto` | Effective options used by each XLS stage |
+| `<source-stem>.schedule.textproto` | Pipeline-stage placement and per-node delay data; pipeline designs only |
+| `<source-stem>.scheduled.ir` | IR after scheduling transformations |
+| `<source-stem>.block.ir` | Lowered block IR with registers and ports |
+| `<source-stem>.verilog_line_map.textproto` | DSLX-to-Verilog source mapping |
+| `<source-stem>.{optimization,scheduling,codegen}_pass_metrics.textproto` | Per-pass timing and transformation metrics |
+
+The four delay fields are `max_reg_to_reg_delay_ps`,
+`max_input_to_reg_delay_ps`, `max_reg_to_output_delay_ps`, and
+`max_feedthrough_path_delay_ps`. A field may be `null` when that path class does
+not exist. With the default `unit` delay model, these are XLS estimator values
+and should not be treated as physical timing measurements.
+
+The optimizer/codegen IR dump directories and pprof pass profiles are produced
+only when their `dump_optimizer_ir`, `dump_codegen_ir`, or `profile_passes`
+configuration switches are enabled. Their paths and enabled state are recorded
+in `data_hls.json`.
 
 ## `CompleteHLSData` Class
 

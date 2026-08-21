@@ -1,0 +1,12 @@
+design_name = "running_sum_proc"
+dataset_name = "test_designs_xls"
+tags = ["test", "proc", "channel", "stateful", "dslx"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "running_sum_proc.x"
+top = "RunningSum"
+generator = "pipeline"
+pipeline_stages = "1"
+delay_model = "unit"
+reset = "rst"

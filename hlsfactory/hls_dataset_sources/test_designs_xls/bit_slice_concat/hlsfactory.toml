@@ -1,0 +1,9 @@
+design_name = "bit_slice_concat"
+dataset_name = "test_designs_xls"
+tags = ["test", "bit_slice", "concatenation", "dslx"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "bit_slice_concat.x"
+top = "reverse_bytes"
+generator = "combinational"

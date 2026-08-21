@@ -1,0 +1,11 @@
+design_name = "array_sum"
+dataset_name = "test_designs_xls"
+tags = ["test", "array", "for_loop", "dslx"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "array_sum.x"
+top = "array_sum"
+generator = "pipeline"
+pipeline_stages = "2"
+delay_model = "unit"

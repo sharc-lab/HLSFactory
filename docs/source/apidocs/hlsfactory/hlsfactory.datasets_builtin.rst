@@ -34,6 +34,15 @@ Functions
    * - :py:obj:`dataset_vitis_examples_builder <hlsfactory.datasets_builtin.dataset_vitis_examples_builder>`
      - .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_vitis_examples_builder
           :summary:
+   * - :py:obj:`dataset_test_designs_catapult_builder <hlsfactory.datasets_builtin.dataset_test_designs_catapult_builder>`
+     - .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_test_designs_catapult_builder
+          :summary:
+   * - :py:obj:`dataset_test_designs_stratus_builder <hlsfactory.datasets_builtin.dataset_test_designs_stratus_builder>`
+     - .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_test_designs_stratus_builder
+          :summary:
+   * - :py:obj:`dataset_test_designs_xls_builder <hlsfactory.datasets_builtin.dataset_test_designs_xls_builder>`
+     - .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_test_designs_xls_builder
+          :summary:
    * - :py:obj:`dataset_accelerators_builder <hlsfactory.datasets_builtin.dataset_accelerators_builder>`
      - .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_accelerators_builder
           :summary:
@@ -92,6 +101,15 @@ Data
           :summary:
    * - :py:obj:`DIR_DATASET_VITIS_EXAMPLES <hlsfactory.datasets_builtin.DIR_DATASET_VITIS_EXAMPLES>`
      - .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_VITIS_EXAMPLES
+          :summary:
+   * - :py:obj:`DIR_DATASET_TEST_DESIGNS_CATAPULT <hlsfactory.datasets_builtin.DIR_DATASET_TEST_DESIGNS_CATAPULT>`
+     - .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_TEST_DESIGNS_CATAPULT
+          :summary:
+   * - :py:obj:`DIR_DATASET_TEST_DESIGNS_STRATUS <hlsfactory.datasets_builtin.DIR_DATASET_TEST_DESIGNS_STRATUS>`
+     - .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_TEST_DESIGNS_STRATUS
+          :summary:
+   * - :py:obj:`DIR_DATASET_TEST_DESIGNS_XLS <hlsfactory.datasets_builtin.DIR_DATASET_TEST_DESIGNS_XLS>`
+     - .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_TEST_DESIGNS_XLS
           :summary:
    * - :py:obj:`DIR_DATASET_ACCELERATORS <hlsfactory.datasets_builtin.DIR_DATASET_ACCELERATORS>`
      - .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_ACCELERATORS
@@ -175,6 +193,24 @@ API
 
    .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_VITIS_EXAMPLES
 
+.. py:data:: DIR_DATASET_TEST_DESIGNS_CATAPULT
+   :canonical: hlsfactory.datasets_builtin.DIR_DATASET_TEST_DESIGNS_CATAPULT
+   :value: None
+
+   .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_TEST_DESIGNS_CATAPULT
+
+.. py:data:: DIR_DATASET_TEST_DESIGNS_STRATUS
+   :canonical: hlsfactory.datasets_builtin.DIR_DATASET_TEST_DESIGNS_STRATUS
+   :value: None
+
+   .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_TEST_DESIGNS_STRATUS
+
+.. py:data:: DIR_DATASET_TEST_DESIGNS_XLS
+   :canonical: hlsfactory.datasets_builtin.DIR_DATASET_TEST_DESIGNS_XLS
+   :value: None
+
+   .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_TEST_DESIGNS_XLS
+
 .. py:data:: DIR_DATASET_ACCELERATORS
    :canonical: hlsfactory.datasets_builtin.DIR_DATASET_ACCELERATORS
    :value: None
@@ -252,6 +288,21 @@ API
    :canonical: hlsfactory.datasets_builtin.dataset_vitis_examples_builder
 
    .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_vitis_examples_builder
+
+.. py:function:: dataset_test_designs_catapult_builder(name: str, work_dir: pathlib.Path) -> hlsfactory.framework.DesignDataset
+   :canonical: hlsfactory.datasets_builtin.dataset_test_designs_catapult_builder
+
+   .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_test_designs_catapult_builder
+
+.. py:function:: dataset_test_designs_stratus_builder(name: str, work_dir: pathlib.Path) -> hlsfactory.framework.DesignDataset
+   :canonical: hlsfactory.datasets_builtin.dataset_test_designs_stratus_builder
+
+   .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_test_designs_stratus_builder
+
+.. py:function:: dataset_test_designs_xls_builder(name: str, work_dir: pathlib.Path) -> hlsfactory.framework.DesignDataset
+   :canonical: hlsfactory.datasets_builtin.dataset_test_designs_xls_builder
+
+   .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_test_designs_xls_builder
 
 .. py:function:: dataset_accelerators_builder(name: str, work_dir: pathlib.Path) -> hlsfactory.framework.DesignDataset
    :canonical: hlsfactory.datasets_builtin.dataset_accelerators_builder

@@ -1,0 +1,11 @@
+design_name = "array_map"
+dataset_name = "test_designs_xls"
+tags = ["test", "array", "higher_order", "dslx"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "array_map.x"
+top = "square_array"
+generator = "pipeline"
+pipeline_stages = "1"
+delay_model = "unit"

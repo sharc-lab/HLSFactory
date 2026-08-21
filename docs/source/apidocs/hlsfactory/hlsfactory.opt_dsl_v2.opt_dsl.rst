@@ -42,7 +42,7 @@ API
 
       .. autodoc2-docstring:: hlsfactory.opt_dsl_v2.opt_dsl.OptDSL.pipeline
 
-   .. py:method:: unroll(label: str, function: str, factor, group: str | None = None) -> None
+   .. py:method:: unroll(label: str, function: str, factor: list[int] | int, group: str | None = None) -> None
       :canonical: hlsfactory.opt_dsl_v2.opt_dsl.OptDSL.unroll
 
       .. autodoc2-docstring:: hlsfactory.opt_dsl_v2.opt_dsl.OptDSL.unroll

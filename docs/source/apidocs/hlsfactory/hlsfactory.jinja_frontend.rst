@@ -33,7 +33,17 @@ API
 
       .. autodoc2-docstring:: hlsfactory.jinja_frontend.JinjaFrontend.name
 
-   .. py:method:: execute(design: hlsfactory.framework.Design, timeout: float | None = None) -> list[hlsfactory.framework.Design]
+   .. py:method:: load_configs_from_jsonl(fp_jsonl: pathlib.Path)
+      :canonical: hlsfactory.jinja_frontend.JinjaFrontend.load_configs_from_jsonl
+
+      .. autodoc2-docstring:: hlsfactory.jinja_frontend.JinjaFrontend.load_configs_from_jsonl
+
+   .. py:method:: load_configs_from_json(fp_json: pathlib.Path)
+      :canonical: hlsfactory.jinja_frontend.JinjaFrontend.load_configs_from_json
+
+      .. autodoc2-docstring:: hlsfactory.jinja_frontend.JinjaFrontend.load_configs_from_json
+
+   .. py:method:: execute(design: hlsfactory.framework.Design, _timeout: float | None = None) -> list[hlsfactory.framework.Design]
       :canonical: hlsfactory.jinja_frontend.JinjaFrontend.execute
 
       .. autodoc2-docstring:: hlsfactory.jinja_frontend.JinjaFrontend.execute

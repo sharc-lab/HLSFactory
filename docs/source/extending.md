@@ -47,6 +47,90 @@ See [Design Configuration](framework/design_config) for the format. If you omit 
 
 Once the entry points are in place, load your design with `Design.from_dir()` or `DesignDataset.from_dir()` and pass it to the appropriate flows. See [Loading Custom Designs](tutorials/custom_designs) for examples.
 
+(catapult-project-integration)=
+## Integrating a Catapult HLS Project
+
+A Catapult-ready design needs its C/C++ sources, a synthesis Tcl entry point, and an `hlsfactory.toml` configuration:
+
+```text
+my_catapult_design/
+    kernel.cpp
+    synth.tcl
+    hlsfactory.toml
+```
+
+Declare the Tcl file in `hlsfactory.toml`:
+
+```toml
+design_name = "kernel"
+dataset_name = "my_catapult_dataset"
+
+[[flow_configs]]
+flow_name = "CatapultHLSSynthFlow"
+synth_tcl = "synth.tcl"
+```
+
+The Tcl script owns the Catapult-specific project setup. It must add the sources, select the top function and technology libraries, configure a clock, and run through extraction. For example:
+
+```tcl
+options defaults
+options set Input/TargetPlatform x86_64
+
+project new -name catapult_kernel -directory catapult_kernel
+solution file add kernel.cpp
+go analyze
+
+solution library add nangate-45nm_beh -- -rtlsyntool DesignCompiler -vendor Nangate -technology 045nm
+solution library add ram_nangate-45nm-singleport_beh
+solution design set kernel -top
+go compile
+go libraries
+
+directive set -CLOCKS {clk {-CLOCK_PERIOD 10 -CLOCK_EDGE rising -CLOCK_UNCERTAINTY 0.0 -CLOCK_HIGH_TIME 5 -RESET_SYNC_NAME rst -RESET_ASYNC_NAME arst_n -RESET_KIND sync -RESET_SYNC_ACTIVE high -RESET_ASYNC_ACTIVE low -ENABLE_ACTIVE high}}
+go assembly
+go extract
+```
+
+Use libraries and directives appropriate for your installation and target technology. `CatapultHLSSynthFlow` runs the script and recursively finds the resulting `rtl.rpt` and `cycle.rpt`. A design directory should produce one report pair; if several report files exist, the flow warns and selects the first deterministic path.
+
+Before running, source your Siemens environment so Catapult can resolve its executable, libraries, and license server. The HLSFactory server uses `/tools/software/siemens/setup.csh`. See the [Catapult HLS tutorial](tutorials/catapult_flow) for a complete dataset run and the generated metrics.
+
+## Integrating a Google XLS Design
+
+An XLS-ready design needs a DSLX source and `hlsfactory.toml`:
+
+```text
+my_xls_design/
+    kernel.x
+    hlsfactory.toml
+```
+
+Declare the source, top function or proc, and code generator:
+
+```toml
+design_name = "kernel"
+dataset_name = "my_xls_dataset"
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "kernel.x"
+top = "kernel"
+generator = "pipeline"
+pipeline_stages = "1"
+delay_model = "unit"
+```
+
+Use `generator = "combinational"` for purely combinational RTL and omit the
+pipeline-only settings. Stateful procs generally also need a reset port, for
+example `reset = "rst"`. Set `HLSFACTORY_XLS_PATH` to a release bundle containing
+the XLS executables or pass `xls_install_dir` to `XLSHLSSynthFlow`. The flow
+produces IR, optimized IR, RTL, interface/module signatures, schedule and block
+IR, option snapshots, source-line maps, pass metrics, block metrics, and
+`data_hls.json`; no Tcl entry point is needed. See the
+[Google XLS tutorial](tutorials/xls_flow) and the packaged
+[`test_designs_xls`](built_in_datasets)
+examples.
+
 ## Contributing New Built-In Datasets
 
 HLSFactory already supports loading user designs and design datasets at runtime. However, we encourage users to contribute their designs and design datasets to HLSFactory itself as a built-in package so that they can be shared and used by all HLSFactory users.
@@ -84,6 +168,10 @@ Your final design directory for a Xilinx-ready design should look as follows:
 ```{todo}
 Intel flow entry points are under construction. Please reach out for more information and help in the meantime.
 ```
+
+#### Preparing a Catapult-Based Design
+
+Catapult designs follow the `kernel.cpp` + `synth.tcl` + `hlsfactory.toml` structure described in {ref}`catapult-project-integration`. Keep project output names local to the individual design directory so parallel dataset execution does not cause different designs to share Catapult output files.
 
 #### Preparing an OptDSL Template
 
@@ -223,7 +311,7 @@ Once you have added your designs to the HLSFactory package, updated the built-in
 
 ## Contributing New Flows
 
-Currently, HLSFactory has implemented flows for Xilinx and Intel HLS tools, along with an OptDSL frontend for both vendors.
+HLSFactory includes tool flows for AMD/Xilinx, Intel, Siemens Catapult, Cadence Stratus, and Google XLS, along with the OptDSL frontend.
 
 However, users might want to use a different set of vendor HLS tools that are not currently built-in. These can be created by subclassing the `Flow` abstract base class (particularly the `Frontend(Flow)` or `ToolFlow(Flow)` class, depending on what kind of flow you are implementing, as these are just aliases) and adding the necessary functionality to interact with vendor tools, extract, and process data.
 

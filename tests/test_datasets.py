@@ -1,4 +1,3 @@
-import json
 from pathlib import Path
 
 import pytest
@@ -11,7 +10,6 @@ from hlsfactory.datasets_builtin import (
 )
 from hlsfactory.utils import (
     get_work_dir,
-    log_execution_time_to_file,
     remove_and_make_new_dir_if_exists,
 )
 

@@ -51,6 +51,9 @@ Functions
    * - :py:obj:`log_execution_time_to_file <hlsfactory.utils.log_execution_time_to_file>`
      - .. autodoc2-docstring:: hlsfactory.utils.log_execution_time_to_file
           :summary:
+   * - :py:obj:`flow_already_completed <hlsfactory.utils.flow_already_completed>`
+     - .. autodoc2-docstring:: hlsfactory.utils.flow_already_completed
+          :summary:
    * - :py:obj:`serialize_methods_for_dataclass <hlsfactory.utils.serialize_methods_for_dataclass>`
      - .. autodoc2-docstring:: hlsfactory.utils.serialize_methods_for_dataclass
           :summary:
@@ -143,6 +146,11 @@ API
    :canonical: hlsfactory.utils.log_execution_time_to_file
 
    .. autodoc2-docstring:: hlsfactory.utils.log_execution_time_to_file
+
+.. py:function:: flow_already_completed(design_dir: pathlib.Path, flow_name: str, success_marker_fp: pathlib.Path | None = None) -> bool
+   :canonical: hlsfactory.utils.flow_already_completed
+
+   .. autodoc2-docstring:: hlsfactory.utils.flow_already_completed
 
 .. py:class:: FlowTimer(flow_name: str, dir_path: pathlib.Path)
    :canonical: hlsfactory.utils.FlowTimer

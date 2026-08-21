@@ -22,7 +22,7 @@ Classes
 API
 ~~~
 
-.. py:class:: CPPPreprocessorFrontend(work_dir: pathlib.Path, define_statements: list[dict[str, typing.Any]], log_execution_time: bool = True)
+.. py:class:: CPPPreprocessorFrontend(work_dir: pathlib.Path, define_statements: list[dict[str, str]], log_execution_time: bool = True)
    :canonical: hlsfactory.define_frontend.CPPPreprocessorFrontend
 
    Bases: :py:obj:`hlsfactory.framework.Frontend`

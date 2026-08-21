@@ -48,6 +48,41 @@ However, you can still get started with a demo script and Jupyter notebook to ru
 
 We also provide a demo Jupyter notebook, with detailed instructions on how to get started importing your own HLS designs into the HLSFactory framework to run your own flows and collect data for your own experiments and research. The notebook for this demo is located in `demos/demo_custom_datasets/`.
 
+### Catapult HLS Smoke Test
+
+The built-in `test_designs_catapult` dataset contains two small C++ kernels for validating a Siemens Catapult installation. On the HLSFactory server, run the validator from an environment that has sourced the Siemens setup:
+
+```bash
+csh -c 'source /tools/software/siemens/setup.csh; uv run python tests/dataset_validator.py hlsfactory/hls_dataset_sources/test_designs_catapult --flow CatapultHLSSynthFlow -j 1'
+```
+
+Successful designs receive a `data_hls.json` containing latency, throughput, clock, critical-path timing, and detailed standard-cell area metrics. See the [Catapult HLS tutorial](docs/source/tutorials/catapult_flow.md) for Python API and custom-design examples.
+
+### Google XLS Smoke Test
+
+The built-in `test_designs_xls` dataset contains 11 DSLX designs covering
+combinational and pipelined functions, arrays, loops, parametrics, structs,
+pattern matching, stateful `proc`s, and procs that call pure helper functions.
+Point `HLSFACTORY_XLS_PATH` at an XLS release bundle or Bazel build and run:
+
+```bash
+export HLSFACTORY_XLS_PATH=/usr/scratch/common/xls
+uv run python tests/dataset_validator.py \
+    hlsfactory/hls_dataset_sources/test_designs_xls \
+    --flow XLSHLSSynthFlow \
+    -j 4
+```
+
+Each successful design produces unoptimized and optimized XLS IR,
+synthesizable Verilog, interface and module signatures, schedule and lowered IR,
+source-line mappings, effective tool-option snapshots, pass-pipeline metrics,
+block metrics, and `data_hls.json`. The JSON includes reported latency and
+initiation interval, flop count, feedthrough information, XLS delay estimates,
+operation/BOM counts, and paths to every report. Large compiler IR dumps and
+pass profiles remain opt-in. See the
+[Google XLS tutorial](docs/source/tutorials/xls_flow.md) for setup, Python API,
+configuration, output files, and custom DSLX designs.
+
 
 ## About
 
@@ -61,6 +96,8 @@ We currently include the following HLS design sources as built-in datasets:
 - Rosetta (🚧 under construction): An HLS benchmark suite with kernels targeting machine learning, deep learning, and signal processing applications.
 - Parallel Programming for FPGAs: Kernels from the PP4FPGA textbook
 - Vitis HLS Examples: A collection of examples from the Vitis HLS tool
+- Catapult Test Designs: Small vector-add and dot-product kernels for validating Siemens Catapult HLS
+- XLS Test Designs: DSLX kernels covering functions, arrays, loops, parametrics, structs, pattern matching, and stateful procs
 - FlowGNN: A collection of GNN accelerator designs
 - DGNN Booster + Gaussian Process + MaskNet + SkyNet: Selected accelerator kernels from Sharc Lab
 
@@ -68,6 +105,8 @@ We currently support the following vendor tool flows:
 
 - AMD/Xilinx Vitis HLS and Vivado
 - Intel HLS Compiler and Quartus
+- Siemens Catapult HLS
+- Google XLS (DSLX to synthesizable Verilog)
 
 ## Demos
 

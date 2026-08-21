@@ -22,6 +22,9 @@ Classes
    * - :py:obj:`VitisHLSDesign <hlsfactory.flow_vitis.VitisHLSDesign>`
      - .. autodoc2-docstring:: hlsfactory.flow_vitis.VitisHLSDesign
           :summary:
+   * - :py:obj:`DesignCosimData <hlsfactory.flow_vitis.DesignCosimData>`
+     - .. autodoc2-docstring:: hlsfactory.flow_vitis.DesignCosimData
+          :summary:
    * - :py:obj:`VitisHLSSynthFlow <hlsfactory.flow_vitis.VitisHLSSynthFlow>`
      -
    * - :py:obj:`VitisHLSCosimSetupFlow <hlsfactory.flow_vitis.VitisHLSCosimSetupFlow>`
@@ -53,6 +56,9 @@ Functions
           :summary:
    * - :py:obj:`auto_find_multiple_synth_report <hlsfactory.flow_vitis.auto_find_multiple_synth_report>`
      - .. autodoc2-docstring:: hlsfactory.flow_vitis.auto_find_multiple_synth_report
+          :summary:
+   * - :py:obj:`auto_find_cosim_report <hlsfactory.flow_vitis.auto_find_cosim_report>`
+     - .. autodoc2-docstring:: hlsfactory.flow_vitis.auto_find_cosim_report
           :summary:
    * - :py:obj:`auto_find_exported_ip <hlsfactory.flow_vitis.auto_find_exported_ip>`
      - .. autodoc2-docstring:: hlsfactory.flow_vitis.auto_find_exported_ip
@@ -89,6 +95,11 @@ API
    :canonical: hlsfactory.flow_vitis.auto_find_multiple_synth_report
 
    .. autodoc2-docstring:: hlsfactory.flow_vitis.auto_find_multiple_synth_report
+
+.. py:function:: auto_find_cosim_report(dir_path: pathlib.Path) -> pathlib.Path
+   :canonical: hlsfactory.flow_vitis.auto_find_cosim_report
+
+   .. autodoc2-docstring:: hlsfactory.flow_vitis.auto_find_cosim_report
 
 .. py:class:: DesignHLSSynthData
    :canonical: hlsfactory.flow_vitis.DesignHLSSynthData
@@ -231,6 +242,87 @@ API
 
       .. autodoc2-docstring:: hlsfactory.flow_vitis.VitisHLSDesign.parse_from_synth_report_file
 
+.. py:class:: DesignCosimData
+   :canonical: hlsfactory.flow_vitis.DesignCosimData
+
+   .. autodoc2-docstring:: hlsfactory.flow_vitis.DesignCosimData
+
+   .. py:attribute:: rtl
+      :canonical: hlsfactory.flow_vitis.DesignCosimData.rtl
+      :type: str
+      :value: None
+
+      .. autodoc2-docstring:: hlsfactory.flow_vitis.DesignCosimData.rtl
+
+   .. py:attribute:: status
+      :canonical: hlsfactory.flow_vitis.DesignCosimData.status
+      :type: str
+      :value: None
+
+      .. autodoc2-docstring:: hlsfactory.flow_vitis.DesignCosimData.status
+
+   .. py:attribute:: passed
+      :canonical: hlsfactory.flow_vitis.DesignCosimData.passed
+      :type: bool
+      :value: None
+
+      .. autodoc2-docstring:: hlsfactory.flow_vitis.DesignCosimData.passed
+
+   .. py:attribute:: latency_min_cycles
+      :canonical: hlsfactory.flow_vitis.DesignCosimData.latency_min_cycles
+      :type: int | None
+      :value: None
+
+      .. autodoc2-docstring:: hlsfactory.flow_vitis.DesignCosimData.latency_min_cycles
+
+   .. py:attribute:: latency_avg_cycles
+      :canonical: hlsfactory.flow_vitis.DesignCosimData.latency_avg_cycles
+      :type: int | None
+      :value: None
+
+      .. autodoc2-docstring:: hlsfactory.flow_vitis.DesignCosimData.latency_avg_cycles
+
+   .. py:attribute:: latency_max_cycles
+      :canonical: hlsfactory.flow_vitis.DesignCosimData.latency_max_cycles
+      :type: int | None
+      :value: None
+
+      .. autodoc2-docstring:: hlsfactory.flow_vitis.DesignCosimData.latency_max_cycles
+
+   .. py:attribute:: interval_min_cycles
+      :canonical: hlsfactory.flow_vitis.DesignCosimData.interval_min_cycles
+      :type: int | None
+      :value: None
+
+      .. autodoc2-docstring:: hlsfactory.flow_vitis.DesignCosimData.interval_min_cycles
+
+   .. py:attribute:: interval_avg_cycles
+      :canonical: hlsfactory.flow_vitis.DesignCosimData.interval_avg_cycles
+      :type: int | None
+      :value: None
+
+      .. autodoc2-docstring:: hlsfactory.flow_vitis.DesignCosimData.interval_avg_cycles
+
+   .. py:attribute:: interval_max_cycles
+      :canonical: hlsfactory.flow_vitis.DesignCosimData.interval_max_cycles
+      :type: int | None
+      :value: None
+
+      .. autodoc2-docstring:: hlsfactory.flow_vitis.DesignCosimData.interval_max_cycles
+
+   .. py:attribute:: total_execution_time_cycles
+      :canonical: hlsfactory.flow_vitis.DesignCosimData.total_execution_time_cycles
+      :type: int | None
+      :value: None
+
+      .. autodoc2-docstring:: hlsfactory.flow_vitis.DesignCosimData.total_execution_time_cycles
+
+   .. py:method:: parse_from_cosim_report_file(fp: pathlib.Path) -> hlsfactory.flow_vitis.DesignCosimData
+      :canonical: hlsfactory.flow_vitis.DesignCosimData.parse_from_cosim_report_file
+      :classmethod:
+
+      .. autodoc2-docstring:: hlsfactory.flow_vitis.DesignCosimData.parse_from_cosim_report_file
+
 .. py:function:: auto_find_exported_ip(dir_path: pathlib.Path) -> list[pathlib.Path]
    :canonical: hlsfactory.flow_vitis.auto_find_exported_ip
 
@@ -283,7 +375,7 @@ API
 
       .. autodoc2-docstring:: hlsfactory.flow_vitis.VitisHLSCosimSetupFlow.execute
 
-.. py:class:: VitisHLSCosimFlow(vitis_hls_bin: str | None = None, log_output: bool = False)
+.. py:class:: VitisHLSCosimFlow(vitis_hls_bin: str | None = None, log_output: bool = False, log_execution_time: bool = True, env_var_xilinx_hls: str | None = None, env_var_xilinx_vivado: str | None = None)
    :canonical: hlsfactory.flow_vitis.VitisHLSCosimFlow
 
    Bases: :py:obj:`hlsfactory.framework.ToolFlow`

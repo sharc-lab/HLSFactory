@@ -15,6 +15,7 @@ Subpackages
 
    hlsfactory.opt_dsl_v2
    hlsfactory.scripts
+   hlsfactory.autodse_vitis
 
 Submodules
 ----------
@@ -24,21 +25,25 @@ Submodules
    :maxdepth: 1
 
    hlsfactory.flow_bambu
-   hlsfactory.flow_harp
    hlsfactory.flow_intel
-   hlsfactory.flow_vitis
-   hlsfactory.framework
    hlsfactory.gather_data
-   hlsfactory.jinja_frontend
-   hlsfactory.opt_dsl_frontend
-   hlsfactory.opt_dsl_frontend_intel
-   hlsfactory.utils
-   hlsfactory.define_frontend
-   hlsfactory.loc_flow
-   hlsfactory.design_config
    hlsfactory.data_packaging
    hlsfactory.datasets_builtin
+   hlsfactory.define_frontend
+   hlsfactory.design_config
+   hlsfactory.flow_harp
+   hlsfactory.framework
+   hlsfactory.jinja_frontend
+   hlsfactory.loc_flow
+   hlsfactory.opt_dsl_frontend
+   hlsfactory.opt_dsl_frontend_intel
    hlsfactory.opt_dsl_frontend_v2
+   hlsfactory.flow_vitis
+   hlsfactory.utils
+   hlsfactory.flow_lightningsim
+   hlsfactory.flow_catapult
+   hlsfactory.stratus_flow
+   hlsfactory.flow_xls
 
 Package Contents
 ----------------
@@ -59,6 +64,6 @@ API
 
 .. py:data:: __all__
    :canonical: hlsfactory.__all__
-   :value: ['flow_intel', 'flow_vitis']
+   :value: ['flow_catapult', 'flow_intel', 'flow_vitis', 'flow_xls', 'stratus_flow']
 
    .. autodoc2-docstring:: hlsfactory.__all__

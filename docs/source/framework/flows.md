@@ -72,4 +72,59 @@ As mentioned, frontend flows are used to generate multiple enumerated designs fr
 
 ## Xilinx Flows
 
+## Siemens Catapult Flow
+
+`CatapultHLSSynthFlow` runs the synthesis Tcl file declared by the design's `CatapultHLSSynthFlow` configuration:
+
+```toml
+[[flow_configs]]
+flow_name = "CatapultHLSSynthFlow"
+synth_tcl = "synth.tcl"
+```
+
+The flow invokes `catapult -shell -file synth.tcl` in the design directory. A successful Tcl script must advance the solution through scheduling/assembly and extraction so Catapult produces `cycle.rpt` and `rtl.rpt`. HLSFactory parses those reports into `data_hls.json`, including:
+
+- Clock period and uncertainty
+- Latency, throughput, reset length, and initiation interval in cycles
+- Critical-path delay and slack
+- Operation count
+- Total, combinational, sequential, datapath, register, functional-unit, MUX, logic, memory, ROM, and FSM area metrics
+
+The flow supports the same dataset-level parallel execution and per-design timeout interface as the other `ToolFlow` implementations. It creates `error__CatapultHLSSynthFlow.txt` or `timeout__CatapultHLSSynthFlow.txt` when a design fails, and records runtime in `execution_time_data.json` when execution-time logging is enabled.
+
+The Catapult executable is discovered from `PATH` unless `catapult_bin` is supplied explicitly. Source the Siemens environment before starting Python so worker processes inherit the license settings. See the [Catapult HLS tutorial](../tutorials/catapult_flow) for a complete example.
+
+## Google XLS Flow
+
+`XLSHLSSynthFlow` converts a DSLX function or proc to XLS IR, optimizes the IR,
+and lowers it to synthesizable Verilog. It invokes `ir_converter_main`,
+`opt_main`, and `codegen_main` in the design directory, using the top and source
+declared in `hlsfactory.toml`:
+
+```toml
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "adder.x"
+top = "add"
+generator = "pipeline"
+pipeline_stages = "1"
+delay_model = "unit"
+```
+
+The flow supports pipeline and combinational generators, stateful procs with an
+explicit reset, per-design timeouts, parallel dataset execution, and the normal
+HLSFactory error/timeout markers. Successful runs retain both IR forms, RTL, the
+DSLX interface, module signature, schedule, scheduled and block IR, source-line
+map, effective option snapshots, pass-pipeline metrics, and XLS block metrics.
+`data_hls.json` records the configured codegen settings along with signature
+latency/II, flop and feedthrough data, estimated path delays, aggregated
+operation/BOM counts, and all artifact paths. Optimizer/codegen IR dumps and
+pprof pass profiles are available through opt-in flow settings.
+
+XLS is resolved from an explicit constructor argument, then `HLSFACTORY_XLS_PATH`,
+then the HLSFactory server default `/usr/scratch/common/xls`. Both release-root
+and Bazel `bazel-bin/xls/` executable layouts are supported. See the
+[Google XLS tutorial](../tutorials/xls_flow) for a complete dataset run and
+custom-design example.
+
 ## Intel Flows

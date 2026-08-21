@@ -57,17 +57,43 @@ Each flow type has specific required settings that must be provided:
 
 | Flow Name | Required Setting | Description |
 |-----------|-----------------|-------------|
+| `CatapultHLSSynthFlow` | `synth_tcl` | TCL script for Catapult HLS synthesis |
+| `StratusHLSSynthFlow` | `project_tcl`, `hls_module`, `hls_config` | Stratus project and module/configuration to synthesize |
+| `XLSHLSSynthFlow` | `dslx_file`, `top` | DSLX source file and top-level function to synthesize |
 | `VitisHLSSynthFlow` | `synth_tcl` | TCL script for HLS synthesis |
 | `VitisHLSImplFlow` | `impl_tcl` | TCL script for IP export/implementation |
 | `VitisHLSCsimFlow` | `csim_tcl` | TCL script for C simulation |
 | `VitisHLSCosimSetupFlow` | `cosim_setup_tcl` | TCL script for co-simulation setup |
 | `VitisHLSCosimFlow` | `cosim_tcl` | TCL script for co-simulation |
 | `OptDSLv2` | `opt_dsl_file` | Optimization DSL template file |
-| `LightningSimV2Flow` | *(none required)* | No required settings |
+| `LightningSimFlow` | `solution_dir_name` | Existing Vitis HLS solution directory to simulate |
 
 ### Flow Configuration Examples
 
 ```toml
+# Catapult HLS Synthesis
+[[flow_configs]]
+flow_name = "CatapultHLSSynthFlow"
+synth_tcl = "synth.tcl"
+
+# Cadence Stratus HLS Synthesis
+[[flow_configs]]
+flow_name = "StratusHLSSynthFlow"
+project_tcl = "project.tcl"
+hls_module = "fir"
+hls_config = "BASIC"
+# makefile = "Makefile"  # Optional; this is the default.
+
+# Google XLS HLS Synthesis
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "adder.x"
+top = "add"
+# generator = "pipeline"  # Optional; this is the default.
+# pipeline_stages = "1"   # Optional; pipeline generator only.
+# delay_model = "unit"    # Optional; pipeline generator only.
+# reset = "rst"            # Optional reset port; required by stateful procs.
+
 # Vitis HLS Synthesis
 [[flow_configs]]
 flow_name = "VitisHLSSynthFlow"
@@ -98,10 +124,37 @@ cosim_tcl = "dataset_hls_cosim.tcl"
 flow_name = "OptDSLv2"
 opt_dsl_file = "opt_template.tcl"
 
-# LightningSim (no required settings)
+# LightningSim
 [[flow_configs]]
-flow_name = "LightningSimV2Flow"
+flow_name = "LightningSimFlow"
+solution_dir_name = "hls_k2mm/solution1"
 ```
+
+### XLS Flow Settings
+
+| Setting | Required | Default | Description |
+|---|---|---|---|
+| `dslx_file` | Yes | — | DSLX source file relative to the design directory |
+| `top` | Yes | — | Top-level DSLX function or proc |
+| `generator` | No | `pipeline` | `pipeline` or `combinational` |
+| `pipeline_stages` | No | `1` | Positive stage count used by the pipeline generator |
+| `delay_model` | No | `unit` | XLS scheduling delay model used by the pipeline generator |
+| `reset` | No | unset | Reset port name for pipeline codegen; required by the packaged stateful proc examples |
+| `dump_optimizer_ir` | No | `false` | Write an IR snapshot after every optimizer pass |
+| `dump_codegen_ir` | No | `false` | Write an IR snapshot after every scheduling/codegen pass |
+| `profile_passes` | No | `false` | Write optimizer and codegen pprof pass profiles |
+
+`pipeline_stages` controls scheduler partitioning, but it is not necessarily the
+same as externally visible latency because XLS may add input and output
+registers. Read `latency_cycles` from the generated `data_hls.json` for the
+module-signature value. Combinational signatures do not express cycle latency
+or initiation interval, so those JSON fields are `null` for combinational
+designs.
+
+The three diagnostic switches are string-valued booleans because all flow
+settings are strings. Accepted true values are `true`, `yes`, `on`, and `1`;
+accepted false values are `false`, `no`, `off`, and `0`. IR dumps can create
+hundreds of files per design and are disabled by default.
 
 ## Python API
 
@@ -246,13 +299,16 @@ Enumeration of known flow names:
 ```python
 class FlowName(StrEnum):
     OPT_DSL_V2 = "OptDSLv2"
+    CATAPULT_HLS_SYNTH = "CatapultHLSSynthFlow"
+    STRATUS_HLS_SYNTH = "StratusHLSSynthFlow"
+    XLS_HLS_SYNTH = "XLSHLSSynthFlow"
     VITIS_HLS_SYNTH = "VitisHLSSynthFlow"
     VITIS_HLS_CSIM = "VitisHLSCsimFlow"
     VITIS_HLS_IMPL = "VitisHLSImplFlow"
     VITIS_HLS_COSIM = "VitisHLSCosimFlow"
     VITIS_HLS_COSIM_SETUP = "VitisHLSCosimSetupFlow"
     VITIS_HLS_IMPL_REPORT = "VitisHLSImplReportFlow"
-    LIGHTNING_SIM_V2 = "LightningSimV2Flow"
+    LIGHTNING_SIM = "LightningSimFlow"
 ```
 
 ## Migration Script
@@ -375,6 +431,8 @@ design_directory/
 |------|---------|
 | `hlsfactory/design_config.py` | Core config classes and parsing |
 | `hlsfactory/framework.py` | Design/DesignDataset integration |
+| `hlsfactory/flow_catapult.py` | Siemens Catapult synthesis and report parsing |
+| `hlsfactory/flow_xls.py` | Google XLS DSLX-to-Verilog synthesis and metrics parsing |
 | `hlsfactory/flow_vitis.py` | Vitis flow implementations |
 | `hlsfactory/opt_dsl_frontend_v2.py` | OptDSL frontend implementation |
 | `hlsfactory/scripts/generate_design_configs.py` | Migration CLI tool |

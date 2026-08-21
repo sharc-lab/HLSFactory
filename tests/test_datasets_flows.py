@@ -1,25 +1,14 @@
-import shutil
-from collections.abc import Callable
-from pathlib import Path
-from unittest.mock import patch
-
 import pytest
 
 from hlsfactory.datasets_builtin import (
     DATASET_STR_MAP,
     T_dataset_builder,
-    dataset_polybench_builder,
-    dataset_vitis_examples_builder,
 )
-from hlsfactory.flow_vitis import (
-    VitisHLSImplFlow,
-    VitisHLSImplReportFlow,
-    VitisHLSSynthFlow,
-)
+from hlsfactory.design_config import FlowName
+from hlsfactory.flow_vitis import VitisHLSSynthFlow
 from hlsfactory.framework import (
     count_total_designs_in_dataset_collection,
 )
-from hlsfactory.opt_dsl_frontend import OptDSLFrontend
 from hlsfactory.utils import (
     ToolPathsSource,
     get_tool_paths,
@@ -56,6 +45,13 @@ def test_concrete_vitis_hls_flow_paramaterized(
     print(f"work_dir: {work_dir}")
 
     dataset_instance = dataset_builder(dataset_name, work_dir)
+    dataset_instance.designs = [
+        design
+        for design in dataset_instance.designs
+        if design.require_config().supports_flow(FlowName.VITIS_HLS_SYNTH)
+    ]
+    if not dataset_instance.designs:
+        pytest.skip(f"Dataset {dataset_name} does not support Vitis HLS synthesis")
 
     datasets = {
         dataset_name: dataset_instance,

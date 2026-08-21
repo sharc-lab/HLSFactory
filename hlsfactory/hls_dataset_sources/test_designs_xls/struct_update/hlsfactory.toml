@@ -1,0 +1,9 @@
+design_name = "struct_update"
+dataset_name = "test_designs_xls"
+tags = ["test", "struct", "struct_update", "dslx"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "struct_update.x"
+top = "translate_x"
+generator = "combinational"

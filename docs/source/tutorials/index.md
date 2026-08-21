@@ -3,6 +3,8 @@
 ## Basic Tutorials
 
 - [](xilinx_flow)
+- [](xls_flow)
+- [](catapult_flow)
 - [](intel_flow)
 - [](data_agg)
 - [](custom_designs)
@@ -17,6 +19,8 @@
 :hidden:
 
 xilinx_flow
+xls_flow
+catapult_flow
 intel_flow
 data_agg
 custom_designs

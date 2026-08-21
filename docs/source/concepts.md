@@ -4,7 +4,7 @@ This page introduces the key ideas behind HLSFactory for users familiar with Hig
 
 ## What HLSFactory Adds
 
-HLSFactory is a **framework for building and working with HLS design datasets**. It enables you to construct, manage, and analyze collections of HLS designs across different tool flows (Vitis HLS, Vivado, Intel HLS Compiler, Quartus), providing standardized interfaces, automation, and data extraction. Rather than just orchestrating tool invocation, HLSFactory lets you treat HLS designs as programmatically accessible datasets, supporting a wide range of workflows:
+HLSFactory is a **framework for building and working with HLS design datasets**. It enables you to construct, manage, and analyze collections of HLS designs across different tool flows (Vitis HLS, Vivado, Siemens Catapult, Intel HLS Compiler, Quartus, and Google XLS), providing standardized interfaces, automation, and data extraction. Rather than just orchestrating tool invocation, HLSFactory lets you treat HLS designs as programmatically accessible datasets, supporting a wide range of workflows:
 
 - **Dataset construction and management** — Build, load, and manipulate large sets of HLS designs as `Design` and `DesignDataset` objects, supporting scalable experimentation and research.
 - **Design-space exploration** — Automatically elaborate a single design into a diverse set of concrete variants using OptDSL, capturing many pragma and configuration combinations.
@@ -19,7 +19,7 @@ While HLSFactory relies on existing vendor tools as backends, it provides the in
 - **DesignDataset** — A collection of related `Design` objects (e.g., all PolyBench kernels)
 - **DesignDatasetCollection** — A dictionary of datasets, used when running flows across multiple corpora
 - **Frontend Flow** — Transforms designs (e.g., OptDSL elaborates abstract designs into concrete variants with different pragmas)
-- **Tool Flow** — Runs vendor tools (Vitis HLS synthesis, Vivado implementation, etc.) and extracts data
+- **Tool Flow** — Runs synthesis or implementation tools (for example, Vitis HLS, Vivado, Catapult, or XLS) and extracts data
 
 Designs flow through: **Frontend** (optional) → **ToolFlow** → **Data** (JSON/CSV in each design directory).
 
@@ -37,11 +37,12 @@ HLSFactory expects certain files in each design directory. The table below summa
 | File | Purpose | Used By |
 |------|---------|---------|
 | `dataset_hls.tcl` | Create HLS project, add sources, run `csynth` | VitisHLSSynthFlow |
+| `synth.tcl` | Create a Catapult project and solution, select libraries/top/clock, run assembly and extraction | CatapultHLSSynthFlow |
 | `dataset_hls_ip_export.tcl` | Open synthesized project, run `export_design -flow impl` | VitisHLSImplFlow |
 | `opt_template.tcl` | OptDSL design-space specification (pragma combinations) | OptDSLFrontend |
-| `hlsfactory.toml` | Design metadata and flow-specific config | All flows (optional; legacy designs use TCL filenames) |
+| `hlsfactory.toml` | Design metadata and flow-specific config | All configured flows; required by the Catapult flow |
 
-For full details on `hlsfactory.toml` and flow configuration, see [Design Configuration](framework/design_config). For integrating an existing Vitis HLS project, see the [Integrating Your HLS Project](extending) section in the Extending guide.
+For full details on `hlsfactory.toml` and flow configuration, see [Design Configuration](framework/design_config). For integrating existing Vitis or Catapult projects, see the [Extending HLSFactory](extending) guide.
 
 ## Applications of HLSFactory
 

@@ -1,0 +1,7 @@
+design_name = "dot_product"
+dataset_name = "test_designs_catapult"
+tags = ["test", "reduction"]
+
+[[flow_configs]]
+flow_name = "CatapultHLSSynthFlow"
+synth_tcl = "synth.tcl"

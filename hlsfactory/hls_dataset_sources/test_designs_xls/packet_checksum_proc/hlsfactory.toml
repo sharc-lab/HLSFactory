@@ -1,0 +1,12 @@
+design_name = "packet_checksum_proc"
+dataset_name = "test_designs_xls"
+tags = ["test", "proc", "function", "tuple", "channel", "stateful", "dslx"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "packet_checksum_proc.x"
+top = "PacketChecksum"
+generator = "pipeline"
+pipeline_stages = "1"
+delay_model = "unit"
+reset = "rst"

@@ -14,6 +14,9 @@ DIR_DATASET_MACHSUITE = HLS_DATASET_DIR / "machsuite"
 DIR_DATASET_CHSTONE = HLS_DATASET_DIR / "chstone"
 DIR_DATASET_PP4FPGAS = HLS_DATASET_DIR / "pp4fpgas"
 DIR_DATASET_VITIS_EXAMPLES = HLS_DATASET_DIR / "vitis_examples"
+DIR_DATASET_TEST_DESIGNS_CATAPULT = HLS_DATASET_DIR / "test_designs_catapult"
+DIR_DATASET_TEST_DESIGNS_STRATUS = HLS_DATASET_DIR / "test_designs_stratus"
+DIR_DATASET_TEST_DESIGNS_XLS = HLS_DATASET_DIR / "test_designs_xls"
 DIR_DATASET_ACCELERATORS = HLS_DATASET_DIR / "accelerators"
 
 DIR_DATASET_SODA = HLS_DATASET_DIR / "soda"
@@ -30,6 +33,9 @@ DIR_ALL = [
     DIR_DATASET_CHSTONE,
     DIR_DATASET_PP4FPGAS,
     DIR_DATASET_VITIS_EXAMPLES,
+    DIR_DATASET_TEST_DESIGNS_CATAPULT,
+    DIR_DATASET_TEST_DESIGNS_STRATUS,
+    DIR_DATASET_TEST_DESIGNS_XLS,
     DIR_DATASET_ACCELERATORS,
     DIR_DATASET_SODA,
     DIR_DATASET_HP_FFT,
@@ -81,6 +87,33 @@ def dataset_vitis_examples_builder(name: str, work_dir: Path) -> DesignDataset:
     check_dataset_dir_exists(DIR_DATASET_VITIS_EXAMPLES)
     new_dir = work_dir / name
     shutil.copytree(DIR_DATASET_VITIS_EXAMPLES, new_dir)
+    return DesignDataset.from_dir(name, new_dir)
+
+
+def dataset_test_designs_catapult_builder(
+    name: str,
+    work_dir: Path,
+) -> DesignDataset:
+    check_dataset_dir_exists(DIR_DATASET_TEST_DESIGNS_CATAPULT)
+    new_dir = work_dir / name
+    shutil.copytree(DIR_DATASET_TEST_DESIGNS_CATAPULT, new_dir)
+    return DesignDataset.from_dir(name, new_dir)
+
+
+def dataset_test_designs_stratus_builder(
+    name: str,
+    work_dir: Path,
+) -> DesignDataset:
+    check_dataset_dir_exists(DIR_DATASET_TEST_DESIGNS_STRATUS)
+    new_dir = work_dir / name
+    shutil.copytree(DIR_DATASET_TEST_DESIGNS_STRATUS, new_dir)
+    return DesignDataset.from_dir(name, new_dir)
+
+
+def dataset_test_designs_xls_builder(name: str, work_dir: Path) -> DesignDataset:
+    check_dataset_dir_exists(DIR_DATASET_TEST_DESIGNS_XLS)
+    new_dir = work_dir / name
+    shutil.copytree(DIR_DATASET_TEST_DESIGNS_XLS, new_dir)
     return DesignDataset.from_dir(name, new_dir)
 
 
@@ -141,6 +174,9 @@ DATASET_STR_MAP: dict[str, T_dataset_builder] = {
     "chstone": dataset_chstone_builder,
     "pp4fpgas": dataset_pp4fpgas_builder,
     "vitis_examples": dataset_vitis_examples_builder,
+    "test_designs_catapult": dataset_test_designs_catapult_builder,
+    "test_designs_stratus": dataset_test_designs_stratus_builder,
+    "test_designs_xls": dataset_test_designs_xls_builder,
     "accelerators": dataset_accelerators_builder,
     "soda": dataset_soda_builder,
     "hp_fft": dataset_hp_fft_builder,
@@ -189,6 +225,18 @@ def datasets_all_builder(work_dir: Path) -> DesignDatasetCollection:
     dataset_chstone = dataset_chstone_builder("chstone", work_dir)
     dataset_pp4fpgas = dataset_pp4fpgas_builder("pp4fpgas", work_dir)
     dataset_vitis_examples = dataset_vitis_examples_builder("vitis_examples", work_dir)
+    dataset_test_designs_catapult = dataset_test_designs_catapult_builder(
+        "test_designs_catapult",
+        work_dir,
+    )
+    dataset_test_designs_stratus = dataset_test_designs_stratus_builder(
+        "test_designs_stratus",
+        work_dir,
+    )
+    dataset_test_designs_xls = dataset_test_designs_xls_builder(
+        "test_designs_xls",
+        work_dir,
+    )
     dataset_accelerators = dataset_accelerators_builder("accelerators", work_dir)
     dataset_soda = dataset_soda_builder("soda", work_dir)
     dataset_hp_fft = dataset_hp_fft_builder("hp_fft", work_dir)
@@ -201,6 +249,9 @@ def datasets_all_builder(work_dir: Path) -> DesignDatasetCollection:
         dataset_chstone.name: dataset_chstone,
         dataset_pp4fpgas.name: dataset_pp4fpgas,
         dataset_vitis_examples.name: dataset_vitis_examples,
+        dataset_test_designs_catapult.name: dataset_test_designs_catapult,
+        dataset_test_designs_stratus.name: dataset_test_designs_stratus,
+        dataset_test_designs_xls.name: dataset_test_designs_xls,
         dataset_accelerators.name: dataset_accelerators,
         dataset_soda.name: dataset_soda,
         dataset_hp_fft.name: dataset_hp_fft,

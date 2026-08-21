@@ -1,0 +1,7 @@
+design_name = "vector_add"
+dataset_name = "test_designs_catapult"
+tags = ["test", "vector"]
+
+[[flow_configs]]
+flow_name = "CatapultHLSSynthFlow"
+synth_tcl = "synth.tcl"

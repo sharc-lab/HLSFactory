@@ -1,0 +1,9 @@
+design_name = "increment"
+dataset_name = "test_designs_stratus"
+tags = ["test", "streaming", "arithmetic"]
+
+[[flow_configs]]
+flow_name = "StratusHLSSynthFlow"
+project_tcl = "project.tcl"
+hls_module = "increment"
+hls_config = "BASIC"

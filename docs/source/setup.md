@@ -75,6 +75,8 @@ You need the appropriate vendor tools for the flows you run:
 
 - **Xilinx flows** — Vitis HLS and Vivado (e.g., 2021.1, 2023.1)
 - **Intel flows** — Intel HLS Compiler and Quartus
+- **Siemens Catapult flows** — Catapult HLS with the standard-cell and memory libraries referenced by each synthesis Tcl script
+- **Google XLS flows** — [XLS](https://google.github.io/xls/) DSLX compiler and RTL code generator
 
 It is the user's responsibility to install and set up these tools. Once installed, HLSFactory can discover them via a `.env` file or environment variables.
 
@@ -89,3 +91,50 @@ HLSFACTORY_VIVADO_PATH=/opt/Xilinx/Vivado/2023.1
 ```
 
 Typical installation paths: `/opt/Xilinx/Vitis_HLS/<version>` and `/opt/Xilinx/Vivado/<version>` on Linux. `get_work_dir(DirSource.ENVFILE)` and `get_tool_paths(ToolPathsSource.ENVFILE)` read these keys automatically. You can also set the same keys as environment variables instead of using a `.env` file.
+
+`XLSHLSSynthFlow` reads `HLSFACTORY_XLS_PATH` directly from the environment. On the
+HLSFactory server, set it to `/usr/scratch/common/xls`. The directory may contain
+release binaries at its root or a source build's binaries under `bazel-bin/xls/`.
+The flow requires `ir_converter_main`, `opt_main`, and `codegen_main`; it checks
+both layouts for each executable. An explicit `xls_install_dir` argument passed
+to `XLSHLSSynthFlow` takes precedence over the environment variable.
+
+```bash
+export HLSFACTORY_XLS_PATH=/path/to/xls
+```
+
+If you keep `HLSFACTORY_XLS_PATH` in `.env`, export that file's values into the
+process environment before running the flow; HLSFactory does not automatically
+load this particular setting from `.env`.
+
+Validate the installation against all packaged DSLX examples with:
+
+```bash
+uv run python tests/dataset_validator.py \
+    hlsfactory/hls_dataset_sources/test_designs_xls \
+    --flow XLSHLSSynthFlow \
+    -j 4
+```
+
+See the [Google XLS tutorial](tutorials/xls_flow) for the Python API, design
+configuration, generated RTL and report artifacts, and metric semantics.
+
+### Siemens Catapult Setup
+
+`CatapultHLSSynthFlow` resolves `catapult` from `PATH` by default. You can instead pass an explicit executable path through its `catapult_bin` constructor argument or the validator's `--catapult-bin` option. Catapult must also inherit the vendor license environment and any library-related variables required by the synthesis Tcl script.
+
+On the HLSFactory server, the supported setup is:
+
+```csh
+source /tools/software/siemens/setup.csh
+```
+
+This configures `MGLS_LICENSE_FILE`, `SALT_LICENSE_SERVER`, `MGC_CATAPULT_HOME`, and `PATH`. The Catapult executable is then available at `/tools/software/siemens/catapult/latest/Mgc_home/bin/catapult`.
+
+From a Bash session, the complete built-in validation can be launched through C shell:
+
+```bash
+csh -c 'source /tools/software/siemens/setup.csh; uv run python tests/dataset_validator.py hlsfactory/hls_dataset_sources/test_designs_catapult --flow CatapultHLSSynthFlow -j 1'
+```
+
+For other installations, source the setup script supplied by your Siemens administrator and ensure `catapult` is on `PATH`. See the [Catapult HLS tutorial](tutorials/catapult_flow) for the Python API, design configuration, reports, and output fields.

@@ -19,6 +19,9 @@ DESIGN_CONFIG_FILENAME = "hlsfactory.toml"
 
 class FlowName(StrEnum):
     OPT_DSL_V2 = "OptDSLv2"
+    CATAPULT_HLS_SYNTH = "CatapultHLSSynthFlow"
+    STRATUS_HLS_SYNTH = "StratusHLSSynthFlow"
+    XLS_HLS_SYNTH = "XLSHLSSynthFlow"
     VITIS_HLS_SYNTH = "VitisHLSSynthFlow"
     VITIS_HLS_CSIM = "VitisHLSCsimFlow"
     VITIS_HLS_IMPL = "VitisHLSImplFlow"
@@ -95,6 +98,11 @@ class FlowConfig:
 
     _REQUIRED_SETTINGS: ClassVar[dict[str, frozenset[str]]] = {
         FlowName.OPT_DSL_V2.value: frozenset({"opt_dsl_file"}),
+        FlowName.CATAPULT_HLS_SYNTH.value: frozenset({"synth_tcl"}),
+        FlowName.STRATUS_HLS_SYNTH.value: frozenset(
+            {"project_tcl", "hls_module", "hls_config"},
+        ),
+        FlowName.XLS_HLS_SYNTH.value: frozenset({"dslx_file", "top"}),
         FlowName.VITIS_HLS_SYNTH.value: frozenset({"synth_tcl"}),
         FlowName.VITIS_HLS_CSIM.value: frozenset({"csim_tcl"}),
         FlowName.VITIS_HLS_IMPL.value: frozenset({"impl_tcl"}),

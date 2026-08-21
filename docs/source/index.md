@@ -6,11 +6,11 @@ HLSFactory is a framework for High-Level Synthesis (HLS) design datasets. It pro
 
 ## New to HLSFactory?
 
-If you have HLS experience but are new to this framework: start with [Concepts](concepts) for the mental model, then [Setup](setup), then the [Xilinx Flow Tutorial](tutorials/xilinx_flow).
+If you have HLS experience but are new to this framework: start with [Concepts](concepts) for the mental model, then [Setup](setup), followed by the tutorial for your toolchain: [Xilinx](tutorials/xilinx_flow), [Google XLS](tutorials/xls_flow), or [Siemens Catapult](tutorials/catapult_flow).
 
 ## Quick Guide
 
-**Run experiments:** Jump right in with the [Xilinx Flow tutorial](tutorials/xilinx_flow) and the [Setup](setup) guide.
+**Run experiments:** Use the [Setup](setup) guide, then follow the [Xilinx Flow](tutorials/xilinx_flow), [Google XLS](tutorials/xls_flow), or [Siemens Catapult](tutorials/catapult_flow) tutorial.
 
 **Contribute designs:** Add your own designs and flows via the [Extending](extending) guide.
 

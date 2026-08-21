@@ -12,6 +12,9 @@ The HLS Design Collection is a community-organized effort to build the largest c
 | `chstone` | CHStone | 2 | Xilinx (Vitis HLS + Vivado) | All designs | Control-heavy benchmarks popular in HLS studies. |
 | `pp4fpgas` | Parallel Programming for FPGAs | 5 | Xilinx (Vitis HLS + Vivado) | Not provided | Examples aligned with the PP4FPGAs textbook. |
 | `vitis_examples` | Vitis Introductory Examples | 23 | Xilinx (Vitis HLS + Vivado) | Not provided | Direct import of AMD's getting-started designs. |
+| `test_designs_catapult` | Catapult Test Designs | 2 | Siemens Catapult HLS | Not provided | Small vector-add and dot-product kernels for toolchain validation. |
+| `test_designs_stratus` | Stratus Test Designs | 2 | Cadence Stratus HLS | Not provided | Small streaming arithmetic modules for toolchain validation. |
+| `test_designs_xls` | XLS Test Designs | 11 | Google XLS | Not provided | Small DSLX kernels covering feed-forward functions, stateful processes, and mixed function/proc designs. |
 | `accelerators` | Sharc Lab Accelerators | 7 | Xilinx (Vitis HLS + Vivado) | Not provided | Custom accelerator kernels spanning FlowGNN, DGNN-Booster, MaskNet, SkyNet, and Edge-MoE. |
 | `soda` | SODA | 11 | Xilinx (Vitis HLS + Vivado) | Not provided | Data-flow streaming designs from the SODA project. |
 | `hp_fft` | HP-FFT | 16 | Xilinx (Vitis HLS + Vivado) | Not provided | Parameterized FFT accelerators with a range of unroll factors and design points. |
@@ -19,12 +22,14 @@ The HLS Design Collection is a community-organized effort to build the largest c
 | `auto_ntt` | AutoNTT | Varies | Xilinx (Vitis HLS + Vivado) | Not provided | Automated NTT generator with reference kernels and scripts for producing new design variants. |
 | `forgebench` | ForgeBench | 45 | Xilinx (Vitis HLS + Vivado) | Not provided | Proposed machine-learning benchmark suite spanning GEMM kernels, DNN blocks, and transformer components for stressing next-gen flows. |
 
-The keys in the first column are the values you pass to `datasets_builder`. Intel Quartus support is under active development; the datasets above currently ship only with Xilinx entry-point scripts.
+The keys in the first column are the values you pass to `datasets_builder`.
+Most production datasets currently target Xilinx; the small Catapult, Stratus,
+and XLS datasets are intended for validating those toolchains.
 
 ## Using the Datasets
 
 - **How to load** – `datasets_builder(work_dir, ["polybench", "machsuite"])` copies the selected sources into `work_dir` and returns a `DesignDatasetCollection` that you can feed into flows.
-- **Structure** – Each design directory contains the original HLS sources plus flow entry points such as `dataset_hls.tcl` (for Vitis HLS) and, when available, `opt_template.tcl` (for OptDSL enumeration).
+- **Structure** – Each design directory contains the original HLS sources, an `hlsfactory.toml` flow configuration, and tool entry points such as `dataset_hls.tcl` for Vitis HLS or `synth.tcl` for Catapult. Some datasets also include `opt_template.tcl` for OptDSL enumeration.
 - **Licensing** – Datasets preserve the upstream licensing terms of their original repositories. Review the source links below if you plan to redistribute derivatives.
 
 ## Contributing Your HLS Designs
@@ -87,6 +92,59 @@ Ryan Kastner, Janarbek Matai, and Stephen Neuendorffer. 2018. Parallel Programmi
 ```
 Xilinx [n. d.]. Vitis-HLS-Introductory-Examples. https://github.com/Xilinx/Vitis-HLS-Introductory-Examples
 ```
+
+### Catapult Test Designs (`test_designs_catapult`)
+
+- **Best for**: Quickly validating a Siemens Catapult installation and license setup.
+- **Notes**: Contains standalone vector-add and dot-product kernels targeting the bundled Nangate 45 nm libraries. The resulting `data_hls.json` files contain latency, throughput, critical-path timing, and detailed standard-cell area breakdowns. These are ASIC-library area scores rather than FPGA LUT/FF/DSP counts. Source `/tools/software/siemens/setup.csh` before running Catapult so the license-server environment is available.
+
+```csh
+source /tools/software/siemens/setup.csh
+uv run python tests/dataset_validator.py \
+    hlsfactory/hls_dataset_sources/test_designs_catapult \
+    --flow CatapultHLSSynthFlow \
+    -j 1
+```
+
+### Cadence Stratus Test Designs (`test_designs_stratus`)
+
+- **Best for**: Quickly validating a Cadence Stratus installation, license, and SystemC synthesis environment.
+- **Notes**: Contains streaming increment and multiply-accumulate modules that use `cynw_p2p` channels. Both projects target the GPDK045 standard-cell library with a 5 ns clock. The flow generates RTL and records latency, sequential and combinational area, the Stratus version, and clock metadata in `data_hls.json` and `data_design.json`.
+
+Point the validator at a Stratus installation containing `bin/stratus` and
+`bin/bdw_makegen`:
+
+```bash
+uv run python tests/dataset_validator.py \
+    hlsfactory/hls_dataset_sources/test_designs_stratus \
+    --flow StratusHLSSynthFlow \
+    --stratus-install-dir /path/to/stratus \
+    -j 1
+```
+
+### Google XLS Test Designs (`test_designs_xls`)
+
+- **Upstream**: [Google XLS documentation](https://google.github.io/xls/)
+- **Best for**: Validating DSLX-to-Verilog setup and exercising pipeline and combinational code generation.
+- **Notes**: Includes arithmetic and control kernels plus examples of arrays, `map`, counted `for` expressions, bit slicing and concatenation, parametric functions, pattern matching, struct-update syntax, stateful `proc`s communicating over channels, and a proc that calls pure tuple-processing helper functions. These designs follow the official [XLS tools quick start](https://google.github.io/xls/tools_quick_start/), [DSLX language reference](https://google.github.io/xls/dslx_reference/), and [`proc` tutorial](https://google.github.io/xls/tutorials/how_to_use_procs/).
+
+Run all 11 designs through the same validator used for toolchain checks:
+
+```bash
+export HLSFACTORY_XLS_PATH=/usr/scratch/common/xls
+uv run python tests/dataset_validator.py \
+    hlsfactory/hls_dataset_sources/test_designs_xls \
+    --flow XLSHLSSynthFlow \
+    -j 4
+```
+
+The validator copies the packaged sources into `$HLSFACTORY_WORK_DIR`, leaving
+the originals unchanged. A complete run produces IR, optimized IR, Verilog,
+interface/module signatures, schedules, lowered IR, option snapshots,
+source-line maps, pass metrics, block metrics, and structured HLS data for every
+design.
+See the [Google XLS tutorial](tutorials/xls_flow) for the complete flow and
+output-field reference.
 
 ### Sharc Lab Accelerators (`accelerators`)
 

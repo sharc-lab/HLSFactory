@@ -110,6 +110,24 @@ API
 
       .. autodoc2-docstring:: hlsfactory.design_config.FlowName.OPT_DSL_V2
 
+   .. py:attribute:: CATAPULT_HLS_SYNTH
+      :canonical: hlsfactory.design_config.FlowName.CATAPULT_HLS_SYNTH
+      :value: 'CatapultHLSSynthFlow'
+
+      .. autodoc2-docstring:: hlsfactory.design_config.FlowName.CATAPULT_HLS_SYNTH
+
+   .. py:attribute:: STRATUS_HLS_SYNTH
+      :canonical: hlsfactory.design_config.FlowName.STRATUS_HLS_SYNTH
+      :value: 'StratusHLSSynthFlow'
+
+      .. autodoc2-docstring:: hlsfactory.design_config.FlowName.STRATUS_HLS_SYNTH
+
+   .. py:attribute:: XLS_HLS_SYNTH
+      :canonical: hlsfactory.design_config.FlowName.XLS_HLS_SYNTH
+      :value: 'XLSHLSSynthFlow'
+
+      .. autodoc2-docstring:: hlsfactory.design_config.FlowName.XLS_HLS_SYNTH
+
    .. py:attribute:: VITIS_HLS_SYNTH
       :canonical: hlsfactory.design_config.FlowName.VITIS_HLS_SYNTH
       :value: 'VitisHLSSynthFlow'
@@ -146,11 +164,11 @@ API
 
       .. autodoc2-docstring:: hlsfactory.design_config.FlowName.VITIS_HLS_IMPL_REPORT
 
-   .. py:attribute:: LIGHTNING_SIM_V2
-      :canonical: hlsfactory.design_config.FlowName.LIGHTNING_SIM_V2
-      :value: 'LightningSimV2Flow'
+   .. py:attribute:: LIGHTNING_SIM
+      :canonical: hlsfactory.design_config.FlowName.LIGHTNING_SIM
+      :value: 'LightningSimFlow'
 
-      .. autodoc2-docstring:: hlsfactory.design_config.FlowName.LIGHTNING_SIM_V2
+      .. autodoc2-docstring:: hlsfactory.design_config.FlowName.LIGHTNING_SIM
 
 .. py:function:: _ensure_non_empty_str(value: typing.Any, *, field_name: str, error_cls: type[Exception] = DesignConfigError) -> str
    :canonical: hlsfactory.design_config._ensure_non_empty_str

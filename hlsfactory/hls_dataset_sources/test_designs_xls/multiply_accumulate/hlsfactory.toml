@@ -1,0 +1,11 @@
+design_name = "multiply_accumulate"
+dataset_name = "test_designs_xls"
+tags = ["test", "arithmetic", "dslx"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "multiply_accumulate.x"
+top = "multiply_accumulate"
+generator = "pipeline"
+pipeline_stages = "1"
+delay_model = "unit"

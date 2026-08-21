@@ -1,0 +1,9 @@
+design_name = "parametric_duplicate"
+dataset_name = "test_designs_xls"
+tags = ["test", "parametric", "concatenation", "dslx"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "parametric_duplicate.x"
+top = "duplicate_byte"
+generator = "combinational"

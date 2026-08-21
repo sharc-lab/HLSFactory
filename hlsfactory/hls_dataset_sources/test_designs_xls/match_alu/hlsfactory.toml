@@ -1,0 +1,9 @@
+design_name = "match_alu"
+dataset_name = "test_designs_xls"
+tags = ["test", "match", "control", "dslx"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "match_alu.x"
+top = "match_alu"
+generator = "combinational"
