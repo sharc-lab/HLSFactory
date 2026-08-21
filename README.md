@@ -53,6 +53,7 @@ We also provide a demo Jupyter notebook, with detailed instructions on how to ge
 The built-in `test_designs_catapult` dataset contains two small C++ kernels for validating a Siemens Catapult installation. On the HLSFactory server, run the validator from an environment that has sourced the Siemens setup:
 
 ```bash
+export HLSFACTORY_CATAPULT_PATH=/tools/software/siemens/catapult/latest/Mgc_home
 csh -c 'source /tools/software/siemens/setup.csh; uv run python tests/dataset_validator.py hlsfactory/hls_dataset_sources/test_designs_catapult --flow CatapultHLSSynthFlow -j 1'
 ```
 

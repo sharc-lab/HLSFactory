@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 import re
 import shlex
 import time
@@ -19,6 +20,8 @@ from hlsfactory.utils import (
     serialize_methods_for_dataclass,
 )
 
+
+HLSFACTORY_CATAPULT_PATH_ENV_VAR = "HLSFACTORY_CATAPULT_PATH"
 
 _NUMBER_PATTERN = r"(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)(?:[eE][+-]?\d+)?"
 
@@ -41,6 +44,38 @@ _TOTAL_AREA_BREAKDOWN_PATTERN = re.compile(
     rf"(?P<sequential>{_NUMBER_PATTERN})",
     re.IGNORECASE | re.MULTILINE,
 )
+
+
+def get_catapult_bin(catapult_bin: str | Path | None = None) -> str:
+    """Resolve the Catapult executable from an override, environment, or PATH.
+
+    ``HLSFACTORY_CATAPULT_PATH`` may name the executable directly or an
+    installation directory containing ``bin/catapult`` or
+    ``Mgc_home/bin/catapult``.
+    """
+    if catapult_bin is not None:
+        return str(Path(catapult_bin).expanduser())
+
+    env_value = os.environ.get(HLSFACTORY_CATAPULT_PATH_ENV_VAR)
+    if env_value:
+        catapult_path = Path(env_value).expanduser()
+        candidates = (
+            catapult_path,
+            catapult_path / "bin" / "catapult",
+            catapult_path / "Mgc_home" / "bin" / "catapult",
+        )
+        for candidate in candidates:
+            if candidate.is_file():
+                return str(candidate)
+
+        searched = ", ".join(str(candidate) for candidate in candidates)
+        raise FileNotFoundError(
+            f"Could not find the Catapult executable using "
+            f"{HLSFACTORY_CATAPULT_PATH_ENV_VAR}={env_value!r}. "
+            f"Searched: {searched}.",
+        )
+
+    return find_bin_path("catapult")
 
 
 def auto_find_synth_report(dir_path: Path) -> Path:
@@ -310,13 +345,11 @@ class CatapultHLSSynthFlow(ToolFlow):
 
     def __init__(
         self,
-        catapult_bin: str | None = None,
+        catapult_bin: str | Path | None = None,
         log_output: bool = False,
         log_execution_time: bool = True,
     ) -> None:
-        self.catapult_bin = (
-            find_bin_path("catapult") if catapult_bin is None else catapult_bin
-        )
+        self.catapult_bin = get_catapult_bin(catapult_bin)
         self.log_output = log_output
         self.log_execution_time = log_execution_time
 
@@ -412,6 +445,8 @@ class CatapultHLSSynthFlow(ToolFlow):
 __all__ = [
     "CatapultHLSSynthFlow",
     "DesignHLSSynthData",
+    "HLSFACTORY_CATAPULT_PATH_ENV_VAR",
     "auto_find_cycle_report",
     "auto_find_synth_report",
+    "get_catapult_bin",
 ]

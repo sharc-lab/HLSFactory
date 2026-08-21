@@ -92,7 +92,12 @@ The flow invokes `catapult -shell -file synth.tcl` in the design directory. A su
 
 The flow supports the same dataset-level parallel execution and per-design timeout interface as the other `ToolFlow` implementations. It creates `error__CatapultHLSSynthFlow.txt` or `timeout__CatapultHLSSynthFlow.txt` when a design fails, and records runtime in `execution_time_data.json` when execution-time logging is enabled.
 
-The Catapult executable is discovered from `PATH` unless `catapult_bin` is supplied explicitly. Source the Siemens environment before starting Python so worker processes inherit the license settings. See the [Catapult HLS tutorial](../tutorials/catapult_flow) for a complete example.
+The Catapult executable is resolved from an explicit `catapult_bin`, then
+`HLSFACTORY_CATAPULT_PATH`, and finally `PATH`. The environment setting accepts
+the executable or an installation directory containing `bin/catapult` or
+`Mgc_home/bin/catapult`. Source the Siemens environment before starting Python
+so worker processes inherit the license settings. See the
+[Catapult HLS tutorial](../tutorials/catapult_flow) for a complete example.
 
 ## Google XLS Flow
 

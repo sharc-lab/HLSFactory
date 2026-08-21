@@ -4,12 +4,17 @@ This tutorial runs the built-in Catapult smoke-test dataset, explains the genera
 
 ## Prerequisites
 
-Install HLSFactory and make sure Siemens Catapult is licensed and available on `PATH`. Catapult worker processes inherit their environment from the Python process, so source the Siemens setup before starting HLSFactory.
+Install HLSFactory and make sure Siemens Catapult is licensed. Catapult worker
+processes inherit their environment from the Python process, so source the
+Siemens setup before starting HLSFactory. The flow resolves the executable from
+an explicit constructor argument, `HLSFACTORY_CATAPULT_PATH`, or `PATH`, in that
+order.
 
 On the HLSFactory server:
 
 ```csh
 source /tools/software/siemens/setup.csh
+setenv HLSFACTORY_CATAPULT_PATH /tools/software/siemens/catapult/latest/Mgc_home
 catapult -version
 ```
 
@@ -19,7 +24,14 @@ Set a writable HLSFactory work directory in `.env`:
 
 ```text
 HLSFACTORY_WORK_DIR=/absolute/path/to/hlsfactory_work
+HLSFACTORY_CATAPULT_PATH=/tools/software/siemens/catapult/latest/Mgc_home
 ```
+
+`HLSFACTORY_CATAPULT_PATH` can instead name the `catapult` executable directly
+or the parent directory containing `Mgc_home/bin/catapult`. If it is stored in
+`.env`, export it into the Python process environment before constructing the
+flow. Selecting the binary does not configure the Catapult license or
+technology libraries; the Siemens setup is still required.
 
 ## Load the Built-In Dataset
 
@@ -45,7 +57,8 @@ The builder copies the packaged sources into the work directory. Catapult projec
 
 ## Run Synthesis
 
-When `catapult` is on `PATH`, construct the flow without a binary argument:
+When `HLSFACTORY_CATAPULT_PATH` is set or `catapult` is on `PATH`, construct the
+flow without a binary argument:
 
 ```python
 from hlsfactory.flow_catapult import CatapultHLSSynthFlow
@@ -110,12 +123,15 @@ From a C shell with the Siemens setup sourced:
 
 ```csh
 source /tools/software/siemens/setup.csh
+setenv HLSFACTORY_CATAPULT_PATH /tools/software/siemens/catapult/latest/Mgc_home
 uv run python tests/dataset_validator.py \
     hlsfactory/hls_dataset_sources/test_designs_catapult \
     --flow CatapultHLSSynthFlow \
-    --catapult-bin /tools/software/siemens/catapult/latest/Mgc_home/bin/catapult \
     -j 1
 ```
+
+`--catapult-bin` remains available when a one-off explicit executable should
+override `HLSFACTORY_CATAPULT_PATH`.
 
 From Bash, run the same validation in a configured C-shell subprocess:
 

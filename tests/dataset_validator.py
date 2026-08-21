@@ -220,7 +220,10 @@ if __name__ == "__main__":
     parser.add_argument(
         "--catapult-bin",
         type=Path,
-        help="Path to the Catapult executable (otherwise resolved from PATH).",
+        help=(
+            "Path to the Catapult executable (otherwise resolved from "
+            "HLSFACTORY_CATAPULT_PATH or PATH)."
+        ),
     )
     parser.add_argument(
         "--stratus-install-dir",

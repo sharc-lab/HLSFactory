@@ -100,6 +100,7 @@ Xilinx [n. d.]. Vitis-HLS-Introductory-Examples. https://github.com/Xilinx/Vitis
 
 ```csh
 source /tools/software/siemens/setup.csh
+setenv HLSFACTORY_CATAPULT_PATH /tools/software/siemens/catapult/latest/Mgc_home
 uv run python tests/dataset_validator.py \
     hlsfactory/hls_dataset_sources/test_designs_catapult \
     --flow CatapultHLSSynthFlow \

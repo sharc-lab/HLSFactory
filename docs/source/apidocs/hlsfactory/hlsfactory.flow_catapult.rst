@@ -30,6 +30,9 @@ Functions
    :class: autosummary longtable
    :align: left
 
+   * - :py:obj:`get_catapult_bin <hlsfactory.flow_catapult.get_catapult_bin>`
+     - .. autodoc2-docstring:: hlsfactory.flow_catapult.get_catapult_bin
+          :summary:
    * - :py:obj:`auto_find_synth_report <hlsfactory.flow_catapult.auto_find_synth_report>`
      - .. autodoc2-docstring:: hlsfactory.flow_catapult.auto_find_synth_report
           :summary:
@@ -47,6 +50,9 @@ Data
    :class: autosummary longtable
    :align: left
 
+   * - :py:obj:`HLSFACTORY_CATAPULT_PATH_ENV_VAR <hlsfactory.flow_catapult.HLSFACTORY_CATAPULT_PATH_ENV_VAR>`
+     - .. autodoc2-docstring:: hlsfactory.flow_catapult.HLSFACTORY_CATAPULT_PATH_ENV_VAR
+          :summary:
    * - :py:obj:`_NUMBER_PATTERN <hlsfactory.flow_catapult._NUMBER_PATTERN>`
      - .. autodoc2-docstring:: hlsfactory.flow_catapult._NUMBER_PATTERN
           :summary:
@@ -62,6 +68,12 @@ Data
 
 API
 ~~~
+
+.. py:data:: HLSFACTORY_CATAPULT_PATH_ENV_VAR
+   :canonical: hlsfactory.flow_catapult.HLSFACTORY_CATAPULT_PATH_ENV_VAR
+   :value: 'HLSFACTORY_CATAPULT_PATH'
+
+   .. autodoc2-docstring:: hlsfactory.flow_catapult.HLSFACTORY_CATAPULT_PATH_ENV_VAR
 
 .. py:data:: _NUMBER_PATTERN
    :canonical: hlsfactory.flow_catapult._NUMBER_PATTERN
@@ -80,6 +92,11 @@ API
    :value: 'compile(...)'
 
    .. autodoc2-docstring:: hlsfactory.flow_catapult._TOTAL_AREA_BREAKDOWN_PATTERN
+
+.. py:function:: get_catapult_bin(catapult_bin: str | pathlib.Path | None = None) -> str
+   :canonical: hlsfactory.flow_catapult.get_catapult_bin
+
+   .. autodoc2-docstring:: hlsfactory.flow_catapult.get_catapult_bin
 
 .. py:function:: auto_find_synth_report(dir_path: pathlib.Path) -> pathlib.Path
    :canonical: hlsfactory.flow_catapult.auto_find_synth_report
@@ -338,7 +355,7 @@ API
 
       .. autodoc2-docstring:: hlsfactory.flow_catapult.DesignHLSSynthData.parse_from_synth_report_file
 
-.. py:class:: CatapultHLSSynthFlow(catapult_bin: str | None = None, log_output: bool = False, log_execution_time: bool = True)
+.. py:class:: CatapultHLSSynthFlow(catapult_bin: str | pathlib.Path | None = None, log_output: bool = False, log_execution_time: bool = True)
    :canonical: hlsfactory.flow_catapult.CatapultHLSSynthFlow
 
    Bases: :py:obj:`hlsfactory.framework.ToolFlow`
@@ -367,6 +384,6 @@ API
 
 .. py:data:: __all__
    :canonical: hlsfactory.flow_catapult.__all__
-   :value: ['CatapultHLSSynthFlow', 'DesignHLSSynthData', 'auto_find_cycle_report', 'auto_find_synth_report']
+   :value: ['CatapultHLSSynthFlow', 'DesignHLSSynthData', 'HLSFACTORY_CATAPULT_PATH_ENV_VAR', 'auto_find_cycle_...
 
    .. autodoc2-docstring:: hlsfactory.flow_catapult.__all__

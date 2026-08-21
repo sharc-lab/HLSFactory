@@ -121,7 +121,19 @@ configuration, generated RTL and report artifacts, and metric semantics.
 
 ### Siemens Catapult Setup
 
-`CatapultHLSSynthFlow` resolves `catapult` from `PATH` by default. You can instead pass an explicit executable path through its `catapult_bin` constructor argument or the validator's `--catapult-bin` option. Catapult must also inherit the vendor license environment and any library-related variables required by the synthesis Tcl script.
+`CatapultHLSSynthFlow` first uses an explicit `catapult_bin` constructor
+argument, then `HLSFACTORY_CATAPULT_PATH`, and finally searches `PATH`.
+`HLSFACTORY_CATAPULT_PATH` may point directly to the executable, to the
+`Mgc_home` installation root containing `bin/catapult`, or to its parent
+containing `Mgc_home/bin/catapult`:
+
+```bash
+export HLSFACTORY_CATAPULT_PATH=/tools/software/siemens/catapult/latest/Mgc_home
+```
+
+The validator's `--catapult-bin` option provides the same explicit override.
+Catapult must also inherit the vendor license environment and any
+library-related variables required by the synthesis Tcl script.
 
 On the HLSFactory server, the supported setup is:
 
@@ -129,7 +141,7 @@ On the HLSFactory server, the supported setup is:
 source /tools/software/siemens/setup.csh
 ```
 
-This configures `MGLS_LICENSE_FILE`, `SALT_LICENSE_SERVER`, `MGC_CATAPULT_HOME`, and `PATH`. The Catapult executable is then available at `/tools/software/siemens/catapult/latest/Mgc_home/bin/catapult`.
+This configures `MGLS_LICENSE_FILE`, `SALT_LICENSE_SERVER`, `MGC_CATAPULT_HOME`, and `PATH`. The Catapult executable is then available at `/tools/software/siemens/catapult/latest/Mgc_home/bin/catapult`. Setting `HLSFACTORY_CATAPULT_PATH` selects the executable but does not replace this license and library setup.
 
 From a Bash session, the complete built-in validation can be launched through C shell:
 

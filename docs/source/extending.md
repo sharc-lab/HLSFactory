@@ -93,7 +93,13 @@ go extract
 
 Use libraries and directives appropriate for your installation and target technology. `CatapultHLSSynthFlow` runs the script and recursively finds the resulting `rtl.rpt` and `cycle.rpt`. A design directory should produce one report pair; if several report files exist, the flow warns and selects the first deterministic path.
 
-Before running, source your Siemens environment so Catapult can resolve its executable, libraries, and license server. The HLSFactory server uses `/tools/software/siemens/setup.csh`. See the [Catapult HLS tutorial](tutorials/catapult_flow) for a complete dataset run and the generated metrics.
+Before running, source your Siemens environment so Catapult can resolve its
+libraries and license server. Set `HLSFACTORY_CATAPULT_PATH` to the Catapult
+executable or installation root, or ensure `catapult` is on `PATH`. The
+HLSFactory server uses `/tools/software/siemens/setup.csh` and
+`HLSFACTORY_CATAPULT_PATH=/tools/software/siemens/catapult/latest/Mgc_home`.
+See the [Catapult HLS tutorial](tutorials/catapult_flow) for a complete dataset
+run and the generated metrics.
 
 ## Integrating a Google XLS Design
 
