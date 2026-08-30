@@ -152,7 +152,11 @@ for design_dir in sorted(DATASET_DIR.glob("*")):
     cosim_runtime_s = execution_time_data.get("VitisHLSCosimFlow", {}).get("dt")
     lightningsim_runtime_s = execution_time_data.get("LightningSimFlow", {}).get("dt")
 
-    if csynth_runtime_s is None and cosim_runtime_s is None and lightningsim_runtime_s is None:
+    if (
+        csynth_runtime_s is None
+        and cosim_runtime_s is None
+        and lightningsim_runtime_s is None
+    ):
         continue
 
     runtime_rows.append(

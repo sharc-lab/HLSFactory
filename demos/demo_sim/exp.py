@@ -3,7 +3,10 @@ import shutil
 from hlsfactory.datasets_builtin import datasets_builder
 from hlsfactory.flow_lightningsim import LightningSimFlow
 from hlsfactory.flow_vitis import VitisHLSCosimFlow, VitisHLSSynthFlow
-from hlsfactory.framework import DesignDataset, count_total_designs_in_dataset_collection
+from hlsfactory.framework import (
+    DesignDataset,
+    count_total_designs_in_dataset_collection,
+)
 from hlsfactory.utils import (
     DirSource,
     ToolPathsSource,
@@ -43,7 +46,9 @@ datasets_all_opt_levels = datasets_builder(
 # Only the opt5 variant of each design is used for this case study.
 dataset_stream_hls_all = datasets_all_opt_levels["stream_hls"]
 opt5_designs = [
-    design for design in dataset_stream_hls_all.designs if design.name.endswith("__opt5")
+    design
+    for design in dataset_stream_hls_all.designs
+    if design.name.endswith("__opt5")
 ]
 non_opt5_designs = [
     design

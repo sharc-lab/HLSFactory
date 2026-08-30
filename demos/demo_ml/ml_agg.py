@@ -2,7 +2,6 @@ from pathlib import Path
 
 from hlsfactory.data_packaging import DataAggregatorXilinx
 from hlsfactory.framework import DesignDataset
-from hlsfactory.utils import get_work_dir, remove_and_make_new_dir_if_exists
 
 CURRENT_DIR = Path(__file__).parent
 DATA_DIR = CURRENT_DIR / "data"

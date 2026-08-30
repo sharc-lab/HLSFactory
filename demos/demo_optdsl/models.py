@@ -13,7 +13,6 @@ class Model:
     other: dict[str, Any] = field(default_factory=dict)
 
 
-
 def build_model_remote_openrouter(
     model_name: str,
     api_key: str | None = None,

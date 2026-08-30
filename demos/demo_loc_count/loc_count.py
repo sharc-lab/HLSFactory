@@ -1,23 +1,11 @@
 import json
-from pathlib import Path
 
 from hlsfactory.datasets_builtin import (
     datasets_builder,
 )
-from hlsfactory.flow_vitis import (
-    VitisHLSImplFlow,
-    VitisHLSImplReportFlow,
-    VitisHLSSynthFlow,
-)
-from hlsfactory.framework import (
-    count_total_designs_in_dataset_collection,
-)
 from hlsfactory.loc_flow import LOCCounterFlow
-from hlsfactory.opt_dsl_frontend import OptDSLFrontend
 from hlsfactory.utils import (
     DirSource,
-    ToolPathsSource,
-    get_tool_paths,
     get_work_dir,
     remove_and_make_new_dir_if_exists,
 )

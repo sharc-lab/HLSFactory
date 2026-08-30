@@ -1,6 +1,5 @@
 import re
 from pathlib import Path
-from pprint import pp
 
 import pytest
 
@@ -9,7 +8,6 @@ from hlsfactory.hlsauto.hlsauto import (
     HLSAutoParamSet,
     hlsauto_paramaterize_source,
     hlsauto_parse,
-    hlsauto_parse_file,
 )
 
 DIR_CURRENT = Path(__file__).parent

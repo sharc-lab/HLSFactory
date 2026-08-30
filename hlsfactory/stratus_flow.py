@@ -34,7 +34,9 @@ _METRICS_TSV_FILENAME = ".hlsfactory_stratus_metrics.tsv"
 
 MetricValue = int | float | str
 
-_NUMBER_PATTERN = r"[0-9]+(?:\.[0-9]*)?(?:[eE][+-]?[0-9]+)?|\.[0-9]+(?:[eE][+-]?[0-9]+)?"
+_NUMBER_PATTERN = (
+    r"[0-9]+(?:\.[0-9]*)?(?:[eE][+-]?[0-9]+)?|\.[0-9]+(?:[eE][+-]?[0-9]+)?"
+)
 _TOTAL_AREA_PATTERN = re.compile(
     rf"Total\s+Area\s+({_NUMBER_PATTERN})(?:\([0-9]+\))?\s+"
     rf"({_NUMBER_PATTERN})\s+({_NUMBER_PATTERN})\s+({_NUMBER_PATTERN})",
@@ -462,7 +464,9 @@ class StratusHLSSynthFlow(ToolFlow):
                     metrics_tcl.unlink(missing_ok=True)
                     metrics_file.unlink(missing_ok=True)
             except (FileNotFoundError, OSError, ValueError) as error:
-                self._write_error(design_dir, f"Could not collect Stratus data: {error}")
+                self._write_error(
+                    design_dir, f"Could not collect Stratus data: {error}"
+                )
                 self._log_execution_time(design_dir, start_time)
                 return []
 

@@ -131,6 +131,7 @@ Your final output must be a complete and syntactically correct OptDSLv2 optimiza
 """
 ).strip()
 
+
 def build_prompt_gen_optdsl_zero_shot(
     design_source_files: list[Path],
 ) -> str:
@@ -144,10 +145,7 @@ def build_prompt_gen_optdsl_zero_shot(
     p += "## Task Inputs\n"
     p += "\n"
     code = build_input_code_prompt_xml(
-        {
-            file.name: file.read_text()
-            for file in design_source_files
-        }
+        {file.name: file.read_text() for file in design_source_files}
     )
     p += code
     p += "\n\n"
@@ -156,8 +154,6 @@ def build_prompt_gen_optdsl_zero_shot(
     p += "\n"
 
     return p
-
-
 
 
 def build_input_code_prompt_xml(code: dict[str, str]) -> str:
@@ -248,4 +244,3 @@ def extract_code_from_markdown_simple(markdown: str) -> str:
 
 def approx_num_tokens(text: str, char_per_token_guess: int = 3) -> int:
     return len(text) // char_per_token_guess + 1
-

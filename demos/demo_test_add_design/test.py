@@ -1,8 +1,5 @@
 from pathlib import Path
 
-from hlsfactory.datasets_builtin import (
-    datasets_builder,
-)
 from hlsfactory.flow_vitis import (
     VitisHLSImplFlow,
     VitisHLSImplReportFlow,
@@ -12,9 +9,7 @@ from hlsfactory.framework import (
     Design,
     DesignDataset,
     DesignDatasetCollection,
-    count_total_designs_in_dataset_collection,
 )
-from hlsfactory.opt_dsl_frontend import OptDSLFrontend
 from hlsfactory.utils import (
     DirSource,
     ToolPathsSource,

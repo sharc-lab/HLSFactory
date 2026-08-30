@@ -1,24 +1,20 @@
-from concurrent.futures import ThreadPoolExecutor, as_completed
 import itertools
 import json
 import os
-from pathlib import Path
 import shutil
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from pathlib import Path
 
-import joblib
 import tqdm
-
 from dotenv import load_dotenv
-
-from hlsfactory.datasets_builtin import datasets_builder
-from hlsfactory.opt_dsl_v2.opt_dsl import OptDSL
-from hlsfactory.framework import Design
-
 from models import build_model_remote_openrouter, normalize_model_name
 from prompts import build_prompt_gen_optdsl_zero_shot, extract_code_xml_from_llm_output
 
+from hlsfactory.datasets_builtin import datasets_builder
+from hlsfactory.framework import Design
+from hlsfactory.opt_dsl_v2.opt_dsl import OptDSL
 
-load_dotenv() # important, needed for openrouter api key
+load_dotenv()  # important, needed for openrouter api key
 
 
 def opt_dsl_check(txt_opt_dsl: str) -> bool:
@@ -30,8 +26,10 @@ def opt_dsl_check(txt_opt_dsl: str) -> bool:
     except Exception as e:
         return False, str(e)
 
+
 def serialize_data(data: dict, fp: Path) -> None:
     fp.write_text(json.dumps(data, indent=4))
+
 
 def eval_single(work_dir: Path, model: str, design: Design, k_index: int) -> bool:
 
@@ -41,22 +39,21 @@ def eval_single(work_dir: Path, model: str, design: Design, k_index: int) -> boo
 
     if work_dir.exists():
         if data_fp.exists():
-            print(f"Skipping: {design.name}, model: {model}, k_index: {k_index} because it has already been evaluated")
+            print(
+                f"Skipping: {design.name}, model: {model}, k_index: {k_index} because it has already been evaluated"
+            )
             return
         shutil.rmtree(work_dir)
     work_dir.mkdir(parents=True)
-
 
     data = {}
     data["design"] = design.name
     data["model"] = model
     data["k_index"] = k_index
 
-
     design_dir = work_dir / design.name
     design_dir.mkdir(parents=True)
     shutil.copytree(design.dir, design_dir, dirs_exist_ok=True)
-
 
     source_files = sorted((design_dir / "src").glob("*"))
 
@@ -73,7 +70,7 @@ def eval_single(work_dir: Path, model: str, design: Design, k_index: int) -> boo
         r._force()
         raw_output = r.text()
         assert raw_output is not None
-    except Exception as e:
+    except Exception:
         data["can_call_llm"] = False
         serialize_data(data, data_fp)
         return
@@ -84,7 +81,7 @@ def eval_single(work_dir: Path, model: str, design: Design, k_index: int) -> boo
 
     try:
         extracted_opt_dsl = extract_code_xml_from_llm_output(raw_output)
-    except Exception as e:
+    except Exception:
         data["can_extract_opt_dsl"] = False
         serialize_data(data, data_fp)
         return
@@ -105,7 +102,7 @@ def eval_single(work_dir: Path, model: str, design: Design, k_index: int) -> boo
     # check the opt_dsl
     try:
         is_valid_opt_dsl, error_message = opt_dsl_check(extracted_opt_dsl)
-    except Exception as e:
+    except Exception as _e:
         data["can_check_opt_dsl"] = False
         serialize_data(data, data_fp)
         return
@@ -134,15 +131,23 @@ if __name__ == "__main__":
     dir_designs = dir_current / "hls_dataset_sources"
     if dir_designs.exists():
         shutil.rmtree(dir_designs)
-    dataset_polybench_designs = datasets_builder(dir_designs, ["polybench"], dataset_labels=["polybench"])
+    dataset_polybench_designs = datasets_builder(
+        dir_designs, ["polybench"], dataset_labels=["polybench"]
+    )
     dataset_polybench = dataset_polybench_designs["polybench"]
     designs_polybench = dataset_polybench.designs
 
-    combos = sorted(list(itertools.product(MODELS, designs_polybench, range(K_SAMPLES))), key=lambda x: x[1].name)
+    combos = sorted(
+        list(itertools.product(MODELS, designs_polybench, range(K_SAMPLES))),
+        key=lambda x: x[1].name,
+    )
 
     def eval_single_wrapper(combo: tuple[str, Design, int]) -> None:
         model, design, k_index = combo
-        work_dir = dir_eval_work_dir / f"{normalize_model_name(model)}__{design.name}__{k_index}"
+        work_dir = (
+            dir_eval_work_dir
+            / f"{normalize_model_name(model)}__{design.name}__{k_index}"
+        )
         eval_single(work_dir, model, design, k_index)
 
     # use threadpool with as_completed and tqdm to evaluate the combos

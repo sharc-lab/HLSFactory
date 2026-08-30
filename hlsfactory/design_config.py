@@ -28,6 +28,8 @@ class FlowName(StrEnum):
     VITIS_HLS_COSIM = "VitisHLSCosimFlow"
     VITIS_HLS_COSIM_SETUP = "VitisHLSCosimSetupFlow"
     VITIS_HLS_IMPL_REPORT = "VitisHLSImplReportFlow"
+    VITIS_HLS_MODERN_SYNTH = "VitisHLSModernSynthFlow"
+    VITIS_HLS_MODERN_CSIM = "VitisHLSModernCsimFlow"
     LIGHTNING_SIM = "LightningSimFlow"
 
 
@@ -108,6 +110,8 @@ class FlowConfig:
         FlowName.VITIS_HLS_IMPL.value: frozenset({"impl_tcl"}),
         FlowName.VITIS_HLS_COSIM.value: frozenset({"cosim_tcl"}),
         FlowName.VITIS_HLS_COSIM_SETUP.value: frozenset({"cosim_setup_tcl"}),
+        FlowName.VITIS_HLS_MODERN_SYNTH.value: frozenset({"hls_config"}),
+        FlowName.VITIS_HLS_MODERN_CSIM.value: frozenset({"hls_config"}),
         FlowName.LIGHTNING_SIM.value: frozenset({"solution_dir_name"}),
     }
 

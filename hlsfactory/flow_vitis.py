@@ -602,8 +602,6 @@ class VitisHLSCosimFlow(ToolFlow):
         return [design]
 
 
-
-
 class VitisHLSCsimFlow(ToolFlow):
     name = "VitisHLSCsimFlow"
 
@@ -652,7 +650,6 @@ class VitisHLSCsimFlow(ToolFlow):
             return [design]
 
         return []
-
 
 
 class VitisHLSImplFlow(ToolFlow):

@@ -514,6 +514,68 @@ def get_tool_paths(
             raise ValueError(msg)
 
 
+def get_tool_path_vitis_modern(
+    tool_paths_source: ToolPathsSource,
+    env_file_path: Path | None = None,
+    use_cwd: bool = True,
+) -> pathlib.Path:
+    """
+    Get the install path for the modern (post Vitis HLS/Vitis merge) Vitis
+    Unified toolchain, e.g. `/tools/software/xilinx/2026.1/Vitis`.
+
+    This is a separate install root from the classic `HLSFACTORY_VITIS_HLS_PATH`
+    / `HLSFACTORY_VIVADO_PATH` pair, since the merged Vitis toolchain ships its
+    own `bin/v++` and `bin/vitis-run` binaries under a single directory.
+
+    Args:
+        tool_paths_source (ToolPathsSource): The source from which to
+        retrieve the tool path.
+
+    Returns:
+        pathlib.Path: The path to the modern Vitis install root.
+
+    Raises:
+        ValueError: If the tool path is not found in the specified source.
+
+    """
+    match tool_paths_source:
+        case ToolPathsSource.ENVFILE:
+            if env_file_path is None:
+                env_file_path_search = dotenv.find_dotenv(usecwd=use_cwd)
+                if env_file_path_search is None:
+                    msg = "The .env file could not be automatically found."
+                    raise ValueError(msg)
+                env_fp = Path(env_file_path_search)
+            else:
+                env_fp = env_file_path
+            envfile_vals = dotenv.dotenv_values(
+                env_fp,
+            )
+            if "HLSFACTORY_VITIS_MODERN_PATH" not in envfile_vals:
+                msg = "HLSFACTORY_VITIS_MODERN_PATH not in .env file"
+                raise ValueError(msg)
+            if envfile_vals["HLSFACTORY_VITIS_MODERN_PATH"] is None:
+                msg = (
+                    "HLSFACTORY_VITIS_MODERN_PATH not set to a valid path in .env file"
+                )
+                raise ValueError(msg)
+            return pathlib.Path(envfile_vals["HLSFACTORY_VITIS_MODERN_PATH"])
+
+        case ToolPathsSource.ENV:
+            if "HLSFACTORY_VITIS_MODERN_PATH" not in os.environ:
+                msg = "HLSFACTORY_VITIS_MODERN_PATH not in environment"
+                raise ValueError(msg)
+            env_val = os.getenv("HLSFACTORY_VITIS_MODERN_PATH")
+            if env_val is None:
+                msg = "HLSFACTORY_VITIS_MODERN_PATH not set to a valid path in environment"
+                raise ValueError(msg)
+            return pathlib.Path(env_val)
+
+        case _:
+            msg = f"Invalid tool_paths_source: {tool_paths_source}"
+            raise ValueError(msg)
+
+
 def remove_dir_if_exists(dir_path: pathlib.Path) -> None:
     """
     Remove a directory if it exists.

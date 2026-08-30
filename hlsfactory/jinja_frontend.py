@@ -23,7 +23,7 @@ class JinjaFrontend(Frontend):
         self.log_execution_time = log_execution_time
 
         self.jinja_configs = jinja_configs
-    
+
     def load_configs_from_jsonl(self, fp_jsonl: Path):
         configs = []
         txt_config = fp_jsonl.read_text()
@@ -33,7 +33,7 @@ class JinjaFrontend(Frontend):
             configs.append(config)
         self.jinja_configs = configs
         return self.jinja_configs
-    
+
     def load_configs_from_json(self, fp_json: Path):
         txt_json = fp_json.read_text()
         config_list = json.loads(txt_json)
@@ -46,7 +46,7 @@ class JinjaFrontend(Frontend):
                 raise ValueError("List item values must be dicts")
             self.jinja_configs.append(list_item_value)
         return self.jinja_configs
-            
+
     def execute(self, design: Design, _timeout: float | None = None) -> list[Design]:
         t_0 = time.perf_counter()
 

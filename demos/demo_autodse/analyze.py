@@ -6,11 +6,6 @@ from zipfile import ZipFile
 import matplotlib.pyplot as plt
 import pandas as pd
 from matplotlib.ticker import FuncFormatter
-from sklearn.compose import ColumnTransformer
-from sklearn.decomposition import PCA
-from sklearn.kernel_approximation import Nystroem
-from sklearn.manifold import TSNE
-from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from umap import UMAP
 

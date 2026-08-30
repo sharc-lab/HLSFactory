@@ -307,9 +307,7 @@ class XLSHLSSynthFlow(ToolFlow):
         module_signature_file = design_dir / f"{artifact_stem}.signature.textproto"
         block_metrics_file = design_dir / f"{artifact_stem}.block_metrics.textproto"
         interface_proto_file = design_dir / f"{artifact_stem}.interface.pb"
-        interface_textproto_file = (
-            design_dir / f"{artifact_stem}.interface.textproto"
-        )
+        interface_textproto_file = design_dir / f"{artifact_stem}.interface.textproto"
         ir_converter_options_file = (
             design_dir / f"{artifact_stem}.ir_converter_options.textproto"
         )
@@ -328,9 +326,7 @@ class XLSHLSSynthFlow(ToolFlow):
         scheduling_options_file = (
             design_dir / f"{artifact_stem}.scheduling_options.textproto"
         )
-        codegen_options_file = (
-            design_dir / f"{artifact_stem}.codegen_options.textproto"
-        )
+        codegen_options_file = design_dir / f"{artifact_stem}.codegen_options.textproto"
         scheduling_pass_metrics_file = (
             design_dir / f"{artifact_stem}.scheduling_pass_metrics.textproto"
         )
@@ -342,9 +338,7 @@ class XLSHLSSynthFlow(ToolFlow):
         optimizer_pass_profile_file = (
             design_dir / f"{artifact_stem}.optimizer_passes.pprof"
         )
-        codegen_pass_profile_file = (
-            design_dir / f"{artifact_stem}.codegen_passes.pprof"
-        )
+        codegen_pass_profile_file = design_dir / f"{artifact_stem}.codegen_passes.pprof"
 
         dump_optimizer_ir = parse_xls_bool_setting(
             flow_config.get_setting("dump_optimizer_ir"),
@@ -508,8 +502,7 @@ class XLSHLSSynthFlow(ToolFlow):
             f"--output_schedule_ir_path={scheduled_ir_file.name}",
             f"--output_block_ir_path={block_ir_file.name}",
             f"--output_verilog_line_map_path={verilog_line_map_file.name}",
-            "--scheduling_options_used_textproto_file="
-            f"{scheduling_options_file.name}",
+            f"--scheduling_options_used_textproto_file={scheduling_options_file.name}",
             f"--codegen_options_used_textproto_file={codegen_options_file.name}",
             "--output_scheduling_pass_metrics_path="
             f"{scheduling_pass_metrics_file.name}",
@@ -613,9 +606,7 @@ class XLSHLSSynthFlow(ToolFlow):
                 optimizer_ir_dump_dir.name if dump_optimizer_ir else None
             ),
             dump_codegen_ir=dump_codegen_ir,
-            codegen_ir_dump_dir=(
-                codegen_ir_dump_dir.name if dump_codegen_ir else None
-            ),
+            codegen_ir_dump_dir=(codegen_ir_dump_dir.name if dump_codegen_ir else None),
             profile_passes=profile_passes,
             optimizer_pass_profile_file=(
                 optimizer_pass_profile_file.name if profile_passes else None
@@ -631,9 +622,7 @@ class XLSHLSSynthFlow(ToolFlow):
             max_reg_to_reg_delay_ps=block_metrics.max_reg_to_reg_delay_ps,
             max_input_to_reg_delay_ps=block_metrics.max_input_to_reg_delay_ps,
             max_reg_to_output_delay_ps=block_metrics.max_reg_to_output_delay_ps,
-            max_feedthrough_path_delay_ps=(
-                block_metrics.max_feedthrough_path_delay_ps
-            ),
+            max_feedthrough_path_delay_ps=(block_metrics.max_feedthrough_path_delay_ps),
             operation_counts=block_metrics.operation_counts,
             operation_kind_counts=block_metrics.operation_kind_counts,
         )

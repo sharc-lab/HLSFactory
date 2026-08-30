@@ -1,0 +1,11 @@
+design_name = "accumulator"
+dataset_name = "test_designs_vitis_modern"
+tags = []
+
+[[flow_configs]]
+flow_name = "VitisHLSModernSynthFlow"
+hls_config = "hls_config.cfg"
+
+[[flow_configs]]
+flow_name = "VitisHLSModernCsimFlow"
+hls_config = "hls_config.cfg"

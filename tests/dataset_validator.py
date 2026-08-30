@@ -11,6 +11,10 @@ from hlsfactory.flow_vitis import (
     VitisHLSImplFlow,
     VitisHLSSynthFlow,
 )
+from hlsfactory.flow_vitis_modern import (
+    VitisHLSModernCsimFlow,
+    VitisHLSModernSynthFlow,
+)
 from hlsfactory.flow_xls import XLSHLSSynthFlow
 from hlsfactory.opt_dsl_frontend import OptDSLPassthroughFrontend
 from hlsfactory.stratus_flow import StratusHLSSynthFlow
@@ -21,6 +25,7 @@ from hlsfactory.framework import (
 )
 from hlsfactory.utils import (
     ToolPathsSource,
+    get_tool_path_vitis_modern,
     get_tool_paths,
     get_work_dir,
     remove_and_make_new_dir_if_exists,
@@ -35,6 +40,8 @@ FLOWS = [
     VitisHLSCosimSetupFlow,
     VitisHLSCosimFlow,
     VitisHLSCsimFlow,
+    VitisHLSModernSynthFlow,
+    VitisHLSModernCsimFlow,
 ]
 
 FLOW_NAME_MAP = {
@@ -46,6 +53,8 @@ FLOW_NAME_MAP = {
     "VitisHLSCosimSetupFlow": VitisHLSCosimSetupFlow,
     "VitisHLSCosimFlow": VitisHLSCosimFlow,
     "VitisHLSCsimFlow": VitisHLSCsimFlow,
+    "VitisHLSModernSynthFlow": VitisHLSModernSynthFlow,
+    "VitisHLSModernCsimFlow": VitisHLSModernCsimFlow,
     "OptDSLPassthroughFrontend": OptDSLPassthroughFrontend,
 }
 
@@ -61,6 +70,7 @@ def main(args) -> None:
     TIMEOUT_CATAPULT_SYNTH = 60.0 * 12  # 12 minutes
     TIMEOUT_STRATUS_SYNTH = 60.0 * 12  # 12 minutes
     TIMEOUT_XLS_SYNTH = 60.0 * 12  # 12 minutes
+    TIMEOUT_VITIS_HLS_MODERN_SYNTH = 60.0 * 12  # 12 minutes
 
     if args.name is None:
         dataset_name = args.dataset_source_directory.name
@@ -117,6 +127,15 @@ def main(args) -> None:
         path_vitis_hls, path_vivado = get_tool_paths(ToolPathsSource.ENVFILE)
         bin_vitis_hls = path_vitis_hls / "bin" / "vitis_hls"
 
+    vitis_modern_flow_classes = {
+        VitisHLSModernSynthFlow,
+        VitisHLSModernCsimFlow,
+    }
+    if any(flow_class in vitis_modern_flow_classes for flow_class in flow_classes):
+        path_vitis_modern = get_tool_path_vitis_modern(ToolPathsSource.ENVFILE)
+        bin_vpp_modern = path_vitis_modern / "bin" / "v++"
+        bin_vitis_run_modern = path_vitis_modern / "bin" / "vitis-run"
+
     flow_instances: list[Flow] = []
     for flow in flow_classes:
         match flow:
@@ -147,6 +166,18 @@ def main(args) -> None:
                 flow_instance = cls(
                     vitis_hls_bin=str(bin_vitis_hls),
                 )
+            case cls if cls is VitisHLSModernSynthFlow:
+                flow_instance = cls(
+                    vpp_bin=str(bin_vpp_modern),
+                    env_var_xilinx_hls=str(path_vitis_modern),
+                    env_var_xilinx_vitis=str(path_vitis_modern),
+                )
+            case cls if cls is VitisHLSModernCsimFlow:
+                flow_instance = cls(
+                    vitis_run_bin=str(bin_vitis_run_modern),
+                    env_var_xilinx_hls=str(path_vitis_modern),
+                    env_var_xilinx_vitis=str(path_vitis_modern),
+                )
             case cls if cls is OptDSLPassthroughFrontend:
                 flow_instance = cls(
                     work_dir=work_dir,
@@ -170,6 +201,8 @@ def main(args) -> None:
             timeout = TIMEOUT_STRATUS_SYNTH
         elif isinstance(flow, XLSHLSSynthFlow):
             timeout = TIMEOUT_XLS_SYNTH
+        elif isinstance(flow, VitisHLSModernSynthFlow):
+            timeout = TIMEOUT_VITIS_HLS_MODERN_SYNTH
         else:
             timeout = None
 
