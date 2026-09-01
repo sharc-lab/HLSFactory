@@ -9,7 +9,7 @@ import time
 from dataclasses import is_dataclass
 from pathlib import Path
 from tempfile import TemporaryDirectory
-from typing import TypeVar
+from typing import Any, Optional, TypeVar
 
 import dotenv
 import psutil
@@ -134,42 +134,96 @@ def find_bin_path(cmd: str) -> str:
     return bin_path
 
 
+def write_execution_data(
+    design_dir: Path,
+    flow_name: str,
+    status: str,
+    t_start: float,
+    t_end: float,
+    core: Optional[int] = None,
+    return_code: Optional[int] = 0,
+    error_message: Optional[str] = None,
+) -> None:
+    """Writes execution metrics and flow status into execution_data.json.
+
+    Args:
+        design_dir (Path): The directory where the design is located.
+        flow_name (str): The name of the flow (e.g. VitisHLSSynthFlow).
+        status (str): 'success', 'error', or 'timeout'.
+        t_start (float): Start timestamp.
+        t_end (float): End timestamp.
+        core (int, optional): CPU core ID (defaults to current core).
+        return_code (int, optional): Process return code.
+        error_message (str, optional): Optional error message string.
+
+    Raises:
+        RuntimeError: If the design directory does not exist.
+    """
+    if not design_dir.exists():
+        msg = f"Design directory {design_dir} does not exist."
+        raise RuntimeError(msg)
+
+    if core is None:
+        try:
+            core = psutil.Process().cpu_num()
+        except Exception:
+            core = None
+
+    execution_data_fp = design_dir / "execution_data.json"
+    if execution_data_fp.exists():
+        try:
+            execution_data = json.loads(execution_data_fp.read_text(encoding="utf-8"))
+        except Exception:
+            execution_data = {}
+    else:
+        execution_data = {}
+
+    execution_data[flow_name] = {
+        "status": status,
+        "t_start": t_start,
+        "t_end": t_end,
+        "dt": round(t_end - t_start, 4),
+        "core": core,
+        "return_code": return_code,
+        "error_message": error_message,
+    }
+    execution_data_fp.write_text(json.dumps(execution_data, indent=4), encoding="utf-8")
+
+
+def read_execution_data(design_dir: Path, flow_name: Optional[str] = None) -> Any:
+    """Reads execution_data.json from a design directory.
+
+    Args:
+        design_dir (Path): Directory containing execution_data.json.
+        flow_name (str, optional): If provided, returns the dict for this flow only.
+
+    Returns:
+        The full dictionary or the specific flow's data dictionary.
+    """
+    execution_data_fp = Path(design_dir) / "execution_data.json"
+    if not execution_data_fp.exists():
+        raise FileNotFoundError(f"No execution_data.json found in {design_dir}")
+    data = json.loads(execution_data_fp.read_text(encoding="utf-8"))
+    if flow_name:
+        return data.get(flow_name)
+    return data
+
+
 def log_execution_time_to_file(
     design_dir: Path,
     flow_name: str,
     t_0: float,
     t_1: float,
 ) -> None:
-    """
-    Logs the execution time of a specific flow to a file.
-
-    Args:
-        design_dir (Path): The directory where the design is located.
-        flow_name (str): The name of the flow.
-        t_0 (float): The start time of the execution.
-        t_1 (float): The end time of the execution.
-
-    Raises:
-        RuntimeError: If the design directory does not exist.
-    """
-    dt = t_1 - t_0
-
-    if not design_dir.exists():
-        msg = f"Design directory {design_dir} does not exist."
-        raise RuntimeError(msg)
-
-    execution_time_data_fp = design_dir / "execution_time_data.json"
-    if execution_time_data_fp.exists():
-        execution_time_data = json.loads(execution_time_data_fp.read_text())
-    else:
-        execution_time_data = {}
-    execution_time_data[flow_name] = {
-        "t_start": t_0,
-        "t_end": t_1,
-        "dt": dt,
-        "core": psutil.Process().cpu_num(),
-    }
-    execution_time_data_fp.write_text(json.dumps(execution_time_data, indent=4))
+    """Backward-compatible alias writing success execution metrics to execution_data.json."""
+    write_execution_data(
+        design_dir=design_dir,
+        flow_name=flow_name,
+        status="success",
+        t_start=t_0,
+        t_end=t_1,
+        return_code=0,
+    )
 
 
 def flow_already_completed(
@@ -239,9 +293,9 @@ class FlowTimer:
         """
         self.t_1 = time.time()
 
-    def log(self) -> None:
+    def log(self, status: str = "success", return_code: Optional[int] = 0, error_message: Optional[str] = None) -> None:
         """
-        Log the execution time of the flow to a file.
+        Log the execution data of the flow to execution_data.json.
         Raises:
             RuntimeError: If either t_0 or t_1 is None.
         """
@@ -251,7 +305,15 @@ class FlowTimer:
         if self.t_1 is None:
             msg = "t_1 is None"
             raise RuntimeError(msg)
-        log_execution_time_to_file(self.dir_path, self.flow_name, self.t_0, self.t_1)
+        write_execution_data(
+            design_dir=self.dir_path,
+            flow_name=self.flow_name,
+            status=status,
+            t_start=self.t_0,
+            t_end=self.t_1,
+            return_code=return_code,
+            error_message=error_message,
+        )
 
     def __enter__(self) -> "FlowTimer":
         """
@@ -267,7 +329,10 @@ class FlowTimer:
         Stop the timer and log the execution time when exiting a context.
         """
         self.stop()
-        self.log()
+        if _exc_type is not None:
+            self.log(status="error", return_code=1, error_message=str(_exc_value))
+        else:
+            self.log(status="success")
 
 
 T = TypeVar("T")
@@ -278,17 +343,10 @@ def serialize_methods_for_dataclass(cls: type[T]) -> type[T]:
     Decorator function that adds serialization methods to a dataclass.
 
     The serialization methods added are:
-    - from_json: A class method that
-    creates a dataclass instance from a JSON file.
-    - to_json: An instance method that
-    writes the dataclass instance to
-    a JSON file.
-    - from_yaml: A class method that
-    creates a dataclass instance from a YAML file.
-    - to_yaml: An instance method that
-    writes the dataclass instance to
-    a YAML file.
-
+    - from_json: A class method that creates a dataclass instance from a JSON file.
+    - to_json: An instance method that writes the dataclass instance to a JSON file.
+    - from_yaml: A class method that creates a dataclass instance from a YAML file.
+    - to_yaml: An instance method that writes the dataclass instance to a YAML file.
 
     Args:
         cls (type[T]): The dataclass to decorate.
@@ -306,7 +364,7 @@ def serialize_methods_for_dataclass(cls: type[T]) -> type[T]:
     def from_json(cls: type[T], json_path: Path) -> T:
         with json_path.open("r") as f:
             d = json.load(f)
-        return cls(**d)  # Type checked return of the dataclass instance
+        return cls(**d)
 
     def to_json(self: T, json_path: Path) -> None:
         with json_path.open("w") as f:
@@ -315,7 +373,7 @@ def serialize_methods_for_dataclass(cls: type[T]) -> type[T]:
     def from_yaml(cls: type[T], yaml_path: Path) -> T:
         with yaml_path.open("r") as f:
             d = yaml.safe_load(f)
-        return cls(**d)  # Type checked return of the dataclass instance
+        return cls(**d)
 
     def to_yaml(self: T, yaml_path: Path) -> None:
         with yaml_path.open("w") as f:
@@ -434,7 +492,6 @@ class ToolPathsSource(enum.Enum):
 
     ENVFILE = enum.auto()
     ENV = enum.auto()
-    # MAGIC = enum.auto() # TODO: Implement the MAGIC option to use the shutil.which function
 
 
 def get_tool_paths(
@@ -446,8 +503,7 @@ def get_tool_paths(
     Get the paths for Vitis HLS and Vivado tools based on the specified source.
 
     Args:
-        tool_paths_source (ToolPathsSource): The source from which to
-        retrieve the tool paths.
+        tool_paths_source (ToolPathsSource): The source from which to retrieve the tool paths.
 
     Returns:
         tuple[pathlib.Path, pathlib.Path]: A tuple containing the paths for
@@ -582,9 +638,6 @@ def remove_dir_if_exists(dir_path: pathlib.Path) -> None:
 
     Args:
         dir_path (pathlib.Path): The path to the directory.
-
-    Returns:
-        None
     """
     if dir_path.exists():
         shutil.rmtree(dir_path)
@@ -597,9 +650,6 @@ def remove_and_make_new_dir_if_exists(dir_path: pathlib.Path) -> None:
 
     Args:
         dir_path (pathlib.Path): The path to the directory.
-
-    Returns:
-        None
     """
     remove_dir_if_exists(dir_path)
     dir_path.mkdir(parents=True, exist_ok=True)

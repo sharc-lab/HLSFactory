@@ -200,6 +200,9 @@ class DataAggregatorXilinx(DataAggregator):
         return get_file_in_root(design.dir, "data_implementation.json")
 
     def gather_execution_data(self, design: Design) -> dict:
+        fp = design.dir / "execution_data.json"
+        if fp.exists():
+            return get_file_in_root(design.dir, "execution_data.json")
         return get_file_in_root(design.dir, "execution_time_data.json")
 
     def gather_hls_synthesis_artifacts_data(
@@ -218,6 +221,20 @@ class DataAggregatorXilinx(DataAggregator):
             raise ValueError("You specified no artifacts to extract")
 
         data: ArtifactCollection = {}
+
+        # Check execution_data.json for error or timeout
+        exec_data_fp = design.dir / "execution_data.json"
+        if exec_data_fp.exists():
+            try:
+                exec_json = json.loads(exec_data_fp.read_text(encoding="utf-8"))
+                synth_status = exec_json.get("VitisHLSSynthFlow", {}).get("status")
+                if synth_status in ("error", "timeout"):
+                    print(
+                        f"WARNING: VitisHLSSynthFlow marked as {synth_status}, synthesis never completed, no artifacts to extract",
+                    )
+                    return {}
+            except Exception:
+                pass
 
         if (design.dir / "timeout__VitisHLSSynthFlow.txt").exists():
             print(

@@ -16,6 +16,7 @@ from hlsfactory.utils import (
     log_execution_time_to_file,
     serialize_methods_for_dataclass,
     timeout_not_supported,
+    write_execution_data,
 )
 
 
@@ -425,22 +426,32 @@ class VitisHLSSynthFlow(ToolFlow):
                 raise_on_error=False,
             )
             if return_result == CallToolResult.TIMEOUT:
-                (design_dir / f"timeout__{self.name}.txt").touch()
                 print(f"[{design_dir}] Timeout of {timeout} seconds reached")
-
                 t_1 = time.perf_counter()
                 if self.log_execution_time:
-                    log_execution_time_to_file(design_dir, self.name, t_0, t_1)
-
+                    write_execution_data(
+                        design_dir=design_dir,
+                        flow_name=self.name,
+                        status="timeout",
+                        t_start=t_0,
+                        t_end=t_1,
+                        return_code=-1,
+                        error_message=f"Timeout of {timeout}s reached",
+                    )
                 return []
             if return_result == CallToolResult.ERROR:
-                (design_dir / f"error__{self.name}.txt").touch()
                 print(f"[{design_dir}] Error occurred during execution")
-
                 t_1 = time.perf_counter()
                 if self.log_execution_time:
-                    log_execution_time_to_file(design_dir, self.name, t_0, t_1)
-
+                    write_execution_data(
+                        design_dir=design_dir,
+                        flow_name=self.name,
+                        status="error",
+                        t_start=t_0,
+                        t_end=t_1,
+                        return_code=1,
+                        error_message="Synthesis execution error",
+                    )
                 return []
         else:
             return_result = call_tool(
@@ -450,13 +461,18 @@ class VitisHLSSynthFlow(ToolFlow):
                 raise_on_error=False,
             )
             if return_result == CallToolResult.ERROR:
-                (design_dir / f"error__{self.name}.txt").touch()
                 print(f"[{design_dir}] Error occurred during execution")
-
                 t_1 = time.perf_counter()
                 if self.log_execution_time:
-                    log_execution_time_to_file(design_dir, self.name, t_0, t_1)
-
+                    write_execution_data(
+                        design_dir=design_dir,
+                        flow_name=self.name,
+                        status="error",
+                        t_start=t_0,
+                        t_end=t_1,
+                        return_code=1,
+                        error_message="Synthesis execution error",
+                    )
                 return []
 
         csynth_report_fp = auto_find_synth_report(design_dir)
@@ -469,7 +485,14 @@ class VitisHLSSynthFlow(ToolFlow):
 
         t_1 = time.perf_counter()
         if self.log_execution_time:
-            log_execution_time_to_file(design_dir, self.name, t_0, t_1)
+            write_execution_data(
+                design_dir=design_dir,
+                flow_name=self.name,
+                status="success",
+                t_start=t_0,
+                t_end=t_1,
+                return_code=0,
+            )
 
         return [design]
 
@@ -699,16 +722,32 @@ class VitisHLSImplFlow(ToolFlow):
                 shell=False,
             )
             if return_result == CallToolResult.TIMEOUT:
-                (design_dir / f"timeout__{self.name}.txt").touch()
                 print(f"[{design_dir}] Timeout of {timeout} seconds reached")
                 t_1 = time.perf_counter()
-                log_execution_time_to_file(design_dir, self.name, t_0, t_1)
+                if self.log_execution_time:
+                    write_execution_data(
+                        design_dir=design_dir,
+                        flow_name=self.name,
+                        status="timeout",
+                        t_start=t_0,
+                        t_end=t_1,
+                        return_code=-1,
+                        error_message=f"Timeout of {timeout}s reached",
+                    )
                 return []
             if return_result == CallToolResult.ERROR:
-                (design_dir / f"error__{self.name}.txt").touch()
                 print(f"[{design_dir}] Error occurred during execution")
                 t_1 = time.perf_counter()
-                log_execution_time_to_file(design_dir, self.name, t_0, t_1)
+                if self.log_execution_time:
+                    write_execution_data(
+                        design_dir=design_dir,
+                        flow_name=self.name,
+                        status="error",
+                        t_start=t_0,
+                        t_end=t_1,
+                        return_code=1,
+                        error_message="Implementation execution error",
+                    )
                 return []
         else:
             return_result = call_tool(
@@ -719,14 +758,30 @@ class VitisHLSImplFlow(ToolFlow):
                 shell=False,
             )
             if return_result == CallToolResult.ERROR:
-                (design_dir / f"error__{self.name}.txt").touch()
                 print(f"[{design_dir}] Error occurred during execution")
                 t_1 = time.perf_counter()
-                log_execution_time_to_file(design_dir, self.name, t_0, t_1)
+                if self.log_execution_time:
+                    write_execution_data(
+                        design_dir=design_dir,
+                        flow_name=self.name,
+                        status="error",
+                        t_start=t_0,
+                        t_end=t_1,
+                        return_code=1,
+                        error_message="Implementation execution error",
+                    )
                 return []
 
         t_1 = time.perf_counter()
-        log_execution_time_to_file(design_dir, self.name, t_0, t_1)
+        if self.log_execution_time:
+            write_execution_data(
+                design_dir=design_dir,
+                flow_name=self.name,
+                status="success",
+                t_start=t_0,
+                t_end=t_1,
+                return_code=0,
+            )
 
         return [design]
 
@@ -794,11 +849,19 @@ class VitisHLSImplReportFlow(ToolFlow):
             cwd=design_dir,
         )
         if return_result == CallToolResult.ERROR:
-            (design_dir / f"error__{self.name}.txt").touch()
             print(f"[{design_dir}] Error occurred during execution")
 
             t_1 = time.perf_counter()
-            log_execution_time_to_file(design_dir, self.name, t_0, t_1)
+            if self.log_execution_time:
+                write_execution_data(
+                    design_dir=design_dir,
+                    flow_name=self.name,
+                    status="error",
+                    t_start=t_0,
+                    t_end=t_1,
+                    return_code=1,
+                    error_message="Vivado reporting execution error",
+                )
 
             return []
 
@@ -814,7 +877,15 @@ class VitisHLSImplReportFlow(ToolFlow):
         data_fp.write_text(json.dumps(data, indent=4))
 
         t_1 = time.perf_counter()
-        log_execution_time_to_file(design_dir, self.name, t_0, t_1)
+        if self.log_execution_time:
+            write_execution_data(
+                design_dir=design_dir,
+                flow_name=self.name,
+                status="success",
+                t_start=t_0,
+                t_end=t_1,
+                return_code=0,
+            )
 
         return [design]
 
@@ -840,8 +911,6 @@ class VitisHLSImplReportFlow(ToolFlow):
         check_files_exist([report_fp])
 
         data = {}
-
-        report_raw = report_fp.read_text()
 
         report_raw = report_fp.read_text()
         lines = report_raw.splitlines()

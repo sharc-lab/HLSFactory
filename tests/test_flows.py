@@ -1,3 +1,4 @@
+import json
 import shutil
 from pathlib import Path
 from unittest.mock import patch
@@ -108,7 +109,7 @@ def test_concrete_vitis_hls_flow() -> None:
 
 
 def test_concrete_vitis_hls_flow_induced_tool_error(monkeypatch) -> None:
-    # want to induce a tool error by mocking calls to suborocess to return non-zero exit code
+    # want to induce a tool error by mocking calls to subprocess to return non-zero exit code
     work_dir = (
         top_work_dir / "test_flows" / "test_concrete_vitis_hls_flow_induced_tool_error"
     )
@@ -148,7 +149,12 @@ def test_concrete_vitis_hls_flow_induced_tool_error(monkeypatch) -> None:
     for d in datasets["vitis_examples"].designs:
         d_dir = d.dir
         assert Path(d_dir).exists()
-        assert Path(d_dir / "error__VitisHLSSynthFlow.txt").exists()
+        exec_data_fp = Path(d_dir) / "execution_data.json"
+        if exec_data_fp.exists():
+            exec_json = json.loads(exec_data_fp.read_text(encoding="utf-8"))
+            assert exec_json.get("VitisHLSSynthFlow", {}).get("status") == "error"
+        else:
+            assert Path(d_dir / "error__VitisHLSSynthFlow.txt").exists()
 
 
 N_KEEP = 2
