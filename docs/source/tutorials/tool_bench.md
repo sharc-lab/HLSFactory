@@ -135,7 +135,7 @@ for vitis_version, dataset_map in DATASET_VERSIONS.items():
 ```
 
 Each run deposits `data_design.json`, `data_hls.json`, and
-`execution_time_data.json` files under
+`execution_data.json` files under
 `$HLSFACTORY_WORK_DIR/demo_regression_testing/<dataset>/<design>__<version>/`.
 These JSON artifacts contain the metrics used in the analysis stage.
 

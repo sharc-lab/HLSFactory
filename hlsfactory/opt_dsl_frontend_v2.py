@@ -10,7 +10,10 @@ from pathlib import Path
 from hlsfactory.design_config import FlowName
 from hlsfactory.framework import Design, Frontend
 from hlsfactory.opt_dsl_v2.opt_dsl import OptDSL
-from hlsfactory.utils import log_execution_time_to_file
+from hlsfactory.utils import (
+    ExecutionDataStatus,
+    update_execution_data_with_flow_results,
+)
 
 
 @contextmanager
@@ -192,11 +195,23 @@ class OptDSLFrontend(Frontend):
 
                     t_1 = time.perf_counter()
                     if self.log_execution_time:
-                        log_execution_time_to_file(new_design.dir, self.name, t_0, t_1)
+                        update_execution_data_with_flow_results(
+                            new_design.dir,
+                            self.name,
+                            ExecutionDataStatus.SUCCESS,
+                            t_0,
+                            t_1,
+                        )
 
                 t_1 = time.perf_counter()
                 if self.log_execution_time:
-                    log_execution_time_to_file(design.dir, self.name, t_0, t_1)
+                    update_execution_data_with_flow_results(
+                        design.dir,
+                        self.name,
+                        ExecutionDataStatus.SUCCESS,
+                        t_0,
+                        t_1,
+                    )
 
                 return new_designs
 
@@ -204,15 +219,25 @@ class OptDSLFrontend(Frontend):
             print(f"TimeoutError in OptDSLFrontend for design {design.name}: {e}")
             if self.log_execution_time:
                 t_1 = time.perf_counter()
-                log_execution_time_to_file(
-                    design.dir, f"{self.name}__TIMEOUT", t_0, t_1
+                update_execution_data_with_flow_results(
+                    design.dir,
+                    self.name,
+                    ExecutionDataStatus.TIMEOUT,
+                    t_0,
+                    t_1,
+                    error_message=str(e),
                 )
             return new_designs
 
-        except shutil.Error as _e:
+        except shutil.Error as e:
             if self.log_execution_time:
                 t_1 = time.perf_counter()
-                log_execution_time_to_file(
-                    design.dir, f"{self.name}__TIMEOUT", t_0, t_1
+                update_execution_data_with_flow_results(
+                    design.dir,
+                    self.name,
+                    ExecutionDataStatus.ERROR,
+                    t_0,
+                    t_1,
+                    error_message=str(e),
                 )
             return new_designs

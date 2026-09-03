@@ -6,10 +6,10 @@ import shlex
 import shutil
 import subprocess
 import time
-from dataclasses import is_dataclass
+from dataclasses import dataclass, is_dataclass
 from pathlib import Path
 from tempfile import TemporaryDirectory
-from typing import Any, Optional, TypeVar
+from typing import Any, TypeVar
 
 import dotenv
 import psutil
@@ -134,26 +134,101 @@ def find_bin_path(cmd: str) -> str:
     return bin_path
 
 
-def write_execution_data(
+class ExecutionDataStatus(str, enum.Enum):
+    """Standard statuses for a flow execution result."""
+
+    SUCCESS = "success"
+    ERROR = "error"
+    TIMEOUT = "timeout"
+    OTHER = "other"
+
+
+@dataclass
+class FlowExecutionData:
+    """Execution result and timing data for one flow."""
+
+    status: ExecutionDataStatus
+    t_start: float
+    t_end: float
+    dt: float
+    core: int | None = None
+    error_message: str | None = None
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "status": self.status.value,
+            "t_start": self.t_start,
+            "t_end": self.t_end,
+            "dt": self.dt,
+            "core": self.core,
+            "error_message": self.error_message,
+        }
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "FlowExecutionData":
+        return cls(
+            status=ExecutionDataStatus(data["status"]),
+            t_start=data["t_start"],
+            t_end=data["t_end"],
+            dt=data["dt"],
+            core=data.get("core"),
+            error_message=data.get("error_message"),
+        )
+
+    def to_json(self) -> str:
+        return json.dumps(self.to_dict(), indent=4)
+
+    @classmethod
+    def from_json(cls, json_str: str) -> "FlowExecutionData":
+        return cls.from_dict(json.loads(json_str))
+
+
+@dataclass
+class ExecutionData:
+    """Execution results keyed by flow name."""
+
+    flows: dict[str, FlowExecutionData]
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            flow_name: flow_data.to_dict()
+            for flow_name, flow_data in self.flows.items()
+        }
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "ExecutionData":
+        flows = {
+            flow_name: FlowExecutionData.from_dict(flow_data)
+            for flow_name, flow_data in data.items()
+        }
+        return cls(flows=flows)
+
+    def to_json(self) -> str:
+        return json.dumps(self.to_dict(), indent=4)
+
+    @classmethod
+    def from_json(cls, json_str: str) -> "ExecutionData":
+        return cls.from_dict(json.loads(json_str))
+
+
+def update_execution_data_with_flow_results(
     design_dir: Path,
     flow_name: str,
-    status: str,
+    status: ExecutionDataStatus,
     t_start: float,
     t_end: float,
-    core: Optional[int] = None,
-    return_code: Optional[int] = 0,
-    error_message: Optional[str] = None,
+    core: int | None = None,
+    error_message: str | None = None,
 ) -> None:
-    """Writes execution metrics and flow status into execution_data.json.
+    """Add or replace a flow result in ``execution_data.json``.
 
     Args:
         design_dir (Path): The directory where the design is located.
         flow_name (str): The name of the flow (e.g. VitisHLSSynthFlow).
-        status (str): 'success', 'error', or 'timeout'.
+        status (ExecutionDataStatus): The result status for the flow.
         t_start (float): Start timestamp.
         t_end (float): End timestamp.
         core (int, optional): CPU core ID (defaults to current core).
-        return_code (int, optional): Process return code.
         error_message (str, optional): Optional error message string.
 
     Raises:
@@ -170,98 +245,73 @@ def write_execution_data(
             core = None
 
     execution_data_fp = design_dir / "execution_data.json"
-    if execution_data_fp.exists():
-        try:
-            execution_data = json.loads(execution_data_fp.read_text(encoding="utf-8"))
-        except Exception:
-            execution_data = {}
-    else:
-        execution_data = {}
-
-    execution_data[flow_name] = {
-        "status": status,
-        "t_start": t_start,
-        "t_end": t_end,
-        "dt": round(t_end - t_start, 4),
-        "core": core,
-        "return_code": return_code,
-        "error_message": error_message,
-    }
-    execution_data_fp.write_text(json.dumps(execution_data, indent=4), encoding="utf-8")
+    execution_data = (
+        ExecutionData.from_json(execution_data_fp.read_text(encoding="utf-8"))
+        if execution_data_fp.exists()
+        else ExecutionData(flows={})
+    )
+    execution_data.flows[flow_name] = FlowExecutionData(
+        status=status,
+        t_start=t_start,
+        t_end=t_end,
+        dt=round(t_end - t_start, 4),
+        core=core,
+        error_message=error_message,
+    )
+    execution_data_fp.write_text(execution_data.to_json(), encoding="utf-8")
 
 
-def read_execution_data(design_dir: Path, flow_name: Optional[str] = None) -> Any:
+def read_execution_data(
+    design_dir: Path,
+    flow_name: str | None = None,
+) -> ExecutionData | FlowExecutionData | None:
     """Reads execution_data.json from a design directory.
 
     Args:
         design_dir (Path): Directory containing execution_data.json.
-        flow_name (str, optional): If provided, returns the dict for this flow only.
+        flow_name (str, optional): If provided, returns that flow's execution data.
 
     Returns:
-        The full dictionary or the specific flow's data dictionary.
+        The full execution data or the specific flow's execution data.
     """
     execution_data_fp = Path(design_dir) / "execution_data.json"
     if not execution_data_fp.exists():
         raise FileNotFoundError(f"No execution_data.json found in {design_dir}")
-    data = json.loads(execution_data_fp.read_text(encoding="utf-8"))
+    data = ExecutionData.from_json(execution_data_fp.read_text(encoding="utf-8"))
     if flow_name:
-        return data.get(flow_name)
+        return data.flows.get(flow_name)
     return data
-
-
-def log_execution_time_to_file(
-    design_dir: Path,
-    flow_name: str,
-    t_0: float,
-    t_1: float,
-) -> None:
-    """Backward-compatible alias writing success execution metrics to execution_data.json."""
-    write_execution_data(
-        design_dir=design_dir,
-        flow_name=flow_name,
-        status="success",
-        t_start=t_0,
-        t_end=t_1,
-        return_code=0,
-    )
 
 
 def flow_already_completed(
     design_dir: Path,
     flow_name: str,
-    success_marker_fp: Path | None = None,
 ) -> bool:
     """
-    Checks whether a flow has already been completed successfully for a design.
+    Checks whether a flow has already been recorded for a design.
 
     Args:
         design_dir (Path): The directory where the design is located.
         flow_name (str): The name of the flow to check.
-        success_marker_fp (Path | None): An optional file path that must exist
-            for the flow to be considered successfully completed (e.g. a
-            report or output data file). If None, only the execution time
-            log and absence of error/timeout markers are checked.
 
     Returns:
-        bool: True if the flow already completed successfully, False otherwise.
+        bool: True if the flow has an entry in execution_data.json, False otherwise.
     """
-    execution_time_data_fp = design_dir / "execution_time_data.json"
-    if not execution_time_data_fp.exists():
+    try:
+        execution_data = read_execution_data(design_dir)
+    except (
+        FileNotFoundError,
+        OSError,
+        json.JSONDecodeError,
+        KeyError,
+        TypeError,
+        ValueError,
+    ):
         return False
 
-    execution_time_data = json.loads(execution_time_data_fp.read_text())
-    if flow_name not in execution_time_data:
-        return False
-
-    error_fp = design_dir / f"error__{flow_name}.txt"
-    timeout_fp = design_dir / f"timeout__{flow_name}.txt"
-    if error_fp.exists() or timeout_fp.exists():
-        return False
-
-    if success_marker_fp is not None and not success_marker_fp.exists():
-        return False
-
-    return True
+    return (
+        isinstance(execution_data, ExecutionData) and flow_name in execution_data.flows
+    )
 
 
 class FlowTimer:
@@ -293,9 +343,13 @@ class FlowTimer:
         """
         self.t_1 = time.time()
 
-    def log(self, status: str = "success", return_code: Optional[int] = 0, error_message: Optional[str] = None) -> None:
-        """
-        Log the execution data of the flow to execution_data.json.
+    def log(
+        self,
+        status: ExecutionDataStatus = ExecutionDataStatus.SUCCESS,
+        error_message: str | None = None,
+    ) -> None:
+        """Log the execution data of the flow to execution_data.json.
+
         Raises:
             RuntimeError: If either t_0 or t_1 is None.
         """
@@ -305,19 +359,18 @@ class FlowTimer:
         if self.t_1 is None:
             msg = "t_1 is None"
             raise RuntimeError(msg)
-        write_execution_data(
+        update_execution_data_with_flow_results(
             design_dir=self.dir_path,
             flow_name=self.flow_name,
             status=status,
             t_start=self.t_0,
             t_end=self.t_1,
-            return_code=return_code,
             error_message=error_message,
         )
 
     def __enter__(self) -> "FlowTimer":
-        """
-        Start the timer when entering a context.
+        """Start the timer when entering a context.
+
         Returns:
             FlowTimer: The FlowTimer instance.
         """
@@ -325,14 +378,15 @@ class FlowTimer:
         return self
 
     def __exit__(self, _exc_type, _exc_value, _traceback) -> None:  # noqa: ANN001
-        """
-        Stop the timer and log the execution time when exiting a context.
-        """
+        """Stop the timer and log the execution time when exiting a context."""
         self.stop()
         if _exc_type is not None:
-            self.log(status="error", return_code=1, error_message=str(_exc_value))
+            self.log(
+                status=ExecutionDataStatus.ERROR,
+                error_message=str(_exc_value),
+            )
         else:
-            self.log(status="success")
+            self.log(status=ExecutionDataStatus.SUCCESS)
 
 
 T = TypeVar("T")

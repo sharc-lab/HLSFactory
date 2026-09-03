@@ -1,4 +1,3 @@
-import json
 import shutil
 from pathlib import Path
 from unittest.mock import patch
@@ -17,9 +16,12 @@ from hlsfactory.framework import (
 )
 from hlsfactory.opt_dsl_frontend import OptDSLFrontend
 from hlsfactory.utils import (
+    ExecutionDataStatus,
+    FlowExecutionData,
     ToolPathsSource,
     get_tool_paths,
     get_work_dir,
+    read_execution_data,
     remove_and_make_new_dir_if_exists,
 )
 
@@ -150,11 +152,13 @@ def test_concrete_vitis_hls_flow_induced_tool_error(monkeypatch) -> None:
         d_dir = d.dir
         assert Path(d_dir).exists()
         exec_data_fp = Path(d_dir) / "execution_data.json"
-        if exec_data_fp.exists():
-            exec_json = json.loads(exec_data_fp.read_text(encoding="utf-8"))
-            assert exec_json.get("VitisHLSSynthFlow", {}).get("status") == "error"
-        else:
-            assert Path(d_dir / "error__VitisHLSSynthFlow.txt").exists()
+        assert exec_data_fp.exists()
+        execution_data = read_execution_data(
+            d_dir,
+            flow_name="VitisHLSSynthFlow",
+        )
+        assert isinstance(execution_data, FlowExecutionData)
+        assert execution_data.status == ExecutionDataStatus.ERROR
 
 
 N_KEEP = 2

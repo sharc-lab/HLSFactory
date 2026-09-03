@@ -377,7 +377,7 @@ API
 
       .. autodoc2-docstring:: hlsfactory.flow_catapult.CatapultHLSSynthFlow.execute
 
-   .. py:method:: _log_execution_time(design_dir: pathlib.Path, start_time: float) -> None
+   .. py:method:: _log_execution_time(design_dir: pathlib.Path, start_time: float, status: hlsfactory.utils.ExecutionDataStatus = ExecutionDataStatus.SUCCESS, error_message: str | None = None) -> None
       :canonical: hlsfactory.flow_catapult.CatapultHLSSynthFlow._log_execution_time
 
       .. autodoc2-docstring:: hlsfactory.flow_catapult.CatapultHLSSynthFlow._log_execution_time

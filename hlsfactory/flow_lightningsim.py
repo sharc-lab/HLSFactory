@@ -11,9 +11,10 @@ from typing import TYPE_CHECKING
 from hlsfactory.design_config import FlowName
 from hlsfactory.framework import Design, ToolFlow
 from hlsfactory.utils import (
+    ExecutionDataStatus,
     flow_already_completed,
-    log_execution_time_to_file,
     timeout_not_supported,
+    update_execution_data_with_flow_results,
 )
 
 if TYPE_CHECKING:
@@ -165,11 +166,7 @@ class LightningSimFlow(ToolFlow):
 
         design_dir = design.dir
 
-        if flow_already_completed(
-            design_dir,
-            self.name,
-            success_marker_fp=design_dir / "data_lightningsim.json",
-        ):
+        if flow_already_completed(design_dir, self.name):
             print(f"[{design_dir}] Skipping {self.name}, already completed")
             return [design]
 
@@ -201,7 +198,14 @@ class LightningSimFlow(ToolFlow):
 
             t_1 = time.perf_counter()
             if self.log_execution_time:
-                log_execution_time_to_file(design_dir, self.name, t_0, t_1)
+                update_execution_data_with_flow_results(
+                    design_dir,
+                    self.name,
+                    ExecutionDataStatus.ERROR,
+                    t_0,
+                    t_1,
+                    error_message="LightningSim baseline simulation deadlocked",
+                )
 
             return []
 
@@ -216,6 +220,8 @@ class LightningSimFlow(ToolFlow):
 
         t_1 = time.perf_counter()
         if self.log_execution_time:
-            log_execution_time_to_file(design_dir, self.name, t_0, t_1)
+            update_execution_data_with_flow_results(
+                design_dir, self.name, ExecutionDataStatus.SUCCESS, t_0, t_1
+            )
 
         return [design]

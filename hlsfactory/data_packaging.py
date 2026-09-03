@@ -13,6 +13,12 @@ import pandas as pd
 
 from hlsfactory.flow_vitis import auto_find_solutions
 from hlsfactory.framework import Design
+from hlsfactory.utils import (
+    ExecutionData,
+    ExecutionDataStatus,
+    FlowExecutionData,
+    read_execution_data,
+)
 
 InMemoryArchive = io.BytesIO
 
@@ -201,9 +207,12 @@ class DataAggregatorXilinx(DataAggregator):
 
     def gather_execution_data(self, design: Design) -> dict:
         fp = design.dir / "execution_data.json"
-        if fp.exists():
+        if not fp.exists():
             return get_file_in_root(design.dir, "execution_data.json")
-        return get_file_in_root(design.dir, "execution_time_data.json")
+        execution_data = read_execution_data(design.dir)
+        if not isinstance(execution_data, ExecutionData):
+            return {}
+        return execution_data.to_dict()
 
     def gather_hls_synthesis_artifacts_data(
         self,
@@ -226,27 +235,20 @@ class DataAggregatorXilinx(DataAggregator):
         exec_data_fp = design.dir / "execution_data.json"
         if exec_data_fp.exists():
             try:
-                exec_json = json.loads(exec_data_fp.read_text(encoding="utf-8"))
-                synth_status = exec_json.get("VitisHLSSynthFlow", {}).get("status")
-                if synth_status in ("error", "timeout"):
+                synth_data = read_execution_data(
+                    design.dir,
+                    flow_name="VitisHLSSynthFlow",
+                )
+                if isinstance(synth_data, FlowExecutionData) and synth_data.status in (
+                    ExecutionDataStatus.ERROR,
+                    ExecutionDataStatus.TIMEOUT,
+                ):
                     print(
-                        f"WARNING: VitisHLSSynthFlow marked as {synth_status}, synthesis never completed, no artifacts to extract",
+                        f"WARNING: VitisHLSSynthFlow marked as {synth_data.status.value}, synthesis never completed, no artifacts to extract",
                     )
                     return {}
             except Exception:
                 pass
-
-        if (design.dir / "timeout__VitisHLSSynthFlow.txt").exists():
-            print(
-                "WARNING: Timeout file found, synthesis never completed, no artifacts to extract",
-            )
-            return {}
-
-        if (design.dir / "error__VitisHLSSynthFlow.txt").exists():
-            print(
-                "WARNING: Error file found, synthesis never completed, no artifacts to extract",
-            )
-            return {}
 
         solutions = auto_find_solutions(design.dir)
         if len(solutions) != 1:

@@ -15,10 +15,11 @@ from hlsfactory.design_config import FlowName
 from hlsfactory.framework import Design, ToolFlow
 from hlsfactory.utils import (
     CallToolResult,
+    ExecutionDataStatus,
     call_tool,
     flow_already_completed,
-    log_execution_time_to_file,
     serialize_methods_for_dataclass,
+    update_execution_data_with_flow_results,
 )
 
 
@@ -414,7 +415,6 @@ class XLSHLSSynthFlow(ToolFlow):
             flow_already_completed(
                 design_dir,
                 self.name,
-                success_marker_fp=data_file,
             )
             and all(path.is_file() for path in expected_artifacts)
             and all(path.is_dir() for path in expected_dump_dirs)
@@ -544,12 +544,22 @@ class XLSHLSSynthFlow(ToolFlow):
             if result == CallToolResult.TIMEOUT:
                 timeout_marker.write_text(f"Timed out during {stage_name}.\n")
                 print(f"[{design_dir}] Timeout of {timeout} seconds reached")
-                self._log_execution_time(design_dir, start_time)
+                self._log_execution_time(
+                    design_dir,
+                    start_time,
+                    status=ExecutionDataStatus.TIMEOUT,
+                    error_message=f"Timed out during {stage_name}",
+                )
                 return []
             if result == CallToolResult.ERROR:
                 error_marker.write_text(f"XLS failed during {stage_name}.\n")
                 print(f"[{design_dir}] XLS failed during {stage_name}")
-                self._log_execution_time(design_dir, start_time)
+                self._log_execution_time(
+                    design_dir,
+                    start_time,
+                    status=ExecutionDataStatus.ERROR,
+                    error_message=f"XLS failed during {stage_name}",
+                )
                 return []
 
         missing_artifacts = [path for path in expected_artifacts if not path.is_file()]
@@ -562,7 +572,12 @@ class XLSHLSSynthFlow(ToolFlow):
                 f"XLS completed without producing expected artifacts: {missing_names}.\n",
             )
             print(f"[{design_dir}] XLS did not produce: {missing_names}")
-            self._log_execution_time(design_dir, start_time)
+            self._log_execution_time(
+                design_dir,
+                start_time,
+                status=ExecutionDataStatus.ERROR,
+                error_message=f"Missing expected artifacts: {missing_names}",
+            )
             return []
 
         try:
@@ -573,7 +588,12 @@ class XLSHLSSynthFlow(ToolFlow):
         except (OSError, ValueError) as error:
             error_marker.write_text(f"Could not parse XLS metrics: {error}\n")
             print(f"[{design_dir}] Could not parse XLS metrics: {error}")
-            self._log_execution_time(design_dir, start_time)
+            self._log_execution_time(
+                design_dir,
+                start_time,
+                status=ExecutionDataStatus.ERROR,
+                error_message=f"Could not parse XLS metrics: {error}",
+            )
             return []
 
         synthesis_data = DesignHLSSynthData(
@@ -636,13 +656,21 @@ class XLSHLSSynthFlow(ToolFlow):
             return None
         return max(0.0, timeout - (time.perf_counter() - start_time))
 
-    def _log_execution_time(self, design_dir: Path, start_time: float) -> None:
+    def _log_execution_time(
+        self,
+        design_dir: Path,
+        start_time: float,
+        status: ExecutionDataStatus = ExecutionDataStatus.SUCCESS,
+        error_message: str | None = None,
+    ) -> None:
         if self.log_execution_time:
-            log_execution_time_to_file(
+            update_execution_data_with_flow_results(
                 design_dir,
                 self.name,
+                status,
                 start_time,
                 time.perf_counter(),
+                error_message=error_message,
             )
 
 

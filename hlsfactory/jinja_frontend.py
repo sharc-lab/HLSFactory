@@ -7,7 +7,10 @@ from typing import Any
 from jinja2 import Template
 
 from hlsfactory.framework import Design, Frontend
-from hlsfactory.utils import log_execution_time_to_file
+from hlsfactory.utils import (
+    ExecutionDataStatus,
+    update_execution_data_with_flow_results,
+)
 
 
 class JinjaFrontend(Frontend):
@@ -81,7 +84,11 @@ class JinjaFrontend(Frontend):
 
         t_1 = time.perf_counter()
 
-        log_execution_time_to_file(new_design.dir, self.name, t_0, t_1)
-        log_execution_time_to_file(design.dir, self.name, t_0, t_1)
+        update_execution_data_with_flow_results(
+            new_design.dir, self.name, ExecutionDataStatus.SUCCESS, t_0, t_1
+        )
+        update_execution_data_with_flow_results(
+            design.dir, self.name, ExecutionDataStatus.SUCCESS, t_0, t_1
+        )
 
         return new_designs

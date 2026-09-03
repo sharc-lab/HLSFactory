@@ -65,7 +65,7 @@ To verify your setup and run a minimal end-to-end flow:
    uv run python demos/demo_full_flow_xilinx/full_flow_xilinx.py
    ```
 
-3. **Expected output:** After synthesis and implementation complete, each design directory under `$HLSFACTORY_WORK_DIR/demo_full_flow_xilinx/` will contain `data_hls.json`, `data_implementation.json`, and `execution_time_data.json` with latency, resource usage, timing, and power data.
+3. **Expected output:** After synthesis and implementation complete, each design directory under `$HLSFACTORY_WORK_DIR/demo_full_flow_xilinx/` will contain `data_hls.json`, `data_implementation.json`, and `execution_data.json` with latency, resource usage, timing, power, and flow-status data.
 
 For a step-by-step walkthrough of each stage (dataset setup, OptDSL frontend, synthesis, implementation, reporting), see the [Xilinx Flow tutorial](tutorials/xilinx_flow).
 

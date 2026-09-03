@@ -164,6 +164,18 @@ API
 
       .. autodoc2-docstring:: hlsfactory.design_config.FlowName.VITIS_HLS_IMPL_REPORT
 
+   .. py:attribute:: VITIS_HLS_MODERN_SYNTH
+      :canonical: hlsfactory.design_config.FlowName.VITIS_HLS_MODERN_SYNTH
+      :value: 'VitisHLSModernSynthFlow'
+
+      .. autodoc2-docstring:: hlsfactory.design_config.FlowName.VITIS_HLS_MODERN_SYNTH
+
+   .. py:attribute:: VITIS_HLS_MODERN_CSIM
+      :canonical: hlsfactory.design_config.FlowName.VITIS_HLS_MODERN_CSIM
+      :value: 'VitisHLSModernCsimFlow'
+
+      .. autodoc2-docstring:: hlsfactory.design_config.FlowName.VITIS_HLS_MODERN_CSIM
+
    .. py:attribute:: LIGHTNING_SIM
       :canonical: hlsfactory.design_config.FlowName.LIGHTNING_SIM
       :value: 'LightningSimFlow'

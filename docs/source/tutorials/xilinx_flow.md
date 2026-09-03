@@ -244,6 +244,6 @@ The `VitisHLSSynthFlow` generates a `data_design.json` file that contains metada
 
 The `VitisHLSImplFlow` generates a `data_implementation.json` file that contains data from various Vivado reports of the fully implemented design. This includes estimated power (total, static, dynamic), resource usage (Total LUT, Logic LUT, LUTRAM, SRL, FF, BRAM, URAM, DSP), and timing information (WNS, TNS, WHS, THS, WPWS, TPWS, clock period, and clock frequency).
 
-Additionally, any time a flow is run, its execution data is logged to a common `execution_time_data.json` file in the design directory. When a flow is run, it finds the existing `execution_time_data.json` file (or creates it if it does not exist) and appends the execution time of the current flow and the core ID the flow ran on to the file.
+Additionally, any time a flow is run, its execution data is logged to a common `execution_data.json` file in the design directory. When a flow is run, it finds the existing `execution_data.json` file (or creates it if it does not exist) and records the current flow's completion status, execution time, core ID, and error message.
 
 This data can be manually aggregated by the user, but HLSFactory also provides facilities to aggregate and process this data into data tables and archived datasets along with automatically extracting build artifacts. See the [](./data_agg.md) tutorial to explore these features.

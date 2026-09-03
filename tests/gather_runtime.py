@@ -1,7 +1,12 @@
 import argparse
-import json
 import math
 from pathlib import Path
+
+from hlsfactory.utils import (
+    ExecutionDataStatus,
+    FlowExecutionData,
+    read_execution_data,
+)
 
 
 def percentile(n: list[int | float], percent: float, key=lambda x: x) -> float | None:
@@ -39,7 +44,7 @@ def main(args: argparse.Namespace) -> None:
 
     design_dirs_with_runtime_json = []
     for design_dir in design_dirs:
-        runtime_json_fp = design_dir / "execution_time_data.json"
+        runtime_json_fp = design_dir / "execution_data.json"
         if runtime_json_fp.exists():
             design_dirs_with_runtime_json.append(design_dir)
 
@@ -48,27 +53,21 @@ def main(args: argparse.Namespace) -> None:
     flow_name = "VitisHLSSynthFlow"
 
     timeouts = []
-    for design_dir in design_dirs:
-        timeout_fp = design_dir / f"timeout__{flow_name}.txt"
-        if timeout_fp.exists():
-            timeouts.append(design_dir.name)
-
-    print(f"Found {len(timeouts)} designs with {flow_name} timeouts")
-
     data = []
     for design_dir in design_dirs_with_runtime_json:
-        # skip if timeout file exists
-        timeout_fp = design_dir / f"timeout__{flow_name}.txt"
-        if timeout_fp.exists():
+        flow_data = read_execution_data(design_dir, flow_name=flow_name)
+        if not isinstance(flow_data, FlowExecutionData):
             continue
-        runtime_json_fp = design_dir / "execution_time_data.json"
-        runtime_data = json.loads(runtime_json_fp.read_text())
-        if flow_name in runtime_data:
-            entry = {
-                "design": design_dir.name,
-                "runtime": runtime_data[flow_name]["dt"],
-            }
-            data.append(entry)
+        if flow_data.status == ExecutionDataStatus.TIMEOUT:
+            timeouts.append(design_dir.name)
+            continue
+        entry = {
+            "design": design_dir.name,
+            "runtime": flow_data.dt,
+        }
+        data.append(entry)
+
+    print(f"Found {len(timeouts)} designs with {flow_name} timeouts")
 
     print(
         f"Found {len(data)} designs with {flow_name} runtime data that did not timeout"

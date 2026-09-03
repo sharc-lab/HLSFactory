@@ -172,7 +172,7 @@ For a DSLX file named `adder.x`, a successful run produces:
 | `adder.scheduling_pass_metrics.textproto` | Scheduling pass timing and transformations |
 | `adder.codegen_pass_metrics.textproto` | Codegen pass timing and transformations |
 | `data_hls.json` | Parsed settings, artifact names, and synthesis metrics |
-| `execution_time_data.json` | Runtime and CPU information when logging is enabled |
+| `execution_data.json` | Runtime, CPU, and completion status when logging is enabled |
 
 Failures create `error__XLSHLSSynthFlow.txt`; timeouts create
 `timeout__XLSHLSSynthFlow.txt`. Failed designs return no output design from the
