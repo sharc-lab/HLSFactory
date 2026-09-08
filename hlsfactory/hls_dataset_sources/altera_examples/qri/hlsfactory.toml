@@ -1,0 +1,19 @@
+# Upstream commit: 0abae6d78af5daca3fe5d67e617ab037e58aff89
+# Agilex7 report-target settings from the upstream CMake build.
+design_name = "qri"
+dataset_name = "altera_examples"
+tags = ["altera", "sycl", "reference_design", "qri"]
+
+[[flow_configs]]
+flow_name = "AlteraHLSSynthFlow"
+sources = "src/qri_demo.cpp"
+cxxflags = "-Iinclude -Wall -fhonor-nans -fhonor-infinities -fbracket-depth=512 -DFIXED_ITERATIONS_QRD=58 -DFIXED_ITERATIONS_QRI=38 -DCOMPLEX=0 -DROWS_COMPONENT=32 -DCOLS_COMPONENT=32"
+target = "Agilex7"
+clock = "520MHz"
+
+[[flow_configs]]
+flow_name = "AlteraQuartusImplFlow"
+sources = "src/qri_demo.cpp"
+cxxflags = "-Iinclude -Wall -fhonor-nans -fhonor-infinities -fbracket-depth=512 -DFIXED_ITERATIONS_QRD=58 -DFIXED_ITERATIONS_QRI=38 -DCOMPLEX=0 -DROWS_COMPONENT=32 -DCOLS_COMPONENT=32"
+target = "Agilex7"
+clock = "520MHz"

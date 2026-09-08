@@ -18,6 +18,10 @@ DESIGN_CONFIG_FILENAME = "hlsfactory.toml"
 
 
 class FlowName(StrEnum):
+    ALTERA_HLS_SYNTH = "AlteraHLSSynthFlow"
+    ALTERA_HLS_CSIM = "AlteraHLSCsimFlow"
+    ALTERA_HLS_COSIM = "AlteraHLSCosimFlow"
+    ALTERA_QUARTUS_IMPL = "AlteraQuartusImplFlow"
     OPT_DSL_V2 = "OptDSLv2"
     CATAPULT_HLS_SYNTH = "CatapultHLSSynthFlow"
     STRATUS_HLS_SYNTH = "StratusHLSSynthFlow"
@@ -99,6 +103,10 @@ class FlowConfig:
     flow_settings: dict[str, str] = field(default_factory=dict)
 
     _REQUIRED_SETTINGS: ClassVar[dict[str, frozenset[str]]] = {
+        FlowName.ALTERA_HLS_SYNTH.value: frozenset({"sources"}),
+        FlowName.ALTERA_HLS_CSIM.value: frozenset({"sources"}),
+        FlowName.ALTERA_HLS_COSIM.value: frozenset({"sources"}),
+        FlowName.ALTERA_QUARTUS_IMPL.value: frozenset({"sources"}),
         FlowName.OPT_DSL_V2.value: frozenset({"opt_dsl_file"}),
         FlowName.CATAPULT_HLS_SYNTH.value: frozenset({"synth_tcl"}),
         FlowName.STRATUS_HLS_SYNTH.value: frozenset(

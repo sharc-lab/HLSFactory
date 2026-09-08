@@ -1,0 +1,19 @@
+# Upstream commit: 0abae6d78af5daca3fe5d67e617ab037e58aff89
+# Agilex7 report-target settings from the upstream CMake build.
+design_name = "decompress"
+dataset_name = "altera_examples"
+tags = ["altera", "sycl", "reference_design", "decompress"]
+
+[[flow_configs]]
+flow_name = "AlteraHLSSynthFlow"
+sources = "src/main.cpp"
+cxxflags = "-Iinclude -Wall -fconstexpr-steps=5084968 -DSNAPPY"
+target = "Agilex7"
+fpga_flags = "-Xsseed=3"
+
+[[flow_configs]]
+flow_name = "AlteraQuartusImplFlow"
+sources = "src/main.cpp"
+cxxflags = "-Iinclude -Wall -fconstexpr-steps=5084968 -DSNAPPY"
+target = "Agilex7"
+fpga_flags = "-Xsseed=3"

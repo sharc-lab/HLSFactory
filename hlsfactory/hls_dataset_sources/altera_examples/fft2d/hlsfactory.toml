@@ -1,0 +1,17 @@
+# Upstream commit: 0abae6d78af5daca3fe5d67e617ab037e58aff89
+# Agilex7 report-target settings from the upstream CMake build.
+design_name = "fft2d"
+dataset_name = "altera_examples"
+tags = ["altera", "sycl", "reference_design", "fft2d"]
+
+[[flow_configs]]
+flow_name = "AlteraHLSSynthFlow"
+sources = "src/fft2d_demo.cpp"
+cxxflags = "-Iinclude -Wall -DLOGN=10 -DPARALLELISM=8"
+target = "Agilex7"
+
+[[flow_configs]]
+flow_name = "AlteraQuartusImplFlow"
+sources = "src/fft2d_demo.cpp"
+cxxflags = "-Iinclude -Wall -DLOGN=10 -DPARALLELISM=8"
+target = "Agilex7"

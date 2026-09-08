@@ -1,0 +1,17 @@
+# Upstream commit: 0abae6d78af5daca3fe5d67e617ab037e58aff89
+# Agilex7 report-target settings from the upstream CMake build.
+design_name = "svd"
+dataset_name = "altera_examples"
+tags = ["altera", "sycl", "reference_design", "svd"]
+
+[[flow_configs]]
+flow_name = "AlteraHLSSynthFlow"
+sources = "src/svd_demo.cpp"
+cxxflags = "-Iinclude -Wall -DFIXED_ITERATIONS=55"
+target = "Agilex7"
+
+[[flow_configs]]
+flow_name = "AlteraQuartusImplFlow"
+sources = "src/svd_demo.cpp"
+cxxflags = "-Iinclude -Wall -DFIXED_ITERATIONS=55"
+target = "Agilex7"

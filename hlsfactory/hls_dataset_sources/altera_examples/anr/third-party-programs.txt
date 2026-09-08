@@ -1,0 +1,38 @@
+Third Party Programs File
+
+This file contains the list of third party software ("third party programs")
+contained in the Intel software and their required notices and/or license
+terms. This third party software, even if included with the distribution of the
+Intel software, may be governed by separate license terms, including without
+limitation, third party license terms, other Intel software license terms, and
+open source software license terms. These separate license terms govern your use
+of the third party programs as set forth in the “third-party-programs.txt” or
+other similarly named text file.
+ 
+Third party programs and their corresponding required notices and/or license
+terms are listed below.
+
+--------------------------------------------------------------------------------
+
+1.  FGPA example designs-gzip
+
+    SDL2.0
+
+zlib License
+
+
+  This software is provided 'as-is', without any express or implied
+  warranty.  In no event will the authors be held liable for any damages
+  arising from the use of this software.
+
+  Permission is granted to anyone to use this software for any purpose,
+  including commercial applications, and to alter it and redistribute it
+  freely, subject to the following restrictions:
+
+  1. The origin of this software must not be misrepresented; you must not
+     claim that you wrote the original software. If you use this software
+     in a product, an acknowledgment in the product documentation would be
+     appreciated but is not required.
+  2. Altered source versions must be plainly marked as such, and must not be
+     misrepresented as being the original software.
+  3. This notice may not be removed or altered from any source distribution.

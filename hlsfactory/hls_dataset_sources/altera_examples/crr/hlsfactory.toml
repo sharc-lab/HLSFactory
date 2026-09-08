@@ -1,0 +1,19 @@
+# Upstream commit: 0abae6d78af5daca3fe5d67e617ab037e58aff89
+# Agilex7 report-target settings from the upstream CMake build.
+design_name = "crr"
+dataset_name = "altera_examples"
+tags = ["altera", "sycl", "reference_design", "crr"]
+
+[[flow_configs]]
+flow_name = "AlteraHLSSynthFlow"
+sources = "src/main.cpp"
+cxxflags = "-Iinclude -Wall -DOUTER_UNROLL_V=1 -DINNER_UNROLL_V=64 -DOUTER_UNROLL_POW2_V=1"
+target = "Agilex7"
+fpga_flags = "-Xsseed=4 -Xsdaz -Xsrounding=faithful"
+
+[[flow_configs]]
+flow_name = "AlteraQuartusImplFlow"
+sources = "src/main.cpp"
+cxxflags = "-Iinclude -Wall -DOUTER_UNROLL_V=1 -DINNER_UNROLL_V=64 -DOUTER_UNROLL_POW2_V=1"
+target = "Agilex7"
+fpga_flags = "-Xsseed=4 -Xsdaz -Xsrounding=faithful"

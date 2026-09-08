@@ -1,0 +1,34 @@
+design_name = "matmul"
+dataset_name = "altera_examples"
+tags = ["altera", "sycl", "reference_design", "matmul"]
+
+[[flow_configs]]
+flow_name = "AlteraHLSCosimFlow"
+sources = "src/matmul_demo.cpp"
+cxxflags = "-Iinclude -DROWS_A=64 -DCOMMON=64 -DCOLS_B=64 -DTILE_A=8 -DTILE_B=8 -fhonor-nans -fhonor-infinities"
+target = "Agilex7"
+clock = "540MHz"
+fpga_flags = "-Xsfast-loop-orchestration=on"
+run_args = "1"
+
+[[flow_configs]]
+flow_name = "AlteraHLSSynthFlow"
+sources = "src/matmul_demo.cpp"
+cxxflags = "-Iinclude -DROWS_A=64 -DCOMMON=64 -DCOLS_B=64 -DTILE_A=8 -DTILE_B=8 -fhonor-nans -fhonor-infinities"
+target = "Agilex7"
+clock = "540MHz"
+fpga_flags = "-Xsfast-loop-orchestration=on"
+
+[[flow_configs]]
+flow_name = "AlteraHLSCsimFlow"
+sources = "src/matmul_demo.cpp"
+cxxflags = "-Iinclude -DROWS_A=64 -DCOMMON=64 -DCOLS_B=64 -DTILE_A=8 -DTILE_B=8 -fhonor-nans -fhonor-infinities"
+run_args = "1"
+
+[[flow_configs]]
+flow_name = "AlteraQuartusImplFlow"
+sources = "src/matmul_demo.cpp"
+cxxflags = "-Iinclude -DROWS_A=64 -DCOMMON=64 -DCOLS_B=64 -DTILE_A=8 -DTILE_B=8 -fhonor-nans -fhonor-infinities"
+target = "Agilex7"
+clock = "540MHz"
+fpga_flags = "-Xsfast-loop-orchestration=on"
