@@ -13,11 +13,12 @@ from hlsfactory.design_config import FlowName
 from hlsfactory.framework import Design, ToolFlow
 from hlsfactory.utils import (
     CallToolResult,
+    ExecutionDataStatus,
     call_tool,
     find_bin_path,
     flow_already_completed,
-    log_execution_time_to_file,
     serialize_methods_for_dataclass,
+    update_execution_data_with_flow_results,
 )
 
 
@@ -357,11 +358,7 @@ class CatapultHLSSynthFlow(ToolFlow):
         design_dir = design.dir
         data_file = design_dir / "data_hls.json"
 
-        if flow_already_completed(
-            design_dir,
-            self.name,
-            success_marker_fp=data_file,
-        ):
+        if flow_already_completed(design_dir, self.name):
             print(f"[{design_dir}] Skipping {self.name}, already completed")
             return [design]
 
@@ -403,13 +400,23 @@ class CatapultHLSSynthFlow(ToolFlow):
         if result == CallToolResult.TIMEOUT:
             timeout_marker.touch()
             print(f"[{design_dir}] Timeout of {timeout} seconds reached")
-            self._log_execution_time(design_dir, start_time)
+            self._log_execution_time(
+                design_dir,
+                start_time,
+                status=ExecutionDataStatus.TIMEOUT,
+                error_message=f"Timeout of {timeout}s reached",
+            )
             return []
 
         if result == CallToolResult.ERROR:
             error_marker.touch()
             print(f"[{design_dir}] Error occurred during execution")
-            self._log_execution_time(design_dir, start_time)
+            self._log_execution_time(
+                design_dir,
+                start_time,
+                status=ExecutionDataStatus.ERROR,
+                error_message="Catapult synthesis execution error",
+            )
             return []
 
         try:
@@ -425,20 +432,33 @@ class CatapultHLSSynthFlow(ToolFlow):
         except (FileNotFoundError, OSError, ValueError) as error:
             error_marker.write_text(f"{error}\n")
             print(f"[{design_dir}] Could not collect Catapult synthesis data: {error}")
-            self._log_execution_time(design_dir, start_time)
+            self._log_execution_time(
+                design_dir,
+                start_time,
+                status=ExecutionDataStatus.ERROR,
+                error_message=f"Could not collect Catapult synthesis data: {error}",
+            )
             return []
 
         synthesis_data.to_json(data_file)  # type: ignore[attr-defined]
         self._log_execution_time(design_dir, start_time)
         return [design]
 
-    def _log_execution_time(self, design_dir: Path, start_time: float) -> None:
+    def _log_execution_time(
+        self,
+        design_dir: Path,
+        start_time: float,
+        status: ExecutionDataStatus = ExecutionDataStatus.SUCCESS,
+        error_message: str | None = None,
+    ) -> None:
         if self.log_execution_time:
-            log_execution_time_to_file(
+            update_execution_data_with_flow_results(
                 design_dir,
                 self.name,
+                status,
                 start_time,
                 time.perf_counter(),
+                error_message=error_message,
             )
 
 

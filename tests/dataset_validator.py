@@ -4,6 +4,13 @@ from pathlib import Path
 from pprint import pp
 
 from hlsfactory.flow_balor import BalorGraphFlow
+from hlsfactory.flow_altera import (
+    AlteraHLSCosimFlow,
+    AlteraHLSCsimFlow,
+    AlteraHLSSynthFlow,
+    AlteraQuartusImplFlow,
+)
+
 from hlsfactory.flow_catapult import CatapultHLSSynthFlow
 from hlsfactory.flow_vitis import (
     VitisHLSCosimFlow,
@@ -34,6 +41,10 @@ from hlsfactory.utils import (
 
 FLOWS = [
     BalorGraphFlow,
+    AlteraHLSCosimFlow,
+    AlteraHLSSynthFlow,
+    AlteraHLSCsimFlow,
+    AlteraQuartusImplFlow,
     CatapultHLSSynthFlow,
     StratusHLSSynthFlow,
     XLSHLSSynthFlow,
@@ -48,6 +59,10 @@ FLOWS = [
 
 FLOW_NAME_MAP = {
     "BalorGraphFlow": BalorGraphFlow,
+    "AlteraHLSCosimFlow": AlteraHLSCosimFlow,
+    "AlteraHLSSynthFlow": AlteraHLSSynthFlow,
+    "AlteraHLSCsimFlow": AlteraHLSCsimFlow,
+    "AlteraQuartusImplFlow": AlteraQuartusImplFlow,
     "CatapultHLSSynthFlow": CatapultHLSSynthFlow,
     "StratusHLSSynthFlow": StratusHLSSynthFlow,
     "XLSHLSSynthFlow": XLSHLSSynthFlow,
@@ -63,13 +78,14 @@ FLOW_NAME_MAP = {
 
 
 def main(args) -> None:
-    top_work_dir = get_work_dir()
+    top_work_dir = args.work_dir if args.work_dir is not None else get_work_dir()
 
     N_JOBS = args.n_jobs
     CPU_AFFINITY = None
 
     TIMEOUT_HLS_SYNTH = 60.0 * 12  # 12 minutes
     TIMEOUT_HLS_IMPL = 60.0 * 30  # 30 minutes
+    TIMEOUT_ALTERA_COSIM = 60.0 * 60  # Includes FPGA simulator library compilation
     TIMEOUT_CATAPULT_SYNTH = 60.0 * 12  # 12 minutes
     TIMEOUT_STRATUS_SYNTH = 60.0 * 12  # 12 minutes
     TIMEOUT_XLS_SYNTH = 60.0 * 12  # 12 minutes
@@ -95,6 +111,14 @@ def main(args) -> None:
         "original",
         work_dir / "original",
     )
+    selected = getattr(args, "designs", None)
+    if selected:
+        unknown = set(selected) - {design.name for design in dataset_instance.designs}
+        if unknown:
+            raise ValueError(f"Unknown designs: {', '.join(sorted(unknown))}")
+        dataset_instance.designs = [
+            design for design in dataset_instance.designs if design.name in selected
+        ]
     datasets = {
         "original": dataset_instance,
     }
@@ -143,6 +167,13 @@ def main(args) -> None:
     flow_instances: list[Flow] = []
     for flow in flow_classes:
         match flow:
+            case cls if cls in (
+                AlteraHLSCosimFlow,
+                AlteraHLSSynthFlow,
+                AlteraHLSCsimFlow,
+                AlteraQuartusImplFlow,
+            ):
+                flow_instance = cls(altera_install_dir=args.altera_install_dir)
             case cls if cls is CatapultHLSSynthFlow:
                 flow_instance = cls(
                     catapult_bin=(
@@ -199,7 +230,13 @@ def main(args) -> None:
 
     in_datasets = datasets
     for flow in flow_instances:
-        if isinstance(flow, VitisHLSSynthFlow):
+        if isinstance(flow, AlteraQuartusImplFlow):
+            timeout = TIMEOUT_HLS_IMPL
+        elif isinstance(flow, AlteraHLSCosimFlow):
+            timeout = TIMEOUT_ALTERA_COSIM
+        elif isinstance(flow, (AlteraHLSSynthFlow, AlteraHLSCsimFlow)):
+            timeout = TIMEOUT_HLS_SYNTH
+        elif isinstance(flow, VitisHLSSynthFlow):
             timeout = TIMEOUT_HLS_SYNTH
         elif isinstance(flow, VitisHLSImplFlow):
             timeout = TIMEOUT_HLS_IMPL
@@ -216,6 +253,9 @@ def main(args) -> None:
         else:
             timeout = None
 
+        if args.timeout is not None:
+            timeout = args.timeout
+
         datasets_post_flow = (
             flow.execute_multiple_design_datasets_fine_grained_parallel(
                 in_datasets,
@@ -228,13 +268,40 @@ def main(args) -> None:
         output_design_count = count_total_designs_in_dataset_collection(
             datasets_post_flow,
         )
-        if output_design_count == 0:
-            raise RuntimeError(f"Flow {flow.name} produced no successful designs")
+        input_design_count = count_total_designs_in_dataset_collection(in_datasets)
+        if output_design_count != input_design_count or output_design_count == 0:
+            raise RuntimeError(
+                f"Flow {flow.name} succeeded for {output_design_count}/{input_design_count} designs"
+            )
+        print(f"{flow.name}: {output_design_count}/{input_design_count} designs passed")
         in_datasets = datasets_post_flow
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Validate dataset files.")
+    parser.add_argument(
+        "--designs",
+        nargs="+",
+        help="Validate only these design names (defaults to the entire dataset).",
+    )
+    parser.add_argument(
+        "--timeout",
+        type=float,
+        default=None,
+        help="Override the per-design timeout in seconds for each selected flow.",
+    )
+    parser.add_argument(
+        "--work-dir",
+        type=Path,
+        default=None,
+        help="Output root (defaults to HLSFACTORY_WORK_DIR from .env).",
+    )
+    parser.add_argument(
+        "--altera-install-dir",
+        type=Path,
+        default=None,
+        help="Altera HLS IP Gen installation containing bin/ahls-sh.",
+    )
     parser.add_argument(
         "dataset_source_directory",
         type=Path,

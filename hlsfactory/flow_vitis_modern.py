@@ -11,10 +11,11 @@ from hlsfactory.flow_vitis import (
 from hlsfactory.framework import Design, ToolFlow
 from hlsfactory.utils import (
     CallToolResult,
+    ExecutionDataStatus,
     call_tool,
     find_bin_path,
     flow_already_completed,
-    log_execution_time_to_file,
+    update_execution_data_with_flow_results,
 )
 
 # Both the synth flow and the csim flow below operate on the same HLS
@@ -69,11 +70,7 @@ class VitisHLSModernSynthFlow(ToolFlow):
     def execute(self, design: Design, timeout: float | None = None) -> list[Design]:
         design_dir = design.dir
 
-        if flow_already_completed(
-            design_dir,
-            self.name,
-            success_marker_fp=design_dir / "data_hls.json",
-        ):
+        if flow_already_completed(design_dir, self.name):
             print(f"[{design_dir}] Skipping {self.name}, already completed")
             return [design]
 
@@ -112,7 +109,14 @@ class VitisHLSModernSynthFlow(ToolFlow):
 
             t_1 = time.perf_counter()
             if self.log_execution_time:
-                log_execution_time_to_file(design_dir, self.name, t_0, t_1)
+                update_execution_data_with_flow_results(
+                    design_dir,
+                    self.name,
+                    ExecutionDataStatus.TIMEOUT,
+                    t_0,
+                    t_1,
+                    error_message=f"Timeout of {timeout}s reached",
+                )
 
             return []
         if return_result == CallToolResult.ERROR:
@@ -121,7 +125,14 @@ class VitisHLSModernSynthFlow(ToolFlow):
 
             t_1 = time.perf_counter()
             if self.log_execution_time:
-                log_execution_time_to_file(design_dir, self.name, t_0, t_1)
+                update_execution_data_with_flow_results(
+                    design_dir,
+                    self.name,
+                    ExecutionDataStatus.ERROR,
+                    t_0,
+                    t_1,
+                    error_message="Synthesis execution error",
+                )
 
             return []
 
@@ -136,7 +147,9 @@ class VitisHLSModernSynthFlow(ToolFlow):
 
         t_1 = time.perf_counter()
         if self.log_execution_time:
-            log_execution_time_to_file(design_dir, self.name, t_0, t_1)
+            update_execution_data_with_flow_results(
+                design_dir, self.name, ExecutionDataStatus.SUCCESS, t_0, t_1
+            )
 
         return [design]
 
@@ -201,7 +214,32 @@ class VitisHLSModernCsimFlow(ToolFlow):
 
         t_1 = time.perf_counter()
         if self.log_execution_time:
-            log_execution_time_to_file(design_dir, self.name, t_0, t_1)
+            if return_result == CallToolResult.TIMEOUT:
+                update_execution_data_with_flow_results(
+                    design_dir,
+                    self.name,
+                    ExecutionDataStatus.TIMEOUT,
+                    t_0,
+                    t_1,
+                    error_message=f"Timeout of {timeout}s reached",
+                )
+            elif return_result == CallToolResult.ERROR:
+                update_execution_data_with_flow_results(
+                    design_dir,
+                    self.name,
+                    ExecutionDataStatus.ERROR,
+                    t_0,
+                    t_1,
+                    error_message="C simulation execution error",
+                )
+            else:
+                update_execution_data_with_flow_results(
+                    design_dir,
+                    self.name,
+                    ExecutionDataStatus.SUCCESS,
+                    t_0,
+                    t_1,
+                )
 
         if return_result == CallToolResult.TIMEOUT:
             (design_dir / f"timeout__{self.name}.txt").touch()

@@ -4,9 +4,10 @@ from hlsfactory.flow_vitis import check_build_files_exist
 from hlsfactory.framework import Design, ToolFlow
 from hlsfactory.utils import (
     CallToolResult,
+    ExecutionDataStatus,
     call_tool,
     find_bin_path,
-    log_execution_time_to_file,
+    update_execution_data_with_flow_results,
 )
 
 
@@ -59,7 +60,14 @@ class BambuSynthFlow(ToolFlow):
 
                 t_1 = time.perf_counter()
                 if self.log_execution_time:
-                    log_execution_time_to_file(design_dir, self.name, t_0, t_1)
+                    update_execution_data_with_flow_results(
+                        design_dir,
+                        self.name,
+                        ExecutionDataStatus.TIMEOUT,
+                        t_0,
+                        t_1,
+                        error_message=f"Timeout of {timeout}s reached",
+                    )
 
                 return []
         else:
@@ -72,6 +80,8 @@ class BambuSynthFlow(ToolFlow):
 
         t_1 = time.perf_counter()
         if self.log_execution_time:
-            log_execution_time_to_file(design_dir, self.name, t_0, t_1)
+            update_execution_data_with_flow_results(
+                design_dir, self.name, ExecutionDataStatus.SUCCESS, t_0, t_1
+            )
 
         return [design]

@@ -15,6 +15,7 @@ The HLS Design Collection is a community-organized effort to build the largest c
 | `test_designs_catapult` | Catapult Test Designs | 2 | Siemens Catapult HLS | Not provided | Small vector-add and dot-product kernels for toolchain validation. |
 | `test_designs_stratus` | Stratus Test Designs | 2 | Cadence Stratus HLS | Not provided | Small streaming arithmetic modules for toolchain validation. |
 | `test_designs_xls` | XLS Test Designs | 11 | Google XLS | Not provided | Small DSLX kernels covering feed-forward functions, stateful processes, and mixed function/proc designs. |
+| `altera_examples` | Altera Reference Designs | 17 | Altera HLS IP Gen | Not provided | All 17 upstream reference-design folders, with synthesis and Quartus implementation configurations. Matmul and merge sort also support simulation. See the [Altera tutorial](tutorials/altera_flow). |
 | `accelerators` | Sharc Lab Accelerators | 7 | Xilinx (Vitis HLS + Vivado) | Not provided | Custom accelerator kernels spanning FlowGNN, DGNN-Booster, MaskNet, SkyNet, and Edge-MoE. |
 | `soda` | SODA | 11 | Xilinx (Vitis HLS + Vivado) | Not provided | Data-flow streaming designs from the SODA project. |
 | `hp_fft` | HP-FFT | 16 | Xilinx (Vitis HLS + Vivado) | Not provided | Parameterized FFT accelerators with a range of unroll factors and design points. |

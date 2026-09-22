@@ -1,0 +1,26 @@
+// JinjaFrontend renders this template to vector_affine.cpp.
+{# Jinja branches and loops run during rendering, before Vitis sees the C++. #}
+void vector_affine(const int a[{{ vector_size }}], const int b[{{ vector_size }}],
+                   int out[{{ vector_size }}]) {
+    static_assert({{ lanes }} > 0 && {{ vector_size }} % {{ lanes }} == 0,
+                  "vector_size must be divisible by a positive lane count");
+{% if lanes > 1 %}
+    // Give each generated lane its own array bank.
+{% for port in ["a", "b", "out"] %}
+#pragma HLS ARRAY_PARTITION variable={{ port }} cyclic factor={{ lanes }} dim=1
+{% endfor %}
+    for (int i = 0; i < {{ vector_size }}; i += {{ lanes }}) {
+#pragma HLS PIPELINE II=1
+{# Emit independent C++ statements instead of a runtime loop over lanes. #}
+{% for lane in range(lanes) %}
+        out[i + {{ lane }}] = {{ scale }} * a[i + {{ lane }}] + b[i + {{ lane }}];
+{% endfor %}
+    }
+{% else %}
+    // A single lane uses a scalar loop without array partitioning.
+    for (int i = 0; i < {{ vector_size }}; ++i) {
+#pragma HLS PIPELINE II=1
+        out[i] = {{ scale }} * a[i] + b[i];
+    }
+{% endif %}
+}

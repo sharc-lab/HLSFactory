@@ -25,6 +25,9 @@ Submodules
    :titlesonly:
    :maxdepth: 1
 
+   hlsfactory.flow_bambu
+   hlsfactory.flow_intel
+   hlsfactory.gather_data
    hlsfactory.datasets_builtin
    hlsfactory.data_packaging
    hlsfactory.define_frontend
@@ -45,6 +48,13 @@ Submodules
    hlsfactory.opt_dsl_frontend_intel
    hlsfactory.opt_dsl_frontend_v2
    hlsfactory.stratus_flow
+   hlsfactory.flow_lightningsim
+   hlsfactory.flow_catapult
+   hlsfactory.stratus_flow
+   hlsfactory.flow_xls
+   hlsfactory.flow_vitis_modern
+   hlsfactory.data_packaging
+   hlsfactory.flow_vitis
    hlsfactory.utils
 
 Package Contents

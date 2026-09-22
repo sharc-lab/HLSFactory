@@ -19,6 +19,15 @@ Classes
    * - :py:obj:`CallToolResult <hlsfactory.utils.CallToolResult>`
      - .. autodoc2-docstring:: hlsfactory.utils.CallToolResult
           :summary:
+   * - :py:obj:`ExecutionDataStatus <hlsfactory.utils.ExecutionDataStatus>`
+     - .. autodoc2-docstring:: hlsfactory.utils.ExecutionDataStatus
+          :summary:
+   * - :py:obj:`FlowExecutionData <hlsfactory.utils.FlowExecutionData>`
+     - .. autodoc2-docstring:: hlsfactory.utils.FlowExecutionData
+          :summary:
+   * - :py:obj:`ExecutionData <hlsfactory.utils.ExecutionData>`
+     - .. autodoc2-docstring:: hlsfactory.utils.ExecutionData
+          :summary:
    * - :py:obj:`FlowTimer <hlsfactory.utils.FlowTimer>`
      - .. autodoc2-docstring:: hlsfactory.utils.FlowTimer
           :summary:
@@ -56,6 +65,11 @@ Functions
           :summary:
    * - :py:obj:`log_execution_time_to_file <hlsfactory.utils.log_execution_time_to_file>`
      - .. autodoc2-docstring:: hlsfactory.utils.log_execution_time_to_file
+   * - :py:obj:`update_execution_data_with_flow_results <hlsfactory.utils.update_execution_data_with_flow_results>`
+     - .. autodoc2-docstring:: hlsfactory.utils.update_execution_data_with_flow_results
+          :summary:
+   * - :py:obj:`read_execution_data <hlsfactory.utils.read_execution_data>`
+     - .. autodoc2-docstring:: hlsfactory.utils.read_execution_data
           :summary:
    * - :py:obj:`flow_already_completed <hlsfactory.utils.flow_already_completed>`
      - .. autodoc2-docstring:: hlsfactory.utils.flow_already_completed
@@ -159,10 +173,155 @@ API
 
 .. py:function:: log_execution_time_to_file(design_dir: pathlib.Path, flow_name: str, t_0: float, t_1: float) -> None
    :canonical: hlsfactory.utils.log_execution_time_to_file
+.. py:class:: ExecutionDataStatus()
+   :canonical: hlsfactory.utils.ExecutionDataStatus
 
-   .. autodoc2-docstring:: hlsfactory.utils.log_execution_time_to_file
+   Bases: :py:obj:`str`, :py:obj:`enum.Enum`
 
-.. py:function:: flow_already_completed(design_dir: pathlib.Path, flow_name: str, success_marker_fp: pathlib.Path | None = None) -> bool
+   .. autodoc2-docstring:: hlsfactory.utils.ExecutionDataStatus
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: hlsfactory.utils.ExecutionDataStatus.__init__
+
+   .. py:attribute:: SUCCESS
+      :canonical: hlsfactory.utils.ExecutionDataStatus.SUCCESS
+      :value: 'success'
+
+      .. autodoc2-docstring:: hlsfactory.utils.ExecutionDataStatus.SUCCESS
+
+   .. py:attribute:: ERROR
+      :canonical: hlsfactory.utils.ExecutionDataStatus.ERROR
+      :value: 'error'
+
+      .. autodoc2-docstring:: hlsfactory.utils.ExecutionDataStatus.ERROR
+
+   .. py:attribute:: TIMEOUT
+      :canonical: hlsfactory.utils.ExecutionDataStatus.TIMEOUT
+      :value: 'timeout'
+
+      .. autodoc2-docstring:: hlsfactory.utils.ExecutionDataStatus.TIMEOUT
+
+   .. py:attribute:: OTHER
+      :canonical: hlsfactory.utils.ExecutionDataStatus.OTHER
+      :value: 'other'
+
+      .. autodoc2-docstring:: hlsfactory.utils.ExecutionDataStatus.OTHER
+
+.. py:class:: FlowExecutionData
+   :canonical: hlsfactory.utils.FlowExecutionData
+
+   .. autodoc2-docstring:: hlsfactory.utils.FlowExecutionData
+
+   .. py:attribute:: status
+      :canonical: hlsfactory.utils.FlowExecutionData.status
+      :type: hlsfactory.utils.ExecutionDataStatus
+      :value: None
+
+      .. autodoc2-docstring:: hlsfactory.utils.FlowExecutionData.status
+
+   .. py:attribute:: t_start
+      :canonical: hlsfactory.utils.FlowExecutionData.t_start
+      :type: float
+      :value: None
+
+      .. autodoc2-docstring:: hlsfactory.utils.FlowExecutionData.t_start
+
+   .. py:attribute:: t_end
+      :canonical: hlsfactory.utils.FlowExecutionData.t_end
+      :type: float
+      :value: None
+
+      .. autodoc2-docstring:: hlsfactory.utils.FlowExecutionData.t_end
+
+   .. py:attribute:: dt
+      :canonical: hlsfactory.utils.FlowExecutionData.dt
+      :type: float
+      :value: None
+
+      .. autodoc2-docstring:: hlsfactory.utils.FlowExecutionData.dt
+
+   .. py:attribute:: core
+      :canonical: hlsfactory.utils.FlowExecutionData.core
+      :type: int | None
+      :value: None
+
+      .. autodoc2-docstring:: hlsfactory.utils.FlowExecutionData.core
+
+   .. py:attribute:: error_message
+      :canonical: hlsfactory.utils.FlowExecutionData.error_message
+      :type: str | None
+      :value: None
+
+      .. autodoc2-docstring:: hlsfactory.utils.FlowExecutionData.error_message
+
+   .. py:method:: to_dict() -> dict[str, typing.Any]
+      :canonical: hlsfactory.utils.FlowExecutionData.to_dict
+
+      .. autodoc2-docstring:: hlsfactory.utils.FlowExecutionData.to_dict
+
+   .. py:method:: from_dict(data: dict[str, typing.Any]) -> hlsfactory.utils.FlowExecutionData
+      :canonical: hlsfactory.utils.FlowExecutionData.from_dict
+      :classmethod:
+
+      .. autodoc2-docstring:: hlsfactory.utils.FlowExecutionData.from_dict
+
+   .. py:method:: to_json() -> str
+      :canonical: hlsfactory.utils.FlowExecutionData.to_json
+
+      .. autodoc2-docstring:: hlsfactory.utils.FlowExecutionData.to_json
+
+   .. py:method:: from_json(json_str: str) -> hlsfactory.utils.FlowExecutionData
+      :canonical: hlsfactory.utils.FlowExecutionData.from_json
+      :classmethod:
+
+      .. autodoc2-docstring:: hlsfactory.utils.FlowExecutionData.from_json
+
+.. py:class:: ExecutionData
+   :canonical: hlsfactory.utils.ExecutionData
+
+   .. autodoc2-docstring:: hlsfactory.utils.ExecutionData
+
+   .. py:attribute:: flows
+      :canonical: hlsfactory.utils.ExecutionData.flows
+      :type: dict[str, hlsfactory.utils.FlowExecutionData]
+      :value: None
+
+      .. autodoc2-docstring:: hlsfactory.utils.ExecutionData.flows
+
+   .. py:method:: to_dict() -> dict[str, typing.Any]
+      :canonical: hlsfactory.utils.ExecutionData.to_dict
+
+      .. autodoc2-docstring:: hlsfactory.utils.ExecutionData.to_dict
+
+   .. py:method:: from_dict(data: dict[str, typing.Any]) -> hlsfactory.utils.ExecutionData
+      :canonical: hlsfactory.utils.ExecutionData.from_dict
+      :classmethod:
+
+      .. autodoc2-docstring:: hlsfactory.utils.ExecutionData.from_dict
+
+   .. py:method:: to_json() -> str
+      :canonical: hlsfactory.utils.ExecutionData.to_json
+
+      .. autodoc2-docstring:: hlsfactory.utils.ExecutionData.to_json
+
+   .. py:method:: from_json(json_str: str) -> hlsfactory.utils.ExecutionData
+      :canonical: hlsfactory.utils.ExecutionData.from_json
+      :classmethod:
+
+      .. autodoc2-docstring:: hlsfactory.utils.ExecutionData.from_json
+
+.. py:function:: update_execution_data_with_flow_results(design_dir: pathlib.Path, flow_name: str, status: hlsfactory.utils.ExecutionDataStatus, t_start: float, t_end: float, core: int | None = None, error_message: str | None = None) -> None
+   :canonical: hlsfactory.utils.update_execution_data_with_flow_results
+
+   .. autodoc2-docstring:: hlsfactory.utils.update_execution_data_with_flow_results
+
+.. py:function:: read_execution_data(design_dir: pathlib.Path, flow_name: str | None = None) -> hlsfactory.utils.ExecutionData | hlsfactory.utils.FlowExecutionData | None
+   :canonical: hlsfactory.utils.read_execution_data
+
+   .. autodoc2-docstring:: hlsfactory.utils.read_execution_data
+
+.. py:function:: flow_already_completed(design_dir: pathlib.Path, flow_name: str) -> bool
    :canonical: hlsfactory.utils.flow_already_completed
 
    .. autodoc2-docstring:: hlsfactory.utils.flow_already_completed
@@ -187,6 +346,7 @@ API
       .. autodoc2-docstring:: hlsfactory.utils.FlowTimer.stop
 
    .. py:method:: log(status: str = 'success', return_code: typing.Optional[int] = 0, error_message: typing.Optional[str] = None) -> None
+   .. py:method:: log(status: hlsfactory.utils.ExecutionDataStatus = ExecutionDataStatus.SUCCESS, error_message: str | None = None) -> None
       :canonical: hlsfactory.utils.FlowTimer.log
 
       .. autodoc2-docstring:: hlsfactory.utils.FlowTimer.log

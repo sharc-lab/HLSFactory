@@ -7,6 +7,7 @@
 - [](catapult_flow)
 - [](balor_flow)
 - [](intel_flow)
+- [](altera_flow)
 - [](data_agg)
 - [](custom_designs)
 - {ref}`opt_dsl_tutorial`
@@ -24,6 +25,7 @@ xls_flow
 catapult_flow
 balor_flow
 intel_flow
+altera_flow
 data_agg
 custom_designs
 opt_dsl

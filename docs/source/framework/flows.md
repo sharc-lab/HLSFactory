@@ -90,7 +90,7 @@ The flow invokes `catapult -shell -file synth.tcl` in the design directory. A su
 - Operation count
 - Total, combinational, sequential, datapath, register, functional-unit, MUX, logic, memory, ROM, and FSM area metrics
 
-The flow supports the same dataset-level parallel execution and per-design timeout interface as the other `ToolFlow` implementations. It creates `error__CatapultHLSSynthFlow.txt` or `timeout__CatapultHLSSynthFlow.txt` when a design fails, and records runtime in `execution_time_data.json` when execution-time logging is enabled.
+The flow supports the same dataset-level parallel execution and per-design timeout interface as the other `ToolFlow` implementations. It creates `error__CatapultHLSSynthFlow.txt` or `timeout__CatapultHLSSynthFlow.txt` when a design fails, and records runtime and completion status in `execution_data.json` when execution-time logging is enabled.
 
 The Catapult executable is resolved from an explicit `catapult_bin`, then
 `HLSFACTORY_CATAPULT_PATH`, and finally `PATH`. The environment setting accepts

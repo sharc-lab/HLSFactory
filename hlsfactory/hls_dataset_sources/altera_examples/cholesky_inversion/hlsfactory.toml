@@ -1,0 +1,21 @@
+# Upstream commit: 0abae6d78af5daca3fe5d67e617ab037e58aff89
+# Agilex7 report-target settings from the upstream CMake build.
+design_name = "cholesky_inversion"
+dataset_name = "altera_examples"
+tags = ["altera", "sycl", "reference_design", "cholesky_inversion"]
+
+[[flow_configs]]
+flow_name = "AlteraHLSSynthFlow"
+sources = "src/cholesky_inversion_demo.cpp"
+cxxflags = "-Iinclude -Wall -DFIXED_ITERATIONS_DECOMPOSITION=45 -DFIXED_ITERATIONS_INVERSION=45 -DCOMPLEX=0 -DMATRIX_DIMENSION=32 -fbracket-depth=512 -fhonor-nans -fhonor-infinities"
+target = "Agilex7"
+clock = "520MHz"
+fpga_flags = "-Xsseed=5"
+
+[[flow_configs]]
+flow_name = "AlteraQuartusImplFlow"
+sources = "src/cholesky_inversion_demo.cpp"
+cxxflags = "-Iinclude -Wall -DFIXED_ITERATIONS_DECOMPOSITION=45 -DFIXED_ITERATIONS_INVERSION=45 -DCOMPLEX=0 -DMATRIX_DIMENSION=32 -fbracket-depth=512 -fhonor-nans -fhonor-infinities"
+target = "Agilex7"
+clock = "520MHz"
+fpga_flags = "-Xsseed=5"

@@ -1,0 +1,17 @@
+# Upstream commit: 0abae6d78af5daca3fe5d67e617ab037e58aff89
+# Agilex7 report-target settings from the upstream CMake build.
+design_name = "mvdr_beamforming"
+dataset_name = "altera_examples"
+tags = ["altera", "sycl", "reference_design", "mvdr_beamforming"]
+
+[[flow_configs]]
+flow_name = "AlteraHLSSynthFlow"
+sources = "src/mvdr_beamforming.cpp"
+cxxflags = "-Iinclude -Wall -DUSM_HOST_ALLOCATIONS -fbracket-depth=512"
+target = "Agilex7"
+
+[[flow_configs]]
+flow_name = "AlteraQuartusImplFlow"
+sources = "src/mvdr_beamforming.cpp"
+cxxflags = "-Iinclude -Wall -DUSM_HOST_ALLOCATIONS -fbracket-depth=512"
+target = "Agilex7"

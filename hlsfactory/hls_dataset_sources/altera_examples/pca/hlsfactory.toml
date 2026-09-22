@@ -1,0 +1,17 @@
+# Upstream commit: 0abae6d78af5daca3fe5d67e617ab037e58aff89
+# Agilex7 report-target settings from the upstream CMake build.
+design_name = "pca"
+dataset_name = "altera_examples"
+tags = ["altera", "sycl", "reference_design", "pca"]
+
+[[flow_configs]]
+flow_name = "AlteraHLSSynthFlow"
+sources = "src/pca_demo.cpp"
+cxxflags = "-Iinclude -Wall -ffp-model=precise -fhonor-nans -fhonor-infinities -fbracket-depth=512 -DFIXED_ITERATIONS=55 -DFEATURES_COUNT= -DSAMPLES_COUNT= -DBENCHMARK=1"
+target = "Agilex7"
+
+[[flow_configs]]
+flow_name = "AlteraQuartusImplFlow"
+sources = "src/pca_demo.cpp"
+cxxflags = "-Iinclude -Wall -ffp-model=precise -fhonor-nans -fhonor-infinities -fbracket-depth=512 -DFIXED_ITERATIONS=55 -DFEATURES_COUNT= -DSAMPLES_COUNT= -DBENCHMARK=1"
+target = "Agilex7"

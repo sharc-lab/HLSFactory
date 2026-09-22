@@ -19,7 +19,7 @@ Tool flows write JSON files into each design directory. The following table summ
 | `data_hls.json` | CatapultHLSSynthFlow | `clock_period`, `clock_period_ns`, `latency_cycles`, `throughput_cycles`, `initiation_interval_cycles`, `critical_path_delay_ns`, `critical_path_slack_ns`, `total_area`, `combinational_area`, `sequential_area`, and post-assignment datapath/FSM/component area fields |
 | `data_hls.json` | XLSHLSSynthFlow | `latency_cycles`, `initiation_interval`, `flop_count`, `feedthrough_path_exists`, `metrics_delay_model`, estimated path delays in picoseconds, `operation_counts`, `operation_kind_counts` |
 | `data_implementation.json` | VitisHLSImplReportFlow | `power__total_power`, `power__dynamic_power`, `power__static_power`, `utilization__Total LUTs`, `utilization__FFs`, `utilization__DSP Blocks`, `utilization__RAMB18`, `utilization__URAM`, `timing__WNS`, `timing__TNS`, `timing__WHS`, `timing__THS`, `timing__clock_period`, `timing__clock_frequency` |
-| `execution_time_data.json` | All flows (when logging enabled) | Per-flow: `t_start`, `t_end`, `dt`, `core` |
+| `execution_data.json` | All flows (when logging enabled) | Per-flow: `status`, `t_start`, `t_end`, `dt`, `core`, `error_message` |
 
 When a `DataAggregator` gathers these files, `CompleteHLSData.to_flat_dict()` prefixes keys with `design__*`, `synthesis__*`, `implementation__*`, or `execution__*`. For example, Catapult's `latency_cycles` becomes `synthesis__latency_cycles`.
 

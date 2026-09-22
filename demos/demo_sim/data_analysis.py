@@ -3,7 +3,12 @@ from pathlib import Path
 
 import pandas as pd
 
-from hlsfactory.utils import DirSource, get_work_dir
+from hlsfactory.utils import (
+    DirSource,
+    FlowExecutionData,
+    get_work_dir,
+    read_execution_data,
+)
 
 DIR_CURRENT_SCRIPT = Path(__file__).parent
 
@@ -134,23 +139,33 @@ print(f"Mean Absolute Percentage Error (LightningSim): {mape_lightningsim:.2f}%"
 
 ### Runtime Comparison Table ###
 # Compares how long each flow took to run per design, using the per-flow
-# `dt` entries that log_execution_time_to_file writes to
-# execution_time_data.json.
+# `dt` entries that update_execution_data_with_flow_results writes to
+# execution_data.json.
 
 runtime_rows = []
 for design_dir in sorted(DATASET_DIR.glob("*")):
     if not design_dir.is_dir():
         continue
 
-    execution_time_fp = design_dir / "execution_time_data.json"
+    execution_time_fp = design_dir / "execution_data.json"
     if not execution_time_fp.exists():
         continue
 
-    execution_time_data = json.loads(execution_time_fp.read_text())
+    csynth_data = read_execution_data(design_dir, "VitisHLSSynthFlow")
+    cosim_data = read_execution_data(design_dir, "VitisHLSCosimFlow")
+    lightningsim_data = read_execution_data(design_dir, "LightningSimFlow")
 
-    csynth_runtime_s = execution_time_data.get("VitisHLSSynthFlow", {}).get("dt")
-    cosim_runtime_s = execution_time_data.get("VitisHLSCosimFlow", {}).get("dt")
-    lightningsim_runtime_s = execution_time_data.get("LightningSimFlow", {}).get("dt")
+    csynth_runtime_s = (
+        csynth_data.dt if isinstance(csynth_data, FlowExecutionData) else None
+    )
+    cosim_runtime_s = (
+        cosim_data.dt if isinstance(cosim_data, FlowExecutionData) else None
+    )
+    lightningsim_runtime_s = (
+        lightningsim_data.dt
+        if isinstance(lightningsim_data, FlowExecutionData)
+        else None
+    )
 
     if (
         csynth_runtime_s is None

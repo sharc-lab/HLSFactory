@@ -22,11 +22,12 @@ from hlsfactory.design_config import FlowName
 from hlsfactory.framework import Design, ToolFlow
 from hlsfactory.utils import (
     CallToolResult,
+    ExecutionDataStatus,
     call_tool,
     find_bin_path,
     flow_already_completed,
-    log_execution_time_to_file,
     serialize_methods_for_dataclass,
+    update_execution_data_with_flow_results,
 )
 
 _METRICS_TCL_FILENAME = ".hlsfactory_stratus_metrics.tcl"
@@ -324,11 +325,7 @@ class StratusHLSSynthFlow(ToolFlow):
         design_dir = design.dir
         data_file = design_dir / "data_hls.json"
 
-        if flow_already_completed(
-            design_dir,
-            self.name,
-            success_marker_fp=data_file,
-        ):
+        if flow_already_completed(design_dir, self.name):
             print(f"[{design_dir}] Skipping {self.name}, already completed")
             return [design]
 
@@ -467,7 +464,12 @@ class StratusHLSSynthFlow(ToolFlow):
                 self._write_error(
                     design_dir, f"Could not collect Stratus data: {error}"
                 )
-                self._log_execution_time(design_dir, start_time)
+                self._log_execution_time(
+                    design_dir,
+                    start_time,
+                    status=ExecutionDataStatus.ERROR,
+                    error_message=f"Could not collect Stratus data: {error}",
+                )
                 return []
 
         hls_data.to_json(data_file)  # type: ignore[attr-defined]
@@ -484,14 +486,25 @@ class StratusHLSSynthFlow(ToolFlow):
         stage: str,
     ) -> list[Design]:
         if result == CallToolResult.TIMEOUT:
+            error_message = f"Timeout of {timeout}s reached during Stratus {stage}"
             (design_dir / f"timeout__{self.name}.txt").touch()
             print(
                 f"[{design_dir}] Timeout of {timeout} seconds reached during "
                 f"Stratus {stage}",
             )
         else:
-            self._write_error(design_dir, f"Stratus {stage} failed")
-        self._log_execution_time(design_dir, start_time)
+            error_message = f"Stratus {stage} failed"
+            self._write_error(design_dir, error_message)
+        self._log_execution_time(
+            design_dir,
+            start_time,
+            status=(
+                ExecutionDataStatus.TIMEOUT
+                if result == CallToolResult.TIMEOUT
+                else ExecutionDataStatus.ERROR
+            ),
+            error_message=error_message,
+        )
         return []
 
     def _write_error(self, design_dir: Path, message: str) -> None:
@@ -501,13 +514,21 @@ class StratusHLSSynthFlow(ToolFlow):
         )
         print(f"[{design_dir}] {message}")
 
-    def _log_execution_time(self, design_dir: Path, start_time: float) -> None:
+    def _log_execution_time(
+        self,
+        design_dir: Path,
+        start_time: float,
+        status: ExecutionDataStatus = ExecutionDataStatus.SUCCESS,
+        error_message: str | None = None,
+    ) -> None:
         if self.log_execution_time:
-            log_execution_time_to_file(
+            update_execution_data_with_flow_results(
                 design_dir,
                 self.name,
+                status,
                 start_time,
                 time.perf_counter(),
+                error_message=error_message,
             )
 
 

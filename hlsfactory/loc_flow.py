@@ -2,7 +2,10 @@ import json
 import time
 
 from hlsfactory.framework import Design, Flow
-from hlsfactory.utils import log_execution_time_to_file
+from hlsfactory.utils import (
+    ExecutionDataStatus,
+    update_execution_data_with_flow_results,
+)
 
 
 class LOCCounterFlow(Flow):
@@ -39,6 +42,8 @@ class LOCCounterFlow(Flow):
 
         t_1 = time.perf_counter()
         if self.log_execution_time:
-            log_execution_time_to_file(design_dir, self.name, t_0, t_1)
+            update_execution_data_with_flow_results(
+                design_dir, self.name, ExecutionDataStatus.SUCCESS, t_0, t_1
+            )
 
         return [design]

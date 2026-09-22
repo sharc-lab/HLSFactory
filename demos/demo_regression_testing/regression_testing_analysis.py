@@ -4,7 +4,12 @@ from pathlib import Path
 import pandas as pd
 from scipy.stats import gmean, wilcoxon
 
-from hlsfactory.utils import DirSource, get_work_dir
+from hlsfactory.utils import (
+    DirSource,
+    FlowExecutionData,
+    get_work_dir,
+    read_execution_data,
+)
 
 DIR_CURRENT_SCRIPT = Path(__file__).parent
 
@@ -40,7 +45,7 @@ for design_data_single in design_data:
 
     data_design_fp = design_dir / "data_design.json"
     data_hls_fp = design_dir / "data_hls.json"
-    data_execution_time_fp = design_dir / "execution_time_data.json"
+    data_execution_time_fp = design_dir / "execution_data.json"
 
     if (
         not data_design_fp.exists()
@@ -51,9 +56,11 @@ for design_data_single in design_data:
 
     data_hls = json.loads(data_hls_fp.read_text())
     data_design = json.loads(data_design_fp.read_text())
-    data_execution_time = json.loads(data_execution_time_fp.read_text())
+    execution_data = read_execution_data(design_dir, "VitisHLSSynthFlow")
+    if not isinstance(execution_data, FlowExecutionData):
+        continue
     data_vitis_hls_execution_time = {
-        "vitis_hls_dt": data_execution_time["VitisHLSSynthFlow"]["dt"],
+        "vitis_hls_dt": execution_data.dt,
     }
 
     ratio_data = {

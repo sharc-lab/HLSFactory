@@ -114,7 +114,7 @@ for design in results["test_designs_catapult"].designs:
     )
 ```
 
-When execution-time logging is enabled (the default), `execution_time_data.json` records the runtime and CPU core. Failed and timed-out designs receive `error__CatapultHLSSynthFlow.txt` and `timeout__CatapultHLSSynthFlow.txt`, respectively, and are omitted from the returned dataset.
+When execution-time logging is enabled (the default), `execution_data.json` records the runtime, CPU core, and completion status. Failed and timed-out designs receive `error__CatapultHLSSynthFlow.txt` and `timeout__CatapultHLSSynthFlow.txt`, respectively, and are omitted from the returned dataset.
 
 (catapult-validator-smoke-test)=
 ## Validator Smoke Test

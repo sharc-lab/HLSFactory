@@ -1,0 +1,6 @@
+design_name = "design_define"
+dataset_name = "demo_frontends"
+
+[[flow_configs]]
+flow_name = "VitisHLSSynthFlow"
+synth_tcl = "dataset_hls.tcl"

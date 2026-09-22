@@ -18,6 +18,7 @@ DIR_DATASET_TEST_DESIGNS_CATAPULT = HLS_DATASET_DIR / "test_designs_catapult"
 DIR_DATASET_TEST_DESIGNS_STRATUS = HLS_DATASET_DIR / "test_designs_stratus"
 DIR_DATASET_TEST_DESIGNS_XLS = HLS_DATASET_DIR / "test_designs_xls"
 DIR_DATASET_XLS_UPSTREAM = HLS_DATASET_DIR / "xls_upstream"
+DIR_DATASET_ALTERA_EXAMPLES = HLS_DATASET_DIR / "altera_examples"
 DIR_DATASET_TEST_DESIGNS_VITIS_MODERN = HLS_DATASET_DIR / "test_designs_vitis_modern"
 DIR_DATASET_ACCELERATORS = HLS_DATASET_DIR / "accelerators"
 
@@ -38,6 +39,7 @@ DIR_ALL = [
     DIR_DATASET_TEST_DESIGNS_CATAPULT,
     DIR_DATASET_TEST_DESIGNS_STRATUS,
     DIR_DATASET_TEST_DESIGNS_XLS,
+    DIR_DATASET_ALTERA_EXAMPLES,
     DIR_DATASET_TEST_DESIGNS_VITIS_MODERN,
     DIR_DATASET_ACCELERATORS,
     DIR_DATASET_SODA,
@@ -124,6 +126,10 @@ def dataset_xls_upstream_builder(name: str, work_dir: Path) -> DesignDataset:
     check_dataset_dir_exists(DIR_DATASET_XLS_UPSTREAM)
     new_dir = work_dir / name
     shutil.copytree(DIR_DATASET_XLS_UPSTREAM, new_dir)
+def dataset_altera_examples_builder(name: str, work_dir: Path) -> DesignDataset:
+    check_dataset_dir_exists(DIR_DATASET_ALTERA_EXAMPLES)
+    new_dir = work_dir / name
+    shutil.copytree(DIR_DATASET_ALTERA_EXAMPLES, new_dir)
     return DesignDataset.from_dir(name, new_dir)
 
 
@@ -198,6 +204,7 @@ DATASET_STR_MAP: dict[str, T_dataset_builder] = {
     "test_designs_stratus": dataset_test_designs_stratus_builder,
     "test_designs_xls": dataset_test_designs_xls_builder,
     "xls_upstream": dataset_xls_upstream_builder,
+    "altera_examples": dataset_altera_examples_builder,
     "test_designs_vitis_modern": dataset_test_designs_vitis_modern_builder,
     "accelerators": dataset_accelerators_builder,
     "soda": dataset_soda_builder,
