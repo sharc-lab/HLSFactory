@@ -5,6 +5,7 @@
 - [](xilinx_flow)
 - [](xls_flow)
 - [](catapult_flow)
+- [](balor_flow)
 - [](intel_flow)
 - [](altera_flow)
 - [](data_agg)
@@ -22,6 +23,7 @@
 xilinx_flow
 xls_flow
 catapult_flow
+balor_flow
 intel_flow
 altera_flow
 data_agg

@@ -1,0 +1,12 @@
+design_name = "reorder_queue"
+dataset_name = "xls_upstream"
+tags = ["proc", "queue", "control", "stateful", "dslx", "upstream"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "reorder_queue.x"
+top = "reorder_queue_32_16"
+generator = "pipeline"
+pipeline_stages = "1"
+delay_model = "unit"
+reset = "rst"

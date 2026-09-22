@@ -38,7 +38,7 @@ API
 
    .. autodoc2-docstring:: hlsfactory.gather_data.main
 
-.. py:class:: FileFormat(*args, **kwds)
+.. py:class:: FileFormat
    :canonical: hlsfactory.gather_data.FileFormat
 
    Bases: :py:obj:`enum.Enum`

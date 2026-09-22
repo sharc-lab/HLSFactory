@@ -1,0 +1,11 @@
+design_name = "sha256"
+dataset_name = "xls_upstream"
+tags = ["crypto", "hash", "bitwise", "dslx", "upstream"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "sha256.x"
+top = "main"
+generator = "pipeline"
+pipeline_stages = "1"
+delay_model = "unit"

@@ -57,6 +57,14 @@ Functions
    * - :py:obj:`find_bin_path <hlsfactory.utils.find_bin_path>`
      - .. autodoc2-docstring:: hlsfactory.utils.find_bin_path
           :summary:
+   * - :py:obj:`write_execution_data <hlsfactory.utils.write_execution_data>`
+     - .. autodoc2-docstring:: hlsfactory.utils.write_execution_data
+          :summary:
+   * - :py:obj:`read_execution_data <hlsfactory.utils.read_execution_data>`
+     - .. autodoc2-docstring:: hlsfactory.utils.read_execution_data
+          :summary:
+   * - :py:obj:`log_execution_time_to_file <hlsfactory.utils.log_execution_time_to_file>`
+     - .. autodoc2-docstring:: hlsfactory.utils.log_execution_time_to_file
    * - :py:obj:`update_execution_data_with_flow_results <hlsfactory.utils.update_execution_data_with_flow_results>`
      - .. autodoc2-docstring:: hlsfactory.utils.update_execution_data_with_flow_results
           :summary:
@@ -108,16 +116,12 @@ Data
 API
 ~~~
 
-.. py:class:: CallToolResult(*args, **kwds)
+.. py:class:: CallToolResult
    :canonical: hlsfactory.utils.CallToolResult
 
    Bases: :py:obj:`enum.Enum`
 
    .. autodoc2-docstring:: hlsfactory.utils.CallToolResult
-
-   .. rubric:: Initialization
-
-   .. autodoc2-docstring:: hlsfactory.utils.CallToolResult.__init__
 
    .. py:attribute:: SUCCESS
       :canonical: hlsfactory.utils.CallToolResult.SUCCESS
@@ -157,6 +161,18 @@ API
 
    .. autodoc2-docstring:: hlsfactory.utils.find_bin_path
 
+.. py:function:: write_execution_data(design_dir: pathlib.Path, flow_name: str, status: str, t_start: float, t_end: float, core: typing.Optional[int] = None, return_code: typing.Optional[int] = 0, error_message: typing.Optional[str] = None) -> None
+   :canonical: hlsfactory.utils.write_execution_data
+
+   .. autodoc2-docstring:: hlsfactory.utils.write_execution_data
+
+.. py:function:: read_execution_data(design_dir: pathlib.Path, flow_name: typing.Optional[str] = None) -> typing.Any
+   :canonical: hlsfactory.utils.read_execution_data
+
+   .. autodoc2-docstring:: hlsfactory.utils.read_execution_data
+
+.. py:function:: log_execution_time_to_file(design_dir: pathlib.Path, flow_name: str, t_0: float, t_1: float) -> None
+   :canonical: hlsfactory.utils.log_execution_time_to_file
 .. py:class:: ExecutionDataStatus()
    :canonical: hlsfactory.utils.ExecutionDataStatus
 
@@ -329,6 +345,7 @@ API
 
       .. autodoc2-docstring:: hlsfactory.utils.FlowTimer.stop
 
+   .. py:method:: log(status: str = 'success', return_code: typing.Optional[int] = 0, error_message: typing.Optional[str] = None) -> None
    .. py:method:: log(status: hlsfactory.utils.ExecutionDataStatus = ExecutionDataStatus.SUCCESS, error_message: str | None = None) -> None
       :canonical: hlsfactory.utils.FlowTimer.log
 
@@ -360,16 +377,12 @@ API
 
    .. autodoc2-docstring:: hlsfactory.utils.timeout_not_supported
 
-.. py:class:: DirSource(*args, **kwds)
+.. py:class:: DirSource
    :canonical: hlsfactory.utils.DirSource
 
    Bases: :py:obj:`enum.Enum`
 
    .. autodoc2-docstring:: hlsfactory.utils.DirSource
-
-   .. rubric:: Initialization
-
-   .. autodoc2-docstring:: hlsfactory.utils.DirSource.__init__
 
    .. py:attribute:: ENVFILE
       :canonical: hlsfactory.utils.DirSource.ENVFILE
@@ -394,16 +407,12 @@ API
 
    .. autodoc2-docstring:: hlsfactory.utils.get_work_dir
 
-.. py:class:: ToolPathsSource(*args, **kwds)
+.. py:class:: ToolPathsSource
    :canonical: hlsfactory.utils.ToolPathsSource
 
    Bases: :py:obj:`enum.Enum`
 
    .. autodoc2-docstring:: hlsfactory.utils.ToolPathsSource
-
-   .. rubric:: Initialization
-
-   .. autodoc2-docstring:: hlsfactory.utils.ToolPathsSource.__init__
 
    .. py:attribute:: ENVFILE
       :canonical: hlsfactory.utils.ToolPathsSource.ENVFILE

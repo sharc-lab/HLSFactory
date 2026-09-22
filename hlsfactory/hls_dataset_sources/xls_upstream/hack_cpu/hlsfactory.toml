@@ -1,0 +1,11 @@
+design_name = "hack_cpu"
+dataset_name = "xls_upstream"
+tags = ["processor", "alu", "dslx", "upstream"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "hack_cpu.x"
+top = "cpu"
+generator = "pipeline"
+pipeline_stages = "1"
+delay_model = "unit"

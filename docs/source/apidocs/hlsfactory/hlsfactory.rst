@@ -13,9 +13,10 @@ Subpackages
    :titlesonly:
    :maxdepth: 3
 
+   hlsfactory.autodse_vitis
+   hlsfactory.harp
    hlsfactory.opt_dsl_v2
    hlsfactory.scripts
-   hlsfactory.autodse_vitis
 
 Submodules
 ----------
@@ -28,15 +29,25 @@ Submodules
    hlsfactory.flow_intel
    hlsfactory.gather_data
    hlsfactory.datasets_builtin
+   hlsfactory.data_packaging
    hlsfactory.define_frontend
    hlsfactory.design_config
-   hlsfactory.flow_harp
+   hlsfactory.flow_balor
+   hlsfactory.flow_bambu
+   hlsfactory.flow_catapult
+   hlsfactory.flow_intel
+   hlsfactory.flow_lightningsim
+   hlsfactory.flow_vitis
+   hlsfactory.flow_vitis_modern
+   hlsfactory.flow_xls
    hlsfactory.framework
+   hlsfactory.gather_data
    hlsfactory.jinja_frontend
    hlsfactory.loc_flow
    hlsfactory.opt_dsl_frontend
    hlsfactory.opt_dsl_frontend_intel
    hlsfactory.opt_dsl_frontend_v2
+   hlsfactory.stratus_flow
    hlsfactory.flow_lightningsim
    hlsfactory.flow_catapult
    hlsfactory.stratus_flow

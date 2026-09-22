@@ -1,0 +1,11 @@
+design_name = "adler32"
+dataset_name = "xls_upstream"
+tags = ["checksum", "dslx", "upstream"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "adler32.x"
+top = "main"
+generator = "pipeline"
+pipeline_stages = "1"
+delay_model = "unit"

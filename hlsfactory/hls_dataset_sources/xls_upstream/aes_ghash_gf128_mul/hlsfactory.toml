@@ -1,0 +1,12 @@
+design_name = "aes_ghash_gf128_mul"
+dataset_name = "xls_upstream"
+tags = ["crypto", "aes", "galois-field", "dslx", "upstream"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "ghash.x"
+top = "gf128_mul"
+generator = "pipeline"
+pipeline_stages = "1"
+delay_model = "unit"
+dslx_path = "."

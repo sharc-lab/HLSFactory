@@ -1,0 +1,13 @@
+design_name = "rle_dec"
+dataset_name = "xls_upstream"
+tags = ["compression", "rle", "proc", "stateful", "dslx", "upstream"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "rle_dec.x"
+top = "RunLengthDecoder32"
+generator = "pipeline"
+pipeline_stages = "1"
+delay_model = "unit"
+dslx_path = "."
+reset = "rst"

@@ -1,0 +1,10 @@
+{
+    "upstream_repo": "https://github.com/google/xls",
+    "upstream_commit": "998cf6aec2a7b09c9ad14c492fe4fca63f831fb2",
+    "upstream_release": "v0.0.0-10684-g998cf6aec",
+    "upstream_path": "xls/modules/ml/ws_matmul.x",
+    "local_file": "ws_matmul.x",
+    "top": "ws_2x2",
+    "license": "Apache-2.0",
+    "provenance": "human-authored upstream"
+}
