@@ -57,6 +57,28 @@ def get_xls_install_dir(xls_install_dir: str | Path | None = None) -> Path:
     return DEFAULT_XLS_PATH
 
 
+def find_dslx_stdlib(xls_install_dir: Path) -> Path | None:
+    """Locate the DSLX standard library shipped with an XLS installation.
+
+    ``ir_converter_main`` defaults ``--dslx_stdlib_path`` to the relative path
+    ``xls/dslx/stdlib``, which only resolves when the tool is run from the
+    installation root. The flow runs with ``cwd`` set to the design directory,
+    so the path has to be passed explicitly or every ``import std``-style
+    design fails to convert.
+
+    Returns None when the directory is absent, in which case the tool default
+    is left alone.
+    """
+    candidates = [
+        xls_install_dir / "xls" / "dslx" / "stdlib",
+        xls_install_dir / "dslx" / "stdlib",
+    ]
+    for candidate in candidates:
+        if candidate.is_dir():
+            return candidate
+    return None
+
+
 def find_xls_binary(xls_install_dir: Path, binary_name: str) -> Path:
     """Find an XLS binary in a release bundle or Bazel source build."""
     try:
@@ -300,6 +322,23 @@ class XLSHLSSynthFlow(ToolFlow):
                 "required for XLS synthesis.",
             )
 
+        # Additional import roots for designs that import modules beyond the
+        # DSLX stdlib. Relative entries resolve against the design directory so
+        # a design stays portable; absolute entries are used as given.
+        dslx_path_setting = flow_config.get_setting("dslx_path")
+        dslx_path = ""
+        if dslx_path_setting:
+            roots = []
+            for entry in dslx_path_setting.split(":"):
+                entry = entry.strip()
+                if not entry:
+                    continue
+                candidate = Path(entry).expanduser()
+                if not candidate.is_absolute():
+                    candidate = design_dir / candidate
+                roots.append(str(candidate))
+            dslx_path = ":".join(roots)
+
         artifact_stem = dslx_file.stem
         ir_file = design_dir / f"{artifact_stem}.ir"
         optimized_ir_file = design_dir / f"{artifact_stem}.opt.ir"
@@ -356,6 +395,9 @@ class XLSHLSSynthFlow(ToolFlow):
         pipeline_stages: int | None = None
         delay_model: str | None = None
         reset = flow_config.get_setting("reset")
+        # Relaxes the scheduler's full-throughput requirement. Large proc
+        # networks report `cannot achieve full throughput` without it.
+        worst_case_throughput = flow_config.get_setting("worst_case_throughput")
         if reset and generator != "pipeline":
             raise ValueError("XLS `reset` is only supported by the pipeline generator.")
         if generator == "pipeline":
@@ -471,8 +513,16 @@ class XLSHLSSynthFlow(ToolFlow):
             f"--interface_textproto_file={interface_textproto_file.name}",
             "--ir_converter_options_used_textproto_file="
             f"{ir_converter_options_file.name}",
-            dslx_file.name,
         ]
+
+        dslx_stdlib = find_dslx_stdlib(self.xls_install_dir)
+        if dslx_stdlib is not None:
+            ir_converter_command.append(f"--dslx_stdlib_path={dslx_stdlib}")
+
+        if dslx_path:
+            ir_converter_command.append(f"--dslx_path={dslx_path}")
+
+        ir_converter_command.append(dslx_file.name)
         optimizer_command = [
             str(optimizer),
             f"--output_path={optimized_ir_file.name}",
@@ -518,6 +568,10 @@ class XLSHLSSynthFlow(ToolFlow):
             )
             if reset:
                 codegen_command.append(f"--reset={reset}")
+            if worst_case_throughput:
+                codegen_command.append(
+                    f"--worst_case_throughput={worst_case_throughput}",
+                )
         if dump_codegen_ir:
             codegen_command.append(f"--ir_dump_path={codegen_ir_dump_dir.name}")
         if profile_passes:
@@ -652,6 +706,7 @@ __all__ = [
     "XLSBlockMetrics",
     "XLSHLSSynthFlow",
     "HLSFACTORY_XLS_PATH_ENV_VAR",
+    "find_dslx_stdlib",
     "find_xls_binary",
     "get_xls_install_dir",
     "parse_xls_bool_setting",

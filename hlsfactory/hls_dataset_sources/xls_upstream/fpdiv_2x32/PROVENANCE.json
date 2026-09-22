@@ -1,0 +1,10 @@
+{
+    "upstream_repo": "https://github.com/google/xls",
+    "upstream_commit": "998cf6aec2a7b09c9ad14c492fe4fca63f831fb2",
+    "upstream_release": "v0.0.0-10684-g998cf6aec",
+    "upstream_path": "third_party/xls_berkeley_softfloat/fpdiv_2x32.x",
+    "local_file": "fpdiv_2x32.x",
+    "top": "fpdiv_2x32",
+    "license": "BSD-3-Clause (Berkeley SoftFloat derived)",
+    "provenance": "human-authored upstream"
+}

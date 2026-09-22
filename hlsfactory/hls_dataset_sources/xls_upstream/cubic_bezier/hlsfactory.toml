@@ -1,0 +1,11 @@
+design_name = "cubic_bezier"
+dataset_name = "xls_upstream"
+tags = ["geometry", "arithmetic", "dslx", "upstream"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "cubic_bezier.x"
+top = "main"
+generator = "pipeline"
+pipeline_stages = "1"
+delay_model = "unit"

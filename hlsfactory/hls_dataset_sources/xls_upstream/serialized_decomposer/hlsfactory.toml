@@ -1,0 +1,12 @@
+design_name = "serialized_decomposer"
+dataset_name = "xls_upstream"
+tags = ["proc", "channel", "stream", "dslx", "upstream"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "serialized_decomposer.x"
+top = "serialized_decomposer"
+generator = "pipeline"
+pipeline_stages = "1"
+delay_model = "unit"
+reset = "rst"

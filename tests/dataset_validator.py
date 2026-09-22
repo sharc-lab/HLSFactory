@@ -3,6 +3,7 @@ import shutil
 from pathlib import Path
 from pprint import pp
 
+from hlsfactory.flow_balor import BalorGraphFlow
 from hlsfactory.flow_catapult import CatapultHLSSynthFlow
 from hlsfactory.flow_vitis import (
     VitisHLSCosimFlow,
@@ -32,6 +33,7 @@ from hlsfactory.utils import (
 )
 
 FLOWS = [
+    BalorGraphFlow,
     CatapultHLSSynthFlow,
     StratusHLSSynthFlow,
     XLSHLSSynthFlow,
@@ -45,6 +47,7 @@ FLOWS = [
 ]
 
 FLOW_NAME_MAP = {
+    "BalorGraphFlow": BalorGraphFlow,
     "CatapultHLSSynthFlow": CatapultHLSSynthFlow,
     "StratusHLSSynthFlow": StratusHLSSynthFlow,
     "XLSHLSSynthFlow": XLSHLSSynthFlow,
@@ -71,6 +74,7 @@ def main(args) -> None:
     TIMEOUT_STRATUS_SYNTH = 60.0 * 12  # 12 minutes
     TIMEOUT_XLS_SYNTH = 60.0 * 12  # 12 minutes
     TIMEOUT_VITIS_HLS_MODERN_SYNTH = 60.0 * 12  # 12 minutes
+    TIMEOUT_BALOR_GRAPH = 60.0 * 10  # 10 minutes
 
     if args.name is None:
         dataset_name = args.dataset_source_directory.name
@@ -153,6 +157,10 @@ def main(args) -> None:
                 )
             case cls if cls is XLSHLSSynthFlow:
                 flow_instance = cls()
+            case cls if cls is BalorGraphFlow:
+                flow_instance = cls(
+                    balor_install_dir=args.balor_install_dir,
+                )
             case cls if cls in (VitisHLSSynthFlow, VitisHLSImplFlow, VitisHLSCsimFlow):
                 flow_instance = cls(
                     vitis_hls_bin=str(bin_vitis_hls),
@@ -203,6 +211,8 @@ def main(args) -> None:
             timeout = TIMEOUT_XLS_SYNTH
         elif isinstance(flow, VitisHLSModernSynthFlow):
             timeout = TIMEOUT_VITIS_HLS_MODERN_SYNTH
+        elif isinstance(flow, BalorGraphFlow):
+            timeout = TIMEOUT_BALOR_GRAPH
         else:
             timeout = None
 
@@ -262,6 +272,14 @@ if __name__ == "__main__":
         "--stratus-install-dir",
         type=Path,
         help="Stratus installation root containing bin/stratus and bin/bdw_makegen.",
+    )
+    parser.add_argument(
+        "--balor-install-dir",
+        type=Path,
+        help=(
+            "Balor checkout containing graph_compiler/run_graph_compiler.py "
+            "(otherwise resolved from HLSFACTORY_BALOR_PATH, else Docker)."
+        ),
     )
 
     args = parser.parse_args()

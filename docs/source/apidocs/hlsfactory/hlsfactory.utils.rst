@@ -48,6 +48,12 @@ Functions
    * - :py:obj:`find_bin_path <hlsfactory.utils.find_bin_path>`
      - .. autodoc2-docstring:: hlsfactory.utils.find_bin_path
           :summary:
+   * - :py:obj:`write_execution_data <hlsfactory.utils.write_execution_data>`
+     - .. autodoc2-docstring:: hlsfactory.utils.write_execution_data
+          :summary:
+   * - :py:obj:`read_execution_data <hlsfactory.utils.read_execution_data>`
+     - .. autodoc2-docstring:: hlsfactory.utils.read_execution_data
+          :summary:
    * - :py:obj:`log_execution_time_to_file <hlsfactory.utils.log_execution_time_to_file>`
      - .. autodoc2-docstring:: hlsfactory.utils.log_execution_time_to_file
           :summary:
@@ -65,6 +71,9 @@ Functions
           :summary:
    * - :py:obj:`get_tool_paths <hlsfactory.utils.get_tool_paths>`
      - .. autodoc2-docstring:: hlsfactory.utils.get_tool_paths
+          :summary:
+   * - :py:obj:`get_tool_path_vitis_modern <hlsfactory.utils.get_tool_path_vitis_modern>`
+     - .. autodoc2-docstring:: hlsfactory.utils.get_tool_path_vitis_modern
           :summary:
    * - :py:obj:`remove_dir_if_exists <hlsfactory.utils.remove_dir_if_exists>`
      - .. autodoc2-docstring:: hlsfactory.utils.remove_dir_if_exists
@@ -93,16 +102,12 @@ Data
 API
 ~~~
 
-.. py:class:: CallToolResult(*args, **kwds)
+.. py:class:: CallToolResult
    :canonical: hlsfactory.utils.CallToolResult
 
    Bases: :py:obj:`enum.Enum`
 
    .. autodoc2-docstring:: hlsfactory.utils.CallToolResult
-
-   .. rubric:: Initialization
-
-   .. autodoc2-docstring:: hlsfactory.utils.CallToolResult.__init__
 
    .. py:attribute:: SUCCESS
       :canonical: hlsfactory.utils.CallToolResult.SUCCESS
@@ -142,6 +147,16 @@ API
 
    .. autodoc2-docstring:: hlsfactory.utils.find_bin_path
 
+.. py:function:: write_execution_data(design_dir: pathlib.Path, flow_name: str, status: str, t_start: float, t_end: float, core: typing.Optional[int] = None, return_code: typing.Optional[int] = 0, error_message: typing.Optional[str] = None) -> None
+   :canonical: hlsfactory.utils.write_execution_data
+
+   .. autodoc2-docstring:: hlsfactory.utils.write_execution_data
+
+.. py:function:: read_execution_data(design_dir: pathlib.Path, flow_name: typing.Optional[str] = None) -> typing.Any
+   :canonical: hlsfactory.utils.read_execution_data
+
+   .. autodoc2-docstring:: hlsfactory.utils.read_execution_data
+
 .. py:function:: log_execution_time_to_file(design_dir: pathlib.Path, flow_name: str, t_0: float, t_1: float) -> None
    :canonical: hlsfactory.utils.log_execution_time_to_file
 
@@ -171,7 +186,7 @@ API
 
       .. autodoc2-docstring:: hlsfactory.utils.FlowTimer.stop
 
-   .. py:method:: log() -> None
+   .. py:method:: log(status: str = 'success', return_code: typing.Optional[int] = 0, error_message: typing.Optional[str] = None) -> None
       :canonical: hlsfactory.utils.FlowTimer.log
 
       .. autodoc2-docstring:: hlsfactory.utils.FlowTimer.log
@@ -202,16 +217,12 @@ API
 
    .. autodoc2-docstring:: hlsfactory.utils.timeout_not_supported
 
-.. py:class:: DirSource(*args, **kwds)
+.. py:class:: DirSource
    :canonical: hlsfactory.utils.DirSource
 
    Bases: :py:obj:`enum.Enum`
 
    .. autodoc2-docstring:: hlsfactory.utils.DirSource
-
-   .. rubric:: Initialization
-
-   .. autodoc2-docstring:: hlsfactory.utils.DirSource.__init__
 
    .. py:attribute:: ENVFILE
       :canonical: hlsfactory.utils.DirSource.ENVFILE
@@ -236,16 +247,12 @@ API
 
    .. autodoc2-docstring:: hlsfactory.utils.get_work_dir
 
-.. py:class:: ToolPathsSource(*args, **kwds)
+.. py:class:: ToolPathsSource
    :canonical: hlsfactory.utils.ToolPathsSource
 
    Bases: :py:obj:`enum.Enum`
 
    .. autodoc2-docstring:: hlsfactory.utils.ToolPathsSource
-
-   .. rubric:: Initialization
-
-   .. autodoc2-docstring:: hlsfactory.utils.ToolPathsSource.__init__
 
    .. py:attribute:: ENVFILE
       :canonical: hlsfactory.utils.ToolPathsSource.ENVFILE
@@ -263,6 +270,11 @@ API
    :canonical: hlsfactory.utils.get_tool_paths
 
    .. autodoc2-docstring:: hlsfactory.utils.get_tool_paths
+
+.. py:function:: get_tool_path_vitis_modern(tool_paths_source: hlsfactory.utils.ToolPathsSource, env_file_path: pathlib.Path | None = None, use_cwd: bool = True) -> pathlib.Path
+   :canonical: hlsfactory.utils.get_tool_path_vitis_modern
+
+   .. autodoc2-docstring:: hlsfactory.utils.get_tool_path_vitis_modern
 
 .. py:function:: remove_dir_if_exists(dir_path: pathlib.Path) -> None
    :canonical: hlsfactory.utils.remove_dir_if_exists

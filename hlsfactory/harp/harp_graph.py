@@ -1,6 +1,6 @@
-# Copied from https://github.com/UCLA-VAST/HARP/ to generate HARP graphs for HLS programs
-# depedns on programl
-# very much a work in progress
+# Vendored from https://github.com/UCLA-VAST/HARP/ to generate HARP graphs for
+# HLS programs. See hlsfactory/harp/README.md for the list of changes made to
+# the upstream source.
 
 
 import ast
@@ -17,18 +17,38 @@ from shutil import copy
 from subprocess import PIPE, Popen
 
 import networkx as nx
-import programl
-from utils import create_dir_if_not_exists, get_root_path, natural_keys
+
+from hlsfactory.harp._programl_compat import (
+    load_programl,
+    program_graph_to_networkx,
+)
+
+
+def create_dir_if_not_exists(dir_path) -> None:
+    os.makedirs(dir_path, exist_ok=True)
+
+
+def atoi(text):
+    return int(text) if text.isdigit() else text
+
+
+def natural_keys(text):
+    return [atoi(c) for c in re.split(r"(\d+)", str(text))]
+
+
+def get_root_path() -> str:
+    """Root directory for the upstream batch driver's output tree.
+
+    Upstream resolves this to the HARP repository checkout. Only
+    `run_graph_gen` and its helpers use it; the per-design entry point
+    `graph_generator` does not. `HLSFACTORY_HARP_ROOT` overrides it.
+    """
+    return os.environ.get("HLSFACTORY_HARP_ROOT", os.getcwd())
+
 
 PRAGMA_POSITION = {"PIPELINE": 0, "TILE": 2, "PARALLEL": 1}
-BENCHMARK = "machsuite"
 BENCHMARK = "poly"
 type_graph = "harp"
-processed_gexf_folder = join(get_root_path(), f"{type_graph}/{BENCHMARK}/processed")
-auxiliary_node_gexf_folder = join(
-    get_root_path(),
-    f"{type_graph}/{BENCHMARK}/processed/extended-pseudo-block-base/",
-)
 MACHSUITE_KERNEL = [
     "aes",
     "gemm-blocked",
@@ -188,6 +208,82 @@ def read_json_graph(name, readable=True):
     return g_nx
 
 
+HLSFACTORY_HARP_CLANG_ENV_VAR = "HLSFACTORY_HARP_CLANG"
+DEFAULT_HARP_CLANG = "clang-14"
+SOURCE_EXTENSIONS = (".c", ".cpp", ".cc")
+
+
+def get_harp_clang_bin(clang_bin=None) -> str:
+    """Resolve the clang used to emit ProGraML-compatible LLVM IR.
+
+    The `llvm2graph` binary bundled with `programl` is an LLVM 10 parser. It
+    cannot read opaque pointers (clang >= 15) and rejects the `noundef`
+    attribute (clang >= 12), so a clang no newer than 14 is required.
+    """
+    if clang_bin is not None:
+        return str(clang_bin)
+    return os.environ.get(HLSFACTORY_HARP_CLANG_ENV_VAR, DEFAULT_HARP_CLANG)
+
+
+def emit_llvm_ir(name, path, clang_bin=None, extra_args=None) -> str:
+    """Compile `{path}/{name}.{c,cpp,cc}` to `{path}/{name}.ll`.
+
+    Replaces upstream HARP's `clang_script.sh`, which is not vendored here. Two
+    flags are required:
+
+    - `-disable-noundef-analysis` keeps the IR parseable by the LLVM 10 based
+      `llvm2graph` bundled with `programl`.
+    - `-fno-discard-value-names` keeps basic blocks named (`for.cond`,
+      `for.body`, ...) instead of numbered. `get_icmp` locates loops by those
+      names, and silently finds none without it.
+
+    Returns:
+        str: Path to the generated `.ll` file.
+
+    Raises:
+        FileNotFoundError: If no source file for `name` exists under `path`.
+        RuntimeError: If clang fails.
+    """
+    source_file = None
+    for ext in SOURCE_EXTENSIONS:
+        candidate = join(path, f"{name}{ext}")
+        if isfile(candidate):
+            source_file = candidate
+            break
+
+    if source_file is None:
+        searched = ", ".join(f"{name}{ext}" for ext in SOURCE_EXTENSIONS)
+        raise FileNotFoundError(
+            f"No HARP source file found in {path}. Searched: {searched}.",
+        )
+
+    ll_file = join(path, f"{name}.ll")
+    cmd = [
+        get_harp_clang_bin(clang_bin),
+        "-S",
+        "-emit-llvm",
+        "-O0",
+        "-fno-discard-value-names",
+        "-Xclang",
+        "-disable-noundef-analysis",
+        "-o",
+        ll_file,
+        source_file,
+    ]
+    if extra_args:
+        cmd.extend(extra_args)
+
+    process = Popen(cmd, stdout=PIPE, stderr=PIPE)
+    _, stderr = process.communicate()
+    if process.returncode != 0:
+        raise RuntimeError(
+            f"clang failed to emit LLVM IR for {source_file}: "
+            f"{stderr.decode('utf-8', errors='replace')[:2000]}",
+        )
+
+    return ll_file
+
+
 def llvm_to_nx(name):
     """
     reads a LLVM IR and converts it to a netwrokx graph
@@ -198,11 +294,12 @@ def llvm_to_nx(name):
     returns:
         g_nx: graph in networkx format
     """
+    programl = load_programl()
     filename = name + ".ll"
     with open(filename) as f:
         ll_file = f.read()
         G = programl.from_llvm_ir(ll_file)
-        return programl.to_networkx(G)
+        return program_graph_to_networkx(G)
 
 
 def make_json_readable(name, js_graph) -> None:
@@ -222,6 +319,20 @@ def make_json_readable(name, js_graph) -> None:
     f_json.close()
 
 
+C_CONTROL_KEYWORDS = frozenset(
+    {
+        "for",
+        "while",
+        "if",
+        "else",
+        "switch",
+        "do",
+        "catch",
+        "return",
+    },
+)
+
+
 def extract_function_names(c_code):
     """
     extract the names of the function in c code along with their line number
@@ -236,9 +347,15 @@ def extract_function_names(c_code):
     function_matches = re.finditer(pattern, c_code)
     function_names = []
     for match in function_matches:
-        function_name = match.group().split()[1]
+        tokens = match.group().split()
+        function_name = tokens[1].split("(")[0]
+        # The pattern can straddle a line break and match a control statement
+        # as `<end of previous line> for (...) {`, inventing a function named
+        # "for". Control keywords are never function names.
+        if function_name in C_CONTROL_KEYWORDS or tokens[0] in C_CONTROL_KEYWORDS:
+            continue
         line_number = c_code.count("\n", 0, match.start()) + 1
-        function_names.append((function_name.split("(")[0], line_number))
+        function_names.append((function_name, line_number))
     return function_names
 
 
@@ -332,6 +449,7 @@ def get_pragmas_loops(path, name, EXT="c", log=False):
         function_names_list = extract_function_names(f_source.read())
     for_count_source, local_for_count_source = 0, 0
     pragma_zone = False
+    pragma_list = []
     for f_id, (f_name, idx_start) in enumerate(function_names_list):
         for_dict_source[f_name] = OrderedDict()
         local_for_count_source = 0
@@ -366,6 +484,7 @@ def get_pragmas_loops(path, name, EXT="c", log=False):
                     raise RuntimeError
             elif line.startswith("#pragma") and "KERNEL" not in line.upper():
                 pragma_zone = True
+                pragma_list = [line]
 
     if log:
         print(json.dumps(for_dict_source, indent=4))
@@ -461,7 +580,7 @@ def prune_redundant_nodes(g_new) -> None:
             break
 
 
-def process_graph(name, g, csv_dict=None) -> None:
+def process_graph(name, g, csv_dict=None, output_dir=None) -> None:
     """
     adjusts the node/edge attributes, removes redundant nodes,
         and writes the final graph to be used by GNN-DSE
@@ -491,7 +610,13 @@ def process_graph(name, g, csv_dict=None) -> None:
 
     prune_redundant_nodes(g_new)
 
-    new_gexf_file = join(processed_gexf_folder, f"{name}_processed_result.gexf")
+    if output_dir is None:
+        output_dir = join(
+            get_root_path(),
+            f"{type_graph}/{BENCHMARK}/processed",
+        )
+    create_dir_if_not_exists(output_dir)
+    new_gexf_file = join(output_dir, f"{name}_processed_result.gexf")
     if len(g_new.nodes) != len(g.nodes):
         print("#nodes:", len(g_new.nodes), "before processing was:", len(g.nodes))
     if len(g_new.edges) != len(g.edges):
@@ -506,7 +631,7 @@ def process_graph(name, g, csv_dict=None) -> None:
 
 
 def graph_generator(
-    name, path, benchmark, generate_programl=False, csv_dict=None
+    name, path, benchmark, generate_programl=False, csv_dict=None, output_dir=None
 ) -> None:
     """
     runs ProGraML [ICML'21] to generate the graph, adds the pragma nodes,
@@ -516,15 +641,11 @@ def graph_generator(
         name: kernel name
         path: path to parent directory of the kernel file
         benchmark: [machsuite|poly] None: simple program
+        output_dir: destination for the processed graph, defaulting to the upstream batch-driver tree
     """
     ## generate PrograML graph
     if generate_programl:
-        p = Popen(
-            f"{get_root_path()}/clang_script.sh {name} {path} {type_graph}",
-            shell=True,
-            stdout=PIPE,
-        )
-        p.wait()
+        emit_llvm_ir(name, path)
 
     ## convert it to networkx format
     # g_nx = read_json_graph(join(path, name))
@@ -561,7 +682,7 @@ def graph_generator(
         )
         process = True
         if process:
-            process_graph(name, g_nx, csv_dict)
+            process_graph(name, g_nx, csv_dict, output_dir=output_dir)
 
     copy_files_ = True
     if generate_programl:
