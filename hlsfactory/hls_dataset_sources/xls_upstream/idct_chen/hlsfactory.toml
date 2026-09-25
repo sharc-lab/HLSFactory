@@ -1,0 +1,11 @@
+design_name = "idct_chen"
+dataset_name = "xls_upstream"
+tags = ["image", "transform", "jpeg", "dslx", "upstream"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "idct_chen.x"
+top = "idct"
+generator = "pipeline"
+pipeline_stages = "1"
+delay_model = "unit"

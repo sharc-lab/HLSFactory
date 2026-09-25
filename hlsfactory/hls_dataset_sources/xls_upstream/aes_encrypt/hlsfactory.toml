@@ -1,0 +1,12 @@
+design_name = "aes_encrypt"
+dataset_name = "xls_upstream"
+tags = ["crypto", "aes", "block-cipher", "dslx", "upstream"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "aes.x"
+top = "encrypt"
+generator = "pipeline"
+pipeline_stages = "1"
+delay_model = "unit"
+dslx_path = "."

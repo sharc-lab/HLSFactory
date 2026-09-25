@@ -1,0 +1,11 @@
+design_name = "fpdiv_2x32"
+dataset_name = "xls_upstream"
+tags = ["floating-point", "division", "dslx", "upstream"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "fpdiv_2x32.x"
+top = "fpdiv_2x32"
+generator = "pipeline"
+pipeline_stages = "1"
+delay_model = "unit"

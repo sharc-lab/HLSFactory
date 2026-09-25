@@ -214,7 +214,7 @@ API
 
    .. autodoc2-docstring:: hlsfactory.data_packaging.ArtifactCollection
 
-.. py:class:: ArtifactsXilinx(*args, **kwds)
+.. py:class:: ArtifactsXilinx
    :canonical: hlsfactory.data_packaging.ArtifactsXilinx
 
    Bases: :py:obj:`enum.Enum`

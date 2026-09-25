@@ -1,0 +1,12 @@
+design_name = "aes_ctr_encrypt"
+dataset_name = "xls_upstream"
+tags = ["crypto", "aes", "counter-mode", "dslx", "upstream"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "aes_ctr.x"
+top = "aes_ctr_encrypt"
+generator = "pipeline"
+pipeline_stages = "1"
+delay_model = "unit"
+dslx_path = "."

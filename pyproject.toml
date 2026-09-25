@@ -29,6 +29,12 @@ dependencies = [
 
 [project.optional-dependencies]
 test = ["pytest", "pytest-cov", "pytest-mock"]
+# `programl` is deliberately not listed here. It depends on `dgl`, which pulls
+# torch and the whole CUDA wheel stack into the lock file, none of which HARP
+# uses - `_programl_compat` stubs `dgl` out precisely because the only thing
+# needing it is `to_dgl()`, which HARP never calls. Install it separately:
+#     pip install programl
+harp = ["networkx"]
 docs = [
     "sphinx>=9",
     "sphinx-autobuild",

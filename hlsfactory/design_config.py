@@ -34,6 +34,8 @@ class FlowName(StrEnum):
     VITIS_HLS_IMPL_REPORT = "VitisHLSImplReportFlow"
     VITIS_HLS_MODERN_SYNTH = "VitisHLSModernSynthFlow"
     VITIS_HLS_MODERN_CSIM = "VitisHLSModernCsimFlow"
+    HARP_GRAPH = "HARPGraphFlow"
+    BALOR_GRAPH = "BalorGraphFlow"
     LIGHTNING_SIM = "LightningSimFlow"
 
 
@@ -113,6 +115,8 @@ class FlowConfig:
             {"project_tcl", "hls_module", "hls_config"},
         ),
         FlowName.XLS_HLS_SYNTH.value: frozenset({"dslx_file", "top"}),
+        FlowName.HARP_GRAPH.value: frozenset({"source_file", "top"}),
+        FlowName.BALOR_GRAPH.value: frozenset({"source_file", "top"}),
         FlowName.VITIS_HLS_SYNTH.value: frozenset({"synth_tcl"}),
         FlowName.VITIS_HLS_CSIM.value: frozenset({"csim_tcl"}),
         FlowName.VITIS_HLS_IMPL.value: frozenset({"impl_tcl"}),

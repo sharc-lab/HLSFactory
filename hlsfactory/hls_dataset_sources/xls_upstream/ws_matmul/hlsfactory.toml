@@ -1,0 +1,12 @@
+design_name = "ws_matmul"
+dataset_name = "xls_upstream"
+tags = ["systolic", "matmul", "floating-point", "proc", "dslx", "upstream"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "ws_matmul.x"
+top = "ws_2x2"
+generator = "pipeline"
+pipeline_stages = "4"
+delay_model = "unit"
+reset = "rst"

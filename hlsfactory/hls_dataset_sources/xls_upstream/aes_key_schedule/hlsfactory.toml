@@ -1,0 +1,12 @@
+design_name = "aes_key_schedule"
+dataset_name = "xls_upstream"
+tags = ["crypto", "aes", "key-expansion", "dslx", "upstream"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "aes.x"
+top = "create_key_schedule"
+generator = "pipeline"
+pipeline_stages = "1"
+delay_model = "unit"
+dslx_path = "."

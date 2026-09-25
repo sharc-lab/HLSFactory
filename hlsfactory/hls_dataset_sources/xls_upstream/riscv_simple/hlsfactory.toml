@@ -1,0 +1,11 @@
+design_name = "riscv_simple"
+dataset_name = "xls_upstream"
+tags = ["processor", "decode", "dslx", "upstream"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "riscv_simple.x"
+top = "run_instruction"
+generator = "pipeline"
+pipeline_stages = "1"
+delay_model = "unit"

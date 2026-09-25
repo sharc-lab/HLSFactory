@@ -1,0 +1,12 @@
+design_name = "fpexp_32"
+dataset_name = "xls_upstream"
+tags = ["floating-point", "exponential", "dslx", "upstream"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "fpexp_32.x"
+top = "fpexp_32"
+generator = "pipeline"
+pipeline_stages = "1"
+delay_model = "unit"
+dslx_path = "."

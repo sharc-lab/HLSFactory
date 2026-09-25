@@ -1,0 +1,11 @@
+design_name = "prefix_sum"
+dataset_name = "xls_upstream"
+tags = ["scan", "array", "dslx", "upstream"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "prefix_sum.x"
+top = "prefix_sum"
+generator = "pipeline"
+pipeline_stages = "1"
+delay_model = "unit"

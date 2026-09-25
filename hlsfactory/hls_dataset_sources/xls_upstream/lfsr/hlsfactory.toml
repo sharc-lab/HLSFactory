@@ -1,0 +1,11 @@
+design_name = "lfsr"
+dataset_name = "xls_upstream"
+tags = ["prng", "bitwise", "dslx", "upstream"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "lfsr.x"
+top = "lfsr8"
+generator = "pipeline"
+pipeline_stages = "1"
+delay_model = "unit"

@@ -11,3 +11,8 @@ output/
 *.egg-info/
 output_site/
 build/
+
+# Stray drive-letter dir created when a Windows HLSFACTORY_WORK_DIR is used
+# from WSL/Linux, where 'C:/...' is a relative path. Windows stores the colon
+# as U+F03A, so the ASCII form would not match.
+/C/

@@ -1,0 +1,11 @@
+design_name = "fp_trig_reduce"
+dataset_name = "xls_upstream"
+tags = ["floating-point", "trig", "dslx", "upstream"]
+
+[[flow_configs]]
+flow_name = "XLSHLSSynthFlow"
+dslx_file = "fp_trig_reduce.x"
+top = "fp_trig_reduce_32"
+generator = "pipeline"
+pipeline_stages = "1"
+delay_model = "unit"
