@@ -6,7 +6,20 @@ jobs:
   build-sphinx-docs:
     runs-on: ubuntu-latest
     steps:
+      # The full repo is ~570 MB (mostly hls_dataset_sources); the docs only
+      # need the docs, the Python sources, and the uv project files
       - uses: actions/checkout@v7
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /docs/
+            /hlsfactory/
+            !/hlsfactory/hls_dataset_sources/
+            /pyproject.toml
+            /uv.lock
+            /README.md
+            /LICENSE
       - name: Set up uv and Python
         uses: astral-sh/setup-uv@v10.2.0
         with:
@@ -17,7 +30,7 @@ jobs:
       - name: Install docs dependencies
         run: uv sync --locked --extra docs --no-dev --no-install-project
       - name: Run Sphinx build
-        run: uv run --no-sync sphinx-build -b html docs/source/ docs/build/
+        run: uv run --no-sync sphinx-build -j auto -b html docs/source/ docs/build/
       - name: Check that the docs were built
         run: |
           test -f docs/build/index.html || { echo "Sphinx produced no index.html"; exit 1; }
