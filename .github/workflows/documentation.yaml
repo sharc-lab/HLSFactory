@@ -7,17 +7,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - name: Set up Python
-        uses: actions/setup-python@v7
+      - name: Set up uv and Python
+        uses: astral-sh/setup-uv@v10
         with:
           python-version: "3.12"
-      - name: Install Python dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install .[docs]
+          enable-cache: true
+      # autodoc2 reads the source statically, so the docs only need the
+      # locked docs extra, not the hlsfactory package itself
+      - name: Install docs dependencies
+        run: uv sync --locked --extra docs --no-dev --no-install-project
       - name: Run Sphinx build
-        run: |
-          sphinx-build -b html docs/source/ docs/build/
+        run: uv run --no-sync sphinx-build -b html docs/source/ docs/build/
       - name: Check that the docs were built
         run: |
           test -f docs/build/index.html || { echo "Sphinx produced no index.html"; exit 1; }
