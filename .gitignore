@@ -10,3 +10,4 @@ htmlcov/
 output/
 *.egg-info/
 output_site/
+build/

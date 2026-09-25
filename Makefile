@@ -9,6 +9,5 @@ clean:
 	rm -rf htmlcov/
 	rm -rf output/
 	rm -rf *.egg-info/
-	rm -rf output_site/
 
 PHONY: clean

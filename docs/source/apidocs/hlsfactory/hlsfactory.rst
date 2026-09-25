@@ -45,6 +45,7 @@ Submodules
    hlsfactory.data_packaging
    hlsfactory.flow_vitis
    hlsfactory.utils
+   hlsfactory.flow_altera
 
 Package Contents
 ----------------

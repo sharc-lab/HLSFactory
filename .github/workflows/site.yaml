@@ -1,15 +1,13 @@
-name: Build and Deploy Site
+name: Build and Deploy Docs Site
 on:
   workflow_dispatch:
   workflow_call:
 
 jobs:
-  run-packaging:
-    uses: ./.github/workflows/packaging.yaml
   run-documentation:
     uses: ./.github/workflows/documentation.yaml
   build-and-deploy:
-    needs: [run-packaging, run-documentation]
+    needs: [run-documentation]
     permissions:
       pages: write
       id-token: write
@@ -23,20 +21,10 @@ jobs:
         with:
           name: docs-sphinx-html
           path: ./docs
-      - name: Download Python package artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: package-python
-          path: ./dist-python
-      - name: Download Conda package artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: package-conda
-          path: ./dist-conda
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./
+          path: ./docs
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

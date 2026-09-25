@@ -104,6 +104,30 @@ API
 
    Bases: :py:obj:`enum.StrEnum`
 
+   .. py:attribute:: ALTERA_HLS_SYNTH
+      :canonical: hlsfactory.design_config.FlowName.ALTERA_HLS_SYNTH
+      :value: 'AlteraHLSSynthFlow'
+
+      .. autodoc2-docstring:: hlsfactory.design_config.FlowName.ALTERA_HLS_SYNTH
+
+   .. py:attribute:: ALTERA_HLS_CSIM
+      :canonical: hlsfactory.design_config.FlowName.ALTERA_HLS_CSIM
+      :value: 'AlteraHLSCsimFlow'
+
+      .. autodoc2-docstring:: hlsfactory.design_config.FlowName.ALTERA_HLS_CSIM
+
+   .. py:attribute:: ALTERA_HLS_COSIM
+      :canonical: hlsfactory.design_config.FlowName.ALTERA_HLS_COSIM
+      :value: 'AlteraHLSCosimFlow'
+
+      .. autodoc2-docstring:: hlsfactory.design_config.FlowName.ALTERA_HLS_COSIM
+
+   .. py:attribute:: ALTERA_QUARTUS_IMPL
+      :canonical: hlsfactory.design_config.FlowName.ALTERA_QUARTUS_IMPL
+      :value: 'AlteraQuartusImplFlow'
+
+      .. autodoc2-docstring:: hlsfactory.design_config.FlowName.ALTERA_QUARTUS_IMPL
+
    .. py:attribute:: OPT_DSL_V2
       :canonical: hlsfactory.design_config.FlowName.OPT_DSL_V2
       :value: 'OptDSLv2'

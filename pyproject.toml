@@ -53,7 +53,7 @@ demos = [
 [project.urls]
 "Homepage" = "https://github.com/sharc-lab/HLSFactory"
 "Repository" = "https://github.com/sharc-lab/HLSFactory"
-"Documentation" = "https://github.com/sharc-lab/HLSFactory"
+"Documentation" = "https://sharc-lab.github.io/HLSFactory/"
 
 [build-system]
 requires = ["setuptools"]

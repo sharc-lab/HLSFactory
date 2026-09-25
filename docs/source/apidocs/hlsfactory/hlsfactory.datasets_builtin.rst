@@ -43,6 +43,9 @@ Functions
    * - :py:obj:`dataset_test_designs_xls_builder <hlsfactory.datasets_builtin.dataset_test_designs_xls_builder>`
      - .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_test_designs_xls_builder
           :summary:
+   * - :py:obj:`dataset_altera_examples_builder <hlsfactory.datasets_builtin.dataset_altera_examples_builder>`
+     - .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_altera_examples_builder
+          :summary:
    * - :py:obj:`dataset_test_designs_vitis_modern_builder <hlsfactory.datasets_builtin.dataset_test_designs_vitis_modern_builder>`
      - .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_test_designs_vitis_modern_builder
           :summary:
@@ -113,6 +116,9 @@ Data
           :summary:
    * - :py:obj:`DIR_DATASET_TEST_DESIGNS_XLS <hlsfactory.datasets_builtin.DIR_DATASET_TEST_DESIGNS_XLS>`
      - .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_TEST_DESIGNS_XLS
+          :summary:
+   * - :py:obj:`DIR_DATASET_ALTERA_EXAMPLES <hlsfactory.datasets_builtin.DIR_DATASET_ALTERA_EXAMPLES>`
+     - .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_ALTERA_EXAMPLES
           :summary:
    * - :py:obj:`DIR_DATASET_TEST_DESIGNS_VITIS_MODERN <hlsfactory.datasets_builtin.DIR_DATASET_TEST_DESIGNS_VITIS_MODERN>`
      - .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_TEST_DESIGNS_VITIS_MODERN
@@ -217,6 +223,12 @@ API
 
    .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_TEST_DESIGNS_XLS
 
+.. py:data:: DIR_DATASET_ALTERA_EXAMPLES
+   :canonical: hlsfactory.datasets_builtin.DIR_DATASET_ALTERA_EXAMPLES
+   :value: None
+
+   .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_ALTERA_EXAMPLES
+
 .. py:data:: DIR_DATASET_TEST_DESIGNS_VITIS_MODERN
    :canonical: hlsfactory.datasets_builtin.DIR_DATASET_TEST_DESIGNS_VITIS_MODERN
    :value: None
@@ -315,6 +327,11 @@ API
    :canonical: hlsfactory.datasets_builtin.dataset_test_designs_xls_builder
 
    .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_test_designs_xls_builder
+
+.. py:function:: dataset_altera_examples_builder(name: str, work_dir: pathlib.Path) -> hlsfactory.framework.DesignDataset
+   :canonical: hlsfactory.datasets_builtin.dataset_altera_examples_builder
+
+   .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_altera_examples_builder
 
 .. py:function:: dataset_test_designs_vitis_modern_builder(name: str, work_dir: pathlib.Path) -> hlsfactory.framework.DesignDataset
    :canonical: hlsfactory.datasets_builtin.dataset_test_designs_vitis_modern_builder

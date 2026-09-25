@@ -5,7 +5,7 @@
 
 ## Quick Start
 
-Documentation & Tutorials: [https://sharc-lab.github.io/HLSFactory/docs/](https://sharc-lab.github.io/HLSFactory/docs/)
+Documentation & Tutorials: [https://sharc-lab.github.io/HLSFactory/](https://sharc-lab.github.io/HLSFactory/)
 
 **Recommended (uv)** – in a cloned checkout:
 
@@ -24,14 +24,6 @@ uv pip install git+https://github.com/sharc-lab/HLSFactory
 
 ```bash
 pip install git+https://github.com/sharc-lab/HLSFactory
-```
-
-**Conda / Mamba**:
-
-```bash
-conda install --channel https://sharc-lab.github.io/HLSFactory/dist-conda hlsfactory
-# or
-mamba install --channel https://sharc-lab.github.io/HLSFactory/dist-conda hlsfactory
 ```
 
 <hr>

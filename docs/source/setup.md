@@ -23,25 +23,11 @@ If you prefer to install directly from GitHub without cloning, use:
 uv pip install git+https://github.com/sharc-lab/HLSFactory
 ```
 
-Legacy alternatives remain available:
+Or with plain pip:
 
-- **pip**:
-
-  ```bash
-  pip install git+https://github.com/sharc-lab/HLSFactory
-  ```
-
-- **conda**:
-
-  ```bash
-  conda install --channel https://sharc-lab.github.io/HLSFactory/dist-conda hlsfactory
-  ```
-
-- **mamba**:
-
-  ```bash
-  mamba install --channel https://sharc-lab.github.io/HLSFactory/dist-conda hlsfactory
-  ```
+```bash
+pip install git+https://github.com/sharc-lab/HLSFactory
+```
 
 The repository also includes demo scripts and Jupyter notebooks that demonstrate how to use the library. These are not included in the package but can be found in the source code repository on GitHub. You can access them by cloning the repository and exploring the `demos/` directory (for example, `demos/demo_full_flow_xilinx/` for the complete Xilinx walkthrough and `demos/demo_full_flow_intel/` for the Intel variant).
 

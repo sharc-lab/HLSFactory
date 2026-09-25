@@ -46,8 +46,8 @@ extensions = [
 ]
 
 
-ogp_site_url = "https://sharc-lab.github.io/HLSFactory/docs/"
-ogp_image = "https://sharc-lab.github.io/HLSFactory/docs/_static/hlsfactory_logo.png"
+ogp_site_url = "https://sharc-lab.github.io/HLSFactory/"
+ogp_image = "https://sharc-lab.github.io/HLSFactory/_static/hlsfactory_logo.png"
 
 # autosummary_generate = True
 
