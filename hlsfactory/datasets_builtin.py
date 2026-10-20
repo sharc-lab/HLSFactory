@@ -209,11 +209,8 @@ DATASET_STR_MAP: dict[str, T_dataset_builder] = {
     "accelerators": dataset_accelerators_builder,
     "soda": dataset_soda_builder,
     "hp_fft": dataset_hp_fft_builder,
-    "hpfft": dataset_hp_fft_builder,
     "stream_hls": dataset_stream_hls_builder,
-    "streamhls": dataset_stream_hls_builder,
     "auto_ntt": dataset_auto_ntt_builder,
-    "autontt": dataset_auto_ntt_builder,
     "forgebench": dataset_forgebench_builder,
     "spector_hls": dataset_spector_hls_builder,
 }
