@@ -18,12 +18,6 @@ Set `HLSFACTORY_XLS_PATH` to the installation root:
 export HLSFACTORY_XLS_PATH=/path/to/xls
 ```
 
-On the HLSFactory server, use:
-
-```bash
-export HLSFACTORY_XLS_PATH=/usr/scratch/common/xls
-```
-
 The flow accepts release bundles with executables at the installation root and
 source builds with executables below `bazel-bin/xls/`. You can check a release
 bundle directly with:
@@ -85,8 +79,8 @@ results = flow.execute_multiple_design_datasets_fine_grained_parallel(
 )
 ```
 
-An explicit installation directory overrides the environment and server
-default:
+An explicit installation directory overrides the environment variable and
+the built-in default:
 
 ```python
 flow = XLSHLSSynthFlow(xls_install_dir="/path/to/xls")
@@ -103,7 +97,7 @@ For each design, the flow performs three stages:
 From the repository root, validate every packaged design with:
 
 ```bash
-export HLSFACTORY_XLS_PATH=/usr/scratch/common/xls
+export HLSFACTORY_XLS_PATH=/path/to/xls
 uv run python tests/dataset_validator.py \
     hlsfactory/hls_dataset_sources/test_designs_xls \
     --flow XLSHLSSynthFlow \

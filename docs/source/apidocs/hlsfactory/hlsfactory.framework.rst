@@ -126,7 +126,7 @@ API
 
    .. autodoc2-docstring:: hlsfactory.framework.filter_files_by_ext
 
-.. py:class:: DesignStage
+.. py:class:: DesignStage(*args, **kwds)
    :canonical: hlsfactory.framework.DesignStage
 
    Bases: :py:obj:`enum.Enum`

@@ -10,55 +10,24 @@ HLSFactory provides code to address all these use cases for the end user in an e
 
 ## Output Files
 
-Tool flows write JSON files into each design directory. The following table summarizes the main output files and key fields produced by the supported synthesis and implementation flows.
+Each flow writes JSON into the design directory. Aggregators read these files and merge them into one `CompleteHLSData` record.
 
-| File | Produced By | Key Fields |
-|------|-------------|------------|
-| `data_design.json` | VitisHLSSynthFlow | `name`, `part`, `target_clock_period`, `version_vitis_hls` |
-| `data_hls.json` | VitisHLSSynthFlow | `clock_period`, `latency_best_cycles`, `latency_average_cycles`, `latency_worst_cycles`, `resources_lut_used`, `resources_ff_used`, `resources_dsp_used`, `resources_bram_used`, `resources_uram_used` |
-| `data_hls.json` | CatapultHLSSynthFlow | `clock_period`, `clock_period_ns`, `latency_cycles`, `throughput_cycles`, `initiation_interval_cycles`, `critical_path_delay_ns`, `critical_path_slack_ns`, `total_area`, `combinational_area`, `sequential_area`, and post-assignment datapath/FSM/component area fields |
-| `data_hls.json` | XLSHLSSynthFlow | `latency_cycles`, `initiation_interval`, `flop_count`, `feedthrough_path_exists`, `metrics_delay_model`, estimated path delays in picoseconds, `operation_counts`, `operation_kind_counts` |
-| `data_implementation.json` | VitisHLSImplReportFlow | `power__total_power`, `power__dynamic_power`, `power__static_power`, `utilization__Total LUTs`, `utilization__FFs`, `utilization__DSP Blocks`, `utilization__RAMB18`, `utilization__URAM`, `timing__WNS`, `timing__TNS`, `timing__WHS`, `timing__THS`, `timing__clock_period`, `timing__clock_frequency` |
-| `execution_data.json` | All flows (when logging enabled) | Per-flow: `status`, `t_start`, `t_end`, `dt`, `core`, `error_message` |
+| File | Written by | Contents |
+|------|------------|----------|
+| `data_design.json` | `VitisHLSSynthFlow` | `name`, `part`, `target_clock_period`, `version_vitis_hls` |
+| `data_hls.json` | Each synthesis flow | Latency, clock period and area or resource estimates. The fields depend on the tool (see below). |
+| `data_implementation.json` | `VitisHLSImplReportFlow` | `power__*`, `utilization__*` and `timing__*` (WNS, TNS, WHS, THS, clock period and frequency) |
+| `execution_data.json` | All flows, when logging is enabled | Per flow: `status`, `t_start`, `t_end`, `dt`, `core`, `error_message` |
 
-When a `DataAggregator` gathers these files, `CompleteHLSData.to_flat_dict()` prefixes keys with `design__*`, `synthesis__*`, `implementation__*`, or `execution__*`. For example, Catapult's `latency_cycles` becomes `synthesis__latency_cycles`.
+`data_hls.json` fields by flow:
 
-Catapult obtains schedule and timing metrics from `rtl.rpt` and clock details from `cycle.rpt`. The area fields are standard-cell area estimates for the libraries selected by the design's Tcl script. They are not FPGA LUT, flip-flop, BRAM, or DSP counts.
+- **Vitis HLS:** `clock_period`, best, average and worst latency in cycles, and LUT, FF, DSP, BRAM and URAM usage.
+- **Catapult:** `latency_cycles`, `throughput_cycles`, `initiation_interval_cycles`, critical-path delay and slack, and total, combinational and sequential area. The area is a standard-cell estimate for the libraries in the design's Tcl script, not FPGA resources.
+- **XLS:** `latency_cycles`, `initiation_interval`, `flop_count`, four estimated path delays in picoseconds (`null` when that path class doesn't exist), and operation counts. The delays come from the XLS estimator, not place-and-route, and device resources need a separate implementation flow.
 
-For XLS, latency and initiation interval come from the generated module
-signature. Flop count and operation counts come from XLS block metrics. The
-reported path delays use XLS's estimator and are not post-place-and-route
-timing. Technology-mapped area, device resources, and physical timing require a
-separate implementation flow with a target device or standard-cell library.
+`CompleteHLSData.to_flat_dict()` prefixes keys by section: `design__*`, `synthesis__*`, `implementation__*` and `execution__*`. For example, Catapult's `latency_cycles` becomes `synthesis__latency_cycles`.
 
-`XLSHLSSynthFlow` also retains the source-to-RTL artifacts used to produce the
-JSON:
-
-| Artifact | Contents |
-|---|---|
-| `<source-stem>.ir` | DSLX converted to XLS IR |
-| `<source-stem>.opt.ir` | Optimized XLS IR passed to codegen |
-| `<source-stem>.v` | Synthesizable Verilog/SystemVerilog |
-| `<source-stem>.signature.textproto` | Ports, channels, reset, latency, and initiation interval |
-| `<source-stem>.block_metrics.textproto` | Flops, estimated path delays, feedthrough status, and bill of materials |
-| `<source-stem>.interface.{pb,textproto}` | DSLX function/proc interface metadata; the binary proto is also supplied to codegen |
-| `<source-stem>.{ir_converter,optimizer,scheduling,codegen}_options.textproto` | Effective options used by each XLS stage |
-| `<source-stem>.schedule.textproto` | Pipeline-stage placement and per-node delay data; pipeline designs only |
-| `<source-stem>.scheduled.ir` | IR after scheduling transformations |
-| `<source-stem>.block.ir` | Lowered block IR with registers and ports |
-| `<source-stem>.verilog_line_map.textproto` | DSLX-to-Verilog source mapping |
-| `<source-stem>.{optimization,scheduling,codegen}_pass_metrics.textproto` | Per-pass timing and transformation metrics |
-
-The four delay fields are `max_reg_to_reg_delay_ps`,
-`max_input_to_reg_delay_ps`, `max_reg_to_output_delay_ps`, and
-`max_feedthrough_path_delay_ps`. A field may be `null` when that path class does
-not exist. With the default `unit` delay model, these are XLS estimator values
-and should not be treated as physical timing measurements.
-
-The optimizer/codegen IR dump directories and pprof pass profiles are produced
-only when their `dump_optimizer_ir`, `dump_codegen_ir`, or `profile_passes`
-configuration switches are enabled. Their paths and enabled state are recorded
-in `data_hls.json`.
+Besides the JSON, the flows leave tool reports and generated files (RTL, IR, logs) in the design directory. {ref}`Data Aggregation for Other Vendors <other-vendor-aggregation>` lists which of these each aggregator can package. For the files each XLS option produces, see the [Google XLS tutorial](../tutorials/xls_flow).
 
 ## `CompleteHLSData` Class
 
@@ -125,8 +94,8 @@ Below is the set of abstract methods a `DataAggregator` subclass can implement:
 
 - `gather_hls_design_data(design)`: Gathers design data for the specified design.
 - `gather_hls_synthesis_data(design)`: Gathers synthesis data for the specified design.
-- `gather_hls_implementation_data(design)`: Gathers implementation data for the specified design.
-- `gather_hls_execution_data(design)`: Gathers execution data for the specified design.
+- `gather_implementation_data(design)`: Gathers implementation data for the specified design.
+- `gather_execution_data(design)`: Gathers execution data for the specified design.
 
 A `DataAggregator` subclass can implement one or more of these methods to gather data from different HLS tools and flows and does not need to implement all of them. This is because not all runs and flows may generate all types of data. This also means that end users can call a subset of these methods to gather only the data they are interested in.
 
@@ -155,11 +124,11 @@ synthesis_data = aggregator.gather_hls_synthesis_data(design)
 print(synthesis_data)
 
 # Gather implementation data
-implementation_data = aggregator.gather_hls_implementation_data(design)
+implementation_data = aggregator.gather_implementation_data(design)
 print(implementation_data)
 
 # Gather execution data
-execution_data = aggregator.gather_hls_execution_data(design)
+execution_data = aggregator.gather_execution_data(design)
 print(execution_data)
 
 # Gather synthesis artifacts
@@ -167,14 +136,56 @@ artifacts = aggregator.gather_hls_synthesis_artifacts(design)
 print(artifacts)
 ```
 
-## Intel Data Aggregation
+(other-vendor-aggregation)=
+## Data Aggregation for Other Vendors
 
-```{todo}
-Add details for Intel data aggregation implementation.
+Every flow writes its results as JSON in the design directory, so reading design, synthesis, implementation, and execution data is the same for all vendors. All aggregators share that logic through `JSONFileDataAggregator`. What differs per vendor is which **artifacts** a flow leaves on disk. The vendor aggregators below subclass `ArtifactAggregator`, which finds artifacts by file-name pattern and packages them in the archive.
+
+| Aggregator | Flow whose status it checks | Artifact kinds |
+|------------|----------------------------|----------------|
+| `DataAggregatorXilinx` | `VitisHLSSynthFlow` | `ir`, `adb`, `report`, `hdl`, `ip` |
+| `DataAggregatorVitisModern` | `VitisHLSModernSynthFlow` | `report`, `hdl` |
+| `DataAggregatorIntel` | `IntelHLSSynthFlow` | `report`, `hdl`, `quartus` |
+| `DataAggregatorAltera` | `AlteraHLSSynthFlow` | `report`, `interface`, `hdl`, `log` |
+| `DataAggregatorCatapult` | `CatapultHLSSynthFlow` | `report`, `rtl` |
+| `DataAggregatorStratus` | `StratusHLSSynthFlow` | `rtl`, `report`, `log` |
+| `DataAggregatorXLS` | `XLSHLSSynthFlow` | `ir`, `rtl`, `metrics`, `interface`, `options`, `source_map`, `debug` |
+
+Each aggregator has a matching enum of artifact kinds (`ArtifactsXLS`, `ArtifactsCatapult`, and so on). Usage is the same for all of them:
+
+```python
+from hlsfactory.data_packaging import ArtifactsXLS, DataAggregatorXLS
+
+aggregator = DataAggregatorXLS()
+
+# One design: JSON data plus an in-memory zip of every artifact kind
+result = aggregator.gather_all_data(design)
+
+# Only some artifact kinds; kinds with no files come back as an empty list
+artifacts = aggregator.gather_hls_synthesis_artifacts_data(
+    design,
+    artifacts_to_extract={ArtifactsXLS.RTL, ArtifactsXLS.METRICS},
+)
+# {"rtl": [Path(...)], "metrics": [...], "ir": None, ...}
+
+# Many designs, packaged into one archive
+data = aggregator.gather_multiple_designs(dataset.designs, n_jobs=8)
+aggregator.aggregated_data_to_archive(data, Path("data.zip"))
+```
+
+Behavior shared by the `ArtifactAggregator` subclasses:
+
+- Artifacts are matched by glob patterns relative to the design directory; only files are collected. Unrequested kinds map to `None`.
+- By default a requested kind that matches no files maps to `[]` and collection continues. Pass `error_if_missing_data=True` to raise `FileNotFoundError` instead. `DataAggregatorXilinx` follows the same rule.
+- If `execution_data.json` records the vendor's synthesis flow as `error` or `timeout`, no artifacts are collected and an empty dictionary is returned.
+- Inside the archive, files are stored as `artifacts/<kind>/<path relative to the design directory>`, so files with the same name in different directories don't collide. (`DataAggregatorXilinx` still stores `artifacts/<kind>/<file name>`.)
+
+To support another tool, subclass `ArtifactAggregator`, define an enum of artifact kinds, and set `ARTIFACT_PATTERNS` and `SYNTH_FLOW_NAME`.
+
+```{note}
+The artifact patterns for the non-Xilinx vendors follow the file layouts that the HLSFactory flows read and write. They are checked against synthetic directory trees in the test suite, not against output from the vendor tools themselves, so adjust a pattern if your tool version places files elsewhere.
 ```
 
 ## HLSyn Data Aggregation
 
-```{todo}
-Add details for HLSyn data aggregation implementation.
-```
+There is no dedicated HLSyn aggregator. The `hlsyn` and `hlsyn-vitis` sources are Vitis-based, so `DataAggregatorXilinx` applies to designs that have been run through the Xilinx flows.

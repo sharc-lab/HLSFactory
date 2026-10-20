@@ -47,4 +47,4 @@ aggregator.aggregated_data_to_archive(data_list, Path("data.zip"))
 
 The aggregated data includes synthesis metrics (latency, clock period, LUT/FF/BRAM/DSP estimates), implementation metrics (WNS, TNS, power, final resource usage), and execution times. See the [Data Aggregation and Packaging](../framework/data) framework guide (Output Files section) for the full structure.
 
-For the `CompleteHLSData` class, `DataAggregator` interface, and vendor-specific aggregation (Xilinx, Intel), see the [Data Aggregation and Packaging](../framework/data) framework guide.
+For the `CompleteHLSData` class, `DataAggregator` interface, and the vendor-specific aggregators (Xilinx, Vitis Modern, Intel, Altera, Catapult, Stratus and XLS), see the [Data Aggregation and Packaging](../framework/data) framework guide.

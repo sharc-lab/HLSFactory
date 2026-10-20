@@ -85,7 +85,7 @@ The directory structure would appear as follows:
 The following code snippet demonstrates how to load this design dataset into a `DesignDataset` object.
 
 ```python
-dataset_sources = "custom_dataset_folder"
+dataset_sources = Path("custom_dataset_folder")
 assert dataset_sources.exists()
 
 my_dataset_with_several_designs = DesignDataset.from_dir(

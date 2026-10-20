@@ -10,11 +10,11 @@ Siemens setup before starting HLSFactory. The flow resolves the executable from
 an explicit constructor argument, `HLSFACTORY_CATAPULT_PATH`, or `PATH`, in that
 order.
 
-On the HLSFactory server:
+For example:
 
 ```csh
-source /tools/software/siemens/setup.csh
-setenv HLSFACTORY_CATAPULT_PATH /tools/software/siemens/catapult/latest/Mgc_home
+source /path/to/siemens/setup.csh
+setenv HLSFACTORY_CATAPULT_PATH /path/to/catapult/Mgc_home
 catapult -version
 ```
 
@@ -24,7 +24,7 @@ Set a writable HLSFactory work directory in `.env`:
 
 ```text
 HLSFACTORY_WORK_DIR=/absolute/path/to/hlsfactory_work
-HLSFACTORY_CATAPULT_PATH=/tools/software/siemens/catapult/latest/Mgc_home
+HLSFACTORY_CATAPULT_PATH=/path/to/catapult/Mgc_home
 ```
 
 `HLSFACTORY_CATAPULT_PATH` can instead name the `catapult` executable directly
@@ -77,7 +77,7 @@ You can also select an executable explicitly:
 ```python
 flow = CatapultHLSSynthFlow(
     catapult_bin=(
-        "/tools/software/siemens/catapult/latest/"
+        "/path/to/catapult/"
         "Mgc_home/bin/catapult"
     ),
 )
@@ -122,8 +122,8 @@ When execution-time logging is enabled (the default), `execution_data.json` reco
 From a C shell with the Siemens setup sourced:
 
 ```csh
-source /tools/software/siemens/setup.csh
-setenv HLSFACTORY_CATAPULT_PATH /tools/software/siemens/catapult/latest/Mgc_home
+source /path/to/siemens/setup.csh
+setenv HLSFACTORY_CATAPULT_PATH /path/to/catapult/Mgc_home
 uv run python tests/dataset_validator.py \
     hlsfactory/hls_dataset_sources/test_designs_catapult \
     --flow CatapultHLSSynthFlow \
@@ -136,12 +136,12 @@ override `HLSFACTORY_CATAPULT_PATH`.
 From Bash, run the same validation in a configured C-shell subprocess:
 
 ```bash
-csh -c 'source /tools/software/siemens/setup.csh; uv run python tests/dataset_validator.py hlsfactory/hls_dataset_sources/test_designs_catapult --flow CatapultHLSSynthFlow -j 1'
+csh -c 'source /path/to/siemens/setup.csh; uv run python tests/dataset_validator.py hlsfactory/hls_dataset_sources/test_designs_catapult --flow CatapultHLSSynthFlow -j 1'
 ```
 
 The validator copies the dataset into `$HLSFACTORY_WORK_DIR/dataset_validator/`, synthesizes every design, and fails if no design completes successfully.
 
-As a representative sanity check, the HLSFactory server produced the following values with the bundled Tcl scripts. Exact area and timing can vary with the Catapult version and installed libraries.
+As a representative sanity check, a reference run produced the following values with the bundled Tcl scripts. Exact area and timing can vary with the Catapult version and installed libraries.
 
 | Design | Latency (cycles) | Throughput (cycles) | Critical path (ns) | Total area |
 |---|---:|---:|---:|---:|

@@ -1,4 +1,4 @@
-# End-to-End Xilinx Flow
+# AMD Xilinx Flow
 
 This tutorial demonstrates an end-to-end workflow for dataset setup, frontend elaboration, HLS synthesis, implementation, and reporting using the Xilinx Vitis HLS and Vivado tools.
 

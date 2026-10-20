@@ -159,7 +159,7 @@ opt_dsl_frontend = OptDSLFrontend(
 datasets_post_frontend = opt_dsl_frontend.execute_multiple_design_datasets_fine_grained_parallel(
     datasets,
     copy_dataset=True,
-    lambda x: f"{x}__post_frontend",
+    new_dataset_name_fn=lambda x: f"{x}__post_frontend",
     n_jobs=32,
     cpu_affinity=list(range(32))
 )
@@ -175,7 +175,6 @@ opt_dsl_frontend_intel = OptDSLFrontendIntel(
     work_dir="/path/to/work_dir",
     random_sample=True,
     random_sample_num=12,
-    random_sample_seed=64
 )
 
 # Execute with Intel HLS

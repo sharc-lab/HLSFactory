@@ -1,6 +1,6 @@
 # Install and Setup
 
-HLSFactory is a Python library. Therefore, it only requires Python and other Python packages to run. HLSFactory also includes the built-in HLS source code dataset alongside the library code, so you do not need to download any additional files to use the built-in datasets.
+HLSFactory is a Python library. Therefore, it only requires Python 3.12 or newer and other Python packages to run. HLSFactory also includes the built-in HLS source code dataset alongside the library code, so you do not need to download any additional files to use the built-in datasets.
 
 ## Installation
 
@@ -57,18 +57,23 @@ For a step-by-step walkthrough of each stage (dataset setup, OptDSL frontend, sy
 
 ## Vendor Tools
 
-You need the appropriate vendor tools for the flows you run:
+HLSFactory drives vendor tools; it does not install them. You need the tools for the flows you run, and it is your responsibility to install them and set up their licenses. Each section below says which tools a flow needs and how HLSFactory finds them. Flows you don't use need nothing.
 
-- **Xilinx flows** — Vitis HLS and Vivado (e.g., 2021.1, 2023.1)
-- **Intel flows** — Intel HLS Compiler and Quartus
-- **Siemens Catapult flows** — Catapult HLS with the standard-cell and memory libraries referenced by each synthesis Tcl script
-- **Google XLS flows** — [XLS](https://google.github.io/xls/) DSLX compiler and RTL code generator
+| Vendor | Flows | Tools needed | How HLSFactory finds them |
+|--------|-------|--------------|---------------------------|
+| AMD Xilinx | `VitisHLS*Flow` | Vitis HLS, Vivado | `.env` / environment: `HLSFACTORY_VITIS_HLS_PATH`, `HLSFACTORY_VIVADO_PATH` |
+| AMD Vitis (unified) | `VitisHLSModern*Flow` | `v++` from the merged Vitis toolchain | `v++` on `PATH` |
+| Intel | `IntelHLSSynthFlow`, `IntelQuartusImplFlow` | `i++`, `quartus_sh` | `PATH` or constructor arguments |
+| Altera | `AlteraHLS*Flow`, `AlteraQuartusImplFlow` | `ahls` or `ahls-sh` | `HLSFACTORY_ALTERA_HLS_PATH`, `PATH`, or constructor arguments |
+| Siemens Catapult | `CatapultHLSSynthFlow` | `catapult` | `HLSFACTORY_CATAPULT_PATH`, then `PATH` |
+| Cadence Stratus | `StratusHLSSynthFlow` | `stratus`, `bdw_makegen`, `make` | `stratus_install_dir` argument or `PATH` |
+| Google XLS | `XLSHLSSynthFlow` | `ir_converter_main`, `opt_main`, `codegen_main` | `HLSFACTORY_XLS_PATH` |
 
-It is the user's responsibility to install and set up these tools. Once installed, HLSFactory can discover them via a `.env` file or environment variables.
+Helpers in [`hlsfactory.utils`](apidocs/index) (`get_work_dir`, `get_tool_paths`) read a `.env` file or the process environment. Create a `.env` in your project tree (copy `.env.template` from the repository root); the keys each vendor uses are listed in its section.
 
-HLSFactory includes helper functions to find tool paths from your `PATH`, `.env` file, or environment variables. See the [`hlsfactory.utils`](apidocs/index) API documentation for `get_work_dir` and `get_tool_paths`.
+### AMD Xilinx: Vitis HLS and Vivado
 
-Create a `.env` file in your project tree (you can copy from `.env.template` in the repository root) with content like:
+Used by `VitisHLSSynthFlow`, `VitisHLSImplFlow`, and the C/co-simulation flows. Tested with versions such as 2021.1 and 2023.1. Set the install roots in `.env` (or as environment variables):
 
 ```text
 HLSFACTORY_WORK_DIR=/absolute/path/to/your/workdir
@@ -76,10 +81,42 @@ HLSFACTORY_VITIS_HLS_PATH=/opt/Xilinx/Vitis_HLS/2023.1
 HLSFACTORY_VIVADO_PATH=/opt/Xilinx/Vivado/2023.1
 ```
 
-Typical installation paths: `/opt/Xilinx/Vitis_HLS/<version>` and `/opt/Xilinx/Vivado/<version>` on Linux. `get_work_dir(DirSource.ENVFILE)` and `get_tool_paths(ToolPathsSource.ENVFILE)` read these keys automatically. You can also set the same keys as environment variables instead of using a `.env` file.
+Typical Linux locations are `/opt/Xilinx/Vitis_HLS/<version>` and `/opt/Xilinx/Vivado/<version>`. `get_work_dir(DirSource.ENVFILE)` and `get_tool_paths(ToolPathsSource.ENVFILE)` read these keys. A flow can also be given `vitis_hls_bin` directly, and it falls back to `vitis_hls` on `PATH`. See the [Xilinx tutorial](tutorials/xilinx_flow).
 
-`XLSHLSSynthFlow` reads `HLSFACTORY_XLS_PATH` directly from the environment. On the
-HLSFactory server, set it to `/usr/scratch/common/xls`. The directory may contain
+### AMD Vitis (unified toolchain)
+
+Used by `VitisHLSModernSynthFlow` and `VitisHLSModernCsimFlow`, which run `v++` with a `hls_config.cfg` instead of a Tcl script. This is the merged Vitis toolchain (for example `2026.1/Vitis`), a separate install root from the classic Vitis HLS and Vivado pair above. Source the Vitis settings script so `v++` is on `PATH` (or pass `vpp_bin`). `.env.template` also defines `HLSFACTORY_VITIS_MODERN_PATH`, which `get_tool_path_vitis_modern` reads if you want the install root in your `.env`. Validate with the `test_designs_vitis_modern` dataset.
+
+### Intel HLS Compiler and Quartus
+
+Used by `IntelHLSSynthFlow` (`i++`) and `IntelQuartusImplFlow` (`quartus_sh`). Put both on `PATH` by sourcing the Intel HLS and Quartus environment scripts, or pass `ipp_bin` and `quartus_bin` to the flows. There is no HLSFactory-specific environment variable for these. The target device and clock are flow constructor arguments (`arch`, `clock`). See the [Intel tutorial](tutorials/intel_flow).
+
+### Altera HLS IP Gen
+
+Used by the `AlteraHLS*Flow` classes and `AlteraQuartusImplFlow`. This is the 2026 `ahls` SYCL compiler, separate from the legacy Intel `i++` flow. HLSFactory looks for the tool in this order: explicit `ahls_bin` or `ahls_sh` arguments, `altera_install_dir` or `HLSFACTORY_ALTERA_HLS_PATH`, then `ahls` / `ahls-sh` on `PATH`. There is no default install path.
+
+```bash
+export HLSFACTORY_ALTERA_HLS_PATH=/path/to/altera/hls   # directory containing bin/ahls-sh
+```
+
+The installer's `ahls-sh` launcher runs inside an Apptainer container, so container use needs permission to launch Apptainer. A native `ahls` install needs its vendor environment initialized before you start Python. See the [Altera tutorial](tutorials/altera_flow).
+
+### Cadence Stratus
+
+Used by `StratusHLSSynthFlow`. The flow needs `stratus`, `bdw_makegen`, and `make`. Pass `stratus_install_dir` (a directory containing `bin/stratus` and `bin/bdw_makegen`) to the flow, or put the tools on `PATH`. Source your site's Cadence environment script first so the license server settings are inherited. The validator accepts the same install directory:
+
+```bash
+uv run python tests/dataset_validator.py \
+    hlsfactory/hls_dataset_sources/test_designs_stratus \
+    --flow StratusHLSSynthFlow \
+    --stratus-install-dir /path/to/stratus \
+    -j 1
+```
+
+### Google XLS
+
+`XLSHLSSynthFlow` reads `HLSFACTORY_XLS_PATH` directly from the environment. Set it to
+your XLS installation directory. The directory may contain
 release binaries at its root or a source build's binaries under `bazel-bin/xls/`.
 The flow requires `ir_converter_main`, `opt_main`, and `codegen_main`; it checks
 both layouts for each executable. An explicit `xls_install_dir` argument passed
@@ -114,25 +151,25 @@ argument, then `HLSFACTORY_CATAPULT_PATH`, and finally searches `PATH`.
 containing `Mgc_home/bin/catapult`:
 
 ```bash
-export HLSFACTORY_CATAPULT_PATH=/tools/software/siemens/catapult/latest/Mgc_home
+export HLSFACTORY_CATAPULT_PATH=/path/to/catapult/Mgc_home
 ```
 
 The validator's `--catapult-bin` option provides the same explicit override.
 Catapult must also inherit the vendor license environment and any
 library-related variables required by the synthesis Tcl script.
 
-On the HLSFactory server, the supported setup is:
-
-```csh
-source /tools/software/siemens/setup.csh
-```
-
-This configures `MGLS_LICENSE_FILE`, `SALT_LICENSE_SERVER`, `MGC_CATAPULT_HOME`, and `PATH`. The Catapult executable is then available at `/tools/software/siemens/catapult/latest/Mgc_home/bin/catapult`. Setting `HLSFACTORY_CATAPULT_PATH` selects the executable but does not replace this license and library setup.
-
-From a Bash session, the complete built-in validation can be launched through C shell:
+Source the setup script supplied by your Siemens administrator (or your site's equivalent) before starting HLSFactory:
 
 ```bash
-csh -c 'source /tools/software/siemens/setup.csh; uv run python tests/dataset_validator.py hlsfactory/hls_dataset_sources/test_designs_catapult --flow CatapultHLSSynthFlow -j 1'
+source /path/to/siemens/setup.sh   # or setup.csh from a C shell
 ```
 
-For other installations, source the setup script supplied by your Siemens administrator and ensure `catapult` is on `PATH`. See the [Catapult HLS tutorial](tutorials/catapult_flow) for the Python API, design configuration, reports, and output fields.
+Such a script typically configures `MGLS_LICENSE_FILE`, `SALT_LICENSE_SERVER`, `MGC_CATAPULT_HOME`, and `PATH`. Setting `HLSFACTORY_CATAPULT_PATH` selects the executable but does not replace this license and library setup.
+
+If your setup script is written for C shell but you work in Bash, the complete built-in validation can be launched through C shell:
+
+```bash
+csh -c 'source /path/to/siemens/setup.csh; uv run python tests/dataset_validator.py hlsfactory/hls_dataset_sources/test_designs_catapult --flow CatapultHLSSynthFlow -j 1'
+```
+
+Make sure `catapult` is on `PATH` or `HLSFACTORY_CATAPULT_PATH` is set. See the [Catapult HLS tutorial](tutorials/catapult_flow) for the Python API, design configuration, reports, and output fields.

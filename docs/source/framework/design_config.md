@@ -1,19 +1,24 @@
-# Design Configuration System (`hlsfactory.toml`)
+# Design Configuration (`hlsfactory.toml`)
 
-This document describes the `hlsfactory.toml` design metadata specification, which provides a structured way for HLS designs to declare their supported flows and flow-specific configuration.
+Every design in an HLSFactory dataset is a directory of source files and scripts. The file `hlsfactory.toml` in that directory is the design's manifest: it tells HLSFactory what the design is called, which dataset it belongs to, and **which flows can be run on it and with which input files**.
 
-## Overview
+This page explains what the file contains, how it is validated, how flows read it, and how to use it from Python. For what each flow does and which settings it accepts, see the {ref}`flow-reference` in [Flows](./flows.md).
 
-Each HLS design in HLSFactory can include an `hlsfactory.toml` file that serves as a single, authoritative source of metadata. This file enables:
+## Why a config file exists
 
-- **Flow Declaration**: Explicitly declare which HLSFactory flows a design supports
-- **Script Configuration**: Specify paths to flow-specific scripts (TCL files, etc.)
-- **Design Metadata**: Store canonical name, dataset association, tags, and environment variables
-- **Early Validation**: Fail fast with clear errors if required configuration is missing
+Different tools need different entry points: Vitis HLS wants a Tcl script, XLS wants a DSLX file and a top function, Catapult wants its own Tcl script, and so on. Without a manifest, each flow would have to guess file names or rely on conventions that differ between datasets.
 
-## Configuration File Format
+With `hlsfactory.toml`:
 
-### Basic Structure
+- A flow never guesses. It asks the design's config for the setting it needs (for example, `synth_tcl`) and uses that file.
+- A design opts in to a flow by listing it. If a flow isn't listed, the design doesn't support it.
+- Mistakes surface when the file is loaded, not halfway through a multi-hour tool run: a missing required setting raises an error immediately.
+
+Loading a dataset requires the file by default. `DesignDataset.from_dir` fails on any design directory without an `hlsfactory.toml` unless you pass `require_config=False`.
+
+## File format
+
+A config has a few top-level fields followed by one `[[flow_configs]]` table per flow:
 
 ```toml
 design_name = "k2mm"
@@ -36,129 +41,59 @@ flow_name = "OptDSLv2"
 opt_dsl_file = "opt_template.tcl"
 ```
 
-### Required Fields
+### Top-level fields
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `design_name` | string | Canonical name of the design |
-| `dataset_name` | string | Name of the parent dataset |
+| Field | Required | Type | Meaning |
+|-------|----------|------|---------|
+| `design_name` | Yes | string | Name of the design. Must be non-empty. |
+| `dataset_name` | Yes | string | Name of the dataset the design belongs to. Must be non-empty. |
+| `tags` | No | list of strings | Free-form labels such as `["linalg", "stencil"]`, for filtering and bookkeeping. |
+| `env_vars` | No | table of strings | Environment variables associated with the design. They are stored and round-tripped by the config, but the built-in flows do not currently apply them to tool processes. |
+| `flow_configs` | No | array of tables | The flows this design supports. Defaults to none. |
 
-### Optional Fields
+### Flow entries
 
-| Field | Type | Default | Description |
-|-------|------|---------|-------------|
-| `tags` | list[string] | `[]` | Descriptive tags for categorization |
-| `env_vars` | table | `{}` | Environment variables for flow execution |
-| `flow_configs` | array of tables | `[]` | Flow-specific configurations |
-
-## Supported Flows and Required Settings
-
-Each flow type has specific required settings that must be provided:
-
-| Flow Name | Required Setting | Description |
-|-----------|-----------------|-------------|
-| `CatapultHLSSynthFlow` | `synth_tcl` | TCL script for Catapult HLS synthesis |
-| `StratusHLSSynthFlow` | `project_tcl`, `hls_module`, `hls_config` | Stratus project and module/configuration to synthesize |
-| `XLSHLSSynthFlow` | `dslx_file`, `top` | DSLX source file and top-level function to synthesize |
-| `VitisHLSSynthFlow` | `synth_tcl` | TCL script for HLS synthesis |
-| `VitisHLSImplFlow` | `impl_tcl` | TCL script for IP export/implementation |
-| `VitisHLSCsimFlow` | `csim_tcl` | TCL script for C simulation |
-| `VitisHLSCosimSetupFlow` | `cosim_setup_tcl` | TCL script for co-simulation setup |
-| `VitisHLSCosimFlow` | `cosim_tcl` | TCL script for co-simulation |
-| `OptDSLv2` | `opt_dsl_file` | Optimization DSL template file |
-| `LightningSimFlow` | `solution_dir_name` | Existing Vitis HLS solution directory to simulate |
-
-### Flow Configuration Examples
+Each `[[flow_configs]]` entry has one required key, `flow_name`, and any number of settings. Settings are plain key/value pairs next to `flow_name`; they can also be nested under a `flow_settings` table, and both forms are merged.
 
 ```toml
-# Catapult HLS Synthesis
-[[flow_configs]]
-flow_name = "CatapultHLSSynthFlow"
-synth_tcl = "synth.tcl"
-
-# Cadence Stratus HLS Synthesis
-[[flow_configs]]
-flow_name = "StratusHLSSynthFlow"
-project_tcl = "project.tcl"
-hls_module = "fir"
-hls_config = "BASIC"
-# makefile = "Makefile"  # Optional; this is the default.
-
-# Google XLS HLS Synthesis
 [[flow_configs]]
 flow_name = "XLSHLSSynthFlow"
 dslx_file = "adder.x"
 top = "add"
-# generator = "pipeline"  # Optional; this is the default.
-# pipeline_stages = "1"   # Optional; pipeline generator only.
-# delay_model = "unit"    # Optional; pipeline generator only.
-# reset = "rst"            # Optional reset port; required by stateful procs.
-
-# Vitis HLS Synthesis
-[[flow_configs]]
-flow_name = "VitisHLSSynthFlow"
-synth_tcl = "dataset_hls.tcl"
-
-# Vitis HLS Implementation (IP Export + Vivado)
-[[flow_configs]]
-flow_name = "VitisHLSImplFlow"
-impl_tcl = "dataset_hls_ip_export.tcl"
-
-# C Simulation
-[[flow_configs]]
-flow_name = "VitisHLSCsimFlow"
-csim_tcl = "dataset_hls_csim.tcl"
-
-# Co-Simulation Setup
-[[flow_configs]]
-flow_name = "VitisHLSCosimSetupFlow"
-cosim_setup_tcl = "dataset_hls_cosim_setup.tcl"
-
-# Co-Simulation
-[[flow_configs]]
-flow_name = "VitisHLSCosimFlow"
-cosim_tcl = "dataset_hls_cosim.tcl"
-
-# Optimization DSL Frontend
-[[flow_configs]]
-flow_name = "OptDSLv2"
-opt_dsl_file = "opt_template.tcl"
-
-# LightningSim
-[[flow_configs]]
-flow_name = "LightningSimFlow"
-solution_dir_name = "hls_k2mm/solution1"
 ```
 
-### XLS Flow Settings
+Rules to keep in mind:
 
-| Setting | Required | Default | Description |
-|---|---|---|---|
-| `dslx_file` | Yes | — | DSLX source file relative to the design directory |
-| `top` | Yes | — | Top-level DSLX function or proc |
-| `generator` | No | `pipeline` | `pipeline` or `combinational` |
-| `pipeline_stages` | No | `1` | Positive stage count used by the pipeline generator |
-| `delay_model` | No | `unit` | XLS scheduling delay model used by the pipeline generator |
-| `reset` | No | unset | Reset port name for pipeline codegen; required by the packaged stateful proc examples |
-| `dump_optimizer_ir` | No | `false` | Write an IR snapshot after every optimizer pass |
-| `dump_codegen_ir` | No | `false` | Write an IR snapshot after every scheduling/codegen pass |
-| `profile_passes` | No | `false` | Write optimizer and codegen pprof pass profiles |
+- **All setting values are strings**, including numbers and booleans (`pipeline_stages = "1"`, not `1`). A non-string value is rejected.
+- **Each flow appears at most once** per design. Listing the same `flow_name` twice is an error.
+- **Required settings are enforced per flow.** For example, `VitisHLSSynthFlow` requires `synth_tcl`, and `XLSHLSSynthFlow` requires `dslx_file` and `top`. The table of required settings lives in the {ref}`flow-reference`.
+- **Unknown flow names are allowed.** A flow that isn't built in has no required settings, which lets you define custom flows without modifying HLSFactory (see "Custom flows and new flow names" below).
+- **File paths are relative to the design directory**, because flows run with the design directory as their working directory.
 
-`pipeline_stages` controls scheduler partitioning, but it is not necessarily the
-same as externally visible latency because XLS may add input and output
-registers. Read `latency_cycles` from the generated `data_hls.json` for the
-module-signature value. Combinational signatures do not express cycle latency
-or initiation interval, so those JSON fields are `null` for combinational
-designs.
+## How a flow uses the config
 
-The three diagnostic switches are string-valued booleans because all flow
-settings are strings. Accepted true values are `true`, `yes`, `on`, and `1`;
-accepted false values are `false`, `no`, `off`, and `0`. IR dumps can create
-hundreds of files per design and are disabled by default.
+A flow's `execute` method receives a `Design`. The design carries its parsed config, and the flow pulls out what it needs. This is the pattern used by the built-in Vitis flows:
 
-## Python API
+```python
+config = design.require_config()                       # error if no hlsfactory.toml was loaded
+synth_tcl = config.require_flow_setting("VitisHLSSynthFlow", "synth_tcl")
+# ... run vitis_hls on design.dir / synth_tcl ...
+```
 
-### Reading and Writing Configs
+Two lookup styles cover most needs:
+
+| Style | Behavior when missing | Use for |
+|-------|----------------------|---------|
+| `require_*` | Raises an error | Settings the flow cannot run without |
+| `get_*` | Returns a default (`None` unless given) | Optional tuning settings |
+
+Note that `get_flow_setting` still raises if the *flow itself* isn't configured for the design; the default only applies to a missing *setting* within a configured flow. Use `supports_flow` first if the flow is optional.
+
+Copying a design (which flows do when `copy_dataset=True`) carries its config along, so a flow running on a copied dataset sees the same settings.
+
+## Using the config from Python
+
+### Read, inspect, and write
 
 ```python
 from pathlib import Path
@@ -170,27 +105,18 @@ from hlsfactory.design_config import (
     write_design_config,
 )
 
-# Read a config file
 config = read_design_config(Path("design_dir/hlsfactory.toml"))
 
-# Access design metadata
-print(config.design_name)      # "k2mm"
-print(config.dataset_name)     # "polybench"
-print(config.tags)             # ["linalg"]
+config.design_name            # "k2mm"
+config.flow_names             # ("VitisHLSSynthFlow", "VitisHLSImplFlow", ...)
+config.supports_flow("VitisHLSSynthFlow")   # True
 
-# Check flow support
-if config.supports_flow("VitisHLSSynthFlow"):
-    synth_tcl = config.require_flow_setting(
-        FlowName.VITIS_HLS_SYNTH, "synth_tcl"
-    )
-    print(f"Synthesis TCL: {synth_tcl}")
+synth_tcl = config.require_flow_setting(FlowName.VITIS_HLS_SYNTH, "synth_tcl")
+```
 
-# Get flow config object
-flow_config = config.get_flow_config("VitisHLSSynthFlow")
-if flow_config:
-    print(flow_config.flow_settings)
+Creating a config programmatically and writing it back to TOML:
 
-# Create and write a new config
+```python
 new_config = DesignConfig(
     design_name="my_design",
     dataset_name="my_dataset",
@@ -205,235 +131,73 @@ new_config = DesignConfig(
 write_design_config(Path("output/hlsfactory.toml"), new_config)
 ```
 
-### Design and DesignDataset Integration
+Constructing a `FlowConfig` or `DesignConfig` runs the same validation as reading a file, so invalid configs fail at construction.
+
+### Loading designs and datasets
 
 ```python
 from hlsfactory.framework import Design, DesignDataset
 
-# Load a single design with its config
-design = Design.from_dir_with_config(Path("path/to/design"))
-print(design.config.design_name)
+design = Design.from_dir_with_config(Path("path/to/design"))   # requires hlsfactory.toml
+design.config.design_name                                      # design.config is None if no config was loaded
+design.require_config()                                        # raises if no config was loaded
 
-# Access config from design (raises if not loaded)
-config = design.require_config()
-synth_tcl = config.require_flow_setting("VitisHLSSynthFlow", "synth_tcl")
-
-# Load a dataset with automatic config loading (default behavior)
-dataset = DesignDataset.from_dir("polybench", Path("path/to/dataset"))
-for design in dataset.designs:
-    print(f"{design.name}: {design.config.flow_names}")
-
-# Load without requiring configs (for migration/compatibility)
-dataset = DesignDataset.from_dir(
-    "polybench",
-    Path("path/to/dataset"),
-    require_config=False
-)
+dataset = DesignDataset.from_dir("polybench", Path("path/to/dataset"))   # configs required
+legacy = DesignDataset.from_dir("old", Path("path/to/dataset"), require_config=False)
 ```
 
-### Using Config in Custom Flows
+Use `require_config=False` only for directories that don't have manifests yet; flows that need settings will raise when they call `require_config()`.
+
+### Custom flows and new flow names
+
+A custom flow reads its own settings the same way built-in flows do. It does not need to be registered anywhere:
 
 ```python
 from hlsfactory.framework import Design, ToolFlow
-from hlsfactory.design_config import FlowName
 
 class MyCustomFlow(ToolFlow):
     name = "MyCustomFlow"
 
     def execute(self, design: Design, timeout: float | None = None) -> list[Design]:
-        # Get config from design
         config = design.require_config()
-
-        # Get flow-specific settings
-        my_script = config.require_flow_setting("MyCustomFlow", "script_path")
-
-        # Optional settings with defaults
-        optional_param = config.get_flow_setting(
-            "MyCustomFlow", "optional_param", default="default_value"
-        )
-
-        # Execute flow logic...
+        script = config.require_flow_setting("MyCustomFlow", "script_path")
+        mode = config.get_flow_setting("MyCustomFlow", "mode", default="fast")
+        # ... run the tool ...
         return [design]
 ```
 
-## Data Classes
+with a matching entry in the design's `hlsfactory.toml`:
 
-### DesignConfig
-
-The main configuration class representing an `hlsfactory.toml` file.
-
-**Attributes:**
-- `design_name: str` - Design identifier (required)
-- `dataset_name: str` - Parent dataset name (required)
-- `tags: list[str]` - Descriptive tags (optional)
-- `env_vars: dict[str, str]` - Environment variables (optional)
-- `flow_configs: list[FlowConfig]` - Flow configurations (optional)
-
-**Methods:**
-- `supports_flow(flow_name)` - Check if design supports a flow
-- `get_flow_config(flow_name)` - Get FlowConfig or None
-- `require_flow_config(flow_name)` - Get FlowConfig or raise error
-- `get_flow_setting(flow_name, setting, default=None)` - Get setting value
-- `require_flow_setting(flow_name, setting)` - Get setting or raise error
-- `flow_names` - Property returning tuple of all flow names
-
-### FlowConfig
-
-Configuration for a single flow.
-
-**Attributes:**
-- `flow_name: str` - Name of the flow
-- `flow_settings: dict[str, str]` - Flow-specific key-value settings
-
-**Methods:**
-- `has_setting(key)` - Check if setting exists
-- `get_setting(key, default=None)` - Get setting value
-- `require_setting(key)` - Get setting or raise error
-- `is_known_flow` - Property indicating if flow is in FlowName enum
-- `required_settings` - Property returning required settings for this flow type
-
-### FlowName Enum
-
-Enumeration of known flow names:
-
-```python
-class FlowName(StrEnum):
-    OPT_DSL_V2 = "OptDSLv2"
-    CATAPULT_HLS_SYNTH = "CatapultHLSSynthFlow"
-    STRATUS_HLS_SYNTH = "StratusHLSSynthFlow"
-    XLS_HLS_SYNTH = "XLSHLSSynthFlow"
-    VITIS_HLS_SYNTH = "VitisHLSSynthFlow"
-    VITIS_HLS_CSIM = "VitisHLSCsimFlow"
-    VITIS_HLS_IMPL = "VitisHLSImplFlow"
-    VITIS_HLS_COSIM = "VitisHLSCosimFlow"
-    VITIS_HLS_COSIM_SETUP = "VitisHLSCosimSetupFlow"
-    VITIS_HLS_IMPL_REPORT = "VitisHLSImplReportFlow"
-    LIGHTNING_SIM = "LightningSimFlow"
+```toml
+[[flow_configs]]
+flow_name = "MyCustomFlow"
+script_path = "run.sh"
 ```
 
-## Migration Script
+To also get automatic validation of required settings for a new flow, contribute it to HLSFactory itself:
 
-A CLI tool is provided to generate `hlsfactory.toml` files for existing designs.
+1. Add the name to the `FlowName` enum in `hlsfactory/design_config.py`.
+2. Add its required setting names to `FlowConfig._REQUIRED_SETTINGS` in the same file.
+3. Read the settings in the flow with `require_flow_setting`.
 
-### Usage
-
-```bash
-# Preview what would be created (recommended first step)
-uv run python -m hlsfactory.scripts.generate_design_configs --dry-run
-
-# Preview with verbose output showing each design
-uv run python -m hlsfactory.scripts.generate_design_configs --dry-run --verbose
-
-# Generate configs for all designs
-uv run python -m hlsfactory.scripts.generate_design_configs
-
-# Generate configs for a specific dataset only
-uv run python -m hlsfactory.scripts.generate_design_configs --dataset polybench
-
-# Generate configs for a specific dataset with preview
-uv run python -m hlsfactory.scripts.generate_design_configs \
-    --dataset machsuite --dry-run
-```
-
-### TCL File Detection
-
-The migration script automatically detects existing TCL files:
-
-| Detected File | Flow | Setting |
-|---------------|------|---------|
-| `dataset_hls.tcl` | VitisHLSSynthFlow | `synth_tcl` |
-| `dataset_hls_ip_export.tcl` | VitisHLSImplFlow | `impl_tcl` |
-| `dataset_hls_csim.tcl` | VitisHLSCsimFlow | `csim_tcl` |
-| `dataset_hls_cosim_setup.tcl` | VitisHLSCosimSetupFlow | `cosim_setup_tcl` |
-| `dataset_hls_cosim.tcl` | VitisHLSCosimFlow | `cosim_tcl` |
-| `opt_template.tcl` | OptDSLv2 | `opt_dsl_file` |
-
-## Error Handling
-
-### DesignConfigError
-
-Raised for configuration-level errors:
-- Missing required fields (`design_name`, `dataset_name`)
-- Invalid field types
-- Duplicate flow configurations
-- Missing config file when required
-
-### FlowConfigError
-
-Raised for flow configuration errors:
-- Missing required flow settings
-- Invalid flow setting types
-- Empty flow name
-
-### Example Error Messages
+## Example design directory
 
 ```
-DesignConfigError: Required config file hlsfactory.toml not found in /path/to/design
-
-DesignConfigError: Design 'my_design' at /path has no loaded configuration.
-Ensure hlsfactory.toml exists and was loaded.
-
-FlowConfigError: Flow `VitisHLSSynthFlow` is missing required setting(s): synth_tcl.
-```
-
-## Directory Structure
-
-```
-design_directory/
-├── hlsfactory.toml          # Design configuration (required)
-├── dataset_hls.tcl          # Synthesis script
-├── dataset_hls_ip_export.tcl # Implementation script
-├── opt_template.tcl         # OptDSL template
-├── hls_template.tcl         # HLS project template
+polybench/k2mm/
+├── hlsfactory.toml            # the manifest described on this page
+├── dataset_hls.tcl            # referenced by synth_tcl
+├── dataset_hls_ip_export.tcl  # referenced by impl_tcl
+├── opt_template.tcl           # referenced by opt_dsl_file
 └── src/
     ├── kernel.cpp
     └── kernel.h
 ```
 
-## Best Practices
+The names of the Tcl files are a convention, not a requirement: whatever the config points at is what runs.
 
-1. **Always include `hlsfactory.toml`** - All designs should have a config file
-2. **Use descriptive tags** - Help categorize designs by domain, features, etc.
-3. **Validate with dry-run** - Use `--dry-run` before generating configs
-4. **Keep TCL names consistent** - Follow naming conventions for easy migration
-5. **Check flow support** - Use `supports_flow()` before accessing flow settings
+## Best practices
 
-## Extending the System
-
-### Adding a New Flow Type
-
-1. Add the flow name to `FlowName` enum in `design_config.py`:
-   ```python
-   class FlowName(StrEnum):
-       MY_NEW_FLOW = "MyNewFlow"
-   ```
-
-2. Add required settings to `_REQUIRED_SETTINGS` in `FlowConfig`:
-   ```python
-   _REQUIRED_SETTINGS = {
-       FlowName.MY_NEW_FLOW.value: frozenset({"my_script"}),
-   }
-   ```
-
-3. Update flow implementation to read from config:
-   ```python
-   def execute(self, design: Design, timeout=None):
-       config = design.require_config()
-       my_script = config.require_flow_setting("MyNewFlow", "my_script")
-       # ...
-   ```
-
-4. Update migration script if needed (`TCL_PATTERNS` dict)
-
-## File References
-
-| File | Purpose |
-|------|---------|
-| `hlsfactory/design_config.py` | Core config classes and parsing |
-| `hlsfactory/framework.py` | Design/DesignDataset integration |
-| `hlsfactory/flow_catapult.py` | Siemens Catapult synthesis and report parsing |
-| `hlsfactory/flow_xls.py` | Google XLS DSLX-to-Verilog synthesis and metrics parsing |
-| `hlsfactory/flow_vitis.py` | Vitis flow implementations |
-| `hlsfactory/opt_dsl_frontend_v2.py` | OptDSL frontend implementation |
-| `hlsfactory/scripts/generate_design_configs.py` | Migration CLI tool |
-| `tests/config_tests/` | Test suite for config system |
+- Include an `hlsfactory.toml` in every design, and list only flows you have actually run. A listed flow is a promise that the design works with it.
+- Keep script names consistent within a dataset so designs stay easy to compare and review.
+- Call `supports_flow` before reading settings for an optional flow, and use `require_*` for anything the flow cannot run without.
+- Use `tags` for properties you'll want to filter on later (domain, kernel type, source suite).

@@ -32,3 +32,93 @@ background: white;
 mix-blend-mode: difference; /* Blend mode to achieve desired effect */
 pointer-events: none; /* Ensure the overlay doesn't interfere with interactions */
 }
+
+/* ---- Modern look ---- */
+html { font-size: 93.75%; } /* ~15px base, down from 16px */
+body { font-feature-settings: "cv11", "ss01"; }
+.content, article { line-height: 1.65; }
+h1, h2, h3 { letter-spacing: -0.01em; font-weight: 650; }
+h2 { border-bottom: 1px solid var(--color-background-border); padding-bottom: .3em; }
+article pre, .highlight { border-radius: 8px; }
+article table.docutils { border-radius: 10px; overflow: hidden; }
+.admonition { border-radius: 8px; box-shadow: none; }
+a { text-underline-offset: 3px; }
+.sidebar-brand { padding-bottom: .5rem; }
+
+/* ---- Dataset catalog ---- */
+.catalog-toolbar {
+  position: sticky; top: 0; z-index: 5; margin: 1rem 0;
+  padding: .75rem 0; background: var(--color-background-primary);
+}
+.catalog-stats { display: flex; gap: .75rem; margin-bottom: .75rem; flex-wrap: wrap; }
+.catalog-stat {
+  flex: 1 1 8rem; padding: .6rem .9rem; border-radius: 10px;
+  border: 1px solid var(--color-background-border);
+  background: var(--color-background-secondary);
+}
+.catalog-stat b { display: block; font-size: 1.5rem; line-height: 1.2; color: var(--color-brand-primary); }
+.catalog-stat span { font-size: .8rem; color: var(--color-foreground-muted); }
+.catalog-search {
+  width: 100%; padding: .65rem .9rem; font-size: 1rem; border-radius: 10px;
+  border: 1px solid var(--color-background-border);
+  background: var(--color-background-primary); color: var(--color-foreground-primary);
+}
+.catalog-search:focus { outline: 2px solid var(--color-brand-primary); outline-offset: 1px; }
+.catalog-chips { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: .6rem; }
+.catalog-chip {
+  padding: .25rem .75rem; border-radius: 999px; font-size: .85rem; cursor: pointer;
+  border: 1px solid var(--color-background-border);
+  background: var(--color-background-secondary); color: var(--color-foreground-primary);
+}
+.catalog-chip:hover { border-color: var(--color-brand-primary); }
+.catalog-chip.active {
+  background: var(--color-brand-primary); border-color: var(--color-brand-primary); color: #fff;
+}
+.catalog-count { margin-top: .5rem; font-size: .8rem; color: var(--color-foreground-muted); }
+a.catalog-key code { font-weight: 600; }
+th.sortable { cursor: pointer; user-select: none; white-space: nowrap; }
+th.sortable:hover { color: var(--color-brand-primary); }
+th.sortable[data-sort="asc"]::after { content: " ▲"; font-size: .7em; }
+th.sortable[data-sort="desc"]::after { content: " ▼"; font-size: .7em; }
+table.docutils tbody tr:hover { background: var(--color-background-hover); }
+[hidden] { display: none !important; }
+
+/* ---- Full-width layout: fixed-width sidebars, main fills the rest ---- */
+@media (min-width: 63em) {
+  .sidebar-drawer { width: 17em; min-width: 17em; flex: 0 0 17em; }
+  .sidebar-container { width: 17em; }
+  .content { width: auto; flex: 1 1 auto; min-width: 0; max-width: none; padding: 0 3em; }
+}
+@media (min-width: 82em) {
+  .toc-drawer { width: 16em; flex: 0 0 16em; }
+}
+
+/* Let the flex column shrink so wide tables wrap instead of pushing the page past the viewport */
+.main { min-width: 0; }
+.page { max-width: 100vw; }
+article table.docutils { width: 100%; margin-left: 0; margin-right: 0; }
+article table.docutils td, article table.docutils th { white-space: normal; }
+article table.docutils code { overflow-wrap: anywhere; }
+
+/* Flat tables: no drop shadow */
+article table.docutils { box-shadow: none; border: 1px solid var(--color-background-border); }
+
+/* ---- Dataset cards ---- */
+.dataset-cards { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+.dataset-cards > :not(.dataset-card) { grid-column: 1 / -1; }
+.dataset-card {
+  padding: 1rem 1.25rem; border-radius: 12px;
+  border: 1px solid var(--color-background-border);
+  background: var(--color-background-secondary);
+  min-width: 0;
+}
+.dataset-card:target { border-color: var(--color-brand-primary); outline: 2px solid var(--color-brand-primary); }
+.dataset-card > h3 { margin-top: 0; font-size: 1.15rem; }
+.dataset-card ul { padding-left: 1.1rem; margin: .5rem 0; }
+.dataset-card pre { font-size: .8rem; white-space: pre-wrap; }
+.dataset-badges { display: flex; flex-wrap: wrap; gap: .35rem; margin: .25rem 0 .75rem; }
+.dataset-badge {
+  padding: .15rem .7rem; border-radius: 999px; font-size: .8rem; line-height: 1.4;
+  border: 1px solid var(--color-background-border); background: var(--color-background-primary);
+  color: var(--color-foreground-primary);
+}

@@ -5,23 +5,26 @@ The HLS Design Collection is a community-organized effort to build the largest c
 
 **Getting started:** For a first run, use `polybench` (small, OptDSL-ready) or `vitis_examples` (validates your toolchain). For ML/QoR work, `polybench` + `machsuite` + `chstone` are commonly used together.
 
-| Key | Dataset | Designs | Flow Coverage | OptDSL Templates | Notes |
-| --- | --- | --- | --- | --- | --- |
-| `polybench` | PolyBench | 9 | Xilinx (Vitis HLS + Vivado) | All designs | Classic polyhedral kernels with rich pragma spaces. |
-| `machsuite` | MachSuite | 18 | Xilinx (Vitis HLS + Vivado) | All designs | Diverse compute kernels representative of embedded workloads. |
-| `chstone` | CHStone | 2 | Xilinx (Vitis HLS + Vivado) | All designs | Control-heavy benchmarks popular in HLS studies. |
-| `pp4fpgas` | Parallel Programming for FPGAs | 5 | Xilinx (Vitis HLS + Vivado) | Not provided | Examples aligned with the PP4FPGAs textbook. |
-| `vitis_examples` | Vitis Introductory Examples | 23 | Xilinx (Vitis HLS + Vivado) | Not provided | Direct import of AMD's getting-started designs. |
-| `test_designs_catapult` | Catapult Test Designs | 2 | Siemens Catapult HLS | Not provided | Small vector-add and dot-product kernels for toolchain validation. |
-| `test_designs_stratus` | Stratus Test Designs | 2 | Cadence Stratus HLS | Not provided | Small streaming arithmetic modules for toolchain validation. |
-| `test_designs_xls` | XLS Test Designs | 11 | Google XLS | Not provided | Small DSLX kernels covering feed-forward functions, stateful processes, and mixed function/proc designs. |
-| `altera_examples` | Altera Reference Designs | 17 | Altera HLS IP Gen | Not provided | All 17 upstream reference-design folders, with synthesis and Quartus implementation configurations. Matmul and merge sort also support simulation. See the [Altera tutorial](tutorials/altera_flow). |
-| `accelerators` | Sharc Lab Accelerators | 7 | Xilinx (Vitis HLS + Vivado) | Not provided | Custom accelerator kernels spanning FlowGNN, DGNN-Booster, MaskNet, SkyNet, and Edge-MoE. |
-| `soda` | SODA | 11 | Xilinx (Vitis HLS + Vivado) | Not provided | Data-flow streaming designs from the SODA project. |
-| `hp_fft` | HP-FFT | 16 | Xilinx (Vitis HLS + Vivado) | Not provided | Parameterized FFT accelerators with a range of unroll factors and design points. |
-| `stream_hls` | Stream-HLS | 77 | Xilinx (Vitis HLS + Vivado) | Not provided | Transformer-inspired dataflow workloads and classic kernels from the Stream-HLS suite. |
-| `auto_ntt` | AutoNTT | Varies | Xilinx (Vitis HLS + Vivado) | Not provided | Automated NTT generator with reference kernels and scripts for producing new design variants. |
-| `forgebench` | ForgeBench | 45 | Xilinx (Vitis HLS + Vivado) | Not provided | Proposed machine-learning benchmark suite spanning GEMM kernels, DNN blocks, and transformer components for stressing next-gen flows. |
+| Key | Dataset | Designs | Flow Coverage | OptDSL Templates |
+| --- | --- | --- | --- | --- |
+| `polybench` | PolyBench | 9 | Xilinx (Vitis HLS + Vivado, co-simulation setup) | All designs |
+| `machsuite` | MachSuite | 18 | Xilinx (Vitis HLS + Vivado) | All designs |
+| `chstone` | CHStone | 2 | Xilinx (Vitis HLS + Vivado, co-simulation setup) | All designs |
+| `pp4fpgas` | Parallel Programming for FPGAs | 5 | Xilinx (Vitis HLS + Vivado) | Not provided |
+| `vitis_examples` | Vitis Introductory Examples | 23 | Xilinx (Vitis HLS + Vivado, C simulation) | 1 design (fixed-point sqrt) |
+| `test_designs_catapult` | Catapult Test Designs | 2 | Siemens Catapult HLS | Not provided |
+| `test_designs_stratus` | Stratus Test Designs | 2 | Cadence Stratus HLS | Not provided |
+| `test_designs_xls` | XLS Test Designs | 11 | Google XLS | Not provided |
+| `test_designs_vitis_modern` | Vitis Modern Test Designs | 2 | Xilinx (Vitis HLS config-file flow) | Not provided |
+| `xls_upstream` | XLS Upstream Designs | 25 | Google XLS | Not provided |
+| `spector_hls` | SPECTOR | 10 | Xilinx (Vitis HLS, C simulation) | All designs |
+| `altera_examples` | Altera Reference Designs | 17 | Altera HLS IP Gen + Quartus (2 designs also C/co-simulation) | Not provided |
+| `accelerators` | Sharc Lab Accelerators | 7 | Xilinx (Vitis HLS) | Not provided |
+| `soda` | SODA | 11 | Xilinx (Vitis HLS + Vivado, C simulation) | Not provided |
+| `hp_fft` | HP-FFT | 16 | Xilinx (Vitis HLS + Vivado, C simulation) | Not provided |
+| `stream_hls` | Stream-HLS | 77 | Xilinx (Vitis HLS, C/co-simulation, LightningSim) | Not provided |
+| `auto_ntt` | AutoNTT | 16 | Xilinx (Vitis HLS, C simulation) | Not provided |
+| `forgebench` | ForgeBench | 45 | Xilinx (Vitis HLS + Vivado) | Not provided |
 
 The keys in the first column are the values you pass to `datasets_builder`.
 Most production datasets currently target Xilinx; the small Catapult, Stratus,
@@ -87,7 +90,7 @@ Ryan Kastner, Janarbek Matai, and Stephen Neuendorffer. 2018. Parallel Programmi
 
 - **Upstream**: [AMD GitHub repository](https://github.com/Xilinx/Vitis-HLS-Introductory-Examples)
 - **Best for**: Validating toolchain setups and demonstrating basic flow usage.
-- **Notes**: Mirrors the official AMD/Xilinx introductory designs. No OptDSL coverage; each kernel is ready to synthesize as-is.
+- **Notes**: Mirrors the official AMD/Xilinx introductory designs. Only the fixed-point sqrt example includes an OptDSL template; every other kernel is ready to synthesize as-is.
 
 **Citation:**
 ```
@@ -97,11 +100,11 @@ Xilinx [n. d.]. Vitis-HLS-Introductory-Examples. https://github.com/Xilinx/Vitis
 ### Catapult Test Designs (`test_designs_catapult`)
 
 - **Best for**: Quickly validating a Siemens Catapult installation and license setup.
-- **Notes**: Contains standalone vector-add and dot-product kernels targeting the bundled Nangate 45 nm libraries. The resulting `data_hls.json` files contain latency, throughput, critical-path timing, and detailed standard-cell area breakdowns. These are ASIC-library area scores rather than FPGA LUT/FF/DSP counts. Source `/tools/software/siemens/setup.csh` before running Catapult so the license-server environment is available.
+- **Notes**: Contains standalone vector-add and dot-product kernels targeting the bundled Nangate 45 nm libraries. The resulting `data_hls.json` files contain latency, throughput, critical-path timing, and detailed standard-cell area breakdowns. These are ASIC-library area scores rather than FPGA LUT/FF/DSP counts. Source your Siemens setup script before running Catapult so the license-server environment is available.
 
 ```csh
-source /tools/software/siemens/setup.csh
-setenv HLSFACTORY_CATAPULT_PATH /tools/software/siemens/catapult/latest/Mgc_home
+source /path/to/siemens/setup.csh
+setenv HLSFACTORY_CATAPULT_PATH /path/to/catapult/Mgc_home
 uv run python tests/dataset_validator.py \
     hlsfactory/hls_dataset_sources/test_designs_catapult \
     --flow CatapultHLSSynthFlow \
@@ -133,7 +136,7 @@ uv run python tests/dataset_validator.py \
 Run all 11 designs through the same validator used for toolchain checks:
 
 ```bash
-export HLSFACTORY_XLS_PATH=/usr/scratch/common/xls
+export HLSFACTORY_XLS_PATH=/path/to/xls
 uv run python tests/dataset_validator.py \
     hlsfactory/hls_dataset_sources/test_designs_xls \
     --flow XLSHLSSynthFlow \
@@ -148,16 +151,44 @@ design.
 See the [Google XLS tutorial](tutorials/xls_flow) for the complete flow and
 output-field reference.
 
+### Vitis Modern Test Designs (`test_designs_vitis_modern`)
+
+- **Best for**: Validating the config-file-based Vitis HLS flow (`VitisHLSModernSynthFlow`, `VitisHLSModernCsimFlow`).
+- **Notes**: Contains accumulator and vector-add kernels, each driven by an `hls_config.cfg` file instead of a Tcl script.
+
+### XLS Upstream Designs (`xls_upstream`)
+
+- **Upstream**: [Google XLS repository](https://github.com/google/xls)
+- **Best for**: Larger, realistic DSLX workloads beyond the small `test_designs_xls` kernels.
+- **Notes**: 25 designs (for example `crc32`, `sha256`, `aes_encrypt`, `fpexp_32`, `riscv_simple`) configured for `XLSHLSSynthFlow` with a one-stage pipeline generator and unit delay model by default.
+
+### SPECTOR (`spector_hls`)
+
+- **Upstream**: [Paper (FPT 2016)](https://kastner.ucsd.edu/wp-content/uploads/2013/08/admin/fpt16-spector.pdf), [Repository](https://github.com/KastnerRG/spector)
+- **Best for**: Design-space exploration on parameterized image-processing and linear-algebra kernels.
+- **Notes**: 10 designs (`dct`, `fir`, `histogram`, `matrix_multiplication`, `mergesort`, `normals`, `sobel_filter_x`, `sobel_filter_y`, `spmv`, `template_matching`), each with an OptDSL template plus Vitis synthesis and C simulation configurations.
+
+**Citation:**
+```
+Quentin Gautier, Alric Althoff, Pingfan Meng, and Ryan Kastner. 2016. Spector: An OpenCL FPGA Benchmark Suite. In 2016 International Conference on Field-Programmable Technology (FPT).
+```
+
+### Altera Reference Designs (`altera_examples`)
+
+- **Upstream**: [Altera hls-samples ReferenceDesigns](https://github.com/altera-fpga/hls-samples/tree/0abae6d78af5daca3fe5d67e617ab037e58aff89/ReferenceDesigns) (commit `0abae6d`)
+- **Best for**: Exercising the Altera HLS IP Gen and Quartus flows on realistic reference designs.
+- **Notes**: All 17 upstream reference-design folders are vendored unchanged, with HLSFactory TOML configuration replacing the upstream CMake build. Each directory keeps Altera's MIT-style `License.txt`. Matmul and merge sort also support simulation. See the [Altera tutorial](tutorials/altera_flow).
+
 ### Sharc Lab Accelerators (`accelerators`)
 
 - **Upstream**:
-  - [FlowGNN (HPCA 2023)](https://doi.org/10.1109/HPCA56546.2023.10071015)
+  - [FlowGNN (HPCA 2023)](https://doi.org/10.1109/HPCA56546.2023.10071015), [Repository](https://github.com/sharc-lab/FlowGNN)
   - [DGNN-Booster (FCCM 2023)](https://doi.org/10.1109/FCCM57271.2023.00029)
-  - [Edge-MoE (ICCAD 2023)](https://doi.org/10.1109/ICCAD57390.2023.10323651)
+  - [Edge-MoE (ICCAD 2023)](https://doi.org/10.1109/ICCAD57390.2023.10323651), [Repository](https://github.com/sharc-lab/Edge-MoE)
   - [Mask-Net (ASAP 2022)](https://doi.org/10.1109/ASAP54787.2022.00030)
-  - [SkyNet (MLSys 2020)](https://proceedings.mlsys.org/paper/2020/hash/2bb232c0b13c774965ef8558f0fbd615-Abstract.html)
+  - [SkyNet (MLSys 2020)](https://proceedings.mlsys.org/paper/2020/hash/2bb232c0b13c774965ef8558f0fbd615-Abstract.html), [Repository](https://github.com/TomG008/SkyNet)
 - **Best for**: Exploring machine-learning oriented accelerator blocks.
-- **Notes**: Each design includes the required Xilinx Tcl entry points; OptDSL and Intel scripts are not yet published.
+- **Notes**: 7 designs (two DGNN-Booster designs, fixed- and floating-point GP selection kernels, Mask-Net, SkyNet, and Edge-MoE), each configured for Vitis HLS synthesis only; OptDSL and Intel scripts are not yet published.
 
 **Citation:**
 ```
@@ -169,7 +200,7 @@ Xiaofan Zhang, Haoming Lu, Cong Hao, Jiachen Li, Bowen Cheng, Yuhong Li, Kyle Ru
 
 ### SODA (`soda`)
 
-- **Upstream**: [SODA project](https://github.com/SODA-Project) (mirrored snapshot)
+- **Upstream**: [Repository](https://github.com/UCLA-VAST/soda), [Paper](https://doi.org/10.1145/3240765.3240850) (mirrored snapshot)
 - **Best for**: Streaming-style applications and dataflow pipeline studies.
 - **Notes**: Designs focus on concrete Xilinx flows with representative stencil and image-processing pipelines from the SODA benchmark. For more specialized FFT and NTT generators, see the HP-FFT, Stream-HLS, and AutoNTT datasets below.
 
@@ -191,7 +222,7 @@ Chengyue Wang, Jiahao Zhang, Yingquan Wu, and Jason Cong. 2025. HP-FFT: A Genera
 
 ### Stream-HLS (`stream_hls`)
 
-- **Upstream**: [Stream-HLS (FPGA 2025)](https://doi.org/10.1145/3706628.3708878)
+- **Upstream**: [Stream-HLS (FPGA 2025)](https://doi.org/10.1145/3706628.3708878), [arXiv](https://arxiv.org/abs/2501.09118), [Repository](https://github.com/UCLA-VAST/Stream-HLS)
 - **Best for**: Studying transformer-style dataflow accelerators alongside adapted PolyBench kernels built with the Stream-HLS compiler.
 - **Notes**: Contains 77 designs spanning neural network blocks, residual units, and dense linear algebra kernels synthesized for streaming dataflow execution.
 
@@ -202,7 +233,7 @@ Suhail Basalama and Jason Cong. 2025. Stream-HLS: Towards Automatic Dataflow Acc
 
 ### AutoNTT (`auto_ntt`)
 
-- **Upstream**: [AutoNTT (FCCM 2025)](https://doi.org/10.1109/FCCM62733.2025.00024)
+- **Upstream**: [AutoNTT (FCCM 2025)](https://doi.org/10.1109/FCCM62733.2025.00024), [Repository](https://github.com/SFU-HiAccel/AutoNTT)
 - **Best for**: Exploring automated generation of Number Theoretic Transform accelerators with configurable architecture templates.
 - **Notes**: Ships with the AutoNTT generator, sample generated kernels, and supporting scripts so you can synthesize new design variants directly from the toolkit.
 
@@ -213,7 +244,7 @@ Dilshan Kumarathunga, Qilin Hu, and Zhenman Fang. 2025. AutoNTT: Automatic Archi
 
 ### ForgeBench (`forgebench`)
 
-- **Upstream**: Internal Sharc Lab collection combining academic and production HLS kernels.
+- **Upstream**: [Paper (arXiv:2504.15185)](https://arxiv.org/abs/2504.15185), [Repository](https://github.com/hchen799/ForgeBench)
 - **Best for**: Stress-testing flow robustness across a large, heterogeneous set of designs.
 - **Notes**: Contains 45 standalone designs with Vitis Tcl entry points and targets next-generation HLS tooling with GEMM operators, deep neural network blocks, and transformer-ready pipelines. OptDSL templates and Intel support are planned.
 
@@ -221,9 +252,3 @@ Dilshan Kumarathunga, Qilin Hu, and Zhenman Fang. 2025. AutoNTT: Automatic Archi
 ```
 Andy Wanna, Hanqiu Chen, and Cong Hao. 2025. ForgeBench: A Machine Learning Benchmark Suite and Auto-Generation Framework for Next-Generation HLS Tools. https://doi.org/10.48550/arXiv.2504.15185 arXiv:2504.15185 [cs]
 ```
-
-## Roadmap
-
-- Intel HLS and Quartus scripts are in progress for the datasets above, starting with PolyBench and MachSuite.
-- Recent additions such as HP-FFT, Stream-HLS, and AutoNTT broaden the dataflow coverage, with further suites in the integration queue.
-- Additional datasets (e.g., FlowGNN, Rosetta, expanded course collections) live under `hlsfactory/hls_dataset_sources/` but are not wired into `datasets_builder` yet. Follow the repository issues for availability updates.

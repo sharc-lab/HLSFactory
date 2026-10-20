@@ -1,4 +1,4 @@
-# End-to-End Intel Flow
+# Intel Flow
 
 This tutorial demonstrates the end-to-end flow of the HLSFactory framework using Intel tool flows. This demo is very similar to the [](./xilinx_flow.md) tutorial, with minimal differences. The main difference is the use of Intel flow classes for each step (frontend, HLS synthesis, and implementation) rather than Xilinx flow classes. The rest of the code is generally the same.
 

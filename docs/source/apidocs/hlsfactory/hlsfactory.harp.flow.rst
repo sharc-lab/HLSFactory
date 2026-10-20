@@ -17,8 +17,7 @@ Classes
    :align: left
 
    * - :py:obj:`HARPGraphFlow <hlsfactory.harp.flow.HARPGraphFlow>`
-     - .. autodoc2-docstring:: hlsfactory.harp.flow.HARPGraphFlow
-          :summary:
+     -
 
 Data
 ~~~~
@@ -53,12 +52,6 @@ API
    :canonical: hlsfactory.harp.flow.HARPGraphFlow
 
    Bases: :py:obj:`hlsfactory.framework.Flow`
-
-   .. autodoc2-docstring:: hlsfactory.harp.flow.HARPGraphFlow
-
-   .. rubric:: Initialization
-
-   .. autodoc2-docstring:: hlsfactory.harp.flow.HARPGraphFlow.__init__
 
    .. py:attribute:: name
       :canonical: hlsfactory.harp.flow.HARPGraphFlow.name

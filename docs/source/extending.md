@@ -1,328 +1,121 @@
 # Extending HLSFactory
 
-We encourage the FPGA and High-Level Synthesis (HLS) community to contribute their own HLS designs and tool flows to HLSFactory. This section provides a guide on how to extend HLSFactory with new built-in datasets and flows that can be utilized by other users.
+HLSFactory is meant to be a shared platform for HLS research. You can extend it in three ways:
 
-The goal is to centralize design and flow support for different HLS tools, creating a common platform for research and experimentation.
+| I want to... | Go to |
+|--------------|-------|
+| Run my own designs through existing flows | {ref}`extend-own-designs` |
+| Add a design set to the built-in datasets | {ref}`extend-datasets` |
+| Support a new tool or vendor | {ref}`extend-flows` |
 
-## Integrating Your HLS Project
+Questions or want help integrating something? Email the maintainers or open an issue on the HLSFactory GitHub repository.
 
-If you have an existing Vitis HLS project and want to run it through HLSFactory (without contributing to the built-in package), you need to add two TCL entry-point scripts to your design directory.
+(extend-own-designs)=
+## Running Your Own Designs
 
-### Directory Layout
+A design is a directory of sources plus an `hlsfactory.toml` manifest that lists the flows it supports and the files each flow needs. See [Design Configuration](framework/design_config) for the format and the {ref}`flow-reference` for each flow's settings.
 
-Your design directory should look like:
+The minimum for each vendor:
+
+| Vendor | Files in the design directory | `hlsfactory.toml` flow entries |
+|--------|-------------------------------|--------------------------------|
+| AMD Xilinx (Vitis HLS) | `dataset_hls.tcl`, `dataset_hls_ip_export.tcl`, sources | `VitisHLSSynthFlow` (`synth_tcl`), `VitisHLSImplFlow` (`impl_tcl`) |
+| Intel | `<design>.c` or `.cpp`, named after the design | none; `IntelHLSSynthFlow` and `IntelQuartusImplFlow` don't read config settings |
+| Altera | sources | `AlteraHLSSynthFlow` (see the {ref}`flow-reference` for settings) |
+| Siemens Catapult | sources, `synth.tcl` | `CatapultHLSSynthFlow` (`synth_tcl`) |
+| Google XLS | `.x` DSLX file | `XLSHLSSynthFlow` (`dslx_file`, `top`) |
+| OptDSL (design-space exploration) | `opt_template.tcl` | `OptDSLv2` (`opt_dsl_file`) |
+
+Intel and Altera device and clock options are flow constructor arguments, not config settings. Tool installation is covered in [Setup](setup).
+
+A minimal Vitis HLS design looks like this:
 
 ```text
 my_design/
-    - dataset_hls.tcl
-    - dataset_hls_ip_export.tcl
-    - src/
-        - kernel.cpp
-        - kernel.h
-    - (other source and data files...)
-```
-
-### Required TCL Scripts
-
-- **`dataset_hls.tcl`** — Create a Vitis HLS project, add source files, create a solution, and run `csynth`. The flow invokes this script and expects the resulting HLS project and solution in the design directory.
-- **`dataset_hls_ip_export.tcl`** — Open the synthesized project, open the solution, and call `export_design -flow impl` to export to Vivado and run implementation. The flow expects the resulting Vivado project and solution.
-
-You can base these scripts on the built-in datasets (e.g., `hlsfactory/hls_dataset_sources/polybench/atax/`) or the examples in `demos/demo_custom_datasets/`.
-
-### Optional: Design-Space Exploration
-
-To use the OptDSL frontend for automatic pragma enumeration, add `opt_template.tcl` to your design directory. See the [OptDSL framework guide](framework/optdsl) for syntax.
-
-### Optional: hlsfactory.toml
-
-For structured metadata and flow configuration, add an `hlsfactory.toml` file. You can generate one for existing designs with:
-
-```bash
-uv run python -m hlsfactory.scripts.generate_design_configs --dry-run
-```
-
-See [Design Configuration](framework/design_config) for the format. If you omit it, flows fall back to the legacy TCL filename conventions.
-
-### Loading and Running
-
-Once the entry points are in place, load your design with `Design.from_dir()` or `DesignDataset.from_dir()` and pass it to the appropriate flows. See [Loading Custom Designs](tutorials/custom_designs) for examples.
-
-(catapult-project-integration)=
-## Integrating a Catapult HLS Project
-
-A Catapult-ready design needs its C/C++ sources, a synthesis Tcl entry point, and an `hlsfactory.toml` configuration:
-
-```text
-my_catapult_design/
-    kernel.cpp
-    synth.tcl
     hlsfactory.toml
+    dataset_hls.tcl              # create project, add sources, run csynth
+    dataset_hls_ip_export.tcl    # open solution, export_design -flow impl
+    src/
+        kernel.cpp
+        kernel.h
 ```
-
-Declare the Tcl file in `hlsfactory.toml`:
 
 ```toml
-design_name = "kernel"
-dataset_name = "my_catapult_dataset"
+design_name = "my_design"
+dataset_name = "my_dataset"
 
 [[flow_configs]]
-flow_name = "CatapultHLSSynthFlow"
-synth_tcl = "synth.tcl"
-```
-
-The Tcl script owns the Catapult-specific project setup. It must add the sources, select the top function and technology libraries, configure a clock, and run through extraction. For example:
-
-```tcl
-options defaults
-options set Input/TargetPlatform x86_64
-
-project new -name catapult_kernel -directory catapult_kernel
-solution file add kernel.cpp
-go analyze
-
-solution library add nangate-45nm_beh -- -rtlsyntool DesignCompiler -vendor Nangate -technology 045nm
-solution library add ram_nangate-45nm-singleport_beh
-solution design set kernel -top
-go compile
-go libraries
-
-directive set -CLOCKS {clk {-CLOCK_PERIOD 10 -CLOCK_EDGE rising -CLOCK_UNCERTAINTY 0.0 -CLOCK_HIGH_TIME 5 -RESET_SYNC_NAME rst -RESET_ASYNC_NAME arst_n -RESET_KIND sync -RESET_SYNC_ACTIVE high -RESET_ASYNC_ACTIVE low -ENABLE_ACTIVE high}}
-go assembly
-go extract
-```
-
-Use libraries and directives appropriate for your installation and target technology. `CatapultHLSSynthFlow` runs the script and recursively finds the resulting `rtl.rpt` and `cycle.rpt`. A design directory should produce one report pair; if several report files exist, the flow warns and selects the first deterministic path.
-
-Before running, source your Siemens environment so Catapult can resolve its
-libraries and license server. Set `HLSFACTORY_CATAPULT_PATH` to the Catapult
-executable or installation root, or ensure `catapult` is on `PATH`. The
-HLSFactory server uses `/tools/software/siemens/setup.csh` and
-`HLSFACTORY_CATAPULT_PATH=/tools/software/siemens/catapult/latest/Mgc_home`.
-See the [Catapult HLS tutorial](tutorials/catapult_flow) for a complete dataset
-run and the generated metrics.
-
-## Integrating a Google XLS Design
-
-An XLS-ready design needs a DSLX source and `hlsfactory.toml`:
-
-```text
-my_xls_design/
-    kernel.x
-    hlsfactory.toml
-```
-
-Declare the source, top function or proc, and code generator:
-
-```toml
-design_name = "kernel"
-dataset_name = "my_xls_dataset"
+flow_name = "VitisHLSSynthFlow"
+synth_tcl = "dataset_hls.tcl"
 
 [[flow_configs]]
-flow_name = "XLSHLSSynthFlow"
-dslx_file = "kernel.x"
-top = "kernel"
-generator = "pipeline"
-pipeline_stages = "1"
-delay_model = "unit"
+flow_name = "VitisHLSImplFlow"
+impl_tcl = "dataset_hls_ip_export.tcl"
 ```
 
-Use `generator = "combinational"` for purely combinational RTL and omit the
-pipeline-only settings. Stateful procs generally also need a reset port, for
-example `reset = "rst"`. Set `HLSFACTORY_XLS_PATH` to a release bundle containing
-the XLS executables or pass `xls_install_dir` to `XLSHLSSynthFlow`. The flow
-produces IR, optimized IR, RTL, interface/module signatures, schedule and block
-IR, option snapshots, source-line maps, pass metrics, block metrics, and
-`data_hls.json`; no Tcl entry point is needed. See the
-[Google XLS tutorial](tutorials/xls_flow) and the packaged
-[`test_designs_xls`](built_in_datasets)
-examples.
+Base the Tcl scripts on a built-in design such as `hlsfactory/hls_dataset_sources/polybench/atax/`. Then load the design with `Design.from_dir_with_config()` or `DesignDataset.from_dir()` and pass it to a flow. See [Loading Custom Designs](tutorials/custom_designs).
 
-## Contributing New Built-In Datasets
+For the other vendors, the matching tutorials show a complete working design: [Catapult](tutorials/catapult_flow), [Google XLS](tutorials/xls_flow), [Intel](tutorials/intel_flow) and [Altera](tutorials/altera_flow).
 
-HLSFactory already supports loading user designs and design datasets at runtime. However, we encourage users to contribute their designs and design datasets to HLSFactory itself as a built-in package so that they can be shared and used by all HLSFactory users.
+### Design-space exploration
 
-If you have any questions up front or would like some guided assistance in integrating new designs and design datasets into HLSFactory, please reach out to the HLSFactory maintainers for help. You can contact us either by email or by opening an issue on the HLSFactory GitHub repository. We are happy to help and provide guidance on how to integrate your designs into HLSFactory.
+To enumerate pragma variants automatically, add an `opt_template.tcl` and list the `OptDSLv2` flow. See the [OptDSL guide](framework/optdsl) for the syntax. It is optional; skip it for designs that are already separate variants or are vendor-specific.
 
-To add a new design or collection of designs as a dataset, follow the concrete steps outlined below.
+(extend-datasets)=
+## Contributing a Built-In Dataset
 
-### Step 1: Prepare the Individual Designs
+Built-in datasets ship with the package so everyone can load them by name.
 
-The first step is to prepare the individual designs that you want to add to the HLSFactory package. Each design should be a single directory that contains all the source files, data files, and build files needed for the designs.
+1. **Prepare the designs.** One directory per design, each with its sources, scripts and `hlsfactory.toml`. Group them in one dataset directory, even for a single design.
+2. **Add them to the repo.** Clone `sharc-lab/hlsfactory` and copy the dataset directory into `hlsfactory/hls_dataset_sources/`. Everything in it is packaged, so leave out large or unneeded files.
+3. **Register the dataset** in `hlsfactory/datasets_builtin.py`: a path constant, a builder function, and an entry in `DATASET_STR_MAP`. Use one consistent key, with no aliases.
 
-Additionally, each design needs to implement the required entry points and other requirements needed for different kinds of flows.
+   ```python
+   DIR_DATASET_MY_DATASET = HLS_DATASET_DIR / "my_dataset"
 
-#### Preparing a Xilinx-Based Design
 
-Xilinx-based flows require two different entry point Tcl scripts that must be included in the top level of the design directory:
+   def dataset_my_dataset_builder(name: str, work_dir: Path) -> DesignDataset:
+       check_dataset_dir_exists(DIR_DATASET_MY_DATASET)
+       new_dir = work_dir / name
+       shutil.copytree(DIR_DATASET_MY_DATASET, new_dir)
+       return DesignDataset.from_dir(name, new_dir)
 
-- `dataset_hls.tcl`: This script must be defined by the user to take a design, set up a Vitis HLS project, add the source files to the project, create a single solution, and run `csynth` on the solution successfully. The `VitisHLSSynthFlow` class will call this entry point using Vitis HLS and then look for the resulting HLS project and solution files in the design directory.
-- `dataset_hls_ip_export.tcl`: This script must be defined by the user to open an existing project, open an existing synthesized solution, and then call the Vitis HLS `export_design` command with the argument `-flow impl` to export the synthesized design to Vivado and run the Vivado implementation flow. The `VitisHLSImplFlow` class will call this entry point using Vitis HLS and then look for the resulting Vivado project and solution files in the design directory.
 
-If these files are not present and one of these Xilinx flows is run on the design, the flow will fail, and helpful error messages will be raised for the user to indicate that the entry points are missing.
+   DATASET_STR_MAP = {
+       ...,
+       "my_dataset": dataset_my_dataset_builder,
+   }
+   ```
 
-Your final design directory for a Xilinx-ready design should look as follows:
+4. **Document it** in `docs/source/built_in_datasets.md`: add a row to the table and a section matching the others (design count, flow coverage, OptDSL templates, upstream links).
+5. **Open a pull request.** The maintainers will review and discuss any changes.
 
-```text
-- my_design/
-    - dataset_hls.tcl
-    - dataset_hls_ip_export.tcl
-    - <the rest of your design files...>
-```
+(extend-flows)=
+## Contributing a Flow
 
-#### Preparing an Intel-Based Design
+HLSFactory ships flows for AMD Xilinx, Intel, Altera, Siemens Catapult, Cadence Stratus and Google XLS, plus the OptDSL frontend. To support another tool, subclass `ToolFlow` (or `Frontend` for a design-generating step), which are both `Flow` subclasses.
 
-```{todo}
-Intel flow entry points are under construction. Please reach out for more information and help in the meantime.
-```
-
-#### Preparing a Catapult-Based Design
-
-Catapult designs follow the `kernel.cpp` + `synth.tcl` + `hlsfactory.toml` structure described in {ref}`catapult-project-integration`. Keep project output names local to the individual design directory so parallel dataset execution does not cause different designs to share Catapult output files.
-
-#### Preparing an OptDSL Template
-
-If you would like a design to be supported by the OptDSL frontend, you must provide an OptDSL template file named `opt_template.tcl` that follows the OptDSL syntax. This file should be placed in the top level of the design directory. The OptDSL frontend will look for this file and use it to generate enumerated designs based on the design space defined in the template file using the OptDSL syntax. If the file is not present, the OptDSL frontend flow will fail, and helpful error messages will be raised for the user to indicate that the entry point is missing.
-
-For more details on the specific syntax of the OptDSL template file, please refer to the OptDSL documentation.
-
-The design directory with OptDSL support should look as follows:
-
-```text
-- my_design/
-    - opt_template.tcl
-    - <the rest of your design files...>
-```
-
-Note that supporting OptDSL is optional, and if you do not want to support OptDSL for your design, you can skip this step. This makes sense in cases where you have design variations already prepared as separate designs, want to add very vendor-specific designs, or just want to add designs to be built "as is".
-
-### Step 2: Organize Your Designs
-
-If you have multiple designs that you want to add to the HLSFactory package, you should organize them in a single directory that contains all of the designs. This directory will represent a design dataset that can be loaded by HLSFactory.
-
-For example, you may have a final organized design directory with the following directory structure:
-
-```text
-- my_dataset/
-    - design1/
-        - dataset_hls.tcl
-        - dataset_hls_ip_export.tcl
-        - <the rest of your design files...>
-    - design2/
-        - dataset_hls.tcl
-        - dataset_hls_ip_export.tcl
-        - <the rest of your design files...>
-    - <more designs...>
-```
-
-If you are adding just a single design, you should make a directory for that design and place the design files in that directory. This will act as a dataset with a single design. This provides better organization and makes it easier to add more designs in the future.
-
-### Step 3: Clone the HLSFactory Repository
-
-To add the new designs to the HLSFactory package, you will need to clone the HLSFactory repository to your local machine. You can do this by running the following command:
-
-Using SSH:
-```bash
-git clone git@github.com:sharc-lab/hlsfactory.git
-```
-
-Using HTTPS:
-```bash
-git clone https://github.com/sharc-lab/hlsfactory.git
-```
-
-### Step 4: Add the Designs to the Correct Directory in the HLSFactory Package
-
-With the repository cloned to your local machine, you can add your designs to the HLSFactory package.
-
-All built-in datasets are located in the `hlsfactory/hls_dataset_sources` directory of the HLSFactory repository. You should directly copy your prepared design dataset directory into the `hls_dataset_sources` directory.
-
-For example, if you have a design dataset directory named `my_dataset` that you want to add to the HLSFactory package, you should copy the `my_dataset` directory into the `hls_dataset_sources` directory.
-
-```text
-- HLSFactory/
-    - hlsfactory/
-        - hls_dataset_sources/
-            - <polybench, machsuite, chstone, other built-in datasets...>
-            - my_dataset/
-                - design1/
-                    - <design and build files...>
-                - design2/
-                    - <design and build files...>
-                - <more designs...>
-```
-
-Keep in mind that whatever files are in your design dataset directory will be copied to the HLSFactory package, so make sure that you only include the necessary files for your designs. Including large and unnecessary data files can bloat the HLSFactory package, make it harder to maintain, and may hit the Git file size limit. It's okay to include data files that are needed for testing or co-simulation, but try to manage these data files so that they can be included in the package in a reasonable way.
-
-### Step 5: Add Support for the New Dataset in the `hlsfactory.datasets_builtin` Module
-
-To allow users to load your new designs and design dataset in HLSFactory, you need to add support for the new dataset in the `hlsfactory.datasets_builtin` module. This module is implemented in the `hlsfactory/datasets_builtin.py` file in the HLSFactory repository.
-
-There are several key updates to make to this module to add support for your new dataset. All examples assume the new dataset is named `my_dataset`.
-
-#### Define the Relative Path to Your Dataset Directory
-
-At the top of the module Python file, there are lines defining the relative paths to the different dataset directories in the HLSFactory package. You should add a new line to define the relative path to your new dataset directory.
+A flow implements `execute`. It runs the tool in the design directory, writes its results next to the sources, and returns `[design]` on success or `[]` on failure or timeout:
 
 ```python
-DIR_DATASET_POLYBENCH = HLS_DATASET_DIR / "polybench"
-DIR_DATASET_MACHSUITE = HLS_DATASET_DIR / "machsuite"
-...
-DIR_DATASET_MY_DATASET = HLS_DATASET_DIR / "my_dataset" # New line for your dataset
+from hlsfactory.framework import Design, ToolFlow
+
+
+class MyToolFlow(ToolFlow):
+    name = "MyToolFlow"
+
+    def execute(self, design: Design, timeout: float | None = None) -> list[Design]:
+        config = design.require_config()
+        script = config.require_flow_setting("MyToolFlow", "script_path")
+        # run the tool in design.dir with `script`, passing `timeout` to the subprocess,
+        # then write parsed results (for example data_hls.json) next to the sources
+        return [design]
 ```
 
-#### Create a Dataset Builder Function for Your Dataset
+A design opts in with a matching `[[flow_configs]]` entry. Custom flows work without any registration. If you contribute the flow, also:
 
-Next, you need to create a new dataset builder function for your dataset. This function should be named `dataset_builder_my_dataset` and should take the `work_dir` and `dataset_labels` as arguments. The function should return a list of `Design` objects that represent the designs in your dataset.
+- add its name to `FlowName` and its required settings to `FlowConfig._REQUIRED_SETTINGS` in `hlsfactory/design_config.py`, so missing settings are caught when the config loads;
+- add a row to the {ref}`flow-reference` and a vendor section to [Setup](setup);
+- add a data aggregator in `hlsfactory/data_packaging.py` if its outputs should be packaged (see [Data](framework/data)).
 
-The function should have the following function signature:
-
-```python
-def dataset_<your_dataset_name>_builder(name: str, work_dir: Path) -> DesignDataset: ...
-```
-
-In most cases, the dataset builder will look as follows and can be used as the same implementation for your dataset builder.
-
-```python
-def dataset_my_dataset_builder(name: str, work_dir: Path) -> DesignDataset:
-    check_dataset_dir_exists(DIR_DATASET_MY_DATASET)
-    new_dir = work_dir / name
-    shutil.copytree(DIR_DATASET_MY_DATASET, new_dir)
-    return DesignDataset.from_dir(name, new_dir)
-```
-
-#### Add Your Dataset Builder to the `DATASET_STR_MAP` Dictionary
-
-Finally, you need to add your new dataset builder function to the `DATASET_STR_MAP` dictionary in the `hlsfactory.datasets_builtin` module. This dictionary maps the dataset labels to the dataset builder functions. You should add a new entry to the dictionary with the key as the dataset label and the value as the dataset builder function.
-
-```python
-DATASET_STR_MAP = {
-    "polybench": dataset_polybench_builder,
-    "machsuite": dataset_machsuite_builder,
-    ...
-    "my_dataset": dataset_my_dataset_builder, # New line for your dataset
-}
-```
-
-### Step 6: Update the Documentation to Describe the New Dataset
-
-Please also update the HLSFactory documentation to include your new dataset in the list of built-in datasets. This will help other users know that your dataset is available and provide more information about it.
-
-You will mainly need to update the HLS Design Collection page, which is located in the `docs/source/built_in_datasets.md` file in the HLSFactory repository. The documentation is implemented with Sphinx with the Myst plugin. This means that the documentation is simply written in markdown, which should be familiar to most users.
-
-When adding your dataset documentation, make a new subheading and include information about your dataset. Try to follow the same format as the other datasets in the documentation to keep it consistent and easy to read. This includes how many designs are in the dataset, what HLS tools and vendors are supported, OptDSL support, source links, and other relevant information about the dataset in general or specific designs in the dataset.
-
-### Step 7: Create a Pull Request to the HLSFactory Repository
-
-Once you have added your designs to the HLSFactory package, updated the built-in datasets module, and updated the documentation, you can create a pull request to the HLSFactory repository. This will allow the HLSFactory maintainers to review your changes to add a new dataset to the HLSFactory package. From here, the maintainers can provide feedback, discuss any changes that need to be made, and eventually merge your changes into the HLSFactory package.
-
-## Contributing New Flows
-
-HLSFactory includes tool flows for AMD/Xilinx, Intel, Siemens Catapult, Cadence Stratus, and Google XLS, along with the OptDSL frontend.
-
-However, users might want to use a different set of vendor HLS tools that are not currently built-in. These can be created by subclassing the `Flow` abstract base class (particularly the `Frontend(Flow)` or `ToolFlow(Flow)` class, depending on what kind of flow you are implementing, as these are just aliases) and adding the necessary functionality to interact with vendor tools, extract, and process data.
-
-As with designs, these flows can be created locally by users in their own projects, but we encourage users to contribute these flows to the HLSFactory package so that they can be shared and used by all HLSFactory users.
-
-```{todo}
-Details on how to contribute new flows are under construction. Please reach out for more information and help in the meantime.
-```
+Existing flows such as `flow_catapult.py` are good references for report parsing and error and timeout markers.

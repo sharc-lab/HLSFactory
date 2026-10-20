@@ -17,14 +17,25 @@ html_theme_options = {
     "source_repository": "https://github.com/sharc-lab/HLSFactory",
     "source_branch": "main",
     "source_directory": "docs/source",
+    "light_css_variables": {
+        "color-brand-primary": "#2563eb",
+        "color-brand-content": "#2563eb",
+        "font-stack": "Inter, system-ui, -apple-system, 'Segoe UI', sans-serif",
+    },
+    "dark_css_variables": {
+        "color-brand-primary": "#60a5fa",
+        "color-brand-content": "#60a5fa",
+    },
 }
 
 
 html_static_path = ["_static"]
 templates_path = ["_templates"]
 html_css_files = [
+    "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
     "custom.css",
 ]
+html_js_files = ["catalog.js"]
 html_title = "HLSFactory"
 html_short_title = "HLSFactory"
 html_favicon = "_static/favicon.ico"

@@ -36,6 +36,9 @@ Functions
    * - :py:obj:`get_xls_install_dir <hlsfactory.flow_xls.get_xls_install_dir>`
      - .. autodoc2-docstring:: hlsfactory.flow_xls.get_xls_install_dir
           :summary:
+   * - :py:obj:`find_dslx_stdlib <hlsfactory.flow_xls.find_dslx_stdlib>`
+     - .. autodoc2-docstring:: hlsfactory.flow_xls.find_dslx_stdlib
+          :summary:
    * - :py:obj:`find_xls_binary <hlsfactory.flow_xls.find_xls_binary>`
      - .. autodoc2-docstring:: hlsfactory.flow_xls.find_xls_binary
           :summary:
@@ -109,6 +112,11 @@ API
    :canonical: hlsfactory.flow_xls.get_xls_install_dir
 
    .. autodoc2-docstring:: hlsfactory.flow_xls.get_xls_install_dir
+
+.. py:function:: find_dslx_stdlib(xls_install_dir: pathlib.Path) -> pathlib.Path | None
+   :canonical: hlsfactory.flow_xls.find_dslx_stdlib
+
+   .. autodoc2-docstring:: hlsfactory.flow_xls.find_dslx_stdlib
 
 .. py:function:: find_xls_binary(xls_install_dir: pathlib.Path, binary_name: str) -> pathlib.Path
    :canonical: hlsfactory.flow_xls.find_xls_binary

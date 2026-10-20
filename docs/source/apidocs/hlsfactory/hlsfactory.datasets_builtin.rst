@@ -43,6 +43,9 @@ Functions
    * - :py:obj:`dataset_test_designs_xls_builder <hlsfactory.datasets_builtin.dataset_test_designs_xls_builder>`
      - .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_test_designs_xls_builder
           :summary:
+   * - :py:obj:`dataset_xls_upstream_builder <hlsfactory.datasets_builtin.dataset_xls_upstream_builder>`
+     - .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_xls_upstream_builder
+          :summary:
    * - :py:obj:`dataset_altera_examples_builder <hlsfactory.datasets_builtin.dataset_altera_examples_builder>`
      - .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_altera_examples_builder
           :summary:
@@ -116,6 +119,9 @@ Data
           :summary:
    * - :py:obj:`DIR_DATASET_TEST_DESIGNS_XLS <hlsfactory.datasets_builtin.DIR_DATASET_TEST_DESIGNS_XLS>`
      - .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_TEST_DESIGNS_XLS
+          :summary:
+   * - :py:obj:`DIR_DATASET_XLS_UPSTREAM <hlsfactory.datasets_builtin.DIR_DATASET_XLS_UPSTREAM>`
+     - .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_XLS_UPSTREAM
           :summary:
    * - :py:obj:`DIR_DATASET_ALTERA_EXAMPLES <hlsfactory.datasets_builtin.DIR_DATASET_ALTERA_EXAMPLES>`
      - .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_ALTERA_EXAMPLES
@@ -223,6 +229,12 @@ API
 
    .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_TEST_DESIGNS_XLS
 
+.. py:data:: DIR_DATASET_XLS_UPSTREAM
+   :canonical: hlsfactory.datasets_builtin.DIR_DATASET_XLS_UPSTREAM
+   :value: None
+
+   .. autodoc2-docstring:: hlsfactory.datasets_builtin.DIR_DATASET_XLS_UPSTREAM
+
 .. py:data:: DIR_DATASET_ALTERA_EXAMPLES
    :canonical: hlsfactory.datasets_builtin.DIR_DATASET_ALTERA_EXAMPLES
    :value: None
@@ -327,6 +339,11 @@ API
    :canonical: hlsfactory.datasets_builtin.dataset_test_designs_xls_builder
 
    .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_test_designs_xls_builder
+
+.. py:function:: dataset_xls_upstream_builder(name: str, work_dir: pathlib.Path) -> hlsfactory.framework.DesignDataset
+   :canonical: hlsfactory.datasets_builtin.dataset_xls_upstream_builder
+
+   .. autodoc2-docstring:: hlsfactory.datasets_builtin.dataset_xls_upstream_builder
 
 .. py:function:: dataset_altera_examples_builder(name: str, work_dir: pathlib.Path) -> hlsfactory.framework.DesignDataset
    :canonical: hlsfactory.datasets_builtin.dataset_altera_examples_builder

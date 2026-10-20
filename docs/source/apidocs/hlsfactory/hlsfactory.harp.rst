@@ -13,9 +13,9 @@ Submodules
    :titlesonly:
    :maxdepth: 1
 
+   hlsfactory.harp._programl_compat
    hlsfactory.harp.flow
    hlsfactory.harp.harp_graph
-   hlsfactory.harp._programl_compat
 
 Package Contents
 ----------------

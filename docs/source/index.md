@@ -6,11 +6,21 @@ HLSFactory is a framework for High-Level Synthesis (HLS) design datasets. It pro
 
 ## New to HLSFactory?
 
-If you have HLS experience but are new to this framework: start with [Concepts](concepts) for the mental model, then [Setup](setup), followed by the tutorial for your toolchain: [Xilinx](tutorials/xilinx_flow), [Google XLS](tutorials/xls_flow), or [Siemens Catapult](tutorials/catapult_flow).
+If you have HLS experience but are new to this framework: start with [Concepts](concepts) for the mental model, then [Setup](setup), followed by the tutorial for your toolchain: [Xilinx](tutorials/xilinx_flow), [Intel](tutorials/intel_flow), [Altera](tutorials/altera_flow), [Google XLS](tutorials/xls_flow), or [Siemens Catapult](tutorials/catapult_flow).
+
+## HLS Design Collection
+
+The [HLS Design Collection](built_in_datasets) is a community-organized effort to build the largest collection of HLS designs available in one place. It brings together curated HLS design corpora from across the research community, including PolyBench, MachSuite, CHStone, SPECTOR, Stream-HLS, ForgeBench and more, with designs for AMD Xilinx, Intel, Altera, Siemens Catapult, Cadence Stratus and Google XLS. Load any dataset by key with `hlsfactory.datasets_builtin.datasets_builder`.
+
+The collection page has a summary table with design counts, flow coverage and OptDSL support, plus a section per dataset with upstream links. Any contributed design is cited and linked to credit the original authors.
+
+### Open to Community Contributions!
+
+HLSFactory welcomes open-source HLS designs from the community. If you have designs you would like to add, or need help integrating them, see the [Extending](extending) guide or reach out. We are more than happy to assist!
 
 ## Quick Guide
 
-**Run experiments:** Use the [Setup](setup) guide, then follow the [Xilinx Flow](tutorials/xilinx_flow), [Google XLS](tutorials/xls_flow), or [Siemens Catapult](tutorials/catapult_flow) tutorial.
+**Run experiments:** Use the [Setup](setup) guide, then follow the [Xilinx](tutorials/xilinx_flow), [Intel](tutorials/intel_flow), [Altera](tutorials/altera_flow), [Google XLS](tutorials/xls_flow), or [Siemens Catapult](tutorials/catapult_flow) tutorial.
 
 **Contribute designs:** Add your own designs and flows via the [Extending](extending) guide.
 
@@ -22,55 +32,25 @@ If you have HLS experience but are new to this framework: start with [Concepts](
 - [Extending](extending): Contribute designs, datasets, and custom flows
 - [API Reference](apidocs/index): Python API documentation
 
-## HLS Design Collection
+## Publications and Citing
 
-The [HLS Design Collection](built_in_datasets) is a community-organized effort to build the largest collection of HLS designs available in one place. It is a major effort within HLSFactory, bringing together curated HLS design corpora from across the research community.
+HLSFactory won the **Best Paper Award** and was nominated for the **Artifact Evaluation Award** at the 2024 ACM/IEEE 6th Symposium on Machine Learning for CAD (MLCAD). It has been published in:
 
-We hope that this effort allows HLSFactory to be the one-stop-shop for HLS designs for any application or research as well as highlight HLS projects across the HLS and FPGA community. Any contributed design will be cited through our HLS Factory work and linked directly to credit the original authors and their works as well.
+- MLCAD 2024: [HLSFactory: A Framework Empowering High-Level Synthesis Datasets for Machine Learning and Beyond](https://doi.org/10.1109/MLCAD62225.2024.10740213) ([arXiv](https://arxiv.org/abs/2405.00820))
+- OSCAR Workshop at ISCA 2024: [An Open Source Framework for High-Level Synthesis Dataset Generation for Machine Learning](https://oscar-workshop.github.io)
 
-### Open to Community Contributions!
-HLSFactory welcomes open-source HLS designs from the community. If you have designs you would like to add to the collection, or need help integrating them, please reach out. We are more than happy to assist!
-
-
-## Publications
-
-HLSFactory has been published in the following places:
-
-- 2024 ACM/IEEE 6th Symposium on Machine Learning for CAD (MLCAD)
-  - [HLSFactory: A Framework Empowering High-Level Synthesis Datasets for Machine Learning and Beyond](https://doi.org/10.1109/MLCAD62225.2024.10740213)
-- ArXiv
-  - [HLSFactory: A Framework Empowering High-Level Synthesis Datasets for Machine Learning and Beyond](https://arxiv.org/abs/2405.00820)
-- Open-Source Computer Architecture Research (OSCAR) Workshop at ISCA 2024
-  - [An Open Source Framework for High-Level Synthesis Dataset Generation for Machine Learning](https://oscar-workshop.github.io)
-
-### Awards
-
-- **Best Paper Award** at the 2024 ACM/IEEE 6th Symposium on Machine Learning for CAD (MLCAD).
-- **Artifact Evaluation Award Nomination** at the 2024 ACM/IEEE 6th Symposium on Machine Learning for CAD (MLCAD).
-
-## Citing and Referencing
-
-If you use HLSFactory in your research, please cite as follows:
-
-```text
-S. Abi-Karam et al., “HLSFactory: A Framework Empowering High-Level Synthesis Datasets for Machine Learning and Beyond,” in 2024 ACM/IEEE 6th Symposium on Machine Learning for CAD (MLCAD), Sep. 2024, pp. 1–9. doi: 10.1109/MLCAD62225.2024.10740213.
-```
+If you use HLSFactory in your research, please cite:
 
 ```bibtex
 @inproceedings{hlsfactory,
   title = {{{HLSFactory}}: {{A Framework Empowering High-Level Synthesis Datasets}} for {{Machine Learning}} and {{Beyond}}},
-  shorttitle = {{{HLSFactory}}},
   booktitle = {2024 {{ACM}}/{{IEEE}} 6th {{Symposium}} on {{Machine Learning}} for {{CAD}} ({{MLCAD}})},
   author = {{Abi-Karam}, Stefan and Sarkar, Rishov and Seigler, Allison and Lowe, Sean and Wei, Zhigang and Chen, Hanqiu and Rao, Nanditha and John, Lizy and Arora, Aman and Hao, Cong},
   year = {2024},
   month = sep,
   pages = {1--9},
   publisher = {IEEE},
-  address = {Salt Lake City (Snowbird), UT, USA},
-  doi = {10.1109/MLCAD62225.2024.10740213},
-  urldate = {2025-08-21},
-  copyright = {https://doi.org/10.15223/policy-029},
-  isbn = {979-8-3503-6356-2}
+  doi = {10.1109/MLCAD62225.2024.10740213}
 }
 ```
 

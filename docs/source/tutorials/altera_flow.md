@@ -211,7 +211,7 @@ an empty design list and write an error or timeout marker. Failed attempts
 can be retried. Successful recorded stages are skipped when their result
 manifest remains present.
 
-## Server validation
+## Validation results
 
 All 17 built-in reference-design configurations passed standalone HLS synthesis
 with HLS IP Gen 2026.1.0 on September 7, 2026. Gzip uses the upstream-supported
@@ -227,10 +227,11 @@ fractional ALM counts and clock frequencies. Matrix multiplication completed
 routing but reached the 1800-second timeout during fitter finalization.
 Its full implementation result therefore remains unverified.
 
-For RTL simulation, the server's bundled Questa Starter did not check out a
-license. The standalone Siemens Questa 2026.1_2 installation did start with
-the license setting from `/tools/software/siemens/setup.csh`. To select it,
-save this Bash setup as an absolute path accessible inside the container:
+For RTL simulation in the reference environment, the bundled Questa Starter did not check out a
+license, while a standalone Siemens Questa 2026.1_2 installation did start with
+the license setting from the Siemens `setup.csh`. To select a standalone Questa,
+save a Bash setup like this at an absolute path accessible inside the container
+(adjust the paths for your installation):
 
 ```bash
 export PATH="/siemens/questa/2026.1_2/questasim/bin:$PATH"
@@ -239,7 +240,7 @@ export HLSFACTORY_ALTERA_QUESTA_INI_COMPAT=1
 ```
 
 Then set `HLSFACTORY_ALTERA_QUESTA_SETUP` to the saved script and
-`APPTAINER_BINDPATH=/tools/software/siemens:/siemens:ro` before running the
+`APPTAINER_BINDPATH=/path/to/siemens:/siemens:ro` before running the
 co-simulation validator. This mounts the existing Siemens installation
 read-only and does not modify either vendor installation.
 

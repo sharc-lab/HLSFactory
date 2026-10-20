@@ -54,7 +54,7 @@ API
 
 .. py:data:: _INSTALL_HINT
    :canonical: hlsfactory.harp._programl_compat._INSTALL_HINT
-   :value: "HARPGraphFlow requires the optional `harp` extra: pip install 'hlsfactory[harp]'"
+   :value: <Multiline-String>
 
    .. autodoc2-docstring:: hlsfactory.harp._programl_compat._INSTALL_HINT
 
