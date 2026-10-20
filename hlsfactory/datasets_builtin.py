@@ -12,6 +12,7 @@ HLS_DATASET_DIR = CURRENT_DIR / "hls_dataset_sources"
 DIR_DATASET_POLYBENCH = HLS_DATASET_DIR / "polybench"
 DIR_DATASET_MACHSUITE = HLS_DATASET_DIR / "machsuite"
 DIR_DATASET_CHSTONE = HLS_DATASET_DIR / "chstone"
+DIR_DATASET_MIBENCH = HLS_DATASET_DIR / "mibench"
 DIR_DATASET_PP4FPGAS = HLS_DATASET_DIR / "pp4fpgas"
 DIR_DATASET_VITIS_EXAMPLES = HLS_DATASET_DIR / "vitis_examples"
 DIR_DATASET_TEST_DESIGNS_CATAPULT = HLS_DATASET_DIR / "test_designs_catapult"
@@ -34,6 +35,7 @@ DIR_ALL = [
     DIR_DATASET_POLYBENCH,
     DIR_DATASET_MACHSUITE,
     DIR_DATASET_CHSTONE,
+    DIR_DATASET_MIBENCH,
     DIR_DATASET_PP4FPGAS,
     DIR_DATASET_VITIS_EXAMPLES,
     DIR_DATASET_TEST_DESIGNS_CATAPULT,
@@ -192,12 +194,20 @@ def dataset_spector_hls_builder(name: str, work_dir: Path) -> DesignDataset:
     return DesignDataset.from_dir(name, new_dir)
 
 
+def dataset_mibench_builder(name: str, work_dir: Path) -> DesignDataset:
+    check_dataset_dir_exists(DIR_DATASET_MIBENCH)
+    new_dir = work_dir / name
+    shutil.copytree(DIR_DATASET_MIBENCH, new_dir)
+    return DesignDataset.from_dir(name, new_dir)
+
+
 T_dataset_builder = Callable[[str, Path], DesignDataset]
 
 DATASET_STR_MAP: dict[str, T_dataset_builder] = {
     "polybench": dataset_polybench_builder,
     "machsuite": dataset_machsuite_builder,
     "chstone": dataset_chstone_builder,
+    "mibench": dataset_mibench_builder,
     "pp4fpgas": dataset_pp4fpgas_builder,
     "vitis_examples": dataset_vitis_examples_builder,
     "test_designs_catapult": dataset_test_designs_catapult_builder,
@@ -249,6 +259,7 @@ def datasets_all_builder(work_dir: Path) -> DesignDatasetCollection:
     dataset_polybench = dataset_polybench_builder("polybench", work_dir)
     dataset_machsuite = dataset_machsuite_builder("machsuite", work_dir)
     dataset_chstone = dataset_chstone_builder("chstone", work_dir)
+    dataset_mibench = dataset_mibench_builder("mibench", work_dir)
     dataset_pp4fpgas = dataset_pp4fpgas_builder("pp4fpgas", work_dir)
     dataset_vitis_examples = dataset_vitis_examples_builder("vitis_examples", work_dir)
     dataset_test_designs_catapult = dataset_test_designs_catapult_builder(
@@ -277,6 +288,7 @@ def datasets_all_builder(work_dir: Path) -> DesignDatasetCollection:
         dataset_polybench.name: dataset_polybench,
         dataset_machsuite.name: dataset_machsuite,
         dataset_chstone.name: dataset_chstone,
+        dataset_mibench.name: dataset_mibench,
         dataset_pp4fpgas.name: dataset_pp4fpgas,
         dataset_vitis_examples.name: dataset_vitis_examples,
         dataset_test_designs_catapult.name: dataset_test_designs_catapult,

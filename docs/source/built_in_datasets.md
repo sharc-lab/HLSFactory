@@ -10,6 +10,7 @@ The HLS Design Collection is a community-organized effort to build the largest c
 | `polybench` | PolyBench | 9 | Xilinx (Vitis HLS + Vivado, co-simulation setup) | All designs |
 | `machsuite` | MachSuite | 18 | Xilinx (Vitis HLS + Vivado) | All designs |
 | `chstone` | CHStone | 2 | Xilinx (Vitis HLS + Vivado, co-simulation setup) | All designs |
+| `mibench` | MiBench | 21 | Xilinx (Vitis HLS, C simulation) | Not provided |
 | `pp4fpgas` | Parallel Programming for FPGAs | 5 | Xilinx (Vitis HLS + Vivado) | Not provided |
 | `vitis_examples` | Vitis Introductory Examples | 23 | Xilinx (Vitis HLS + Vivado, C simulation) | 1 design (fixed-point sqrt) |
 | `test_designs_catapult` | Catapult Test Designs | 2 | Siemens Catapult HLS | Not provided |
@@ -73,6 +74,17 @@ Brandon Reagen, Robert Adolf, Yakun Sophia Shao, Gu-Yeon Wei, and David Brooks. 
 **Citation:**
 ```
 Yuko Hara, Hiroyuki Tomiyama, Shinya Honda, Hiroaki Takada, and Katsuya Ishii. [n. d.]. CHStone: A Benchmark Program Suite for Practical C-based High-Level Synthesis. In 2008 IEEE International Symposium on Circuits and Systems (ISCAS) (2008-05). 1192–1195. https://doi.org/10.1109/ISCAS.2008.4541637
+```
+
+### MiBench (`mibench`)
+
+- **Upstream**: [Website](http://vhosts.eecs.umich.edu/mibench/), [Publication](https://ieeexplore.ieee.org/document/990739)
+- **Best for**: Embedded and DSP-style kernels (crypto, image processing, telecom codecs, graph and string algorithms) with self-checking testbenches.
+- **Notes**: Kernels are extracted from the MiBench programs rather than the full applications. File I/O, `malloc`, recursion, and function pointers are removed and data is processed in fixed-size buffers so the top function is synthesizable. Each design runs Vitis HLS synthesis and C simulation. The original archives are kept alongside the designs, and each design retains the copyright and licence notices of its source. See the dataset `README` for the per-design adaptations.
+
+**Citation:**
+```
+M. R. Guthaus, J. S. Ringenberg, D. Ernst, T. M. Austin, T. Mudge, and R. B. Brown. 2001. MiBench: A free, commercially representative embedded benchmark suite. In Proceedings of the Fourth Annual IEEE International Workshop on Workload Characterization (WWC-4). 3–14. https://doi.org/10.1109/WWC.2001.990739
 ```
 
 ### Parallel Programming for FPGAs (`pp4fpgas`)

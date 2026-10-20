@@ -10,7 +10,7 @@ If you have HLS experience but are new to this framework: start with [Concepts](
 
 ## HLS Design Collection
 
-The [HLS Design Collection](built_in_datasets) is a community-organized effort to build the largest collection of HLS designs available in one place. It brings together curated HLS design corpora from across the research community, including PolyBench, MachSuite, CHStone, SPECTOR, Stream-HLS, ForgeBench and more, with designs for AMD Xilinx, Intel, Altera, Siemens Catapult, Cadence Stratus and Google XLS. Load any dataset by key with `hlsfactory.datasets_builtin.datasets_builder`.
+The [HLS Design Collection](built_in_datasets) is a community-organized effort to build the largest collection of HLS designs available in one place. It brings together curated HLS design corpora from across the research community, including PolyBench, MachSuite, CHStone, MiBench, SPECTOR, Stream-HLS, ForgeBench and more, with designs for AMD Xilinx, Intel, Altera, Siemens Catapult, Cadence Stratus and Google XLS. Load any dataset by key with `hlsfactory.datasets_builtin.datasets_builder`.
 
 The collection page has a summary table with design counts, flow coverage and OptDSL support, plus a section per dataset with upstream links. Any contributed design is cited and linked to credit the original authors.
 
