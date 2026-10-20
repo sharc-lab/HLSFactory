@@ -5,8 +5,10 @@ import json
 import multiprocessing
 import uuid
 from abc import ABC, abstractmethod
+from collections.abc import Iterable
 from dataclasses import dataclass, field
 from pathlib import Path
+from typing import ClassVar
 from zipfile import ZIP_DEFLATED, ZipFile
 
 import pandas as pd
@@ -193,19 +195,26 @@ def get_file_in_root(dir_fp: Path, file_name: str) -> dict:
     return json.loads(data_fp.read_text())
 
 
-class DataAggregatorXilinx(DataAggregator):
-    VENDER = "Xilinx"
+class JSONFileDataAggregator(DataAggregator):
+    """Shared base for aggregators.
 
-    def gather_hls_design_data(self, design: Design) -> dict:
+    Every flow writes its results as JSON files in the design directory
+    (``data_design.json``, ``data_hls.json``, ``data_implementation.json`` and
+    ``execution_data.json``), so reading them does not depend on the vendor.
+    Subclasses add the vendor-specific part: collecting the artifacts a flow
+    leaves on disk.
+    """
+
+    def gather_hls_design_data(self, design: Design, **_kwargs) -> dict:
         return get_file_in_root(design.dir, "data_design.json")
 
-    def gather_hls_synthesis_data(self, design: Design) -> dict:
+    def gather_hls_synthesis_data(self, design: Design, **_kwargs) -> dict:
         return get_file_in_root(design.dir, "data_hls.json")
 
-    def gather_implementation_data(self, design: Design) -> dict:
+    def gather_implementation_data(self, design: Design, **_kwargs) -> dict:
         return get_file_in_root(design.dir, "data_implementation.json")
 
-    def gather_execution_data(self, design: Design) -> dict:
+    def gather_execution_data(self, design: Design, **_kwargs) -> dict:
         fp = design.dir / "execution_data.json"
         if not fp.exists():
             return get_file_in_root(design.dir, "execution_data.json")
@@ -213,6 +222,10 @@ class DataAggregatorXilinx(DataAggregator):
         if not isinstance(execution_data, ExecutionData):
             return {}
         return execution_data.to_dict()
+
+
+class DataAggregatorXilinx(JSONFileDataAggregator):
+    VENDER = "Xilinx"
 
     def gather_hls_synthesis_artifacts_data(
         self,
@@ -224,7 +237,7 @@ class DataAggregatorXilinx(DataAggregator):
             ArtifactsXilinx.HDL,
             ArtifactsXilinx.IP,
         },
-        error_if_missing_data: bool = True,
+        error_if_missing_data: bool = False,
     ) -> ArtifactCollection:
         if artifacts_to_extract is None:
             raise ValueError("You specified no artifacts to extract")
@@ -250,7 +263,12 @@ class DataAggregatorXilinx(DataAggregator):
             except Exception:
                 pass
 
-        solutions = auto_find_solutions(design.dir)
+        try:
+            solutions = auto_find_solutions(design.dir)
+        except FileNotFoundError:
+            if error_if_missing_data:
+                raise
+            return {}
         if len(solutions) != 1:
             if error_if_missing_data:
                 raise ValueError(f"Found 0 or more than 1 solution for {design.dir}")
@@ -265,13 +283,21 @@ class DataAggregatorXilinx(DataAggregator):
 
         report_fp = Path(solution) / "syn" / "report"
         if not report_fp.exists():
-            raise FileNotFoundError(f"Report directory not found: {report_fp}")
+            if error_if_missing_data:
+                raise FileNotFoundError(f"Report directory not found: {report_fp}")
+            return {}
+
+        def found(files: list[Path], description: str) -> list[Path]:
+            if not files and error_if_missing_data:
+                raise FileNotFoundError(f"No {description} found")
+            return files
 
         if ArtifactsXilinx.IR in artifacts_to_extract:
             bitcode_fp = adb_fp / "a.o.3.bc"
-            if not bitcode_fp.exists():
-                raise FileNotFoundError(f"Bitcode file not found: {bitcode_fp}")
-            data["ir"] = [bitcode_fp]
+            data["ir"] = found(
+                [bitcode_fp] if bitcode_fp.exists() else [],
+                f"bitcode file {bitcode_fp}",
+            )
         else:
             data["ir"] = None
 
@@ -280,23 +306,19 @@ class DataAggregatorXilinx(DataAggregator):
             # have no other periods in the name
             adb_files = list(adb_fp.glob("*.adb"))
             adb_files = list(filter(lambda x: x.name.count(".") == 1, adb_files))
-            if len(adb_files) == 0:
-                raise FileNotFoundError(f"No .adb files found in {adb_fp}")
             adb_xml_files = list(adb_fp.glob("*.adb.xml"))
             adb_xml_files = list(
                 filter(lambda x: x.name.count(".") == 2, adb_xml_files),  # noqa: PLR2004
             )
-            if len(adb_xml_files) == 0:
-                raise FileNotFoundError(f"No .adb.xml files found in {adb_fp}")
+            found(adb_files, f".adb files in {adb_fp}")
+            found(adb_xml_files, f".adb.xml files in {adb_fp}")
             data["adb"] = adb_files + adb_xml_files
         else:
             data["adb"] = None
 
         if ArtifactsXilinx.REPORT in artifacts_to_extract:
             report_files = list(report_fp.glob("*.xml")) + list(report_fp.glob("*.rpt"))
-            if len(report_files) == 0:
-                raise FileNotFoundError(f"No report files found in {report_fp}")
-            data["report"] = report_files
+            data["report"] = found(report_files, f"report files in {report_fp}")
         else:
             data["report"] = None
 
@@ -310,14 +332,11 @@ class DataAggregatorXilinx(DataAggregator):
         if ArtifactsXilinx.IP in artifacts_to_extract:
             ip_dir = Path(solution) / "impl" / "ip"
             search = list(ip_dir.glob("*.zip"))
-            if len(search) == 0:
-                raise FileNotFoundError(f"No IP zip files found in {ip_dir}")
-            if len(search) > 1:
+            if len(search) > 1 and error_if_missing_data:
                 raise ValueError(f"Found more than 1 IP zip file in {ip_dir}")
-            ip_zip = search[0]
-            if not ip_zip.exists():
-                raise FileNotFoundError(f"IP zip file not found: {ip_zip}")
-            data["ip"] = [ip_zip]
+            data["ip"] = found(search[:1], f"IP zip files in {ip_dir}")
+        else:
+            data["ip"] = None
 
         return data
 
@@ -331,7 +350,7 @@ class DataAggregatorXilinx(DataAggregator):
             ArtifactsXilinx.HDL,
             ArtifactsXilinx.IP,
         },
-        error_if_missing_data: bool = True,
+        error_if_missing_data: bool = False,
     ) -> InMemoryArchive:
         data = self.gather_hls_synthesis_artifacts_data(
             design,
@@ -348,3 +367,263 @@ class DataAggregatorXilinx(DataAggregator):
                     archive.write(file, f"{top_level}/{key}/{file.name}")
         archive.close()
         return archive_buffer
+
+
+class ArtifactAggregator(JSONFileDataAggregator):
+    """Aggregator that collects vendor artifacts by file-name pattern.
+
+    Subclasses declare:
+
+    * ``ARTIFACTS``: an enum of artifact kinds (what can be collected).
+    * ``ARTIFACT_PATTERNS``: for each kind, glob patterns relative to the
+      design directory. Only files are collected.
+    * ``SYNTH_FLOW_NAME``: the flow whose recorded status in
+      ``execution_data.json`` decides whether synthesis completed.
+
+    Artifacts are returned as ``{kind.value: [paths]}`` and archived as
+    ``artifacts/<kind>/<path relative to the design directory>``.
+    """
+
+    ARTIFACTS: ClassVar[type[enum.Enum]]
+    ARTIFACT_PATTERNS: ClassVar[dict[enum.Enum, tuple[str, ...]]]
+    SYNTH_FLOW_NAME: ClassVar[str]
+
+    def _synthesis_incomplete(self, design: Design) -> bool:
+        if not (design.dir / "execution_data.json").exists():
+            return False
+        try:
+            flow_data = read_execution_data(
+                design.dir,
+                flow_name=self.SYNTH_FLOW_NAME,
+            )
+        except Exception:
+            return False
+        if isinstance(flow_data, FlowExecutionData) and flow_data.status in (
+            ExecutionDataStatus.ERROR,
+            ExecutionDataStatus.TIMEOUT,
+        ):
+            print(
+                f"WARNING: {self.SYNTH_FLOW_NAME} marked as {flow_data.status.value}, "
+                "synthesis never completed, no artifacts to extract",
+            )
+            return True
+        return False
+
+    def gather_hls_synthesis_artifacts_data(
+        self,
+        design: Design,
+        artifacts_to_extract: Iterable[enum.Enum] | None = None,
+        error_if_missing_data: bool = False,
+    ) -> ArtifactCollection:
+        """Find the requested artifact kinds on disk.
+
+        Args:
+            design: Design whose directory is searched.
+            artifacts_to_extract: Kinds to collect; defaults to every kind.
+            error_if_missing_data: If True, raise ``FileNotFoundError`` when a
+                requested kind matches no files. By default (False) that kind
+                maps to ``[]`` and collection continues.
+        """
+        kinds = (
+            list(self.ARTIFACTS)
+            if artifacts_to_extract is None
+            else list(artifacts_to_extract)
+        )
+        for kind in kinds:
+            if not isinstance(kind, self.ARTIFACTS):
+                raise ValueError(
+                    f"{kind!r} is not a {self.ARTIFACTS.__name__} artifact kind",
+                )
+
+        if self._synthesis_incomplete(design):
+            return {}
+
+        data: ArtifactCollection = {kind.value: None for kind in self.ARTIFACTS}
+        for kind in kinds:
+            found: set[Path] = set()
+            for pattern in self.ARTIFACT_PATTERNS[kind]:
+                found.update(p for p in design.dir.glob(pattern) if p.is_file())
+            if not found and error_if_missing_data:
+                raise FileNotFoundError(
+                    f"No {kind.value} artifacts found in {design.dir} "
+                    f"(patterns: {', '.join(self.ARTIFACT_PATTERNS[kind])})",
+                )
+            data[kind.value] = sorted(found)
+        return data
+
+    def gather_hls_synthesis_artifacts(
+        self,
+        design: Design,
+        artifacts_to_extract: Iterable[enum.Enum] | None = None,
+        error_if_missing_data: bool = False,
+        **_kwargs,
+    ) -> InMemoryArchive:
+        data = self.gather_hls_synthesis_artifacts_data(
+            design,
+            artifacts_to_extract=artifacts_to_extract,
+            error_if_missing_data=error_if_missing_data,
+        )
+        archive_buffer = io.BytesIO()
+        with ZipFile(archive_buffer, "w", ZIP_DEFLATED) as archive:
+            for kind, files in data.items():
+                for file in files or []:
+                    rel = file.relative_to(design.dir)
+                    archive.write(file, f"artifacts/{kind}/{rel.as_posix()}")
+        return archive_buffer
+
+
+class ArtifactsXLS(enum.Enum):
+    IR = "ir"
+    RTL = "rtl"
+    METRICS = "metrics"
+    INTERFACE = "interface"
+    OPTIONS = "options"
+    SOURCE_MAP = "source_map"
+    DEBUG = "debug"
+
+
+class DataAggregatorXLS(ArtifactAggregator):
+    """Google XLS: IR at each stage, RTL, signature/schedule/metrics, options."""
+
+    VENDER = "XLS"
+    ARTIFACTS = ArtifactsXLS
+    SYNTH_FLOW_NAME = "XLSHLSSynthFlow"
+    ARTIFACT_PATTERNS = {
+        ArtifactsXLS.IR: ("*.ir",),
+        ArtifactsXLS.RTL: ("*.v",),
+        ArtifactsXLS.METRICS: (
+            "*.signature.textproto",
+            "*.block_metrics.textproto",
+            "*.schedule.textproto",
+            "*pass_metrics.textproto",
+        ),
+        ArtifactsXLS.INTERFACE: ("*.interface.pb", "*.interface.textproto"),
+        ArtifactsXLS.OPTIONS: ("*_options.textproto",),
+        ArtifactsXLS.SOURCE_MAP: ("*.verilog_line_map.textproto",),
+        ArtifactsXLS.DEBUG: (
+            "*.optimizer_ir_dumps/**/*",
+            "*.codegen_ir_dumps/**/*",
+            "*.pprof",
+        ),
+    }
+
+
+class ArtifactsCatapult(enum.Enum):
+    REPORT = "report"
+    RTL = "rtl"
+
+
+class DataAggregatorCatapult(ArtifactAggregator):
+    """Siemens Catapult: ``*.rpt`` reports and generated RTL."""
+
+    VENDER = "Catapult"
+    ARTIFACTS = ArtifactsCatapult
+    SYNTH_FLOW_NAME = "CatapultHLSSynthFlow"
+    ARTIFACT_PATTERNS = {
+        ArtifactsCatapult.REPORT: ("**/*.rpt",),
+        ArtifactsCatapult.RTL: (
+            "**/rtl.v",
+            "**/concat_rtl.v",
+            "**/rtl.vhdl",
+            "**/concat_rtl.vhdl",
+        ),
+    }
+
+
+class ArtifactsStratus(enum.Enum):
+    RTL = "rtl"
+    REPORT = "report"
+    LOG = "log"
+
+
+class DataAggregatorStratus(ArtifactAggregator):
+    """Cadence Stratus: generated RTL, the BDR report, and metrics/log files."""
+
+    VENDER = "Stratus"
+    ARTIFACTS = ArtifactsStratus
+    SYNTH_FLOW_NAME = "StratusHLSSynthFlow"
+    ARTIFACT_PATTERNS = {
+        ArtifactsStratus.RTL: ("**/*_rtl.v",),
+        ArtifactsStratus.REPORT: (
+            "**/stratus_hls.bdr",
+            ".hlsfactory_stratus_metrics.tsv",
+        ),
+        ArtifactsStratus.LOG: ("**/stratus_hls.log",),
+    }
+
+
+class ArtifactsIntel(enum.Enum):
+    REPORT = "report"
+    HDL = "hdl"
+    QUARTUS = "quartus"
+
+
+class DataAggregatorIntel(ArtifactAggregator):
+    """Intel HLS Compiler (``i++``) and Quartus: reports, HDL, Quartus reports."""
+
+    VENDER = "Intel"
+    ARTIFACTS = ArtifactsIntel
+    SYNTH_FLOW_NAME = "IntelHLSSynthFlow"
+    ARTIFACT_PATTERNS = {
+        ArtifactsIntel.REPORT: (
+            "*.prj/reports/report.html",
+            "*.prj/reports/lib/json/*.json",
+        ),
+        ArtifactsIntel.HDL: (
+            "*.prj/components/**/*.v",
+            "*.prj/components/**/*.sv",
+            "*.prj/components/**/*.vhd",
+        ),
+        ArtifactsIntel.QUARTUS: (
+            "*.prj/quartus/*.qsf",
+            "*.prj/quartus/**/*.rpt",
+            "*.prj/quartus/**/*.summary",
+        ),
+    }
+
+
+class ArtifactsAltera(enum.Enum):
+    REPORT = "report"
+    INTERFACE = "interface"
+    HDL = "hdl"
+    LOG = "log"
+
+
+class DataAggregatorAltera(ArtifactAggregator):
+    """Altera HLS IP Gen and Quartus: reports, interface spec, RTL, logs."""
+
+    VENDER = "Altera"
+    ARTIFACTS = ArtifactsAltera
+    SYNTH_FLOW_NAME = "AlteraHLSSynthFlow"
+    ARTIFACT_PATTERNS = {
+        ArtifactsAltera.REPORT: (
+            "**/*.prj/reports/report.html",
+            "**/*.prj/reports/resources/json/*.ndjson",
+        ),
+        ArtifactsAltera.INTERFACE: ("**/*.prj/ipinterfaces.xml",),
+        ArtifactsAltera.HDL: ("**/*.prj/**/*.sv", "**/*.prj/**/*.v"),
+        ArtifactsAltera.LOG: ("**/flow.log",),
+    }
+
+
+class ArtifactsVitisModern(enum.Enum):
+    REPORT = "report"
+    HDL = "hdl"
+
+
+class DataAggregatorVitisModern(ArtifactAggregator):
+    """Config-file Vitis HLS (``v++``): ``csynth`` reports and Verilog/VHDL."""
+
+    VENDER = "Xilinx"
+    ARTIFACTS = ArtifactsVitisModern
+    SYNTH_FLOW_NAME = "VitisHLSModernSynthFlow"
+    ARTIFACT_PATTERNS = {
+        ArtifactsVitisModern.REPORT: (
+            "**/hls/syn/report/*.xml",
+            "**/hls/syn/report/*.rpt",
+        ),
+        ArtifactsVitisModern.HDL: (
+            "**/hls/syn/verilog/*.v",
+            "**/hls/syn/vhdl/*.vhd",
+        ),
+    }
