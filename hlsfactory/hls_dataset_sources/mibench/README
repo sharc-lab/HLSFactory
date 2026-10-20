@@ -1,0 +1,87 @@
+MiBench kernels as HLSFactory designs (Vitis HLS flows)
+=======================================================
+
+Source: MiBench, "A free, commercially representative embedded benchmark
+suite", M. R. Guthaus, J. S. Ringenberg, D. Ernst, T. M. Austin, T. Mudge,
+R. B. Brown, WWC-4, 2001.  http://vhosts.eecs.umich.edu/mibench/
+The original, unmodified sources are the *.tar.gz archives in this directory
+(one per MiBench category).  Each design below keeps the copyright and
+licence notices of the code it was derived from; see the file headers.
+
+Each subdirectory is one design:
+
+  hlsfactory.toml        design config (VitisHLSSynthFlow + VitisHLSCsimFlow)
+  hls.tcl                Vitis HLS script (phase argument: csim | syn)
+  dataset_hls.tcl        synthesis entry point used by VitisHLSSynthFlow
+  dataset_hls_csim.tcl   C simulation entry point used by VitisHLSCsimFlow
+  *.c / *.h              the kernel (top function named in hls.tcl)
+  tb.c                   self-checking testbench, prints PASS and returns 0
+
+Kernels are extracted from the MiBench programs, not the whole programs:
+file I/O, malloc, recursion, function pointers and printing are removed and
+the data is processed in fixed-size buffers so the top function is
+synthesizable.  Algorithms and constants are those of the original code.
+
+  design            MiBench source                 top function
+  ----------------  -----------------------------  ------------------
+  bitcount          automotive/bitcount            bitcnts
+  qsort             automotive/qsort (small)       qsort_words
+  basicmath_cubic   automotive/basicmath cubic.c   solve_cubics
+  basicmath_isqrt   automotive/basicmath isqrt.c   usqrt_array
+  susan_smoothing   automotive/susan -s            susan_smoothing
+  susan_principle   automotive/susan -e -p         susan_principle
+  susan_edges       automotive/susan -e            susan_edges
+  susan_corners     automotive/susan -c            susan_corners
+  dijkstra          network/dijkstra (small)       dijkstra_queries
+  stringsearch      office/stringsearch (small)    stringsearch
+  stringsearch_bmh  office/stringsearch bmh*srch.c  stringsearch_bmh
+  patricia          network/patricia               patricia_trace
+  sha               security/sha                   sha_digest
+  blowfish          security/blowfish (bf e/d)     blowfish_cfb64
+  rijndael          security/rijndael              rijndael_ecb
+  crc32             telecomm/CRC32                 crc32buf
+  fft               telecomm/FFT                   fft_float
+  adpcm_encode      telecomm/adpcm rawcaudio       adpcm_coder
+  adpcm_decode      telecomm/adpcm rawdaudio       adpcm_decoder
+  gsm_encode        telecomm/gsm toast             gsm_encode_block
+  gsm_decode        telecomm/gsm untoast           gsm_decode_block
+
+Notable adaptations
+  * rijndael: the original is Gladman's variable block/key size AES with
+    run-time table generation; the design is a compact AES-128 (FIPS-197)
+    ECB implementation with constant tables.
+  * bitcount: the recursive ntbl_bitcnt() is iterative; the function pointer
+    table is unrolled into direct calls.
+  * qsort: the C library qsort() is an iterative quicksort over fixed-length
+    words, same (descending strcmp) order as the benchmark comparator.
+  * dijkstra: the malloc'ed linked-list queue is a circular buffer.
+  * basicmath_cubic: 'long double' temporaries are 'double'.
+  * patricia: nodes live in a static pool addressed by index and insertR() is
+    a loop.  Only pat_search()/pat_insert() are ported (the driver does not
+    call pat_remove()) and a node holds one mask, since every entry the
+    driver inserts is a /32 host address.
+  * stringsearch_bmh: the three Boyer-Moore-Horspool searchers (exact,
+    case-insensitive, accent-folding) that the MiBench Makefile builds next
+    to the Pratt-Boyer-Moore one used by the driver, run on the same pairs.
+  * susan_edges / susan_corners: the full "-e" (response, direction,
+    non-maximum suppression, thinning, drawing) and "-c" (response, corner
+    test, 7x7 suppression, drawing) pipelines.  The unrolled 37-pixel mask
+    walks are loops; the corner list has a fixed capacity.
+  * gsm_*: the original GSM 06.10 library files (add, long_term, rpe,
+    short_term, table, plus code/lpc/preprocess/gsm_encode or
+    decode/gsm_decode), with longword/ulongword made exactly 32 bit and the
+    MiBench build options (SASR, STUPID_COMPILER) set in private.h.  The
+    malloc'ed codec handle is a local state, and a wrapper codes 16 frames.
+  * sha: original SHA by default, NIST's modified SHA with -DUSE_MODIFIED_SHA,
+    as in the MiBench Makefile.
+
+Test oracles: gsm_* compare against the reference data shipped with MiBench
+(data/small.au.run.gsm for the encoder; the original library's output for
+the decoder); adpcm and susan_* compare against hashes produced by running
+the original MiBench code on the same input; blowfish and rijndael against
+OpenSSL and the standard test vectors; the others against independent
+reference implementations in tb.c.
+
+Not included (not kernel-shaped, depend on the OS, files or large libraries):
+consumer/* (jpeg, lame, mad, tiff*, typeset), office/{ghostscript,ispell,
+rsynth,sphinx}, security/pgp, and all of the *_large variants.

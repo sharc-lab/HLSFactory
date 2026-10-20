@@ -32,6 +32,7 @@ INCLUDE_DATASETS = [
     "forgebench",
     "hp_fft_hls",
     "machsuite",
+    "mibench",
     "polybench",
     "pp4fpgas",
     "rosetta",
