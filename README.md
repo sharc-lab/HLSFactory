@@ -26,84 +26,69 @@ uv pip install git+https://github.com/sharc-lab/HLSFactory
 pip install git+https://github.com/sharc-lab/HLSFactory
 ```
 
-<hr>
+See the [setup instructions](https://sharc-lab.github.io/HLSFactory/setup.html) in the docs for tool configuration and full installation details.
 
-Some documentation and packaging are still under construction. However, you can install the HLSFactory package via `uv pip install git+https://github.com/sharc-lab/HLSFactory` (or the legacy `pip install` shown above) and get started running the demos, importing your own HLS designs into the HLSFactory framework, and using HLSFactory for your own research and experiments.
+## Design Collections
 
-If you clone the repository, `uv sync` will install the package in editable mode along with the test and docs extras. You can then run the demos by following the instructions in the respective notebooks and scripts. We also include rendered PDFs for any Jupyter notebooks. 
+The [HLSFactory HLS Design Collection](https://sharc-lab.github.io/HLSFactory/built_in_datasets.html) is a browsable, searchable index of every built-in dataset. It is a community-organized effort to bring curated HLS design corpora from across the research community into one place, and currently packages 19 datasets with over 300 designs. You can load any of them with `datasets_builder`:
 
-### Full Flow Demo
+```python
+from pathlib import Path
 
-However, you can still get started with a demo script and Jupyter notebook to run a full "Frontend Design Space Sampling-> Vitis HLS -> Vivado Implementation -> Output Data" flow on the built-in PolyBench, MachSuite, and CHStone datasets. The script and notebook for this demo are located in `demos/demo_full_flow_xilinx/`.
+from hlsfactory.datasets_builtin import datasets_builder
 
-### Your Custom Design Dataset Demo
-
-We also provide a demo Jupyter notebook, with detailed instructions on how to get started importing your own HLS designs into the HLSFactory framework to run your own flows and collect data for your own experiments and research. The notebook for this demo is located in `demos/demo_custom_datasets/`.
-
-### Catapult HLS Smoke Test
-
-The built-in `test_designs_catapult` dataset contains two small C++ kernels for validating a Siemens Catapult installation. On the HLSFactory server, run the validator from an environment that has sourced the Siemens setup:
-
-```bash
-export HLSFACTORY_CATAPULT_PATH=/tools/software/siemens/catapult/latest/Mgc_home
-csh -c 'source /tools/software/siemens/setup.csh; uv run python tests/dataset_validator.py hlsfactory/hls_dataset_sources/test_designs_catapult --flow CatapultHLSSynthFlow -j 1'
+datasets = datasets_builder(Path("work_dir"), ["polybench", "machsuite"])
 ```
 
-Successful designs receive a `data_hls.json` containing latency, throughput, clock, critical-path timing, and detailed standard-cell area metrics. See the [Catapult HLS tutorial](docs/source/tutorials/catapult_flow.md) for Python API and custom-design examples.
+| Category | Datasets |
+| --- | --- |
+| Classic HLS benchmarks | `polybench`, `machsuite`, `chstone`, `mibench`, `pp4fpgas`, `spector_hls` |
+| Vendor examples | `vitis_examples`, `altera_examples` |
+| Research accelerators | `accelerators` (Sharc Lab), `soda`, `hp_fft`, `stream_hls`, `auto_ntt`, `forgebench` |
+| Vendor toolchain designs | `test_designs_catapult`, `test_designs_stratus`, `test_designs_xls`, `test_designs_vitis_modern`, `xls_upstream` |
 
-### Google XLS Smoke Test
+Most datasets target AMD/Xilinx Vitis HLS; the Catapult, Stratus, and XLS datasets are small designs for validating those toolchains. Datasets keep the licensing terms of their upstream repositories.
 
-The built-in `test_designs_xls` dataset contains 11 DSLX designs covering
-combinational and pipelined functions, arrays, loops, parametrics, structs,
-pattern matching, stateful `proc`s, and procs that call pure helper functions.
-Point `HLSFACTORY_XLS_PATH` at an XLS release bundle or Bazel build and run:
+**Where to start:** use `polybench` for a first run or `vitis_examples` to validate your toolchain. For ML and QoR work, `polybench`, `machsuite`, and `chstone` are commonly used together.
 
-```bash
-export HLSFACTORY_XLS_PATH=/usr/scratch/common/xls
-uv run python tests/dataset_validator.py \
-    hlsfactory/hls_dataset_sources/test_designs_xls \
-    --flow XLSHLSSynthFlow \
-    -j 4
+The catalog page has per-dataset details, upstream links, and instructions to [contribute your own designs](https://sharc-lab.github.io/HLSFactory/built_in_datasets.html#contributing-your-hls-designs).
+
+## Flows
+
+Everything in HLSFactory is a **flow**: a step that takes a design and returns zero or more designs. Frontend flows expand one base design into many (for example, sampling an optimization design space), and tool flows run an external vendor tool and store the results alongside the design. Flows run in parallel across designs and datasets, so a full pipeline is a short chain:
+
+```python
+# frontend sampling -> HLS synthesis -> implementation
+designs = OptDSLFrontend(...).execute_multiple_designs(base_designs, n_jobs=8)
+designs = VitisHLSSynthFlow(...).execute_multiple_designs(designs, n_jobs=8)
+designs = VitisHLSImplFlow(...).execute_multiple_designs(designs, n_jobs=8)
 ```
 
-Each successful design produces unoptimized and optimized XLS IR,
-synthesizable Verilog, interface and module signatures, schedule and lowered IR,
-source-line mappings, effective tool-option snapshots, pass-pipeline metrics,
-block metrics, and `data_hls.json`. The JSON includes reported latency and
-initiation interval, flop count, feedthrough information, XLS delay estimates,
-operation/BOM counts, and paths to every report. Large compiler IR dumps and
-pass profiles remain opt-in. See the
-[Google XLS tutorial](docs/source/tutorials/xls_flow.md) for setup, Python API,
-configuration, output files, and custom DSLX designs.
+Custom flows and frontends plug into the same interface.
 
+**Frontends** (design space sampling):
 
-## About
+| Frontend | Purpose |
+| --- | --- |
+| OptDSL (Vitis and Intel variants) | Enumerate optimization directive combinations from a DSL template |
+| OptDSL passthrough | Produce a baseline copy of each design with an empty `opt.tcl` (no directives) |
+| Jinja template | Render design variants from Jinja templates and a list of parameter configs |
+| C/C++ preprocessor | Generate one variant per set of preprocessor `#define` values |
 
-HLSFactory is a framework for High-Level Synthesis (HLS) design datasets. It provides both the facilities to collect and build custom HLS datasets using various frontends, supported HLS tools, and data aggregation as well as provides built-in design dataset sources for users who want to run their own experiments out of the box. We also provide easy facilities for new users to contribute their own HLS designs to the existing design datasets as well as augment the existing tool flows to support custom flows such as new front ends for design space sampling and new vendor tool support.
+**Tool flows:**
 
-We currently include the following HLS design sources as built-in datasets:
+| Vendor / tool | Flows |
+| --- | --- |
+| AMD/Xilinx Vitis HLS + Vivado | Synthesis, C simulation, co-simulation (with setup), implementation and implementation reports, config-file ("modern") synthesis and C simulation |
+| Intel HLS + Quartus | HLS synthesis, Quartus implementation |
+| Altera HLS + Quartus | HLS synthesis, C simulation, co-simulation, Quartus implementation |
+| Siemens Catapult HLS | Synthesis |
+| Cadence Stratus HLS | Synthesis |
+| Google XLS | DSLX to Verilog synthesis |
+| Bambu | Synthesis |
+| Analysis and ML | LightningSim, Balor graphs, HARP graphs, lines-of-code counting, AutoDSE |
 
-- PolyBench: A polyhedral compilation benchmark suite adapted for HLS
-- MachSuite: An HLS benchmark suite
-- CHStone: An HLS benchmark suite
-- Rosetta (🚧 under construction): An HLS benchmark suite with kernels targeting machine learning, deep learning, and signal processing applications.
-- Parallel Programming for FPGAs: Kernels from the PP4FPGA textbook
-- Vitis HLS Examples: A collection of examples from the Vitis HLS tool
-- Catapult Test Designs: Small vector-add and dot-product kernels for validating Siemens Catapult HLS
-- XLS Test Designs: DSLX kernels covering functions, arrays, loops, parametrics, structs, pattern matching, and stateful procs
-- FlowGNN: A collection of GNN accelerator designs
-- DGNN Booster + Gaussian Process + MaskNet + SkyNet: Selected accelerator kernels from Sharc Lab
-
-We currently support the following vendor tool flows:
-
-- AMD/Xilinx Vitis HLS and Vivado
-- Intel HLS Compiler and Quartus
-- Siemens Catapult HLS
-- Google XLS (DSLX to synthesizable Verilog)
-
-## Demos
-
-We provide documented demos, Python scripts, and Jupyter notebooks to get you started with the HLSFactory framework. These demos are located in the `demos/` directory.
+Learn more in the [Flows guide](https://sharc-lab.github.io/HLSFactory/framework/flows.html), the [tutorials](https://sharc-lab.github.io/HLSFactory/tutorials/index.html), and the runnable demos in [`demos/`](demos/).
 
 ## How to Cite
 
